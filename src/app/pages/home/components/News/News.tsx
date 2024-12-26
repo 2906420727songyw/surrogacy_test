@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './News.module.css';
 
 export default function News() {
@@ -10,7 +11,7 @@ export default function News() {
             <span>NEWS</span>
             <hr />
           </div>
-          <img src="/images/home/news-1.png" alt="News 1" />
+          <Image src="/images/home/news-1.png" alt="News 1" width={270} height={180} />
           <h3>How To Deliver a Successful Product Launch</h3>
           <p>29 Jun 2022, by Joshua Nash</p>
         </li>
@@ -19,7 +20,7 @@ export default function News() {
             <span>NEWS</span>
             <hr />
           </div>
-          <img src="/images/home/news-2.png" alt="News 2" />
+          <Image src="/images/home/news-2.png" alt="News 2" width={270} height={180} />
           <h3>How To Deliver a Successful Product Launch</h3>
           <p>29 Jun 2022, by Joshua Nash</p>
         </li>
@@ -28,7 +29,7 @@ export default function News() {
             <span>NEWS</span>
             <hr />
           </div>
-          <img src="/images/home/news-3.png" alt="News 3" />
+          <Image src="/images/home/news-3.png" alt="News 3" width={270} height={180} />
           <h3>How To Deliver a Successful Product Launch</h3>
           <p>29 Jun 2022, by Joshua Nash</p>
         </li>
@@ -37,7 +38,7 @@ export default function News() {
             <span>NEWS</span>
             <hr />
           </div>
-          <img src="/images/home/news-4.png" alt="News 4" />
+          <Image src="/images/home/news-4.png" alt="News 4" width={270} height={180} />
           <h3>How To Deliver a Successful Product Launch</h3>
           <p>29 Jun 2022, by Joshua Nash</p>
         </li>

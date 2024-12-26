@@ -46,6 +46,12 @@
   margin-bottom: 20px;
 }
 
+.article :global(img) {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
 .article h3 {
   font-size: 18px;
   font-weight: bold;
