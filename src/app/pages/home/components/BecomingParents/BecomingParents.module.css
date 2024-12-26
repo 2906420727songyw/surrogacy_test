@@ -1,0 +1,56 @@
+.becomingParents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 315px 0 300px;
+  min-height: 100vh;
+  background-image: url('/images/home/becoming-parents-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.content {
+  text-align: center;
+}
+
+.content h2 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #FFF;
+}
+
+.content p {
+  font-size: 24px;
+  margin-bottom: 40px;
+  color: #FFF;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.learnMore,
+.apply {
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.learnMore {
+  background-color: #FFF;
+  color: #000;
+  border: none;
+}
+
+.apply {
+  background-color: #E11F26;
+  color: #FFF;
+  border: none;
+} 
