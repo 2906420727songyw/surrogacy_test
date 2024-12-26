@@ -6,6 +6,33 @@
   height: auto;
 }
 
+@media (max-width: 768px) {
+  .footer {
+    padding: 60px 20px;
+  }
+
+  .content {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .links {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .column {
+    width: 100%;
+  }
+
+  .bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+}
+
 .content {
   max-width: 1200px;
   margin: 0 auto;

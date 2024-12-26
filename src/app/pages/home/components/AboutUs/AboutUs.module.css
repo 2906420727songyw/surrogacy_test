@@ -38,6 +38,25 @@
   padding: 0 300px;
 }
 
+@media (max-width: 768px) {
+  .aboutUs h2 {
+    font-size: 36px;
+  }
+
+  .aboutUs p {
+    font-size: 18px;
+  }
+
+  .textContainer {
+    padding: 0 20px;
+  }
+
+  .videoCarousel video {
+    width: 100%;
+    height: auto;
+  }
+}
+
 .images {
   display: flex;
   justify-content: center;

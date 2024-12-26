@@ -28,6 +28,24 @@ export default function AboutUs() {
     isDragging = false;
   };
 
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    isDragging = true;
+    startX = e.touches[0].pageX - carouselRef.current!.offsetLeft;
+    scrollLeft = carouselRef.current!.scrollLeft;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.touches[0].pageX - carouselRef.current!.offsetLeft;
+    const walk = (x - startX) * 2;
+    carouselRef.current!.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleTouchEnd = () => {
+    isDragging = false;
+  };
+
   return (
     <section className={styles.aboutUs}>
       <div className={styles.gradientBar}></div>
@@ -47,6 +65,9 @@ export default function AboutUs() {
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
         <video src="/videos/home/about-us-video-1.mp4" controls></video>
         <video src="/videos/home/about-us-video-2.mp4" controls></video>
