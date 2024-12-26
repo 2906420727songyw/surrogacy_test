@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import ScrollIntoView from 'react-scroll-into-view';
 import styles from './Header.module.css';
 import { routes } from '../../../routes/index';
 import { useState } from 'react';
