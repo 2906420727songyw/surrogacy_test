@@ -83,13 +83,14 @@
 }
 
 .moreButton {
-  padding: 10px 20px;
+  width: 133px;
+  height: 36px;
   border-radius: 4px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  background-color: #FF3B30;
-  color: #FFF;
+  background-color: #FFFFFF;
+  color: #000;
   border: none;
   text-transform: uppercase;
 } 

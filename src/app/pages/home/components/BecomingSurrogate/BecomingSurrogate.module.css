@@ -50,11 +50,15 @@
 
 .learnMore,
 .apply {
-  padding: 12px 24px;
+  width: 133px;
+  height: 36px;
   border-radius: 4px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .learnMore {
@@ -64,7 +68,7 @@
 }
 
 .apply {
-  background-color: #E11F26;
-  color: #FFF;
+  background-color: #FFF;
+  color: #000;
   border: none;
 } 

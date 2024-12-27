@@ -10,7 +10,7 @@ export default function DataDisplay() {
         <div className={styles.dataItems}>
           <div className={`${styles.dataItem} ${styles.circle}`}>
             <div className={styles.dataValue}>99.4%</div>
-            <div className={styles.dataDescription}>我们的父母评价我们为优秀/非常好</div>
+            <div className={styles.dataDescription}>我们的父母带着孩子回家居住在全球73个国家</div>
           </div>
           <div className={`${styles.dataItem} ${styles.circle}`}>
             <div className={styles.dataValue}>3400+</div>
@@ -18,7 +18,7 @@ export default function DataDisplay() {
           </div>
           <div className={`${styles.dataItem} ${styles.circle}`}>
             <div className={styles.dataValue}>50%</div>
-            <div className={styles.dataDescription}>我们的代理人回头��或推荐人</div>
+            <div className={styles.dataDescription}>我们的代理人回头客或推荐人</div>
           </div>
           <div className={`${styles.dataItem} ${styles.circle}`}>
             <div className={styles.dataValue}>44%</div>

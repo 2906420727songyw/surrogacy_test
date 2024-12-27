@@ -44,14 +44,19 @@
 }
 
 .logo a {
-  font-size: 20px;
   color: #FFF;
   text-decoration: none;
   text-align: center;
-  font-family: "Playfair Display";
-  font-style: normal;
+  font-family: Playfair Display;
+  font-size: 20px;
   font-weight: 700;
-  line-height: 150%;
+  line-height: 30px;
+}
+
+.navWrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .nav {
@@ -62,38 +67,66 @@
 .nav ul {
   display: flex;
   list-style: none;
-  gap: 48px;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
 }
 
-.nav a {
-  text-decoration: none;
-  color: #FFF;
-  font-family: "Geist";
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%;
+.navContent {
+  display: flex;
+  align-items: center;
+}
+
+.nav li {
   display: flex;
   align-items: center;
   height: 100%;
 }
 
+.nav a {
+  text-decoration: none;
+  color: #FFF;
+  font-family: PingFang SC;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22.4px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  transition: font-weight 0.3s;
+}
+
+.nav a:hover,
+.nav a:active {
+  font-weight: bold;
+}
+
+.nav a.active {
+  font-weight: bold;
+}
+
 .actions {
   display: flex;
-  gap: 24px;
+  gap: 30px;
   align-items: center;
 }
 
 .register,
-.login {
-  padding: 10px 20px;
+.login,
+.appointment,
+.search {
   border-radius: 4px;
   text-decoration: none;
-  font-family: "Geist";
+  font-family: PingFang SC;
   font-size: 16px;
   font-style: normal;
-  font-weight: 400;
-  line-height: 150%;
+  font-weight: 500;
+  line-height: 22.4px;
+  background-color: transparent;
+  color: #FFF;
+  border: none;
+  transition: font-weight 0.3s;
 }
 
 .register {
@@ -101,10 +134,10 @@
   color: #FFF;
 }
 
-.login {
-  background-color: transparent;
-  color: #FFF;
-  border: 1px solid #FFF;
+.login:hover,
+.appointment:hover,
+.search:hover {
+  font-weight: bold;
 }
 
 @media (max-width: 768px) {
@@ -142,5 +175,15 @@
 
   .actions {
     display: none;
+  }
+
+  .login,
+  .appointment,
+  .search {
+    font-size: 16px;
+  }
+
+  .actions {
+    gap: 20px;
   }
 } 
