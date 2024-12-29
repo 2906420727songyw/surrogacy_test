@@ -28,7 +28,7 @@ export default function Footer() {
               <li><a href="/#parents-overview">试管医院的选择</a></li>
               <li><a href="/#egg-sperm-donation-help">卵子和精子捐献者的帮组</a></li>
               <li><a href="/#surrogacy-plan-process">代孕计划和流程</a></li>
-              <li><a href="/">代孕套餐和费用</a></li>
+              <li><a href="/#becoming-parents">代孕套餐和费用</a></li>
             </ul>
           </div>
           <div className={styles.column}>

@@ -2,7 +2,7 @@ import styles from './BecomingParents.module.css';
 
 export default function BecomingParents() {
   return (
-    <section className={styles.becomingParents}>
+    <section id="becoming-parents" className={styles.becomingParents}>
       <div className={styles.content}>
         <h2>成为准父母</h2>
         <p>套餐价格低至145,000美元</p>
