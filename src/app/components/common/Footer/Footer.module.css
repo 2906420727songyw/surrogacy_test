@@ -41,24 +41,43 @@
 }
 
 .info h3 {
-  font-size: 24px;
-  font-weight: bold;
+  font-family: Playfair Display;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30px;
+  margin-bottom: 32px;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
   margin-bottom: 20px;
 }
 
-.info p {
-  font-size: 16px;
-  margin-bottom: 10px;
+.infoItem p {
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  margin-top: 4px;
 }
 
 .links {
   display: flex;
-  gap: 40px;
+  gap: 90px;
 }
 
 .column h4 {
-  font-size: 18px;
-  font-weight: bold;
+  font-family: PingFang SC;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22.4px;
   margin-bottom: 20px;
 }
 
@@ -68,18 +87,43 @@
 }
 
 .column li {
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-.bottom {
-  max-width: 1200px;
-  margin: 40px auto 0;
-  display: flex;
-  justify-content: flex-end;
-  gap: 20px;
-}
-
-.bottom p {
+  font-family: PingFang SC;
   font-size: 14px;
-} 
+  font-weight: 400;
+  line-height: 34px;
+}
+
+.column li a {
+  color: #FFF;
+  text-decoration: none;
+  transition: text-decoration 0.3s;
+}
+
+.column li a:hover {
+  text-decoration: underline;
+}
+
+.customerService {
+  position: fixed;
+  padding: 15px 18px;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 12px;
+  background-color: #868275;
+  gap: 10px;
+}
+
+.customerService img {
+  width: 30px;
+  height: 30px;
+}
+
+.customerService span {
+  font-size: 22px;
+  color: #fff;
+}
+

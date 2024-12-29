@@ -2,7 +2,7 @@ import styles from './ParentsSectionPart1.module.css';
 
 export default function ParentsSectionPart1() {
   return (
-    <>
+    <div id="parents-overview">
       <div className={styles.container}>
         <h1 className={styles.title}>Sapling Surrogacy</h1>
         <p className={styles.description}>
@@ -53,6 +53,6 @@ export default function ParentsSectionPart1() {
         </div>
         <div className={styles.gradientBar}></div>
       </div>
-    </>
+    </div>
   );
 } 

@@ -29,7 +29,7 @@ export default function ParentsSectionPart3() {
   };
 
   return (
-    <div className={styles.part3}>
+    <div id="surrogacy-plan-process" className={styles.part3}>
       <img src="/images/home/image2.png" alt="第三部分图片" className={styles.image} />
       <div className={styles.content}>
         <div className={styles.textContainer}>

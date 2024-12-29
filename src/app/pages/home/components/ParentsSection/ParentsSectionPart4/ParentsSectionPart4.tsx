@@ -2,7 +2,7 @@ import styles from './ParentsSectionPart4.module.css';
 
 export default function ParentsSectionPart4() {
   return (
-    <div className={styles.part4}>
+    <div id="egg-sperm-donation-help" className={styles.part4}>
       <img src="/images/home/image3.png" alt="第四部分图片" className={styles.image} />
       <div className={styles.content}>
         <div className={styles.textContainer}>

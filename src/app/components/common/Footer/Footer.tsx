@@ -1,4 +1,3 @@
-
 import styles from "./Footer.module.css";
 
 export default function Footer() {
@@ -7,56 +6,68 @@ export default function Footer() {
       <div className={styles.content}>
         <div className={styles.info}>
           <h3>Sapling Surrogacy</h3>
-          <p>www.homlesproperty.co</p>
-          <p>hello@homles.co</p>
-          <p>+44 652 762 887</p>
+          <div className={styles.infoItem}>
+            <img src="/images/footer/website-icon.png" alt="Website Icon" className={styles.icon} />
+            <p>www.homlesproperty.co</p>
+          </div>
+          <div className={styles.infoItem}>
+            <img src="/images/footer/email-icon.png" alt="Email Icon" className={styles.icon} />
+            <p>hello@homles.co</p>
+          </div>
+          <div className={styles.infoItem}>
+            <img src="/images/footer/phone-icon.png" alt="Phone Icon" className={styles.icon} />
+            <p>+44 652 762 887</p>
+          </div>
         </div>
         <div className={styles.links}>
           <div className={styles.column}>
             <h4>成为准父母</h4>
             <ul>
-              <li>准父母申请</li>
-              <li>代孕过程</li>
-              <li>试管婴儿</li>
-              <li>卵子捐献者</li>
-              <li>代孕妈妈</li>
+              <li><a href="/#parents-overview">准父母概述</a></li>
+              <li><a href="/#surrogacy-matching-process">代孕母匹配过程</a></li>
+              <li><a href="/#parents-overview">试管医院的选择</a></li>
+              <li><a href="/#egg-sperm-donation-help">卵子和精子捐献者的帮组</a></li>
+              <li><a href="/#surrogacy-plan-process">代孕计划和流程</a></li>
+              <li><a href="/">代孕套餐和费用</a></li>
             </ul>
           </div>
           <div className={styles.column}>
-            <h4>代孕母亲</h4>
+            <h4>代孕母</h4>
             <ul>
-              <li>准父母申请</li>
-              <li>代孕过程</li>
-              <li>试管婴儿</li>
-              <li>卵子捐献者</li>
-              <li>代孕妈妈</li>
+              <li><a href="#">补偿薪资</a></li>
+              <li><a href="#">代孕妈妈要求</a></li>
+              <li><a href="#">申请流程</a></li>
+              <li><a href="#">筛选过程</a></li>
+              <li><a href="#">经理历程</a></li>
             </ul>
           </div>
           <div className={styles.column}>
             <h4>卵子捐赠者</h4>
             <ul>
-              <li>准父母申请</li>
-              <li>代孕过程</li>
-              <li>试管婴儿</li>
-              <li>卵子捐��者</li>
-              <li>代孕妈妈</li>
+              <li><a href="#">补偿薪资</a></li>
+              <li><a href="#">卵子捐赠者要求</a></li>
+              <li><a href="#">申请流程</a></li>
+              <li><a href="#">筛选过程</a></li>
+              <li><a href="#">经理历程</a></li>
             </ul>
           </div>
           <div className={styles.column}>
             <h4>资源</h4>
             <ul>
-              <li>成为父母</li>
-              <li>成为代孕妈妈</li>
-              <li>成为捐赠者</li>
-              <li>寻找捐赠者</li>
+              <li><a href="#">成为父母</a></li>
+              <li><a href="#">成为代孕妈妈</a></li>
+              <li><a href="#">成为捐赠者</a></li>
+              <li><a href="#">寻找捐赠者</a></li>
+              <li><a href="#">帮组</a></li>
+              <li><a href="#">联系我们</a></li>
+              <li><a href="#">咨询</a></li>
             </ul>
           </div>
         </div>
       </div>
-      <div className={styles.bottom}>
-        <p>客服</p>
-        <p>隐私声明</p>
-        <p>使用条款</p>
+      <div className={styles.customerService}>
+        <img src="/images/footer/customer-service.png" alt="客服" />
+        <span>客服</span>
       </div>
     </footer>
   );

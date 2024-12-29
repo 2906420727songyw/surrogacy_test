@@ -29,7 +29,7 @@ export default function ParentsSectionPart2() {
   };
 
   return (
-    <>
+    <div id="surrogacy-matching-process">
       <div className={styles.container}>
         <h2 className={styles.title}>准父母和代孕母的匹配过程</h2>
         <div className={styles.content}>
@@ -57,7 +57,7 @@ export default function ParentsSectionPart2() {
               <p>
                 每位代孕妈妈都必须完成我们的申请表,一共有五个大类,涵盖了生育历史、家族病史、家庭生活、学历、
                 财政情况和工作情况以及代孕动机。根据美国代孕法案规定,代孕妈妈必须在21-45岁之间,生产并养育过至少一个孩子,
-                身体健康,无重大疾病,无药物滥用或烟酒问题,健康��指数(BMI)在30以下。
+                身体健康,无重大疾病,无药物滥用或烟酒问题,健康指数(BMI)在30以下。
               </p>
             </div>
           )}
@@ -160,6 +160,6 @@ export default function ParentsSectionPart2() {
         </div>
         <div className={styles.button}>开始咨询</div>
       </div>
-    </>
+    </div>
   );
 } 
