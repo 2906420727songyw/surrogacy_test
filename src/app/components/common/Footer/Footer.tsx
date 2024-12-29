@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from "./Footer.module.css";
 
 export default function Footer() {
@@ -7,15 +8,15 @@ export default function Footer() {
         <div className={styles.info}>
           <h3>Sapling Surrogacy</h3>
           <div className={styles.infoItem}>
-            <img src="/images/footer/website-icon.png" alt="Website Icon" className={styles.icon} />
+            <Image src="/images/footer/website-icon.png" alt="Website Icon" className={styles.icon} width={24} height={24} />
             <p>www.homlesproperty.co</p>
           </div>
           <div className={styles.infoItem}>
-            <img src="/images/footer/email-icon.png" alt="Email Icon" className={styles.icon} />
+            <Image src="/images/footer/email-icon.png" alt="Email Icon" className={styles.icon} width={24} height={24} />
             <p>hello@homles.co</p>
           </div>
           <div className={styles.infoItem}>
-            <img src="/images/footer/phone-icon.png" alt="Phone Icon" className={styles.icon} />
+            <Image src="/images/footer/phone-icon.png" alt="Phone Icon" className={styles.icon} width={24} height={24} />
             <p>+44 652 762 887</p>
           </div>
         </div>
@@ -66,9 +67,9 @@ export default function Footer() {
         </div>
       </div>
       <div className={styles.customerService}>
-        <img src="/images/footer/customer-service.png" alt="客服" />
+        <Image src="/images/footer/customer-service.png" alt="客服" width={50} height={50} />
         <span>客服</span>
       </div>
     </footer>
   );
-} 
+}
