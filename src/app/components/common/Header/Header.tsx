@@ -47,7 +47,7 @@ export default function Header() {
   };
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${isMenuOpen ? styles.menuOpen : ''}`}>
       <div className={styles.logo}>
         <Link href="/" onClick={scrollToTop}>Sapling Surrogacy</Link>
       </div>
@@ -64,14 +64,31 @@ export default function Header() {
           <div className={styles.navContent}>
             <ul>
               <li>
-                <a href="#" className={activeItem === 'parents' ? styles.active : ''} onClick={() => { handleItemClick('parents'); scrollToSection('parents-section'); }}>
-                  成为准父母
-                </a>
+                <div className={styles.dropdown}>
+                  <a href="#" className={activeItem === 'parents' ? styles.active : ''} onClick={() => { handleItemClick('parents'); scrollToSection('parents-section'); }}>
+                    成为准父母
+                  </a>
+                  <div className={`${styles.dropdownContent} ${isMenuOpen ? styles.open : ''}`}>
+                    <Link href="/parents/ivf" onClick={() => handleItemClick('ivf')}>试管婴儿</Link>
+                    <Link href="/parents/surrogacy" onClick={() => handleItemClick('surrogacy')}>代孕服务</Link>
+                    <Link href="/parents/egg-donation" onClick={() => handleItemClick('egg-donation')}>卵子捐赠</Link>
+                    <Link href="/parents/success-stories" onClick={() => handleItemClick('success-stories')}>成功案例</Link>
+                  </div>
+                </div>
               </li>
               <li>
-                <a href="#" className={activeItem === 'surrogate' ? styles.active : ''} onClick={() => { handleItemClick('surrogate'); scrollToSection('surrogate-section'); }}>
-                  成为代孕母亲
-                </a>
+                <div className={styles.dropdown}>
+                  <a href="#" className={activeItem === 'surrogate' ? styles.active : ''} onClick={() => { handleItemClick('surrogate'); scrollToSection('surrogate-section'); }}>
+                    成为代孕母亲
+                  </a>
+                  <div className={`${styles.dropdownContent} ${isMenuOpen ? styles.open : ''}`}>
+                    <Link href="/surrogate/who-can-be-a-surrogate" onClick={() => handleItemClick('who-can-be-a-surrogate')}>谁可以成为代孕妈妈</Link>
+                    <Link href="/surrogate/how-to-screen-surrogates" onClick={() => handleItemClick('how-to-screen-surrogates')}>怎么筛选申请者</Link>
+                    <Link href="/surrogate/how-to-become-a-surrogate" onClick={() => handleItemClick('how-to-become-a-surrogate')}>如何成为代孕妈妈</Link>
+                    <Link href="/surrogate/why-choose-us" onClick={() => handleItemClick('why-choose-us')}>为什么选择我们</Link>
+                    <Link href="/surrogate/compensation-and-benefits" onClick={() => handleItemClick('compensation-and-benefits')}>薪酬和补偿</Link>
+                  </div>
+                </div>
               </li>
               <li>
                 <a href="#" className={activeItem === 'about' ? styles.active : ''} onClick={() => { handleItemClick('about'); scrollToSection('about-section'); }}>
@@ -96,6 +113,13 @@ export default function Header() {
             </ul>
           </div>
         </div>
+        {isMenuOpen && (
+          <div className={styles.mobileActions}>
+            <Link href="/login" className={styles.login}>登录</Link>
+            <Link href="/appointment" className={styles.appointment}>预约</Link>
+            <Link href="/search" className={styles.search}>搜索</Link>
+          </div>
+        )}
       </nav>
       <div className={styles.actions}>
         <Link href="/login" className={styles.login}>登录</Link>

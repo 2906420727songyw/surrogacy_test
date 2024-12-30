@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import styles from './BecomeSurrogate.module.css';
-import BecomeSurrogatePart1 from './BecomeSurrogatePart1/BecomeSurrogatePart1';
-import BecomeSurrogatePart2 from './BecomeSurrogatePart2/BecomeSurrogatePart2';
-import BecomeSurrogatePart3 from './BecomeSurrogatePart3/BecomeSurrogatePart3';
-import BecomeSurrogatePart4 from './BecomeSurrogatePart4/BecomeSurrogatePart4';
+import BecomeSurrogatePart1 from './components/BecomeSurrogatePart1/BecomeSurrogatePart1';
+import BecomeSurrogatePart2 from './components/BecomeSurrogatePart2/BecomeSurrogatePart2';
+import BecomeSurrogatePart3 from './components/BecomeSurrogatePart3/BecomeSurrogatePart3';
+import BecomeSurrogatePart4 from './components/BecomeSurrogatePart4/BecomeSurrogatePart4';
 
 export default function BecomeSurrogate() {
   const [isExpandedA, setIsExpandedA] = useState(false);

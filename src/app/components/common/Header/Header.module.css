@@ -8,6 +8,12 @@
   left: 0;
   right: 0;
   z-index: 1000;
+  background-color: transparent;
+  transition: background-color 0.3s;
+}
+
+.header.menuOpen {
+  background-color: transparent;
 }
 
 .menuButton {
@@ -143,6 +149,11 @@
 @media (max-width: 768px) {
   .header {
     padding: 20px;
+    background-color: transparent;
+  }
+
+  .header.menuOpen {
+    background-color: #A48472;
   }
 
   .menuButton {
@@ -173,25 +184,90 @@
     left: 0;
     right: 0;
     z-index: 1;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
   }
 
   .nav ul {
     flex-direction: column;
-    gap: 20px;
-    padding: 0 20px;
+    gap: 0;
+    padding: 0;
+    margin-bottom: 0px;
+  }
+
+  .nav a {
+    color: #fff;
+    padding: 10px 30px;
+  }
+
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropdownContent {
+    display: block;
+    padding-left: 40px;
+  }
+  
+  .dropdownContent a {
+    color: #FFF;
+    display: block;
+    border-bottom: none;
+  }
+  
+  .mobileActions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 30px;
+    background-color: #A48472;
+  }
+
+  .mobileActions .login,
+  .mobileActions .appointment,
+  .mobileActions .search {
+    width: auto;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: #FFF;
+    background-color: transparent;
   }
 
   .actions {
     display: none;
   }
+}
 
-  .login,
-  .appointment,
-  .search {
-    font-size: 16px;
-  }
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
-  .actions {
-    gap: 20px;
-  }
+.dropdownContent {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdownContent.open {
+  display: block;
+  position: static;
+}
+
+.dropdownContent a {
+  color: #fff;
+  padding: 10px 2px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdownContent a:hover {
+  text-decoration: underline;
+}
+
+.dropdown:hover .dropdownContent {
+  display: block;
 } 

@@ -5,8 +5,6 @@ import AboutUs from './components/AboutUs/AboutUs';
 
 import DataDisplay from './components/DataDisplay/DataDisplay';
 import Foundation from './components/Foundation/Foundation';
-import ParentsSection from './components/ParentsSection/ParentsSection';
-import BecomeSurrogate from './components/BecomeSurrogate/BecomeSurrogate';
 
 export default function HomePage() {
   return (
@@ -19,8 +17,6 @@ export default function HomePage() {
         <AboutUs />
         <DataDisplay />
         <Foundation />
-        <ParentsSection />
-        <BecomeSurrogate />
       </main>
     </div>
   );
