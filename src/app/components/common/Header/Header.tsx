@@ -3,18 +3,33 @@
 import Link from 'next/link';
 import styles from './Header.module.css';
 import { routes } from '../../../routes/index';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeItem, setActiveItem] = useState('');
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleOutsideClick = (event: MouseEvent) => {
+    if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+      setIsMenuOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);
+
   const handleItemClick = (item: string) => {
     setActiveItem(item);
+    setIsMenuOpen(false);
   };
 
   const scrollToTop = () => {
@@ -44,7 +59,7 @@ export default function Header() {
       >
         <span className={styles.menuIcon}></span>
       </button>
-      <nav className={`${styles.nav} ${isMenuOpen ? styles.open : ''}`}>
+      <nav ref={menuRef} className={`${styles.nav} ${isMenuOpen ? styles.open : ''}`}>
         <div className={styles.navWrapper}>
           <div className={styles.navContent}>
             <ul>

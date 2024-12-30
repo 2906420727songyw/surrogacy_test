@@ -1,6 +1,6 @@
+import './styles/globals.css';
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
-import "./styles/globals.css";
 import Header from "./components/common/Header/Header";
 import Footer from "./components/common/Footer/Footer";
 import AuthProvider from "./components/AuthProvider";

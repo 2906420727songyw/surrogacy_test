@@ -1,6 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+  font-family: 'ShuiYunTi';
+  src: url('/fonts/水云体.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 html {
   scroll-behavior: smooth;
@@ -23,6 +30,7 @@ body {
   background: var(--background);
   font-family: 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.6;
+  font-family: 'ShuiYunTi', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
