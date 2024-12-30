@@ -11,7 +11,7 @@ export default function Header() {
   const menuRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen(prevState => !prevState);
   };
 
   const handleOutsideClick = (event: MouseEvent) => {
