@@ -1,0 +1,223 @@
+.loginContainer {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #A48472;
+}
+
+.loginContent {
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 40px;
+}
+
+.title {
+  color: #FFFFFF;
+  font-size: 48px;
+  font-weight: normal;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.loginBox {
+  display: flex;
+  gap: 80px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.loginSection {
+  flex: 1;
+  max-width: 460px;
+}
+
+.registerSection {
+  flex: 1;
+  max-width: 360px;
+}
+
+.loginSection h2, .registerSection h2 {
+  color: #FFFFFF;
+  font-size: 24px;
+  font-weight: normal;
+  margin-bottom: 40px;
+}
+
+.inputGroup {
+  margin-bottom: 30px;
+}
+
+.inputGroup label {
+  display: block;
+  color: #FFFFFF;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.passwordHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.forgotPassword {
+  color: #FFFFFF;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.inputGroup input {
+  width: 100%;
+  height: 50px;
+  padding: 0 16px;
+  background: #FFFFFF;
+  border: none;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.formActions {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.loginRow {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.loginButton {
+  width: auto;
+  height: 40px;
+  background: none;
+  color: #FFFFFF;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.rememberMe {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox {
+  position: relative;
+  width: 16px;
+  height: 16px;
+}
+
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  background-color: transparent;
+  border: 1px solid #FFFFFF;
+  border-radius: 2px;
+}
+
+.checkbox input:checked ~ .checkmark {
+  background-color: #FFFFFF;
+}
+
+.checkbox input:checked ~ .checkmark:after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 3px;
+  height: 8px;
+  border: solid #A48472;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.rememberMe label {
+  color: #FFFFFF;
+  font-size: 16px;
+}
+
+.divider {
+  border: none;
+  width: 1px;
+  height: auto;
+  background-color: #FFFFFF;
+  opacity: 0.2;
+  margin: -20px 0;
+  align-self: stretch;
+}
+
+.registerSection p {
+  color: #FFFFFF;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  opacity: 0.8;
+}
+
+.registerButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 48px;
+  background: #D9D9D9;
+  color: #000000;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.registerButton:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .loginContent {
+    padding: 0 20px;
+  }
+
+  .title {
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+
+  .loginBox {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .loginSection, .registerSection {
+    max-width: 100%;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    margin: 20px 0;
+  }
+} 

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import styles from './Header.module.css';
-import { routes } from '../../../routes/index';
+import { routes } from '../../../routes';
 import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
@@ -247,14 +247,14 @@ export default function Header() {
         </div>
         {isMenuOpen && (
           <div className={styles.mobileActions}>
-            <Link href="/login" className={styles.login}>登录</Link>
+            <Link href={routes.auth.login} className={styles.login}>登录</Link>
             <Link href="/appointment" className={styles.appointment}>预约</Link>
             <Link href="/search" className={styles.search}>搜索</Link>
           </div>
         )}
       </nav>
       <div className={styles.actions}>
-        <Link href="/login" className={styles.login}>登录</Link>
+        <Link href={routes.auth.login} className={styles.login}>登录</Link>
         <Link href="/appointment" className={styles.appointment}>预约</Link>
         <Link href="/search" className={styles.search}>搜索</Link>
       </div>
