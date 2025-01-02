@@ -1,0 +1,249 @@
+.becomeSurrogatePart4 {
+    width: 100%;
+    background-color: #868275;
+}
+
+.image {
+    width: 100%;
+    height: 800px;
+    object-fit: cover;
+}
+
+.container {
+    width: 100%;
+    padding: 200px 150px;
+    background-color: transparent;
+}
+
+.content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.title {
+    font-family: FZShuiYunS-EB-GB;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 74.34px;
+    margin-bottom: 60px;
+}
+
+.itemContainer {
+    width: 100%;
+    max-width: 1200px;
+    margin: 200px auto 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: transparent;
+    gap: 60px;
+}
+
+.item {
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.itemTitle {
+    font-family: FZShuiYunS-EB-GB;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 40px;
+    color: #ffffff;
+}
+
+.itemDetails {
+    font-family: FZShuiYunS-DB-GB;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 32px;
+    color: #ffffff;
+    margin: 50px 0;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background-color: #D9D9D9;
+    margin-bottom: 60px;
+}
+
+@media (max-width: 768px) {
+    .image {
+        height: 400px;
+    }
+
+    .container {
+        padding: 100px 20px;
+    }
+
+    .title {
+        font-size: 40px;
+        line-height: 50px;
+        margin-bottom: 30px;
+    }
+
+    .itemContainer {
+        margin-top: 50px;
+        gap: 40px;
+    }
+
+    .itemTitle {
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    .itemDetails {
+        font-size: 16px;
+        line-height: 24px;
+        margin: 30px 0;
+    }
+
+    .divider {
+        margin-bottom: 40px;
+    }
+}
+
+.button {
+    width: 133px;
+    height: 36px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFF;
+    color: #000;
+    border: none;
+    margin: 0 auto;
+    margin-bottom: 100px;
+}
+
+.whereContainer {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    padding: 100px 0px;
+    margin: 0 auto;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.whereTitle {
+    font-family: FZShuiYunS-EB-GB;
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 74.34px;
+    margin-bottom: 100px;
+}
+
+.whereText {
+    font-family: FZShuiYunS-DB-GB;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 56px;
+}
+
+.gradientBar {
+    width: 4px;
+    height: 200px;
+    background: linear-gradient(0deg, rgba(226, 226, 226, 0) 0%, #FFFFFF 52.5%, rgba(226, 226, 226, 0) 100%);
+    margin: 60px auto;
+}
+
+.gradientBarContainer {
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+.meetingContainer {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0 100px 0;
+}
+
+.meetingTitle {
+    font-family: FZShuiYunS-EB-GB;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 30px;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.meetingContent {
+    width: 100%;
+    text-align: center;
+}
+
+.meetingText {
+    font-family: FZShuiYunS-DB-GB;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    color: #FFFFFF;
+    margin-bottom: 60px;
+}
+
+.meetingImage {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 30px;
+    margin: 60px auto;
+}
+
+.additionalText {
+    font-family: FZShuiYunS-DB-GB;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 35px;
+    color: #FFF;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .meetingContainer {
+        padding: 50px 20px;
+    }
+
+    .meetingTitle {
+        font-size: 40px;
+        line-height: 50px;
+        margin-bottom: 30px;
+    }
+
+    .meetingText {
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 30px;
+    }
+
+    .meetingImage {
+        width: 100%;
+    }
+
+    .additionalText {
+        font-size: 14px;
+        line-height: 24px;
+        margin-bottom: 30px;
+    }
+
+    .gradientBar {
+        width: 2px;
+        height: 100px;
+    }
+} 

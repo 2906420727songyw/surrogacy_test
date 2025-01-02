@@ -1,0 +1,372 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 120px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: transparent;
+  transition: background-color 0.3s;
+}
+
+.header.menuOpen {
+  background-color: transparent;
+}
+
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menuIcon {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #FFF;
+  position: relative;
+}
+
+.menuIcon::before,
+.menuIcon::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #FFF;
+  position: absolute;
+}
+
+.menuIcon::before {
+  top: -8px;
+}
+
+.menuIcon::after {
+  top: 8px;
+}
+
+.logo a {
+  color: #FFF;
+  text-decoration: none;
+  text-align: center;
+  font-family: "思源黑体 CN", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+}
+
+.navWrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav ul {
+  display: flex;
+  list-style: none;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.navContent {
+  display: flex;
+  align-items: center;
+}
+
+.nav li {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #FFF;
+  font-family: "思源黑体 CN", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22.4px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  transition: font-weight 0.3s;
+}
+
+.nav a:hover,
+.nav a:active {
+  font-weight: bold;
+}
+
+.nav a.active {
+  font-weight: bold;
+}
+
+.actions {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.register,
+.login,
+.appointment,
+.search {
+  border-radius: 4px;
+  text-decoration: none;
+  font-family: "思源黑体 CN", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22.4px;
+  background-color: transparent;
+  color: #FFF;
+  border: none;
+  transition: font-weight 0.3s;
+}
+
+.register {
+  background-color: #E11F26;
+  color: #FFF;
+}
+
+.login:hover,
+.appointment:hover,
+.search:hover {
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 20px;
+    background-color: transparent;
+  }
+
+  .header.menuOpen {
+    background-color: #A48472;
+  }
+
+  .menuButton {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    z-index: 1;
+  }
+
+  .nav.open {
+    display: block;
+    background-color: #A48472;
+    padding: 20px 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    margin-bottom: 0px;
+  }
+
+  .nav a {
+    color: #fff;
+    padding: 10px 30px;
+  }
+
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropdownContent {
+    display: block;
+    padding-left: 40px;
+  }
+  
+  .dropdownContent a {
+    color: #FFF;
+    display: block;
+    border-bottom: none;
+  }
+  
+  .mobileActions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 30px;
+    background-color: #A48472;
+  }
+
+  .mobileActions .login,
+  .mobileActions .appointment,
+  .mobileActions .search {
+    width: auto;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: #FFF;
+    background-color: transparent;
+  }
+
+  .actions {
+    display: none;
+  }
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdownContent.open {
+  display: block;
+  position: static;
+}
+
+.dropdownContent a {
+  color: #fff;
+  padding: 10px 2px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdownContent a:hover {
+  text-decoration: underline;
+}
+
+.surrogateMatching {
+  color: white;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.surrogateMatching:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.singleLgbt {
+  color: white;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.singleLgbt:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.surrogacyProcess {
+  color: white;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.surrogacyProcess:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.ivfClinicSelection {
+  color: white;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.ivfClinicSelection:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.whoCanBeSurrogate {
+  color: white;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.whoCanBeSurrogate:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.howToScreenSurrogates {
+  color: white;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.howToScreenSurrogates:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.howToBecomeASurrogate {
+  color: white;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.howToBecomeASurrogate:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.whyChooseUs {
+  color: white;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.whyChooseUs:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.compensationAndBenefits {
+  color: white;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.compensationAndBenefits:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.dropdown:hover .dropdownContent {
+  display: block;
+} 

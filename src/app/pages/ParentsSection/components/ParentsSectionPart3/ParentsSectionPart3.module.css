@@ -1,0 +1,214 @@
+.part3 {
+  width: 100%;
+  background-color: #A48472;
+}
+
+.image {
+  width: 100%;
+  height: 800px;
+  object-fit: cover;
+}
+
+.content {
+  width: 100%;
+  padding: 130px 150px 0;
+  background-color: transparent;
+}
+
+.textContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 74.34px;
+  color: #ffffff;
+  margin-bottom: 60px;
+}
+
+.description {
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 56px;
+  color: #ffffff;
+  margin-bottom: 200px;
+}
+
+.stepsContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.clickableDiv {
+  width: 100%;
+  background-color: transparent;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 200px;
+}
+
+.clicked {
+  background-color: transparent;
+}
+
+.clickableTitle {
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 56px;
+  color: #ffffff;
+}
+
+.clickableDescription {
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 56px;
+  color: #ffffff;
+}
+
+.clickableDiv .divider {
+  width: 100%;
+  height: 1px;
+  background-color: #D9D9D9;
+  margin-top: 60px;
+}
+
+.expandedContent {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 35px;
+  color: #ffffff;
+  margin-top: 60px;
+}
+
+.button {
+  width: 133px;
+  height: 36px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 400;
+  color: #000000;
+  cursor: pointer;
+  margin-bottom: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 768px) {
+  .part3 {
+    padding-bottom: 100px;
+  }
+
+  .image {
+    height: 400px;
+  }
+
+  .content {
+    padding: 50px 20px 0;
+  }
+
+  .title {
+    font-size: 40px;
+    line-height: 50px;
+    margin-bottom: 30px;
+  }
+
+  .description {
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 100px;
+  }
+
+  .clickableDiv {
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .clickableTitle {
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 3px;
+  }
+
+  .clickableDescription {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 5px;
+  }
+
+  .clickableDiv .divider {
+    margin-top: 3px;
+  }
+
+  .expandedContent {
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .part3 {
+    padding-bottom: 50px;
+  }
+
+  .image {
+    height: 200px;
+  }
+
+  .content {
+    padding: 30px 10px 0;
+  }
+
+  .title {
+    font-size: 30px;
+    line-height: 40px;
+    margin-bottom: 20px;
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 50px;
+  }
+
+  .clickableDiv {
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .clickableTitle {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 2px;
+  }
+
+  .clickableDescription {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 3px;
+  }
+
+  .clickableDiv .divider {
+    margin-top: 15px;
+  }
+
+  .expandedContent {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 5px;
+  }
+} 

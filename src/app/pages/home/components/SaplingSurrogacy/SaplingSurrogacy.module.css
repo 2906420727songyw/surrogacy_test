@@ -1,0 +1,73 @@
+.saplingSurrogacy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 236px 0;
+  background-image: url('/images/home/sapling-surrogacy-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.saplingSurrogacy::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.saplingSurrogacy h2 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: #FFF;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.saplingSurrogacy p {
+  font-size: 24px;
+  margin-bottom: 40px;
+  color: #FFF;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.learnMore,
+.apply {
+  width: 133px;
+  height: 36px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.learnMore {
+  background-color: #FFF;
+  color: #000;
+  border: none;
+}
+
+.apply {
+  background-color: #FFF;
+  color: #000;
+  border: none;
+} 

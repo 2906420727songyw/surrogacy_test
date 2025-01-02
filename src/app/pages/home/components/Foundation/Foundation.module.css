@@ -1,0 +1,57 @@
+.foundation {
+  background-image: 
+    linear-gradient(0deg, rgba(192, 152, 109, 0.1), rgba(192, 152, 109, 0.1)),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url('/images/home/foundation-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.foundation h2 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: #FFF;
+}
+
+.foundation p {
+  font-size: 24px;
+  margin-bottom: 40px;
+  color: #FFF;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.donateButton,
+.applyButton {
+  width: 133px;
+  height: 36px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.donateButton {
+  background-color: #FFF;
+  color: #000;
+  border: none;
+}
+
+.applyButton {
+  background-color: #ffffff;
+  color: #000;
+  border: none;
+} 
