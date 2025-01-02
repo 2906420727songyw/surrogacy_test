@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface CareersContent {
+interface RecommendationContent {
   title: string;
   coverImage: string;
   firstParagraph: string;  // HTML content
@@ -8,8 +8,8 @@ interface CareersContent {
 }
 
 // 模拟API数据，实际使用时可以从API获取
-const mockData: CareersContent = {
-  title: "职业生涯",
+const mockData: RecommendationContent = {
+  title: "推荐计划",
   coverImage: "/images/home/image1.png",
   firstParagraph: `<p>假文案，这世界上有1/6的人因为个人原因，无法组成完整的家庭</p>
     <p>他们梦想着能够抱着自己的孩子入睡，渴望看到宝宝在自己的呵护下长大</p>
@@ -26,7 +26,7 @@ const mockData: CareersContent = {
     <p>所以专业的法律顾问、当临的医疗顾问、产后的经济补偿都是在这时代孕妈妈时非常重要的因素</p>`
 };
 
-export default function Careers() {
+export default function RecommendationPlan() {
   return (
     <div className="w-full bg-[#987b6b]">
       {/* 图片部分 */}
