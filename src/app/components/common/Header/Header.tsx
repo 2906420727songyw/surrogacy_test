@@ -4,11 +4,15 @@ import Link from 'next/link';
 import styles from './Header.module.css';
 import { routes } from '../../../routes/index';
 import { useState, useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeItem, setActiveItem] = useState('');
   const menuRef = useRef<HTMLDivElement>(null);
+  const currentPath = usePathname();
+  const router = useRouter();
 
   const toggleMenu = () => {
     setIsMenuOpen(prevState => !prevState);
@@ -27,9 +31,28 @@ export default function Header() {
     };
   }, []);
 
+  useEffect(() => {
+    if (currentPath.includes('/pages/ParentsSection') || currentPath.includes('/parents/')) {
+      setActiveItem('parents');
+    } else if (currentPath === '/pages/BecomeSurrogate' || currentPath.includes('/surrogate/')) {
+      setActiveItem('surrogate');
+    } else if (currentPath === '/pages/about') {
+      setActiveItem('about');
+    } else if (currentPath === routes.resources) {
+      setActiveItem('resources');
+    } else if (currentPath === routes.contact) {
+      setActiveItem('contact');
+    } else if (currentPath === routes.careers) {
+      setActiveItem('careers');
+    } else {
+      setActiveItem('');
+    }
+  }, [currentPath]);
+
   const handleItemClick = (item: string) => {
     setActiveItem(item);
     setIsMenuOpen(false);
+    
   };
 
   const scrollToTop = () => {
@@ -44,6 +67,114 @@ export default function Header() {
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleSurrogateMatchingClick = () => {
+    if (currentPath === '/pages/ParentsSection') {
+      scrollToSection('surrogacy-matching-process');
+    } else {
+      router.push('/pages/ParentsSection');
+      setTimeout(() => {
+        scrollToSection('surrogacy-matching-process');
+      }, 500);
+    }
+    setIsMenuOpen(false);
+  };
+
+  const handleSingleLgbtClick = () => {
+    if (currentPath === '/pages/ParentsSection') {
+      scrollToSection('egg-sperm-donation-help');
+    } else {
+      router.push('/pages/ParentsSection');
+      setTimeout(() => {
+        scrollToSection('egg-sperm-donation-help');
+      }, 500);
+    }
+    setIsMenuOpen(false);
+  };
+
+  const handleSurrogacyProcessClick = () => {
+    if (currentPath === '/pages/ParentsSection') {
+      scrollToSection('surrogacy-plan-process');
+    } else {
+      router.push('/pages/ParentsSection');
+      setTimeout(() => {
+        scrollToSection('surrogacy-plan-process');
+      }, 500);
+    }
+    setIsMenuOpen(false);
+  };
+
+  const handleIvfClinicSelectionClick = () => {
+    if (currentPath === '/pages/ParentsSection') {
+      scrollToSection('parents-overview');
+    } else {
+      router.push('/pages/ParentsSection');
+      setTimeout(() => {
+        scrollToSection('parents-overview');
+      }, 500);
+    }
+    setIsMenuOpen(false);
+  };
+
+  const handleWhoCanBeSurrogateClick = () => {
+    if (currentPath === '/pages/BecomeSurrogate') {
+      scrollToSection('who-can-be-surrogate');
+    } else {
+      router.push('/pages/BecomeSurrogate');
+      setTimeout(() => {
+        scrollToSection('who-can-be-surrogate');
+      }, 500);
+    }
+    setIsMenuOpen(false);
+  };
+
+  const handleHowToScreenSurrogatesClick = () => {
+    if (currentPath === '/pages/BecomeSurrogate') {
+      scrollToSection('become-surrogate-part2');
+    } else {
+      router.push('/pages/BecomeSurrogate');
+      setTimeout(() => {
+        scrollToSection('become-surrogate-part2');
+      }, 500);
+    }
+    setIsMenuOpen(false);
+  };
+
+  const handleHowToBecomeASurrogateClick = () => {
+    if (currentPath === '/pages/BecomeSurrogate') {
+      scrollToSection('become-surrogate-part3');
+    } else {
+      router.push('/pages/BecomeSurrogate');
+      setTimeout(() => {
+        scrollToSection('become-surrogate-part3');
+      }, 500);
+    }
+    setIsMenuOpen(false);
+  };
+
+  const handleWhyChooseUsClick = () => {
+    if (currentPath === '/pages/BecomeSurrogate') {
+      scrollToSection('become-surrogate-part4-1');
+    } else {
+      router.push('/pages/BecomeSurrogate');
+      setTimeout(() => {
+        scrollToSection('become-surrogate-part4-1');
+      }, 500);
+    }
+    setIsMenuOpen(false);
+  };
+
+  const handleCompensationAndBenefitsClick = () => {
+    if (currentPath === '/pages/BecomeSurrogate') {
+      scrollToSection('become-surrogate-part4-2');
+    } else {
+      router.push('/pages/BecomeSurrogate');
+      setTimeout(() => {
+        scrollToSection('become-surrogate-part4-2');
+      }, 500);
+    }
+    setIsMenuOpen(false);
   };
 
   return (
@@ -65,35 +196,36 @@ export default function Header() {
             <ul>
               <li>
                 <div className={styles.dropdown}>
-                  <a href="#" className={activeItem === 'parents' ? styles.active : ''} onClick={() => { handleItemClick('parents'); scrollToSection('parents-section'); }}>
+                  <Link href="../pages/ParentsSection" className={activeItem === 'parents' ? styles.active : ''} onClick={() => handleItemClick('parents')}>
                     成为准父母
-                  </a>
+                  </Link>
                   <div className={`${styles.dropdownContent} ${isMenuOpen ? styles.open : ''}`}>
-                    <Link href="/parents/ivf" onClick={() => handleItemClick('ivf')}>试管婴儿</Link>
-                    <Link href="/parents/surrogacy" onClick={() => handleItemClick('surrogacy')}>代孕服务</Link>
-                    <Link href="/parents/egg-donation" onClick={() => handleItemClick('egg-donation')}>卵子捐赠</Link>
-                    <Link href="/parents/success-stories" onClick={() => handleItemClick('success-stories')}>成功案例</Link>
+                    <div className={styles.surrogateMatching} onClick={handleSurrogateMatchingClick}>代孕母的匹配过程</div>
+                    <div className={styles.ivfClinicSelection} onClick={handleIvfClinicSelectionClick}>试管医院的选择</div>
+                    <div className={styles.singleLgbt} onClick={handleSingleLgbtClick}>单身父母和LGBTQ+群体</div>
+                    <div className={styles.surrogacyProcess} onClick={handleSurrogacyProcessClick}>代孕计划和流程</div>
+                    <Link href="/parents/surrogacy-cost" onClick={() => handleItemClick('surrogacy-cost')}>代孕套餐和费用</Link>
                   </div>
                 </div>
               </li>
               <li>
                 <div className={styles.dropdown}>
-                  <a href="#" className={activeItem === 'surrogate' ? styles.active : ''} onClick={() => { handleItemClick('surrogate'); scrollToSection('surrogate-section'); }}>
+                  <Link href="../pages/BecomeSurrogate" className={activeItem === 'surrogate' ? styles.active : ''} onClick={() => handleItemClick('surrogate')}>
                     成为代孕母亲
-                  </a>
+                  </Link>
                   <div className={`${styles.dropdownContent} ${isMenuOpen ? styles.open : ''}`}>
-                    <Link href="/surrogate/who-can-be-a-surrogate" onClick={() => handleItemClick('who-can-be-a-surrogate')}>谁可以成为代孕妈妈</Link>
-                    <Link href="/surrogate/how-to-screen-surrogates" onClick={() => handleItemClick('how-to-screen-surrogates')}>怎么筛选申请者</Link>
-                    <Link href="/surrogate/how-to-become-a-surrogate" onClick={() => handleItemClick('how-to-become-a-surrogate')}>如何成为代孕妈妈</Link>
-                    <Link href="/surrogate/why-choose-us" onClick={() => handleItemClick('why-choose-us')}>为什么选择我们</Link>
-                    <Link href="/surrogate/compensation-and-benefits" onClick={() => handleItemClick('compensation-and-benefits')}>薪酬和补偿</Link>
+                    <div className={styles.whoCanBeSurrogate} onClick={handleWhoCanBeSurrogateClick}>谁可以成为代孕妈妈</div>
+                    <div className={styles.howToScreenSurrogates} onClick={handleHowToScreenSurrogatesClick}>怎么筛选申请者</div>
+                    <div className={styles.howToBecomeASurrogate} onClick={handleHowToBecomeASurrogateClick}>如何成为代孕妈妈</div>
+                    <div className={styles.whyChooseUs} onClick={handleWhyChooseUsClick}>为什么选择我们</div>
+                    <div className={styles.compensationAndBenefits} onClick={handleCompensationAndBenefitsClick}>薪酬和补偿</div>
                   </div>
                 </div>
               </li>
               <li>
-                <a href="#" className={activeItem === 'about' ? styles.active : ''} onClick={() => { handleItemClick('about'); scrollToSection('about-section'); }}>
+                <Link href="../pages/about" className={activeItem === 'about' ? styles.active : ''} onClick={() => handleItemClick('about')}>
                   关于我们
-                </a>
+                </Link>
               </li>
               <li>
                 <Link href={routes.resources} className={activeItem === 'resources' ? styles.active : ''} onClick={() => handleItemClick('resources')}>

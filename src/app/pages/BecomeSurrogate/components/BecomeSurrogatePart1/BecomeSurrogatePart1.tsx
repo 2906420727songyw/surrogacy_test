@@ -51,7 +51,7 @@ export default function BecomeSurrogatePart1({
       <div className={styles.imageContainer}>
           <img src="/images/home/becoming-parents-bg.png" alt="展示图片" className={styles.image} />
         </div>
-      <div className={styles.bottomContent}>
+      <div id="who-can-be-surrogate" className={styles.bottomContent}>
         <h2 className={styles.bottomTitle}>WHO? 谁可以成为我们的代孕妈妈<br/>：对代孕妈妈的要求</h2>
         <p className={styles.bottomText}>
         我们Sapling的代孕母必须在生理上和心理上同时具备代孕的能力，<br/>

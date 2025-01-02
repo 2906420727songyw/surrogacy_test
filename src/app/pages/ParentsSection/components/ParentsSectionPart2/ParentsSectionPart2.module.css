@@ -14,7 +14,6 @@
 }
 
 .title {
-  font-family: FZShuiYunS-EB-GB;
   font-size: 60px;
   font-weight: 400;
   line-height: 74.34px;
@@ -33,7 +32,6 @@
 }
 
 .description {
-  font-family: FZShuiYunS-DB-GB;
   font-size: 26px;
   font-weight: 400;
   line-height: 56px;
@@ -41,7 +39,6 @@
 }
 
 .step {
-  font-family: FZShuiYunS-DB-GB;
   font-size: 48px;
   font-weight: 400;
   line-height: 56px;
@@ -72,7 +69,6 @@
 }
 
 .clickableTitle {
-  font-family: FZShuiYunS-DB-GB;
   font-size: 36px;
   font-weight: 400;
   line-height: 56px;
@@ -81,7 +77,6 @@
 }
 
 .clickableDescription {
-  font-family: FZShuiYunS-DB-GB;
   font-size: 24px;
   font-weight: 400;
   line-height: 56px;
@@ -97,7 +92,6 @@
 }
 
 .expandedContent {
-  font-family: FZShuiYunS-DB-GB;
   font-size: 24px;
   font-weight: 400;
   line-height: 35px;
@@ -114,7 +108,6 @@
 }
 
 .secondContainer .title {
-  font-family: FZShuiYunS-EB-GB;
   font-size: 60px;
   font-weight: 400;
   line-height: 74.34px;
@@ -131,7 +124,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: FZShuiYunS-DB-GB;
   font-size: 18px;
   font-weight: 400;
   color: #000000;
@@ -290,7 +282,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: FZShuiYunS-DB-GB;
     font-size: 18px;
     font-weight: 400;
     color: #000000;

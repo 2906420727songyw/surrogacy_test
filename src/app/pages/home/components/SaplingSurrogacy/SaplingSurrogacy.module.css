@@ -24,7 +24,6 @@
 
 .saplingSurrogacy h2 {
   font-size: 48px;
-  font-weight: bold;
   margin-bottom: 20px;
   color: #FFF;
   text-align: center;
@@ -55,7 +54,6 @@
   height: 36px;
   border-radius: 4px;
   font-size: 16px;
-  font-weight: bold;
   cursor: pointer;
   display: flex;
   justify-content: center;

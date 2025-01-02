@@ -2,7 +2,7 @@ import styles from './ParentsSectionPart1.module.css';
 
 export default function ParentsSectionPart1() {
   return (
-    <div id="parents-overview">
+    <div id="parents-overview" className={styles.container}>
       <div className={styles.container}>
         <h1 className={styles.title}>Sapling Surrogacy</h1>
         <p className={styles.description}>
@@ -23,6 +23,7 @@ export default function ParentsSectionPart1() {
         <p className={styles.description}>
           我们坚信,所有的努力都是值得的。有Sapling在旁,您的代孕之旅将会格外安心且愉悦。
         </p>
+        
       </div>
       <img src="/images/home/image1.png" alt="Parents Section Image" className={styles.image} />
       <div className={styles.bottomText}>

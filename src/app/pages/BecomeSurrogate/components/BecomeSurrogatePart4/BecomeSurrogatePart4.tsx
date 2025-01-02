@@ -14,7 +14,7 @@ export default function BecomeSurrogatePart4() {
             所以专业的法律判断、当地的医疗辅助、严苛的经济审核都是在选择代孕妈妈时非常重要的因素。
           </p>
         </div>
-        <div className={styles.whereContainer}>
+        <div id='become-surrogate-part4-1' className={styles.whereContainer}>
           <h2 className={styles.whereTitle}>WHY？为什么选择成为<br/>
           Sapling的代孕妈妈</h2>
           <p className={styles.whereText}>
@@ -57,7 +57,7 @@ export default function BecomeSurrogatePart4() {
           
         </div>
         <button className={styles.button}>立即申请</button>
-        <div className={styles.whereContainer}>
+        <div id='become-surrogate-part4-2' className={styles.whereContainer}>
           <h2 className={styles.whereTitle}>HOW？代孕妈妈的薪酬和补偿</h2>
           <p className={styles.whereText}>
           根据不同的所在州和代孕史,每位代孕妈妈都会得到不同的薪酬和补偿,<br/>

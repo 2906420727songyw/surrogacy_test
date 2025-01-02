@@ -2,7 +2,7 @@ import styles from './BecomeSurrogatePart3.module.css';
 
 export default function BecomeSurrogatePart3() {
   return (
-    <div className={styles.becomeSurrogatePart3}>
+    <div id='become-surrogate-part3' className={styles.becomeSurrogatePart3}>
       <img src="/images/home/3.png" alt="第三部分图片" className={styles.image} />
       <div className={styles.container}>
         <div className={styles.content}>

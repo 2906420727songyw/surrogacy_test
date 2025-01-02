@@ -8,7 +8,6 @@
 
 .dataDisplay h2 {
   font-size: 36px;
-  font-weight: bold;
   margin-bottom: 20px;
   color: #FFFFFF;
 }
@@ -131,7 +130,6 @@
 
 .dataValue {
   font-size: 36px;
-  font-weight: bold;
   color: #FFFFFF;
   margin-bottom: 10px;
   text-align: center;

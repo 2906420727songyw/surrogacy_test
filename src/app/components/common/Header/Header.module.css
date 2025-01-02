@@ -53,9 +53,9 @@
   color: #FFF;
   text-decoration: none;
   text-align: center;
-  font-family: Playfair Display;
+  font-family: "思源黑体 CN", sans-serif;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 30px;
 }
 
@@ -92,7 +92,7 @@
 .nav a {
   text-decoration: none;
   color: #FFF;
-  font-family: PingFang SC;
+  font-family: "思源黑体 CN", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -124,7 +124,7 @@
 .search {
   border-radius: 4px;
   text-decoration: none;
-  font-family: PingFang SC;
+  font-family: "思源黑体 CN", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -265,6 +265,105 @@
 }
 
 .dropdownContent a:hover {
+  text-decoration: underline;
+}
+
+.surrogateMatching {
+  color: white;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.surrogateMatching:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.singleLgbt {
+  color: white;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.singleLgbt:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.surrogacyProcess {
+  color: white;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.surrogacyProcess:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.ivfClinicSelection {
+  color: white;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.ivfClinicSelection:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.whoCanBeSurrogate {
+  color: white;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.whoCanBeSurrogate:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.howToScreenSurrogates {
+  color: white;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.howToScreenSurrogates:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.howToBecomeASurrogate {
+  color: white;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.howToBecomeASurrogate:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.whyChooseUs {
+  color: white;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.whyChooseUs:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.compensationAndBenefits {
+  color: white;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.compensationAndBenefits:hover {
+  font-weight: bold;
   text-decoration: underline;
 }
 
