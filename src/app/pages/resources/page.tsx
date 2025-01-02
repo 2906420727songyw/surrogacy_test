@@ -1,3 +1,11 @@
+import ResourcesComponent from './component/index';
+
 export default function Resources() {
-  return <div>Resources Page</div>;
+  return (
+    <div>
+   <main>
+    <ResourcesComponent />
+    </main>
+    </div>
+  );
 } 
