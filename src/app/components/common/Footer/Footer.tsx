@@ -173,12 +173,10 @@ export default function Footer() {
           <h3>探索</h3>
           
           <div className={styles.socialIcons}>
-          <div className={styles.logIn}>
             <Link href={routes.auth.login} className={styles.logIn}>
               <span>登录账号</span>
               <Image src="/images/footer/右箭头.png" alt="Arrow Right" width={24} height={24} />
             </Link>
-          </div>
           <div className={styles.aboutUs}>
             <span>关于我们</span>
             <Image src="/images/footer/右箭头.png" alt="Arrow Right" width={24} height={24} />

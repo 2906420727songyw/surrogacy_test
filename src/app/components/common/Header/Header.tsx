@@ -204,7 +204,7 @@ export default function Header() {
                     <div className={styles.ivfClinicSelection} onClick={handleIvfClinicSelectionClick}>试管医院的选择</div>
                     <div className={styles.singleLgbt} onClick={handleSingleLgbtClick}>单身父母和LGBTQ+群体</div>
                     <div className={styles.surrogacyProcess} onClick={handleSurrogacyProcessClick}>代孕计划和流程</div>
-                    <Link href="/parents/surrogacy-cost" onClick={() => handleItemClick('surrogacy-cost')}>代孕套餐和费用</Link>
+                    <Link href="../pages/surrogacy-cost" onClick={() => handleItemClick('surrogacy-cost')}>代孕套餐和费用</Link>
                   </div>
                 </div>
               </li>
