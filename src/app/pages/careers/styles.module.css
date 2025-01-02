@@ -1,0 +1,7 @@
+.rich-text p {
+  margin-bottom: 2rem;
+}
+
+.rich-text p:last-child {
+  margin-bottom: 0;
+} 
