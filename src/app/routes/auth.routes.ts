@@ -1,4 +1,5 @@
 export const authRoutes = {
-  login: '/auth/login',
-  register: '/auth/register'
+  login: '/pages/auth/login',
+  register: '/pages/auth/register',
+  profile: '/pages/auth/profile'
 } as const; 

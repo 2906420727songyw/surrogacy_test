@@ -40,7 +40,7 @@ export default function RegisterPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     register();
-    router.push('/');
+    router.push(routes.auth.profile);
   };
 
   if (!mounted) {
