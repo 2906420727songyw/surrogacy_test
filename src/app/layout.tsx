@@ -36,13 +36,11 @@ export default function RootLayout({
   return (
     <html lang="zh" className={playfairDisplay.variable}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <div id="root">
-          <AuthProvider>
-            <Header />
-            <main>{children}</main>
-            <Footer />
-          </AuthProvider>
-        </div>
+        <AuthProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

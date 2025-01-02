@@ -13,6 +13,13 @@
   padding: 0 40px;
 }
 
+.gradientBar {
+    width: 4px;
+    height: 200px;
+    margin: 130px auto;
+    background: linear-gradient(0deg, rgba(226, 226, 226, 0) 0%, #FFFFFF 52.5%, rgba(226, 226, 226, 0) 100%);
+  }
+
 .title {
   color: #FFFFFF;
   font-size: 48px;
@@ -220,4 +227,15 @@
     height: 1px;
     margin: 20px 0;
   }
+}
+
+.gradientDivider {
+  position: absolute;
+  width: 3px; 
+  height: 400px;
+  background: linear-gradient(
+    transparent,
+    #FFFFFF,
+    transparent
+  );
 } 
