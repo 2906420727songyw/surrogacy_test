@@ -71,9 +71,6 @@ export default function AboutPage() {
             </article>
         </section>
         </div>
-        
-        
-        
     </main>
   );
 } 
