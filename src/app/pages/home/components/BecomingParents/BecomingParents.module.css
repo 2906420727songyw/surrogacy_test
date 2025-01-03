@@ -16,15 +16,14 @@
 }
 
 .content h2 {
-  font-size: 48px;
-  margin-bottom: 20px;
+  font-size: 60px;
   color: #FFF;
 }
 
 .content p {
-  font-size: 24px;
-  margin-bottom: 40px;
+  font-size: 20px;
   color: #FFF;
+  margin-bottom: 20px;
 }
 
 .buttons {
@@ -34,9 +33,10 @@
 }
 
 .learnMore,
-.apply {
-  width: 133px;
-  height: 36px;
+.apply,
+.applyChannel {
+  width: 93px;
+  height: 40px;
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
@@ -55,4 +55,10 @@
   background-color: #FFF;
   color: #000;
   border: none;
-} 
+}
+
+.applyChannel {
+  background-color: #fff;
+  color: #000;
+  border: none;
+}

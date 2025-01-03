@@ -1,4 +1,6 @@
 import React from 'react';
+import styles from './styles.module.css';
+import Image from 'next/image';
 
 interface RecommendationContent {
   title: string;
@@ -30,11 +32,12 @@ export default function RecommendationPlan() {
   return (
     <div className="w-full bg-[#987b6b]">
       {/* 图片部分 */}
-      <div className="w-full h-[500px] md:h-[700px] pt-20 md:pt-40">
-        <img
+      <div className="w-full h-[500px] md:h-[700px] pt-20 md:pt-40 relative">
+        <Image
           src={mockData.coverImage}
           alt={mockData.title}
-          className="w-full h-full object-cover"
+          fill
+          className="object-cover"
         />
       </div>
 
@@ -53,12 +56,7 @@ export default function RecommendationPlan() {
         </div>
 
         {/* 分隔线 */}
-        <div 
-          className="w-[4px] h-[150px] md:h-[200px] mx-auto my-[80px] md:my-[130px]"
-          style={{
-            background: 'linear-gradient(0deg, rgba(226, 226, 226, 0) 0%, #FFFFFF 52.5%, rgba(226, 226, 226, 0) 100%)'
-          }}
-        />
+        <div className={styles.divider} />
 
         {/* 第二段文字内容 */}
         <div className="max-w-5xl mx-auto">
