@@ -24,9 +24,7 @@
 }
 
 .title {
-    font-family: FZShuiYunS-EB-GB;
     font-size: 36px;
-    font-weight: 400;
     line-height: 74.34px;
     margin-bottom: 60px;
 }
@@ -49,17 +47,13 @@
 }
 
 .itemTitle {
-    font-family: FZShuiYunS-EB-GB;
-    font-size: 26px;
-    font-weight: 400;
+    font-size: 22px;
     line-height: 40px;
     color: #ffffff;
 }
 
 .itemDetails {
-    font-family: FZShuiYunS-DB-GB;
     font-size: 20px;
-    font-weight: 400;
     line-height: 32px;
     color: #ffffff;
     margin: 50px 0;
@@ -109,16 +103,15 @@
 }
 
 .button {
-    width: 133px;
-    height: 36px;
+    width: 93px;
+    height: 40px;
     border-radius: 4px;
     font-size: 16px;
-    font-weight: bold;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #FFF;
+    background-color: #cdc6c0;
     color: #000;
     border: none;
     margin: 0 auto;
@@ -136,18 +129,14 @@
 }
 
 .whereTitle {
-    font-family: FZShuiYunS-EB-GB;
     font-size: 60px;
-    font-weight: 400;
     line-height: 74.34px;
     margin-bottom: 100px;
 }
 
 .whereText {
-    font-family: FZShuiYunS-DB-GB;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 56px;
+    font-size: 20px;
+    line-height: 40px;
 }
 
 .gradientBar {
@@ -174,9 +163,7 @@
 }
 
 .meetingTitle {
-    font-family: FZShuiYunS-EB-GB;
-    font-size: 26px;
-    font-weight: 400;
+    font-size: 22px;
     line-height: 30px;
     color: #FFFFFF;
     text-align: center;
@@ -188,10 +175,8 @@
 }
 
 .meetingText {
-    font-family: FZShuiYunS-DB-GB;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 30px;
+    font-size: 20px;
+    line-height: 40px;
     color: #FFFFFF;
     margin-bottom: 60px;
 }
@@ -206,9 +191,7 @@
 }
 
 .additionalText {
-    font-family: FZShuiYunS-DB-GB;
     font-size: 20px;
-    font-weight: 400;
     line-height: 35px;
     color: #FFF;
     margin-bottom: 60px;

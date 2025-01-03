@@ -21,7 +21,6 @@
   padding-right: 150px;
   width: 100%;
   height: auto;
-  max-width: 1200px;
   text-align: center;
   color: #FFFFFF;
 
@@ -32,8 +31,7 @@
 }
 
 .title {
-  font-size: 48px;
-  font-weight: bold;
+  font-size: 60px;
   margin-bottom: 100px;
 
   @media (max-width: 768px) {
@@ -43,8 +41,8 @@
 }
 
 .text {
-  font-size: 18px;
-  line-height: 3.2;
+  font-size: 20px;
+  line-height: 40px;
   margin-bottom: 100px;
 
   @media (max-width: 768px) {
@@ -55,13 +53,13 @@
 }
 
 .button {
-  padding: 15px 30px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #A48472;
-  background-color: #FFFFFF;
+  width: 93px;
+  height: 40px;
+  font-size: 16px;
+  color: #000;
+  background-color: #cdc6c0;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
   margin-bottom: 200px;
 
@@ -88,7 +86,6 @@
 
 .bottomContent {
   width: 100%;
-  max-width: 1200px;
   margin: 0 auto;
   padding: 100px 0;
   text-align: center;
@@ -99,8 +96,7 @@
 }
 
 .bottomTitle {
-  font-size: 48px;
-  font-weight: bold;
+  font-size: 60px;
   color: #FFFFFF;
   margin-bottom: 50px;
 
@@ -174,7 +170,7 @@
 }
 
 .expandableText {
-  font-size: 18px;
+  font-size: 22px;
   color: #FFFFFF;
   text-align: center;
   margin: 40px 0px;
@@ -211,7 +207,7 @@
 }
 
 .expandedText {
-  font-size: 18px;
+  font-size: 20px;
   color: #FFFFFF;
   text-align: center;
   line-height: 1.5;
