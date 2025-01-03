@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import styles from './Header.module.css';
-import { routes } from '../../../routes';
+import { routes } from '@/app/routes/index';
+
 import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
@@ -13,6 +14,11 @@ export default function Header() {
   const menuRef = useRef<HTMLDivElement>(null);
   const currentPath = usePathname();
   const router = useRouter();
+
+
+  // console.log(routes);
+
+
 
   const toggleMenu = () => {
     setIsMenuOpen(prevState => !prevState);
@@ -247,6 +253,7 @@ export default function Header() {
         </div>
         {isMenuOpen && (
           <div className={styles.mobileActions}>
+          
             <Link href={routes.auth.login} className={styles.login}>登录</Link>
             <Link href={routes.appointment} className={styles.appointment}>预约</Link>
             <Link href={routes.search} className={styles.search}>搜索</Link>

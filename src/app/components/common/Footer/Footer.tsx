@@ -5,7 +5,8 @@ import Link from 'next/link';
 import styles from "./Footer.module.css";
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
-import { routes } from '../../../routes';
+
+import { routes } from '@/app/routes/index';
 
 export default function Footer() {
   const router = useRouter();
