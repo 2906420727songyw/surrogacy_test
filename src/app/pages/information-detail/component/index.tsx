@@ -7,7 +7,7 @@ export default function InformationDetailComponent() {
         <div className={styles.imageWrapper}>
           <Image 
             src="/images/home/image1.png" 
-            alt="详情图片"
+            alt=""
             width={1200}
             height={600}
             style={{ width: '100%', height: '100%' }}
