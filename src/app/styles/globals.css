@@ -7,6 +7,12 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: '思源黑体';
+  src: url('/fonts/SourceHanSansCN-Normal.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 
 html {
@@ -28,23 +34,6 @@ html {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.6;
   font-family: 'ShuiYunTi', sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin-bottom: 1rem;
-}
-
-p {
-  margin-bottom: 1.5rem;
-}
-
-ul, ol {
-  margin-bottom: 1.5rem;
-}
-
-li {
-  margin-bottom: 0.5rem;
 }

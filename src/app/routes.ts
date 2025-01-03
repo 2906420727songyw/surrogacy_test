@@ -1,6 +1,6 @@
 export const routes = {
   // ...
-  surrogacyCost: '/pages/surrogacy-cost',
+  surrogacyCost: '/surrogacy-cost',
   auth: {
     login: '/auth/login',
   },

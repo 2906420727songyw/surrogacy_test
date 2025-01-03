@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styles from './BecomingParents.module.css';
+import { routes } from '@/app/routes';
 
 export default function BecomingParents() {
   return (
@@ -11,7 +12,12 @@ export default function BecomingParents() {
           <Link href="../pages/ParentsSection">
             <button className={styles.learnMore}>了解更多</button>
           </Link>
-          <button className={styles.apply}>代孕费用</button>
+          <Link href="../pages/surrogacy-cost">
+            <button className={styles.apply}>代孕费用</button>
+          </Link>
+          <Link href="#">
+            <button className={styles.applyChannel}>申请通道</button>
+          </Link>
         </div>
       </div>
     </section>
