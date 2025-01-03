@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import styles from './Header.module.css';
-import { routes } from '../../../routes';
+import { routes } from '../../../routes/index';
 import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
@@ -204,7 +204,7 @@ export default function Header() {
                     <div className={styles.ivfClinicSelection} onClick={handleIvfClinicSelectionClick}>试管医院的选择</div>
                     <div className={styles.singleLgbt} onClick={handleSingleLgbtClick}>单身父母和LGBTQ+群体</div>
                     <div className={styles.surrogacyProcess} onClick={handleSurrogacyProcessClick}>代孕计划和流程</div>
-                    <Link href="../pages/surrogacy-cost" onClick={() => handleItemClick('surrogacy-cost')}>代孕套餐和费用</Link>
+                    <Link href="/parents/surrogacy-cost" onClick={() => handleItemClick('surrogacy-cost')}>代孕套餐和费用</Link>
                   </div>
                 </div>
               </li>
@@ -247,16 +247,16 @@ export default function Header() {
         </div>
         {isMenuOpen && (
           <div className={styles.mobileActions}>
-            <Link href={routes.auth.login} className={styles.login}>登录</Link>
-            <Link href={routes.appointment} className={styles.appointment}>预约</Link>
-            <Link href={routes.search} className={styles.search}>搜索</Link>
+            <Link href="/login" className={styles.login}>登录</Link>
+            <Link href="/appointment" className={styles.appointment}>预约</Link>
+            <Link href="/search" className={styles.search}>搜索</Link>
           </div>
         )}
       </nav>
       <div className={styles.actions}>
-        <Link href={routes.auth.login} className={styles.login}>登录</Link>
-        <Link href={routes.appointment} className={styles.appointment}>预约</Link>
-        <Link href={routes.search} className={styles.search}>搜索</Link>
+        <Link href="/login" className={styles.login}>登录</Link>
+        <Link href="/appointment" className={styles.appointment}>预约</Link>
+        <Link href="/search" className={styles.search}>搜索</Link>
       </div>
     </header>
   );
