@@ -1,7 +1,42 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import styles from './SurrogacyCost.module.css';
 
 const SurrogacyCost: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    let lastScrollPosition = window.pageYOffset;
+
+    const handleScroll = () => {
+      const currentScrollPosition = window.pageYOffset;
+      const detailsTitle = document.querySelector(`.${styles.detailsTitle}`);
+      const detailsTitleTop = detailsTitle?.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+
+      if (detailsTitleTop && currentScrollPosition > detailsTitleTop - windowHeight) {
+        if (currentScrollPosition > lastScrollPosition) {
+          // 向下滑动
+          setIsOpen(true);
+        } else {
+          // 向上滑动
+          setIsOpen(false);
+        }
+      } else {
+        setIsOpen(false);
+      }
+
+      lastScrollPosition = currentScrollPosition;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div className={styles.content}>
     <div className={styles.container}>
@@ -60,13 +95,110 @@ const SurrogacyCost: React.FC = () => {
         包括行程规划、机场接送、旅行住宿安排、全程陪同、日记式周期汇报、接送翻译及24小时在线支持。<br/>
         套餐涵盖无限次胚胎移植、代母必要性更换及任何意外情况的全面保障,直至您顺利迎接宝宝回家,体验真正的安心与无忧。
       </p>
-      
-      {/* 添加页面内容... */}
     </div>
     <div className={styles.packageContainer}>
-        <div className={styles.leftPackage}></div>
-        <div className={styles.rightPackage}></div>
+      {/* 左侧 */}
+      <div className={styles.leftPackage}>
+        <h3 className={styles.packageTitle}>Sprout Package<br/>（萌芽套餐）:</h3>
+        <p className={styles.packagePrice}>145,000 美元起<br/>满足代孕所有基本需求</p>
+        <div className={styles.detailsDivider}></div>
+        <h4 className={styles.detailsTitle}>中介服务：</h4>
+        <div className={`${styles.packageDetails} ${isOpen ? styles.open : ''}`}>
+          {isOpen && (
+            <p className={styles.detailsDescription}>申请、筛查、匹配、产品、陪同、翻译</p>
+          )}
+        </div>
+        <div className={styles.detailsDivider}></div>
+        <h4 className={styles.detailsTitle}>医疗费用：</h4>
+        <div className={`${styles.packageDetails} ${isOpen ? styles.open : ''}`}>
+          {isOpen && (
+            <p className={styles.detailsDescription}>检查、移植、怀孕、生产</p>
+          )}
+        </div>
+        <div className={styles.detailsDivider}></div>
+        <h4 className={styles.detailsTitle}>法律费用：</h4>
+        <div className={`${styles.packageDetails} ${isOpen ? styles.open : ''}`}>
+          {isOpen && (
+            <p className={styles.detailsDescription}>合同、亲权、出生证</p>
+          )}
+        </div>
+        <div className={styles.detailsDivider}></div>
+        <h4 className={styles.detailsTitle}>信托账户：</h4>
+        <div className={`${styles.packageDetails} ${isOpen ? styles.open : ''}`}>
+          {isOpen && (
+            <p className={styles.detailsDescription}>管理、报告</p>
+          )}
+        </div>
+        <div className={styles.detailsDivider}></div>
+        <h4 className={styles.detailsTitle}>代孕妈妈：</h4>
+        <div className={`${styles.packageDetails} ${isOpen ? styles.open : ''}`}>
+          {isOpen && (
+            <p className={styles.detailsDescription}>薪资、津贴、损失、补给、护理、保险</p>
+          )}
+        </div>
       </div>
+      {/* 右侧 */}
+      <div className={styles.rightPackage}>
+      <h3 className={styles.packageTitle}>Thrive Package<br/>（茁壮套餐）：</h3>
+        <p className={styles.packagePriceRight}>从260,000 美元起<br/>全面保障，无惧风险，陪伴每一步，直至安心迎接新生命</p>
+        <div className={styles.detailsDivider}></div>
+        <h4 className={styles.detailsTitle}>中介服务：</h4>
+        <div className={`${styles.packageDetails} ${isOpen ? styles.open : ''}`}>
+          {isOpen && (
+            <p className={styles.detailsDescription}>申请、筛查、匹配、产品、陪同、翻译</p>
+          )}
+        </div>
+        <div className={styles.detailsDivider}></div>
+        <h4 className={styles.detailsTitle}>医疗费用：</h4>
+        <div className={`${styles.packageDetails} ${isOpen ? styles.open : ''}`}>
+          {isOpen && (
+            <p className={styles.detailsDescription}>检查、移植、怀孕、生产</p>
+          )}
+        </div>
+        <div className={styles.detailsDivider}></div>
+        <h4 className={styles.detailsTitle}>法律费用：</h4>
+        <div className={`${styles.packageDetails} ${isOpen ? styles.open : ''}`}>
+          {isOpen && (
+            <p className={styles.detailsDescription}>合同、亲权、出生证</p>
+          )}
+        </div>
+        <div className={styles.detailsDivider}></div>
+        <h4 className={styles.detailsTitle}>信托账户：</h4>
+        <div className={`${styles.packageDetails} ${isOpen ? styles.open : ''}`}>
+          {isOpen && (
+            <p className={styles.detailsDescription}>管理、报告</p>
+          )}
+        </div>
+        <div className={styles.detailsDivider}></div>
+        <h4 className={styles.detailsTitle}>代孕妈妈：</h4>
+        <div className={`${styles.packageDetails} ${isOpen ? styles.open : ''}`}>
+          {isOpen && (
+            <p className={styles.detailsDescription}>薪资、津贴、损失、补给、护理、保险</p>
+          )}
+        </div>
+        <div className={styles.detailsDivider}></div>
+        <h4 className={styles.detailsTitle}>旅行安排：</h4>
+        <div className={`${styles.packageDetails} ${isOpen ? styles.open : ''}`}>
+          {isOpen && (
+            <p className={styles.detailsDescription}>接送、旅行、住宿，直到接到宝宝回家</p>
+          )}
+        </div>
+        <div className={styles.detailsDivider}></div>
+        <h4 className={styles.detailsTitle}>管家式服务：</h4>
+        <div className={`${styles.packageDetails} ${isOpen ? styles.open : ''}`}>
+          {isOpen && (
+            <p className={styles.detailsDescription}>全程陪同、日记汇报、接送翻译、24小时在线</p>
+          )}
+        </div>
+        <div className={styles.detailsDivider}></div>
+        <h4 className={styles.detailsTitle}>全包保险：</h4>
+        <div className={`${styles.packageDetails} ${isOpen ? styles.open : ''}`}>
+          {isOpen && (
+            <p className={styles.detailsDescription}>无限次胚胎移植、无限次的代孕妈妈必要性更换、任何意外情况的保证</p>
+          )}
+        </div>
+      </div>
+    </div>
       <p className={styles.paragraph7}>
         如果您还没有冷冻的胚胎,没有想好选择哪家试管医院,或者需要卵子和精子捐赠者的帮助,<br/>
         我们可以为您提供经过Sapling严格筛选的医生和医院名单,<br/>

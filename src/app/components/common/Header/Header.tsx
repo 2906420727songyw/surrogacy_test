@@ -248,15 +248,15 @@ export default function Header() {
         {isMenuOpen && (
           <div className={styles.mobileActions}>
             <Link href={routes.auth.login} className={styles.login}>登录</Link>
-            <Link href="/appointment" className={styles.appointment}>预约</Link>
-            <Link href="/search" className={styles.search}>搜索</Link>
+            <Link href={routes.appointment} className={styles.appointment}>预约</Link>
+            <Link href={routes.search} className={styles.search}>搜索</Link>
           </div>
         )}
       </nav>
       <div className={styles.actions}>
         <Link href={routes.auth.login} className={styles.login}>登录</Link>
-        <Link href="/appointment" className={styles.appointment}>预约</Link>
-        <Link href="/search" className={styles.search}>搜索</Link>
+        <Link href={routes.appointment} className={styles.appointment}>预约</Link>
+        <Link href={routes.search} className={styles.search}>搜索</Link>
       </div>
     </header>
   );
