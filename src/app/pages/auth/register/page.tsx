@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/app/components/AuthProvider';
-import Link from 'next/link';
 import { routes } from '@/app/routes';
 
 export default function RegisterPage() {
@@ -72,6 +71,7 @@ export default function RegisterPage() {
               value={formData.email}
               onChange={handleChange}
               required
+              aria-label="电子邮件地址"
               className="w-full h-[50px] px-4 bg-white border-none text-base rounded-lg"
             />
           </div>
@@ -83,6 +83,7 @@ export default function RegisterPage() {
               type="password"
               name="password"
               required
+              aria-label="所需密码"
               className="w-full h-[50px] px-4 bg-white border-none text-base rounded-lg"
             />
           </div>
@@ -94,6 +95,7 @@ export default function RegisterPage() {
               type="password"
               name="confirmPassword"
               required
+              aria-label="确认密码"
               className="w-full h-[50px] px-4 bg-white border-none text-base rounded-lg"
             />
           </div>
@@ -107,6 +109,7 @@ export default function RegisterPage() {
               value={formData.phone}
               onChange={handleChange}
               required
+              aria-label="手机号码"
               className="w-full h-[50px] px-4 bg-white border-none text-base rounded-lg"
             />
           </div>
@@ -119,9 +122,9 @@ export default function RegisterPage() {
               name="birthDate"
               value={formData.birthDate}
               onChange={handleChange}
-            
               pattern="\d{4}-\d{2}-\d{2}"
               required
+              aria-label="出生日期"
               className="w-full h-[50px] px-4 bg-white border-none text-base rounded-lg
                 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none
                 [&::-webkit-calendar-picker-indicator]:hidden"
@@ -137,6 +140,7 @@ export default function RegisterPage() {
               value={formData.name}
               onChange={handleChange}
               required
+              aria-label="姓名"
               className="w-full h-[50px] px-4 bg-white border-none text-base rounded-lg"
             />
           </div>
@@ -150,6 +154,7 @@ export default function RegisterPage() {
               value={formData.address}
               onChange={handleChange}
               required
+              aria-label="家庭详细地址"
               className="w-full h-[50px] px-4 bg-white border-none text-base rounded-lg"
             />
           </div>
@@ -163,6 +168,7 @@ export default function RegisterPage() {
               value={formData.city}
               onChange={handleChange}
               required
+              aria-label="城市"
               className="w-full h-[50px] px-4 bg-white border-none text-base rounded-lg"
             />
           </div>
@@ -176,6 +182,7 @@ export default function RegisterPage() {
               value={formData.country}
               onChange={handleChange}
               required
+              aria-label="国家"
               className="w-full h-[50px] px-4 bg-white border-none text-base rounded-lg"
             />
           </div>
@@ -189,6 +196,7 @@ export default function RegisterPage() {
               value={formData.postalCode}
               onChange={handleChange}
               required
+              aria-label="邮政编码"
               className="w-full h-[50px] px-4 bg-white border-none text-base rounded-lg"
             />
           </div>
@@ -201,6 +209,7 @@ export default function RegisterPage() {
                   checked={agreeTerms}
                   onChange={(e) => setAgreeTerms(e.target.checked)}
                   required
+                  aria-label="同意条款"
                   className="absolute opacity-0 w-0 h-0 peer"
                 />
                 <span className="absolute top-0 left-0 w-6 h-6 bg-transparent border border-white rounded-[2px]
