@@ -5,7 +5,7 @@
     url('/images/home/foundation-bg.jpg');
   background-size: cover;
   background-position: center;
-  padding: 100px 0;
+  padding: 200px 0;
   text-align: center;
 }
 
@@ -20,12 +20,6 @@
   color: #FFF;
 }
 
-.foundation p {
-  font-size: 24px;
-  margin-bottom: 40px;
-  color: #FFF;
-}
-
 .buttons {
   display: flex;
   justify-content: center;
@@ -34,8 +28,8 @@
 
 .donateButton,
 .applyButton {
-  width: 133px;
-  height: 36px;
+  width: 93px;
+  height: 40px;
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
