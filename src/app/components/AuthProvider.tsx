@@ -2,19 +2,21 @@
 
 import { createContext, useContext, useState } from 'react';
 
-const AuthContext = createContext<{
+interface AuthContextType {
   isAuthenticated: boolean;
   login: () => void;
   logout: () => void;
-}>({
+  register: () => void;
+}
+
+export const AuthContext = createContext<AuthContextType>({
   isAuthenticated: false,
   login: () => {},
   logout: () => {},
+  register: () => {},
 });
 
-export const useAuth = () => useContext(AuthContext);
-
-export default function AuthProvider({ children }: { children: React.ReactNode }) {
+export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const login = () => {
@@ -27,9 +29,21 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
     setIsAuthenticated(false);
   };
 
+  const register = () => {
+    // 实现注册逻辑
+    setIsAuthenticated(true);
+  };
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ 
+      isAuthenticated, 
+      login, 
+      logout,
+      register
+    }}>
       {children}
     </AuthContext.Provider>
   );
-} 
+}
+
+export const useAuth = () => useContext(AuthContext); 

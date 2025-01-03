@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/app/components/AuthProvider';
 import Link from 'next/link';
@@ -8,13 +8,21 @@ import { routes } from '@/app/routes';
 import styles from './page.module.css';
 
 export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen w-full bg-[#A48472]" />}>
+      <LoginContent />
+    </Suspense>
+  );
+}
+
+function LoginContent() {
   const [mounted, setMounted] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
-  const isRegisterMode = searchParams.get('mode') === 'register';
+  const isRegisterMode = searchParams?.get('mode') === 'register';
   const { login } = useAuth();
 
   useEffect(() => {
@@ -55,6 +63,7 @@ export default function LoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  aria-label="电子邮件地址"
                   className="w-full h-[50px] px-4 bg-white border-none text-base rounded-lg"
                 />
               </div>
@@ -70,6 +79,7 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
+                  aria-label="密码"
                   className="w-full h-[50px] px-4 bg-white border-none text-base rounded-lg"
                 />
               </div>
@@ -87,6 +97,7 @@ export default function LoginPage() {
                       id="remember"
                       checked={rememberMe}
                       onChange={(e) => setRememberMe(e.target.checked)}
+                      aria-label="记住账号"
                       className="absolute opacity-0 w-0 h-0 cursor-pointer peer"
                     />
                     <span className="absolute top-0 left-0 w-4 h-4 bg-transparent border border-white rounded-[2px]
