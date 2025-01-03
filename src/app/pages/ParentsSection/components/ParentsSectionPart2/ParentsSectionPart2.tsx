@@ -29,7 +29,7 @@ export default function ParentsSectionPart2() {
   };
 
   return (
-    <div id="surrogacy-matching-process">
+    <div id="surrogacy-matching-process" className={styles.part2}>
       <div className={styles.container}>
         <h2 className={styles.title}>准父母和代孕母的匹配过程</h2>
         <div className={styles.content}>
