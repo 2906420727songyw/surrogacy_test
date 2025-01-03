@@ -1,9 +1,14 @@
 import styles from './BecomeSurrogatePart4.module.css';
-
+import Image from 'next/image';
 export default function BecomeSurrogatePart4() {
   return (
     <div className={styles.becomeSurrogatePart4}>
-      <img src="/images/home/4.png" alt="第四部分图片" className={styles.image} />
+      <Image 
+      src="/images/home/4.png" 
+      alt="第四部分图片" 
+      width={1600}
+      height={800}
+      layout="responsive" />
       <div className={styles.container}>
         <div className={styles.whereContainer}>
           <h2 className={styles.whereTitle}>WHERE？我们代孕妈妈来自哪里</h2>
@@ -30,7 +35,12 @@ export default function BecomeSurrogatePart4() {
           <div className={styles.meetingContent}>
             <h2 className={styles.meetingTitle}>我们将会：</h2>
             
-            <img src="/images/home/meeting.png" alt="会议图片" className={styles.meetingImage} />
+            <Image 
+            src="/images/home/meeting.png" 
+            alt="会议图片" 
+            width={1600}
+            height={800}
+            layout="responsive" />
             <p className={styles.meetingText}>
             在你申请的时候,全程提供帮助,预约线上见面,了解你的申请进展、可能遇到的问题和困惑。<br/>
             同时,会有专业的工作人员和医生线上陪同,提供情感支持。<br/>
@@ -44,7 +54,12 @@ export default function BecomeSurrogatePart4() {
           <div className={styles.meetingContent}>
             <h2 className={styles.meetingTitle}>同时,我们也会重视你的陪同家人/朋友</h2>
             
-            <img src="/images/home/meeting.png" alt="会议图片" className={styles.meetingImage} />
+            <Image 
+            src="/images/home/meeting.png" 
+            alt="会议图片" 
+            width={1600}
+            height={800}
+            layout="responsive" />
             <p className={styles.meetingText}>
             在代孕这趟旅程中,除了我们,你的陪同家人/朋友是最重要的靠山和依靠,<br/>
             我们称其为Primary Support Person（大多数情况下,他/她是你的Emergency Contact Person）。<br/>

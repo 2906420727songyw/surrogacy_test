@@ -1,4 +1,5 @@
 import styles from './page.module.css';
+import Image from 'next/image';
 
 export default function AboutPage() {
   return (
@@ -17,7 +18,7 @@ export default function AboutPage() {
         <div className={styles.gradientBar}></div>
         <section className={styles.newContainer}>
             <article className={styles.newContainerContent}>
-              <img src="/images/about/image1.png" alt="关于我们图片1" />
+              <Image src="/images/about/image1.png" alt="关于我们图片1" width={500} height={600} />
               <h2 className={styles.newContainerTitle}>XXXX</h2>
               <p className={styles.newContainerText}>
                 代孕妈妈是伟大的存在,这世界上有1/6的人因为个人原因,无法组成完整的家庭,<br/>
@@ -31,7 +32,7 @@ export default function AboutPage() {
         <div className={styles.gradientBar}></div>
         <section className={styles.newContainer}>
             <article className={styles.newContainerContent}>
-              <img src="/images/about/image2.png" alt="关于我们图片2" />
+              <Image src="/images/about/image2.png" alt="关于我们图片2" width={500} height={600} />
               <h2 className={styles.newContainerTitle}>XXXX</h2>
               <p className={styles.newContainerText}>
                 代孕妈妈是伟大的存在,这世界上有1/6的人因为个人原因,无法组成完整的家庭,<br/>
@@ -45,7 +46,7 @@ export default function AboutPage() {
         <div className={styles.gradientBar}></div>
         <section className={styles.newContainer}>
             <article className={styles.newContainerContent}>
-              <img src="/images/about/image3.png" alt="关于我们图片3" />
+              <Image src="/images/about/image3.png" alt="关于我们图片3" width={500} height={600} />
               <h2 className={styles.newContainerTitle}>XXXX</h2>
               <p className={styles.newContainerText}>
                 代孕妈妈是伟大的存在,这世界上有1/6的人因为个人原因,无法组成完整的家庭,<br/>
@@ -59,7 +60,7 @@ export default function AboutPage() {
         <div className={styles.gradientBar}></div>
         <section className={styles.newContainer}>
             <article className={styles.newContainerContent}>
-              <img src="/images/about/image4.png" alt="关于我们图片4" />
+              <Image src="/images/about/image4.png" alt="关于我们图片4" width={500} height={600} />
               <h2 className={styles.newContainerTitle}>XXXX</h2>
               <p className={styles.newContainerText}>
                 代孕妈妈是伟大的存在,这世界上有1/6的人因为个人原因,无法组成完整的家庭,<br/>

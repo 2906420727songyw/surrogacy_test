@@ -1,9 +1,14 @@
 import styles from './BecomeSurrogatePart2.module.css';
-
+import Image from 'next/image';
 export default function BecomeSurrogatePart2() {
   return (
     <div id="become-surrogate-part2" className={styles.becomeSurrogatePart2}>
-      <img src="/images/home/2.png" alt="第二部分图片" className={styles.image} />
+      <Image 
+      src="/images/home/2.png" 
+      alt="第二部分图片" 
+      width={1600}
+      height={800}
+      layout="responsive" />
       <div className={styles.container}>
         <div className={styles.content}>
           <h2 className={styles.title}>WHAT? 我们怎么筛选申请者</h2>

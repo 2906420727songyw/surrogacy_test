@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './ParentsSectionPart3.module.css';
-
+import Image from 'next/image';
 export default function ParentsSectionPart3() {
   const [isStep1Clicked, setIsStep1Clicked] = useState(false);
   const [isStep2Clicked, setIsStep2Clicked] = useState(false);
@@ -30,7 +30,11 @@ export default function ParentsSectionPart3() {
 
   return (
     <div id="surrogacy-plan-process" className={styles.part3}>
-      <img src="/images/home/image2.png" alt="第三部分图片" className={styles.image} />
+      <Image src="/images/home/image2.png" alt="第三部分图片" 
+      width={1600}
+      height={800}
+      layout="responsive"
+      />
       <div className={styles.content}>
         <div className={styles.textContainer}>
           <h2 className={styles.title}>准父母代孕流程</h2>

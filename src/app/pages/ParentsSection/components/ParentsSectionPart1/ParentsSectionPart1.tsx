@@ -1,5 +1,5 @@
 import styles from './ParentsSectionPart1.module.css';
-
+import Image from 'next/image';
 export default function ParentsSectionPart1() {
   return (
     <div id="parents-overview" className={styles.container}>
@@ -25,7 +25,11 @@ export default function ParentsSectionPart1() {
         </p>
         <button className={styles.button}>开始咨询</button>
       </div>
-      <img src="/images/home/image1.png" alt="Parents Section Image" className={styles.image} />
+      <Image src="/images/home/image1.png" alt="Parents Section Image" 
+      width={1600}
+      height={800}
+      layout="responsive"
+      />
       <div className={styles.bottomText}>
         <h2 className={styles.bottomTitle}><p>为什么准父母会选择</p><p>Sapling Surrogacy</p></h2>
         <div className={styles.bottomDescription}>

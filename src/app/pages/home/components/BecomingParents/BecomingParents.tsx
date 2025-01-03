@@ -1,7 +1,5 @@
 import Link from 'next/link';
 import styles from './BecomingParents.module.css';
-import { routes } from '@/app/routes';
-
 export default function BecomingParents() {
   return (
     <section id="becoming-parents" className={styles.becomingParents}>

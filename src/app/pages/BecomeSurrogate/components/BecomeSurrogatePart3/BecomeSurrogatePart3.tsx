@@ -1,9 +1,14 @@
 import styles from './BecomeSurrogatePart3.module.css';
-
+import Image from 'next/image';
 export default function BecomeSurrogatePart3() {
   return (
     <div id='become-surrogate-part3' className={styles.becomeSurrogatePart3}>
-      <img src="/images/home/3.png" alt="第三部分图片" className={styles.image} />
+      <Image 
+      src="/images/home/3.png" 
+      alt="第三部分图片" 
+      width={1600}
+      height={800}
+      layout="responsive" />
       <div className={styles.container}>
         <div className={styles.content}>
           <h2 className={styles.title}>WHEN？如何成为我们的代孕妈妈<br/>
