@@ -37,10 +37,18 @@ export default function RegisterPage() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    register();
-    router.push(routes.auth.profile);
+    try {
+      if (!agreeTerms) {
+        alert('请同意服务条款');
+        return;
+      }
+
+      router.push(routes.auth.profile);
+    } catch (error) {
+      console.error('注册失败:', error);
+    }
   };
 
   if (!mounted) {
