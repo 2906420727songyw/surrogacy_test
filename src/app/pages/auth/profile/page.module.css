@@ -1,18 +1,21 @@
 .navLink {
   display: block;
-  padding: 16px 24px;
   color: white;
   text-decoration: none;
-  font-size: 16px;
-  transition: background-color 0.3s;
+  font-size: 24px;
   opacity: 0.8;
+  font-weight: normal;
+  width: fit-content;
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+  transition: opacity 0.3s, border-color 0.3s;
 }
 
 .navLink:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  opacity: 1;
 }
 
 .navLink.active {
-  background-color: rgba(255, 255, 255, 0.15);
   opacity: 1;
+  border-bottom-color: white;
 } 

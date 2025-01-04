@@ -90,23 +90,18 @@ function LoginContent() {
                 >
                   登录
                 </button>
-                <div className="flex items-center gap-2">
-                  <div className="relative w-4 h-4">
+                <div className="flex items-center gap-3">
+                  <div className="relative">
                     <input
                       type="checkbox"
                       id="remember"
                       checked={rememberMe}
                       onChange={(e) => setRememberMe(e.target.checked)}
-                      aria-label="记住账号"
-                      className="absolute opacity-0 w-0 h-0 cursor-pointer peer"
+                      className="appearance-none w-[22px] h-[22px] border border-white rounded-[2px] bg-transparent 
+                      checked:bg-white cursor-pointer"
                     />
-                    <span className="absolute top-0 left-0 w-4 h-4 bg-transparent border border-white rounded-[2px]
-                      after:content-[''] after:absolute after:hidden after:left-[5px] after:top-[2px] 
-                      after:w-[3px] after:h-[8px] after:border-[#A48472] after:border-r-2 after:border-b-2 
-                      after:rotate-45 peer-checked:bg-white peer-checked:after:block">
-                    </span>
                   </div>
-                  <label htmlFor="remember" className="text-white text-base">
+                  <label htmlFor="remember" className="text-white text-[14px] opacity-80 select-none cursor-default">
                     记住账号
                   </label>
                 </div>

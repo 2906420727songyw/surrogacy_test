@@ -117,13 +117,13 @@
 .rememberMe {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
 .checkbox {
   position: relative;
-  width: 16px;
-  height: 16px;
+  width: 22px;
+  height: 22px;
 }
 
 .checkbox input {
@@ -138,11 +138,12 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 16px;
-  width: 16px;
+  height: 22px;
+  width: 22px;
   background-color: transparent;
   border: 1px solid #FFFFFF;
   border-radius: 2px;
+  cursor: pointer;
 }
 
 .checkbox input:checked ~ .checkmark {
@@ -150,20 +151,15 @@
 }
 
 .checkbox input:checked ~ .checkmark:after {
-  content: "";
-  position: absolute;
-  left: 5px;
-  top: 2px;
-  width: 3px;
-  height: 8px;
-  border: solid #A48472;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+  display: none;
 }
 
 .rememberMe label {
   color: #FFFFFF;
-  font-size: 16px;
+  font-size: 14px;
+  opacity: 0.8;
+  cursor: default;
+  user-select: none;
 }
 
 .divider {

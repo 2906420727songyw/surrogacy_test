@@ -202,21 +202,16 @@ export default function RegisterPage() {
           </div>
           <div className="mt-6 mb-10">
             <div className="flex items-start gap-3">
-              <div className="relative w-6 h-6 mt-[3px] cursor-pointer ml-5" onClick={() => setAgreeTerms(!agreeTerms)}>
+              <div className="relative w-[22px] h-[22px] mt-[3px]">
                 <input
                   type="checkbox"
                   id="terms"
                   checked={agreeTerms}
                   onChange={(e) => setAgreeTerms(e.target.checked)}
                   required
-                  aria-label="同意条款"
-                  className="absolute opacity-0 w-0 h-0 peer"
+                  className="appearance-none w-[22px] h-[22px] border border-white rounded-[2px] bg-transparent 
+                  checked:bg-white cursor-pointer"
                 />
-                <span className="absolute top-0 left-0 w-6 h-6 bg-transparent border border-white rounded-[2px]
-                  after:content-[''] after:absolute after:hidden after:left-[7px] after:top-[3px] 
-                  after:w-[5px] after:h-[11px] after:border-[#A48472] after:border-r-2 after:border-b-2 
-                  after:rotate-45 peer-checked:bg-white peer-checked:after:block">
-                </span>
               </div>
               <label className="text-white text-base leading-normal max-w-[90%] select-none">
                 选中此框，则表示您同意在遵守我们的隐私政策的情况下，收到有关我们计划的未来更新。Spling Surrogacy的最新信息
