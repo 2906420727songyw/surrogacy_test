@@ -97,16 +97,16 @@ export default function AppointmentContent() {
 
   return (
     <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px]">
-      <div className="flex">
+      <div className="block md:flex">
         {/* 左侧内容 */}
-        <div className="flex-1 min-w-[60vw] pt-[80px] px-[60px]">
+        <div className="w-full md:flex-1 md:max-w-[60vw] pt-[40px] md:pt-[80px] px-[20px] md:px-[60px]">
           {/* 标题和分割线 */}
-          <div className="mb-[40px] ">
-            <div className="flex justify-between items-center mb-4 h-[8vh]">
-              <h1 className="text-white text-[24px]">选择日期</h1>
+          <div className="mb-[30px] md:mb-[40px]">
+            <div className="flex justify-between items-center md:flex-row md:justify-between md:items-center mb-4 h-[8vh]">
+              <h1 className="text-white text-[20px] md:text-[24px]">选择日期</h1>
               <div className="relative">
                 <button 
-                  className="flex items-center gap-2 text-white text-[16px] px-4 py-2"
+                  className="flex items-center gap-2 text-white text-[14px] md:text-[16px] px-4 py-2"
                   onClick={() => setIsTimeZoneOpen(!isTimeZoneOpen)}
                 >
                   <span className="opacity-60">*</span>
@@ -116,7 +116,7 @@ export default function AppointmentContent() {
                 
                 {/* 下拉菜单 */}
                 {isTimeZoneOpen && (
-                  <div className="absolute top-full mt-1 w-full bg-white rounded-md shadow-lg py-1">
+                  <div className="absolute top-full right-0 mt-1 w-[120px] bg-white rounded-md shadow-lg py-1 z-50">
                     {timeZones.map((zone) => (
                       <button
                         key={zone}
@@ -136,13 +136,13 @@ export default function AppointmentContent() {
             <div className="h-[1px] bg-white"></div>
           </div>
 
-          <div className="flex gap-[80px]">
+          <div className="flex flex-col md:flex-row md:gap-[80px]">
             {/* 日历部分 */}
-            <div className="flex flex-col w-[60%]">
+            <div className="w-full md:w-[60%] mb-8 md:mb-0">
               {/* 日历导航 */}
-              <div className="flex items-center justify-center gap-8 mb-6">
+              <div className="flex items-center justify-center gap-4 md:gap-8 mb-6">
                 <button 
-                  className="text-white text-[36px] leading-none"
+                  className="text-white text-[24px] md:text-[36px] leading-none"
                   onClick={() => handleMonthChange(-1)}
                 >
                   &lt;
@@ -151,7 +151,7 @@ export default function AppointmentContent() {
                   {`${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`}
                 </span>
                 <button 
-                  className="text-white text-[36px] leading-none"
+                  className="text-white text-[24px] md:text-[36px] leading-none"
                   onClick={() => handleMonthChange(1)}
                 >
                   &gt;
@@ -159,11 +159,11 @@ export default function AppointmentContent() {
               </div>
 
               {/* 日历表格 */}
-              <div className="grid grid-cols-7 gap-6">
+              <div className="grid grid-cols-7 gap-3 md:gap-6">
                 {/* 星期标题 */}
                 {['日', '一', '二', '三', '四', '五', '六'].map(day => (
-                  <div key={day} className="w-8 h-8 flex items-center justify-center">
-                    <span className="text-white text-[14px] opacity-60">
+                  <div key={day} className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center">
+                    <span className="text-white text-[12px] md:text-[14px] opacity-60">
                       {day}
                     </span>
                   </div>
@@ -171,7 +171,7 @@ export default function AppointmentContent() {
                 
                 {/* 空白格子 - 月初前的空格 */}
                 {Array.from({ length: firstDayOfMonth }, (_, i) => (
-                  <div key={`empty-${i}`} className="w-8 h-8" />
+                  <div key={`empty-${i}`} className="w-6 h-6 md:w-8 md:h-8" />
                 ))}
                 
                 {/* 日期格子 */}
@@ -182,13 +182,13 @@ export default function AppointmentContent() {
                   return (
                     <button
                       key={day}
-                      className={`w-8 h-8 flex items-center justify-center rounded-full
+                      className={`w-6 h-6 md:w-8 md:h-8 flex items-center justify-center rounded-full
                         ${selectedDate === dateString 
                           ? 'bg-[#8E7362] text-[#ffffff]' 
                           : 'text-white hover:bg-white/10'}`}
                       onClick={() => setSelectedDate(dateString)}
                     >
-                      <span className="text-[14px]">{day}</span>
+                      <span className="text-[12px] md:text-[14px]">{day}</span>
                     </button>
                   );
                 })}
@@ -196,25 +196,25 @@ export default function AppointmentContent() {
             </div>
 
             {/* 时间选择部分 */}
-            <div className="w-[40%]">
-              <div className="mb-6">
-                <p className="text-white text-[14px] opacity-60">
+            <div className="w-full md:w-[40%]">
+              <div className="mb-4 md:mb-6">
+                <p className="text-white text-[12px] md:text-[14px] opacity-60">
                   {selectedDate 
                     ? formatDateTime(selectedDate, selectedTime)
                     : formatDateTime(new Date().getDate().toString(), selectedTime)}
                 </p>
               </div>
-              <div className="grid grid-cols-3 gap-x-4 gap-y-8">
+              <div className="grid grid-cols-3 gap-2 md:gap-x-4 md:gap-y-8">
                 {timeSlots.map(time => (
                   <button
                     key={time}
-                    className={`h-14 flex items-center justify-center rounded-full border border-white
+                    className={`h-10 md:h-14 flex items-center justify-center rounded-full border border-white
                       ${selectedTime === time 
                         ? 'bg-[#CAA794] text-[#ffffff] border-none' 
                         : 'text-white hover:border-white/40'}`}
                     onClick={() => setSelectedTime(time)}
                   >
-                    <span className="text-[14px]">{time}</span>
+                    <span className="text-[12px] md:text-[14px]">{time}</span>
                   </button>
                 ))}
               </div>
@@ -223,10 +223,10 @@ export default function AppointmentContent() {
         </div>
 
         {/* 右侧内容 */}
-        <div className="w-[360px] pt-[80px] px-[60px]">
+        <div className="w-full md:w-[360px] pt-[40px] md:pt-[80px] px-[20px] md:px-[60px] border-t md:border-t-0 border-white/20 mt-6 md:mt-0">
           {/* 标题和分割线 */}
-          <div className="mb-[40px]">
-            <div className="flex justify-between items-center mb-4  h-[8vh]">
+          <div className="mb-[30px] md:mb-[40px]">
+            <div className="flex justify-between items-center mb-4 h-[8vh]">
               <h2 className="text-white text-[16px]">预约详细信息</h2>
             </div>
             <div className="h-[1px] bg-transparent"></div>
@@ -234,21 +234,24 @@ export default function AppointmentContent() {
 
           {/* 预约信息 */}
           <div className="flex flex-col">
-            <h3 className="text-white text-[16px] mb-2">成为准父母</h3>
-            <p className="text-white text-[16px]">
+            <h3 className="text-white text-[14px] md:text-[16px] mb-2">成为准父母</h3>
+            <p className="text-white text-[14px] md:text-[16px]">
               {selectedDate 
                 ? formatDateTime(selectedDate, selectedTime)
                 : formatDateTime(new Date().getDate().toString(), selectedTime)}
             </p>
-            <div className="flex flex-col items-start">
+            <div className="flex flex-col items-start mb-[env(safe-area-inset-bottom)] md:mb-0">
               {errorMessage && (
-                <p className="text-[#FF3B30] text-[14px] mb-2 font-medium">
+                <p className="text-[#FF3B30] text-[12px] md:text-[14px] mb-2 font-medium">
                   {errorMessage}
                 </p>
               )}
               <button 
-                className="mt-2 bg-[#CDC5C0] text-[#000] text-[16px] w-[120px] h-[48px] 
-                  rounded-[8px] hover:opacity-90 transition-opacity"
+                className="mt-2 bg-[#CDC5C0] text-[#000] text-[14px] md:text-[16px] 
+                  w-[100px] md:w-[120px] h-[40px] md:h-[48px] 
+                  rounded-[8px] hover:opacity-90 transition-opacity
+                  mb-[20px]
+                  "
                 onClick={handleAppointment}
               >
                 预约

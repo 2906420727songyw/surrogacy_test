@@ -209,9 +209,28 @@ export default function RegisterPage() {
                   checked={agreeTerms}
                   onChange={(e) => setAgreeTerms(e.target.checked)}
                   required
-                  className="appearance-none w-[22px] h-[22px] border border-white rounded-[2px] bg-transparent 
-                  checked:bg-white cursor-pointer"
+                  className="appearance-none w-[22px] h-[22px] border border-white rounded cursor-pointer relative"
                 />
+                {agreeTerms && (
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="w-[18px] h-[18px] bg-white rounded flex items-center justify-center">
+                      <svg 
+                        className="w-4 h-4" 
+                        viewBox="0 0 12 12" 
+                        fill="none" 
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path 
+                          d="M10 3L4.5 8.5L2 6" 
+                          stroke="#000000" 
+                          strokeWidth="1.5" 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                )}
               </div>
               <label className="text-white text-base leading-normal max-w-[90%] select-none">
                 选中此框，则表示您同意在遵守我们的隐私政策的情况下，收到有关我们计划的未来更新。Spling Surrogacy的最新信息
