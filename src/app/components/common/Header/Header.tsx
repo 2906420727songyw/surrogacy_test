@@ -202,7 +202,11 @@ export default function Header() {
             <ul>
               <li>
                 <div className={styles.dropdown}>
-                  <Link href="../pages/ParentsSection" className={activeItem === 'parents' ? styles.active : ''} onClick={() => handleItemClick('parents')}>
+                  <Link 
+                    href="/pages/ParentsSection" 
+                    className={activeItem === 'parents' ? styles.active : ''} 
+                    onClick={() => handleItemClick('parents')}
+                  >
                     成为准父母
                   </Link>
                   <div className={`${styles.dropdownContent} ${isMenuOpen ? styles.open : ''}`}>
@@ -216,7 +220,11 @@ export default function Header() {
               </li>
               <li className={styles.about}>
                 <div className={styles.dropdown}>
-                  <Link href="../pages/BecomeSurrogate" className={activeItem === 'surrogate' ? styles.active : ''} onClick={() => handleItemClick('surrogate')}>
+                  <Link 
+                    href="/pages/BecomeSurrogate" 
+                    className={activeItem === 'surrogate' ? styles.active : ''} 
+                    onClick={() => handleItemClick('surrogate')}
+                  >
                     成为代孕母亲
                   </Link>
                   <div className={`${styles.dropdownContent} ${isMenuOpen ? styles.open : ''}`}>
@@ -229,7 +237,11 @@ export default function Header() {
                 </div>
               </li>
               <li className={styles.about}>
-                <Link href="../pages/about" className={activeItem === 'about' ? styles.active : ''} onClick={() => handleItemClick('about')}>
+                <Link 
+                  href="/pages/about" 
+                  className={activeItem === 'about' ? styles.active : ''} 
+                  onClick={() => handleItemClick('about')}
+                >
                   关于我们
                 </Link>
               </li>

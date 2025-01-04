@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import styles from './page.module.css';
@@ -13,6 +13,8 @@ function ProfilePageContent() {
   const [headerHeight, setHeaderHeight] = useState(0);
   const [activeNav, setActiveNav] = useState('个人信息');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [contentHeight, setContentHeight] = useState(0);
+  const contentRef = useRef<HTMLDivElement>(null);
   const searchParams = useSearchParams();
   const isSurrogacy = searchParams?.get('type') === 'surrogacy';
 
@@ -23,6 +25,24 @@ function ProfilePageContent() {
       setHeaderHeight(height);
     }
   }, []);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      const updateHeight = () => {
+        const height = contentRef.current?.offsetHeight || 0;
+        setContentHeight(height);
+      };
+
+      const resizeObserver = new ResizeObserver(updateHeight);
+      resizeObserver.observe(contentRef.current);
+
+      return () => {
+        if (contentRef.current) {
+          resizeObserver.unobserve(contentRef.current);
+        }
+      };
+    }
+  }, [activeNav]);
 
   const renderContent = () => {
     switch (activeNav) {
@@ -50,19 +70,25 @@ function ProfilePageContent() {
       </button>
 
       {/* 左侧导航栏 */}
-      <div className={`
-        ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} 
-        md:translate-x-0
-        fixed md:relative
-        top-0 left-0
-        w-[280px] md:w-[320px]
-        h-screen
-        bg-[#8E7362]
-        transition-transform duration-300
-        z-40 md:z-auto
-        pt-[80px] md:pt-0
-        rounded-tr-[20px]
-      `}>
+      <div 
+        className={`
+          ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} 
+          md:translate-x-0
+          fixed md:relative
+          top-0 left-0
+          w-[280px] md:w-[320px]
+          h-screen md:h-auto
+          bg-[#8E7362]
+          transition-transform duration-300
+          z-40 md:z-auto
+          pt-[80px] md:pt-0
+          rounded-tr-[20px]
+        `}
+        style={{ 
+          maxHeight: `${contentHeight}px`,
+          minHeight: '100vh' 
+        }}
+      >
         <div className="pt-[80px] pl-[30px] md:pl-[60px]">
           <nav className="flex flex-col space-y-[24px] md:space-y-[32px]">
             <Link 
@@ -103,7 +129,7 @@ function ProfilePageContent() {
       </div>
 
       {/* 右侧内容区 */}
-      <div className="flex-1 min-h-screen">
+      <div ref={contentRef} className="flex-1 min-h-screen">
         {renderContent()}
       </div>
 
@@ -118,7 +144,6 @@ function ProfilePageContent() {
   );
 }
 
-// 导出包裹了 Suspense 的组件
 export default function ProfilePage() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
