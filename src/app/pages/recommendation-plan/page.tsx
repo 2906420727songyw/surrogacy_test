@@ -1,8 +1,6 @@
 import React from 'react';
-import styles from './styles.module.css';
-import Image from 'next/image';
 
-interface RecommendationContent {
+interface CareersContent {
   title: string;
   coverImage: string;
   firstParagraph: string;  // HTML content
@@ -10,7 +8,7 @@ interface RecommendationContent {
 }
 
 // 模拟API数据，实际使用时可以从API获取
-const mockData: RecommendationContent = {
+const mockData: CareersContent = {
   title: "推荐计划",
   coverImage: "/images/home/image1.png",
   firstParagraph: `<p>假文案，这世界上有1/6的人因为个人原因，无法组成完整的家庭</p>
@@ -28,16 +26,15 @@ const mockData: RecommendationContent = {
     <p>所以专业的法律顾问、当临的医疗顾问、产后的经济补偿都是在这时代孕妈妈时非常重要的因素</p>`
 };
 
-export default function RecommendationPlan() {
+export default function Careers() {
   return (
     <div className="w-full bg-[#987b6b]">
       {/* 图片部分 */}
-      <div className="w-full h-[500px] md:h-[700px] pt-20 md:pt-40 relative">
-        <Image
+      <div className="w-full h-[500px] md:h-[700px] pt-20 md:pt-40">
+        <img
           src={mockData.coverImage}
           alt={mockData.title}
-          fill
-          className="object-cover"
+          className="w-full h-full object-cover"
         />
       </div>
 
@@ -56,7 +53,12 @@ export default function RecommendationPlan() {
         </div>
 
         {/* 分隔线 */}
-        <div className={styles.divider} />
+        <div 
+          className="w-[4px] h-[150px] md:h-[200px] mx-auto my-[80px] md:my-[130px]"
+          style={{
+            background: 'linear-gradient(0deg, rgba(226, 226, 226, 0) 0%, #FFFFFF 52.5%, rgba(226, 226, 226, 0) 100%)'
+          }}
+        />
 
         {/* 第二段文字内容 */}
         <div className="max-w-5xl mx-auto">

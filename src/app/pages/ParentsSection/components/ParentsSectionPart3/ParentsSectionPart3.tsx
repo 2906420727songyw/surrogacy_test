@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './ParentsSectionPart3.module.css';
-
+import Image from 'next/image';
 export default function ParentsSectionPart3() {
   const [isStep1Clicked, setIsStep1Clicked] = useState(false);
   const [isStep2Clicked, setIsStep2Clicked] = useState(false);
@@ -30,13 +30,20 @@ export default function ParentsSectionPart3() {
 
   return (
     <div id="surrogacy-plan-process" className={styles.part3}>
-      <img src="/images/home/image2.png" alt="第三部分图片" className={styles.image} />
+      <Image src="/images/home/image2.png" alt="第三部分图片" 
+      width={1600}
+      height={800}
+      layout="responsive"
+      />
       <div className={styles.content}>
         <div className={styles.textContainer}>
           <h2 className={styles.title}>准父母代孕流程</h2>
           <p className={styles.description}>
-            代孕的旅程中包含许多的节点和步骤，而每对准父母会因为其自身的情况、需求以及喜好有着不同的时间线和旅程。通常来说，在经历12-24个月之后，您就可以带着您的宝宝回家在此期间，Sapling会有专业的团队一对一陪伴您走过整个旅程。<br/>
-            为了让您更好的了解代孕需要做什么，每个阶段的结果是什么，以及大致的时间线。在这里，我们大致将代孕旅程分为了五个阶段供您参考。
+            <p>代孕的旅程中包含许多的节点和步骤，而每对准父母会因为其自身的情况、需求以及喜好,</p>
+            <p>有着不同的时间线和旅程。通常来说，在经历12-24个月之后，您就可以带着您的宝宝回家，</p>
+            <p>在此期间，Sapling会有专业的团队一对一陪伴您走过整个旅程。</p>
+            <p>为了让您更好的了解代孕需要做什么，每个阶段的结果是什么，以及大致的时间线。</p>
+            <p>在这里，我们大致将代孕旅程分为了五个阶段供您参考</p>
           </p>
         </div>
         <div className={styles.stepsContainer}>

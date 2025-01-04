@@ -11,5 +11,9 @@ export const routes = {
   ...recommendationPlanRoutes,
   ...careersRoutes,
   ...protectedRoutes,
+  
   auth: authRoutes,
+
+  appointment: '/appointment',
+  search: '/search',
 }; 

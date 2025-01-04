@@ -1,5 +1,5 @@
 import styles from './ParentsSectionPart1.module.css';
-
+import Image from 'next/image';
 export default function ParentsSectionPart1() {
   return (
     <div id="parents-overview" className={styles.container}>
@@ -23,16 +23,18 @@ export default function ParentsSectionPart1() {
         <p className={styles.description}>
           我们坚信,所有的努力都是值得的。有Sapling在旁,您的代孕之旅将会格外安心且愉悦。
         </p>
-        
+        <button className={styles.button}>开始咨询</button>
       </div>
-      <img src="/images/home/image1.png" alt="Parents Section Image" className={styles.image} />
+      <Image src="/images/home/image1.png" alt="Parents Section Image" 
+      width={1600}
+      height={800}
+      layout="responsive"
+      />
       <div className={styles.bottomText}>
         <h2 className={styles.bottomTitle}><p>为什么准父母会选择</p><p>Sapling Surrogacy</p></h2>
         <div className={styles.bottomDescription}>
-          <p>选择一家专业的代孕机构是最重要的,它会指导和陪伴您更轻松的走过整个</p>
-          <p>
-          成为准父母的旅程。
-        </p>
+          <p>选择一家专业的代孕机构是最重要的,它会指导和陪伴您更轻松的走过整个成为准父母的旅程。</p>
+        
         <p>
           选择 Sapling 可以让您享受全方位的代孕服务,我们有
         </p>

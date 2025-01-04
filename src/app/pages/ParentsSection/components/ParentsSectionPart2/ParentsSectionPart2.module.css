@@ -1,5 +1,6 @@
 .part2 {
-  background-color: #d0d0d0;
+  width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,20 +29,20 @@
   background-color: transparent;
   border-radius: 20px;
   text-align: center;
-  margin-bottom: 50px;
 }
 
 .description {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 400;
-  line-height: 56px;
+  line-height: 40px;
   color: #ffffff;
+  margin-bottom: 100px;
 }
 
 .step {
-  font-size: 48px;
+  font-size: 30px;
   font-weight: 400;
-  line-height: 56px;
+  line-height: 40px;
   color: #ffffff;
   margin-bottom: 20px;
 }
@@ -50,18 +51,16 @@
   width: 100%;
   height: 1px;
   background-color: #D9D9D9;
-  margin-top: 60px;
+  margin: 30px 0;
 }
 
 .clickableDiv {
   width: 100%;
   max-width: 1200px;
-  padding-top: 60px;
   background-color: transparent;
   border-radius: 20px;
   text-align: center;
   cursor: pointer;
-  margin-bottom: 50px;
 }
 
 .clicked {
@@ -69,30 +68,38 @@
 }
 
 .clickableTitle {
-  font-size: 36px;
+  font-size: 28px;
   font-weight: 400;
-  line-height: 56px;
+  line-height: 40px;
   color: #ffffff;
   margin-bottom: 20px;
 }
 
 .clickableDescription {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 400;
-  line-height: 56px;
+  line-height: 40px;
   color: #ffffff;
   margin-bottom: 20px;
+}
+
+.expandedContent .clickableDescription1 {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 40px;
+  color: #ffffff;
+  margin-top: 60px;
 }
 
 .clickableDiv .divider {
   width: 100%;
   height: 1px;
   background-color: #D9D9D9;
-  margin-top: 60px;
+  margin: 30px 0;
 }
 
 .expandedContent {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 400;
   line-height: 35px;
   color: #ffffff;
@@ -117,14 +124,14 @@
 }
 
 .button {
-  width: 133px;
-  height: 36px;
-  background-color: #ffffff;
+  width: 93px;
+  height: 40px;
+  background-color: #cdc6c0;
   border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   color: #000000;
   cursor: pointer;
@@ -275,14 +282,14 @@
   }
 
   .button {
-    width: 133px;
-    height: 36px;
-    background-color: #ffffff;
+    width: 93px;
+    height: 40px;
+    background-color: #cdc6c0;
     border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
     color: #000000;
     cursor: pointer;

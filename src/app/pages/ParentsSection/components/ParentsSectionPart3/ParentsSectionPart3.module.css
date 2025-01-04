@@ -31,9 +31,9 @@
 }
 
 .description {
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 400;
-  line-height: 56px;
+  line-height: 50px;
   color: #ffffff;
   margin-bottom: 200px;
 }
@@ -58,16 +58,16 @@
 }
 
 .clickableTitle {
-  font-size: 48px;
+  font-size: 36px;
   font-weight: 400;
   line-height: 56px;
   color: #ffffff;
 }
 
 .clickableDescription {
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 400;
-  line-height: 56px;
+  line-height: 50px;
   color: #ffffff;
 }
 
@@ -79,7 +79,7 @@
 }
 
 .expandedContent {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 400;
   line-height: 35px;
   color: #ffffff;
@@ -87,14 +87,14 @@
 }
 
 .button {
-  width: 133px;
-  height: 36px;
-  background-color: #ffffff;
+  width: 93px;
+  height: 40px;
+  background-color: #cdc6c0;
   border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   color: #000000;
   cursor: pointer;

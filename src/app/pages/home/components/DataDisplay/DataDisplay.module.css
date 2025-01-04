@@ -1,5 +1,5 @@
 .dataDisplay {
-  padding: 105px 150px 100px;
+  padding: 105px 150px 150px;
   text-align: center;
   background-color: #A48472;
   width: 100%;
@@ -13,9 +13,9 @@
 }
 
 .dataDisplay p {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.5;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   color: #FFFFFF;
 }
 
@@ -25,6 +25,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 50px;
 }
 
 .dataItems {
@@ -129,14 +130,14 @@
 }
 
 .dataValue {
-  font-size: 36px;
+  font-size: 48px;
   color: #FFFFFF;
   margin-bottom: 10px;
   text-align: center;
 }
 
 .dataDescription {
-  font-size: 16px;
+  font-size: 20px;
   color: #FFFFFF;
   text-align: center;
 } 
