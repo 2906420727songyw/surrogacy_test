@@ -84,9 +84,10 @@ export default function BecomeSurrogatePart1({
               <Image 
               src="/images/home/A.png" 
               alt="展开内容图片" 
-              width={1600}
-              height={800}
-              layout="responsive" />
+              width={200}
+              height={200}
+              className={styles.expandedImage}
+              />
               <p className={styles.expandedText}>
               21至40岁之间；身体健康，没有严重的慢性疾病或妨碍怀孕的健康问题（如高血压、糖尿病、心脏病等）；<br/>
               BMI（体重指数）在18.5至31之间
@@ -111,9 +112,8 @@ export default function BecomeSurrogatePart1({
               <Image 
               src="/images/home/B.png" 
               alt="展开内容图片" 
-              width={1600}
-              height={800}
-              layout="responsive" />
+              width={200}
+              height={200} />
               <p className={styles.expandedText}>
               通过心理健康评估，确保在心理上能够承担代孕的责任和挑战；<br/>
               有强大的情感支持系统，包括家人或朋友的支持
@@ -138,9 +138,8 @@ export default function BecomeSurrogatePart1({
               <Image 
               src="/images/home/C.png" 
               alt="展开内容图片" 
-              width={1600}
-              height={800}
-              layout="responsive" />
+              width={200}
+              height={200} />
               <p className={styles.expandedText}>
               需要有至少一段顺利的怀孕和分娩经历；无严重孕产并发症（妊娠高血压、早产等）
               </p>
@@ -164,9 +163,8 @@ export default function BecomeSurrogatePart1({
               <Image 
               src="/images/home/D.png" 
               alt="展开内容图片" 
-              width={1600}
-              height={800}
-              layout="responsive" />
+              width={200}
+              height={200} />
               <p className={styles.expandedText}>
               不使用非法药物、不吸烟、不酗酒、无毒史
               </p>
@@ -190,9 +188,8 @@ export default function BecomeSurrogatePart1({
               <Image 
               src="/images/home/E.png" 
               alt="展开内容图片" 
-              width={1600}
-              height={800}
-              layout="responsive" />
+              width={200}
+              height={200} />
               <p className={styles.expandedText}>
               无犯罪记录；没有在部分政府援助计划内；居住在美国代孕友好州
               </p>
@@ -216,9 +213,8 @@ export default function BecomeSurrogatePart1({
               <Image 
               src="/images/home/F.png" 
               alt="展开内容图片" 
-              width={1600}
-              height={800}
-              layout="responsive" />
+              width={200}
+              height={200} />
               <p className={styles.expandedText}>
               美国公民、绿卡、有效期为三年以上的签证
               </p>
@@ -242,9 +238,8 @@ export default function BecomeSurrogatePart1({
               <Image 
               src="/images/home/G.png" 
               alt="展开内容图片" 
-              width={1600}
-              height={800}
-              layout="responsive" />
+              width={200}
+              height={200} />
               <p className={styles.expandedText}>
               财务状况稳定。过去一年内无破产记录
               </p>

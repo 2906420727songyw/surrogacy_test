@@ -214,7 +214,7 @@ export default function Header() {
                   </div>
                 </div>
               </li>
-              <li>
+              <li className={styles.about}>
                 <div className={styles.dropdown}>
                   <Link href="../pages/BecomeSurrogate" className={activeItem === 'surrogate' ? styles.active : ''} onClick={() => handleItemClick('surrogate')}>
                     成为代孕母亲
@@ -228,22 +228,22 @@ export default function Header() {
                   </div>
                 </div>
               </li>
-              <li>
+              <li className={styles.about}>
                 <Link href="../pages/about" className={activeItem === 'about' ? styles.active : ''} onClick={() => handleItemClick('about')}>
                   关于我们
                 </Link>
               </li>
-              <li>
+              <li className={styles.about}>
                 <Link href={routes.resources} className={activeItem === 'resources' ? styles.active : ''} onClick={() => handleItemClick('resources')}>
                   资讯
                 </Link>
               </li>
-              <li>
+              <li className={styles.about}>
                 <Link href={routes.contact} className={activeItem === 'contact' ? styles.active : ''} onClick={() => handleItemClick('contact')}>
                   推荐计划
                 </Link>
               </li>
-              <li>
+              <li className={styles.about}>
                 <Link href={routes.careers} className={activeItem === 'careers' ? styles.active : ''} onClick={() => handleItemClick('careers')}>
                   职业生涯
                 </Link>
@@ -254,9 +254,9 @@ export default function Header() {
         {isMenuOpen && (
           <div className={styles.mobileActions}>
           
-            <Link href={routes.auth.login} className={styles.login}>登录</Link>
-            <Link href={routes.appointment} className={styles.appointment}>预约</Link>
-            <Link href={routes.search} className={styles.search}>搜索</Link>
+            <Link href={routes.auth.login} className={styles.login} onClick={() => setIsMenuOpen(false)}>登录</Link>
+            <Link href={routes.appointment} className={styles.appointment} onClick={() => setIsMenuOpen(false)}>预约</Link>
+            <Link href={routes.search} className={styles.search} onClick={() => setIsMenuOpen(false)}>搜索</Link>
           </div>
         )}
       </nav>

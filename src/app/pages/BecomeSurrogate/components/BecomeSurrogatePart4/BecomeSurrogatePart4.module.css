@@ -66,39 +66,53 @@
     margin-bottom: 60px;
 }
 
-@media (max-width: 768px) {
-    .image {
-        height: 400px;
-    }
 
-    .container {
-        padding: 100px 20px;
-    }
 
+@media (max-width: 480px) {
     .title {
-        font-size: 40px;
-        line-height: 50px;
-        margin-bottom: 30px;
+        font-size: 24px;
+        line-height: 32px;
+        margin-bottom: 10px;
     }
 
-    .itemContainer {
-        margin-top: 50px;
-        gap: 40px;
+    .whereTitle {
+        font-size: 24px;
+        line-height: 32px;
+        margin-bottom: 20px;
+    }
+
+    .whereText {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .meetingTitle {
+        font-size: 20px;
+        line-height: 28px;
+        margin-bottom: 10px;
+    }
+
+    .meetingText {
+        font-size: 12px;
+        line-height: 18px;
+        margin: 10px 0;
     }
 
     .itemTitle {
-        font-size: 24px;
-        line-height: 30px;
+        font-size: 16px;
+        line-height: 22px;
     }
 
     .itemDetails {
-        font-size: 16px;
-        line-height: 24px;
-        margin: 30px 0;
+        font-size: 12px;
+        line-height: 18px;
+        margin: 10px 0;
     }
 
-    .divider {
-        margin-bottom: 40px;
+    .additionalText {
+        font-size: 12px;
+        line-height: 18px;
+        margin-bottom: 20px;
     }
 }
 
@@ -167,6 +181,7 @@
     line-height: 30px;
     color: #FFFFFF;
     text-align: center;
+    margin-bottom: 60px;
 }
 
 .meetingContent {
@@ -178,7 +193,7 @@
     font-size: 20px;
     line-height: 40px;
     color: #FFFFFF;
-    margin-bottom: 60px;
+    margin: 60px 0;
 }
 
 .meetingImage {
@@ -230,3 +245,80 @@
         height: 100px;
     }
 } 
+@media (max-width: 768px) {
+    .image {
+        height: 400px;
+    }
+
+    .container {
+        padding: 100px 10px;
+    }
+
+    .title {
+        font-size: 28px;
+        line-height: 36px;
+        margin-bottom: 20px;
+    }
+
+    .itemContainer {
+        margin-top: 30px;
+        gap: 30px;
+    }
+
+    .itemTitle {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .itemDetails {
+        font-size: 14px;
+        line-height: 20px;
+        margin: 20px 0;
+    }
+
+    .divider {
+        margin-bottom: 40px;
+    }
+
+    .whereContainer {
+        padding: 50px 10px;
+    }
+
+    .whereTitle {
+        font-size: 28px;
+        line-height: 36px;
+        margin-bottom: 30px;
+    }
+
+    .whereText {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .meetingContainer {
+        padding: 50px 10px;
+    }
+
+    .meetingTitle {
+        font-size: 24px;
+        line-height: 32px;
+        margin-bottom: 20px;
+    }
+
+    .meetingText {
+        font-size: 14px;
+        line-height: 20px;
+        margin: 20px 0;
+    }
+
+    .additionalText {
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 30px;
+    }
+
+    .gradientBar {
+        width: 2px;
+        height: 100px;
+    }
+}
