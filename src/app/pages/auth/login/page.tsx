@@ -40,8 +40,8 @@ function LoginContent() {
   }
 
   return (
-    <div className="min-h-screen w-full flex justify-center items-center bg-[#A48472] px-4 md:px-10">
-      <div className="w-full max-w-[1000px]">
+    <div className="min-h-screen w-full flex justify-center bg-[#A48472] px-4 md:px-10">
+      <div className="w-full max-w-[1000px] pt-[calc(env(safe-area-inset-top)+4rem)] md:pt-[80px]">
         <h1 className="text-white text-[32px] md:text-[48px] font-normal text-center mb-[40px] md:mb-[80px] transition-opacity duration-500">
           {isRegisterMode 
             ? '让Sapling更了解你，请先注册/登录'
@@ -147,7 +147,7 @@ function LoginContent() {
                 router.push(routes.auth.register);
               }}
               className="inline-flex items-center justify-center w-full md:w-[120px] h-10 md:h-12 bg-[#D9D9D9] 
-                text-black text-sm md:text-base rounded-lg border-none transition-opacity hover:opacity-90"
+                text-black text-sm md:text-base rounded-lg border-none transition-opacity hover:opacity-90 mb-[2vh]"
             >
               注册
             </Link>

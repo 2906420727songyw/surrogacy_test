@@ -240,8 +240,8 @@ export default function RegisterPage() {
           </div>
           <button
             type="submit"
-            className="w-[120px] h-12 bg-[#D9D9D9] text-black text-base rounded-lg border-none 
-              transition-opacity hover:opacity-90"
+            className="w-full md:w-[120px] h-10 md:h-12 bg-[#D9D9D9] text-black text-sm md:text-base rounded-lg border-none 
+              transition-opacity hover:opacity-90 mb-[2vh]"
           >
             创建账户
           </button>
