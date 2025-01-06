@@ -1,32 +1,25 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '@/app/components/AuthProvider';
+import authApi from '@/app/service/auth/api';
 import { routes } from '@/app/routes';
+import DateField from '../profile/components/shared/DateField';
 
 export default function RegisterPage() {
-  const [mounted, setMounted] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
-    firstName: '',
-    lastName: '',
-    phone: '',
-    birthDate: '',
-    gender: '',
+    password: '',
     name: '',
-    address: '',
+    phoneNumber: '',
+    dateOfBirth: '',
     city: '',
     country: '',
     postalCode: '',
+    address: ''
   });
   const [agreeTerms, setAgreeTerms] = useState(false);
   const router = useRouter();
-  const { register } = useAuth();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -44,15 +37,23 @@ export default function RegisterPage() {
         return;
       }
 
+      await authApi.register({
+        email: formData.email,
+        password: formData.password,
+        name: formData.name,
+        phoneNumber: formData.phoneNumber,
+        dateOfBirth: formData.dateOfBirth,
+        city: formData.city,
+        country: formData.country,
+        postalCode: formData.postalCode,
+        address: formData.address
+      });
+      
       router.push(routes.auth.profile);
     } catch (error) {
       console.error('注册失败:', error);
     }
   };
-
-  if (!mounted) {
-    return <div className="min-h-screen w-full bg-[#A48472]" />;
-  }
 
   return (
     <div className="min-h-screen w-full flex justify-center items-center bg-[#A48472] py-20">
@@ -105,8 +106,8 @@ export default function RegisterPage() {
             </label>
             <input
               type="tel"
-              name="phone"
-              value={formData.phone}
+              name="phoneNumber"
+              value={formData.phoneNumber}
               onChange={handleChange}
               required
               aria-label="手机号码"
@@ -114,20 +115,11 @@ export default function RegisterPage() {
             />
           </div>
           <div className="mb-[30px]">
-            <label className="block text-white text-base mb-3">
-              出生日期 *
-            </label>
-            <input
-              type="text"
-              name="birthDate"
-              value={formData.birthDate}
+            <DateField 
+              label="出生日期 *"
+              name="dateOfBirth"
+              value={formData.dateOfBirth}
               onChange={handleChange}
-              pattern="\d{4}-\d{2}-\d{2}"
-              required
-              aria-label="出生日期"
-              className="w-full h-[50px] px-4 bg-white border-none text-base rounded-lg
-                [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none
-                [&::-webkit-calendar-picker-indicator]:hidden"
             />
           </div>
           <div className="mb-[30px]">
