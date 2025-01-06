@@ -16,11 +16,11 @@ export default function AboutPage() {
           照顾好代孕母亲的身体健康和信力建看的同时,我们会尽量去给所有的代孕母都争取更多的薪水
           </p>
         </div>
-        <div className={styles.gradientBar}></div>
         
         {aboutData.map((item, index) => (
           <section key={index} className={styles.newContainer}>
             <article className={styles.newContainerContent}>
+            <div className={styles.gradientBar}></div>
               <Image src={item.image} alt={`关于我们图片${index + 1}`} width={500} height={600} />
               <h2 className={styles.newContainerTitle}>{item.title}</h2>
               <p className={styles.newContainerText}>{item.content}</p>

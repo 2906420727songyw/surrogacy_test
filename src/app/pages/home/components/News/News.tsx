@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from './News.module.css';
-
+import Link from 'next/link';
 export default function News() {
   return (
     <section className={styles.news}>
@@ -52,7 +52,10 @@ export default function News() {
           
         </div>
       </div>
+      <Link href="../pages/about">
       <button className={styles.moreButton}>了解更多</button>
+      </Link>
+
     </section>
   );
 } 
