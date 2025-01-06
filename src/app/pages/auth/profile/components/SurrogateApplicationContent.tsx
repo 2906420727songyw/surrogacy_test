@@ -55,6 +55,9 @@ export default function SurrogateApplicationContent() {
     email: ''
   });
 
+  const handleDropdownClick = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -65,14 +68,19 @@ export default function SurrogateApplicationContent() {
 
   return (
     <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px]">
-      <div className="w-full md:max-w-[60vw] pt-[20px] md:pt-[80px] px-[16px] md:px-[60px] pb-[20px] md:pb-[60px]">
-        {/* 标题部分 */}
-        <div className="border-b border-white/20 pb-2 mb-[20px] md:mb-[40px]">
-          <div className="flex items-center justify-between">
-            <h1 className="text-white text-[16px] md:text-[20px] font-normal">
+   <div className="md:max-w-[60vw] pt-[40px] md:pt-[80px] px-[20px] md:px-[60px]">
+      {/* 标题部分 */}
+        <div className="border-b border-white pb-2 mb-[30px] md:mb-[40px]">
+          <div 
+            className="flex items-center justify-between cursor-pointer"
+            onClick={handleDropdownClick}
+          >
+            <h1 className="text-white text-[18px] md:text-[20px] font-normal">
               代孕母初次申请表
             </h1>
-            <span className="text-white text-[12px] md:text-[14px] transform rotate-180">⌄</span>
+            <span className={`text-white text-[16px] transform transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}>
+              ⌄
+            </span>
           </div>
         </div>
 

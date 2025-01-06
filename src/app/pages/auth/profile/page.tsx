@@ -61,7 +61,7 @@ function ProfilePageContent() {
     <div style={{ paddingTop: `${headerHeight}px`, backgroundColor: '#A38471'}} className="min-h-screen w-full flex flex-col md:flex-row">
       {/* 移动端菜单按钮 */}
       <button 
-        className="md:hidden fixed top-[80px] right-4 z-50 bg-[#8E7362] p-2 rounded-lg"
+        className="md:hidden fixed top-[80px] right-3 z-50 bg-[transparent] p-2 rounded-lg"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       >
         <span className="block w-6 h-0.5 bg-white mb-1"></span>

@@ -14,6 +14,7 @@ export const routes = {
   
   auth: authRoutes,
 
-  appointment: '/appointment',
+  appointment: '/pages/auth/profile',
   search: '/search',
+  customerService: '/pages/customer-service'
 }; 

@@ -31,8 +31,11 @@ function LoginContent() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    login();
-    router.push('/');
+    login({
+      email,
+      password
+    });
+    // router.push('/');
   };
 
   if (!mounted) {
@@ -41,16 +44,16 @@ function LoginContent() {
 
   return (
     <div className="min-h-screen w-full flex justify-center bg-[#A48472] px-4 md:px-10">
-      <div className="w-full max-w-[1000px] pt-[calc(env(safe-area-inset-top)+4rem)] md:pt-[80px]">
-        <h1 className="text-white text-[32px] md:text-[48px] font-normal text-center mb-[40px] md:mb-[80px] transition-opacity duration-500">
+      <div className="w-full max-w-[70vw] pt-[calc(env(safe-area-inset-top)+4rem)] md:pt-[15vh]">
+        <h1 className="text-white text-[32px] md:text-[48px] font-normal text-center mb-[20px] md:mb-[80px] transition-opacity duration-500">
           {isRegisterMode 
             ? '让Sapling更了解你，请先注册/登录'
             : '欢迎来到Sapling Surrogacy'
           }
         </h1>
         
-        <div className="flex flex-col md:flex-row gap-10 md:gap-20 justify-between items-center relative">
-          <div className="w-full md:flex-1 md:max-w-[460px]">
+        <div className="flex flex-col md:flex-row gap-19 md:gap-20   relative">
+          <div className="w-full md:flex-1 md:max-w-[30vw]">
             <h2 className="text-white text-xl md:text-2xl font-normal mb-6 md:mb-10">
               使用您的电子邮件地址登录
             </h2>
@@ -137,7 +140,7 @@ function LoginContent() {
             <h2 className="text-white text-xl md:text-2xl font-normal mb-6 md:mb-10">
               创建一个新账户
             </h2>
-            <p className="text-white text-sm md:text-base leading-relaxed mb-6 md:mb-10 opacity-80">
+            <p className="text-white text-sm md:text-base  mb-6 md:mb-10 opacity-80 " style={{lineHeight:2.4}}>
               如果这是您第一次请求更多信息或申请我们的计划，请创建一个账户以开始。
             </p>
             <Link 

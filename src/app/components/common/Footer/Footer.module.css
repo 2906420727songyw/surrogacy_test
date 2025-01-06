@@ -116,7 +116,7 @@
   align-items: center;
   cursor: pointer;
   border-radius: 12px;
-  background-color: #868275;
+  background-color: #858275;
   gap: 10px;
 }
 
@@ -126,7 +126,7 @@
 }
 
 .customerService span {
-  font-size: 22px;
+  font-size: 12pt;
   color: #fff;
 }
 
