@@ -178,11 +178,13 @@ export default function Footer() {
               <span>登录账号</span>
               <Image src="/images/footer/右箭头.png" alt="Arrow Right" width={24} height={24} />
             </Link>
+            <Link href="/pages/about">
           <div className={styles.aboutUs}>
             <span>关于我们</span>
             <Image src="/images/footer/右箭头.png" alt="Arrow Right" width={24} height={24} />
           </div>
-          
+          </Link>
+
           </div>
           <div className={styles.infoItem}>
             <Image src="/images/footer/website-icon.png" alt="Website Icon" className={styles.icon} width={24} height={24} />
