@@ -19,7 +19,6 @@ export default function ProfileContent() {
   const handleDropdownClick = () => {
     setIsDropdownOpen(!isDropdownOpen);
     // 可以根据需要添加跳转逻辑
-    router.push('/auth/profile/edit');
   };
 
   return (

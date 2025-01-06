@@ -17,34 +17,34 @@ interface AppointmentResponse {
   updatedAt: string;
 }
 
+interface Appointment {
+  userId: string;
+  appointmentTime: string;
+}
+
 // 创建预约
-function create(data: AppointmentRequest) {
-  return http.post('/server/api/appointments', {
-    title: data.title,
-    description: data.description,
-    startTime: data.startTime,
-    endTime: data.endTime
-  });
+function create(data: Appointment) {
+  return http.post('appointments', data);
 }
 
 // 获取预约列表
 function getList() {
-  return http.get<AppointmentResponse[]>('/server/api/appointments');
+  return http.get<AppointmentResponse[]>('appointments');
 }
 
 // 获取预约详情
 function getDetail(id: string) {
-  return http.get<AppointmentResponse>(`/server/api/appointments/${id}`);
+  return http.get<AppointmentResponse>(`appointments/${id}`);
 }
 
 // 更新预约
 function update(id: string, data: Partial<AppointmentRequest>) {
-  return http.put(`/server/api/appointments/${id}`, data);
+  return http.put(`appointments/${id}`, data);
 }
 
 // 删除预约
 function remove(id: string) {
-  return http.delete(`/server/api/appointments/${id}`);
+  return http.delete(`appointments/${id}`);
 }
 
 export default {

@@ -1,7 +1,10 @@
 'use client';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import AppointmentSuccess from './AppointmentSuccess';
+import appointmentsApi from '@/app/service/appointments/api';
+import Cookies from 'js-cookie';
 
 export default function AppointmentContent() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -11,6 +14,7 @@ export default function AppointmentContent() {
   const [selectedTimeZone, setSelectedTimeZone] = useState('GMT+8');
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const timeZones = [
     'GMT+8',
@@ -47,6 +51,31 @@ export default function AppointmentContent() {
     return `${monthNames[currentDate.getMonth()]}${date}号，${currentDate.getFullYear()}年${timeInChinese}`;
   };
 
+  const convertTimeFormat = (time: string): string => {
+    if (!time) return '';
+    
+    // 移除pm/am前的多余数字
+    const cleanTime = time.replace(/(\d+):00/, '$1');
+    const [hourStr, period] = cleanTime.split(/(?=[ap]m)/);
+    let hourNum = parseInt(hourStr);
+    
+    // 如果是下午，且不是12点，则加12
+    if (period === 'pm' && hourNum !== 12) {
+      hourNum += 12;
+    }
+    // 如果是上午12点，转为00点
+    if (period === 'am' && hourNum === 12) {
+      hourNum = 0;
+    }
+    
+    // 确保小时数在有效范围内
+    if (hourNum > 23) {
+      hourNum = hourNum - 12;
+    }
+    
+    return `${hourNum.toString().padStart(2, '0')}:00:00`;
+  };
+
   const handleMonthChange = (increment: number) => {
     setCurrentDate(prevDate => {
       const newDate = new Date(prevDate);
@@ -63,25 +92,47 @@ export default function AppointmentContent() {
     });
   };
 
-  const handleAppointment = () => {
+  const handleAppointment = async () => {
     if (!selectedDate && !selectedTime) {
-      setErrorMessage('请选择预约日期和时间');
+      toast.error('请选择预约日期和时间');
       return;
     }
     if (!selectedDate) {
-      setErrorMessage('请选择预约日期');
+      toast.error('请选择预约日期');
       return;
     }
     if (!selectedTime) {
-      setErrorMessage('请选择预约时间');
+      toast.error('请选择预约时间');
       return;
     }
-    setErrorMessage('');
-    setIsSuccess(true);
+
+    try {
+      setIsLoading(true);
+      const userDataStr = Cookies.get('userData');
+      let userData = {
+        id:""
+      }
+      if (userDataStr) {
+        userData = JSON.parse(userDataStr);
+      }
+
+      const formattedTime = convertTimeFormat(selectedTime);
+      const date = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1<10 ? '0' : ''}${currentDate.getMonth() + 1}-${Number(selectedDate)<10?`0${selectedDate}`:selectedDate} ${formattedTime}`
+      const appointmentData = {
+        userId: userData.id,
+        appointmentTime: date
+      };
+      await appointmentsApi.create(appointmentData).then(res=>{
+        setIsSuccess(true); 
+      });
+    } catch (error) {
+      toast.error('预约失败，请稍后重试');
+    } 
   };
 
+
   if (isSuccess) {
-    return (
+    return ( 
       <AppointmentSuccess 
         selectedDate={selectedDate}
         selectedTime={selectedTime}
@@ -96,170 +147,189 @@ export default function AppointmentContent() {
   }
 
   return (
-    <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px]">
-      <div className="block md:flex">
-        {/* 左侧内容 */}
-        <div className="w-full md:flex-1 md:max-w-[60vw] pt-[40px] md:pt-[80px] px-[20px] md:px-[60px]">
-          {/* 标题和分割线 */}
-          <div className="mb-[30px] md:mb-[40px]">
-            <div className="flex justify-between items-center md:flex-row md:justify-between md:items-center mb-4 h-[8vh]">
-              <h1 className="text-white text-[20px] md:text-[24px]">选择日期</h1>
-              <div className="relative">
-                <button 
-                  className="flex items-center gap-2 text-white text-[14px] md:text-[16px] px-4 py-2"
-                  onClick={() => setIsTimeZoneOpen(!isTimeZoneOpen)}
-                >
-                  <span className="opacity-60">*</span>
-                  <span>选择所在时区</span>
-                  <span className="text-[12px] ml-1">▼</span>
-                </button>
-                
-                {/* 下拉菜单 */}
-                {isTimeZoneOpen && (
-                  <div className="absolute top-full right-0 mt-1 w-[120px] bg-white rounded-md shadow-lg py-1 z-50">
-                    {timeZones.map((zone) => (
-                      <button
-                        key={zone}
-                        className="w-full px-4 py-2 text-left text-[#8E7362] hover:bg-gray-100"
-                        onClick={() => {
-                          setSelectedTimeZone(zone);
-                          setIsTimeZoneOpen(false);
-                        }}
-                      >
-                        {zone}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-            <div className="h-[1px] bg-white"></div>
-          </div>
-
-          <div className="flex flex-col md:flex-row md:gap-[80px]">
-            {/* 日历部分 */}
-            <div className="w-full md:w-[60%] mb-8 md:mb-0">
-              {/* 日历导航 */}
-              <div className="flex items-center justify-center gap-4 md:gap-8 mb-6">
-                <button 
-                  className="text-white text-[24px] md:text-[36px] leading-none"
-                  onClick={() => handleMonthChange(-1)}
-                >
-                  &lt;
-                </button>
-                <span className="text-white text-[14px]">
-                  {`${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`}
-                </span>
-                <button 
-                  className="text-white text-[24px] md:text-[36px] leading-none"
-                  onClick={() => handleMonthChange(1)}
-                >
-                  &gt;
-                </button>
-              </div>
-
-              {/* 日历表格 */}
-              <div className="grid grid-cols-7 gap-3 md:gap-6">
-                {/* 星期标题 */}
-                {['日', '一', '二', '三', '四', '五', '六'].map(day => (
-                  <div key={day} className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center">
-                    <span className="text-white text-[12px] md:text-[14px] opacity-60">
-                      {day}
-                    </span>
-                  </div>
-                ))}
-                
-                {/* 空白格子 - 月初前的空格 */}
-                {Array.from({ length: firstDayOfMonth }, (_, i) => (
-                  <div key={`empty-${i}`} className="w-6 h-6 md:w-8 md:h-8" />
-                ))}
-                
-                {/* 日期格子 */}
-                {Array.from({ length: daysInMonth }, (_, i) => {
-                  const day = i + 1;
-                  const dateString = `${day}`;
-
-                  return (
-                    <button
-                      key={day}
-                      className={`w-6 h-6 md:w-8 md:h-8 flex items-center justify-center rounded-full
-                        ${selectedDate === dateString 
-                          ? 'bg-[#8E7362] text-[#ffffff]' 
-                          : 'text-white hover:bg-white/10'}`}
-                      onClick={() => setSelectedDate(dateString)}
-                    >
-                      <span className="text-[12px] md:text-[14px]">{day}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* 时间选择部分 */}
-            <div className="w-full md:w-[40%]">
-              <div className="mb-4 md:mb-6">
-                <p className="text-white text-[12px] md:text-[14px] opacity-60">
-                  {selectedDate 
-                    ? formatDateTime(selectedDate, selectedTime)
-                    : formatDateTime(new Date().getDate().toString(), selectedTime)}
-                </p>
-              </div>
-              <div className="grid grid-cols-3 gap-2 md:gap-x-4 md:gap-y-8">
-                {timeSlots.map(time => (
-                  <button
-                    key={time}
-                    className={`h-10 md:h-14 flex items-center justify-center rounded-full border border-white
-                      ${selectedTime === time 
-                        ? 'bg-[#CAA794] text-[#ffffff] border-none' 
-                        : 'text-white hover:border-white/40'}`}
-                    onClick={() => setSelectedTime(time)}
+    <>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px]">
+        <div className="block md:flex">
+          {/* 左侧内容 */}
+          <div className="w-full md:flex-1 md:max-w-[60vw] pt-[40px] md:pt-[80px] px-[20px] md:px-[60px]">
+            {/* 标题和分割线 */}
+            <div className="mb-[30px] md:mb-[40px]">
+              <div className="flex justify-between items-center md:flex-row md:justify-between md:items-center mb-4 h-[8vh]">
+                <h1 className="text-white text-[20px] md:text-[24px]">选择日期</h1>
+                <div className="relative">
+                  <button 
+                    className="flex items-center gap-2 text-white text-[14px] md:text-[16px] px-4 py-2"
+                    onClick={() => setIsTimeZoneOpen(!isTimeZoneOpen)}
                   >
-                    <span className="text-[12px] md:text-[14px]">{time}</span>
+                    <span className="opacity-60">*</span>
+                    <span>选择所在时区</span>
+                    <span className="text-[12px] ml-1">▼</span>
                   </button>
-                ))}
+                  
+                  {/* 下拉菜单 */}
+                  {isTimeZoneOpen && (
+                    <div className="absolute top-full right-0 mt-1 w-[120px] bg-white rounded-md shadow-lg py-1 z-50">
+                      {timeZones.map((zone) => (
+                        <button
+                          key={zone}
+                          className="w-full px-4 py-2 text-left text-[#8E7362] hover:bg-gray-100"
+                          onClick={() => {
+                            setSelectedTimeZone(zone);
+                            setIsTimeZoneOpen(false);
+                          }}
+                        >
+                          {zone}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="h-[1px] bg-white"></div>
+            </div>
+
+            <div className="flex flex-col md:flex-row md:gap-[80px]">
+              {/* 日历部分 */}
+              <div className="w-full md:w-[60%] mb-8 md:mb-0">
+                {/* 日历导航 */}
+                <div className="flex items-center justify-center gap-4 md:gap-8 mb-6">
+                  <button 
+                    className="text-white text-[24px] md:text-[36px] leading-none"
+                    onClick={() => handleMonthChange(-1)}
+                  >
+                    &lt;
+                  </button>
+                  <span className="text-white text-[14px]">
+                    {`${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`}
+                  </span>
+                  <button 
+                    className="text-white text-[24px] md:text-[36px] leading-none"
+                    onClick={() => handleMonthChange(1)}
+                  >
+                    &gt;
+                  </button>
+                </div>
+
+                {/* 日历表格 */}
+                <div className="grid grid-cols-7 gap-3 md:gap-6">
+                  {/* 星期标题 */}
+                  {['日', '一', '二', '三', '四', '五', '六'].map(day => (
+                    <div key={day} className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center">
+                      <span className="text-white text-[12px] md:text-[14px] opacity-60">
+                        {day}
+                      </span>
+                    </div>
+                  ))}
+                  
+                  {/* 空白格子 - 月初前的空格 */}
+                  {Array.from({ length: firstDayOfMonth }, (_, i) => (
+                    <div key={`empty-${i}`} className="w-6 h-6 md:w-8 md:h-8" />
+                  ))}
+                  
+                  {/* 日期格子 */}
+                  {Array.from({ length: daysInMonth }, (_, i) => {
+                    const day = i + 1;
+                    const dateString = `${day}`;
+
+                    return (
+                      <button
+                        key={day}
+                        className={`w-6 h-6 md:w-8 md:h-8 flex items-center justify-center rounded-full
+                          ${selectedDate === dateString 
+                            ? 'bg-[#8E7362] text-[#ffffff]' 
+                            : 'text-white hover:bg-white/10'}`}
+                        onClick={() => setSelectedDate(dateString)}
+                      >
+                        <span className="text-[12px] md:text-[14px]">{day}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* 时间选择部分 */}
+              <div className="w-full md:w-[40%]">
+                <div className="mb-4 md:mb-6">
+                  <p className="text-white text-[12px] md:text-[14px] opacity-60">
+                    {selectedDate 
+                      ? formatDateTime(selectedDate, selectedTime)
+                      : formatDateTime(new Date().getDate().toString(), selectedTime)}
+                  </p>
+                </div>
+                <div className="grid grid-cols-3 gap-2 md:gap-x-4 md:gap-y-8">
+                  {timeSlots.map(time => (
+                    <button
+                      key={time}
+                      className={`h-10 md:h-14 flex items-center justify-center rounded-full border border-white
+                        ${selectedTime === time 
+                          ? 'bg-[#CAA794] text-[#ffffff] border-none' 
+                          : 'text-white hover:border-white/40'}`}
+                      onClick={() => setSelectedTime(time)}
+                    >
+                      <span className="text-[12px] md:text-[14px]">{time}</span>
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* 右侧内容 */}
-        <div className="w-full md:w-[360px] pt-[40px] md:pt-[80px] px-[20px] md:px-[60px] border-t md:border-t-0 border-white/20 mt-6 md:mt-0">
-          {/* 标题和分割线 */}
-          <div className="mb-[30px] md:mb-[40px]">
-            <div className="flex justify-between items-center mb-4 h-[8vh]">
-              <h2 className="text-white text-[16px]">预约详细信息</h2>
+          {/* 右侧内容 */}
+          <div className="w-full md:w-[360px] pt-[40px] md:pt-[80px] px-[20px] md:px-[60px] border-t md:border-t-0 border-white/20 mt-6 md:mt-0">
+            {/* 标题和分割线 */}
+            <div className="mb-[30px] md:mb-[40px]">
+              <div className="flex justify-between items-center mb-4 h-[8vh]">
+                <h2 className="text-white text-[16px]">预约详细信息</h2>
+              </div>
+              <div className="h-[1px] bg-transparent"></div>
             </div>
-            <div className="h-[1px] bg-transparent"></div>
-          </div>
 
-          {/* 预约信息 */}
-          <div className="flex flex-col">
-            <h3 className="text-white text-[14px] md:text-[16px] mb-2">成为准父母</h3>
-            <p className="text-white text-[14px] md:text-[16px]">
-              {selectedDate 
-                ? formatDateTime(selectedDate, selectedTime)
-                : formatDateTime(new Date().getDate().toString(), selectedTime)}
-            </p>
-            <div className="flex flex-col items-start mb-[env(safe-area-inset-bottom)] md:mb-0">
-              {errorMessage && (
-                <p className="text-[#FF3B30] text-[12px] md:text-[14px] mb-2 font-medium">
-                  {errorMessage}
-                </p>
-              )}
-              <button 
-                className="mt-2 bg-[#CDC5C0] text-[#000] text-[14px] md:text-[16px] 
-                  w-[100px] md:w-[120px] h-[40px] md:h-[48px] 
-                  rounded-[8px] hover:opacity-90 transition-opacity
-                  mb-[20px]
-                  "
-                onClick={handleAppointment}
-              >
-                预约
-              </button>
+            {/* 预约信息 */}
+            <div className="flex flex-col">
+              <h3 className="text-white text-[14px] md:text-[16px] mb-2">成为准父母</h3>
+              <p className="text-white text-[14px] md:text-[16px]">
+                {selectedDate 
+                  ? formatDateTime(selectedDate, selectedTime)
+                  : formatDateTime(new Date().getDate().toString(), selectedTime)}
+              </p>
+              <div className="flex flex-col items-start mb-[env(safe-area-inset-bottom)] md:mb-0">
+                {errorMessage && (
+                  <p className="text-[#FF3B30] text-[12px] md:text-[14px] mb-2 font-medium">
+                    {errorMessage}
+                  </p>
+                )}
+                <button 
+                  className="mt-2 bg-[#CDC5C0] text-[#000] text-[14px] md:text-[16px] 
+                    w-[100px] md:w-[120px] h-[40px] md:h-[48px] 
+                    rounded-[8px] hover:opacity-90 transition-opacity
+                    mb-[20px] flex items-center justify-center gap-2"
+                  onClick={handleAppointment}
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+                      <span>预约中...</span>
+                    </>
+                  ) : '预约'}
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 } 
