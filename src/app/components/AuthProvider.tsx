@@ -17,7 +17,7 @@ interface AuthContextType {
   isAuthenticated: boolean;
   login: (params: loginParams) => void;
   logout: () => void;
-  register: () => void;
+  register: (params: registerParams) => void;
 }
 
 interface loginParams {
@@ -25,11 +25,23 @@ interface loginParams {
   password: string;
 }
 
+interface registerParams {
+  email: string;
+  password: string;
+  name: string;
+  phoneNumber: string;
+  dateOfBirth: string;
+  city: string;
+  country: string;
+  postalCode: string;
+  address: string;
+}
+
 export const AuthContext = createContext<AuthContextType>({
   isAuthenticated: false, 
   login: async () => ({ code: 401 }),
   logout: () => {},
-  register: () => {},
+  register: async () => {},
 });
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
@@ -47,11 +59,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             setIsAuthenticated(true);
             break;
           case 401:
-            toast.error('登录失败，请检查邮箱和密码');
+            toast.error(res.message);
             setIsAuthenticated(false);
             break;
           case 404:
-            toast.error('用户不存在，请先注册');
+            toast.error(res.message);
             setIsAuthenticated(false);
             break;
           default:
@@ -69,9 +81,37 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     router.push('/auth/login');
   };
 
-  const register = () => {
+  const register = async (formData:registerParams) => {
     // 实现注册逻辑
-    setIsAuthenticated(true);
+    await authApi.register({
+      email: formData.email,
+      password: formData.password,
+      name: formData.name,
+      phoneNumber: formData.phoneNumber,
+      dateOfBirth: formData.dateOfBirth,
+      city: formData.city,
+      country: formData.country,
+      postalCode: formData.postalCode,
+      address: formData.address
+    }).then((res:any) => {
+      
+      switch(res.code){
+        case 200:
+          Cookies.set('userData', JSON.stringify(res.data), { expires: 30 });
+          toast.success('注册成功');
+          router.push('/');
+          setIsAuthenticated(true);
+          break;
+        case 409:
+        console.log("注册失败");
+        toast.error(res.message);
+        setIsAuthenticated(false);
+          break;
+        default:
+          break;
+      }
+ 
+    })    
   };
 
   return (

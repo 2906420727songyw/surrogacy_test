@@ -83,7 +83,7 @@ function LoginContent() {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     aria-label="电子邮件地址"
-                    className="w-full h-[40px] md:h-[50px] px-4 bg-white border-none text-sm md:text-base rounded-lg"
+                    className="w-full h-[40px] md:h-[50px] px-4 bg-white border-none text-sm md:text-base rounded-lg text-black"
                   />
                 </div>
                 
@@ -100,7 +100,7 @@ function LoginContent() {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                     aria-label="密码"
-                    className="w-full h-[40px] md:h-[50px] px-4 bg-white border-none text-sm md:text-base rounded-lg"
+                    className="w-full h-[40px] md:h-[50px] px-4 bg-white border-none text-sm md:text-base rounded-lg text-black"
                   />
                 </div>
                 

@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import authApi from '@/app/service/auth/api';
-import { routes } from '@/app/routes';
 import DateField from '../profile/components/shared/DateField';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useAuth } from '@/app/components/AuthProvider';
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -19,7 +19,9 @@ export default function RegisterPage() {
     address: ''
   });
   const [agreeTerms, setAgreeTerms] = useState(false);
-  const router = useRouter();
+  const [confirmPassword,setConfirmPassword] = useState("")
+  const [isLoading, setIsLoading] = useState(false);
+  const { register } = useAuth();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -29,34 +31,34 @@ export default function RegisterPage() {
     }));
   };
 
+  const passwordMatch = (e:React.ChangeEvent<HTMLInputElement>) => {
+    setConfirmPassword(e.target.value)
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       if (!agreeTerms) {
-        alert('请同意服务条款');
+        toast.error('请同意服务条款');
         return;
       }
-
-      await authApi.register({
-        email: formData.email,
-        password: formData.password,
-        name: formData.name,
-        phoneNumber: formData.phoneNumber,
-        dateOfBirth: formData.dateOfBirth,
-        city: formData.city,
-        country: formData.country,
-        postalCode: formData.postalCode,
-        address: formData.address
-      });
+      if(formData.password !== confirmPassword){
+        toast.error('密码不一致');
+        return;
+      }
+      setIsLoading(true);
+      await register(formData);
       
-      router.push(routes.auth.profile);
     } catch (error) {
       console.error('注册失败:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="min-h-screen w-full flex justify-center items-center bg-[#A48472] py-20">
+      <ToastContainer />
       <div className="w-full max-w-[1000px] px-10">
         <h1 className="text-white text-[48px] font-normal text-center mb-[80px] mt-[5vh]">
           使用电子邮件地址创建账户
@@ -84,6 +86,8 @@ export default function RegisterPage() {
               type="password"
               name="password"
               required
+              onChange={handleChange}
+              value={formData.password}
               aria-label="所需密码"
               className="w-full h-[50px] px-4 bg-white border-none text-base rounded-lg"
             />
@@ -95,6 +99,8 @@ export default function RegisterPage() {
             <input
               type="password"
               name="confirmPassword"
+              value={confirmPassword}
+              onChange={passwordMatch}
               required
               aria-label="确认密码"
               className="w-full h-[50px] px-4 bg-white border-none text-base rounded-lg"
@@ -232,10 +238,16 @@ export default function RegisterPage() {
           </div>
           <button
             type="submit"
+            disabled={isLoading}
             className="w-full md:w-[120px] h-10 md:h-12 bg-[#D9D9D9] text-black text-sm md:text-base rounded-lg border-none 
-              transition-opacity hover:opacity-90 mb-[2vh]"
+              transition-opacity hover:opacity-90 mb-[2vh] flex items-center justify-center gap-2"
           >
-            创建账户
+            {isLoading ? (
+              <>
+                <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+                <span>创建中...</span>
+              </>
+            ) : '创建账户'}
           </button>
         </form>
       </div>

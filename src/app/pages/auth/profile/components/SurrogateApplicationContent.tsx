@@ -6,6 +6,7 @@ import DateField from './shared/DateField';
 interface ApplicationForm {
   name: string;
   birthDate: string;
+  age:string;
   height: string;
   weight: string;
   race: string;
@@ -37,6 +38,7 @@ export default function SurrogateApplicationContent() {
   const [formData, setFormData] = useState<ApplicationForm>({
     name: '',
     birthDate: '',
+    age:"",
     height: '',
     weight: '',
     race: '',
@@ -96,8 +98,8 @@ export default function SurrogateApplicationContent() {
             />
             <FormField 
               label="您的年龄 *" 
-              name="birthDate"
-              value={formData.birthDate}
+              name="age"
+              value={formData.age}
               onChange={handleInputChange}
             />
           </div>
