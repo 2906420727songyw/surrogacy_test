@@ -7,10 +7,13 @@ import { routes } from '@/app/routes/index';
 import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
+import Cookies from 'js-cookie';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeItem, setActiveItem] = useState('');
+  const [userName, setUserName] = useState('登录');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const currentPath = usePathname();
   const router = useRouter();
@@ -58,7 +61,7 @@ export default function Header() {
   const handleItemClick = (item: string) => {
     setActiveItem(item);
     setIsMenuOpen(false);
-    
+
   };
 
   const scrollToTop = () => {
@@ -183,6 +186,35 @@ export default function Header() {
     setIsMenuOpen(false);
   };
 
+  useEffect(() => {
+    // 监听 cookie 中的 userData
+    const checkUserData = () => {
+      const userDataStr = Cookies.get('userData');
+      if (userDataStr) {
+        try {
+          const userData = JSON.parse(userDataStr);
+          setUserName(userData.name || '登录');
+          setIsLoggedIn(true);
+        } catch {
+          setUserName('登录');
+          setIsLoggedIn(false);
+        }
+      } else {
+        setUserName('登录');
+        setIsLoggedIn(false);
+      }
+    };
+
+    // 初始检查
+    checkUserData();
+
+    // 设置定时器定期检查
+    const timer = setInterval(checkUserData, 1000);
+
+    // 清理函数
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <header className={`${styles.header} ${isMenuOpen ? styles.menuOpen : ''}`}>
       <div className={styles.logo}>
@@ -196,15 +228,16 @@ export default function Header() {
       >
         <span className={styles.menuIcon}></span>
       </button>
+
       <nav ref={menuRef} className={`${styles.nav} ${isMenuOpen ? styles.open : ''}`}>
         <div className={styles.navWrapper}>
           <div className={styles.navContent}>
             <ul>
               <li>
                 <div className={styles.dropdown}>
-                  <Link 
-                    href="/pages/ParentsSection" 
-                    className={activeItem === 'parents' ? styles.active : ''} 
+                  <Link
+                    href="/pages/ParentsSection"
+                    className={activeItem === 'parents' ? styles.active : ''}
                     onClick={() => handleItemClick('parents')}
                   >
                     成为准父母
@@ -220,9 +253,9 @@ export default function Header() {
               </li>
               <li className={styles.about}>
                 <div className={styles.dropdown}>
-                  <Link 
-                    href="/pages/BecomeSurrogate" 
-                    className={activeItem === 'surrogate' ? styles.active : ''} 
+                  <Link
+                    href="/pages/BecomeSurrogate"
+                    className={activeItem === 'surrogate' ? styles.active : ''}
                     onClick={() => handleItemClick('surrogate')}
                   >
                     成为代孕母亲
@@ -237,9 +270,9 @@ export default function Header() {
                 </div>
               </li>
               <li className={styles.about}>
-                <Link 
-                  href="/pages/about" 
-                  className={activeItem === 'about' ? styles.active : ''} 
+                <Link
+                  href="/pages/about"
+                  className={activeItem === 'about' ? styles.active : ''}
                   onClick={() => handleItemClick('about')}
                 >
                   关于我们
@@ -265,58 +298,79 @@ export default function Header() {
         </div>
         {isMenuOpen && (
           <div className={styles.mobileActions}>
-            <div className={styles.dropdown}>
-              <div className={styles.login}>
-                登录
+            {isLoggedIn ? (
+              <div className={styles.login} onClick={() => {
+                router.push(routes.appointment);
+                setIsMenuOpen(false);
+              }}>
+                {userName}
               </div>
-              <div className={styles.dropdownContent}>
-                <div 
-                  className={styles.loginDropdownItem} 
-                  onClick={() => {
-                    router.push(routes.auth.login);
-                    setIsMenuOpen(false);
-                  }}
-                >
-                  成为准父母
+                      
+            ) : (
+              <div className={styles.dropdown}>
+                <div className={styles.login} onClick={() => {
+                  router.push(routes.appointment);
+                  setIsMenuOpen(false);
+                }}>
+                  登录
                 </div>
-                <div 
-                  className={styles.loginDropdownItem} 
-                  onClick={() => {
-                    router.push(routes.auth.login);
-                    setIsMenuOpen(false);
-                  }}
-                >
-                  成为代孕母
+                <div className={styles.dropdownContent}>
+                  <div
+                    className={styles.loginDropdownItem}
+                    onClick={() => {
+                      router.push(routes.auth.login + '?type=intended');
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    成为准父母
+                  </div>
+                  <div
+                    className={styles.loginDropdownItem}
+                    onClick={() => {
+                      router.push(routes.auth.login + '?type=surrogate');
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    成为代孕母
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
             <div className={styles.dropdown}>
               <div className={styles.appointment}>
                 预约
               </div>
               <div className={styles.dropdownContent}>
-                <div 
-                  className={styles.appointmentDropdownItem} 
+                <div
+                  className={styles.appointmentDropdownItem}
                   onClick={() => {
-                    router.push(routes.appointment);
+                    if (isLoggedIn) {
+                      router.push(routes.appointment);
+                    } else {
+                      router.push(routes.auth.login );
+                    }
                     setIsMenuOpen(false);
                   }}
                 >
                   成为准父母
                 </div>
-                <div 
-                  className={styles.appointmentDropdownItem} 
+                <div
+                  className={styles.appointmentDropdownItem}
                   onClick={() => {
-                    router.push(routes.appointment);
+                    if (isLoggedIn) {
+                      router.push(routes.appointment+"?type=surrogacy");
+                    } else {
+                      router.push(routes.auth.login);
+                    }
                     setIsMenuOpen(false);
                   }}
-                >
+                > 
                   成为代孕母
                 </div>
               </div>
             </div>
-            <Link 
-              href={routes.search} 
+            <Link
+              href={routes.search}
               className={styles.search}
               onClick={() => setIsMenuOpen(false)}
             >
@@ -325,33 +379,61 @@ export default function Header() {
           </div>
         )}
       </nav>
+
       <div className={styles.actions}>
-        <div className={styles.dropdown}>
-          <Link href={routes.auth.login} className={styles.login}>
-            登录
-          </Link>
-          <div className={`${styles.dropdownContent} ${isMenuOpen ? styles.open : ''}`}>
-            <div className={styles.loginDropdownItem} onClick={() => {
-              router.push(routes.auth.login);
-              setIsMenuOpen(false);
-            }}>成为准父母</div>
-            <div className={styles.loginDropdownItem} onClick={() => {
-              router.push(routes.auth.login);
-              setIsMenuOpen(false);
-            }}>成为代孕母</div>
+        {isLoggedIn ? (
+          <div className={styles.login} onClick={() => {
+            router.push(routes.appointment);
+            setIsMenuOpen(false);
+          }}>
+            {userName}
           </div>
-        </div>
+        ) : (
+          <div className={styles.dropdown}>
+            <div className={styles.login}>
+              登录
+            </div>
+            <div className={styles.dropdownContent}>
+              <div
+                className={styles.loginDropdownItem}
+                onClick={() => {
+                  router.push(routes.auth.login);
+                  setIsMenuOpen(false);
+                }}
+              >
+                成为准父母
+              </div>
+              <div
+                className={styles.loginDropdownItem}
+                onClick={() => {
+                  router.push(routes.auth.login);
+                  setIsMenuOpen(false);
+                }}
+              >
+                成为代孕母
+              </div>
+            </div>
+          </div>
+        )}
         <div className={styles.dropdown}>
-          <Link href={routes.appointment} className={styles.appointment}>
-            预约
-          </Link>
+        <div className={styles.appointment}>
+                预约
+              </div>
           <div className={`${styles.dropdownContent} ${isMenuOpen ? styles.open : ''}`}>
             <div className={styles.appointmentDropdownItem} onClick={() => {
-              router.push(routes.appointment);
+              if (isLoggedIn) {
+                router.push(routes.appointment);
+              } else {
+                router.push(routes.auth.login + '?mode=register');
+              }
               setIsMenuOpen(false);
             }}>成为准父母</div>
             <div className={styles.appointmentDropdownItem} onClick={() => {
-              router.push(routes.appointment);
+              if (isLoggedIn) {
+                router.push(routes.appointment+"?type=surrogacy");
+              } else {
+                router.push(routes.auth.login + '?mode=register');
+              }
               setIsMenuOpen(false);
             }}>成为代孕母</div>
           </div>

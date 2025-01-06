@@ -229,7 +229,7 @@ export default function SurrogateApplicationContent() {
             <button
               type="submit"
               className="w-full md:w-auto bg-[#CDC5C0] text-[#000] text-[14px] md:text-[16px] 
-                px-[24px] py-[8px] rounded-[4px] hover:opacity-90 transition-opacity"
+                px-[24px] py-[8px] rounded-[4px] hover:opacity-90 transition-opacity mb-[10px]"
             >
               提交申请
             </button>

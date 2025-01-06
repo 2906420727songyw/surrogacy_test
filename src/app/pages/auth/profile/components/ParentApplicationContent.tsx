@@ -104,7 +104,7 @@ export default function ParentApplicationContent() {
             phone: '电话号码 *',
             email: '电子邮件 *'
           }).map(([key, label]) => (
-            <div key={key} className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+            <div key={key} className="flex flex-col gap-2">
               <label className="text-white/80 text-[12px] md:text-[14px]">
                 {label}
               </label>
@@ -113,13 +113,13 @@ export default function ParentApplicationContent() {
                 name={key}
                 value={formData[key as keyof ApplicationForm]}
                 onChange={handleInputChange}
-                className="text-white text-[12px] md:text-[14px] bg-transparent border-b border-white/20 focus:border-white outline-none px-2 py-1"
+                className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
               />
             </div>
           ))}
 
           {/* 日期字段 */}
-          <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+          <div className="flex flex-col gap-2">
             <label className="text-white/80 text-[12px] md:text-[14px]">
               出生日期 *
             </label>
@@ -128,12 +128,12 @@ export default function ParentApplicationContent() {
               name="birthDate"
               value={formData.birthDate}
               onChange={handleInputChange}
-              className="text-white text-[12px] md:text-[14px] bg-transparent border-b border-white/20 focus:border-white outline-none px-2 py-1"
+              className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
             />
           </div>
 
           {/* 婚姻状态字段 */}
-          <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+          <div className="flex flex-col gap-2">
             <label className="text-white/80 text-[12px] md:text-[14px]">
               婚姻状态 *
             </label>
@@ -142,12 +142,12 @@ export default function ParentApplicationContent() {
               name="maritalStatus"
               value={formData.maritalStatus}
               onChange={handleInputChange}
-              className="text-white text-[12px] md:text-[14px] bg-transparent border-b border-white/20 focus:border-white outline-none px-2 py-1"
+              className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
             />
           </div>
 
           {/* 伴侣信息字段 */}
-          <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+          <div className="flex flex-col gap-2">
             <label className="text-white/80 text-[12px] md:text-[14px]">
               伴侣的名和姓 *
             </label>
@@ -156,11 +156,11 @@ export default function ParentApplicationContent() {
               name="spouseName"
               value={formData.spouseName}
               onChange={handleInputChange}
-              className="text-white text-[12px] md:text-[14px] bg-transparent border-b border-white/20 focus:border-white outline-none px-2 py-1"
+              className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
             />
           </div>
 
-          <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+          <div className="flex flex-col gap-2">
             <label className="text-white/80 text-[12px] md:text-[14px]">
               伴侣的出生日期 *
             </label>
@@ -169,25 +169,29 @@ export default function ParentApplicationContent() {
               name="spouseBirthDate"
               value={formData.spouseBirthDate}
               onChange={handleInputChange}
-              className="text-white text-[12px] md:text-[14px] bg-transparent border-b border-white/20 focus:border-white outline-none px-2 py-1"
+              className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
             />
           </div>
 
-          {/* 单选框组 */}
           {/* 性取向 */}
           <div className="flex flex-col space-y-2">
             <label className="text-white/80 text-[12px] md:text-[14px]">性取向 *</label>
-            <div className="grid grid-cols-2 md:flex md:space-x-12 gap-4 md:gap-0">
+            <div className="grid grid-cols-2 md:flex md:flex-wrap gap-4 md:gap-8">
               {['异性恋', '同性恋', '双性恋', '酷儿'].map(option => (
                 <label key={option} className="flex items-center space-x-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="orientation"
-                    value={option}
-                    checked={formData.orientation === option}
-                    onChange={handleInputChange}
-                    className="text-white"
-                  />
+                  <div className="relative flex items-center">
+                    <input
+                      type="radio"
+                      name="orientation"
+                      value={option}
+                      checked={formData.orientation === option}
+                      onChange={handleInputChange}
+                      className="appearance-none w-[18px] h-[18px] border border-white rounded-[2px] bg-transparent checked:bg-white"
+                    />
+                    {formData.orientation === option && (
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black text-sm">✓</div>
+                    )}
+                  </div>
                   <span className="text-white text-[12px] md:text-[14px]">{option}</span>
                 </label>
               ))}
@@ -197,17 +201,22 @@ export default function ParentApplicationContent() {
           {/* 服务类型 */}
           <div className="flex flex-col space-y-2">
             <label className="text-white/80 text-[12px] md:text-[14px]">您需要什么服务 *</label>
-            <div className="grid grid-cols-2 md:flex md:space-x-12 gap-4 md:gap-0">
+            <div className="grid grid-cols-2 md:flex md:flex-wrap gap-4 md:gap-8">
               {['取卵/胚胎', '代孕', '捐卵/捐精'].map(option => (
                 <label key={option} className="flex items-center space-x-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="serviceType"
-                    value={option}
-                    checked={formData.serviceType === option}
-                    onChange={handleInputChange}
-                    className="text-white"
-                  />
+                  <div className="relative flex items-center">
+                    <input
+                      type="radio"
+                      name="serviceType"
+                      value={option}
+                      checked={formData.serviceType === option}
+                      onChange={handleInputChange}
+                      className="appearance-none w-[18px] h-[18px] border border-white rounded-[2px] bg-transparent checked:bg-white"
+                    />
+                    {formData.serviceType === option && (
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black text-sm">✓</div>
+                    )}
+                  </div>
                   <span className="text-white text-[12px] md:text-[14px]">{option}</span>
                 </label>
               ))}
@@ -218,17 +227,22 @@ export default function ParentApplicationContent() {
           {/* 逮捕记录 */}
           <div className="flex flex-col space-y-2">
             <label className="text-white/80 text-[12px] md:text-[14px]">您或您的伴侣曾被逮捕过吗？ *</label>
-            <div className="flex space-x-8">
+            <div className="flex gap-8">
               {['有', '没有'].map(option => (
                 <label key={option} className="flex items-center space-x-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="hasBeenArrested"
-                    value={option}
-                    checked={formData.hasBeenArrested === option}
-                    onChange={handleInputChange}
-                    className="text-white"
-                  />
+                  <div className="relative flex items-center">
+                    <input
+                      type="radio"
+                      name="hasBeenArrested"
+                      value={option}
+                      checked={formData.hasBeenArrested === option}
+                      onChange={handleInputChange}
+                      className="appearance-none w-[18px] h-[18px] border border-white rounded-[2px] bg-transparent checked:bg-white"
+                    />
+                    {formData.hasBeenArrested === option && (
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black text-sm">✓</div>
+                    )}
+                  </div>
                   <span className="text-white text-[12px] md:text-[14px]">{option}</span>
                 </label>
               ))}
@@ -238,17 +252,22 @@ export default function ParentApplicationContent() {
           {/* 定罪记录 */}
           <div className="flex flex-col space-y-2">
             <label className="text-white/80 text-[12px] md:text-[14px]">您或您的伴侣有没有曾经被判决有罪？ *</label>
-            <div className="flex space-x-8">
+            <div className="flex gap-8">
               {['有', '没有'].map(option => (
                 <label key={option} className="flex items-center space-x-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="hasBeenConvicted"
-                    value={option}
-                    checked={formData.hasBeenConvicted === option}
-                    onChange={handleInputChange}
-                    className="text-white"
-                  />
+                  <div className="relative flex items-center">
+                    <input
+                      type="radio"
+                      name="hasBeenConvicted"
+                      value={option}
+                      checked={formData.hasBeenConvicted === option}
+                      onChange={handleInputChange}
+                      className="appearance-none w-[18px] h-[18px] border border-white rounded-[2px] bg-transparent checked:bg-white"
+                    />
+                    {formData.hasBeenConvicted === option && (
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black text-sm">✓</div>
+                    )}
+                  </div>
                   <span className="text-white text-[12px] md:text-[14px]">{option}</span>
                 </label>
               ))}
@@ -258,17 +277,22 @@ export default function ParentApplicationContent() {
           {/* 服务时长 */}
           <div className="flex flex-col space-y-2">
             <label className="text-white/80 text-[12px] md:text-[14px]">服务时长 *</label>
-            <div className="grid grid-cols-2 md:flex md:space-x-8 gap-4 md:gap-0">
+            <div className="grid grid-cols-2 md:flex md:flex-wrap gap-4 md:gap-8">
               {['0-3个月', '4-6个月', '7-12个月', '大于12个月'].map(option => (
                 <label key={option} className="flex items-center space-x-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="serviceDuration"
-                    value={option}
-                    checked={formData.serviceDuration === option}
-                    onChange={handleInputChange}
-                    className="text-white"
-                  />
+                  <div className="relative flex items-center">
+                    <input
+                      type="radio"
+                      name="serviceDuration"
+                      value={option}
+                      checked={formData.serviceDuration === option}
+                      onChange={handleInputChange}
+                      className="appearance-none w-[18px] h-[18px] border border-white rounded-[2px] bg-transparent checked:bg-white"
+                    />
+                    {formData.serviceDuration === option && (
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black text-sm">✓</div>
+                    )}
+                  </div>
                   <span className="text-white text-[12px] md:text-[14px]">{option}</span>
                 </label>
               ))}
@@ -278,17 +302,22 @@ export default function ParentApplicationContent() {
           {/* 诊所合作 */}
           <div className="flex flex-col space-y-2">
             <label className="text-white/80 text-[12px] md:text-[14px]">您目前有一起合作的试管婴儿诊所吗？ *</label>
-            <div className="flex space-x-12">
+            <div className="flex gap-8">
               {['有', '没有'].map(option => (
                 <label key={option} className="flex items-center space-x-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="hasClinic"
-                    value={option}
-                    checked={formData.hasClinic === option}
-                    onChange={handleInputChange}
-                    className="text-white"
-                  />
+                  <div className="relative flex items-center">
+                    <input
+                      type="radio"
+                      name="hasClinic"
+                      value={option}
+                      checked={formData.hasClinic === option}
+                      onChange={handleInputChange}
+                      className="appearance-none w-[18px] h-[18px] border border-white rounded-[2px] bg-transparent checked:bg-white"
+                    />
+                    {formData.hasClinic === option && (
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black text-sm">✓</div>
+                    )}
+                  </div>
                   <span className="text-white text-[12px] md:text-[14px]">{option}</span>
                 </label>
               ))}
@@ -297,16 +326,16 @@ export default function ParentApplicationContent() {
 
           {/* 诊所名称 - 条件渲染 */}
           {formData.hasClinic === '有' && (
-            <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+            <div className="flex flex-col space-y-2">
               <label className="text-white/80 text-[12px] md:text-[14px]">
-                请列出诊所名字
+                如果有的话，请列出诊所名字
               </label>
               <input
                 type="text"
                 name="clinicName"
                 value={formData.clinicName}
                 onChange={handleInputChange}
-                className="text-white text-[12px] md:text-[14px] bg-transparent border-b border-white/20 focus:border-white outline-none px-2 py-1"
+                className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
               />
             </div>
           )}
@@ -314,17 +343,22 @@ export default function ParentApplicationContent() {
           {/* 冷冻胚胎 */}
           <div className="flex flex-col space-y-2">
             <label className="text-white/80 text-[12px] md:text-[14px]">您目前有冷冻胚胎吗？ *</label>
-            <div className="flex space-x-12">
+            <div className="flex gap-8">
               {['有', '没有'].map(option => (
                 <label key={option} className="flex items-center space-x-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="hasFrozenEmbryo"
-                    value={option}
-                    checked={formData.hasFrozenEmbryo === option}
-                    onChange={handleInputChange}
-                    className="text-white"
-                  />
+                  <div className="relative flex items-center">
+                    <input
+                      type="radio"
+                      name="hasFrozenEmbryo"
+                      value={option}
+                      checked={formData.hasFrozenEmbryo === option}
+                      onChange={handleInputChange}
+                      className="appearance-none w-[18px] h-[18px] border border-white rounded-[2px] bg-transparent checked:bg-white"
+                    />
+                    {formData.hasFrozenEmbryo === option && (
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black text-sm">✓</div>
+                    )}
+                  </div>
                   <span className="text-white text-[12px] md:text-[14px]">{option}</span>
                 </label>
               ))}
@@ -333,25 +367,26 @@ export default function ParentApplicationContent() {
 
           {/* 胚胎位置 - 条件渲染 */}
           {formData.hasFrozenEmbryo === '有' && (
-            <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+            <div className="flex flex-col space-y-2">
               <label className="text-white/80 text-[12px] md:text-[14px]">
-                请告诉我们在哪里
+                如果有的话，请告诉我们在哪里
               </label>
               <input
                 type="text"
                 name="embryoLocation"
                 value={formData.embryoLocation}
                 onChange={handleInputChange}
-                className="text-white text-[12px] md:text-[14px] bg-transparent border-b border-white/20 focus:border-white outline-none px-2 py-1"
+                className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
               />
             </div>
           )}
 
           {/* 提交按钮 */}
-          <div className="mt-[30px] md:mt-[40px]">
+          <div className="mt-[32px] md:mt-[40px]">
             <button
               type="submit"
-              className="text-white text-[20px] md:text-[24px] hover:opacity-80 border-b border-white pb-[2px]"
+              className="w-full md:w-auto bg-[#CDC5C0] text-[#000] text-[14px] md:text-[16px] 
+                px-[24px] py-[8px] rounded-[4px] hover:opacity-90 transition-opacity mb-[10px]"
             >
               提交申请
             </button>

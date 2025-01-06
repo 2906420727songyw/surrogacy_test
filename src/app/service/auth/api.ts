@@ -6,15 +6,15 @@ interface LoginData {
 }
 
 interface RegisterData {
-  email: string;
-  password: string;
-  phone: string;
-  birthDate: string;
-  name: string;
-  address: string;
-  city: string;
-  country: string;
-  postalCode: string;
+  name?: string;  // 用户名称（可选）
+  email: string;  // 邮箱地址
+  password: string;  // 密码
+  phoneNumber?: string;  // 手机号码（可选）
+  dateOfBirth?: string;  // 出生日期（可选）
+  city?: string;  // 城市（可选）
+  country?: string;  // 国家（可选）
+  postalCode?: string;  // 邮政编码（可选）
+  address?: string;  // 详细地址（可选）
 }
 
 // 登录
@@ -26,7 +26,6 @@ function login(data: LoginData) {
 function register(data: RegisterData) {
   return http.post('/auth/register', data);
 }
-
 
 export default {
   login,
