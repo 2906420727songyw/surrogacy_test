@@ -362,20 +362,20 @@
   
   .mobileActions {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 30px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0 20px;
     background-color: #A48472;
   }
 
   .mobileActions .login,
   .mobileActions .appointment,
   .mobileActions .search {
-    width: auto;
-    text-align: center;
-    padding: 5px 10px;
-    border-radius: 4px;
+    width: 100%;
+    text-align: left;
+    padding: 10px 0;
+    border-radius: 0;
     color: #FFF;
     background-color: transparent;
   }
@@ -387,5 +387,222 @@
   .about {
     width: 100%;
     margin-left: 10px;
+  }
+
+  .mobileActions .dropdown {
+    width: 100%;
+  }
+
+  .mobileActions .login,
+  .mobileActions .appointment {
+    width: 100%;
+    text-align: left;
+    padding: 10px 0;
+    color: #FFF;
+    cursor: pointer;
+  }
+
+  .mobileActions .dropdownContent {
+    display: block !important;
+    padding-left: 20px;
+    position: static;
+  }
+
+  .mobileActions .loginDropdownItem,
+  .mobileActions .appointmentDropdownItem {
+    padding: 10px 0;
+    color: white;
+    cursor: pointer;
+  }
+
+  .mobileActions .dropdown:hover .dropdownContent {
+    display: block;
+  }
+
+  .mobileActions .loginDropdownItem,
+  .mobileActions .appointmentDropdownItem {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 10px 0;
+    color: #FFF;
+    cursor: pointer;
+  }
+}
+
+/* 登录下拉菜单样式 */
+.loginDropdownItem {
+  color: white;
+  cursor: pointer;
+  padding: 8px 0;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.loginDropdownItem:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* 确保下拉菜单样式与其他导航项一致 */
+.actions .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.actions .dropdown .dropdownContent {
+  display: none;
+  position: absolute;
+  min-width: 120px;
+  z-index: 1;
+  padding-top: 0;
+  left: 0;
+  transform: none;
+  margin-top: 0;
+}
+
+.loginDropdownItem {
+  color: white;
+  cursor: pointer;
+  padding: 8px 0;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.loginDropdownItem:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.actions .dropdown:hover .dropdownContent {
+  display: block;
+}
+
+/* 移动端隐藏 */
+@media (max-width: 768px) {
+  .actions {
+    display: none;
+  }
+}
+
+/* 移动端下拉菜单样式 */
+.mobileActions .dropdown {
+  width: 100%;
+}
+
+.mobileActions .dropdownContent {
+  padding-left: 20px;
+}
+
+.mobileActions .loginDropdownItem {
+  padding: 10px 0;
+  color: white;
+  cursor: pointer;
+}
+
+/* 预约下拉菜单样式 */
+.appointmentDropdownItem {
+  color: white;
+  cursor: pointer;
+  padding: 8px 0;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.appointmentDropdownItem:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* 确保预约下拉菜单样式与登录一致 */
+.actions .dropdown .appointment {
+  position: relative;
+  display: inline-block;
+}
+
+/* 移动端预约下拉菜单样式 */
+.mobileActions .dropdown .appointment {
+  width: 100%;
+}
+
+.mobileActions .appointmentDropdownItem {
+  padding: 10px 0;
+  color: white;
+  cursor: pointer;
+}
+
+/* 保持其他样式不变 */
+.actions .dropdown .dropdownContent,
+.mobileActions .dropdown .dropdownContent {
+  display: none;
+  position: absolute;
+  min-width: 120px;
+  z-index: 1;
+  padding-top: 0;
+  left: 0;
+  transform: none;
+  margin-top: 0;
+}
+
+.actions .dropdown:hover .dropdownContent,
+.mobileActions .dropdown:hover .dropdownContent {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .mobileActions .dropdown .dropdownContent {
+    position: static;
+    padding-left: 20px;
+  }
+}
+
+/* 移动端菜单样式 */
+.mobileActions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  padding: 0 20px;
+  background-color: #A48472;
+}
+
+.mobileActions .dropdown {
+  width: 100%;
+}
+
+.mobileActions .login,
+.mobileActions .appointment {
+  width: 100%;
+  text-align: left;
+  padding: 10px 0;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.mobileActions .dropdownContent {
+  display: block;
+  padding-left: 20px;
+}
+
+.mobileActions .loginDropdownItem,
+.mobileActions .appointmentDropdownItem {
+  padding: 10px 0;
+  color: white;
+  cursor: pointer;
+}
+
+.mobileActions .search {
+  width: 100%;
+  text-align: left;
+  padding: 10px 0;
+  color: #FFF;
+  cursor: pointer;
+}
+
+/* 移动端下拉菜单样式 */
+@media (max-width: 768px) {
+  .mobileActions .dropdown .dropdownContent {
+    position: static;
+    padding-left: 20px;
   }
 }

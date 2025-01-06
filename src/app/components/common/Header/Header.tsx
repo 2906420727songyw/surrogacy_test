@@ -265,16 +265,97 @@ export default function Header() {
         </div>
         {isMenuOpen && (
           <div className={styles.mobileActions}>
-          
-            <Link href={routes.auth.login} className={styles.login} onClick={() => setIsMenuOpen(false)}>登录</Link>
-            <Link href={routes.appointment} className={styles.appointment} onClick={() => setIsMenuOpen(false)}>预约</Link>
-            <Link href={routes.search} className={styles.search} onClick={() => setIsMenuOpen(false)}>搜索</Link>
+            <div className={styles.dropdown}>
+              <div className={styles.login}>
+                登录
+              </div>
+              <div className={styles.dropdownContent}>
+                <div 
+                  className={styles.loginDropdownItem} 
+                  onClick={() => {
+                    router.push(routes.auth.login);
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  成为准父母
+                </div>
+                <div 
+                  className={styles.loginDropdownItem} 
+                  onClick={() => {
+                    router.push(routes.auth.login);
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  成为代孕母
+                </div>
+              </div>
+            </div>
+            <div className={styles.dropdown}>
+              <div className={styles.appointment}>
+                预约
+              </div>
+              <div className={styles.dropdownContent}>
+                <div 
+                  className={styles.appointmentDropdownItem} 
+                  onClick={() => {
+                    router.push(routes.appointment);
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  成为准父母
+                </div>
+                <div 
+                  className={styles.appointmentDropdownItem} 
+                  onClick={() => {
+                    router.push(routes.appointment);
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  成为代孕母
+                </div>
+              </div>
+            </div>
+            <Link 
+              href={routes.search} 
+              className={styles.search}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              搜索
+            </Link>
           </div>
         )}
       </nav>
       <div className={styles.actions}>
-        <Link href={routes.auth.login} className={styles.login}>登录</Link>
-        <Link href={routes.appointment} className={styles.appointment}>预约</Link>
+        <div className={styles.dropdown}>
+          <Link href={routes.auth.login} className={styles.login}>
+            登录
+          </Link>
+          <div className={`${styles.dropdownContent} ${isMenuOpen ? styles.open : ''}`}>
+            <div className={styles.loginDropdownItem} onClick={() => {
+              router.push(routes.auth.login);
+              setIsMenuOpen(false);
+            }}>成为准父母</div>
+            <div className={styles.loginDropdownItem} onClick={() => {
+              router.push(routes.auth.login);
+              setIsMenuOpen(false);
+            }}>成为代孕母</div>
+          </div>
+        </div>
+        <div className={styles.dropdown}>
+          <Link href={routes.appointment} className={styles.appointment}>
+            预约
+          </Link>
+          <div className={`${styles.dropdownContent} ${isMenuOpen ? styles.open : ''}`}>
+            <div className={styles.appointmentDropdownItem} onClick={() => {
+              router.push(routes.appointment);
+              setIsMenuOpen(false);
+            }}>成为准父母</div>
+            <div className={styles.appointmentDropdownItem} onClick={() => {
+              router.push(routes.appointment);
+              setIsMenuOpen(false);
+            }}>成为代孕母</div>
+          </div>
+        </div>
         <Link href={routes.search} className={styles.search}>搜索</Link>
       </div>
     </header>

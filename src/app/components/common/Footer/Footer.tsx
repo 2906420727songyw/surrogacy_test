@@ -200,7 +200,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className={styles.customerService}>
+      <div className={styles.customerService} >
         <Image src="/images/footer/customer-service.png" alt="客服" width={50} height={50} />
         <span>客服</span>
       </div>
