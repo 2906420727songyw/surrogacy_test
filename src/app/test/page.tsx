@@ -1,19 +1,21 @@
 'use client';
 
 import { useEffect } from 'react';
-import http from '@/app/http';
-import {useState} from 'react';
+import http from '../http';
 
-export default function TestPage() {
-   const [ data, setData ] = useState([]);
+interface ApiResponse {
+    items?: any[];
+    // 添加其他可能的响应字段
+}
+
+export default function Test() {
     useEffect(() => {
-        http.get('/view').then((res) => {
-            console.log(res.items)
+        http.get<ApiResponse>('/view').then((res) => {
+            console.log(res.data.items)
         })
     }, []);
 
-
     return (
-       <></>
+        <div>Test Page</div>
     );
 }
