@@ -122,6 +122,11 @@
 }
 
 @media (max-width: 768px) {
+  .textContainer {
+    width: 100%;
+    padding: 0px 10px;
+    text-align: center;
+  }
   .image {
     height: 200px;
   }
@@ -148,8 +153,10 @@
   }
 
   .gradientBar {
-    height: 80px;
-    margin: 30px auto;
+    width: 2px;
+  height: 150px;
+  background: linear-gradient(0deg, rgba(226, 226, 226, 0) 0%, #FFFFFF 52.5%, rgba(226, 226, 226, 0) 100%);
+  margin: 30px auto;
   }
 
   .contentTitle {
@@ -178,6 +185,17 @@
   }
 
   .button {
-    margin-top: 80px;
+    width: 73px;
+  height: 30px;
+  background-color: #cdc6c0;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 400;
+  color: #000000;
+  cursor: pointer;
+  margin: 50px auto;
   }
 } 

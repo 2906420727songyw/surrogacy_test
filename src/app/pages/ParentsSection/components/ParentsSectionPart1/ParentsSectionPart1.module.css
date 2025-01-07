@@ -113,7 +113,20 @@
   }
 
   .gradientBar {
-    height: 100px;
+    width: 2px;
+    height: 150px;
     margin: 80px auto;
+  }
+  .button {
+    width: 73px;
+    height: 30px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    background-color: #cdc6c0;
+    color: #000;
+    border: none;
+    text-transform: uppercase;
+    margin: 100px 0;
   }
 } 

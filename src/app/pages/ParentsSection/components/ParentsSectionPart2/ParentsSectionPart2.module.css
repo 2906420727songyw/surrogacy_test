@@ -210,9 +210,18 @@
   }
 
   .button {
-    width: 120px;
-    height: 50px;
-    font-size: 18px;
+    width: 73px;
+  height: 30px;
+  background-color: #cdc6c0;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 400;
+  color: #000000;
+  cursor: pointer;
+  margin: 50px 0;
   }
 }
 
@@ -288,8 +297,17 @@
   }
 
   .button {
-    width: 100px;
-    height: 40px;
-    font-size: 16px;
+    width: 73px;
+  height: 30px;
+  background-color: #cdc6c0;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 400;
+  color: #000000;
+  cursor: pointer;
+  margin: 50px 0;
   }
 }
