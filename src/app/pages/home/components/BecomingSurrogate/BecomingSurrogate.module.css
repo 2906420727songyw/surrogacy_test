@@ -68,4 +68,48 @@
   background-color: #FFF;
   color: #000;
   border: none;
+}
+
+@media (max-width: 768px) {
+  .becomingSurrogate {
+    height: auto;
+    padding: 50px 20px;
+  }
+
+  .content h2 {
+    font-size: 36px;
+  }
+
+  .content p {
+    font-size: 18px;
+  }
+
+  .buttons {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .learnMore,
+  .apply {
+    width: 73px;
+    height: 30px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .learnMore {
+    background-color: #FFF;
+  color: #000;
+  border: none;
+  }
+  
+  .apply {
+    background-color: #FFF;
+  color: #000;
+  border: none;
+  }
 } 

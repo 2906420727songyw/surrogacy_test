@@ -247,11 +247,11 @@
 } 
 @media (max-width: 768px) {
     .image {
-        height: 400px;
+        height: auto;
     }
 
     .container {
-        padding: 100px 10px;
+        padding: 50px 20px;
     }
 
     .title {
@@ -319,6 +319,20 @@
 
     .gradientBar {
         width: 2px;
-        height: 100px;
+        height: 150px;
+    }
+    .button {
+        width: 73px;
+        height: 30px;
+        border-radius: 4px;
+        font-size: 12px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #cdc6c0;
+        color: #000;
+        border: none;
+        margin: 50px auto;
     }
 }

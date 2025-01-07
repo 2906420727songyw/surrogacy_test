@@ -48,4 +48,31 @@
   background-color: #ffffff;
   color: #000;
   border: none;
+}
+
+@media (max-width: 768px) {
+  .foundation {
+    padding: 150px 20px;
+  }
+
+  .foundation h2 {
+    font-size: 36px;
+  }
+
+  .buttons {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .donateButton,
+  .applyButton {
+    width: 73px;
+  height: 30px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
 } 
