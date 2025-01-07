@@ -1,6 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import DateField from './shared/DateField';
+import userApi from '@/app/service/user/api';
+import Cookies from 'js-cookie';
 
 interface ApplicationForm {
   name: string;
@@ -27,8 +32,28 @@ interface ApplicationForm {
   embryoLocation: string;
 }
 
+interface SubmitData {
+  userId: string;
+  name: string;
+  address: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  country: string;
+  phone: string;
+  email: string;
+  dateOfBirth: string;
+  partnerName: string;
+  partnerDateOfBirth: string;
+  answers: Array<{
+    id: string;
+    value: string;
+  }>;
+}
+
 export default function ParentApplicationContent() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<ApplicationForm>({
     name: '',
     address: '',
@@ -66,14 +91,94 @@ export default function ParentApplicationContent() {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // 处理表单提交
-    console.log('Form submitted:', formData);
+    if (isSubmitting) return;
+
+    try {
+      setIsSubmitting(true);
+      
+      // 从 cookies 获取 userId
+      const userDataStr = Cookies.get('userData');
+      const userData = userDataStr ? JSON.parse(userDataStr) : {};
+      
+      // 构建提交数据
+      const submitData: SubmitData = {
+        userId: userData.id || '',
+        name: formData.name,
+        address: formData.address,
+        city: formData.city,
+        state: formData.province,
+        postalCode: formData.zipCode,
+        country: formData.country,
+        phone: formData.phone,
+        email: formData.email,
+        dateOfBirth: formData.birthDate,
+        partnerName: formData.spouseName,
+        partnerDateOfBirth: formData.spouseBirthDate,
+        answers: [
+          { id: '性取向', value: formData.orientation },
+          { id: '您需要什么服务', value: formData.serviceType },
+          { id: '您或您的伴侣曾被逮捕过吗？', value: formData.hasBeenArrested },
+          { id: '您或您的伴侣有没有曾经被判决有罪？', value: formData.hasBeenConvicted },
+          { id: '您需要什么服务', value: formData.serviceDuration },
+          { id: '您目前有一起合作的试管婴儿诊所吗？', value: formData.hasClinic },
+          { id: '如果有的话，请列出诊所名字', value: formData.clinicName },
+          { id: '您目前有冷冻胚胎吗？', value: formData.hasFrozenEmbryo },
+          { id: '如果有的话，请告诉我们在哪里', value: formData.embryoLocation }
+        ].filter(answer => answer.value !== '') // 过滤掉空值
+      };
+
+      await userApi.applyParent(submitData);
+      toast.success('申请提交成功！');
+      
+      // 重置表单数据
+      setFormData({
+        name: '',
+        address: '',
+        city: '',
+        province: '',
+        zipCode: '',
+        country: '',
+        areaCode: '',
+        phone: '',
+        email: '',
+        birthDate: '',
+        maritalStatus: '',
+        spouseName: '',
+        spouseBirthDate: '',
+        orientation: '',
+        serviceType: '',
+        hasBeenArrested: '',
+        hasBeenConvicted: '',
+        serviceDuration: '',
+        hasClinic: '',
+        clinicName: '',
+        hasFrozenEmbryo: '',
+        embryoLocation: ''
+      });
+    } catch (error) {
+      console.error('提交失败:', error);
+      toast.error('提交失败，请稍后重试');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px]">
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <div className="md:max-w-[60vw] pt-[40px] md:pt-[80px] px-[20px] md:px-[60px]">
         {/* 标题部分 */}
         <div className="border-b border-white pb-2 mb-[30px] md:mb-[40px]">
@@ -91,7 +196,7 @@ export default function ParentApplicationContent() {
         </div>
 
         {/* 申请表单 */}
-        <form className="space-y-[16px] md:space-y-[24px]" onSubmit={handleSubmit}>
+        <form className="space-y-[16px] md:space-y-[24px] pb-[6vh]" onSubmit={handleSubmit}>
           {/* 基本信息字段 */}
           {Object.entries({
             name: '名和姓 *',
@@ -120,19 +225,12 @@ export default function ParentApplicationContent() {
           ))}
 
           {/* 日期字段 */}
-          <div className="flex flex-col gap-2">
-            <label className="text-white/80 text-[12px] md:text-[14px]">
-              出生日期 *
-            </label>
-            <input
-              type="date"
-              name="birthDate"
-              value={formData.birthDate}
-              onChange={handleInputChange}
-              className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
-              autoComplete="off"
-            />
-          </div>
+          <DateField 
+            label="出生日期 *" 
+            name="birthDate"
+            value={formData.birthDate}
+            onChange={handleInputChange}
+          />
 
           {/* 婚姻状态字段 */}
           <div className="flex flex-col gap-2">
@@ -163,18 +261,12 @@ export default function ParentApplicationContent() {
             />
           </div>
 
-          <div className="flex flex-col gap-2">
-            <label className="text-white/80 text-[12px] md:text-[14px]">
-              伴侣的出生日期 *
-            </label>
-            <input
-              type="date"
-              name="spouseBirthDate"
-              value={formData.spouseBirthDate}
-              onChange={handleInputChange}
-              className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
-            />
-          </div>
+          <DateField 
+            label="伴侣的出生日期 *" 
+            name="spouseBirthDate"
+            value={formData.spouseBirthDate}
+            onChange={handleInputChange}
+          />
 
           {/* 性取向 */}
           <div className="flex flex-col space-y-2">
@@ -279,7 +371,7 @@ export default function ParentApplicationContent() {
 
           {/* 服务时长 */}
           <div className="flex flex-col space-y-2">
-            <label className="text-white/80 text-[12px] md:text-[14px]">服务时长 *</label>
+            <label className="text-white/80 text-[12px] md:text-[14px]">您需要什么服务 *</label>
             <div className="grid grid-cols-2 md:flex md:flex-wrap gap-4 md:gap-8">
               {['0-3个月', '4-6个月', '7-12个月', '大于12个月'].map(option => (
                 <label key={option} className="flex items-center space-x-2 cursor-pointer">
@@ -388,10 +480,16 @@ export default function ParentApplicationContent() {
           <div className="mt-[32px] md:mt-[40px]">
             <button
               type="submit"
-              className="w-full md:w-auto bg-[#CDC5C0] text-[#000] text-[14px] md:text-[16px] 
-                px-[24px] py-[8px] rounded-[4px] hover:opacity-90 transition-opacity mb-[10px]"
+              disabled={isSubmitting}
+              className="w-[120px] h-[48px] bg-[#CDC5C0] rounded-[8px] text-[#000000] text-[16px] mt-[4vh]
+                flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
             >
-              提交申请
+              {isSubmitting ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+                  <span>提交中</span>
+                </>
+              ) : '提交申请'}
             </button>
           </div>
         </form>

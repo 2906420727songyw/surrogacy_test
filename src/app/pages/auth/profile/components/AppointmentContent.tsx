@@ -5,8 +5,11 @@ import { useState } from 'react';
 import AppointmentSuccess from './AppointmentSuccess';
 import appointmentsApi from '@/app/service/appointments/api';
 import Cookies from 'js-cookie';
+import { useSearchParams } from 'next/navigation';
 
 export default function AppointmentContent() {
+  const searchParams = useSearchParams();
+  const type = searchParams?.get('type') === 'surrogacy' ? '代孕母' : '准父母';
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
@@ -118,7 +121,8 @@ export default function AppointmentContent() {
       const date = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1<10 ? '0' : ''}${currentDate.getMonth() + 1}-${Number(selectedDate)<10?`0${selectedDate}`:selectedDate} ${formattedTime}`
       const appointmentData = {
         userId: userData.id,
-        appointmentTime: date
+        appointmentTime: date,
+        type: type
       };
       await appointmentsApi.create(appointmentData).then(() => {
         setIsSuccess(true); 
@@ -298,7 +302,7 @@ export default function AppointmentContent() {
 
             {/* 预约信息 */}
             <div className="flex flex-col">
-              <h3 className="text-white text-[0.875rem] xl:text-[1rem] mb-2">成为准父母</h3>
+              <h3 className="text-white text-[0.875rem] xl:text-[1rem] mb-2">成为{type}</h3>
               <p className="text-white text-[0.875rem] xl:text-[1rem]">
                 {selectedDate 
                   ? formatDateTime(selectedDate, selectedTime)

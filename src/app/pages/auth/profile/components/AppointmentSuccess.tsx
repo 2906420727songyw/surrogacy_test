@@ -1,4 +1,5 @@
 'use client';
+import { useSearchParams } from 'next/navigation';
 
 interface AppointmentSuccessProps {
   onRestart: () => void;
@@ -9,7 +10,10 @@ interface AppointmentSuccessProps {
 
 export default function AppointmentSuccess({ onRestart, selectedDate, selectedTime, currentDate }: AppointmentSuccessProps) {
   const monthNames = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
+  const searchParams = useSearchParams();
+  const type = searchParams?.get('type') === 'surrogacy' ? '代孕母' : '准父母';
   
+
   const formatDateTime = (date: string, time: string) => {
     const isAM = time.includes('am');
     const hour = time.split(':')[0];
@@ -34,7 +38,7 @@ export default function AppointmentSuccess({ onRestart, selectedDate, selectedTi
         <div className="text-white">
           <h2 className="text-[16px] mb-4">预约详细信息</h2>
           <div className="space-y-4">
-            <p className="text-[14px]">成为准父母</p>
+            <p className="text-[14px]">成为{type}</p>
             <p className="text-[14px]">{formatDateTime(selectedDate, selectedTime)}</p>
           </div>
           
