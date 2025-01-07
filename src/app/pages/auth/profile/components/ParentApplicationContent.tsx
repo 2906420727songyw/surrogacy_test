@@ -114,6 +114,7 @@ export default function ParentApplicationContent() {
                 value={formData[key as keyof ApplicationForm]}
                 onChange={handleInputChange}
                 className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
+                autoComplete="off"
               />
             </div>
           ))}
@@ -129,6 +130,7 @@ export default function ParentApplicationContent() {
               value={formData.birthDate}
               onChange={handleInputChange}
               className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
+              autoComplete="off"
             />
           </div>
 
@@ -143,6 +145,7 @@ export default function ParentApplicationContent() {
               value={formData.maritalStatus}
               onChange={handleInputChange}
               className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
+              autoComplete="off"
             />
           </div>
 

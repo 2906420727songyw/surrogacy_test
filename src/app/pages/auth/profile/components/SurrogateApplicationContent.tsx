@@ -255,6 +255,7 @@ function FormField({ label, name, value, onChange, type = 'text' }: FormFieldPro
         onChange={onChange}
         placeholder={type === 'date' ? 'YYYY/MM/DD' : ''}
         className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
+        autoComplete="off"
       />
     </div>
   );

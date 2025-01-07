@@ -215,6 +215,33 @@ export default function Header() {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    // 当菜单打开时禁用背景滚动
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    };
+  }, [isMenuOpen]);
+
   return (
     <header className={`${styles.header} ${isMenuOpen ? styles.menuOpen : ''}`}>
       <div className={styles.logo}>
@@ -305,7 +332,7 @@ export default function Header() {
               }}>
                 {userName}
               </div>
-                      
+
             ) : (
               <div className={styles.dropdown}>
                 <div className={styles.login} onClick={() => {
@@ -337,7 +364,14 @@ export default function Header() {
               </div>
             )}
             <div className={styles.dropdown}>
-              <div className={styles.appointment}>
+              <div className={styles.appointment}
+                onClick={() => {
+                  if (!isLoggedIn) {
+                    router.push(routes.auth.login + '?mode=register');
+                    setIsMenuOpen(false);
+                  }
+                }}
+              >
                 预约
               </div>
               <div className={styles.dropdownContent}>
@@ -347,7 +381,7 @@ export default function Header() {
                     if (isLoggedIn) {
                       router.push(routes.appointment);
                     } else {
-                      router.push(routes.auth.login );
+                      router.push(routes.auth.login + '?mode=register');
                     }
                     setIsMenuOpen(false);
                   }}
@@ -358,13 +392,13 @@ export default function Header() {
                   className={styles.appointmentDropdownItem}
                   onClick={() => {
                     if (isLoggedIn) {
-                      router.push(routes.appointment+"?type=surrogacy");
+                      router.push(routes.appointment + "?type=surrogacy");
                     } else {
-                      router.push(routes.auth.login);
+                      router.push(routes.auth.login + '?mode=register');
                     }
                     setIsMenuOpen(false);
                   }}
-                > 
+                >
                   成为代孕母
                 </div>
               </div>
@@ -416,9 +450,17 @@ export default function Header() {
           </div>
         )}
         <div className={styles.dropdown}>
-        <div className={styles.appointment}>
-                预约
-              </div>
+          <div className={styles.appointment}
+
+            onClick={() => {
+              if (!isLoggedIn) {
+                router.push(routes.auth.login + '?mode=register');
+                setIsMenuOpen(false);
+              }
+            }}
+          >
+            预约
+          </div>
           <div className={`${styles.dropdownContent} ${isMenuOpen ? styles.open : ''}`}>
             <div className={styles.appointmentDropdownItem} onClick={() => {
               if (isLoggedIn) {
@@ -430,7 +472,7 @@ export default function Header() {
             }}>成为准父母</div>
             <div className={styles.appointmentDropdownItem} onClick={() => {
               if (isLoggedIn) {
-                router.push(routes.appointment+"?type=surrogacy");
+                router.push(routes.appointment + "?type=surrogacy");
               } else {
                 router.push(routes.auth.login + '?mode=register');
               }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, Suspense, useRef } from 'react';
+import { useState, useLayoutEffect, Suspense, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import styles from './page.module.css';
@@ -8,6 +8,7 @@ import ProfileContent from './components/ProfileContent';
 import ParentApplicationContent from './components/ParentApplicationContent';
 import AppointmentContent from './components/AppointmentContent';
 import SurrogateApplicationContent from './components/SurrogateApplicationContent';
+import ProtectedRoute from '@/app/components/ProtectedRoute';
 
 function ProfilePageContent() {
   const [headerHeight, setHeaderHeight] = useState(0);
@@ -18,7 +19,7 @@ function ProfilePageContent() {
   const searchParams = useSearchParams();
   const isSurrogacy = searchParams?.get('type') === 'surrogacy';
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const header = document.querySelector('header');
     if (header) {
       const height = header.offsetHeight;
@@ -26,7 +27,7 @@ function ProfilePageContent() {
     }
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (contentRef.current) {
       const updateHeight = () => {
         const height = contentRef.current?.offsetHeight || 0;
@@ -147,7 +148,9 @@ function ProfilePageContent() {
 export default function ProfilePage() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <ProfilePageContent />
+      <ProtectedRoute>
+        <ProfilePageContent />
+      </ProtectedRoute>
     </Suspense>
   );
 } 

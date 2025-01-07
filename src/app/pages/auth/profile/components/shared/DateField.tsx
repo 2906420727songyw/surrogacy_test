@@ -12,7 +12,9 @@ export default function DateField({ label, name, value, onChange }: DateFieldPro
           name={name}
           value={value}
           onChange={onChange}
-          className={`w-full h-[40px] md:h-[48px] rounded-[4px] bg-white px-4 text-[12px] md:text-[14px] text-transparent
+          className={`
+            w-full h-[50px] px-4 bg-white border-none text-base rounded-lg
+             text-transparent
             [&::-webkit-calendar-picker-indicator]:opacity-0 
             [&::-webkit-calendar-picker-indicator]:absolute
             [&::-webkit-calendar-picker-indicator]:w-full

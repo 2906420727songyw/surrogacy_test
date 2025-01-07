@@ -76,6 +76,7 @@ export default function RegisterPage() {
               required
               aria-label="电子邮件地址"
               className="w-full h-[50px] px-4 bg-white border-none text-base rounded-lg"
+              autoComplete="off"
             />
           </div>
           <div className="mb-[30px]">
@@ -90,6 +91,7 @@ export default function RegisterPage() {
               value={formData.password}
               aria-label="所需密码"
               className="w-full h-[50px] px-4 bg-white border-none text-base rounded-lg"
+              autoComplete="off"
             />
           </div>
           <div className="mb-[30px]">
@@ -99,11 +101,12 @@ export default function RegisterPage() {
             <input
               type="password"
               name="confirmPassword"
-              value={confirmPassword}
-              onChange={passwordMatch}
               required
+              onChange={passwordMatch}
+              value={confirmPassword}
               aria-label="确认密码"
               className="w-full h-[50px] px-4 bg-white border-none text-base rounded-lg"
+              autoComplete="off"
             />
           </div>
           <div className="mb-[30px]">
