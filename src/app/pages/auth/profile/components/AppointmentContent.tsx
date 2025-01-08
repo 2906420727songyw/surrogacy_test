@@ -6,6 +6,7 @@ import AppointmentSuccess from './AppointmentSuccess';
 import appointmentsApi from '@/app/service/appointments/api';
 import Cookies from 'js-cookie';
 import { useSearchParams } from 'next/navigation';
+import styles from '../page.module.css';
 
 export default function AppointmentContent() {
   const searchParams = useSearchParams();
@@ -168,7 +169,7 @@ export default function AppointmentContent() {
       <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px]">
         <div className="flex flex-col xl:flex-row">
           {/* 左侧内容 */}
-          <div className="w-full xl:flex-1 xl:max-w-[60vw] pt-[2.5rem] xl:pt-[5rem] px-[1.25rem] xl:px-[3.75rem]">
+          <div className="w-full xl:flex-1 xl:max-w-[75vw] pt-[2.5rem] xl:pt-[5rem] px-[1.25rem] xl:px-[3.75rem]">
             {/* 标题和分割线 */}
             <div className="mb-[1.875rem] xl:mb-[2.5rem]">
               <div className="flex justify-between items-center mb-4 h-[8vh]">
@@ -204,9 +205,9 @@ export default function AppointmentContent() {
               <div className="h-[1px] bg-white"></div>
             </div>
 
-            <div className="flex flex-col xl:flex-row xl:gap-[3rem]">
+            <div className="flex flex-col xl:flex-row xl:gap-[3rem] styles.appointment-content">
               {/* 日历部分 */}
-              <div className="w-full xl:w-[60%] mb-8 xl:mb-0">
+              <div className="w-full xl:w-[60%]    mb-8 xl:mb-0">
                 {/* 日历导航 */}
                 <div className="flex items-center justify-center gap-4 xl:gap-8 mb-6">
                   <button 
@@ -291,7 +292,7 @@ export default function AppointmentContent() {
           </div>
 
           {/* 右侧内容 */}
-          <div className="w-full xl:w-[22.5rem] pt-[2.5rem] xl:pt-[5rem] px-[1.25rem] xl:px-[3.75rem] border-t xl:border-t-0 border-white/20 mt-6 xl:mt-0">
+          <div className="w-full xl:max-w-[20vw] pt-[2.5rem] xl:pt-[5rem] px-[1.25rem] xl:px-[3.75rem] border-t xl:border-t-0 border-white/20 mt-6 xl:mt-0">
             {/* 标题和分割线 */}
             <div className="mb-[1.875rem] xl:mb-[2.5rem]">
               <div className="flex justify-between items-center mb-4 h-[8vh]">

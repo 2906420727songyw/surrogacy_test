@@ -1,0 +1,80 @@
+.container {
+  width: 100%;
+}
+
+.leftContent {
+  width: 100%;
+  padding-top: 2.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.title {
+  font-size: 1.25rem;
+}
+
+.calendarNav {
+  gap: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.calendarArrow {
+  font-size: 1.5rem;
+}
+
+.calendarCell {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.calendarText {
+  font-size: 0.75rem;
+}
+
+@media (min-width: 1280px) {
+  .container {
+    flex: 1;
+    max-width: 60vw;
+  }
+
+  .leftContent {
+    padding-top: 5rem;
+    padding-left: 3.75rem;
+    padding-right: 3.75rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .calendarNav {
+    gap: 8px;
+  }
+
+  .calendarArrow {
+    font-size: 2.25rem;
+  }
+
+  .calendarCell {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .calendarText {
+    font-size: 0.875rem;
+  }
+
+  .flexRow {
+    flex-direction: row;
+    gap: 3rem;
+  }
+
+  .calendarContainer {
+    width: 60%;
+    margin-bottom: 0;
+  }
+
+  .timeContainer {
+    width: 40%;
+  }
+} 
