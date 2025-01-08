@@ -379,7 +379,7 @@ export default function Header() {
                   className={styles.appointmentDropdownItem}
                   onClick={() => {
                     if (isLoggedIn) {
-                      router.push(routes.appointment);
+                      router.push(routes.appointment + "?type=parent");
                     } else {
                       router.push(routes.auth.login + '?mode=register');
                     }
@@ -464,7 +464,7 @@ export default function Header() {
           <div className={`${styles.dropdownContent} ${isMenuOpen ? styles.open : ''}`}>
             <div className={styles.appointmentDropdownItem} onClick={() => {
               if (isLoggedIn) {
-                router.push(routes.appointment);
+                router.push(routes.appointment + "?type=parent");
               } else {
                 router.push(routes.auth.login + '?mode=register');
               }

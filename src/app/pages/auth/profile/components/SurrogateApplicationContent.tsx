@@ -2,76 +2,147 @@
 
 import { useState } from 'react';
 import DateField from './shared/DateField';
+import userApi from '@/app/service/user/api';
+import Cookies from 'js-cookie';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface ApplicationForm {
+  userId: string;
   name: string;
+  age: number;
   birthDate: string;
-  age:string;
-  height: string;
-  weight: string;
-  race: string;
-  nationality: string;
-  hasBeenPregnant: string;
-  hasGivenBirth: string;
-  hasUSCitizenship: string;
-  hasValidVisa: string;
-  hasBeenSurrogate: string;
-  hasChildrenHistory: string;
+  height: number;
+  weight: number;
+  ethnicity: string;
+  education: string;
+  maritalStatus: string;
+  hasChildren: string;
   address: string;
   city: string;
-  province: string;
-  zipCode: string;
-  phone: string;
+  state: string;
+  postalCode: string;
+  country: string;
+  phoneNumber: string;
   email: string;
 }
 
 interface FormFieldProps {
   label: string;
   name: string;
-  value: string;
+  value: string | number | boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   type?: string;
 }
 
+interface ApiError {
+  response?: {
+    data?: {
+      message?: string;
+    };
+  };
+}
+
 export default function SurrogateApplicationContent() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [formData, setFormData] = useState<ApplicationForm>({
-    name: '',
-    birthDate: '',
-    age:"",
-    height: '',
-    weight: '',
-    race: '',
-    nationality: '',
-    hasBeenPregnant: '',
-    hasGivenBirth: '',
-    hasUSCitizenship: '',
-    hasValidVisa: '',
-    hasBeenSurrogate: '',
-    hasChildrenHistory: '',
-    address: '',
-    city: '',
-    province: '',
-    zipCode: '',
-    phone: '',
-    email: ''
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState<ApplicationForm>(() => {
+    const userDataStr = Cookies.get('userData');
+    const userData = userDataStr ? JSON.parse(userDataStr) : {};
+    return {
+      userId: userData.id || '',
+      name: '',
+      age: 0,
+      birthDate: '',
+      height: 0,
+      weight: 0,
+      ethnicity: '',
+      education: '',
+      maritalStatus: '',
+      hasChildren: '',
+      address: '',
+      city: '',
+      state: '',
+      postalCode: '',
+      country: '',
+      phoneNumber: '',
+      email: '',
+    };
   });
 
   const handleDropdownClick = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isSubmitting) return;
+
+    try {
+      setIsSubmitting(true);
+      
+      await userApi.applySurrogateMother(formData).then(res => {
+        if(res.status === 200){
+          toast.success('申请提交成功！');
+          setFormData(prev => ({
+            userId: prev.userId,
+            name: '',
+            age: 0,
+            birthDate: '',
+            height: 0,
+            weight: 0,
+            ethnicity: '',
+            education: '',
+            maritalStatus: '',
+            hasChildren: '',
+            address: '',
+            city: '',
+            state: '',
+            postalCode: '',
+            country: '',
+            phoneNumber: '',
+            email: '',
+          }));
+        }else{
+          toast.error('申请提交失败！');
+        }
+      })
+      
+    } catch (error: unknown) {
+      const apiError = error as ApiError;
+      console.error('提交申请失败:', apiError);
+      toast.error(apiError?.response?.data?.message || '提交失败，请稍后重试');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: type === 'checkbox' ? checked : 
+              type === 'number' ? parseFloat(value) || 0 : 
+              value
     }));
   };
 
   return (
     <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px]">
-   <div className="md:max-w-[60vw] pt-[40px] md:pt-[80px] px-[20px] md:px-[60px]">
-      {/* 标题部分 */}
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <div className="md:max-w-[60vw] pt-[40px] md:pt-[80px] px-[20px] md:px-[60px]">
+        {/* 标题部分 */}
         <div className="border-b border-white pb-2 mb-[30px] md:mb-[40px]">
           <div 
             className="flex items-center justify-between cursor-pointer"
@@ -88,19 +159,21 @@ export default function SurrogateApplicationContent() {
 
         {/* 个人基本信息 */}
         <h2 className="text-white text-[14px] md:text-[18px] mb-[16px] md:mb-[24px]">个人基本信息</h2>
-        <form className="space-y-[16px] md:space-y-[24px]">
+        <form onSubmit={handleSubmit} className="space-y-[16px] md:space-y-[24px] pb-[6vh]">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[40px] gap-y-[24px]">
             <FormField 
               label="名和姓 *" 
               name="name"
               value={formData.name}
               onChange={handleInputChange}
+              type="text"
             />
             <FormField 
               label="您的年龄 *" 
               name="age"
               value={formData.age}
               onChange={handleInputChange}
+              type="number"
             />
           </div>
 
@@ -117,72 +190,48 @@ export default function SurrogateApplicationContent() {
               name="height"
               value={formData.height}
               onChange={handleInputChange}
+              type="number"
             />
             <FormField 
               label="您的体重（lbs）*" 
               name="weight"
               value={formData.weight}
               onChange={handleInputChange}
+              type="number"
             />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[40px] gap-y-[24px]">
             <FormField 
               label="您的种族 *" 
-              name="race"
-              value={formData.race}
+              name="ethnicity"
+              value={formData.ethnicity}
               onChange={handleInputChange}
+              type="text"
             />
             <FormField 
-              label="您的原国籍 *" 
-              name="nationality"
-              value={formData.nationality}
+              label="您的教育程度 *" 
+              name="education"
+              value={formData.education}
               onChange={handleInputChange}
-            />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[40px] gap-y-[24px]">
-            <FormField 
-              label="您的性别 *" 
-              name="gender"
-              value={formData.nationality}
-              onChange={handleInputChange}
-            />
-            <FormField 
-              label="您是否有成功生产的经历 *" 
-              name="hasGivenBirth"
-              value={formData.hasGivenBirth}
-              onChange={handleInputChange}
+              type="text"
             />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[40px] gap-y-[24px]">
             <FormField 
-              label="您是否有美国国籍 *" 
-              name="hasUSCitizenship"
-              value={formData.hasUSCitizenship}
+              label="您的婚姻状况 *" 
+              name="maritalStatus"
+              value={formData.maritalStatus}
               onChange={handleInputChange}
+              type="text"
             />
             <FormField 
-              label="您是否有有效的签证 *" 
-              name="hasValidVisa"
-              value={formData.hasValidVisa}
+              label="您是否有孩子 *" 
+              name="hasChildren"
+              value={formData.hasChildren}
               onChange={handleInputChange}
-            />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[40px] gap-y-[24px]">
-            <FormField 
-              label="您是否成为过代孕母亲 *" 
-              name="hasBeenSurrogate"
-              value={formData.hasBeenSurrogate}
-              onChange={handleInputChange}
-            />
-            <FormField 
-              label="您是否送过孩子去孤儿院 *" 
-              name="hasChildrenHistory"
-              value={formData.hasChildrenHistory}
-              onChange={handleInputChange}
+              type="text"
             />
           </div>
 
@@ -193,6 +242,7 @@ export default function SurrogateApplicationContent() {
             name="address"
             value={formData.address}
             onChange={handleInputChange}
+            type="text"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[40px] gap-y-[24px]">
@@ -201,21 +251,24 @@ export default function SurrogateApplicationContent() {
               name="city"
               value={formData.city}
               onChange={handleInputChange}
+              type="text"
             />
             <FormField 
               label="邮政编码 *" 
-              name="zipCode"
-              value={formData.zipCode}
+              name="postalCode"
+              value={formData.postalCode}
               onChange={handleInputChange}
+              type="text"
             />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[40px] gap-y-[24px]">
             <FormField 
               label="电话号码 *" 
-              name="phone"
-              value={formData.phone}
+              name="phoneNumber"
+              value={formData.phoneNumber}
               onChange={handleInputChange}
+              type="text"
             />
             <FormField 
               label="电子邮箱 *" 
@@ -227,13 +280,19 @@ export default function SurrogateApplicationContent() {
           </div>
 
           {/* 提交按钮 */}
-          <div className="mt-[32px] md:mt-[40px]">
+          <div className="mt-[32px] md:mt-[40px] ">
             <button
               type="submit"
-              className="w-full md:w-auto bg-[#CDC5C0] text-[#000] text-[14px] md:text-[16px] 
-                px-[24px] py-[8px] rounded-[4px] hover:opacity-90 transition-opacity mb-[10px]"
+              disabled={isSubmitting}
+              className="w-[120px] h-[48px] bg-[#CDC5C0] rounded-[8px] text-[#000000] text-[16px]  mt-[4vh]
+                flex items-center justify-center gap-2 hover:opacity-90 transition-opacity "
             >
-              提交申请
+              {isSubmitting ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+                  <span>提交中</span>
+                </>
+              ) : '提交申请'}
             </button>
           </div>
         </form>
@@ -242,7 +301,11 @@ export default function SurrogateApplicationContent() {
   );
 }
 
-function FormField({ label, name, value, onChange, type = 'text' }: FormFieldProps) {
+function FormField({ label, name, value, onChange, type }: FormFieldProps) {
+  const displayValue = typeof value === 'boolean' ? (value ? 'Yes' : 'No') : 
+                      typeof value === 'number' && value === 0 ? '' : 
+                      value.toString();
+  
   return (
     <div className="flex flex-col gap-2">
       <label className="text-white text-[12px] md:text-[14px] opacity-80">
@@ -251,11 +314,12 @@ function FormField({ label, name, value, onChange, type = 'text' }: FormFieldPro
       <input
         type={type}
         name={name}
-        value={value}
+        value={displayValue}
         onChange={onChange}
         placeholder={type === 'date' ? 'YYYY/MM/DD' : ''}
         className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
         autoComplete="off"
+        required
       />
     </div>
   );

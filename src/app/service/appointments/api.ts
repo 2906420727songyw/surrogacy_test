@@ -27,6 +27,8 @@ function create(data: Appointment) {
   return http.post('appointments', data);
 }
 
+
+
 // 获取预约列表
 function getList() {
   return http.get<AppointmentResponse[]>('appointments');

@@ -1,28 +1,98 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import userApi from '@/app/service/user/api';
+import Cookies from 'js-cookie';
+
+// 格式化日期的辅助函数
+const formatDate = (dateString: string) => {
+  if (!dateString) return '';
+  try {
+    const date = new Date(dateString);
+    return date.toISOString().split('T')[0];
+  } catch {
+    return '';
+  }
+};
+
+const initialUserData = {
+  id: '',
+  name: '',
+  email: '',
+  password: '',
+  phoneNumber: '',
+  dateOfBirth: '',
+  address: '',
+  country: '',
+  city: ''
+};
+
+interface UserData {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  phoneNumber: string;
+  dateOfBirth: string;
+  address: string;
+  country: string;
+  city: string;
+}
 
 export default function ProfileContent() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const router = useRouter();
-  const [userData] = useState({
-    email: 'xxxxxxxxxx',
-    password: 'xxxxxxxxxx',
-    phone: 'xxxxxxxxxx',
-    birthDate: 'xxxxxxxxxx',
-    name: 'xxxxxxxxxx',
-    address: 'xxxxxxxxxx',
-  });
+  const [userData, setUserData] = useState<UserData>(initialUserData);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    const fetchUserData = async () => {
+      try {
+        const userDataStr = Cookies.get('userData');
+        if (!userDataStr) return;
+        
+        const parsedUserData = JSON.parse(userDataStr);
+        if (!parsedUserData?.id) return;
+
+        const response = await userApi.getUserInfo(parsedUserData.id);
+        const res = response as unknown as UserData;
+        setUserData({
+          id: res.id || '',
+          name: res.name || '',
+          email: res.email || '',
+          password: res.password || '',
+          phoneNumber: res.phoneNumber || '',
+          dateOfBirth: res.dateOfBirth ? formatDate(res.dateOfBirth) : '',
+          address: res.address || '',
+          country: res.country || '',
+          city: res.city || ''
+        });
+      } catch (error) {
+        console.error('获取用户信息失败:', error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   const handleDropdownClick = () => {
     setIsDropdownOpen(!isDropdownOpen);
-    // 可以根据需要添加跳转逻辑
+  };
+
+  const getDisplayValue = (value: string) => {
+    if (!isClient) return '';
+    return value || '*******';
   };
 
   return (
     <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px]">
+      {/* 隐藏的表单来阻止浏览器自动填充 */}
+      <div style={{ display: 'none' }}>
+        <input type="text" name="hidden_username" autoComplete="username" />
+        <input type="password" name="hidden_password" autoComplete="current-password" />
+      </div>
+
       <div className="md:max-w-[60vw] pt-[40px] md:pt-[80px] px-[20px] md:px-[60px]">
         {/* 标题部分 */}
         <div className="border-b border-white pb-2 mb-[30px] md:mb-[40px]">
@@ -31,7 +101,7 @@ export default function ProfileContent() {
             onClick={handleDropdownClick}
           >
             <h1 className="text-white text-[18px] md:text-[20px] font-normal">
-              开始Sapling Surrogac旅程
+              开始Sapling Surrogacy旅程
             </h1>
             <span className={`text-white text-[16px] transform transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}>
               ⌄
@@ -40,14 +110,18 @@ export default function ProfileContent() {
         </div>
 
         {/* 用户信息列表 */}
-        <div className="space-y-[16px] md:space-y-[24px]">
-          <InfoItem label="电子邮件地址登录 *" value={userData.email} />
-          <InfoItem label="密码 *" value={userData.password} />
-          <InfoItem label="手机号码 *" value={userData.phone} />
-          <InfoItem label="出生日期 *" value={userData.birthDate} />
-          <InfoItem label="姓名 *" value={userData.name} />
-          <InfoItem label="家庭详细地址 *" value={userData.address} />
-        </div>
+        <form 
+          autoComplete="off" 
+          className="space-y-[16px] md:space-y-[24px]"
+          onSubmit={(e) => e.preventDefault()}
+        >
+          <InfoItem label="电子邮件地址登录 *" value={getDisplayValue(userData.email)} />
+          <InfoItem label="密码 *" value={getDisplayValue(userData.password)} />
+          <InfoItem label="手机号码 *" value={getDisplayValue(userData.phoneNumber)} />
+          <InfoItem label="出生日期 *" value={getDisplayValue(userData.dateOfBirth)} />
+          <InfoItem label="姓名 *" value={getDisplayValue(userData.name)} />
+          <InfoItem label="家庭详细地址 *" value={getDisplayValue(userData.address)} />
+        </form>
 
         {/* 编辑账户链接 */}
         <div className="mt-[30px] md:mt-[40px]">
@@ -69,7 +143,13 @@ function InfoItem({ label, value }: { label: string; value: string }) {
       <label className="text-white/80 text-[12px] md:text-[14px] ">
         {label}
       </label>
-      <span className="text-white text-[12px] md:text-[14px]">{value}</span>
+      <input 
+        type="text" 
+        readOnly
+        value={value}
+        autoComplete="new-password"
+        className="text-white text-[12px] md:text-[14px] bg-transparent border-none outline-none"
+      />
     </div>
   );
 } 

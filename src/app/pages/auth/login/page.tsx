@@ -7,8 +7,11 @@ import Link from 'next/link';
 import { routes } from '@/app/routes';
 import styles from './page.module.css';
 import { MD5 } from 'crypto-js';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+// 生成随机字段名称的函数
+const generateRandomName = (prefix: string) => `${prefix}_${Math.random().toString(36).slice(2)}_${Date.now()}`;
 
 function LoginContent() {
   const [mounted, setMounted] = useState(false);
@@ -16,6 +19,15 @@ function LoginContent() {
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  
+  // 为所有输入字段生成随机名称
+  const [fieldNames] = useState({
+    email: generateRandomName('email'),
+    password: generateRandomName('pwd'),
+    hiddenUsername: generateRandomName('hidden_user'),
+    hiddenPassword: generateRandomName('hidden_pwd'),
+  });
+
   const router = useRouter();
   const searchParams = useSearchParams();
   const isRegisterMode = searchParams?.get('mode') === 'register';
@@ -23,6 +35,11 @@ function LoginContent() {
 
   useEffect(() => {
     setMounted(true);
+    // 清除所有自动填充的表单数据
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+      input.value = '';
+    });
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -59,6 +76,22 @@ function LoginContent() {
         theme="light"
       />
       <div className="min-h-screen w-full flex justify-center bg-[#A48472] px-4 md:px-10">
+        {/* 隐藏的表单来阻止浏览器自动填充 */}
+        <div style={{ display: 'none' }}>
+          <input 
+            type="text" 
+            name={fieldNames.hiddenUsername} 
+            autoComplete="username" 
+            tabIndex={-1}
+          />
+          <input 
+            type="password" 
+            name={fieldNames.hiddenPassword} 
+            autoComplete="current-password" 
+            tabIndex={-1}
+          />
+        </div>
+
         <div className="w-full max-w-[70vw] pt-[calc(env(safe-area-inset-top)+4rem)] md:pt-[15vh]">
           <h1 className="text-white text-[32px] md:text-[48px] font-normal text-center mb-[20px] md:mb-[80px] transition-opacity duration-500">
             {isRegisterMode 
@@ -72,18 +105,24 @@ function LoginContent() {
               <h2 className="text-white text-xl md:text-2xl font-normal mb-6 md:mb-10">
                 使用您的电子邮件地址登录
               </h2>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} autoComplete="off" spellCheck="false">
                 <div className="mb-6 md:mb-[30px]">
                   <label className="block text-white text-sm md:text-base mb-2 md:mb-3">
                     电子邮件地址
                   </label>
                   <input
-                    type="email"
+                    type="text"
+                    name={fieldNames.email}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     aria-label="电子邮件地址"
                     className="w-full h-[40px] md:h-[50px] px-4 bg-white border-none text-sm md:text-base rounded-lg text-black"
+                    autoComplete="new-password"
+                    data-form-type="other"
+                    autoCapitalize="off"
+                    autoCorrect="off"
+                    spellCheck="false"
                   />
                 </div>
                 
@@ -96,11 +135,17 @@ function LoginContent() {
                   </div>
                   <input
                     type="password"
+                    name={fieldNames.password}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                     aria-label="密码"
                     className="w-full h-[40px] md:h-[50px] px-4 bg-white border-none text-sm md:text-base rounded-lg text-black"
+                    autoComplete="new-password"
+                    data-form-type="other"
+                    autoCapitalize="off"
+                    autoCorrect="off"
+                    spellCheck="false"
                   />
                 </div>
                 
