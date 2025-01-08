@@ -1,313 +1,57 @@
+/* 整体样式 */
 .part2 {
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #868275;
 }
 
+/* 第一步骤 */
 .container {
   width: 100%;
-  padding: 200px 0;
+  padding: 100px 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.title {
-  font-size: 60px;
-  font-weight: 400;
-  line-height: 74.34px;
-  text-align: center;
-  color: #ffffff;
-  margin-bottom: 100px;
-}
-
-.content {
-  width: 100%;
-  max-width: 1200px;
-  background-color: transparent;
-  border-radius: 20px;
-  text-align: center;
-}
-
-.description {
-  font-size: 28px;
-  font-weight: 400;
-  line-height: 40px;
-  color: #ffffff;
-  margin-bottom: 100px;
-}
-
-.step {
-  font-size: 30px;
-  font-weight: 400;
-  line-height: 40px;
-  color: #ffffff;
-  margin-bottom: 20px;
-}
-
-.content .divider {
+/* 分割线 */
+.divider {
   width: 100%;
   height: 1px;
   background-color: #D9D9D9;
-  margin: 30px 0;
 }
 
+/* 可点击的div */
 .clickableDiv {
   width: 100%;
-  max-width: 1200px;
   background-color: transparent;
-  border-radius: 20px;
   text-align: center;
   cursor: pointer;
 }
 
+/* 可点击的div被点击时 */
 .clicked {
   background-color: transparent;
 }
 
-.clickableTitle {
-  font-size: 28px;
-  font-weight: 400;
-  line-height: 40px;
-  color: #ffffff;
-  margin-bottom: 20px;
-}
-
-.clickableDescription {
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 40px;
-  color: #ffffff;
-  margin-bottom: 20px;
-}
-
-.expandedContent .clickableDescription1 {
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 40px;
-  color: #ffffff;
-  margin-top: 60px;
-}
-
-.clickableDiv .divider {
-  width: 100%;
-  height: 1px;
-  background-color: #D9D9D9;
-  margin: 30px 0;
-}
-
-.expandedContent {
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 35px;
-  color: #ffffff;
-  margin-top: 20px;
-}
-
+/* 第二步骤 */
 .secondContainer {
   width: 100%;
-  padding: 0 0 200px 0px;
+  padding: 0 150px 200px 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.secondContainer .title {
-  font-size: 60px;
-  font-weight: 400;
-  line-height: 74.34px;
-  text-align: center;
-  color: #ffffff;
-  margin-bottom: 100px;
-}
-
-.button {
-  width: 93px;
-  height: 40px;
-  background-color: #cdc6c0;
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-  font-weight: 400;
-  color: #000000;
-  cursor: pointer;
-  margin-top: 100px;
-}
-
 @media (max-width: 768px) {
   .container {
-    padding: 50px 20px;
-  }
-
-  .title {
-    font-size: 32px;
-    line-height: 40px;
-    margin-bottom: 50px;
-  }
-
-  .content {
-    padding: 30px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-  }
-
-  .description {
-    font-size: 18px;
-    line-height: 28px;
-  }
-
-  .step {
-    font-size: 18px;
-    line-height: 28px;
-    margin-bottom: 10px;
-  }
-
-  .content .divider {
-    margin-top: 20px;
-  }
-
-  .clickableDiv {
-    padding: 30px;
-    border-radius: 10px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-  }
-
-  .clickableTitle {
-    font-size: 18px;
-    line-height: 28px;
-    margin-bottom: 10px;
-  }
-
-  .clickableDescription {
-    font-size: 14px;
-    line-height: 22px;
-    margin-bottom: 10px;
-  }
-
-  .clickableDiv .divider {
-    margin-top: 3px;
-  }
-
-  .expandedContent {
-    font-size: 14px;
-    line-height: 24px;
-    margin-top: 15px;
+    padding: 0px 20px 50px 20px;
   }
 
   .secondContainer {
-    padding: 50px 20px;
-  }
-
-  .secondContainer .title {
-    font-size: 40px;
-    line-height: 50px;
-    margin-bottom: 30px;
-  }
-
-  .button {
-    width: 73px;
-  height: 30px;
-  background-color: #cdc6c0;
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 12px;
-  font-weight: 400;
-  color: #000000;
-  cursor: pointer;
-  margin: 50px 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 30px 10px;
-  }
-
-  .title {
-    font-size: 28px;
-    line-height: 36px;
-    margin-bottom: 30px;
-  }
-
-  .content {
-    padding: 20px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-  }
-
-  .description {
-    font-size: 16px;
-    line-height: 24px;
-  }
-
-  .step {
-    font-size: 16px;
-    line-height: 24px;
-    margin-bottom: 5px;
-  }
-
-  .content .divider {
-    margin-top: 15px;
-  }
-
-  .clickableDiv {
-    padding: 20px;
-    border-radius: 5px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-
-  .clickableTitle {
-    font-size: 16px;
-    line-height: 24px;
-    margin-bottom: 5px;
-  }
-
-  .clickableDescription {
-    font-size: 12px;
-    line-height: 20px;
-    margin-bottom: 5px;
-  }
-
-  .clickableDiv .divider {
-    margin-top: 15px;
-  }
-
-  .expandedContent {
-    font-size: 12px;
-    line-height: 22px;
-    margin-top: 10px;
-  }
-
-  .secondContainer {
-    padding: 30px 10px;
-  }
-
-  .secondContainer .title {
-    font-size: 30px;
-    line-height: 40px;
-    margin-bottom: 20px;
-  }
-
-  .button {
-    width: 73px;
-  height: 30px;
-  background-color: #cdc6c0;
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 12px;
-  font-weight: 400;
-  color: #000000;
-  cursor: pointer;
-  margin: 50px 0;
+    padding: 0px 20px 50px 20px;
   }
 }

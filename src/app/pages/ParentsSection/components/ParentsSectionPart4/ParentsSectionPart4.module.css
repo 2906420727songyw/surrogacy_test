@@ -1,41 +1,20 @@
 .part4 {
   width: 100%;
-}
-
-.image {
-  width: 100%;
-  height: 800px;
-  object-fit: cover;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .content {
   width: 100%;
   padding: 130px 150px 0px;
   background-color: #868275;
-}
-
-.textContainer {
-  width: 100%;
-  padding-bottom: 130px;
-  text-align: center;
-}
-
-.title {
-  font-size: 60px;
-  font-weight: 400;
-  line-height: 74.34px;
-  color: #ffffff;
-  margin-bottom: 60px;
-}
-
-.description {
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 56px;
-  color: #ffffff;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .transparentContainer {
@@ -43,33 +22,17 @@
   background-color: transparent;
 }
 
-.transparentTitle {
-  font-size: 26px;
-  font-weight: 400;
-  line-height: 56px;
-  color: #ffffff;
-  text-align: center;
-}
-
 .gradientBar {
-  width: 4px;
-  height: 200px;
+  width: 3px;
+  height: 150px;
   background: linear-gradient(0deg, rgba(226, 226, 226, 0) 0%, #FFFFFF 52.5%, rgba(226, 226, 226, 0) 100%);
-  margin: 130px auto;
+  margin: 100px auto;
 }
 
 .transparentContent {
   width: 100%;
   background-color: transparent;
   text-align: center;
-}
-
-.contentTitle {
-  font-size: 26px;
-  font-weight: 400;
-  line-height: 56px;
-  color: #ffffff;
-  margin-bottom: 100px;
 }
 
 .itemsContainer {
@@ -86,39 +49,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
-}
-
-.itemImage {
-  width: 100%;
-  height: 370px;
-  object-fit: cover;
-  border-radius: 20px;
-}
-
-.itemText {
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 32px;
-  color: #ffffff;
-  text-align: left;
-}
-
-.button {
-  width: 93px;
-  height: 40px;
-  background-color: #cdc6c0;
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-  font-weight: 400;
-  color: #000000;
-  cursor: pointer;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 200px;
+  gap: 30px;
 }
 
 @media (max-width: 768px) {
@@ -127,42 +58,16 @@
     padding: 0px 10px;
     text-align: center;
   }
-  .image {
-    height: 200px;
-  }
 
   .content {
-    padding: 30px 10px 0;
-  }
-
-  .title {
-    font-size: 28px;
-    line-height: 36px;
-    margin-bottom: 30px;
-  }
-
-  .description {
-    font-size: 14px;
-    line-height: 22px;
-    margin-bottom: 30px;
-  }
-
-  .transparentTitle {
-    font-size: 18px;
-    line-height: 28px;
+    padding: 50px 0px 0;
   }
 
   .gradientBar {
     width: 2px;
-  height: 150px;
-  background: linear-gradient(0deg, rgba(226, 226, 226, 0) 0%, #FFFFFF 52.5%, rgba(226, 226, 226, 0) 100%);
-  margin: 30px auto;
-  }
-
-  .contentTitle {
-    font-size: 18px;
-    line-height: 28px;
-    margin-bottom: 20px;
+    height: 100px;
+    background: linear-gradient(0deg, rgba(226, 226, 226, 0) 0%, #FFFFFF 52.5%, rgba(226, 226, 226, 0) 100%);
+    margin: 50px auto;
   }
 
   .itemsContainer {
@@ -172,30 +77,7 @@
 
   .item {
     max-width: 100%;
-    padding: 30px;
+    padding: 30px 20px 0;
   }
 
-  .itemImage {
-    height: 250px;
-  }
-
-  .itemText {
-    font-size: 14px;
-    line-height: 22px;
-  }
-
-  .button {
-    width: 73px;
-  height: 30px;
-  background-color: #cdc6c0;
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 12px;
-  font-weight: 400;
-  color: #000000;
-  cursor: pointer;
-  margin: 50px auto;
-  }
 } 

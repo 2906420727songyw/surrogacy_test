@@ -17,11 +17,9 @@ export default function Header() {
   const menuRef = useRef<HTMLDivElement>(null);
   const currentPath = usePathname();
   const router = useRouter();
-
+  const [isScrolled, setIsScrolled] = useState(false);
 
   // console.log(routes);
-
-
 
   const toggleMenu = () => {
     setIsMenuOpen(prevState => !prevState);
@@ -61,7 +59,6 @@ export default function Header() {
   const handleItemClick = (item: string) => {
     setActiveItem(item);
     setIsMenuOpen(false);
-
   };
 
   const scrollToTop = () => {
@@ -242,8 +239,21 @@ export default function Header() {
     };
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <header className={`${styles.header} ${isMenuOpen ? styles.menuOpen : ''}`}>
+    <header className={`${styles.header} ${isMenuOpen ? styles.menuOpen : ''} ${isScrolled ? styles.scrolled : ''}`}>
       <div className={styles.logo}>
         <Link href="/" onClick={scrollToTop}>Sapling Surrogacy</Link>
       </div>
@@ -251,7 +261,6 @@ export default function Header() {
         className={styles.menuButton}
         onClick={toggleMenu}
         aria-label="Toggle Menu"
-        aria-expanded={isMenuOpen}
       >
         <span className={styles.menuIcon}></span>
       </button>
@@ -451,7 +460,6 @@ export default function Header() {
         )}
         <div className={styles.dropdown}>
           <div className={styles.appointment}
-
             onClick={() => {
               if (!isLoggedIn) {
                 router.push(routes.auth.login + '?mode=register');
