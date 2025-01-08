@@ -80,9 +80,8 @@ export default function SurrogateApplicationContent() {
 
     try {
       setIsSubmitting(true);
-      
-      await userApi.applySurrogateMother(formData).then(res => {
-        if(res.status === 200){
+    await userApi.applySurrogateMother(formData).then(res => {
+        if(res.id){
           toast.success('申请提交成功！');
           setFormData(prev => ({
             userId: prev.userId,
@@ -158,7 +157,7 @@ export default function SurrogateApplicationContent() {
         </div>
 
         {/* 个人基本信息 */}
-        <h2 className="text-white text-[14px] md:text-[18px] mb-[16px] md:mb-[24px]">个人基本信息</h2>
+        <h2 className="text-white text-[14px] md:text-[18px] mb-[16px] md:mb-[24px] underline underline-offset-4">个人基本信息</h2>
         <form onSubmit={handleSubmit} className="space-y-[16px] md:space-y-[24px] pb-[6vh]">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[40px] gap-y-[24px]">
             <FormField 
@@ -236,7 +235,7 @@ export default function SurrogateApplicationContent() {
           </div>
 
           {/* 地址信息 */}
-          <h2 className="text-white text-[16px] md:text-[18px] mt-[32px] mb-[24px]">地址信息</h2>
+          <h2 className="text-white text-[16px] md:text-[18px] mt-[32px] mb-[24px] underline underline-offset-4">地址信息</h2>
           <FormField 
             label="目前居住地址 *" 
             name="address"

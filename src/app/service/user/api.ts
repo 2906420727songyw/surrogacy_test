@@ -1,5 +1,4 @@
 import http from '@/app/http';
-
 interface SurrogateMother {
   userId: string;
   name: string;
@@ -42,15 +41,15 @@ interface Parent {
 }
 
 function getUserInfo(id: string) {
-  return http.get(`/users/${id}`);    
+  return http.get(`users/${id}`);    
 }
 
-function applySurrogateMother(data: SurrogateMother) {
-  return http.post(`/surrogate-mother-applications`, data);
+function applySurrogateMother(data: SurrogateMother):Promise<any> {
+  return http.post(`surrogate-mother-applications`, data);
 }
 
-function applyParent(data: Parent) {
-  return http.post(`/surrogacy-applications`, data);
+function applyParent(data: Parent):Promise<any> {
+  return http.post(`surrogacy-applications`, data);
 }
 
 export default {

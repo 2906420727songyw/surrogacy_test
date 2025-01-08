@@ -19,12 +19,12 @@ interface RegisterData {
 
 // 登录
 function login(data: LoginData) {
-  return http.post('/auth/login', data);
+  return http.post('auth/login', data);
 }
 
 // 注册
 function register(data: RegisterData) {
-  return http.post('/auth/register', data);
+  return http.post('auth/register', data);
 }
 
 export default {

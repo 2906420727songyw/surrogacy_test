@@ -128,38 +128,42 @@ export default function ParentApplicationContent() {
           { id: '如果有的话，请告诉我们在哪里', value: formData.embryoLocation }
         ].filter(answer => answer.value !== '') // 过滤掉空值
       };
+      const response = await userApi.applyParent(submitData);
 
-      await userApi.applyParent(submitData);
-      toast.success('申请提交成功！');
       
-      // 重置表单数据
-      setFormData({
-        name: '',
-        address: '',
-        city: '',
-        province: '',
-        zipCode: '',
-        country: '',
-        areaCode: '',
-        phone: '',
-        email: '',
-        birthDate: '',
-        maritalStatus: '',
-        spouseName: '',
-        spouseBirthDate: '',
-        orientation: '',
-        serviceType: '',
-        hasBeenArrested: '',
-        hasBeenConvicted: '',
-        serviceDuration: '',
-        hasClinic: '',
-        clinicName: '',
-        hasFrozenEmbryo: '',
-        embryoLocation: ''
-      });
-    } catch (error) {
+      if (response.code===200) {
+        toast.success( '申请提交成功！');
+        // 重置表单数据
+        setFormData({
+          name: '',
+          address: '',
+          city: '',
+          province: '',
+          zipCode: '',
+          country: '',
+          areaCode: '',
+          phone: '',
+          email: '',
+          birthDate: '',
+          maritalStatus: '',
+          spouseName: '',
+          spouseBirthDate: '',
+          orientation: '',
+          serviceType: '',
+          hasBeenArrested: '',
+          hasBeenConvicted: '',
+          serviceDuration: '',
+          hasClinic: '',
+          clinicName: '',
+          hasFrozenEmbryo: '',
+          embryoLocation: ''
+        });
+      } else {
+        toast.error('申请提交失败！');
+      }
+    } catch (error: any) {
       console.error('提交失败:', error);
-      toast.error('提交失败，请稍后重试');
+      toast.error(error.message || '提交失败，请稍后重试');
     } finally {
       setIsSubmitting(false);
     }
