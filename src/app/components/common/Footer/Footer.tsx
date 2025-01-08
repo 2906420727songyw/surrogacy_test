@@ -1,16 +1,19 @@
 'use client';
 
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from "./Footer.module.css";
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
+import ChatRoom from '../../customer';
 
 import { routes } from '@/app/routes/index';
 
 export default function Footer() {
   const router = useRouter();
   const currentPath = usePathname();
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   const handleSurrogateMatchingClick = () => {
     if (currentPath === '/pages/ParentsSection') {
@@ -107,6 +110,8 @@ export default function Footer() {
     }
   };
 
+  const handleCustomerServiceClick = () => setIsChatOpen(!isChatOpen);
+
   return (
     <footer className={styles.footer}>
       <div className={styles.content}>
@@ -198,10 +203,20 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className={styles.customerService} >
-        <Image src="/images/footer/customer-service.png" alt="客服" width={50} height={50} />
-        <span>客服</span>
-      </div>  
+      {
+        isChatOpen? (
+          <div
+            onClick={(e) => e.stopPropagation()}
+          >
+            <ChatRoom onClose={() => setIsChatOpen(false)} />
+          </div>
+        ):(
+          <div className={styles.customerService} onClick={handleCustomerServiceClick}>
+            <Image src="/images/footer/customer-service.png" alt="客服" width={50} height={50} />
+            <span>客服</span>
+          </div>
+        )
+      }
     </footer>
   );
 }
