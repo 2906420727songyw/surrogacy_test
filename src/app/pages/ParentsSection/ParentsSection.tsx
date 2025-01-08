@@ -1,6 +1,6 @@
 'use client';
 
-import styles from './ParentsSection.module.css';
+
 import ParentsSectionPart1 from './components/ParentsSectionPart1/ParentsSectionPart1';
 import ParentsSectionPart2 from './components/ParentsSectionPart2/ParentsSectionPart2';
 import ParentsSectionPart3 from './components/ParentsSectionPart3/ParentsSectionPart3';
@@ -8,7 +8,7 @@ import ParentsSectionPart4 from './components/ParentsSectionPart4/ParentsSection
 
 export default function ParentsSection() {
   return (
-    <section id="parents-section" className={styles.parentsSection}>
+    <section id="parents-section">
       <ParentsSectionPart1 />
       <ParentsSectionPart2 />
       <ParentsSectionPart3 />

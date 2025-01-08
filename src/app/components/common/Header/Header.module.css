@@ -46,6 +46,11 @@
   top: -8px;
 }
 
+/* 滚动时背景颜色 */
+.scrolled {
+  background-color: #A66E65;
+}
+
 .menuIcon::after {
   top: 8px;
 }

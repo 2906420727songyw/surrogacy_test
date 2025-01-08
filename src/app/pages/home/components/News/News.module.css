@@ -4,6 +4,7 @@
 }
 
 .articles {
+  width: 100%;
   list-style: none;
   padding: 0 0 100px 0;
   display: flex;
@@ -13,7 +14,7 @@
 
 
 .article {
-  width: 270px;
+  width: 1fr;
 }
 
 .articleHeader {
