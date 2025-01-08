@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 32px 120px;
+  padding: 32px 5vw;
   position: fixed;
   top: 0;
   left: 0;
@@ -49,7 +49,6 @@
 .menuIcon::after {
   top: 8px;
 }
-
 .logo a {
   color: #FFF;
   text-decoration: none;
@@ -288,7 +287,7 @@
 .header li {
   margin: 0;
 } 
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
   .header {
     padding: 20px;
     background-color: transparent;
@@ -479,7 +478,7 @@
 }
 
 /* 移动端隐藏 */
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
   .actions {
     display: none;
   }
@@ -549,7 +548,7 @@
   display: block;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
   .mobileActions .dropdown .dropdownContent {
     position: static;
     padding-left: 20px;
@@ -600,7 +599,7 @@
 }
 
 /* 移动端下拉菜单样式 */
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
   .mobileActions .dropdown .dropdownContent {
     position: static;
     padding-left: 20px;

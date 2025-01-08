@@ -1,12 +1,13 @@
 .footer {
   background-color: #A66E65;
-  padding: 100px 182px 62px 150px;
+  padding: 6.25rem 0 3.875rem 0;
+
   color: #FFF;
   width: 100%;
   height: auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
   .footer {
     padding: 60px 20px;
   }
@@ -34,11 +35,34 @@
 }
 
 .content {
-  max-width: 1200px;
+  max-width: 80vw;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
+
+
+.info{
+  margin-left: 18vw;
+}
+@media (max-width: 1500px) {
+  .info{
+    margin-left: 10vw;
+  }
+}
+
+@media (max-width: 1250px) {
+  .info{
+    margin-left: 6vw;
+  }
+}
+@media (min-width: 1500px) and (max-width: 1600px) {
+  .info{
+    margin-left: 14vw;
+  }
+}
+
+
 
 .info h3 {
   font-family: Playfair Display;
@@ -70,8 +94,26 @@
 
 .links {
   display: flex;
-  gap: 90px;
+  gap: 8vw;
 }
+@media (max-width: 1740px) {
+  .links {
+    gap: 6vw;
+  }
+}
+
+@media (min-width: 1740px) and (max-width: 1250px) {
+  .links {
+    gap: 4vw;
+  }
+}
+
+@media (max-width: 1100px) {
+  .links {
+    gap: 2vw;
+  }
+}
+
 
 .column h4 {
   font-family: PingFang SC;

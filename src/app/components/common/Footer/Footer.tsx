@@ -121,7 +121,7 @@ export default function Footer() {
                 <span onClick={handleIvfClinicSelectionClick}>试管医院的选择</span>
               </li>
               <li>
-                <span onClick={handleEggSpermDonationHelpClick}>卵子和精子捐献者的帮组</span>
+                <span onClick={handleEggSpermDonationHelpClick}>卵子和精子捐献者的帮助</span>
               </li>
               <li>
                 <span onClick={handleSurrogacyPlanProcessClick}>代孕计划和流程</span>
