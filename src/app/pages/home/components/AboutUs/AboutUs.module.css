@@ -2,14 +2,14 @@
   width: 3px;
   height: 150px;
   background: linear-gradient(0deg, rgba(226, 226, 226, 0.00) 0%, #B8B7B4 52.5%, rgba(226, 226, 226, 0.00) 100%);
-  margin: 0 auto 24px;
+  margin: 0 auto 30px;
 }
 
 .bottomGradientBar {
   width: 3px;
   height: 150px;
   background: linear-gradient(0deg, rgba(226, 226, 226, 0.00) 0%, #B8B7B4 52.5%, rgba(226, 226, 226, 0.00) 100%);
-  margin: 18px auto 0;
+  margin: 30px auto 0;
 }
 
 .aboutUs {
@@ -19,50 +19,6 @@
   background-color: #868275;
   position: relative;
 }
-
-.aboutUs h2 {
-  font-size: 48px;
-  margin-bottom: 40px;
-  color: #FFF;
-}
-
-.aboutUs p {
-  font-size: 40px;
-  line-height: 1.5;
-  margin-bottom: 20px;
-  color: #FFF;
-}
-
-.textContainer {
-  width: 100%;
-  padding: 0 150px;
-}
-
-@media (max-width: 768px) {
-  .aboutUs h2 {
-    font-size: 36px;
-  }
-
-  .aboutUs p {
-    font-size: 18px;
-  }
-
-  .textContainer {
-    padding: 0 20px;
-  }
-
-  .videoCarousel video {
-    width: 100%;
-    height: auto;
-  }
-}
-
-.images {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
 .videoCarousel {
   display: flex;
   justify-content: flex-start;
@@ -90,3 +46,22 @@
   height: auto;
   scroll-snap-align: start;
 } 
+@media (max-width: 768px) {
+  .videoCarousel video {
+    width: 100%;
+    height: auto;
+  }
+  .gradientBar {
+    width: 2px;
+    height: 150px;
+    background: linear-gradient(0deg, rgba(226, 226, 226, 0.00) 0%, #B8B7B4 52.5%, rgba(226, 226, 226, 0.00) 100%);
+    margin: 0 auto 20px;
+  }
+  
+  .bottomGradientBar {
+    width: 2px;
+    height: 150px;
+    background: linear-gradient(0deg, rgba(226, 226, 226, 0.00) 0%, #B8B7B4 52.5%, rgba(226, 226, 226, 0.00) 100%);
+    margin: 2px auto 0;
+  }
+}

@@ -49,15 +49,18 @@ export default function AboutUs() {
   return (
     <section className={styles.aboutUs}>
       <div className={styles.gradientBar}></div>
-      <div className={styles.textContainer}>
-        <p>Sapling Surrogacy</p>
-        <p>是一家提供全方位服务的代孕机构,</p>
-        <p>拥有最高的成功率,由一支热衷于帮助人们建立家庭的团队领导</p>
+      <div className="mx-auto flex flex-col items-center w-full h-auto md:w-full px-5">
+        <p className="text-3xl text-white mb-4 md:mb-8 md:text-5xl">
+          Sapling Surrogacy
+        </p>
+        <p className="text-lg text-white mb-1.5 md:mb-3 md:text-2xl">
+          是一家提供全方位服务的代孕机构,
+        </p>
+        <p className="text-lg text-white mb-1.5 md:mb-3 md:text-2xl">
+          拥有最高的成功率,由一支热衷于帮助人们建立家庭的团队领导
+        </p>
       </div>
       <div className={styles.bottomGradientBar}></div>
-      <div className={styles.images}>
-        {/* 在这里添加图片 */}
-      </div>
       <div
         ref={carouselRef}
         className={styles.videoCarousel}

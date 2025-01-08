@@ -1,4 +1,5 @@
 .becomingParents {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,104 +12,9 @@
   background-repeat: no-repeat;
 }
 
-.content {
-  text-align: center;
-}
-
-.content h2 {
-  font-size: 60px;
-  color: #FFF;
-}
-
-.content p {
-  font-size: 20px;
-  color: #FFF;
-  margin-bottom: 20px;
-}
-
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.learnMore,
-.apply,
-.applyChannel {
-  width: 93px;
-  height: 40px;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.learnMore {
-  background-color: #FFF;
-  color: #000;
-  border: none;
-}
-
-.apply {
-  background-color: #FFF;
-  color: #000;
-  border: none;
-}
-
-.applyChannel {
-  background-color: #fff;
-  color: #000;
-  border: none;
-}
-
 @media (max-width: 768px) {
   .becomingParents {
+    width: 100%;
     height: auto;
-    padding: 50px 20px;
   }
-
-  .content h2 {
-    font-size: 36px;
-  }
-
-  .content p {
-    font-size: 18px;
-  }
-
-  .buttons {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .learnMore {
-    background-color: #FFF;
-    color: #000;
-    border: none;
-  }
-  
-  .apply {
-    background-color: #FFF;
-    color: #000;
-    border: none;
-  }
-  
-  .applyChannel {
-    background-color: #fff;
-    color: #000;
-    border: none;
-  }
-  .learnMore,
-  .apply,
-  .applyChannel {
-  width: 73px;
-  height: 30px;
-  border-radius: 4px;
-  font-size: 12px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 }

@@ -6,19 +6,6 @@
   height: auto;
 }
 
-.dataDisplay h2 {
-  font-size: 36px;
-  margin-bottom: 20px;
-  color: #FFFFFF;
-}
-
-.dataDisplay p {
-  font-size: 20px;
-  line-height: 1.5;
-  margin-bottom: 10px;
-  color: #FFFFFF;
-}
-
 .dataItemsContainer {
   width: 100%;
   height: 368px;
@@ -85,14 +72,6 @@
   .dataDisplay {
     padding: 60px 20px 60px 20px;
     height: auto;
-  }
-
-  .dataDisplay h2 {
-    font-size: 28px;
-  }
-
-  .dataDisplay p {
-    font-size: 16px;
   }
 
   .dataItemsContainer {
