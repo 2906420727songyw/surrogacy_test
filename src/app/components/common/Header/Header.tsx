@@ -261,7 +261,6 @@ export default function Header() {
         className={styles.menuButton}
         onClick={toggleMenu}
         aria-label="Toggle Menu"
-        aria-expanded={isMenuOpen}
       >
         <span className={styles.menuIcon}></span>
       </button>
