@@ -11,10 +11,10 @@ export default function BecomeSurrogatePart4() {
       layout="responsive" />
       <div className={styles.container}>
         <div className={styles.whereContainer}>
-          <h2 className="text-xl text-white mb-10 md:mb-20 md:text-3xl md:leading-tight">
-            WHERE？我们代孕妈妈来自哪里
+          <h2 className="text-xl text-white mb-16 md:mb-20 md:text-3xl md:leading-tight">
+            WHERE?我们代孕妈妈来自哪里
           </h2>
-          <p className="text-sm text-white leading-6 mb-10 md:text-base md:leading-10 md:mb-11">
+          <p className="text-sm text-white leading-8 mb-10 md:text-base md:leading-10 md:mb-11">
             我们的代孕妈妈来自美国的所有合法代孕州,她们都是美国本土居民,<br/>
             其他来自明令禁止的代孕州（如密歇根州、路易斯安那州、阿肯色州等）将不会成为Sapling的代孕妈妈。<br/>
             因为代孕是一个涉及法律、道德伦理和医疗复杂性的过程,<br/>
@@ -22,11 +22,11 @@ export default function BecomeSurrogatePart4() {
           </p>
         </div>
         <div id='become-surrogate-part4-1' className={styles.whereContainer}>
-          <h2 className="text-xl text-white mb-10 mt-5 md:mb-20 md:text-3xl md:leading-tight md:mt-20">
+          <h2 className="text-xl text-white mb-16 mt-5 md:mb-20 md:text-3xl md:leading-tight md:mt-20">
             WHY？为什么选择成为<br/>
             Sapling的代孕妈妈
           </h2>
-          <p className="text-sm text-white leading-6 mb-10 md:text-base md:leading-10 md:mb-11">
+          <p className="text-sm text-white leading-8 mb-10 md:text-base md:leading-10 md:mb-11">
             Sapling将会为所有的代孕妈妈提供全程的支持和陪伴<br/>
             因为代孕是一个非常消耗精力、感情和体力的过程,<br/>
             所以Sapling将会有专业的人员及部门负责与代孕妈妈保持联系并提供全方位支持。
@@ -48,7 +48,7 @@ export default function BecomeSurrogatePart4() {
             width={1600}
             height={800}
             layout="responsive" />
-            <p className="text-xs text-white leading-6 mb-10 mt-10 md:text-sm md:leading-10 md:mb-11 md:mt-10">
+            <p className="text-xs text-white leading-8 mb-10 mt-10 md:text-sm md:leading-10 md:mb-11 md:mt-10">
             在你申请的时候,全程提供帮助,预约线上见面,了解你的申请进展、可能遇到的问题和困惑。<br/>
             同时,会有专业的工作人员和医生线上陪同,提供情感支持。<br/>
             在成为Sapling的代孕妈妈后,将会加入代孕妈妈社区,在这里大家可以讨论和分享自己的情况,<br/>
@@ -69,7 +69,7 @@ export default function BecomeSurrogatePart4() {
             width={1600}
             height={800}
             layout="responsive" />
-            <p className="text-xs text-white leading-6 mb-10 mt-10 md:text-sm md:leading-10 md:mb-11 md:mt-10">
+            <p className="text-xs text-white leading-8 mb-10 mt-10 md:text-sm md:leading-10 md:mb-11 md:mt-10">
             在代孕这趟旅程中,除了我们,你的陪同家人/朋友是最重要的靠山和依靠,<br/>
             我们称其为Primary Support Person（大多数情况下,他/她是你的Emergency Contact Person）。<br/>
             我们在和你保持联系和交流的同时,也会和他/她保持紧密的关系。<br/>
@@ -80,14 +80,14 @@ export default function BecomeSurrogatePart4() {
           </div>
           
         </div>
-        <button className="w-14 h-6 md:w-20 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10 mb-10 md:mt-10 md:mb-20">
+        <button className="w-14 h-6 md:w-20 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-16 mb-10 md:mt-10 md:mb-20">
           立即申请
         </button>
         <div id='become-surrogate-part4-2' className={styles.whereContainer}>
-          <h2 className="text-xl text-white mb-10 mt-5 md:mb-20 md:text-3xl md:leading-tight md:mt-20">
+          <h2 className="text-xl text-white mb-16 mt-5 md:mb-20 md:text-3xl md:leading-tight md:mt-20">
             HOW？代孕妈妈的薪酬和补偿
           </h2>
-          <p className="text-sm text-white leading-6 mb-10 mt-10 md:text-base md:leading-10 md:mb-11 md:mt-10">
+          <p className="text-sm text-white leading-8 mb-10 mt-10 md:text-base md:leading-10 md:mb-11 md:mt-10">
           根据不同的所在州和代孕史,每位代孕妈妈都会得到不同的薪酬和补偿,<br/>
           但我们保证,给Sapling代孕妈妈行业内顶尖的报酬以及尽可能全面的补偿。
           </p>
@@ -97,7 +97,7 @@ export default function BecomeSurrogatePart4() {
           </div>
         </div>
         <div className={styles.content}>
-          <h2 className="text-sm text-white mb-10 mt-0 md:mb-20 md:text-base md:leading-tight md:mt-20">
+          <h2 className="text-sm text-white mb-16 mt-2 md:mb-20 md:text-base md:leading-tight md:mt-20">
             Sapling给到代孕妈妈的薪酬和补偿将分为三个方面：
           </h2>
         </div>
@@ -138,7 +138,7 @@ export default function BecomeSurrogatePart4() {
           
         </div>
         <div className={styles.content}>
-          <h2 className="text-sm text-white mb-10 mt-0 md:mb-20 md:text-base md:leading-tight md:mt-20">
+          <h2 className="text-sm text-white mb-16 mt-2 md:mb-20 md:text-base md:leading-tight md:mt-20">
             代孕妈妈收到的薪酬和补偿的时间：
           </h2>
         </div>
@@ -167,11 +167,11 @@ export default function BecomeSurrogatePart4() {
             <p className="text-sm text-white mb-4 mt-6 md:text-base md:mt-8 md:mb-6">
               额外福利
             </p>
-            <p className="text-sm text-white leading-6 mb-10 mt-10 md:text-lg md:leading-10 md:mb-11 md:mt-10">
+            <p className="text-xs text-white leading-6 mb-10 mt-10 md:text-sm md:leading-10 md:mb-11 md:mt-10">
             从代孕妈妈怀孕开始,将会给代孕妈妈定额孕妇服装福利
             </p>
           </div>
-          <p className="text-sm text-white text-center leading-6 mb-10 mt-10 md:text-base md:leading-10 md:mb-11 md:mt-10">
+          <p className="text-sm text-white text-center leading-8 mb-10 mt-16 md:text-base md:leading-10 md:mb-11 md:mt-10">
             如果您怀的是多胞胎,我们会在您代孕的最后五个月向您支付多胞胎费用。单胞胎代孕34周后,多胞胎代孕32周后,您的代孕怀孕才算可行。<br/>
             如果您在40周前分娩,我们会一次性支付剩余费用。其余杂费将在整个怀孕期间分期支付,并将在您的筛查中讨论。
           </p>

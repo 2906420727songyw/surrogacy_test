@@ -11,7 +11,7 @@ export default function BecomeSurrogatePart2() {
       layout="responsive" />
       <div className={styles.container}>
         <div className={styles.content}>
-          <h2 className="text-xl text-white mb-10 md:mb-20 md:text-3xl md:leading-tight">
+          <h2 className="text-xl text-white mb-16 md:mb-20 md:text-3xl md:leading-tight">
             WHAT? 我们怎么筛选申请者
           </h2>
           <p className="text-sm text-white leading-6 mb-10 md:text-base md:leading-10 md:mb-11">
@@ -66,7 +66,7 @@ export default function BecomeSurrogatePart2() {
               体重和BMI筛查、怀孕的身体准备
             </p>
           </div>
-          <button className="w-14 h-6 md:w-20 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10 mb-10 md:mt-20 md:mb-20">
+          <button className="w-14 h-6 md:w-20 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-20 mb-10 md:mt-20 md:mb-20">
             立即申请
           </button>
         </div>
