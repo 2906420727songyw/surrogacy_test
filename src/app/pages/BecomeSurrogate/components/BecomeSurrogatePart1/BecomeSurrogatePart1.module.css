@@ -112,15 +112,15 @@
 
 /* 展开图片 */
 .expandedImage {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
 }
 
 @media (max-width: 768px) {
   .expandedImage {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
   }
 }
 
