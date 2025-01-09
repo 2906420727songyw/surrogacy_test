@@ -10,7 +10,7 @@ import styles from '../page.module.css';
 
 export default function AppointmentContent() {
   const searchParams = useSearchParams();
-  const type = searchParams?.get('type') === 'surrogacy' ? '代孕母' : '准父母';
+  const type = searchParams?.get('type') === 'parentAppointment' ? '准父母' : '代孕母';
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
