@@ -52,7 +52,8 @@ function ProfilePageContent() {
   const contentRef = useRef<HTMLDivElement>(null);
   const searchParams = useSearchParams();
   const type = searchParams?.get('type');
-  const isSurrogacy = type === 'surrogacy';
+  const isSurrogacy = type?.includes('surrogacy');
+
 
   // 根据路由参数设置当前激活的导航
   const getActiveNav = () => {
@@ -61,8 +62,10 @@ function ProfilePageContent() {
         return '成为代孕母';
       case 'parent':
         return '成为准父母';
-      case 'appointment':
+      case 'surrogacyAppointment':
         return '线下预约';
+      case 'parentAppointment':
+          return '线下预约';
       default:
         return '个人信息';
     }
@@ -72,6 +75,8 @@ function ProfilePageContent() {
 
   useEffect(() => {
     setMounted(true);
+    // const appointmentType = searchParams?.get('type') === 'parentAppointment' ? '准父母' : '代孕母';
+    
     // 当路由参数改变时，更新激活的导航项
     setActiveNav(getActiveNav());
   }, [type]);
@@ -86,6 +91,7 @@ function ProfilePageContent() {
         return <SurrogateApplicationContent />;
       case '线下预约':
         return <AppointmentContent />;
+        
       default:
         return <ProfileContent />;
     }
@@ -122,7 +128,7 @@ function ProfilePageContent() {
         <div className="pt-[80px] pl-[30px] md:pl-[60px]">
           <nav className="flex flex-col space-y-[24px] md:space-y-[32px]">
             <NavLink
-              href="/pages/auth/profile"
+              href={`/pages/auth/profile${isSurrogacy ? '/?type=surrogacyProfile' : ''}`}
               isActive={activeNav === '个人信息'}
               onClick={() => {
                 setActiveNav('个人信息');
@@ -142,7 +148,7 @@ function ProfilePageContent() {
               {isSurrogacy ? '成为代孕母' : '成为准父母'}
             </NavLink>
             <NavLink
-              href="/pages/auth/profile?type=appointment"
+              href={`/pages/auth/profile?type=${isSurrogacy ? 'surrogacyAppointment' : 'parentAppointment'}`}
               isActive={activeNav === '线下预约'}
               onClick={() => {
                 setActiveNav('线下预约');

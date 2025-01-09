@@ -11,7 +11,7 @@ interface AppointmentSuccessProps {
 export default function AppointmentSuccess({ onRestart, selectedDate, selectedTime, currentDate }: AppointmentSuccessProps) {
   const monthNames = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
   const searchParams = useSearchParams();
-  const type = searchParams?.get('type') === 'surrogacy' ? '代孕母' : '准父母';
+  const type = searchParams?.get('type') === 'surrogacyAppointment' ? '代孕母' : '准父母';
   
 
   const formatDateTime = (date: string, time: string) => {
