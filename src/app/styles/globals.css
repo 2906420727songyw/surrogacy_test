@@ -37,3 +37,15 @@ body {
   line-height: 1.6;
   font-family: 'ShuiYunTi', sans-serif;
 }
+
+/* src/app/styles/globals.css */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  } 
+}

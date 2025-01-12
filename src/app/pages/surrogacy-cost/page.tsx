@@ -99,7 +99,7 @@ const SurrogacyCost: React.FC = () => {
     <div className={styles.packageContainer}>
       {/* 左侧 */}
       <div className={styles.leftPackage}>
-        <h3 className={styles.packageTitle}>Sprout Package<br/>（萌芽套餐）:</h3>
+        <h3 className={styles.packageTitle}>Sprout Package<br/>（萌芽套餐）</h3>
         <p className={styles.packagePrice}>145,000 美元起<br/>满足代孕所有基本需求</p>
         <div className={styles.detailsDivider}></div>
         <h4 className={styles.detailsTitle}>中介服务：</h4>
@@ -139,7 +139,7 @@ const SurrogacyCost: React.FC = () => {
       </div>
       {/* 右侧 */}
       <div className={styles.rightPackage}>
-      <h3 className={styles.packageTitle}>Thrive Package<br/>（茁壮套餐）：</h3>
+      <h3 className={styles.packageTitle}>Thrive Package<br/>（茁壮套餐）</h3>
         <p className={styles.packagePriceRight}>从260,000 美元起<br/>全面保障，无惧风险，陪伴每一步，直至安心迎接新生命</p>
         <div className={styles.detailsDivider}></div>
         <h4 className={styles.detailsTitle}>中介服务：</h4>

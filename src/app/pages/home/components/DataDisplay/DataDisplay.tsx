@@ -4,7 +4,7 @@ export default function DataDisplay() {
   return (
     <section className={styles.dataDisplay}>
       <h2 className="text-2xl mb-5 text-white md:text-4xl">Sapling Surrogacy</h2>
-      <p className="text-lg leading-6 mb-2.5 text-white md:text-xl">
+      <p className="text-lg leading-6 mb-2.5 text-white md:text-xm">
         成功和热情帮得您信赖,作为一家提供全方位服务的代孕机构,
       </p>
       <p className="text-lg leading-6 mb-2.5 text-white md:text-xl">

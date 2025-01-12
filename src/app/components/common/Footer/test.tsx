@@ -6,7 +6,7 @@ import Link from 'next/link';
 import styles from "./Footer.module.css";
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
-import ChatRoom from '../../customer';
+import CustomerServiceChat from '../../customer';
 
 import { routes } from '@/app/routes/index';
 
@@ -126,7 +126,7 @@ export default function Footer() {
                 <span onClick={handleIvfClinicSelectionClick}>试管医院的选择</span>
               </li>
               <li>
-                <span onClick={handleEggSpermDonationHelpClick}>卵子和精子捐献者的帮助</span>
+                <span onClick={handleEggSpermDonationHelpClick}>卵子和精子捐献者的帮组</span>
               </li>
               <li>
                 <span onClick={handleSurrogacyPlanProcessClick}>代孕计划和流程</span>
@@ -149,16 +149,6 @@ export default function Footer() {
               <li>
                 <span onClick={handleScreeningProcessClick}>筛选过程</span>
               </li>
-              <li><Link href="#">经理历程</Link></li>
-            </ul>
-          </div>
-          <div className={styles.column}>
-            <h4>卵子捐赠者</h4>
-            <ul>
-              <li><Link href="#">补偿薪资</Link></li>
-              <li><Link href="#">卵子捐赠者要求</Link></li>
-              <li><Link href="#">申请流程</Link></li>
-              <li><Link href="#">筛选过程</Link></li>
               <li><Link href="#">经理历程</Link></li>
             </ul>
           </div>
@@ -206,9 +196,10 @@ export default function Footer() {
       {
         isChatOpen? (
           <div
+
             onClick={(e) => e.stopPropagation()}
           >
-            <ChatRoom onClose={() => setIsChatOpen(false)} />
+            <CustomerServiceChat  onClose={() => setIsChatOpen(false)} />
           </div>
         ):(
           <div className={styles.customerService} onClick={handleCustomerServiceClick}>

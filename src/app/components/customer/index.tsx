@@ -69,7 +69,7 @@ const CustomerServiceChat: React.FC<{ onClose: () => void }> = ({ onClose }) => 
     };
 
     return (
-        <div className="fixed bottom-5 right-5 bg-white p-5 rounded-lg shadow-lg z-50 w-96 h-128 flex flex-col">
+        <div className="bg-white p-5 rounded-lg shadow-lg z-50 w-96  h-100 flex flex-col">
             <div>
                 <button
                     onClick={onClose}

@@ -1,8 +1,8 @@
 import './styles/globals.css';
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
-import Header from "./components/common/Header/Header";
-import Footer from "./components/common/Footer/Footer";
+import Header from "./components/common/Header";
+import Footer from "./components/common/Footer";
 import { AuthProvider } from "./components/AuthProvider";
 
 const playfairDisplay = Playfair_Display({
@@ -38,7 +38,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <AuthProvider>
           <Header />
-          <main>{children}</main>
+          <main className="fade-in">{children}</main>
           <Footer />
         </AuthProvider>
       </body>

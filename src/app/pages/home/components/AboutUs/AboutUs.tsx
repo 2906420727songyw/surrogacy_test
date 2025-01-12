@@ -53,10 +53,10 @@ export default function AboutUs() {
         <p className="text-3xl text-white mb-4 md:mb-8 md:text-5xl">
           Sapling Surrogacy
         </p>
-        <p className="text-lg text-white mb-1.5 md:mb-3 md:text-2xl">
+        <p className="text-lg text-white mb-1.5 md:mb-3 md:text-sm">
           是一家提供全方位服务的代孕机构,
         </p>
-        <p className="text-lg text-white mb-1.5 md:mb-3 md:text-2xl">
+        <p className="text-lg text-white mb-1.5 md:mb-3 md:text-sm">
           拥有最高的成功率,由一支热衷于帮助人们建立家庭的团队领导
         </p>
       </div>
@@ -72,10 +72,13 @@ export default function AboutUs() {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <video src="/videos/home/about-us-video-1.mp4" controls></video>
-        <video src="/videos/home/about-us-video-2.mp4" controls></video>
-        <video src="/videos/home/about-us-video-3.mp4" controls></video>
-        <video src="/videos/home/about-us-video-4.mp4" controls></video>
+       <div className='flex gap-5 overflow-x-auto mx-5'>
+        {
+          Array.from({ length: 4 }).map((_, index) => (
+            <video src={`/videos/home/about-us-video-${index+1}.mp4`} controls></video>
+          ))
+        }
+       </div>
       </div>
       <News />
     </section>
