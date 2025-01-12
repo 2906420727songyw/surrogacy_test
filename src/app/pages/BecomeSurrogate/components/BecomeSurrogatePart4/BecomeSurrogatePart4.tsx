@@ -12,7 +12,7 @@ export default function BecomeSurrogatePart4() {
       <div className={styles.container}>
         <div className={styles.whereContainer}>
           <h2 className="text-xl text-white mb-16 md:mb-20 md:text-3xl md:leading-tight">
-            WHERE?我们代孕妈妈来自哪里
+            WHERE? <br/>我们代孕妈妈来自哪里
           </h2>
           <p className="text-sm text-white leading-8 mb-10 md:text-base md:leading-10 md:mb-11">
             我们的代孕妈妈来自美国的所有合法代孕州,她们都是美国本土居民,<br/>
@@ -23,7 +23,7 @@ export default function BecomeSurrogatePart4() {
         </div>
         <div id='become-surrogate-part4-1' className={styles.whereContainer}>
           <h2 className="text-xl text-white mb-16 mt-5 md:mb-20 md:text-3xl md:leading-tight md:mt-20">
-            WHY？为什么选择成为<br/>
+            WHY? <br/>为什么选择成为
             Sapling的代孕妈妈
           </h2>
           <p className="text-sm text-white leading-8 mb-10 md:text-base md:leading-10 md:mb-11">
@@ -85,7 +85,7 @@ export default function BecomeSurrogatePart4() {
         </button>
         <div id='become-surrogate-part4-2' className={styles.whereContainer}>
           <h2 className="text-xl text-white mb-16 mt-5 md:mb-20 md:text-3xl md:leading-tight md:mt-20">
-            HOW？代孕妈妈的薪酬和补偿
+            HOW? <br/>代孕妈妈的薪酬和补偿
           </h2>
           <p className="text-sm text-white leading-8 mb-10 mt-10 md:text-base md:leading-10 md:mb-11 md:mt-10">
           根据不同的所在州和代孕史,每位代孕妈妈都会得到不同的薪酬和补偿,<br/>

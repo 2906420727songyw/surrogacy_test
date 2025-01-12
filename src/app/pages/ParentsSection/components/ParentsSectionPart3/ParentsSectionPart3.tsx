@@ -29,13 +29,13 @@ export default function ParentsSectionPart3() {
   };
 
   return (
-    <div id="surrogacy-plan-process" className={styles.part3}>
+    <div className={styles.part3}>
       <Image src="/images/home/image2.png" alt="第三部分图片" 
       width={1600}
       height={800}
       layout="responsive"
       />
-      <div className={styles.content}>
+      <div id="surrogacy-plan-process" className={styles.content}>
         <div className="w-full flex flex-col items-center justify-center px-5">
           <h2 className="text-xl text-center text-white mb-12 md:text-4xl md:mb-12">
             准父母代孕流程

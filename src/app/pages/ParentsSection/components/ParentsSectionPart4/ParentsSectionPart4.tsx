@@ -2,13 +2,13 @@ import styles from './ParentsSectionPart4.module.css';
 import Image from 'next/image';
 export default function ParentsSectionPart4() {
   return (
-    <div id="egg-sperm-donation-help" className={styles.part4}>
+    <div className={styles.part4}>
       <Image src="/images/home/image3.png" alt="第四部分图片" 
       width={1600}
       height={800}
       layout="responsive"
       />
-      <div className={styles.content}>
+      <div id="egg-sperm-donation-help" className={styles.content}>
         <div className="w-full flex flex-col items-center justify-center px-5">
           <h2 className="text-xl text-center text-white mb-12 md:text-3xl md:mb-14 md:leading-20">
             单身父母和LGBTQ+群体<br/>

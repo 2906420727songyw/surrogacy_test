@@ -65,8 +65,7 @@ export default function BecomeSurrogatePart1({
       </div>
       <div id="who-can-be-surrogate" className={styles.bottomContent}>
         <h2 className="text-xl text-white mb-16 md:mb-20 md:text-3xl md:leading-tight">
-          WHO? 谁可以成为我们的代孕妈妈<br/>
-          ：对代孕妈妈的要求
+          WHO?<br/> 谁可以成为我们的代孕妈妈:对代孕妈妈的要求
         </h2>
         <p className="text-sm text-white leading-8 mb-10 md:text-base md:leading-10 md:mb-11">
         我们Sapling的代孕母必须在生理上和心理上同时具备代孕的能力，<br/>
