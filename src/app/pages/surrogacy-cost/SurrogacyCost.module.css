@@ -21,99 +21,11 @@
   justify-content: center;
 }
 
-.title {
-  font-size: 20px;
-  line-height: 50px;
-  margin-bottom: 100px;
-  text-align: center;
-  color: #fff;
-}
-
-.subtitle {
-  font-size: 20px;
-  line-height: 30px;
-  margin-bottom: 50px;
-  text-align: center;
-  color: #fff;
-}
-
-.packagePrices {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 100px;
-  gap: 10px;
-}
-
-.packagePrices p {
-  font-size: 30px;
-  line-height: 50px;
-  color: #fff;
-  margin: 0;
-}
-
-.paragraph1,
-.paragraph2 {
-  font-size: 20px;
-  line-height: 50px;
-  text-align: center;
-  color: #fff;
-  margin-bottom: 50px;
-}
-
 .gradientBar {
-  width: 4px;
-  height: 200px;
+  width: 3px;
+  height: 150px;
   background: linear-gradient(0deg, rgba(226, 226, 226, 0) 0%, #FFFFFF 52.5%, rgba(226, 226, 226, 0) 100%);
-  margin: 150px auto 200px;
-}
-
-.sectionTitle {
-  font-size: 48px;
-  line-height: 50px;
-  text-align: center;
-  color: #fff;
-  margin-bottom: 100px;
-}
-.paragraph3 {
-  font-size: 20px;
-  line-height: 50px;
-  text-align: center;
-  color: #fff;
-  margin-bottom: 50px;
-}
-
-.subTitle {
-  font-size: 20px;
-  line-height: 50px;
-  text-align: center;
-  color: #fff;
-}
-
-.paragraph4 {
-  font-size: 30px;
-  line-height: 50px;
-  text-align: center;
-  color: #fff;
-  margin-bottom: 100px;
-}
-
-.ps {
-  font-size: 20px;
-  line-height: 50px;
-  text-align: center;
-  color: #fff;
-  margin-bottom: 50px;
-}
-
-.paragraph5,
-.paragraph6 {
-  font-size: 20px;
-  line-height: 50px;
-  text-align: center;
-  color: #fff;
-  margin-bottom: 100px;
+  margin: 80px auto;
 }
 
 .packageContainer {
@@ -136,7 +48,7 @@
 }
 
 .packageTitle {
-  font-size: 36px;
+  font-size: 26px;
   line-height: 50px;
   text-align: center;
   color: #fff;
@@ -144,7 +56,7 @@
 }
 
 .packagePrice {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 30px;
   text-align: center;
   color: #fff;
@@ -152,7 +64,7 @@
 }
 
 .packagePriceRight {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 30px;
   text-align: center;
   color: #fff;
@@ -163,14 +75,6 @@
   width: 50%;
   background-color: #868275;
   padding: 50px;
-}
-
-.paragraph7 {
-  font-size: 20px;
-  line-height: 50px;
-  text-align: center;
-  color: #fff;
-  margin: 200px 0;
 }
 
 .packageDetails {
@@ -186,7 +90,7 @@
 }
 
 .detailsTitle {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 36px;
   text-align: center;
   color: #fff;
@@ -195,7 +99,7 @@
 
 .detailsDescription {
   max-height: 0;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 27px;
   text-align: center;
   color: #fff;
@@ -220,72 +124,6 @@
     padding: 0 20px 50px;
   }
 
-  .title {
-    font-size: 16px;
-    line-height: 30px;
-    margin-bottom: 50px;
-  }
-
-  .subtitle {
-    font-size: 16px;
-    line-height: 24px;
-    margin-bottom: 30px;
-  }
-
-  .packagePrices p {
-    font-size: 20px;
-    line-height: 30px;
-    text-align: center;
-  }
-
-  .paragraph1,
-  .paragraph2 {
-    font-size: 16px;
-    line-height: 24px;
-    margin-bottom: 30px;
-  }
-
-  .gradientBar {
-    margin: 100px auto;
-  }
-
-  .sectionTitle {
-    font-size: 28px;
-    line-height: 40px;
-    margin-bottom: 50px;
-  }
-
-  .paragraph3 {
-    font-size: 16px;
-    line-height: 30px;
-    margin-bottom: 40px;
-  }
-
-  .subTitle {
-    font-size: 18px;
-    line-height: 30px;
-    margin-bottom: 10px;
-  }
-
-  .paragraph4 {
-    font-size: 20px;
-    line-height: 40px;
-    margin-bottom: 50px;
-  }
-
-  .ps {
-    font-size: 16px;
-    line-height: 24px;
-    margin-bottom: 30px;
-  }
-
-  .paragraph5,
-  .paragraph6 {
-    font-size: 16px;
-    line-height: 24px;
-    margin-bottom: 50px;
-  }
-
   .packageContainer {
     flex-direction: column;
     margin-bottom: 50px;
@@ -297,40 +135,34 @@
   }
 
   .packageTitle {
-    font-size: 24px;
+    font-size: 14px;
     line-height: 30px;
     margin-bottom: 30px;
   }
 
   .packagePrice,
   .packagePriceRight {
-    font-size: 16px;
+    font-size: 12px;
     line-height: 24px;
     margin-bottom: 50px;
   }
 
-  .paragraph7 {
-    font-size: 14px;
-    line-height: 24px;
-    padding: 0 20px;
-    margin: 100px 0;
-  }
-
   .detailsTitle {
-    font-size: 16px;
+    font-size: 12px;
     line-height: 24px;
     margin-bottom: 10px;
   }
 
   .detailsDescription {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 24px;
   }
+
   .gradientBar {
     width: 2px;
-    height: 150px;
+    height: 100px;
     background: linear-gradient(0deg, rgba(226, 226, 226, 0) 0%, #FFFFFF 52.5%, rgba(226, 226, 226, 0) 100%);
-    margin: 50px auto 100px;
+    margin: 50px auto;
   }
 }
 
