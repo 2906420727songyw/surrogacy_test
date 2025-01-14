@@ -81,7 +81,7 @@ export default function Header(){
     }
 
     return (
-        <div className={`flex justify-between text-white items-center p-5 fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-[#A48472]' : 'bg-transparent'}`}>
+        <div className={`flex justify-between text-white font-sans items-center p-5 fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-[#A48472]' : 'bg-transparent'}`}>
             <div className='hover:cursor-pointer' onClick={()=>router.push('/')}>Sapling Surrogacy</div>
             <div className='hidden header-switch:flex flex gap-5'>
                 {list.map((item,index)=>{
@@ -129,7 +129,7 @@ export default function Header(){
                 ):null
                }
                 {isMenuOpen && (
-                    <div className='fixed top-0 left-0 h-full w-full bg-[rgba(164,132,114,0.9)] shadow-lg flex flex-col p-4 text-sm z-40 overflow-y-auto'>
+                    <div className='fixed top-0 left-0 h-full w-full bg-[rgba(164,132,114,0.9)] shadow-lg flex flex-col p-4 text-sm z-40 overflow-y-auto font-sans'>
                         <div className='hover:cursor-pointer flex justify-end sticky top-0' onClick={() => setIsMenuOpen(false)}>
                             <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
                                 <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M6 18L18 6M6 6l12 12' />

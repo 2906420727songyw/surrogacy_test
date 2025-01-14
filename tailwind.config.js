@@ -9,6 +9,9 @@ module.exports = {
     extend: {
       screens: {
         'header-switch': '900px',
+        fontFamily: {
+          sans: ['思源黑体', 'sans-serif'],
+        },
       },
     },
   },
