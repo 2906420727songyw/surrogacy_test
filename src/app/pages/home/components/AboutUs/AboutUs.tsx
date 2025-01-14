@@ -3,7 +3,7 @@
 import React, { useRef } from 'react';
 import News from '../News/News';
 import styles from './AboutUs.module.css';
-
+import Videos from './videos';
 export default function AboutUs() {
   const carouselRef = useRef<HTMLDivElement>(null);
   let isDragging = false;
@@ -60,26 +60,8 @@ export default function AboutUs() {
           拥有最高的成功率，由一支热衷于帮助人们建立家庭的团队领导
         </p>
       </div>
-      <div className={styles.bottomGradientBar}></div>
-      <div
-        ref={carouselRef}
-        className={styles.videoCarousel}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
-       <div className='flex gap-5 overflow-x-auto mx-5'>
-        {
-          Array.from({ length: 4 }).map((_, index) => (
-            <video src={`/videos/home/about-us-video-${index+1}.mp4`} controls></video>
-          ))
-        }
-       </div>
-      </div>
+      <div className={styles.bottomGradientBar}/>
+      <Videos />
       <News />
     </section>
   );

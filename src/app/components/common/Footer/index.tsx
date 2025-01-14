@@ -24,7 +24,7 @@ export default function Footer() {
     }
 
     return (
-        <div className='flex justify-around gap-10 p-5 bg-[#A48472] flex-wrap p-20'>
+        <div className='flex justify-around gap-10 p-5 bg-[#A48472] flex-wrap p-20 text-white'>
         {
             list.map((item,index)=>(
                 <div key={index}>
@@ -41,23 +41,16 @@ export default function Footer() {
                 </div>
             ))
         }
-        <div className='fixed bottom-5 right-5'>
-            {
-                isChatOpen? (
-                <div
-
-                    onClick={(e) => e.stopPropagation()}
-                >
-                    <CustomerServiceChat  onClose={() => setIsChatOpen(false)} />
-                </div>
-                ):(
-                <div className='flex items-center gap-2 bg-[#868275] p-3 rounded-xl' onClick={()=>setIsChatOpen(!isChatOpen)}>
-                    <Image src="/images/footer/customer-service.png" alt="客服" width={25} height={25} />
-                    <span>客服</span>
-                </div>
-                )
-            }
-        </div>
+        {
+            isChatOpen? (
+                <CustomerServiceChat  onClose={() => setIsChatOpen(false)} />
+            ):(
+            <div className='flex fixed bottom-5 right-5 items-center gap-2 bg-[#868275] p-3 rounded-xl' onClick={()=>setIsChatOpen(!isChatOpen)}>
+                <Image src="/images/footer/customer-service.png" alt="客服" width={25} height={25} />
+                <span>客服</span>
+            </div>
+            )
+        }
         <div className={styles.info}>
             <h3>探索</h3>
             

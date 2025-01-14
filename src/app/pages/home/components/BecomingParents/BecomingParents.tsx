@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import styles from './BecomingParents.module.css';
 export default function BecomingParents() {
+
   return (
     <section id="becoming-parents" className={styles.becomingParents}>
       <div className="mx-auto flex flex-col items-center w-full h-auto md:w-full">

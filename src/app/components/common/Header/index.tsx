@@ -1,58 +1,59 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-// import list from './index.ts'
 import { useRouter ,usePathname} from 'next/navigation';
 import Cookies from 'js-cookie';
 
-export default function Header(){
-    const list = [{
-        text:'成为准父母',
-        link:'/pages/ParentsSection',
-        options:[{
-            text:'待孕母的匹配过程',
-            link:'surrogacy-matching-process'
-        },{
-            text:'试管医院的选择',
-            link:'parents-overview'
-        },{
-            text:'单身父母和LGBTQ+群体',
-            link:'egg-sperm-donation-help'
-        },{
-            text:'代孕计划和流程',
-            link:'surrogacy-plan-process'
-        }]
+const list = [{
+    text:'成为准父母',
+    link:'/pages/ParentsSection',
+    options:[{
+        text:'待孕母的匹配过程',
+        link:'surrogacy-matching-process'
     },{
-        text:'成为代孕母亲',
-        link:'/pages/BecomeSurrogate',
-        options:[{
-            text:'谁可以成为代孕妈妈',
-            link:'who-can-be-surrogate'
-        },{
-            text:'怎么筛选申请者',
-            link:'become-surrogate-part2'
-        },{
-            text:'如何成为代孕妈妈',
-            link:'become-surrogate-part3'
-        },{
-            text:'为什么选择我们',
-            link:'become-surrogate-part4-1'
-        },{
-            text:'薪酬和补偿',
-            link:'become-surrogate-part4-2'
-        }]
+        text:'试管医院的选择',
+        link:'parents-overview'
     },{
-        text:'关于我们',
-        link:'/pages/about',
+        text:'单身父母和LGBTQ+群体',
+        link:'egg-sperm-donation-help'
     },{
-        text:'资讯',
-        link:'/pages/resources',
-    },{
-        text:'推荐计划',
-        link:'/pages/recommendation-plan',
-    },{
-        text:'职业生涯',
-        link:'/pages/careers',
+        text:'代孕计划和流程',
+        link:'surrogacy-plan-process'
     }]
+},{
+    text:'成为代孕母亲',
+    link:'/pages/BecomeSurrogate',
+    options:[{
+        text:'谁可以成为代孕妈妈',
+        link:'who-can-be-surrogate'
+    },{
+        text:'怎么筛选申请者',
+        link:'become-surrogate-part2'
+    },{
+        text:'如何成为代孕妈妈',
+        link:'become-surrogate-part3'
+    },{
+        text:'为什么选择我们',
+        link:'become-surrogate-part4-1'
+    },{
+        text:'薪酬和补偿',
+        link:'become-surrogate-part4-2'
+    }]
+},{
+    text:'关于我们',
+    link:'/pages/about',
+},{
+    text:'资讯',
+    link:'/pages/resources',
+},{
+    text:'推荐计划',
+    link:'/pages/recommendation-plan',
+},{
+    text:'职业生涯',
+    link:'/pages/careers',
+}]
+
+export default function Header(){
+   
     const router = useRouter();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -80,7 +81,7 @@ export default function Header(){
     }
 
     return (
-        <div className={`flex justify-between items-center p-5 fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-[#A48472]' : 'bg-transparent'}`}>
+        <div className={`flex justify-between text-white items-center p-5 fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-[#A48472]' : 'bg-transparent'}`}>
             <div className='hover:cursor-pointer' onClick={()=>router.push('/')}>Sapling Surrogacy</div>
             <div className='hidden header-switch:flex flex gap-5'>
                 {list.map((item,index)=>{
@@ -128,12 +129,13 @@ export default function Header(){
                 ):null
                }
                 {isMenuOpen && (
-                    <div className='fixed top-0 left-0 h-full w-full bg-[rgba(164,132,114,0.9)] shadow-lg flex flex-col p-4 text-sm z-40'>
-                        <div className='hover:cursor-pointer flex justify-end mb-4' onClick={() => setIsMenuOpen(false)}>
+                    <div className='fixed top-0 left-0 h-full w-full bg-[rgba(164,132,114,0.9)] shadow-lg flex flex-col p-4 text-sm z-40 overflow-y-auto'>
+                        <div className='hover:cursor-pointer flex justify-end sticky top-0' onClick={() => setIsMenuOpen(false)}>
                             <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
                                 <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M6 18L18 6M6 6l12 12' />
                             </svg>
                         </div>
+                        <div className='hover:cursor-pointer'>{Cookies.get('userData') ? JSON.parse(Cookies.get('userData') || '{}')?.name : '登录'}</div>
                         {list.map((item, index) => (
                             <div key={index}>
                                 <div className='font-bold hover:cursor-pointer my-5' onClick={()=>{
@@ -141,14 +143,14 @@ export default function Header(){
                                     setIsMenuOpen(false)
                                 }}>{item.text}</div>
                                 <div className={item.options ? 'border-b border-gray-300 my-54' : ''}></div>
-                                <div className='flex flex-col gap-2 mt-2 relative left-5'>
+                                <div className='flex flex-col gap-5 mt-2 relative left-5'>
                                     {item.options?.map((option, i) => (
                                         <div key={i} className='hover:underline hover:cursor-pointer' onClick={() => routerToScroll(item.link,option.link)}>{option.text}</div>
                                     ))}
                                 </div>
                             </div>
                         ))}
-                        <div className='flex gap-2'>
+                        <div className='flex gap-2 flex-col'>
                             <div className='py-2 hover:cursor-pointer' onClick={() => routerToCheckLogin('/pages/auth/profile?type=parent')}>成为准父母</div>
                             <div className='py-2 hover:cursor-pointer' onClick={() => routerToCheckLogin('/pages/auth/profile?type=surrogacy')}>成为代孕母亲</div>
                             <div className='py-2 hover:cursor-pointer'>搜索</div>
