@@ -30,10 +30,14 @@ export default function ParentsSectionPart3() {
 
   return (
     <div className={styles.part3}>
-      <Image src="/images/ParentsSection/image2.jpg" alt="第三部分图片" 
+      <Image 
+      src="/images/ParentsSection/image2.png" 
+      alt="第三部分图片" 
       width={1600}
       height={800}
       layout="responsive"
+      placeholder="blur"
+      blurDataURL="/images/ParentsSection/image2.jpg"
       />
       <div id="surrogacy-plan-process" className={styles.content}>
         <div className="w-full flex flex-col items-center justify-center px-5">

@@ -1,5 +1,6 @@
 import styles from './BecomeSurrogatePart1.module.css';
 import Image from 'next/image';
+import { Image as AntdImage } from "antd";
 
 interface BecomeSurrogatePart1Props {
   isExpandedA: boolean;
@@ -56,11 +57,13 @@ export default function BecomeSurrogatePart1({
       </div>
       <div className={styles.imageContainer}>
         <Image 
-          src="/images/BecomeSurrogate/becoming-parents-bg.jpg"
+          src="/images/BecomeSurrogate/becoming-parents-bg.png"
           alt="展示图片"
           width={1600}
           height={800} 
           layout="responsive"
+          placeholder="blur"
+          blurDataURL="/images/BecomeSurrogate/becoming-parents-bg.jpg"
         />
       </div>
       <div id="who-can-be-surrogate" className={styles.bottomContent}>
@@ -90,11 +93,13 @@ export default function BecomeSurrogatePart1({
           {isExpandedA && (
             <div className={styles.expandedContent}>
               <Image 
-              src="/images/BecomeSurrogate/A.jpg" 
+              src="/images/BecomeSurrogate/A.png" 
               alt="展开内容图片" 
               width={100}
               height={100}
               className={styles.expandedImage}
+              placeholder="blur"
+              blurDataURL="/images/BecomeSurrogate/A.jpg"
               />
               <p className="text-xs text-white text-center mb-6 md:text-sm md:mb-8">
               21 至 40 岁之间；身体健康，没有严重的慢性疾病或妨碍怀孕的健康问题（如高血压、糖尿病、心脏病等）；<br/>
@@ -118,11 +123,13 @@ export default function BecomeSurrogatePart1({
           {isExpandedB && (
             <div className={styles.expandedContent}>
               <Image 
-              src="/images/BecomeSurrogate/B.jpg" 
+              src="/images/BecomeSurrogate/B.png" 
               alt="展开内容图片" 
               width={100}
               height={100}
               className={styles.expandedImage}
+              placeholder="blur"
+              blurDataURL="/images/BecomeSurrogate/B.jpg"
               />
               <p className="text-xs text-white text-center mb-6 md:text-sm md:mb-8">
               通过心理健康评估，确保在心理上能够承担代孕的责任和挑战；<br/>
@@ -146,11 +153,13 @@ export default function BecomeSurrogatePart1({
           {isExpandedC && (
             <div className={styles.expandedContent}>
               <Image 
-              src="/images/BecomeSurrogate/C.jpg" 
+              src="/images/BecomeSurrogate/C.png" 
               alt="展开内容图片" 
               width={100}
               height={100}
               className={styles.expandedImage}
+              placeholder="blur"
+              blurDataURL="/images/BecomeSurrogate/C.jpg"
               />
               <p className="text-xs text-white text-center mb-6 md:text-sm md:mb-8">
               需要有至少一段顺利的怀孕和分娩经历；无严重孕产并发症（妊娠高血压、早产等）
@@ -173,11 +182,13 @@ export default function BecomeSurrogatePart1({
           {isExpandedD && (
             <div className={styles.expandedContent}>
               <Image 
-              src="/images/BecomeSurrogate/D.jpg" 
+              src="/images/BecomeSurrogate/D.png" 
               alt="展开内容图片" 
               width={100}
               height={100}
               className={styles.expandedImage}
+              placeholder="blur"
+              blurDataURL="/images/BecomeSurrogate/D.jpg"
               />
               <p className="text-xs text-white text-center mb-6 md:text-sm md:mb-8">
               不使用非法药物、不吸烟、不酗酒、无毒史
@@ -200,11 +211,13 @@ export default function BecomeSurrogatePart1({
           {isExpandedE && (
             <div className={styles.expandedContent}>
               <Image 
-              src="/images/BecomeSurrogate/E.jpg" 
+              src="/images/BecomeSurrogate/E.png" 
               alt="展开内容图片" 
               width={100}
               height={100}
               className={styles.expandedImage}
+              placeholder="blur"
+              blurDataURL="/images/BecomeSurrogate/E.jpg"
               />
               <p className="text-xs text-white text-center mb-6 md:text-sm md:mb-8">
               无犯罪记录；没有在部分政府援助计划内；居住在美国代孕友好州
@@ -227,11 +240,13 @@ export default function BecomeSurrogatePart1({
           {isExpandedF && (
             <div className={styles.expandedContent}>
               <Image 
-              src="/images/BecomeSurrogate/F.jpg" 
+              src="/images/BecomeSurrogate/F.png" 
               alt="展开内容图片" 
               width={100}
               height={100}
               className={styles.expandedImage}
+              placeholder="blur"
+              blurDataURL="/images/BecomeSurrogate/F.jpg"
               />
               <p className="text-xs text-white text-center mb-6 md:text-sm md:mb-8">
               美国公民、绿卡、有效期为三年以上的签证
@@ -254,11 +269,13 @@ export default function BecomeSurrogatePart1({
           {isExpandedG && (
             <div className={styles.expandedContent}>
               <Image 
-              src="/images/BecomeSurrogate/G.jpg" 
+              src="/images/BecomeSurrogate/G.png" 
               alt="展开内容图片" 
               width={100}
               height={100}
               className={styles.expandedImage}
+              placeholder="blur"
+              blurDataURL="/images/BecomeSurrogate/G.jpg"
               />
               <p className="text-xs text-white text-center mb-6 md:text-sm md:mb-8">
               财务状况稳定。过去一年内无破产记录

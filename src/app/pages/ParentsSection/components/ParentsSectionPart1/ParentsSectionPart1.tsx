@@ -20,10 +20,14 @@ export default function ParentsSectionPart1() {
           开始咨询
         </button>
       </div>
-      <Image src="/images/ParentsSection/image1-zip.jpg" alt="Parents Section Image" 
+      <Image 
+      src="/images/ParentsSection/image1.png" 
+      alt="Parents Section Image" 
       width={1600}
       height={800}
       layout="responsive"
+      placeholder="blur"
+      blurDataURL="/images/ParentsSection/image1-zip.jpg"
       />
       <div className="w-full flex flex-col items-center text-center text-white px-5 pt-5 md:w-full">
         <h2 className="text-xl my-12 md:text-4xl md:my-24">

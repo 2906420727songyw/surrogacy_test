@@ -4,11 +4,14 @@ export default function BecomeSurrogatePart4() {
   return (
     <div className={styles.becomeSurrogatePart4}>
       <Image 
-      src="/images/BecomeSurrogate/4.jpg" 
+      src="/images/BecomeSurrogate/4.png" 
       alt="第四部分图片" 
       width={1600}
       height={800}
-      layout="responsive" />
+      layout="responsive" 
+      placeholder="blur"
+      blurDataURL="/images/BecomeSurrogate/4.jpg"
+      />
       <div className={styles.container}>
         <div className={styles.whereContainer}>
           <h2 className="text-xl text-white mb-16 md:mb-20 md:text-3xl md:leading-tight">
@@ -42,12 +45,15 @@ export default function BecomeSurrogatePart4() {
             </h2>
             
             <Image 
-            src="/images/BecomeSurrogate/meeting.jpg" 
+            src="/images/BecomeSurrogate/meeting.png" 
             alt="会议图片" 
             width={1600}
             height={800}
             style={{ borderRadius: '20px' }}
-            layout="responsive" />
+            layout="responsive" 
+            placeholder="blur"
+            blurDataURL="/images/BecomeSurrogate/meeting.jpg"
+            />
             <p className="text-xs text-white leading-8 mb-10 mt-10 md:text-sm md:leading-10 md:mb-11 md:mt-10">
             在你申请的时候，全程提供帮助，预约线上见面，了解你的申请进展、可能遇到的问题和困惑。<br/>
             同时，会有专业的工作人员和医生线上陪同，提供情感支持。<br/>
@@ -64,12 +70,15 @@ export default function BecomeSurrogatePart4() {
             </h2>
             
             <Image 
-            src="/images/BecomeSurrogate/meeting.jpg" 
+            src="/images/BecomeSurrogate/meeting.png" 
             alt="会议图片" 
             width={1600}
             height={800}
             style={{ borderRadius: '20px' }}
-            layout="responsive" />
+            layout="responsive" 
+            placeholder="blur"
+            blurDataURL="/images/BecomeSurrogate/meeting.jpg"
+            />
             <p className="text-xs text-white leading-8 mb-10 mt-10 md:text-sm md:leading-10 md:mb-11 md:mt-10">
             在代孕这趟旅程中，除了我们，你的陪同家人/朋友是最重要的靠山和依靠，<br/>
             我们称其为 Primary Support Person（大多数情况下，他/她是你的 Emergency Contact Person）。<br/>

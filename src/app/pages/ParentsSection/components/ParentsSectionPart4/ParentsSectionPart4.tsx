@@ -3,10 +3,14 @@ import Image from 'next/image';
 export default function ParentsSectionPart4() {
   return (
     <div className={styles.part4}>
-      <Image src="/images/ParentsSection/image3.jpg" alt="第四部分图片" 
+      <Image 
+      src="/images/ParentsSection/image3.png" 
+      alt="第四部分图片" 
       width={1600}
       height={800}
       layout="responsive"
+      placeholder="blur"
+      blurDataURL="/images/ParentsSection/image3.jpg"
       />
       <div id="egg-sperm-donation-help" className={styles.content}>
         <div className="w-full flex flex-col items-center justify-center px-5">

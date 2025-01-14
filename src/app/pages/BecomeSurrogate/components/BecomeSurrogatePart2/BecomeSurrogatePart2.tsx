@@ -4,11 +4,14 @@ export default function BecomeSurrogatePart2() {
   return (
     <div className={styles.becomeSurrogatePart2}>
       <Image 
-      src="/images/BecomeSurrogate/2.jpg" 
+      src="/images/BecomeSurrogate/2.png" 
       alt="第二部分图片" 
       width={1600}
       height={800}
-      layout="responsive" />
+      layout="responsive" 
+      placeholder="blur"
+      blurDataURL="/images/BecomeSurrogate/2.jpg"
+      />
       <div id="become-surrogate-part2" className={styles.container}>
         <div className={styles.content}>
           <h2 className="text-xl text-white mb-16 md:mb-20 md:text-3xl md:leading-tight">
