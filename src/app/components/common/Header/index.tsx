@@ -81,7 +81,7 @@ export default function Header(){
     }
 
     return (
-        <div className={`flex justify-between text-white font-sans items-center p-5 fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-[#A48472]' : 'bg-transparent'}`}>
+        <div className={`flex justify-between text-white font-sans py-5 items-center p-5 fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-[#A48472]' : 'bg-transparent'}`}>
             <div className='hover:cursor-pointer' onClick={()=>router.push('/')}>Sapling Surrogacy</div>
             <div className='hidden header-switch:flex flex gap-5'>
                 {list.map((item,index)=>{
