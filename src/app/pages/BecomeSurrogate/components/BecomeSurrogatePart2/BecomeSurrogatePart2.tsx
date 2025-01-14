@@ -15,8 +15,8 @@ export default function BecomeSurrogatePart2() {
             WHAT? <br/>我们怎么筛选申请者
           </h2>
           <p className="text-sm text-white leading-6 mb-10 md:text-base md:leading-10 md:mb-11">
-            根据美国生殖医学协会(ASRM)的指导要求,由专业的生殖医疗、心理专家、律师等<br/>
-            第三方专业机构协助我们一起筛查申请者,具体涉及:
+            根据美国生殖医学协会（ASRM）的指导要求，由专业的生殖医疗、心理专家、律师等<br/>
+            第三方专业机构协助我们一起筛查申请者，具体涉及：
           </p>
         </div>
         <div className={styles.itemContainer}>

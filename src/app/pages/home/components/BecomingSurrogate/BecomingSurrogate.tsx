@@ -9,7 +9,7 @@ export default function BecomingSurrogate() {
           成为代孕母亲
         </h2>
         <p className="text-xs md:text-base text-white mb-1.5 md:mb-3">
-        成为代孕妈妈,最高可获报酬 105,000+ 美元
+        成为代孕妈妈，最高可获报酬 105,000+ 美元
         </p>
         <div className="flex justify-center items-start gap-2 md:gap-4">
           <Link href="../pages/BecomeSurrogate">
