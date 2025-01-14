@@ -90,7 +90,7 @@ export default function BecomeSurrogatePart1({
           {isExpandedA && (
             <div className={styles.expandedContent}>
               <Image 
-              src="/images/BecomeSurrogate/A.png" 
+              src="/images/BecomeSurrogate/A.jpg" 
               alt="展开内容图片" 
               width={100}
               height={100}
@@ -118,7 +118,7 @@ export default function BecomeSurrogatePart1({
           {isExpandedB && (
             <div className={styles.expandedContent}>
               <Image 
-              src="/images/BecomeSurrogate/B.png" 
+              src="/images/BecomeSurrogate/B.jpg" 
               alt="展开内容图片" 
               width={100}
               height={100}
@@ -146,7 +146,7 @@ export default function BecomeSurrogatePart1({
           {isExpandedC && (
             <div className={styles.expandedContent}>
               <Image 
-              src="/images/BecomeSurrogate/C.png" 
+              src="/images/BecomeSurrogate/C.jpg" 
               alt="展开内容图片" 
               width={100}
               height={100}
@@ -173,7 +173,7 @@ export default function BecomeSurrogatePart1({
           {isExpandedD && (
             <div className={styles.expandedContent}>
               <Image 
-              src="/images/BecomeSurrogate/D.png" 
+              src="/images/BecomeSurrogate/D.jpg" 
               alt="展开内容图片" 
               width={100}
               height={100}
@@ -200,7 +200,7 @@ export default function BecomeSurrogatePart1({
           {isExpandedE && (
             <div className={styles.expandedContent}>
               <Image 
-              src="/images/BecomeSurrogate/E.png" 
+              src="/images/BecomeSurrogate/E.jpg" 
               alt="展开内容图片" 
               width={100}
               height={100}
@@ -227,7 +227,7 @@ export default function BecomeSurrogatePart1({
           {isExpandedF && (
             <div className={styles.expandedContent}>
               <Image 
-              src="/images/BecomeSurrogate/F.png" 
+              src="/images/BecomeSurrogate/F.jpg" 
               alt="展开内容图片" 
               width={100}
               height={100}
@@ -254,7 +254,7 @@ export default function BecomeSurrogatePart1({
           {isExpandedG && (
             <div className={styles.expandedContent}>
               <Image 
-              src="/images/BecomeSurrogate/G.png" 
+              src="/images/BecomeSurrogate/G.jpg" 
               alt="展开内容图片" 
               width={100}
               height={100}
