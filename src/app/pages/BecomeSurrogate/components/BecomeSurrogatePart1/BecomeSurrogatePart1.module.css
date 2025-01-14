@@ -115,12 +115,14 @@
   width: 100px;
   height: 100px;
   object-fit: cover;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 768px) {
   .expandedImage {
     width: 70px;
     height: 70px;
+    margin-bottom: 10px;
   }
 }
 

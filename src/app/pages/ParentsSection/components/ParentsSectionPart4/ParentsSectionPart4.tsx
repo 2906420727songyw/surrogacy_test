@@ -11,24 +11,24 @@ export default function ParentsSectionPart4() {
       <div id="egg-sperm-donation-help" className={styles.content}>
         <div className="w-full flex flex-col items-center justify-center px-5">
           <h2 className="text-xl text-center text-white mb-12 md:text-3xl md:mb-14 md:leading-20">
-            单身父母和LGBTQ+群体<br/>
+            单身父母和 LGBTQ+ 群体<br/>
             卵子和精子捐赠者的帮助
           </h2>
           <p className="text-sm leading-6 text-white text-center mb-12 md:text-base md:leading-8 md:mb-14">
-          如果您是单身爸爸/妈妈、同性家庭、或者因为身体原因无法自卵自精,一位优秀的卵子/精子捐赠者会是您最好的选择!<br/>
-          经过严格筛查的卵子/精子捐赠者之所以会捐献自己的卵子/精子，不仅仅是因为报酬,更多的是他们希望能帮助别人拥有自己的家庭。<br/>
+          如果您是单身爸爸/妈妈、同性家庭、或者因为身体原因无法自卵自精，一位优秀的卵子/精子捐赠者会是您最好的选择！<br/>
+          经过严格筛查的卵子/精子捐赠者之所以会捐献自己的卵子/精子，不仅仅是因为报酬，更多的是他们希望能帮助别人拥有自己的家庭。<br/>
           我们和全美知名的卵子精子库合作，希望能提供给您更多的选择。
 
           </p>
         </div>
         <div className={styles.transparentContainer}>
           <h2 className="text-sm text-center text-white mb-12 md:text-lg md:mb-0">
-            选择卵子/精子捐赠者和卵子精子库的流程:
+            选择卵子/精子捐赠者和卵子精子库的流程：
           </h2>
           <div className={styles.gradientBar}></div>
           <div className={styles.transparentContent}>
             <h3 className="text-sm text-center text-white mb-4 md:text-lg md:mb-16">
-              如果您选定某个卵子/精子捐赠者,您需要:
+              如果您选定某个卵子/精子捐赠者，您需要：
             </h3>
             <div className={styles.itemsContainer}>
               <div className={styles.item}>
@@ -48,7 +48,7 @@ export default function ParentsSectionPart4() {
                 layout="responsive"
                 />
                 <p className="text-xs leading-6 text-white text-center mb-10 md:text-sm md:leading-8 md:text-left">
-                2.确定之后,您就可以开始捐赠流程。我们的捐赠者需要前往您选定的试管医院进行医学筛查,并接受药物治疗,做好取卵准备,随后提供新鲜卵子/精子。
+                2. 确定之后，您就可以开始捐赠流程。我们的捐赠者需要前往您选定的试管医院进行医学筛查，并接受药物治疗，做好取卵准备，随后提供新鲜卵子/精子。
                 </p>
               </div>
             </div>
@@ -56,7 +56,7 @@ export default function ParentsSectionPart4() {
           <div className={styles.gradientBar}></div>
           <div className={styles.transparentContent}>
             <h3 className="text-sm text-center text-white mb-4 md:text-lg md:mb-16">
-              如果您选定某个卵子/精子捐赠者,您需要:
+              如果您选定某个卵子/精子捐赠者，您需要：
             </h3>
             <div className={styles.itemsContainer}>
               <div className={styles.item}>
@@ -75,7 +75,7 @@ export default function ParentsSectionPart4() {
                 height={800}
                 layout="responsive"  />
                 <p className="text-xs leading-6 text-white text-center md:text-sm md:leading-8 md:mb-14 md:text-left">
-                2.确定之后，您就可以开始捐赠流程。我们和卵子精子库的工作人员会帮助您直接从卵子精子库中购买一批冷冻卵子/精子，并开始胚胎培育。
+                2. 确定之后，您就可以开始捐赠流程。我们和卵子精子库的工作人员会帮助您直接从卵子精子库中购买一批冷冻卵子/精子，并开始胚胎培育。
                 </p>
               </div>
             </div>
