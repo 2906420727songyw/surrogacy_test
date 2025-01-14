@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default function ParentsSectionPart4() {
   return (
     <div className={styles.part4}>
-      <Image src="/images/home/image3.png" alt="第四部分图片" 
+      <Image src="/images/ParentsSection/image3.jpg" alt="第四部分图片" 
       width={1600}
       height={800}
       layout="responsive"
@@ -32,9 +32,10 @@ export default function ParentsSectionPart4() {
             </h3>
             <div className={styles.itemsContainer}>
               <div className={styles.item}>
-                <Image src="/images/home/icon1.png" alt="第一个div的图片" 
+                <Image src="/images/ParentsSection/icon1.png" alt="第一个div的图片" 
                 width={1600}
                 height={800}
+                style={{ borderRadius: '40px' }}
                 layout="responsive"
                 />
                 <p className="text-xs leading-6 text-white text-center md:text-sm md:leading-8 md:text-left">
@@ -42,9 +43,10 @@ export default function ParentsSectionPart4() {
                 </p>
               </div>
               <div className={styles.item}>
-                <Image src="/images/home/icon2.png" alt="第二个div的图片" 
+                <Image src="/images/ParentsSection/icon2.png" alt="第二个div的图片" 
                 width={1600}
                 height={800}
+                style={{ borderRadius: '40px' }}
                 layout="responsive"
                 />
                 <p className="text-xs leading-6 text-white text-center mb-10 md:text-sm md:leading-8 md:text-left">
@@ -60,9 +62,10 @@ export default function ParentsSectionPart4() {
             </h3>
             <div className={styles.itemsContainer}>
               <div className={styles.item}>
-                <Image src="/images/home/icon3.png" alt="第一个div的图片" 
+                <Image src="/images/ParentsSection/icon3.png" alt="第一个div的图片" 
                 width={1600}
                 height={800}
+                style={{ borderRadius: '40px' }}
                 layout="responsive"
                 />
                 <p className="text-xs leading-6 text-white text-center md:text-sm md:leading-8 md:mb-14 md:text-left">
@@ -70,9 +73,10 @@ export default function ParentsSectionPart4() {
                 </p>
               </div>
               <div className={styles.item}>
-                <Image src="/images/home/icon4.png" alt="第二个div的图片"
+                <Image src="/images/ParentsSection/icon4.png" alt="第二个div的图片"
                 width={1600}
                 height={800}
+                style={{ borderRadius: '40px'}}
                 layout="responsive"  />
                 <p className="text-xs leading-6 text-white text-center md:text-sm md:leading-8 md:mb-14 md:text-left">
                 2. 确定之后，您就可以开始捐赠流程。我们和卵子精子库的工作人员会帮助您直接从卵子精子库中购买一批冷冻卵子/精子，并开始胚胎培育。

@@ -4,7 +4,7 @@ export default function BecomeSurrogatePart3() {
   return (
     <div className={styles.becomeSurrogatePart3}>
       <Image 
-      src="/images/home/3.png" 
+      src="/images/BecomeSurrogate/3.jpg" 
       alt="第三部分图片" 
       width={1600}
       height={800}

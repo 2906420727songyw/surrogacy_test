@@ -4,7 +4,7 @@ export default function BecomeSurrogatePart4() {
   return (
     <div className={styles.becomeSurrogatePart4}>
       <Image 
-      src="/images/home/4.png" 
+      src="/images/BecomeSurrogate/4.jpg" 
       alt="第四部分图片" 
       width={1600}
       height={800}
@@ -42,10 +42,11 @@ export default function BecomeSurrogatePart4() {
             </h2>
             
             <Image 
-            src="/images/home/meeting.png" 
+            src="/images/BecomeSurrogate/meeting.jpg" 
             alt="会议图片" 
             width={1600}
             height={800}
+            style={{ borderRadius: '20px' }}
             layout="responsive" />
             <p className="text-xs text-white leading-8 mb-10 mt-10 md:text-sm md:leading-10 md:mb-11 md:mt-10">
             在你申请的时候，全程提供帮助，预约线上见面，了解你的申请进展、可能遇到的问题和困惑。<br/>
@@ -63,10 +64,11 @@ export default function BecomeSurrogatePart4() {
             </h2>
             
             <Image 
-            src="/images/home/meeting.png" 
+            src="/images/BecomeSurrogate/meeting.jpg" 
             alt="会议图片" 
             width={1600}
             height={800}
+            style={{ borderRadius: '20px' }}
             layout="responsive" />
             <p className="text-xs text-white leading-8 mb-10 mt-10 md:text-sm md:leading-10 md:mb-11 md:mt-10">
             在代孕这趟旅程中，除了我们，你的陪同家人/朋友是最重要的靠山和依靠，<br/>

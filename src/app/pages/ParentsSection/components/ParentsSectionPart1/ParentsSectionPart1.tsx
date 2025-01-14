@@ -20,7 +20,7 @@ export default function ParentsSectionPart1() {
           开始咨询
         </button>
       </div>
-      <Image src="/images/home/image1.png" alt="Parents Section Image" 
+      <Image src="/images/ParentsSection/image1-zip.jpg" alt="Parents Section Image" 
       width={1600}
       height={800}
       layout="responsive"
