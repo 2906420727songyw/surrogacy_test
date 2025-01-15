@@ -8,12 +8,12 @@ export default function SaplingSurrogacy() {
       <p className="text-4xl text-white mb-1.5 md:mb-3 md:text-6xl text-center">
         欢迎单身父母和 LGBTQ 群体
       </p>
-      <div className="flex justify-center items-start gap-2 mt-3 md:gap-4 md:mt-6">
+      <div className="flex justify-center items-start gap-8 mt-3 md:gap-10 md:mt-6">
       <Link href="../pages/ParentsSection">
-        <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-white hover:bg-gray-100 transition duration-200">了解更多</button>
+        <button className="w-28 h-6 md:w-44 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-white hover:bg-gray-100 transition duration-200">了解更多</button>
       </Link>
         <Link href="#">
-        <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-white hover:bg-gray-100 transition duration-200">申请通道</button>
+        <button className="w-28 h-6 md:w-44 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-white hover:bg-gray-100 transition duration-200">申请通道</button>
         </Link>
       </div>
       </div>

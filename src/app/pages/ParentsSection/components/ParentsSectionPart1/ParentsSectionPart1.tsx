@@ -1,7 +1,51 @@
+import { useRef, useEffect } from 'react';
 import styles from './ParentsSectionPart1.module.css';
 import Image from 'next/image';
 
 export default function ParentsSectionPart1() {
+  const listData = [
+    {
+      image: '/images/ParentsSection/icon1.png',
+      text: '最有经验的团队：团队都有多年行业经验,各个相关领域精英,都亲身经历过代孕；',
+    },
+    {
+      image: '/images/ParentsSection/icon2.png', 
+      text: '最专业的法律团队：任何情况下,完善的法律团队都是保障您权益的后盾',
+    },
+    {
+      image: '/images/ParentsSection/icon3.png',
+      text: '最合适的医疗选择：根据您的自身情况,量身定制治疗方案,提高成功率；', 
+    },
+    {
+      image: '/images/ParentsSection/icon4.png',
+      text: '最严格的筛选机制：我们只选择最好的代孕母亲和最适合您的医生',
+    },
+    {
+      image: '/images/ParentsSection/icon1.png',
+      text: '最大的资金信托公司：保障您财产的安全,任何使用都也有据可查；',
+    },
+    {
+      image: '/images/ParentsSection/icon2.png',
+      text: '最完善的定制化套餐：您可以提出任何服务要求,我们都会满足',
+    },
+    {
+      image: '/images/ParentsSection/icon3.png', 
+      text: '最高效交流：一站式管家服务,只要您需要,我们任何时候都在；',
+    },
+    {
+      image: '/images/ParentsSection/icon4.png',
+      text: '最能理解客户的团队：团队成员 80% 都亲身经历过代孕过程',
+    },
+    {
+      image: '/images/ParentsSection/icon1.png',
+      text: '最快速的匹配流程：匹配流程比普通代孕机构快 40% ；',
+    },
+    {
+      image: '/images/ParentsSection/icon2.png',
+      text: '最透明的价格：所有的花销都是透明清晰的',
+    },
+  ];
+
   return (
     <div id="parents-overview" className={styles.content}>
       <div className={styles.container}>
@@ -29,7 +73,7 @@ export default function ParentsSectionPart1() {
       placeholder="blur"
       blurDataURL="/images/ParentsSection/image1-zip.jpg"
       />
-      <div className="w-full flex flex-col items-center text-center text-white px-5 pt-5 md:w-full">
+      <div className="w-full flex flex-col items-center text-center text-white px-5 pt-5 md:w-full md:px-36">
         <h2 className="text-xl my-12 md:text-4xl md:my-24">
           <p>为什么准父母会选择</p>
           <p>Sapling Surrogacy</p>
@@ -41,12 +85,19 @@ export default function ParentsSectionPart1() {
         </p>
         </div>
         
-        <div className="text-sm leading-8 md:text-base md:leading-10">
-          <p>最有经验的团队：团队都有多年行业经验，各个相关领域精英，都亲身经历过代孕；最专业的法律团队：任何情况下，完善的法律团队都是保障您权益的后盾</p>
-          <p>最合适的医疗选择：根据您的自身情况，量身定制治疗方案，提高成功率；最严格的筛选机制：我们只选择最好的代孕母亲和最适合您的医生</p>
-          <p>最大的资金信托公司：保障您财产的安全，任何使用都也有据可查；最完善的定制化套餐：您可以提出任何服务要求，我们都会满足</p>
-          <p>最高效交流：一站式管家服务，只要您需要，我们任何时候都在；最能理解客户的团队：团队成员 80% 都亲身经历过代孕过程</p>
-          <p>最快速的匹配流程：匹配流程比普通代孕机构快 40% ；最透明的价格：所有的花销都是透明清晰的</p>
+        <div className={styles.horizontalList}>
+            {listData.map((item, index) => (
+              <div key={index} className={styles.listItem}>
+                <Image 
+                  src={item.image}
+                  alt={item.text}
+                  width={500}
+                  height={500}
+                  className={styles.listItemImage}
+                />
+                <p className="text-xs leading-6 my-2 md:my-4 md:text-base md:leading-8">{item.text}</p>
+              </div>
+            ))}
         </div>
         {/* 渐变条 */}
         <div className={styles.gradientBar}></div>

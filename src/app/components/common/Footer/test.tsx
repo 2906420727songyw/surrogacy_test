@@ -121,7 +121,7 @@ export default function Footer() {
             <h4>成为准父母</h4>
             <ul>
               <li><Link href="/pages/ParentsSection">准父母概述</Link></li>
-              <li><span onClick={handleSurrogateMatchingClick}>代孕母匹配过程</span></li>
+              <li><span onClick={handleSurrogateMatchingClick}>代孕妈妈匹配过程</span></li>
               <li>
                 <span onClick={handleIvfClinicSelectionClick}>试管医院的选择</span>
               </li>
@@ -135,7 +135,7 @@ export default function Footer() {
             </ul>
           </div>
           <div className={styles.column}>
-            <h4>代孕母</h4>
+            <h4>代孕妈妈</h4>
             <ul>
               <li>
                 <span onClick={handleCompensationAndBenefitsClick}>补偿薪资</span>

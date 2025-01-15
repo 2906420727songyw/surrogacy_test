@@ -82,7 +82,9 @@ export default function Header(){
 
     return (
         <div className={`flex justify-between text-white font-sans py-5 items-center p-5 fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-[#A48472]' : 'bg-transparent'}`}>
-            <div className='hover:cursor-pointer text-center' onClick={()=>router.push('/')}>Sapling Surrogacy<br/>小树苗辅助生育服务中心</div>
+            <div className='hover:cursor-pointer text-center' onClick={()=>router.push('/')}>Sapling Surrogacy<br/>
+            <span className='text-xs'>小树苗辅助生育服务中心</span>
+            </div>
             <div className='hidden header-switch:flex flex gap-5'>
                 {list.map((item,index)=>{
                     return <div className='group hover:cursor-pointer relative' key={index}>
