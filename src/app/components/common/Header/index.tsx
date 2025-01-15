@@ -7,7 +7,7 @@ const list = [{
     text:'成为准父母',
     link:'/pages/ParentsSection',
     options:[{
-        text:'待孕母的匹配过程',
+        text:'代孕妈妈的匹配过程',
         link:'surrogacy-matching-process'
     },{
         text:'试管医院的选择',
@@ -20,7 +20,7 @@ const list = [{
         link:'surrogacy-plan-process'
     }]
 },{
-    text:'成为代孕母亲',
+    text:'成为代孕妈妈',
     link:'/pages/BecomeSurrogate',
     options:[{
         text:'谁可以成为代孕妈妈',
@@ -82,7 +82,7 @@ export default function Header(){
 
     return (
         <div className={`flex justify-between text-white font-sans py-5 items-center p-5 fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-[#A48472]' : 'bg-transparent'}`}>
-            <div className='hover:cursor-pointer' onClick={()=>router.push('/')}>Sapling Surrogacy</div>
+            <div className='hover:cursor-pointer text-center' onClick={()=>router.push('/')}>Sapling Surrogacy<br/>小树苗辅助生育服务中心</div>
             <div className='hidden header-switch:flex flex gap-5'>
                 {list.map((item,index)=>{
                     return <div className='group hover:cursor-pointer relative' key={index}>
@@ -109,7 +109,7 @@ export default function Header(){
                         <div className='hover:cursor-pointer'>预约</div>
                         <div className='absolute left-0 hidden group-hover:block rounded bg-[rgba(164,132,114,0.7)] p-1 min-w-full'>
                             <div className='p-2 hover:underline text-sm whitespace-nowrap' onClick={()=>routerToCheckLogin('/pages/auth/profile?type=parent')}>成为准父母</div>
-                            <div className='p-2 hover:underline text-sm whitespace-nowrap' onClick={()=>routerToCheckLogin('/pages/auth/profile?type=surrogacy')}>成为代孕母亲</div>
+                            <div className='p-2 hover:underline text-sm whitespace-nowrap' onClick={()=>routerToCheckLogin('/pages/auth/profile?type=surrogacy')}>成为代孕妈妈</div>
                         </div>
                     </div>
                     <div className='hover:cursor-pointer'>搜索</div>
@@ -152,7 +152,7 @@ export default function Header(){
                         ))}
                         <div className='flex gap-2 flex-col'>
                             <div className='py-2 hover:cursor-pointer' onClick={() => routerToCheckLogin('/pages/auth/profile?type=parent')}>成为准父母</div>
-                            <div className='py-2 hover:cursor-pointer' onClick={() => routerToCheckLogin('/pages/auth/profile?type=surrogacy')}>成为代孕母亲</div>
+                            <div className='py-2 hover:cursor-pointer' onClick={() => routerToCheckLogin('/pages/auth/profile?type=surrogacy')}>成为代孕妈妈</div>
                             <div className='py-2 hover:cursor-pointer'>搜索</div>
                         </div>
                     </div>

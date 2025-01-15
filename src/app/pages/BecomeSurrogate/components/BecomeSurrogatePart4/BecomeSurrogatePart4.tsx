@@ -91,7 +91,7 @@ export default function BecomeSurrogatePart4() {
           </div>
           
         </div>
-        <button className="w-14 h-6 md:w-20 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-16 mb-10 md:mt-10 md:mb-20">
+        <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-16 mb-10 md:mt-10 md:mb-20">
           立即申请
         </button>
         <div id='become-surrogate-part4-2' className={styles.whereContainer}>
@@ -186,7 +186,7 @@ export default function BecomeSurrogatePart4() {
             如果您怀的是多胞胎，我们会在您代孕的最后五个月向您支付多胞胎费用。单胞胎代孕 34 周后，多胞胎代孕 32 周后，您的代孕怀孕才算可行。<br/>
             如果您在 40 周前分娩，我们会一次性支付剩余费用。其余杂费将在整个怀孕期间分期支付，并将在您的筛查中讨论。
           </p>
-          <button className="w-14 h-6 md:w-20 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10 mb-10 md:mt-10 md:mb-20">
+          <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10 mb-10 md:mt-10 md:mb-20">
             立即申请
           </button>
         </div>

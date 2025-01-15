@@ -32,7 +32,7 @@ export default function ParentsSectionPart2() {
     <div id="surrogacy-matching-process" className={styles.part2}>
       <div className={styles.container}>
         <h2 className="text-xl text-center text-white mb-12 md:text-4xl md:mb-12">
-          准父母和代孕母的匹配过程
+          准父母和代孕妈妈的匹配过程
         </h2>
         <div className="w-full bg-transparent text-center md:w-full">
           <p className="text-sm text-white mb-5 md:text-lg md:mb-4">
@@ -95,7 +95,7 @@ export default function ParentsSectionPart2() {
             {isEducationClicked ? '3. 科普教育' : '3. 科普教育'}
           </p>
           <p className="text-sm text-white mb-6 md:text-base md:mb-8">
-            {isEducationClicked ? '通过教育和沟通保证代孕母亲对这方面准备' : '通过教育和沟通保证代孕母亲对这方面准备'}
+            {isEducationClicked ? '通过教育和沟通保证代孕妈妈对这方面准备' : '通过教育和沟通保证代孕妈妈对这方面准备'}
           </p>
           {isEducationClicked && (
             <div>
@@ -145,13 +145,13 @@ export default function ParentsSectionPart2() {
           {isBackgroundClicked && (
             <div>
               <p className="text-sm text-white mb-6 mt-8 leading-6 md:leading-7 md:text-base md:mb-8 md:mt-16">
-              试管医院将会按照代孕母的月经周期，在她月经前后几天安排体检，<br/>
+              试管医院将会按照代孕妈妈的月经周期，在她月经前后几天安排体检，<br/>
               体检结果大概需要三周时间，其目的是为了检查子宫情况，以确定其移植和备孕状态。
               </p>
             </div>
           )}
         </div>
-        <button className="w-14 h-6 md:w-20 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10 md:mt-20 mb-10 md:mb-10">
+        <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10 md:mt-20 mb-10 md:mb-10">
           开始咨询
         </button>
       </div>

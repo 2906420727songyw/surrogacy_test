@@ -7,7 +7,7 @@ const list = [{
             link:''
         },
         {
-            text:'代孕母匹配过程',
+            text:'代孕妈妈匹配过程',
             link:'surrogacy-matching-process'
         },
         {
@@ -28,7 +28,7 @@ const list = [{
         }
     ]
 },{
-    text:'代孕母',
+    text:'代孕妈妈',
     link:'/pages/BecomeSurrogate',
     options:[
         {

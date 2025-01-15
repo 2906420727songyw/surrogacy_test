@@ -40,17 +40,17 @@ export default function BecomeSurrogatePart1({
       <div className={styles.content}>
         <h2 className="text-xl text-white mb-16 md:mb-20 md:text-3xl md:leading-tight">
           欢迎来到 Sapling，<br/>
-          成为代孕母亲，最高可赚取 105,000 美元
+          成为代孕妈妈，最高可赚取 105,000 美元
         </h2>
         
         <p className="text-sm text-white leading-8 mb-10 md:text-base md:leading-10 md:mb-11">
         代孕妈妈是伟大的存在，这世界上有 1/6 的人因为个人原因，无法组成完整的家庭，<br/>
         他们梦想着能够抱着自己的孩子入睡，渴望看到宝宝在自己的呵护下长大。<br/>
         因为代孕妈妈无私的帮助，让这一切都变得有可能，代孕妈妈的无私奉献让更多有需要的人能够成为了父亲和母亲。<br/>
-        Sapling 感谢每个愿意成为代孕母的人，并希望能够给与所有代孕母亲最好的帮助和关怀，<br/>
-        照顾好代孕母亲的身体健康和心理健康的同时，我们会尽量去给所有的代孕母都争取更多的薪水<br/>
+        Sapling 感谢每个愿意成为代孕妈妈的人，并希望能够给与所有代孕妈妈最好的帮助和关怀，<br/>
+        照顾好代孕妈妈的身体健康和心理健康的同时，我们会尽量去给所有的代孕妈妈都争取更多的薪水<br/>
         </p>
-        <button className="w-14 h-6 md:w-20 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10 mb-20 md:mt-20 md:mb-20">
+        <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10 mb-20 md:mt-20 md:mb-20">
           立即申请
         </button>
         
@@ -71,8 +71,8 @@ export default function BecomeSurrogatePart1({
           WHO?<br/> 谁可以成为我们的代孕妈妈：对代孕妈妈的要求
         </h2>
         <p className="text-sm text-white leading-8 mb-10 md:text-base md:leading-10 md:mb-11">
-        我们 Sapling 的代孕母必须在生理上和心理上同时具备代孕的能力，<br/>
-        这样可以最大程度的降低风险，让代孕母和准父母一起顺利度过代孕的旅程，迎接健康宝宝的来到
+        我们 Sapling 的代孕妈妈必须在生理上和心理上同时具备代孕的能力，<br/>
+        这样可以最大程度的降低风险，让代孕妈妈和准父母一起顺利度过代孕的旅程，迎接健康宝宝的来到
         </p>
       </div>
       <div className={styles.gradientBar}></div>

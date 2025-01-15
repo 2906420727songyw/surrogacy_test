@@ -64,7 +64,7 @@ export default function BecomeSurrogatePart2() {
               体重和BMI筛查、怀孕的身体准备
             </p>
           </div>
-          <button className="w-14 h-6 md:w-20 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-20 mb-10 md:mt-20 md:mb-20">
+          <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-20 mb-10 md:mt-20 md:mb-20">
             立即申请
           </button>
         </div>

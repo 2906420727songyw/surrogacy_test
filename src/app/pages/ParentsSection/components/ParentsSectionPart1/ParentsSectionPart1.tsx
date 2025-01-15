@@ -16,7 +16,7 @@ export default function ParentsSectionPart1() {
           我们坚信，所有的努力都是值得的。有 Sapling 在旁，您的代孕之旅将会格外安心且愉悦。<br/>
         </p>
         
-        <button className="w-14 h-6 md:w-20 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10">
+        <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10">
           开始咨询
         </button>
       </div>
@@ -42,7 +42,7 @@ export default function ParentsSectionPart1() {
         </div>
         
         <div className="text-sm leading-8 md:text-base md:leading-10">
-          <p>最有经验的团队：团队都有多年行业经验，各个相关领精英，都亲身有代孕经验；最专业的法律团队：任何情况下，完善的法律团队都是保障您权益的后盾</p>
+          <p>最有经验的团队：团队都有多年行业经验，各个相关领域精英，都亲身经历过代孕；最专业的法律团队：任何情况下，完善的法律团队都是保障您权益的后盾</p>
           <p>最合适的医疗选择：根据您的自身情况，量身定制治疗方案，提高成功率；最严格的筛选机制：我们只选择最好的代孕母亲和最适合您的医生</p>
           <p>最大的资金信托公司：保障您财产的安全，任何使用都也有据可查；最完善的定制化套餐：您可以提出任何服务要求，我们都会满足</p>
           <p>最高效交流：一站式管家服务，只要您需要，我们任何时候都在；最能理解客户的团队：团队成员 80% 都亲身经历过代孕过程</p>
