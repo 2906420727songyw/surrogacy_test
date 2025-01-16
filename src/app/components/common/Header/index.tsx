@@ -18,6 +18,9 @@ const list = [{
     },{
         text:'代孕计划和流程',
         link:'surrogacy-plan-process'
+    },{
+        text:'代孕套餐和费用',
+        link:'surrogacy-plan-process'
     }]
 },{
     text:'成为代孕妈妈',
