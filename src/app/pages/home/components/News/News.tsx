@@ -2,17 +2,31 @@ import Image from 'next/image';
 import styles from './News.module.css';
 import Link from 'next/link';
 import { articlesData } from './data';
+import { useRef } from 'react';
 
 export default function News() {
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+
+  const handleWheel = (event: React.WheelEvent) => {
+    if (scrollContainerRef.current) {
+      event.preventDefault();
+      scrollContainerRef.current.scrollLeft += event.deltaY;
+    }
+  };
+
   return (
     <section className={styles.news}>
       <h2 className="text-4xl text-white mb-10 md:mb-16 md:text-6xl">
         关于我们
       </h2>
-      <div className='flex gap-5 mx-5 overflow-x-auto justify-center'>
+      <div
+        className="flex gap-5 mx-5 overflow-hidden justify-center"
+        ref={scrollContainerRef}
+        onWheel={handleWheel}
+      >
         {articlesData.map((article) => (
           <Link key={article.id} href="../pages/about" className="block">
-            <div className={`${styles.article} cursor-pointer`}>
+            <div className={`${styles.article} cursor-pointer w-60`}>
               <Image src={article.image} alt={article.title} width={270} height={180} />
               <div className={styles.articleHeader}>
                 <span className="text-lg text-[#cdc6c0] mb-7.5 md:text-xl md:mb-5">

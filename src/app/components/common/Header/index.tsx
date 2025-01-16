@@ -88,7 +88,7 @@ export default function Header(){
             <div className='hidden header-switch:flex flex gap-5'>
                 {list.map((item,index)=>{
                     return <div className='group hover:cursor-pointer relative' key={index}>
-                        <div className='whitespace-nowrap' onClick={()=>router.push(item.link)}>
+                        <div className={`${item.link === currentPath ? 'underline' : 'text-white'} 'whitespace-nowrap'`} onClick={()=>router.push(item.link)}>
                             {item.text}
                         </div>
                         {
