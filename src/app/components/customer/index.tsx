@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import { ReloadOutlined, SendOutlined, CloseOutlined ,CustomerServiceOutlined} from '@ant-design/icons';
-
+import './style.css';
 const CustomerServiceChat: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     const [messages, setMessages] = useState<MsgDto[]>([]);
     const [inputValue, setInputValue] = useState<string>('');
@@ -81,25 +81,25 @@ const CustomerServiceChat: React.FC<{ onClose: () => void }> = ({ onClose }) => 
     };
 
     return (
-        <div className="bg-[#2d2d2d] rounded-lg shadow-md z-50 flex flex-col max-w-[90vw] max-h-[60vh] min-h-[60vh] fixed bottom-5 right-5">
-          <div className="p-4 border-b border-[#444] flex justify-between items-center">
+        <div className="z-50 flex flex-col max-w-[90vw] max-h-[60vh] min-h-[60vh] fixed bottom-5 right-5">
+          <div className="p-4 border-b border-[#444] flex justify-between items-center bg-[#868275] rounded-t-lg  custom-shadow ">
             <CustomerServiceOutlined className='text-[#f5f5f5] hover:text-[#ccc] cursor-pointer' />
             <CloseOutlined onClick={onClose} className="text-[#f5f5f5] hover:text-[#ccc] cursor-pointer" />
           </div>
-          <div className="flex-grow overflow-y-auto p-4 scrollbar-thin scrollbar-thumb-[#555] scrollbar-track-[#333]">
+          <div className="flex-grow overflow-y-auto p-4 scrollbar-thin overflow-hidden bg-[#fff]">
             {loading ? (
               <div className="flex justify-center items-center h-full">
-                <div className="w-8 h-8 border-4 border-[#f5f5f5] border-dashed rounded-full animate-spin"></div>
+                <div className="w-8 h-8 border-4 border-[#f5f5f5] border-dashed rounded-full animate-spin bg-[#868275]"></div>
               </div>
             ) : (
               messages.map((message, index) => (
                 <div key={index} className={`flex flex-col gap-1 ${message.role === 'USER' ? 'items-end' : 'items-start'}`}>
-                  <div className="text-xs text-[#ccc] mb-1">
+                  <div className="text-xs text-black mb-1">
                     {message.role === 'USER' ? (Cookies.get('userData') ? JSON.parse(Cookies.get('userData')!).name : '匿名用户') : '客服'} · {new Date(message.createdAt).toLocaleTimeString()}
                   </div>
                   <div
                     className={`p-3 mb-2 rounded-lg shadow-md max-w-xs ${
-                      message.role === 'USER' ? 'bg-[#3b3b3b] text-[#f5f5f5]' : 'bg-[#444] text-[#f5f5f5]'
+                      message.role === 'USER' ? 'bg-[#3b3b3b] bg-[rgba(0,0,0,.5)]' : 'bg-[#868275] text-[#f5f5f5]'
                     }`}
                   >
                     {message.content}
@@ -109,17 +109,17 @@ const CustomerServiceChat: React.FC<{ onClose: () => void }> = ({ onClose }) => 
             )}
             <div ref={messagesEndRef} />
           </div>
-          <div className="p-4 border-t border-[#444] flex items-center gap-3">
-            <ReloadOutlined onClick={() => handleRefresh(Cookies.get('chatId') || '')} className="text-[#f5f5f5] hover:text-[#ccc] cursor-pointer" />
+          <div className="p-4 border-t border-[#444] flex items-center gap-3 bg-[#fff] rounded-b-lg  shadow-md ">
+            <ReloadOutlined onClick={() => handleRefresh(Cookies.get('chatId') || '')} className="text-black hover:text-black cursor-pointer" />
             <div className="relative flex-grow">
               <input
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="输入消息..."
-                className="w-full p-2 pr-10 border border-[#555] bg-[#333] text-[#f5f5f5] rounded-full focus:outline-none focus:ring-2 focus:ring-[#888] placeholder-[#777]"
+                className="w-full p-2 pr-10 border border-[#555] bg-[#fff] text-[#f5f5f5] rounded-full focus:outline-none focus:ring-2 focus:ring-[#888] placeholder-[#777]"
               />
-              <SendOutlined onClick={handleSendMessage} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#f5f5f5] hover:text-[#ccc] cursor-pointer" />
+              <SendOutlined onClick={handleSendMessage} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#f5f5f5] text-black cursor-pointer" />
             </div>
           </div>
         </div>
