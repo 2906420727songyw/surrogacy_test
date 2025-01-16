@@ -70,9 +70,9 @@ export default function SurrogateApplicationContent() {
     };
   });
 
-  const handleDropdownClick = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+  // const handleDropdownClick = () => {
+  //   setIsDropdownOpen(!isDropdownOpen);
+  // };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -145,7 +145,6 @@ export default function SurrogateApplicationContent() {
         <div className="border-b border-white pb-2 mb-[30px] md:mb-[40px]">
           <div 
             className="flex items-center justify-between cursor-pointer"
-            onClick={handleDropdownClick}
           >
             <h1 className="text-white text-[18px] md:text-[20px] font-normal">
               代孕母初次申请表
@@ -316,7 +315,7 @@ function FormField({ label, name, value, onChange, type }: FormFieldProps) {
         value={displayValue}
         onChange={onChange}
         placeholder={type === 'date' ? 'YYYY/MM/DD' : ''}
-        className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
+        className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px] text-black"
         autoComplete="off"
         required
       />
