@@ -9,7 +9,7 @@
 
 @media (max-width: 1100px) {
   .footer {
-    padding: 60px 20px;
+    /* padding: 60px 20px; */
   }
 
   .content {
@@ -42,7 +42,7 @@
 }
 
 
-.info{
+/* .info{
   margin-left: 18vw;
 }
 @media (max-width: 1500px) {
@@ -60,7 +60,7 @@
   .info{
     margin-left: 14vw;
   }
-}
+} */
 
 
 

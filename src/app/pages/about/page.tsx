@@ -1,8 +1,25 @@
+'use client'
 import styles from './page.module.css';
 import Image from 'next/image';
 import { aboutData } from './data';
+import http from '@/app/http';
+import { useEffect, useState } from 'react';
 
 export default function AboutPage() {
+  interface Article {
+    id: string;
+    imageUrl: string;
+    title: string;
+    description: string;
+    content: string;
+  }
+  const [articles, setArticles] = useState<Article[]>([]);
+  useEffect(() => {
+    http.get('about').then((res) => {
+      //@ts-ignore
+      setArticles(res.items);
+    });
+  }, []);
   return (
     <main>
         <div className={styles.hero}>
