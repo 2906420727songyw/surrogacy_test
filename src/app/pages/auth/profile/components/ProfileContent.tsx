@@ -76,13 +76,13 @@ export default function ProfileContent() {
     fetchUserData();
   }, []);
 
-  const handleDropdownClick = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+  // const handleDropdownClick = () => {
+  //   setIsDropdownOpen(!isDropdownOpen);
+  // };
 
   const getDisplayValue = (value: string) => {
     if (!isClient) return '';
-    return value || '*******';
+    return value || '暂未填写';
   };
 
   return (
@@ -98,7 +98,6 @@ export default function ProfileContent() {
         <div className="border-b border-white pb-2 mb-[30px] md:mb-[40px]">
           <div 
             className="flex items-center justify-between cursor-pointer"
-            onClick={handleDropdownClick}
           >
             <h1 className="text-white text-[18px] md:text-[20px] font-normal">
               开始Sapling Surrogacy旅程
@@ -138,6 +137,8 @@ export default function ProfileContent() {
 }
 
 function InfoItem({ label, value }: { label: string; value: string }) {
+  const textColor = value === '暂未填写' ? '#C0C0C0' : 'white';
+  
   return (
     <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
       <label className="text-white/80 text-[12px] md:text-[14px] ">
@@ -148,7 +149,8 @@ function InfoItem({ label, value }: { label: string; value: string }) {
         readOnly
         value={value}
         autoComplete="new-password"
-        className="text-white text-[12px] md:text-[14px] bg-transparent border-none outline-none"
+        className="text-[12px] md:text-[14px] bg-transparent border-none outline-none w-[20vw]"
+        style={{ color: textColor }}
       />
     </div>
   );
