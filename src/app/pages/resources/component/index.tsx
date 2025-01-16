@@ -11,7 +11,7 @@ export default function ResourcesComponent() {
   const router = useRouter();
 
   const routerToCheckLogin = (route:string)=> {
-    Cookies.get('userData')?router.push(route):router.push('/pages/auth/login');
+    router.push(route)
   }
 
   const route=useRouter()
@@ -38,10 +38,10 @@ export default function ResourcesComponent() {
         </p>
         <div className={styles.buttonGroup}>
           <button className={styles.button} 
-          onClick={() => routerToCheckLogin('/pages/auth/profile?type=parent')}
+          onClick={() => routerToCheckLogin('/pages/ParentsSection')}
           >成为准父母</button>
           <button className={styles.button}
-            onClick={() => routerToCheckLogin('/pages/auth/profile?type=surrogacy')}
+            onClick={() => routerToCheckLogin('/pages/BecomeSurrogate')}
           
           >成为代孕母</button>
         </div>
