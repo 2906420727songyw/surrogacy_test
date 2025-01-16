@@ -113,7 +113,7 @@ export default function Header(){
                 })}
             </div>
             <div className='hidden header-switch:flex flex gap-5 items-center justify-between'>
-                    <div className='hover:cursor-pointer' onClick={()=>Cookies.get('userData')?null:router.push('/pages/auth/login')}>{Cookies.get('userData') ? JSON.parse(Cookies.get('userData') || '{}')?.name : '登录'}</div>
+                    <div className='hover:cursor-pointer' onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile'):router.push('/pages/auth/login')}>{Cookies.get('userData') ? JSON.parse(Cookies.get('userData') || '{}')?.name : '登录'}</div>
                     <div className='group relative'>
                         <div className='hover:cursor-pointer'>预约</div>
                         <div className='absolute left-0 hidden group-hover:block rounded bg-[rgba(164,132,114,0.7)] p-1 min-w-full'>
@@ -144,7 +144,7 @@ export default function Header(){
                                 <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M6 18L18 6M6 6l12 12' />
                             </svg>
                         </div>
-                        <div className='hover:cursor-pointer' onClick={()=>Cookies.get('userData')?null:router.push('/pages/auth/login')}>{Cookies.get('userData') ? JSON.parse(Cookies.get('userData') || '{}')?.name : '登录'}</div>
+                        <div className='hover:cursor-pointer' onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile'):router.push('/pages/auth/login')}>{Cookies.get('userData') ? JSON.parse(Cookies.get('userData') || '{}')?.name : '登录'}</div>
                         {list.map((item, index) => (
                             <div key={index}>
                                 <div className='font-bold hover:cursor-pointer my-5' onClick={()=>{
