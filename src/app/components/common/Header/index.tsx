@@ -20,7 +20,7 @@ const list = [{
         link:'surrogacy-plan-process'
     },{
         text:'代孕套餐和费用',
-        link:'surrogacy-plan-process'
+        link:'/pages/surrogacy-cost'
     }]
 },{
     text:'成为代孕妈妈',
@@ -72,9 +72,13 @@ export default function Header(){
     const routerToScroll = (route:string,link:string)=>{
         setIsMenuOpen(false);
         if(currentPath !== route)router.push(route);
-        setTimeout(()=>{
-            document.getElementById(link)?.scrollIntoView({ behavior: 'smooth' });
-        },500)
+        if(link.includes('/pages/')){
+            router.push(link);
+        }else{
+            setTimeout(()=>{
+                document.getElementById(link)?.scrollIntoView({ behavior: 'smooth' });
+            },500)
+        }
         
     }
 

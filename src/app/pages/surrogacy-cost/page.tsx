@@ -72,7 +72,7 @@ const SurrogacyCost: React.FC = () => {
         与此同时,信托公司提供定期账务报告,确保资金流向透明、安全。
       </p>
       <h3 className="text-white text-sm mb-16 text-center md:text-base">
-        信托公司会在代孕旅程中的每个重要阶段开始前向准父母客户收取费用<br/>:
+        信托公司会在代孕旅程中的每个重要阶段开始前向准父母客户收取费用<br/>
       </h3>
       <div className="text-white text-base mb-20 text-center md:text-xl">
         <p>第一笔款项：在和Sapling签订合同时收取</p>
