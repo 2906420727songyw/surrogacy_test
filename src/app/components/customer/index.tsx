@@ -117,7 +117,7 @@ const CustomerServiceChat: React.FC<{ onClose: () => void }> = ({ onClose }) => 
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="输入消息..."
-                className="w-full p-2 pr-10 border border-[#555] bg-[#fff] text-[#f5f5f5] rounded-full focus:outline-none focus:ring-2 focus:ring-[#888] placeholder-[#777]"
+                className="w-full p-2 pr-10 border border-[#555] bg-[#fff] text-black rounded-full focus:outline-none focus:ring-2 focus:ring-[#888] placeholder-[#777]"
               />
               <SendOutlined onClick={handleSendMessage} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#f5f5f5] text-black cursor-pointer" />
             </div>
