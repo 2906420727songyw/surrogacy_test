@@ -4,9 +4,17 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import styles from './index.module.css';
 import { resourceCards } from './data';
+import Cookies from 'js-cookie';
+ 
 
 export default function ResourcesComponent() {
-const route=useRouter()
+  const router = useRouter();
+
+  const routerToCheckLogin = (route:string)=> {
+    Cookies.get('userData')?router.push(route):router.push('/pages/auth/login');
+  }
+
+  const route=useRouter()
 
   return (
     <div className={styles.container}>
@@ -29,8 +37,13 @@ const route=useRouter()
           照顾好代孕母亲的身体健康和心力建设的同时，我们会尽量去给予给代孕妈新妈妈更多的新水
         </p>
         <div className={styles.buttonGroup}>
-          <button className={styles.button}>成为准父母</button>
-          <button className={styles.button}>成为代孕母</button>
+          <button className={styles.button} 
+          onClick={() => routerToCheckLogin('/pages/auth/profile?type=parent')}
+          >成为准父母</button>
+          <button className={styles.button}
+            onClick={() => routerToCheckLogin('/pages/auth/profile?type=surrogacy')}
+          
+          >成为代孕母</button>
         </div>
       </div>
 
