@@ -1,6 +1,9 @@
+'use client'
 import styles from './ParentsSectionPart4.module.css';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 export default function ParentsSectionPart4() {
+  const router = useRouter();
   return (
     <div className={styles.part4}>
       <Image 
@@ -90,7 +93,7 @@ export default function ParentsSectionPart4() {
           </div>
           
         </div>
-        <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10 mb-10 md:mt-20 md:mb-20">
+        <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10 mb-10 md:mt-20 md:mb-20" onClick={()=>router.push('/pages/auth/profile?type=parent')}>
           开始咨询
         </button>
       </div>

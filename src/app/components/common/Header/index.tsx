@@ -10,9 +10,6 @@ const list = [{
         text:'代孕妈妈的匹配过程',
         link:'surrogacy-matching-process'
     },{
-        text:'试管医院的选择',
-        link:'parents-overview'
-    },{
         text:'单身父母和LGBTQ+群体',
         link:'egg-sperm-donation-help'
     },{
@@ -113,7 +110,18 @@ export default function Header(){
                 })}
             </div>
             <div className='hidden header-switch:flex flex gap-5 items-center justify-between'>
+                <div className='group relative'>
                     <div className='hover:cursor-pointer' onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile'):router.push('/pages/auth/login')}>{Cookies.get('userData') ? JSON.parse(Cookies.get('userData') || '{}')?.name : '登录'}</div>
+                    {
+                        !Cookies.get('userData') && (
+                            <div className='absolute left-0 hidden group-hover:block rounded bg-[rgba(164,132,114,0.7)] p-1 min-w-full'>
+                                <div className='p-2 hover:underline text-sm whitespace-nowrap' onClick={()=>routerToCheckLogin('/pages/auth/profile?type=parent')}>成为准父母</div>
+                                <div className='p-2 hover:underline text-sm whitespace-nowrap' onClick={()=>routerToCheckLogin('/pages/auth/profile?type=surrogacy')}>成为代孕妈妈</div>
+                            </div>
+                        )
+                    }
+                </div>
+                    
                     <div className='group relative'>
                         <div className='hover:cursor-pointer'>预约</div>
                         <div className='absolute left-0 hidden group-hover:block rounded bg-[rgba(164,132,114,0.7)] p-1 min-w-full'>

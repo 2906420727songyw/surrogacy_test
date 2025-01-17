@@ -1,6 +1,8 @@
+'use client'
 import styles from './BecomeSurrogatePart1.module.css';
 import Image from 'next/image';
 import { Image as AntdImage } from "antd";
+import { useRouter } from 'next/navigation';
 
 interface BecomeSurrogatePart1Props {
   isExpandedA: boolean;
@@ -35,6 +37,7 @@ export default function BecomeSurrogatePart1({
   isExpandedG,
   onToggleG,
 }: BecomeSurrogatePart1Props) {
+  const router = useRouter()
   return (
     <div className={styles.becomeSurrogatePart1}>
       <div className={styles.content}>
@@ -50,7 +53,7 @@ export default function BecomeSurrogatePart1({
         Sapling 感谢每个愿意成为代孕妈妈的人，并希望能够给与所有代孕妈妈最好的帮助和关怀，<br/>
         照顾好代孕妈妈的身体健康和心理健康的同时，我们会尽量去给所有的代孕妈妈都争取更多的薪水<br/>
         </p>
-        <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10 mb-20 md:mt-20 md:mb-20">
+        <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10 mb-20 md:mt-20 md:mb-20" onClick={()=>router.push('auth/profile?type=surrogacy')}>
           立即申请
         </button>
         

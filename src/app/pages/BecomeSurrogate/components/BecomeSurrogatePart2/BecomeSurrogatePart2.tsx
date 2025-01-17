@@ -1,6 +1,9 @@
+'use client'
 import styles from './BecomeSurrogatePart2.module.css';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 export default function BecomeSurrogatePart2() {
+  const router = useRouter();
   return (
     <div className={styles.becomeSurrogatePart2}>
       <Image 
@@ -64,7 +67,7 @@ export default function BecomeSurrogatePart2() {
               体重和BMI筛查、怀孕的身体准备
             </p>
           </div>
-          <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-20 mb-10 md:mt-20 md:mb-20">
+          <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-20 mb-10 md:mt-20 md:mb-20" onClick={()=>router.push('/pages/auth/profile?type=surrogacy')}>
             立即申请
           </button>
         </div>

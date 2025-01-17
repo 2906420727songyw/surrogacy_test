@@ -11,10 +11,6 @@ const list = [{
             link:'surrogacy-matching-process'
         },
         {
-            text:'试管医院的选择',
-            link:'parents-overview'
-        },
-        {
             text:'卵子和精子捐献者的帮组',
             link:'egg-sperm-donation-help'
         },

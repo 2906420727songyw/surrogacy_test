@@ -1,6 +1,9 @@
+'use client'
 import { useState } from 'react';
 import styles from './ParentsSectionPart3.module.css';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+
 export default function ParentsSectionPart3() {
   const [isStep1Clicked, setIsStep1Clicked] = useState(false);
   const [isStep2Clicked, setIsStep2Clicked] = useState(false);
@@ -27,6 +30,7 @@ export default function ParentsSectionPart3() {
   const handleStep5Click = () => {
     setIsStep5Clicked(!isStep5Clicked);
   };
+  const router = useRouter();
 
   return (
     <div className={styles.part3}>
@@ -185,7 +189,7 @@ export default function ParentsSectionPart3() {
             )}
           </div>
         </div>
-        <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10 mb-10 md:mt-20 md:mb-20">
+        <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10 mb-10 md:mt-20 md:mb-20" onClick={()=>router.push('/pages/auth/profile?type=parent')}>
           开始咨询
         </button>
       </div>

@@ -26,6 +26,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Sapling Surrogacy",
   description: "Sapling Surrogacy Platform",
+  icons: '/favicon.ico'
 };
 
 export default function RootLayout({

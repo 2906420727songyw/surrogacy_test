@@ -43,13 +43,13 @@ export default function News() {
         关于我们
       </h2>
       <div
-        className="flex gap-5 mx-5 overflow-hidden justify-center"
+        className="flex gap-10 mx-5 overflow-hidden justify-center"
         ref={scrollContainerRef}
         onWheel={handleWheel}
       >
-        {articlesData.map((article) => (
+        {articles.map((article) => (
          <div className={`${styles.article} cursor-pointer w-60`} onClick={() => router.push('/pages/about')}>
-          <Image className={styles.articleImage} src={article.image} alt={article.title} width={270} height={180} />
+          <img className={styles.articleImage} src={article.imageUrl} alt={article.title}/>
           <div className={styles.articleHeader}>
             <span className="text-lg text-[#cdc6c0] mb-7.5 md:text-xl md:mb-5">
               {article.title}
@@ -57,10 +57,10 @@ export default function News() {
             <div style={{ height: '10px' }}></div>
             <hr />
             <p className="text-xs text-[#cdc6c0] md:text-base">
-              {article.date}
+              {article.description}
             </p>
             <p className="text-xs text-[#cdc6c0] md:text-base">
-              {article.author}
+              {article.content.slice(0, 20)+'...'}
             </p>
             <hr />
           </div>

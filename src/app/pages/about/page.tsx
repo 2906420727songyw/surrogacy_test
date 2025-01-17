@@ -34,14 +34,15 @@ export default function AboutPage() {
           </p>
         </div>
         
-        {aboutData.map((item, index) => (
+        {articles.map((item, index) => (
           <section key={index} className={styles.newContainer}>
             <article className={styles.newContainerContent}>
             <div className={styles.gradientBar}></div>
-              <Image src={item.image} alt={`关于我们图片${index + 1}`} width={500} height={600} />
+              <img className='rounded-lg' src={item.imageUrl} alt={`关于我们图片${index + 1}`}/>
               <h2 className="text-lg text-white my-10 md:text-2xl md:my-14">
                 {item.title}
               </h2>
+              <p>{item.description}</p>
               <p className="text-sm text-white md:text-base">
                 {item.content}
               </p>
