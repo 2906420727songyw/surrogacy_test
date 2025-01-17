@@ -81,7 +81,7 @@ export default function Header(){
 
     const routerToCheckLogin = (route:string)=> {
         setIsMenuOpen(false);
-        Cookies.get('userData')?router.push(route):router.push('/pages/auth/login');
+        Cookies.get('userData')?router.push(route):router.push('/pages/auth/login?mode=register');
     }
 
     return (
