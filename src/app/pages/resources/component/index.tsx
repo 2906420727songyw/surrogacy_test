@@ -34,7 +34,7 @@ export default function ResourcesComponent() {
           Sapling诚邀每个温暖成为代孕的你，并希望能够给与所有代孕母亲最好的帮助和支持，
         </p>
         <p className={styles.description}>
-          照顾好代孕母亲的身体健康和心力建设的同时，我们会尽量去给予给代孕妈新妈妈更多的新水
+          照顾好代孕母亲的身体健康和心力建设的同时，我们会尽量去给予给代孕妈新妈妈更多的薪水
         </p>
         <div className={styles.buttonGroup}>
           <button className={styles.button} 
