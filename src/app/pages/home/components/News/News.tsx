@@ -8,11 +8,11 @@ export default function News() {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
   const go_to_about = (index: number) => {
-    router.push('/pages/about')
-      setTimeout(()=>{
-        document.getElementById(`about-item-${index}`)?.scrollIntoView({ behavior: 'smooth' });
-    },500)
-  }
+    router.push('/pages/about');
+    setTimeout(() => {
+      document.getElementById(`about-item-${index}`)?.scrollIntoView({ behavior: 'smooth' });
+    }, 500);
+  };
 
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -29,8 +29,29 @@ export default function News() {
         }
       };
 
+      let startX: number;
+      let scrollLeft: number;
+
+      const handleTouchStart = (event: TouchEvent) => {
+        startX = event.touches[0].pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+      };
+
+      const handleTouchMove = (event: TouchEvent) => {
+        const x = event.touches[0].pageX - container.offsetLeft;
+        const walk = (x - startX) * 2; // 滑动速度
+        container.scrollLeft = scrollLeft - walk;
+      };
+
       container.addEventListener('wheel', handleWheel);
-      return () => container.removeEventListener('wheel', handleWheel);
+      container.addEventListener('touchstart', handleTouchStart);
+      container.addEventListener('touchmove', handleTouchMove);
+
+      return () => {
+        container.removeEventListener('wheel', handleWheel);
+        container.removeEventListener('touchstart', handleTouchStart);
+        container.removeEventListener('touchmove', handleTouchMove);
+      };
     }
   }, []);
 
@@ -58,9 +79,8 @@ export default function News() {
             </div>
             <div className={styles.articleHeader}>
               <span className="flex flex-col gap-5 text-lg text-[#cdc6c0] mb-7.5">
-                {item.name}
+                {item.name.slice(0, 32)}
               </span>
-              {/* <div className={styles.spacing}></div> */}
               <hr />
               <p className="text-xs text-[#cdc6c0] md:text-base">
                 {item.role}
