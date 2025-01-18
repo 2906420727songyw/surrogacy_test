@@ -14,7 +14,8 @@ interface RegisterData {
   city?: string;  // 城市（可选）
   country?: string;  // 国家（可选）
   postalCode?: string;  // 邮政编码（可选）
-  address?: string;  // 详细地址（可选）
+  address?: string;  // 详细地址（可选），
+  role?: string;  // 角色（可选）
 }
 
 // 登录

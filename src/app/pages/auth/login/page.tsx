@@ -31,6 +31,8 @@ function LoginContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const isRegisterMode = searchParams?.get('mode') === 'register';
+
+  const type = searchParams?.get('type')=== 'surrogacy' ? 'surrogacy' : 'parent';
   const { login } = useAuth();
 
   useEffect(() => {
@@ -92,7 +94,7 @@ function LoginContent() {
           />
         </div>
 
-        <div className="w-full max-w-[70vw] pt-[calc(env(safe-area-inset-top)+4rem)] md:pt-[15vh]">
+        <div className="w-full max-w-[70vw] pt-[calc(env(safe-area-inset-top)+6rem)] md:pt-[15vh]">
           <h1 className="text-white text-[32px] md:text-[48px] font-normal text-center mb-[20px] md:mb-[80px] transition-opacity duration-500">
             {isRegisterMode 
               ? '让Sapling更了解你，请先注册/登录'
@@ -213,7 +215,7 @@ function LoginContent() {
                 href={routes.auth.register}
                 onClick={(e) => {
                   e.preventDefault();
-                  router.push(routes.auth.register);
+                  router.push(`/pages/auth/register?type=${type}`);
                 }}
                 className="inline-flex items-center justify-center w-full md:w-[120px] h-10 md:h-12 bg-[#D9D9D9] 
                   text-black text-sm md:text-base rounded-lg border-none transition-opacity hover:opacity-90 mb-[2vh]"

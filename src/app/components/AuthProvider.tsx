@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
-
+import userApi from '@/app/service/user/api';
 interface AuthResponse {
   code: number;
   message?: string;
@@ -35,6 +35,7 @@ interface registerParams {
   country: string;
   postalCode: string;
   address: string;
+  role: string;
 }
 
 export const AuthContext = createContext<AuthContextType>({
@@ -55,7 +56,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           case 200:
             Cookies.set('userData', JSON.stringify(res.data), { expires: 30 });
             toast.success('登录成功');
-            router.push('/');
+            router.push('/pages/auth/profile?type=appointment');
             setIsAuthenticated(true);
             break;
           case 401:
@@ -92,15 +93,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       city: formData.city,
       country: formData.country,
       postalCode: formData.postalCode,
-      address: formData.address
+      address: formData.address,
+      role: formData.role
     }).then((res:any) => {
       
       switch(res.code){
         case 200:
-          Cookies.set('userData', JSON.stringify(res.data), { expires: 30 });
+          res.data.role = formData.role;
+          userApi.getUserInfo(res.data.id).then((ret:any)=>{
+            Cookies.set('userData', JSON.stringify(ret), { expires: 30 });
+
           toast.success('注册成功');
-          router.push('/');
+          router.push('/pages/auth/profile?type=appointment');
           setIsAuthenticated(true);
+          })
+
           break;
         case 409:
         console.log("注册失败");

@@ -9,6 +9,7 @@ import ParentApplicationContent from './components/ParentApplicationContent';
 import AppointmentContent from './components/AppointmentContent';
 import SurrogateApplicationContent from './components/SurrogateApplicationContent';
 import ProtectedRoute from '@/app/components/ProtectedRoute';
+import Cookies from 'js-cookie';
 
 // 移动端菜单按钮组件
 interface MobileMenuButtonProps {
@@ -50,22 +51,21 @@ function ProfilePageContent() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
-  const searchParams = useSearchParams();
-  const type = searchParams?.get('type');
+  const userDataStr = Cookies.get('userData');
+  const userData = userDataStr ? JSON.parse(userDataStr) : null;
+
+  const router_type = useSearchParams().get('type');
+  const type = userData?.role==="SURROGATE_MOTHER"?'surrogacy':'parent';
   const isSurrogacy = type?.includes('surrogacy');
 
 
   // 根据路由参数设置当前激活的导航
   const getActiveNav = () => {
-    switch (type) {
-      case 'surrogacy':
-        return '成为代孕母';
-      case 'parent':
-        return '成为准父母';
-      case 'surrogacyAppointment':
+    switch (router_type) {
+      case 'become':
+        return type==='surrogacy'?'成为代孕母':'成为准父母';
+      case 'appointment':
         return '线下预约';
-      case 'parentAppointment':
-          return '线下预约';
       default:
         return '个人信息';
     }
@@ -102,7 +102,7 @@ function ProfilePageContent() {
   }
 
   return (
-    <div className="min-h-screen w-full flex flex-col md:flex-row bg-[#A38471] pt-[90px]">
+    <div className="min-h-screen w-full flex flex-col md:flex-row bg-[#A38471] pt-[150px]">
       <MobileMenuButton 
         isMobileMenuOpen={isMobileMenuOpen} 
         setIsMobileMenuOpen={setIsMobileMenuOpen}
@@ -123,12 +123,12 @@ function ProfilePageContent() {
           pt-[80px] md:pt-0
           rounded-tr-[20px]
         `}
-        style={{ minHeight: '100vh' }}
+        style={{ minHeight: '100vh' }}  
       >
         <div className="pt-[80px] pl-[30px] md:pl-[60px]">
           <nav className="flex flex-col space-y-[24px] md:space-y-[32px]">
             <NavLink
-              href={`/pages/auth/profile${isSurrogacy ? '/?type=surrogacyProfile' : ''}`}
+              href={`/pages/auth/profile`}
               isActive={activeNav === '个人信息'}
               onClick={() => {
                 setActiveNav('个人信息');
@@ -138,7 +138,7 @@ function ProfilePageContent() {
               个人信息
             </NavLink>
             <NavLink
-              href={`/pages/auth/profile?type=${isSurrogacy ? 'surrogacy' : 'parent'}`}
+              href={`/pages/auth/profile?type=become`}
               isActive={activeNav === (isSurrogacy ? '成为代孕母' : '成为准父母')}
               onClick={() => {
                 setActiveNav(isSurrogacy ? '成为代孕母' : '成为准父母');
@@ -148,7 +148,7 @@ function ProfilePageContent() {
               {isSurrogacy ? '成为代孕母' : '成为准父母'}
             </NavLink>
             <NavLink
-              href={`/pages/auth/profile?type=${isSurrogacy ? 'surrogacyAppointment' : 'parentAppointment'}`}
+              href={`/pages/auth/profile?type=appointment`}
               isActive={activeNav === '线下预约'}
               onClick={() => {
                 setActiveNav('线下预约');

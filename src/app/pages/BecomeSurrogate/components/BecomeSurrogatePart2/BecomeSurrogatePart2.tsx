@@ -17,7 +17,7 @@ export default function BecomeSurrogatePart2() {
       />
       <div id="become-surrogate-part2" className={styles.container}>
         <div className={styles.content}>
-          <h2 className="text-xl text-white mb-16 leading-[2.5rem] md:leading-[4.5rem] md:mb-20 md:text-3xl">
+          <h2 className="text-xl text-white mb-16 md:mb-20 md:text-3xl md:leading-tight">
             WHAT? <br/>我们怎么筛选申请者
           </h2>
           <p className="text-sm text-white leading-6 mb-10 md:text-base md:leading-10 md:mb-11">

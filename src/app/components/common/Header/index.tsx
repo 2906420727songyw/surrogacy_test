@@ -78,16 +78,16 @@ export default function Header(){
 
     const routerToCheckLogin = (route:string)=> {
         setIsMenuOpen(false);
-        Cookies.get('userData')?router.push(route):router.push('/pages/auth/login?mode=register');
+        router.push(`/pages/auth/login?type=${route}`);
     }
 
     return (
         <div className={`flex justify-between text-white font-sans py-5 items-center p-5 fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-[#A48472]' : 'bg-transparent'}`}>
-        <div className='header-switch:flex items-center gap-1'  onClick={()=>router.push('/')}>
-                <img src='/images/logo.jpg'  className='w-12 h-12'/> 
-           <div className='header-switch:text-[1.1rem] text-sm'>
+        <div className='header-switch:flex items-center gap-1 flex flex-col items-center'  onClick={()=>router.push('/')}>
+                <img src='/images/logo.jpg'  className='header-switch:w-12 header-switch:h-12 w-11 h-11'/> 
+           <div className='header-switch:text-[1.1rem] text-[0.6rem] flex flex-col items-center'>
            Sapling Surrogacy<br/>
-           <span className='header-switch:text-[1rem] text-xs'>小树苗代孕中心</span>
+           <span className='header-switch:text-[1rem] text-[0.55rem]'>小树苗代孕中心</span>
            </div>
             </div>
             <div className='hidden header-switch:flex flex gap-5'>
@@ -112,23 +112,20 @@ export default function Header(){
             </div>
             <div className='hidden header-switch:flex flex gap-5 items-center justify-between'>
                 <div className='group relative'>
-                    <div className='hover:cursor-pointer' onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile'):router.push('/pages/auth/login')}>{Cookies.get('userData') ? JSON.parse(Cookies.get('userData') || '{}')?.name : '登录'}</div>
+                    <div className='hover:cursor-pointer' onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile'):'{}'}>{Cookies.get('userData') ? JSON.parse(Cookies.get('userData') || '{}')?.name : '登录'}</div>
                     {
                         !Cookies.get('userData') && (
                             <div className='absolute left-0 hidden group-hover:block rounded bg-[rgba(164,132,114,0.7)] p-1 min-w-full'>
-                                <div className='p-2 hover:underline text-sm whitespace-nowrap' onClick={()=>routerToCheckLogin('/pages/auth/profile?type=parent')}>成为准父母</div>
-                                <div className='p-2 hover:underline text-sm whitespace-nowrap' onClick={()=>routerToCheckLogin('/pages/auth/profile?type=surrogacy')}>成为代孕妈妈</div>
+                                <div className='p-2 hover:underline text-sm whitespace-nowrap' onClick={()=>routerToCheckLogin('parent')}>成为准父母</div>
+                                <div className='p-2 hover:underline text-sm whitespace-nowrap' onClick={()=>routerToCheckLogin('surrogacy')}>成为代孕妈妈</div>
                             </div>
                         )
                     }
                 </div>
                     
                     <div className='group relative'>
-                        <div className='hover:cursor-pointer'>预约</div>
-                        <div className='absolute left-0 hidden group-hover:block rounded bg-[rgba(164,132,114,0.7)] p-1 min-w-full'>
-                            <div className='p-2 hover:underline text-sm whitespace-nowrap' onClick={()=>routerToCheckLogin('/pages/auth/profile?type=parent')}>成为准父母</div>
-                            <div className='p-2 hover:underline text-sm whitespace-nowrap' onClick={()=>routerToCheckLogin('/pages/auth/profile?type=surrogacy')}>成为代孕妈妈</div>
-                        </div>
+                        <div className='hover:cursor-pointer' onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=appointment'):router.push('/pages/auth/login?mode=register')}>预约</div>
+                      
                     </div>
                     <div className='hover:cursor-pointer'>搜索</div>
                 </div>
@@ -169,8 +166,9 @@ export default function Header(){
                             </div>
                         ))}
                         <div className='flex gap-2 flex-col'>
-                            <div className='py-2 hover:cursor-pointer' onClick={() => routerToCheckLogin('/pages/auth/profile?type=parent')}>成为准父母</div>
-                            <div className='py-2 hover:cursor-pointer' onClick={() => routerToCheckLogin('/pages/auth/profile?type=surrogacy')}>成为代孕妈妈</div>
+                            {/* <div className='py-2 hover:cursor-pointer' onClick={() => routerToCheckLogin('/pages/auth/profile?type=parent')}>成为准父母</div>
+                            <div className='py-2 hover:cursor-pointer' onClick={() => routerToCheckLogin('/pages/auth/profile?type=surrogacy')}>成为代孕妈妈</div> */}
+                            <div className='py-2 hover:cursor-pointer' onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=appointment'):router.push('/pages/auth/login?mode=register')}>预约</div>
                             <div className='py-2 hover:cursor-pointer'>搜索</div>
                         </div>
                     </div>
