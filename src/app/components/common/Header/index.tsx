@@ -45,9 +45,6 @@ const list = [{
     text:'资讯',
     link:'/pages/resources',
 },{
-    text:'推荐计划',
-    link:'/pages/recommendation-plan',
-},{
     text:'职业生涯',
     link:'/pages/careers',
 }]
@@ -86,8 +83,12 @@ export default function Header(){
 
     return (
         <div className={`flex justify-between text-white font-sans py-5 items-center p-5 fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-[#A48472]' : 'bg-transparent'}`}>
-            <div className='hover:cursor-pointer text-center' onClick={()=>router.push('/')}>Sapling Surrogacy<br/>
-            <span className='text-xs'>小树苗辅助生育服务中心</span>
+        <div className='header-switch:flex items-center gap-1'  onClick={()=>router.push('/')}>
+                <img src='/images/logo.jpg'  className='w-12 h-12'/> 
+           <div className='header-switch:text-[1.1rem] text-sm'>
+           Sapling Surrogacy<br/>
+           <span className='header-switch:text-[1rem] text-xs'>小树苗代孕中心</span>
+           </div>
             </div>
             <div className='hidden header-switch:flex flex gap-5'>
                 {list.map((item,index)=>{
