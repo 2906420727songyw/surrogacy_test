@@ -79,17 +79,35 @@
 /* 展开内容 */
 .expandableContainer {
   width: 100%;
-  height: auto;
+  height: 100px;
   overflow: hidden;
   transition: height 0.3s ease;
   cursor: pointer;
 }
-
-.expandableHeader {
+.expandableHeader{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
 
+.expandableContainer.expanded {
+  height: auto;
+}
+
+.expandedContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
+}
+
+.expandableContainer.expanded .expandedContent {
+  opacity: 1;
 }
 
 /* 分割线 */
@@ -98,16 +116,6 @@
   height: 1px;
   background-color: #FFFFFF;
 
-}
-
-.expandedContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  @media (max-width: 768px) {
-    padding: 10px;
-  }
 }
 
 /* 展开图片 */
@@ -125,7 +133,3 @@
     margin-bottom: 10px;
   }
 }
-
-.expandableContainer.expanded .expandedContent {
-  height: auto;
-} 

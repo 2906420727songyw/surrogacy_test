@@ -25,7 +25,7 @@ export default function Footer() {
     }
 
     return (
-        <div className='flex justify-between gap-10 p-5 bg-[#A48472] flex-wrap p-20 text-white font-sans pt-'>
+        <div className='flex justify-between gap-10 px-5 py-10 bg-[#A36E65] flex-wrap md:px-40 md:py-20 text-white font-sans'>
         {
             list.map((item,index)=>(
                 <div key={index}>
@@ -66,18 +66,20 @@ export default function Footer() {
             </div>
             
             </div>
+            {/* 
             <div className={styles.infoItem}>
                 <Image src="/images/footer/website-icon.png" alt="Website Icon" className={styles.icon} width={24} height={24} />
-                <p>www.homlesproperty.co</p>
-            </div>
-            <div className={styles.infoItem}>
-                <Image src="/images/footer/email-icon.png" alt="Email Icon" className={styles.icon} width={24} height={24} />
-                <p>hello@homles.co</p>
-            </div>
+                <p>www.homlesproperty.com</p>
+            </div>*/}
             <div className={styles.infoItem}>
                 <Image src="/images/footer/phone-icon.png" alt="Phone Icon" className={styles.icon} width={24} height={24} />
                 <p>+44 652 762 887</p>
             </div>
+            <div className={styles.infoItem}>
+                <Image src="/images/footer/email-icon.png" alt="Email Icon" className={styles.icon} width={24} height={24} />
+                <p>hello@homles.com</p>
+            </div>
+            
         </div>
     </div>
     )

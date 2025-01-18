@@ -30,6 +30,21 @@
   background-color: transparent;
   text-align: center;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/*.clickableDiv:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}*/
+
+.clickableDiv .details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.clickableDiv:hover .details {
+  max-height: 1000px; /* 设置一个足够大的值,确保内容能完全展开 */
 }
 
 /* 可点击的div被点击时 */

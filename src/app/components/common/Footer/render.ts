@@ -54,7 +54,7 @@ const list = [{
             link:'/pages/SurrogateSection'
         },
         {
-            text:'成为代孕妈妈',
+            text:'成为代孕妈妈 ',
             link:'/pages/SurrogateSection'
         },{
             text:'成为捐赠者',

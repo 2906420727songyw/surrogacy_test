@@ -17,7 +17,7 @@ export default function BecomeSurrogatePart3() {
       />
       <div id='become-surrogate-part3' className={styles.container}>
         <div className={styles.content}>
-          <h2 className="text-xl text-white mb-16 md:mb-20 md:text-3xl md:leading-tight">
+          <h2 className="text-xl text-white mb-16 leading-[2.5rem] md:leading-[4.5rem] md:mb-20 md:text-3xl">
             WHEN? <br/>如何成为我们的代孕妈妈：申请流程和时间线
           </h2>
           

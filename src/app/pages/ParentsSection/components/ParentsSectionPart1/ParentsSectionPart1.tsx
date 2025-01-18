@@ -77,15 +77,14 @@ export default function ParentsSectionPart1() {
       blurDataURL="/images/ParentsSection/image1-zip.jpg"
       />
       <div className="w-full flex flex-col items-center text-center text-white px-5 pt-5 md:w-full md:px-36">
-        <h2 className="text-xl my-12 md:text-4xl md:my-24">
-          <p>为什么准父母会选择</p>
-          <p>Sapling Surrogacy</p>
+        <h2 className="text-xl my-12 leading-[2.5rem] md:leading-[4.5rem] md:text-4xl md:my-24">
+          为什么准父母会选择<br/>
+          Sapling Surrogacy
         </h2>
         <div className="text-sm mb-10 leading-8 md:text-base md:mb-14 md:leading-10">
-          <p>选择一家专业的代孕机构是最重要的，它会指导和陪伴您更轻松的走过整个成为准父母的旅程。</p>
-        <p>
+          选择一家专业的代孕机构是最重要的，它会指导和陪伴您更轻松的走过整个成为准父母的旅程。<br/>
           选择 Sapling 可以让您享受全方位的代孕服务，我们有
-        </p>
+        
         </div>
         
         <div className={styles.horizontalList}>
@@ -98,7 +97,7 @@ export default function ParentsSectionPart1() {
                   height={500}
                   className={styles.listItemImage}
                 />
-                <p className="text-xs leading-6 my-2 md:my-4 md:text-base md:leading-8">{item.text}</p>
+                <p className="text-xs leading-5 my-2 md:my-4 md:text-base md:leading-6">{item.text}</p>
               </div>
             ))}
         </div>

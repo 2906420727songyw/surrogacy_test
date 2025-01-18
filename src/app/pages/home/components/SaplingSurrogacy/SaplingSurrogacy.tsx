@@ -6,7 +6,7 @@ export default function SaplingSurrogacy() {
     <section className={`${styles.saplingSurrogacy} relative before:content-[''] before:absolute before:inset-0 before:bg-black before:opacity-20 before:z-0`}>
       <div className="mx-auto flex flex-col items-center w-full h-auto md:w-full z-10">
       <p className="text-4xl text-white mb-1.5 md:mb-3 md:text-6xl text-center">
-        欢迎单身父母和 LGBTQ 群体
+        欢迎单身父母和 LGBTQIA+ 群体
       </p>
       <div className="flex justify-center items-start gap-8 mt-3 md:gap-10 md:mt-6">
       <Link href="../pages/ParentsSection">
