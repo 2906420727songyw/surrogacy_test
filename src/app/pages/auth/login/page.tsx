@@ -30,9 +30,9 @@ function LoginContent() {
 
   const router = useRouter();
   const searchParams = useSearchParams();
-  const isRegisterMode = searchParams?.get('mode') === 'register';
+  const isRegisterMode = searchParams?.get('mode')?.includes('register');
 
-  const type = searchParams?.get('type')=== 'surrogacy' ? 'surrogacy' : 'parent';
+  const type = searchParams?.get('type')?searchParams?.get('type')=== 'surrogacy' ? 'surrogacy' : 'parent':searchParams?.get('mode')?.includes('Mother') ? 'surrogacy' : 'parent' ;
   const { login } = useAuth();
 
   useEffect(() => {

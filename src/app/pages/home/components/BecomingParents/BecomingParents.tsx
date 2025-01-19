@@ -1,6 +1,12 @@
+'use client';
+
 import Link from 'next/link';
 import styles from './BecomingParents.module.css';
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
+
 export default function BecomingParents() {
+  const router = useRouter();
 
   return (
     <section id="becoming-parents" className={styles.becomingParents}>
@@ -24,11 +30,11 @@ export default function BecomingParents() {
               代孕费用
             </button>
           </Link>
-          <Link href="/pages/auth/profile?type=parent">
+          <div onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=parent' ):router.push('/pages/auth/login?mode=register')}>
             <button className="w-20 h-6 md:w-28 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-white hover:bg-gray-100 transition duration-200">
               申请通道
             </button>
-          </Link>
+          </div>
         </div>
       </div>
     </section>
