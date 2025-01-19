@@ -11,7 +11,7 @@ export default function ParentsSectionPart1() {
   const listData = [
     {
       image: '/images/ParentsSection/icon1.png',
-      text: '最有经验的团队：团队都有多年行业经验,各个相关领域精英,都亲身经历过代孕；',
+      text: '最有经验的团队：团队都有多年行业经验,各个相关领域精英,都亲身经历过代孕',
     },
     {
       image: '/images/ParentsSection/icon2.png', 
@@ -19,7 +19,7 @@ export default function ParentsSectionPart1() {
     },
     {
       image: '/images/ParentsSection/icon3.png',
-      text: '最合适的医疗选择：根据您的自身情况,量身定制治疗方案,提高成功率；', 
+      text: '最合适的医疗选择：根据您的自身情况,量身定制治疗方案,提高成功率', 
     },
     {
       image: '/images/ParentsSection/icon4.png',
@@ -27,7 +27,7 @@ export default function ParentsSectionPart1() {
     },
     {
       image: '/images/ParentsSection/icon1.png',
-      text: '最大的资金信托公司：保障您财产的安全,任何使用都也有据可查；',
+      text: '最大的资金信托公司：保障您财产的安全,任何使用都也有据可查',
     },
     {
       image: '/images/ParentsSection/icon2.png',
@@ -35,7 +35,7 @@ export default function ParentsSectionPart1() {
     },
     {
       image: '/images/ParentsSection/icon3.png', 
-      text: '最高效交流：一站式管家服务,只要您需要,我们任何时候都在；',
+      text: '最高效交流：一站式管家服务,只要您需要,我们任何时候都在',
     },
     {
       image: '/images/ParentsSection/icon4.png',
@@ -43,7 +43,7 @@ export default function ParentsSectionPart1() {
     },
     {
       image: '/images/ParentsSection/icon1.png',
-      text: '最快速的匹配流程：匹配流程比普通代孕机构快 40% ；',
+      text: '最快速的匹配流程：匹配流程比普通代孕机构快 40% ',
     },
     {
       image: '/images/ParentsSection/icon2.png',
