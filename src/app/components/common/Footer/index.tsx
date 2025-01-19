@@ -58,11 +58,11 @@ export default function Footer() {
             <h3>探索</h3>
             
             <div className={styles.socialIcons}>
-                <Link href={routes.auth.login} className={styles.logIn}>
+                <Link href={`${routes.auth.login}?type=parent`} className={styles.logIn}>
                 <span>登录：成为准父母</span>
                 <Image src="/images/footer/右箭头.png" alt="Arrow Right" width={24} height={24} />
                 </Link>
-                <Link href={routes.auth.login} className={styles.logIn}>
+                <Link href={`${routes.auth.login}?type=surrogacy`} className={styles.logIn}>
                 <span>登录：成为代孕妈妈</span>
                 <Image src="/images/footer/右箭头.png" alt="Arrow Right" width={24} height={24} />
                 </Link>

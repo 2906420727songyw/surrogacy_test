@@ -4,6 +4,7 @@ import React, { useRef } from 'react';
 import News from '../News/News';
 import styles from './AboutUs.module.css';
 import Videos from './videos';
+// import VideosTest from './videos-test';
 export default function AboutUs() {
   const carouselRef = useRef<HTMLDivElement>(null);
   let isDragging = false;
@@ -61,8 +62,10 @@ export default function AboutUs() {
         </p>
       </div>
       <div className={styles.bottomGradientBar}/>
+      {/*<VideosTest />*/}
       <Videos />
       <News />
+
     </section>
   );
 }
