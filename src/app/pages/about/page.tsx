@@ -23,15 +23,15 @@ export default function AboutPage() {
             <article className={styles.newContainerContent}>
             <div className={styles.gradientBar} id={`about-item-${index}`}></div>
               <img
-                  className={`${styles.articleImage} rounded-lg`}
-                  src={index < 2 ? 'https://loyal-cn.oss-ap-southeast-1.aliyuncs.com/macOS%20Monterey%20Wallpaper.jpg' : `/images/about/img/${index}.png`}
+                  className='rounded-lg'
+                  src={index > 2 ? 'https://loyal-cn.oss-ap-southeast-1.aliyuncs.com/macOS%20Monterey%20Wallpaper.jpg' : `/images/about/img/${index}.png`}
                   alt={item.name}
                 />
               <h2 className="h1-text text-white my-10 md:text-2xl md:my-14">
                 {item.name}
               </h2>
               <p className='text-white mb-10 h2-text'>{item.role}</p>
-              <p className=" text-white  h2-text">
+              <p className=" text-white  h2-text mx-20 px-20">
                 {
                 item.content.map((item, index) => (
                   <p key={index}>{item}</p>
