@@ -1,10 +1,9 @@
 'use client'
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import styles from './ParentsSectionPart1.module.css';
 import Image from 'next/image';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
-import { text } from 'stream/consumers';
 
 export default function ParentsSectionPart1() {
   const router = useRouter();
@@ -52,6 +51,9 @@ export default function ParentsSectionPart1() {
   ];
 
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const titleRef = useRef(null);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -94,10 +96,33 @@ export default function ParentsSectionPart1() {
     }
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div id="parents-overview" className={styles.content}>
       <div className={styles.container}>
-        <h1 className="text-xl text-white mb-12 md:mb-20 md:text-4xl">
+        <h1 
+          ref={titleRef}
+          className={`text-xl text-white mb-12 md:mb-20 md:text-4xl ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : 'opacity-0'}`}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
           Sapling Surrogacy
         </h1>
         <p className="text-sm text-white leading-6 mb-10 md:text-base md:leading-10 md:mb-12">
@@ -122,7 +147,7 @@ export default function ParentsSectionPart1() {
       blurDataURL="/images/ParentsSection/image1-zip.jpg"
       />
       <div className="w-full flex flex-col items-center text-center text-white px-5 pt-5 md:w-full md:px-36">
-        <h2 className="text-xl my-12 leading-[2.5rem] md:leading-[4.5rem] md:text-4xl md:my-24">
+        <h2 className="text-xl my-12 leading-[2.5rem] md:leading-[4.5rem] md:text-4xl md:my-24 animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s">
           为什么准父母会选择<br/>
           Sapling Surrogacy
         </h2>

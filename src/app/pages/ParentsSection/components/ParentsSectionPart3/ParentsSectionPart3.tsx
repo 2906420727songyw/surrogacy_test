@@ -6,53 +6,27 @@ import { useRouter } from 'next/navigation';
 
 export default function ParentsSectionPart3() {
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
-  const step1Ref = useRef<boolean>(false);
-  const step2Ref = useRef<boolean>(false);
-  const step3Ref = useRef<boolean>(false);
-  const step4Ref = useRef<boolean>(false);
-  const step5Ref = useRef<boolean>(false);
-
-  const handleStep1MouseEnter = () => {
-    step1Ref.current = true;
-  };
-
-  const handleStep1MouseLeave = () => {
-    step1Ref.current = false;
-  };
-
-  const handleStep2MouseEnter = () => {
-    step2Ref.current = true;
-  };
-
-  const handleStep2MouseLeave = () => {
-    step2Ref.current = false;
-  };
-
-  const handleStep3MouseEnter = () => {
-    step3Ref.current = true;
-  };
-
-  const handleStep3MouseLeave = () => {
-    step3Ref.current = false;
-  };
-
-  const handleStep4MouseEnter = () => {
-    step4Ref.current = true;
-  };
-
-  const handleStep4MouseLeave = () => {
-    step4Ref.current = false;
-  };
-
-  const handleStep5MouseEnter = () => {
-    step5Ref.current = true;
-  };
-
-  const handleStep5MouseLeave = () => {
-    step5Ref.current = false;
-  };
-
+  const [isVisible, setIsVisible] = useState(false);
+  const titleRef = useRef(null);
   const router = useRouter();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -83,17 +57,20 @@ export default function ParentsSectionPart3() {
   return (
     <div className={styles.part3}>
       <Image 
-      src="/images/ParentsSection/image2.png" 
-      alt="第三部分图片" 
-      width={1600}
-      height={800}
-      layout="responsive"
-      placeholder="blur"
-      blurDataURL="/images/ParentsSection/image2.jpg"
+        src="/images/ParentsSection/image2.png" 
+        alt="第三部分图片" 
+        width={1600}
+        height={800}
+        layout="responsive"
+        placeholder="blur"
+        blurDataURL="/images/ParentsSection/image2.jpg"
       />
       <div id="surrogacy-plan-process" className={styles.content}>
         <div className="w-full flex flex-col items-center justify-center px-5">
-          <h2 className="text-xl text-center text-white mb-12 leading-[2.5rem] md:leading-[4.5rem] md:text-4xl md:mb-12">
+          <h2 
+            ref={titleRef}
+            className={`text-xl text-center text-white mb-12 leading-[2.5rem] md:leading-[4.5rem] md:text-4xl md:mb-12 ${isVisible ? 'animate__animated animate__fadeInUp animate__duration-1s animate__delay-1s' : 'opacity-0'}`}
+          >
             准父母代孕流程
           </h2>
           <p className="text-sm leading-6 text-white text-center mb-10 md:text-base md:leading-10 md:mb-11">

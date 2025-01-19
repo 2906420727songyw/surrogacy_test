@@ -5,27 +5,33 @@ import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
 import { useEffect, useState } from 'react';
 
-export default function BecomeSurrogatePart1() {
+interface BecomeSurrogatePart1Props {
+  isVisible?: boolean;
+}
+
+export default function BecomeSurrogatePart1({ isVisible = false }: BecomeSurrogatePart1Props) {
   const router = useRouter();
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
+  const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     const options = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.5
+      threshold: 0.1
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        const sectionId = entry.target.getAttribute('data-section');
-        if (entry.isIntersecting && sectionId) {
-          setExpandedSections(prev => new Set([...prev, sectionId]));
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.getAttribute('data-section');
+          if (sectionId) {
+            setExpandedSections(prev => new Set([...prev, sectionId]));
+          }
         }
       });
     }, options);
 
-    // 观察所有部分
     document.querySelectorAll('[data-section]').forEach(section => {
       observer.observe(section);
     });
@@ -39,12 +45,14 @@ export default function BecomeSurrogatePart1() {
   return (
     <div className={styles.becomeSurrogatePart1}>
       <div className={styles.content}>
-        <h2 className="text-xl text-white mb-16 leading-[2.5rem] md:leading-[4.5rem] md:mb-20 md:text-3xl">
+        <h2 
+          className={`h1-text text-white mb-16 leading-[2.5rem] md:leading-[4.5rem] md:mb-20 md:text-3xl ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : ''}`}
+        >
           欢迎来到 Sapling，<br/>
           成为代孕妈妈，最高可赚取 105,000 美元
         </h2>
         
-        <p className="text-sm text-white leading-8 mb-10 md:text-base md:leading-10 md:mb-11">
+        <p className="h2-text text-white leading-8 mb-10 md:text-base md:leading-10 md:mb-11">
           代孕妈妈是伟大的存在，这世界上有 1/6 的人因为个人原因，无法组成完整的家庭，<br/>
           他们梦想着能够抱着自己的孩子入睡，渴望看到宝宝在自己的呵护下长大。<br/>
           因为代孕妈妈无私的帮助，让这一切都变得有可能，代孕妈妈的无私奉献让更多有需要的人能够成为了父亲和母亲。<br/>
@@ -72,10 +80,12 @@ export default function BecomeSurrogatePart1() {
       </div>
 
       <div id="who-can-be-surrogate" className={styles.bottomContent}>
-        <h2 className="text-xl text-white mb-16 leading-[2.5rem] md:leading-[4.5rem] md:mb-20 md:text-3xl">
+        <h2 
+          className={`h1-text text-white mb-16 leading-[2.5rem] md:leading-[4.5rem] md:mb-20 md:text-3xl ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : ''}`}
+        >
           WHO?<br/> 谁可以成为我们的代孕妈妈：对代孕妈妈的要求
         </h2>
-        <p className="text-sm text-white leading-8 mb-10 md:text-base md:leading-10 md:mb-11">
+        <p className="h2-text text-white leading-8 mb-10 md:text-base md:leading-10 md:mb-11">
           我们 Sapling 的代孕妈妈必须在生理上和心理上同时具备代孕的能力，<br/>
           这样可以最大程度的降低风险，让代孕妈妈和准父母一起顺利度过代孕的旅程，迎接健康宝宝的来到
         </p>

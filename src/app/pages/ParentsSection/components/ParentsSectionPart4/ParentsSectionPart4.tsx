@@ -1,9 +1,32 @@
 'use client'
+import { useState, useRef, useEffect } from 'react';
 import styles from './ParentsSectionPart4.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+
 export default function ParentsSectionPart4() {
   const router = useRouter();
+  const [isVisible, setIsVisible] = useState(false);
+  const titleRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className={styles.part4}>
       <Image 
@@ -17,7 +40,10 @@ export default function ParentsSectionPart4() {
       />
       <div id="egg-sperm-donation-help" className={styles.content}>
         <div className="w-full flex flex-col items-center justify-center px-5">
-          <h2 className="text-xl text-center text-white mb-12 leading-[2.5rem] md:leading-[4.5rem] md:text-3xl md:mb-14">
+          <h2 
+            ref={titleRef}
+            className={`text-xl text-center text-white mb-12 leading-[2.5rem] md:leading-[4.5rem] md:text-3xl md:mb-14 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : 'opacity-0'}`}
+          >
             单身父母和 LGBTQ+ 群体<br/>
             卵子和精子捐赠者的帮助
           </h2>

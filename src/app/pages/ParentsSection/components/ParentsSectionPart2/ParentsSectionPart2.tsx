@@ -11,6 +11,8 @@ export default function ParentsSectionPart2() {
   const step5Ref = useRef<boolean>(false);
   const router = useRouter();
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
+  const [isVisible, setIsVisible] = useState(false);
+  const titleRef = useRef(null);
 
   const handleStep1MouseEnter = () => {
     step1Ref.current = true;
@@ -53,6 +55,24 @@ export default function ParentsSectionPart2() {
   };
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll('[data-section]');
       sections.forEach((section) => {
@@ -75,7 +95,10 @@ export default function ParentsSectionPart2() {
   return (
     <div id="surrogacy-matching-process" className={styles.part2}>
       <div className={styles.container}>
-        <h2 className="text-xl text-center text-white mb-12 leading-[2.5rem] md:leading-[4.5rem] md:text-4xl md:mb-12">
+        <h2 
+          ref={titleRef}
+          className={`text-xl text-center text-white mb-12 leading-[2.5rem] md:leading-[4.5rem] md:text-4xl md:mb-12 ${isVisible ? 'animate__animated animate__fadeInUp animate__duration-1s animate__delay-1s' : 'opacity-0'}`}
+        >
           准父母和代孕妈妈的匹配过程
         </h2>
         <div className="w-full bg-transparent text-center md:w-full">

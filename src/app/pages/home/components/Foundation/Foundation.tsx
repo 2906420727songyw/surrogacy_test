@@ -1,10 +1,40 @@
+'use client'
+import { useEffect, useState } from 'react';
 import styles from './Foundation.module.css';
 
 export default function Foundation() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect(); // 一旦显示就不再观察
+        }
+      },
+      {
+        threshold: 0.1 // 当10%的元素可见时触发
+      }
+    );
+
+    const element = document.querySelector('#foundation-title');
+    if (element) {
+      observer.observe(element);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className={styles.foundation}>
       <div className={styles.content}>
-        <h2 className="text-2xl mb-8 text-white md:text-5xl">
+        <h2 
+          id="foundation-title"
+          className={`text-2xl mb-8 text-white md:text-5xl ${
+            isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : 'opacity-0'
+          }`}
+        >
           0%利润投入基金会帮助更多家庭圆梦
         </h2>
         <div className="flex justify-center gap-8 md:gap-10">

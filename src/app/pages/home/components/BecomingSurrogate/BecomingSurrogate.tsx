@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import styles from './BecomingSurrogate.module.css';
 import Link from 'next/link';
 import Cookies from 'js-cookie';
@@ -7,11 +8,38 @@ import { useRouter } from 'next/navigation';
 
 export default function BecomingSurrogate() {
   const router = useRouter();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect(); // 一旦显示就不再观察
+        }
+      },
+      {
+        threshold: 0.1 // 当10%的元素可见时触发
+      }
+    );
+
+    const element = document.querySelector('#becoming-surrogate-title');
+    if (element) {
+      observer.observe(element);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section className={`${styles.becomingSurrogate} relative before:content-[''] before:absolute before:inset-0 before:bg-black before:opacity-20 before:z-0`}>
       <div className="mx-auto flex flex-col items-center w-full h-auto md:w-full z-10">
-        <h2 className="text-4xl text-white mb-3 md:mb-6 md:text-6xl animate__animated animate__fadeInDown animate__duration-2s animate__delay-1s">
+        <h2 
+          id="becoming-surrogate-title"
+          className={`text-4xl text-white mb-3 md:mb-6 md:text-6xl ${
+            isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : 'opacity-0'
+          }`}
+        >
           成为代孕妈妈
         </h2>
         <p className="text-xs md:text-base text-white mb-1.5 md:mb-3">

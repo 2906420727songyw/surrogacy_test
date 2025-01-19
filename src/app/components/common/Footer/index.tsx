@@ -26,7 +26,7 @@ export default function Footer() {
 
     return (
         <div className='flex justify-between gap-20 px-10 py-16 bg-[#A36E65] flex-wrap md:px-40 md:py-20 text-white font-sans'>
-            <div className='w-auto flex gap-20 md:gap-40 bg-[#A36E65] flex-wrap text-white'>
+            <div className='w-auto flex gap-20 md:gap-40 bg-[#A36E65] flex-wrap text-white '>
         {
             list.map((item,index)=>(
                 <div key={index}>

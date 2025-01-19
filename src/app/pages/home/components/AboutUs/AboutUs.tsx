@@ -1,11 +1,15 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import News from '../News/News';
 import styles from './AboutUs.module.css';
 import Videos from './videos';
 // import VideosTest from './videos-test';
+import { useRouter } from 'next/navigation';
+
 export default function AboutUs() {
+  const router = useRouter();
+  const [isVisible, setIsVisible] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
   let isDragging = false;
   let startX = 0;
@@ -47,11 +51,37 @@ export default function AboutUs() {
     isDragging = false;
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect(); // 一旦显示就不再观察
+        }
+      },
+      {
+        threshold: 0.1 // 当10%的元素可见时触发
+      }
+    );
+
+    const element = document.querySelector('#about-us-title');
+    if (element) {
+      observer.observe(element);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className={styles.aboutUs}>
       <div className={styles.gradientBar}></div>
       <div className="mx-auto flex flex-col items-center w-full h-auto md:w-full px-5">
-        <p className="text-4xl text-white mb-4 md:mb-8 md:text-6xl">
+        <p 
+          id="about-us-title"
+          className={`text-4xl text-white mb-4 md:mb-8 md:text-6xl ${
+            isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : 'opacity-0'
+          }`}
+        >
           Sapling Surrogacy
         </p>
         <p className="text-xs text-white mb-1.5 md:mb-3 md:text-base">
