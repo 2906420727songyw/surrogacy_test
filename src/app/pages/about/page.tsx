@@ -8,8 +8,8 @@ export default function AboutPage() {
     <main>
         <div className={styles.hero}>
         <div className="w-full">
-          <h1 className="text-xl text-white mb-10 md:text-4xl md:mb-20">关于我们</h1>
-          <p className="text-base text-white md:text-lg">
+          <h1 className="h1-text text-white mb-10 md:text-4xl md:mb-20">关于我们</h1>
+          <p className="h2-text text-white md:h2-text">
           假文案,这世界上有1/6的人因为个人原因,无法组成完整的家庭,<br/>
           他们梦想着能够抱着自己的孩子入睡,渴望看到宝宝在自己的呵护下长大。<br/>
           因为代孕妈妈无私的帮助,让这一切都变得有可能,代孕妈妈的无私奉献让更多有需要的人能够成为了父亲和母亲。<br/>
@@ -27,11 +27,11 @@ export default function AboutPage() {
                   src={index < 2 ? 'https://loyal-cn.oss-ap-southeast-1.aliyuncs.com/macOS%20Monterey%20Wallpaper.jpg' : `/images/about/img/${index}.png`}
                   alt={item.name}
                 />
-              <h2 className="text-lg text-white my-10 md:text-2xl md:my-14">
+              <h2 className="h1-text text-white my-10 md:text-2xl md:my-14">
                 {item.name}
               </h2>
-              <p className='text-white mb-10'>{item.role}</p>
-              <p className="text-sm text-white md:text-base">
+              <p className='text-white mb-10 h2-text'>{item.role}</p>
+              <p className=" text-white  h2-text">
                 {
                 item.content.map((item, index) => (
                   <p key={index}>{item}</p>

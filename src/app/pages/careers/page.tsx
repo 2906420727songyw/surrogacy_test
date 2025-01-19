@@ -40,14 +40,14 @@ export default function Careers() {
 
       {/* 内容部分 */}
       <div className="w-full pt-20 md:pt-32 pb-40 md:pb-60 px-4">
-        <h1 className="text-[2.25rem] font-normal text-center text-white mb-16 md:mb-24">
+        <h1 className="h1-text font-normal text-center text-white mb-16 md:mb-24">
           {mockData.title}
         </h1>
         
         {/* 第一段文字内容 */}
         <div className="max-w-5xl mx-auto">
           <div 
-            className="text-[1.125rem] text-white leading-[1.4] text-center md:whitespace-nowrap rich-text"
+            className="h2-text text-white leading-[1.4] text-center md:whitespace-nowrap rich-text"
             dangerouslySetInnerHTML={{ __html: mockData.firstParagraph }}
           />
         </div>
@@ -63,7 +63,7 @@ export default function Careers() {
         {/* 第二段文字内容 */}
         <div className="max-w-5xl mx-auto">
           <div 
-            className="text-[1.125rem] text-white leading-[1.4] text-center md:whitespace-nowrap rich-text"
+            className="h2-text text-white leading-[1.4] text-center md:whitespace-nowrap rich-text"
             dangerouslySetInnerHTML={{ __html: mockData.secondParagraph }}
           />
         </div>
