@@ -31,7 +31,7 @@ export default function AboutPage() {
                 {item.name}
               </h2>
               <p className='text-white mb-10 h2-text'>{item.role}</p>
-              <p className=" text-white  h2-text">
+              <p className=" text-white  h2-text mx-20 px-20">
                 {
                 item.content.map((item, index) => (
                   <p key={index}>{item}</p>
