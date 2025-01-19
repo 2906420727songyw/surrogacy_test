@@ -78,7 +78,7 @@ export default function ParentsSectionPart2() {
             {step1Ref.current ? '每位代孕妈妈必须填写一份详细的申请表，了解她的必要基本信息' : '每位代孕妈妈必须填写一份详细的申请表，了解她的必要基本信息'}
           </p>
           <div className={styles.details}>
-            <p className="text-sm text-white mb-6 mt-8 leading-5 md:leading-6 md:text-base md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s">
+            <p className="text-sm text-white mb-6 mt-8 leading-5 md:leading-6 md:text-base md:mb-8 md:mt-16 ">
               每位代孕妈妈都必须完成我们的申请表，一共有五个大类，涵盖了生育历史、家族病史、家庭生活、学历、<br/>
               财政情况和工作情况以及代孕动机。根据美国代孕法案规定，代孕妈妈必须在 21-45 岁之间，生产并养育过至少一个孩子，<br/>
               身体健康，无重大疾病，无药物滥用或烟酒问题，健康指数（BMI）在 30 以下。
