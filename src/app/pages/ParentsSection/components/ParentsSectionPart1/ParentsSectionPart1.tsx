@@ -3,8 +3,8 @@ import { useRef, useEffect } from 'react';
 import styles from './ParentsSectionPart1.module.css';
 import Image from 'next/image';
 import Cookies from 'js-cookie';
-
 import { useRouter } from 'next/navigation';
+import { text } from 'stream/consumers';
 
 export default function ParentsSectionPart1() {
   const router = useRouter();
