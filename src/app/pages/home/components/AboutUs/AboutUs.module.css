@@ -46,6 +46,7 @@
   height: auto;
   scroll-snap-align: start;
 } 
+
 @media (max-width: 768px) {
   .videoCarousel video {
     width: 100%;

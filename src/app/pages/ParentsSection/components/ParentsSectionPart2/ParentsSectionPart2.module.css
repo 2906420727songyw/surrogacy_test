@@ -40,11 +40,11 @@
 .clickableDiv .details {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  transition: max-height 0.5s ease;
 }
 
-.clickableDiv:hover .details {
-  max-height: 1000px; /* 设置一个足够大的值,确保内容能完全展开 */
+.clickableDiv.expanded .details {
+  max-height: 1000px;
 }
 
 /* 可点击的div被点击时 */

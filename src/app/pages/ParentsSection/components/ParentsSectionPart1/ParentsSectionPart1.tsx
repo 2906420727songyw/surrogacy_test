@@ -2,14 +2,16 @@
 import { useRef, useEffect } from 'react';
 import styles from './ParentsSectionPart1.module.css';
 import Image from 'next/image';
+import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
+import { text } from 'stream/consumers';
 
 export default function ParentsSectionPart1() {
   const router = useRouter();
   const listData = [
     {
       image: '/images/ParentsSection/icon1.png',
-      text: '最有经验的团队：团队都有多年行业经验,各个相关领域精英,都亲身经历过代孕；',
+      text: '最有经验的团队：团队都有多年行业经验,各个相关领域精英,都亲身经历过代孕',
     },
     {
       image: '/images/ParentsSection/icon2.png', 
@@ -17,7 +19,7 @@ export default function ParentsSectionPart1() {
     },
     {
       image: '/images/ParentsSection/icon3.png',
-      text: '最合适的医疗选择：根据您的自身情况,量身定制治疗方案,提高成功率；', 
+      text: '最合适的医疗选择：根据您的自身情况,量身定制治疗方案,提高成功率', 
     },
     {
       image: '/images/ParentsSection/icon4.png',
@@ -25,7 +27,7 @@ export default function ParentsSectionPart1() {
     },
     {
       image: '/images/ParentsSection/icon1.png',
-      text: '最大的资金信托公司：保障您财产的安全,任何使用都也有据可查；',
+      text: '最大的资金信托公司：保障您财产的安全,任何使用都也有据可查',
     },
     {
       image: '/images/ParentsSection/icon2.png',
@@ -33,7 +35,7 @@ export default function ParentsSectionPart1() {
     },
     {
       image: '/images/ParentsSection/icon3.png', 
-      text: '最高效交流：一站式管家服务,只要您需要,我们任何时候都在；',
+      text: '最高效交流：一站式管家服务,只要您需要,我们任何时候都在',
     },
     {
       image: '/images/ParentsSection/icon4.png',
@@ -41,13 +43,56 @@ export default function ParentsSectionPart1() {
     },
     {
       image: '/images/ParentsSection/icon1.png',
-      text: '最快速的匹配流程：匹配流程比普通代孕机构快 40% ；',
+      text: '最快速的匹配流程：匹配流程比普通代孕机构快 40% ',
     },
     {
       image: '/images/ParentsSection/icon2.png',
       text: '最透明的价格：所有的花销都是透明清晰的',
     },
   ];
+
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      const handleWheel = (event: WheelEvent) => {
+        const maxScrollLeft = container.scrollWidth - container.clientWidth;
+
+        if (
+          (event.deltaY < 0 && container.scrollLeft > 0) ||
+          (event.deltaY > 0 && container.scrollLeft < maxScrollLeft)
+        ) {
+          event.preventDefault();
+          container.scrollLeft += event.deltaY;
+        }
+      };
+
+      let startX: number;
+      let scrollLeft: number;
+
+      const handleTouchStart = (event: TouchEvent) => {
+        startX = event.touches[0].pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+      };
+
+      const handleTouchMove = (event: TouchEvent) => {
+        const x = event.touches[0].pageX - container.offsetLeft;
+        const walk = (x - startX) * 2; // 滑动速度
+        container.scrollLeft = scrollLeft - walk;
+      };
+
+      container.addEventListener('wheel', handleWheel);
+      container.addEventListener('touchstart', handleTouchStart);
+      container.addEventListener('touchmove', handleTouchMove);
+
+      return () => {
+        container.removeEventListener('wheel', handleWheel);
+        container.removeEventListener('touchstart', handleTouchStart);
+        container.removeEventListener('touchmove', handleTouchMove);
+      };
+    }
+  }, []);
 
   return (
     <div id="parents-overview" className={styles.content}>
@@ -63,7 +108,7 @@ export default function ParentsSectionPart1() {
           我们坚信，所有的努力都是值得的。有 Sapling 在旁，您的代孕之旅将会格外安心且愉悦。<br/>
         </p>
         
-        <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>router.push('/pages/auth/profile?type=parent')}>
+        <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=appointment' ):router.push('/pages/auth/login?mode=register')}>
           开始咨询
         </button>
       </div>
@@ -87,19 +132,19 @@ export default function ParentsSectionPart1() {
         
         </div>
         
-        <div className={styles.horizontalList}>
-            {listData.map((item, index) => (
-              <div key={index} className={styles.listItem}>
-                <Image 
-                  src={item.image}
-                  alt={item.text}
-                  width={500}
-                  height={500}
-                  className={styles.listItemImage}
-                />
-                <p className="text-xs leading-5 my-2 md:my-4 md:text-base md:leading-6">{item.text}</p>
-              </div>
-            ))}
+        <div className={styles.horizontalList} ref={scrollContainerRef}>
+          {listData.map((item, index) => (
+            <div key={index} className={styles.listItem}>
+              <Image 
+                src={item.image}
+                alt={item.text}
+                width={500}
+                height={500}
+                className={styles.listItemImage}
+              />
+              <p className="text-xs leading-5 my-2 md:my-4 md:text-base md:leading-6">{item.text}</p>
+            </div>
+          ))}
         </div>
         {/* 渐变条 */}
         <div className={styles.gradientBar}></div>
