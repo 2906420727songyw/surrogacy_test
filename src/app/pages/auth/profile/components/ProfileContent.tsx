@@ -160,7 +160,7 @@ function InfoItem({ label, value }: { label: string; value: string }) {
   const textColor = value === '暂未填写' ? '#C0C0C0' : 'white';
   
   return (
-    <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+    <div className="flex md:flex-row md:items-center gap-1 md:gap-4">
       <label className="text-white/80 text-[12px] md:text-[14px] ">
         {label}
       </label>
@@ -169,7 +169,7 @@ function InfoItem({ label, value }: { label: string; value: string }) {
         readOnly
         value={value}
         autoComplete="new-password"
-        className="text-[12px] md:text-[14px] bg-transparent border-none outline-none w-[20vw]"
+        className="text-[12px] md:text-[14px] bg-transparent border-none outline-none w-[50vw] md:w-[25vw]"
         style={{ color: textColor }}
       />
     </div>
