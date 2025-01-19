@@ -95,7 +95,7 @@ function LoginContent() {
         </div>
 
         <div className="w-full max-w-[70vw] pt-[calc(env(safe-area-inset-top)+6rem)] md:pt-[15vh]">
-          <h1 className="text-white text-[32px] md:text-[48px] font-normal text-center mb-[20px] md:mb-[80px] transition-opacity duration-500">
+          <h1 className="text-white h1-text font-normal text-center mb-[20px] md:mb-[80px] transition-opacity duration-500">
             {isRegisterMode 
               ? '让Sapling更了解你，请先注册/登录'
               : '欢迎来到Sapling Surrogacy'
