@@ -78,7 +78,7 @@ export default function ParentsSectionPart2() {
             {step1Ref.current ? '每位代孕妈妈必须填写一份详细的申请表，了解她的必要基本信息' : '每位代孕妈妈必须填写一份详细的申请表，了解她的必要基本信息'}
           </p>
           <div className={styles.details}>
-            <p className="text-sm text-white mb-6 mt-8 leading-5 md:leading-6 md:text-base md:mb-8 md:mt-16">
+            <p className="text-sm text-white mb-6 mt-8 leading-5 md:leading-6 md:text-base md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s">
               每位代孕妈妈都必须完成我们的申请表，一共有五个大类，涵盖了生育历史、家族病史、家庭生活、学历、<br/>
               财政情况和工作情况以及代孕动机。根据美国代孕法案规定，代孕妈妈必须在 21-45 岁之间，生产并养育过至少一个孩子，<br/>
               身体健康，无重大疾病，无药物滥用或烟酒问题，健康指数（BMI）在 30 以下。
@@ -98,7 +98,7 @@ export default function ParentsSectionPart2() {
             {step2Ref.current ? '第三方机构协助调查申请者及其伴侣，保证其生理和心理同时符合标准' : '第三方机构协助调查申请者及其伴侣，保证其生理和心理同时符合标准'}
           </p>
             <div className={styles.details}>
-              <p className="text-sm text-white mb-6 mt-8 leading-5 md:leading-6 md:text-base md:mb-8 md:mt-16">
+              <p className="text-sm text-white mb-6 mt-8 leading-5 md:leading-6 md:text-base md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s">
               在申请表审核通过之后，我们将会有专业的人员进行对接，有助于我们深入了解她们的代孕申请，并评估候选人完成代孕过程的能力。<br/>
               同时，我们聘请了专业的第三方机构进行协助，他们会对申请者及其伴侣进行背景调查（包括家庭情况、收入情况、居住情况、犯罪历史背景等），<br/>
               合作的第三方医院对其进行前期的身体检查（包括子宫情况、怀孕历史、吸烟酗酒毒品史等），<br/>
@@ -119,7 +119,7 @@ export default function ParentsSectionPart2() {
             {step3Ref.current ? '通过教育和沟通保证代孕妈妈对这方面准备' : '通过教育和沟通保证代孕妈妈对这方面准备'}
             </p>
             <div className={styles.details}>
-              <p className="text-sm text-white mb-6 mt-8 leading-5 md:leading-6 md:text-base md:mb-8 md:mt-16">
+              <p className="text-sm text-white mb-6 mt-8 leading-5 md:leading-6 md:text-base md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s">
               在背景审核和身体健康检查都通过后，我们将会有专业的工作人员和代孕妈妈对接，进行定期的科普教育，<br/>
               让他们更了解代孕的所有过程。同时，紧密的联系也能让我们随时掌握代孕妈妈候选人的生活状态和健康状态，<br/>
               保证她们健康的身体和心理状态。
@@ -147,7 +147,7 @@ export default function ParentsSectionPart2() {
           </p>
           
             <div className={styles.details}>
-              <p className="text-sm text-white mb-6 mt-8 leading-5 md:leading-6 md:text-base md:mb-8 md:mt-16">
+              <p className="text-sm text-white mb-6 mt-8 leading-5 md:leading-6 md:text-base md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s">
               在准父母从我们的代母库里选定好代孕妈妈后，我们将对其进行第二次的身体检查和心理筛查，<br/>
               以确保其现在依旧具备成为代孕妈妈的资格。
               </p>
@@ -163,7 +163,7 @@ export default function ParentsSectionPart2() {
             {step5Ref.current ? '2. 医院体检' : '2. 医院体检'}
           </p>
             <div className={styles.details}>
-              <p className="text-sm text-white mb-6 mt-8 leading-5 md:leading-6 md:text-base md:mb-8 md:mt-16">
+              <p className="text-sm text-white mb-6 mt-8 leading-5 md:leading-6 md:text-base md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s">
               试管医院将会按照代孕妈妈的月经周期，在她月经前后几天安排体检，<br/>
               体检结果大概需要三周时间，其目的是为了检查子宫情况，以确定其移植和备孕状态。
               </p>

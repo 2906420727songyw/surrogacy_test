@@ -11,7 +11,7 @@ export default function BecomingParents() {
   return (
     <section id="becoming-parents" className={styles.becomingParents}>
       <div className="mx-auto flex flex-col items-center w-full h-auto md:w-full">
-        <h2 className="text-4xl text-white mb-3 md:mb-6 md:text-6xl">
+        <h2 className="text-4xl text-white mb-3 md:mb-6 md:text-6xl animate__animated animate__fadeInDown animate__duration-2s animate__delay-1s">
           成为准父母
         </h2>
         <p className="text-xs md:text-base text-white mb-1.5 md:mb-3">
