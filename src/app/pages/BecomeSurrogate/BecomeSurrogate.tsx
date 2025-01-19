@@ -45,23 +45,8 @@ export default function BecomeSurrogate() {
   };
 
   return (
-    <div className={styles.becomeSurrogate}>
-      <BecomeSurrogatePart1
-        isExpandedA={isExpandedA}
-        onToggleA={handleToggleA}
-        isExpandedB={isExpandedB}
-        onToggleB={handleToggleB}
-        isExpandedC={isExpandedC}
-        onToggleC={handleToggleC}
-        isExpandedD={isExpandedD}
-        onToggleD={handleToggleD}
-        isExpandedE={isExpandedE}
-        onToggleE={handleToggleE}
-        isExpandedF={isExpandedF}
-        onToggleF={handleToggleF}
-        isExpandedG={isExpandedG}
-        onToggleG={handleToggleG}
-      />
+    <div className={styles.becomeSurrogate}>      
+      <BecomeSurrogatePart1 />
       <BecomeSurrogatePart2 />
       <BecomeSurrogatePart3 />
       <BecomeSurrogatePart4 />
