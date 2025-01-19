@@ -23,12 +23,13 @@ const MobileMenuButton = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MobileMenuB
     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
   >
     <div className='flex  items-center gap-1'>
-      <p className="text-white text-sm">用户菜单</p>
       <div className='flex flex-col '>
       <span className="block w-5 h-0.5 bg-white mb-1"></span>
     <span className="block w-5 h-0.5 bg-white mb-1"></span>
     <span className="block w-5 h-0.5 bg-white"></span>
       </div>
+      <p className="text-white text-sm">用户菜单</p>
+
     </div>
     
   </button>
