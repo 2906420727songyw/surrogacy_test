@@ -94,7 +94,7 @@ function LoginContent() {
           />
         </div>
 
-        <div className="w-full max-w-[70vw] pt-[calc(env(safe-area-inset-top)+6rem)] md:pt-[15vh]">
+        <div className="w-full max-w-[70vw] pt-page">
           <h1 className="text-white h1-text font-normal text-center mb-[20px] md:mb-[80px] transition-opacity duration-500 animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s">
             {isRegisterMode 
               ? '让Sapling更了解你，请先注册/登录'

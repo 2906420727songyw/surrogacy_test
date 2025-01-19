@@ -170,10 +170,10 @@ export default function AppointmentContent() {
       <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px]">
         <div className="flex flex-col xl:flex-row">
           {/* 左侧内容 */}
-          <div className="w-full xl:flex-1 xl:max-w-[75vw] pt-[2.5rem] xl:pt-[5rem] px-[1.25rem] xl:px-[3.75rem]">
+          <div className="w-full xl:flex-1 xl:max-w-[75vw] xl:pt-[40px] px-[1.25rem] xl:px-[3.75rem]">
             {/* 标题和分割线 */}
             <div className="mb-[1.875rem] xl:mb-[2.5rem]">
-              <div className="flex justify-between items-center mb-4 h-[8vh]">
+              <div className="flex justify-between items-center  h-[8vh]">
                 <h1 className="text-white text-[1.25rem] xl:text-[1.5rem]">选择日期</h1>
                 <div className="relative">
                   <button 

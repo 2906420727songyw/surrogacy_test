@@ -55,6 +55,9 @@ body {
   font-size:0.875rem;
   line-height: 1.5rem;
 }
+.pt-page{
+  padding-top: 150px;
+}
 @keyframes fadeIn {
   to {
     opacity: 1;

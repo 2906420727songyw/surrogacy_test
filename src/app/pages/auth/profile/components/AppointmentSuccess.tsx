@@ -24,7 +24,7 @@ export default function AppointmentSuccess({ onRestart, selectedDate, selectedTi
   return (
     <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px]">
       {/* PC端布局 */}
-      <div className="hidden md:block md:max-w-[60vw] pt-[80px] px-[60px]">
+      <div className="hidden md:block md:max-w-[60vw] pt-[60px] px-[60px]">
         {/* 标题和分割线 */}
         <div className="mb-[40px]">
           <div className="flex justify-between items-center mb-4">
@@ -56,11 +56,11 @@ export default function AppointmentSuccess({ onRestart, selectedDate, selectedTi
       <div className="md:hidden px-[20px] py-[40px]">
         {/* 标题和分割线 */}
         <div className="mb-[30px]">
-          <div className="flex justify-between items-center mb-4">
+          <div className="flex justify-between items-center ">
             <h1 className="text-white text-[20px]">您已成功预约线下面谈</h1>
             <span className="text-white text-[20px]">⌄</span>
           </div>
-          <div className="h-[1px] bg-white opacity-60"></div>
+          <div className="h-[1px] bg-white"></div>
         </div>
 
         {/* 预约成功信息 */}
