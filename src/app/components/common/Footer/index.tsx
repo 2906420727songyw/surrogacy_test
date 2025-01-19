@@ -25,7 +25,7 @@ export default function Footer() {
     }
 
     return (
-        <div className='flex justify-between gap-20 px-5 py-16 bg-[#A36E65] flex-wrap md:px-40 md:py-20 text-white font-sans'>
+        <div className='flex justify-between gap-20 px-10 py-16 bg-[#A36E65] flex-wrap md:px-40 md:py-20 text-white font-sans'>
             <div className='w-auto flex gap-20 md:gap-40 bg-[#A36E65] flex-wrap text-white'>
         {
             list.map((item,index)=>(
@@ -59,13 +59,18 @@ export default function Footer() {
             
             <div className={styles.socialIcons}>
                 <Link href={routes.auth.login} className={styles.logIn}>
-                <span>登录账号</span>
+                <span>登录：成为准父母</span>
                 <Image src="/images/footer/右箭头.png" alt="Arrow Right" width={24} height={24} />
                 </Link>
+                <Link href={routes.auth.login} className={styles.logIn}>
+                <span>登录：成为代孕妈妈</span>
+                <Image src="/images/footer/右箭头.png" alt="Arrow Right" width={24} height={24} />
+                </Link>
+                <Link href='/pages/about'>
             <div className={styles.aboutUs}>
                 <span>关于我们</span>
                 <Image src="/images/footer/右箭头.png" alt="Arrow Right" width={24} height={24} />
-            </div>
+            </div></Link>
             
             </div>
             {/* 

@@ -51,6 +51,49 @@ export default function ParentsSectionPart1() {
     },
   ];
 
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      const handleWheel = (event: WheelEvent) => {
+        const maxScrollLeft = container.scrollWidth - container.clientWidth;
+
+        if (
+          (event.deltaY < 0 && container.scrollLeft > 0) ||
+          (event.deltaY > 0 && container.scrollLeft < maxScrollLeft)
+        ) {
+          event.preventDefault();
+          container.scrollLeft += event.deltaY;
+        }
+      };
+
+      let startX: number;
+      let scrollLeft: number;
+
+      const handleTouchStart = (event: TouchEvent) => {
+        startX = event.touches[0].pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+      };
+
+      const handleTouchMove = (event: TouchEvent) => {
+        const x = event.touches[0].pageX - container.offsetLeft;
+        const walk = (x - startX) * 2; // 滑动速度
+        container.scrollLeft = scrollLeft - walk;
+      };
+
+      container.addEventListener('wheel', handleWheel);
+      container.addEventListener('touchstart', handleTouchStart);
+      container.addEventListener('touchmove', handleTouchMove);
+
+      return () => {
+        container.removeEventListener('wheel', handleWheel);
+        container.removeEventListener('touchstart', handleTouchStart);
+        container.removeEventListener('touchmove', handleTouchMove);
+      };
+    }
+  }, []);
+
   return (
     <div id="parents-overview" className={styles.content}>
       <div className={styles.container}>
@@ -89,19 +132,19 @@ export default function ParentsSectionPart1() {
         
         </div>
         
-        <div className={styles.horizontalList}>
-            {listData.map((item, index) => (
-              <div key={index} className={styles.listItem}>
-                <Image 
-                  src={item.image}
-                  alt={item.text}
-                  width={500}
-                  height={500}
-                  className={styles.listItemImage}
-                />
-                <p className="text-xs leading-5 my-2 md:my-4 md:text-base md:leading-6">{item.text}</p>
-              </div>
-            ))}
+        <div className={styles.horizontalList} ref={scrollContainerRef}>
+          {listData.map((item, index) => (
+            <div key={index} className={styles.listItem}>
+              <Image 
+                src={item.image}
+                alt={item.text}
+                width={500}
+                height={500}
+                className={styles.listItemImage}
+              />
+              <p className="text-xs leading-5 my-2 md:my-4 md:text-base md:leading-6">{item.text}</p>
+            </div>
+          ))}
         </div>
         {/* 渐变条 */}
         <div className={styles.gradientBar}></div>
