@@ -45,7 +45,7 @@ export default function BecomeSurrogate() {
   };
 
   return (
-    <div className={styles.becomeSurrogate}>
+    <div className={styles.becomeSurrogate}>      
       <BecomeSurrogatePart1 />
       <BecomeSurrogatePart2 />
       <BecomeSurrogatePart3 />

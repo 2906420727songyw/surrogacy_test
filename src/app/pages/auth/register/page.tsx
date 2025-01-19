@@ -1,11 +1,12 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, Suspense } from 'react';
 import DateField from '../profile/components/shared/DateField';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from '@/app/components/AuthProvider';
 import CustomInput from '@/app/components/CustomInput';
+import { useSearchParams } from 'next/navigation';
 
 // 初始固定字段名，用于首次渲染
 const initialFieldNames = {
@@ -23,7 +24,9 @@ const initialFieldNames = {
   hiddenPassword: 'register_hidden_password',
 };
 
-export default function RegisterPage() {
+function RegisterContent() {
+  const searchParams = useSearchParams();
+  const type = searchParams?.get('type')=== 'surrogacy' ? 'SURROGATE_MOTHER' : 'INTENDED_PARENT';
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -33,7 +36,8 @@ export default function RegisterPage() {
     city: '',
     country: '',
     postalCode: '',
-    address: ''
+    address: '',
+    role: type
   });
 
   const [fieldNames, setFieldNames] = useState(initialFieldNames);
@@ -99,8 +103,8 @@ export default function RegisterPage() {
         return;
       }
       setIsLoading(true);
-      await register(formData);
-      
+      await register(formData); 
+      console.log(formData);
     } catch (error) {
       console.error('注册失败:', error);
     } finally {
@@ -265,5 +269,13 @@ export default function RegisterPage() {
         </form>
       </div>
     </div>
+  );
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#A48472]" />}>
+      <RegisterContent />
+    </Suspense>
   );
 } 

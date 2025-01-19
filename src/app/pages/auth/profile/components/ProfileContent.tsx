@@ -44,16 +44,23 @@ export default function ProfileContent() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [userData, setUserData] = useState<UserData>(initialUserData);
   const [isClient, setIsClient] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsClient(true);
     const fetchUserData = async () => {
       try {
         const userDataStr = Cookies.get('userData');
-        if (!userDataStr) return;
+        if (!userDataStr) {
+          setIsLoading(false);
+          return;
+        }
         
         const parsedUserData = JSON.parse(userDataStr);
-        if (!parsedUserData?.id) return;
+        if (!parsedUserData?.id) {
+          setIsLoading(false);
+          return;
+        }
 
         const response = await userApi.getUserInfo(parsedUserData.id);
         const res = response as unknown as UserData;
@@ -70,6 +77,8 @@ export default function ProfileContent() {
         });
       } catch (error) {
         console.error('获取用户信息失败:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -84,6 +93,17 @@ export default function ProfileContent() {
     if (!isClient) return '';
     return value || '暂未填写';
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px] flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-8 h-8 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-white text-sm">加载中...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px]">

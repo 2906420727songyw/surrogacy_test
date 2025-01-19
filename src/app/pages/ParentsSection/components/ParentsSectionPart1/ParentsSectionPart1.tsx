@@ -2,6 +2,8 @@
 import { useRef, useEffect } from 'react';
 import styles from './ParentsSectionPart1.module.css';
 import Image from 'next/image';
+import Cookies from 'js-cookie';
+
 import { useRouter } from 'next/navigation';
 
 export default function ParentsSectionPart1() {
@@ -63,7 +65,7 @@ export default function ParentsSectionPart1() {
           我们坚信，所有的努力都是值得的。有 Sapling 在旁，您的代孕之旅将会格外安心且愉悦。<br/>
         </p>
         
-        <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>router.push('/pages/auth/profile?type=parent')}>
+        <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=appointment' ):router.push('/pages/auth/login?mode=register')}>
           开始咨询
         </button>
       </div>

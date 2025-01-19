@@ -9,8 +9,9 @@ import { useSearchParams } from 'next/navigation';
 import styles from '../page.module.css';
 
 export default function AppointmentContent() {
-  const searchParams = useSearchParams();
-  const type = searchParams?.get('type') === 'parentAppointment' ? '准父母' : '代孕母';
+  const userDataStr = Cookies.get('userData');
+  const userData = userDataStr ? JSON.parse(userDataStr) : null;
+  const type = userData?.role=== 'SURROGATE_MOTHER' ? '代孕母' : '准父母';
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTime, setSelectedTime] = useState('');

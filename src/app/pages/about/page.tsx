@@ -1,25 +1,9 @@
 'use client'
 import styles from './page.module.css';
-import Image from 'next/image';
-import { aboutData } from './data';
-import http from '@/app/http';
-import { useEffect, useState } from 'react';
+import list from './data';
 
 export default function AboutPage() {
-  interface Article {
-    id: string;
-    imageUrl: string;
-    title: string;
-    description: string;
-    content: string;
-  }
-  const [articles, setArticles] = useState<Article[]>([]);
-  useEffect(() => {
-    http.get('about').then((res) => {
-      //@ts-ignore
-      setArticles(res.items);
-    });
-  }, []);
+
   return (
     <main>
         <div className={styles.hero}>
@@ -34,17 +18,25 @@ export default function AboutPage() {
           </p>
         </div>
         
-        {articles.map((item, index) => (
+        {list.map((item, index) => (
           <section key={index} className={styles.newContainer}>
             <article className={styles.newContainerContent}>
-            <div className={styles.gradientBar}></div>
-              <img className='rounded-lg' src={item.imageUrl} alt={`关于我们图片${index + 1}`}/>
+            <div className={styles.gradientBar} id={`about-item-${index}`}></div>
+              <img
+                  className={`${styles.articleImage} rounded-lg`}
+                  src={index < 2 ? 'https://loyal-cn.oss-ap-southeast-1.aliyuncs.com/macOS%20Monterey%20Wallpaper.jpg' : `/images/about/img/${index}.png`}
+                  alt={item.name}
+                />
               <h2 className="text-lg text-white my-10 md:text-2xl md:my-14">
-                {item.title}
+                {item.name}
               </h2>
-              <p>{item.description}</p>
+              <p className='text-white mb-10'>{item.role}</p>
               <p className="text-sm text-white md:text-base">
-                {item.content}
+                {
+                item.content.map((item, index) => (
+                  <p key={index}>{item}</p>
+                ))
+                }
               </p>
             </article>
           </section>
