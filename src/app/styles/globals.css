@@ -43,7 +43,18 @@ body {
   opacity: 0;
   animation: fadeIn 1s forwards;
 }
-
+.h1-text{
+  font-size:1.875rem;
+  line-height: 4.5rem;
+}
+.h2-text{
+  font-size:1rem;
+  line-height: 2.5rem;
+}
+.h3-text{
+  font-size:0.875rem;
+  line-height: 1.5rem;
+}
 @keyframes fadeIn {
   to {
     opacity: 1;
