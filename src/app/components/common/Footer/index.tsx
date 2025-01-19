@@ -25,16 +25,17 @@ export default function Footer() {
     }
 
     return (
-        <div className='flex justify-between gap-10 px-5 py-10 bg-[#A36E65] flex-wrap md:px-40 md:py-20 text-white font-sans'>
+        <div className='flex justify-between gap-20 px-5 py-16 bg-[#A36E65] flex-wrap md:px-40 md:py-20 text-white font-sans'>
+            <div className='w-auto flex gap-20 md:gap-40 bg-[#A36E65] flex-wrap text-white'>
         {
             list.map((item,index)=>(
                 <div key={index}>
-                    <p className='hover:cursor-pointer' onClick={()=>router.push(item.link)}>{item.text}</p>
+                    <p className='hover:cursor-pointer text-sm md:text-base' onClick={()=>router.push(item.link)}>{item.text}</p>
                     {
                         item.options && (
                             <div className='flex flex-col gap-5 mt-5'>
                                 {item.options.map((option,idx)=>(
-                                    <span onClick={()=>routerToScroll(item.link,option.link)} className='text-sm hover:underline hover:cursor-pointer' key={idx}>{option.text}</span>
+                                    <span onClick={()=>routerToScroll(item.link,option.link)} className='text-xs md:text-sm hover:underline hover:cursor-pointer' key={idx}>{option.text}</span>
                                 ))}
                             </div>
                         )
@@ -42,6 +43,7 @@ export default function Footer() {
                 </div>
             ))
         }
+        </div>
         {
             isChatOpen? (
                 <CustomerServiceChat  onClose={() => setIsChatOpen(false)} />
