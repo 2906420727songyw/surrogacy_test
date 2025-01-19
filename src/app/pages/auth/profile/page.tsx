@@ -19,12 +19,18 @@ interface MobileMenuButtonProps {
 
 const MobileMenuButton = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MobileMenuButtonProps) => (
   <button 
-    className="md:hidden fixed top-[90px] right-3 z-100 bg-[transparent] p-2 rounded-lg"
+    className="md:hidden fixed top-[90px] right-3 z-9999 bg-[transparent] p-2 rounded-lg"
     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
   >
-    <span className="block w-5 h-0.5 bg-white mb-1"></span>
+    <div className='flex  items-center gap-1'>
+      <p className="text-white text-sm">用户菜单</p>
+      <div className='flex flex-col '>
+      <span className="block w-5 h-0.5 bg-white mb-1"></span>
     <span className="block w-5 h-0.5 bg-white mb-1"></span>
     <span className="block w-5 h-0.5 bg-white"></span>
+      </div>
+    </div>
+    
   </button>
 );
 
