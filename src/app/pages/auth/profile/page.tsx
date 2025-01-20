@@ -109,7 +109,7 @@ function ProfilePageContent() {
   }
 
   return (
-    <div className="min-h-screen w-full flex flex-col md:flex-row bg-[#A38471] pt-page">
+    <div className="min-h-screen w-full flex flex-col md:flex-row bg-[#A38471] md:pt-page pt-[150px]">
       <MobileMenuButton 
         isMobileMenuOpen={isMobileMenuOpen} 
         setIsMobileMenuOpen={setIsMobileMenuOpen}
