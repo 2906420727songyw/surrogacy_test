@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 const list = [{
     text: '成为准父母',
     link: '/pages/ParentsSection',
-    options: [{
+    options: [ {
         text: '代孕妈妈的匹配过程',
         link: 'surrogacy-matching-process'
     }, {

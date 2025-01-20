@@ -1,17 +1,13 @@
 const list = [{
-    text:'成为准父母',
+    text:'如何成为准父母',
     link:'/pages/ParentsSection',
     options:[
-        {
-            text:'准父母概述',
-            link:''
-        },
         {
             text:'代孕妈妈匹配过程',
             link:'surrogacy-matching-process'
         },
         {
-            text:'卵子和精子捐献者的帮组',
+            text:'单身父母和 LGBTQIA+ 群体',
             link:'egg-sperm-donation-help'
         },
         {
@@ -24,55 +20,40 @@ const list = [{
         }
     ]
 },{
-    text:'代孕妈妈',
+    text:'如何成为代孕妈妈',
     link:'/pages/BecomeSurrogate',
     options:[
         {
-            text:'补偿薪资',
-            link:'become-surrogate-part4-2'
+            text:'谁可以成为代孕妈妈',
+            link:'who-can-be-surrogate'
         },
         {
-            text:'代孕妈妈要求',
-            link:'who-can-be-surrogate'
-        },{
-            text:'申请流程',
-            link:'become-surrogate-part3'
-        },{
-            text:'筛选过程',
+            text:'怎么筛选申请者',
             link:'become-surrogate-part2'
         },{
-            text:'经历历程',
-            link:''
+            text:'如何成为代孕妈妈',
+            link:'become-surrogate-part3'
+        },{
+            text:'为什么选择我们',
+            link:'become-surrogate-part4-1'
+        },{
+            text:'薪酬和补偿',
+            link:'become-surrogate-part4-2'
         }
     ]   
-},{
-    text:'资源',
-    link:'/pages/SurrogateSection',
-    options:[
-        {
-            text:'成为父母',
-            link:'/pages/SurrogateSection'
-        },
-        {
-            text:'成为代孕妈妈 ',
-            link:'/pages/SurrogateSection'
-        },{
-            text:'成为捐赠者',
-            link:'/pages/SurrogateSection'
-        },{
-            text:'寻找捐赠者',
-            link:'/pages/SurrogateSection'
-        },{
-            text:'帮组',
-            link:'/pages/SurrogateSection'
-        },{
-            text:'联系我们',
-            link:'/pages/SurrogateSection'
-        },{
-            text:'咨询',
-            link:'/pages/SurrogateSection'
-        }
-    ]   
-}]
+},
+{
+    text: '关于我们',
+    link: '/pages/about',
+},
+{
+    text: '资讯',
+    link: '/pages/resources',
+},
+{
+    text: '职业生涯',
+    link: '/pages/careers',
+},
+]
 
 export default list

@@ -25,10 +25,10 @@ export default function Footer() {
     }
 
     return (
-        <div className='flex justify-between gap-20 px-10 py-16 bg-[#A36E65] flex-wrap md:px-40 md:py-20 text-white font-sans'>
-            <div className='w-auto flex gap-20 md:gap-40 bg-[#A36E65] flex-wrap text-white '>
+        <div className='flex justify-between gap-20 px-8 py-16 bg-[#A36E65] flex-wrap md:px-40 md:py-20 text-white font-sans'>
+            <div className='w-auto flex gap-10 md:gap-40 bg-[#A36E65] flex-wrap text-white '>
         {
-            list.map((item,index)=>(
+            list.slice(0, 2).map((item,index)=>(
                 <div key={index}>
                     <p className='hover:cursor-pointer text-sm md:text-base' onClick={()=>router.push(item.link)}>{item.text}</p>
                     {
@@ -43,6 +43,17 @@ export default function Footer() {
                 </div>
             ))
         }
+        </div>
+        <div className={styles.verticalList}>
+            {list.slice(2).map((item, index) => (
+                <p 
+                    key={index}
+                    className='hover:cursor-pointer text-sm md:text-base' 
+                    onClick={() => router.push(item.link)}
+                >
+                    {item.text}
+                </p>
+            ))}
         </div>
         {
             isChatOpen? (
@@ -66,11 +77,12 @@ export default function Footer() {
                 <span>登录：成为代孕妈妈</span>
                 <Image src="/images/footer/右箭头.png" alt="Arrow Right" width={24} height={24} />
                 </Link>
-                <Link href='/pages/about'>
-            <div className={styles.aboutUs}>
+                {/*<Link href='/pages/about'>
+                <div className={styles.aboutUs}>
                 <span>关于我们</span>
                 <Image src="/images/footer/右箭头.png" alt="Arrow Right" width={24} height={24} />
-            </div></Link>
+                </div>
+                </Link>*/}
             
             </div>
             {/* 
@@ -80,11 +92,11 @@ export default function Footer() {
             </div>*/}
             <div className={styles.infoItem}>
                 <Image src="/images/footer/phone-icon.png" alt="Phone Icon" className={styles.icon} width={24} height={24} />
-                <p>+44 652 762 887</p>
+                <p>+1 323-574-2572</p>
             </div>
             <div className={styles.infoItem}>
                 <Image src="/images/footer/email-icon.png" alt="Email Icon" className={styles.icon} width={24} height={24} />
-                <p>hello@homles.com</p>
+                <p>kluo@saplingsurrogacy.com</p>
             </div>
             
         </div>
