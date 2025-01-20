@@ -10,7 +10,7 @@ const list = [{
         text: '代孕妈妈的匹配过程',
         link: 'surrogacy-matching-process'
     }, {
-        text: '单身父母和LGBTQ+群体',
+        text: '单身父母和 LGBTQIA+ 群体',
         link: 'egg-sperm-donation-help'
     }, {
         text: '代孕计划和流程',
