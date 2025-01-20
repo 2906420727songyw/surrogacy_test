@@ -2,6 +2,8 @@ import ResourcesComponent from './component/index';
 
 export default function Resources() {
   return (
-    <ResourcesComponent />
+    <main className="fade-in">
+      <ResourcesComponent />
+    </main>
   );
 } 

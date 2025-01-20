@@ -9,7 +9,7 @@ import { routes } from '@/app/routes/index';
 import CustomerServiceChat from '../../customer';
 import { useRouter,usePathname } from 'next/navigation';
 import Cookies from 'js-cookie';
-
+import { CustomerServiceOutlined } from '@ant-design/icons';
 
 export default function Footer() {
     const router = useRouter();
@@ -60,8 +60,9 @@ export default function Footer() {
                 <CustomerServiceChat  onClose={() => setIsChatOpen(false)} />
             ):(
             <div className='flex fixed bottom-5 right-5 items-center gap-2 bg-[#868275] p-3 rounded-xl' onClick={()=>Cookies.get('userData')?setIsChatOpen(!isChatOpen):router.push('/pages/auth/login')}>
-                <Image src="/images/footer/customer-service.png" alt="客服" width={25} height={25} />
-                <span>客服</span>
+                {/* <Image src="/images/footer/customer-service.png" alt="客服" width={25} height={25} />
+                <span>客服</span> */}
+                <CustomerServiceOutlined className='text-[#f5f5f5] hover:text-[#ccc] cursor-pointer' />
             </div>
             )
         }

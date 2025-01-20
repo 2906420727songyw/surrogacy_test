@@ -18,7 +18,7 @@ const mockData: CareersContent = {
 
 export default function Careers() {
   return (
-    <div className="pt-page w-full bg-[#987b6b]">
+    <div className="pt-page w-full bg-[#987b6b] fade-in">
       {/* 图片部分 */}
       {/*<div className="w-full h-[500px] md:h-[700px]">
         <img

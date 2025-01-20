@@ -45,7 +45,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <AuthProvider>
           <Header />
-          <main className="fade-in overflow-hidden">{children}</main>
+          <main>{children}</main>
           <Footer />
         </AuthProvider>
       </body>

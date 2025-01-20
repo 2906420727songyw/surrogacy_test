@@ -208,9 +208,9 @@ function LoginContent() {
               </form>
             </div>
 
-            <div className="hidden md:flex relative h-[400px] items-center">
-              <div className={styles.gradientDivider} />
-            </div>
+              <div className="hidden md:flex relative h-[400px] items-center">
+                <div className={styles.gradientDivider} />
+              </div>
 
             <div className="w-full md:flex-1 md:max-w-[360px] mt-8 md:mt-0">
               <h2 className="text-white text-xl md:text-2xl font-normal mb-6 md:mb-10">

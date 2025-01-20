@@ -7,7 +7,7 @@ import Foundation from './components/Foundation/Foundation';
 
 export default function HomePage() {
   return (
-    <div>
+    <div className="fade-in">
       <main>
         <BecomingParents />
         <BecomingSurrogate />

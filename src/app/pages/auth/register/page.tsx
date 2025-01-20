@@ -113,7 +113,7 @@ function RegisterContent() {
   };
 
   return (
-    <div className="min-h-screen w-full flex justify-center items-center bg-[#A48472] pt-page">
+    <div className="min-h-screen w-full flex justify-center items-center bg-[#A48472] pt-page fade-in">
       <ToastContainer />
       {/* 隐藏的表单来阻止浏览器自动填充 */}
       <div style={{ display: 'none' }}>

@@ -31,6 +31,7 @@ const CustomerServiceChat: React.FC<{ onClose: () => void }> = ({ onClose }) => 
         try {
             if (_chatId) {
                 handleRefresh(_chatId);
+                task()
             }
             if (_info) {
                 const parsedInfo = JSON.parse(_info);
@@ -40,6 +41,22 @@ const CustomerServiceChat: React.FC<{ onClose: () => void }> = ({ onClose }) => 
             console.log(err);
         }
     }, []);
+
+
+    let flag = true
+    const task = () => {
+        if(flag){
+            flag = false
+            axios.get(`${url}chat/${Cookies.get('chatId') || ''}/messages`).then(res => {
+                setMessages(res.data);
+                flag = true
+                setTimeout(() => task(), 5000)
+            }).catch(() => {
+                flag = true
+                setTimeout(() => task(), 5000)
+            });
+        }
+    }
 
     const handleSendMessage = () => {
         const chatId = Cookies.get('chatId') || '';
