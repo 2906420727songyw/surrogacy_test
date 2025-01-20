@@ -64,7 +64,7 @@ function LoginContent() {
   }
 
   return (
-    <>
+    <main className="fade-in">
       <ToastContainer
         position="top-right"
         autoClose={2000}
@@ -233,7 +233,7 @@ function LoginContent() {
           </div>
         </div>
       </div>
-    </>
+    </main>
   );
 }
 
