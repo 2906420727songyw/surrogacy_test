@@ -22,7 +22,7 @@ export default function BecomeSurrogatePart4({ isVisible = false }: BecomeSurrog
       />
       <div className={styles.container}>
         <div className={styles.whereContainer}>
-          <h2 className="h1-text text-white mb-16 md:mb-20 animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s  ">
+          <h2 className="h1-text text-white mb-16 md:mb-20 animate__animated animate__fadeInDown animate__duration-1s    ">
             WHERE? <br/>我们代孕妈妈来自哪里
           </h2>
           <p className="h2-text text-white mb-10 md:mb-11">
@@ -34,7 +34,7 @@ export default function BecomeSurrogatePart4({ isVisible = false }: BecomeSurrog
         </div>
         <div id='become-surrogate-part4-1' className={styles.whereContainer}>
           <h2 
-            className={`h1-text text-white mb-16 mt-5 md:mb-20 md:mt-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : ''}`}
+            className={`h1-text text-white mb-16 mt-5 md:mb-20 md:mt-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
           >
             WHY? <br/>为什么选择成为 Sapling 的代孕妈妈
           </h2>
@@ -105,7 +105,7 @@ export default function BecomeSurrogatePart4({ isVisible = false }: BecomeSurrog
           立即申请
         </button>
         <div id='become-surrogate-part4-2' className={styles.whereContainer}>
-          <h2 className="h1-text text-white mb-16 mt-5 md:mb-20 md:mt-20 animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s  ">
+          <h2 className="h1-text text-white mb-16 mt-5 md:mb-20 md:mt-20 animate__animated animate__fadeInDown animate__duration-1s    ">
             HOW? <br/>代孕妈妈的薪酬和补偿
           </h2>
           <p className="h2-text text-white mb-10 mt-10 md:mb-11 md:mt-10">

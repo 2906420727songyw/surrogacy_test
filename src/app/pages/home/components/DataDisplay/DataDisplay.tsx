@@ -32,7 +32,7 @@ export default function DataDisplay() {
         <h2 
           id="data-display-title"
           className={`text-4xl mb-5 text-white md:text-6xl md:mb-8 ${
-            isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : 'opacity-0'
+            isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'
           }`}
         >
           Sapling Surrogacy

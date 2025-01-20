@@ -37,7 +37,7 @@ export default function BecomingParents() {
         <h2 
           id="becoming-parents-title"
           className={`text-4xl text-white mb-3 md:mb-6 md:text-6xl ${
-            isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : 'opacity-0'
+            isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'
           }`}
         >
           成为准父母

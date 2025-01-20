@@ -119,7 +119,7 @@ export default function ParentsSectionPart1() {
       <div className={styles.container}>
         <h1 
           ref={titleRef}
-          className={`h1-text text-white mb-12 md:mb-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : 'opacity-0'}`}
+          className={`h1-text text-white mb-12 md:mb-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'}`}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -147,7 +147,7 @@ export default function ParentsSectionPart1() {
       blurDataURL="/images/ParentsSection/image1-zip.jpg"
       />
       <div className="w-full flex flex-col items-center text-center text-white px-5 pt-5 md:w-full md:px-36">
-        <h2 className="h1-text text-white my-12 md:my-24 animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s">
+        <h2 className="h1-text text-white my-12 md:my-24 animate__animated animate__fadeInDown animate__duration-1s  ">
           为什么准父母会选择<br/>
           Sapling Surrogacy
         </h2>

@@ -131,7 +131,7 @@ function RegisterContent() {
         />
       </div>
       <div className="w-full max-w-[70vw] ">
-        <h1 className="text-white h1-text font-normal text-center mb-[20px] md:mb-[80px] transition-opacity duration-500 animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s">
+        <h1 className="text-white h1-text font-normal text-center mb-[20px] md:mb-[80px] transition-opacity duration-500 animate__animated animate__fadeInDown animate__duration-1s  ">
           使用电子邮件地址创建账户
         </h1>
         <form ref={formRef} onSubmit={handleSubmit} className="max-w-[90vw] mx-auto" autoComplete="off" spellCheck="false">

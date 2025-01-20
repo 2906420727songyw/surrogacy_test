@@ -97,7 +97,7 @@ export default function ParentsSectionPart2() {
       <div className={styles.container}>
         <h2 
           ref={titleRef}
-          className={`h1-text text-center text-white mb-12 md:mb-12 ${isVisible ? 'animate__animated animate__fadeInUp animate__duration-1s animate__delay-1s' : 'opacity-0'}`}
+          className={`h1-text text-center text-white mb-12 md:mb-12 ${isVisible ? 'animate__animated animate__fadeInUp animate__duration-1s  ' : 'opacity-0'}`}
         >
           准父母和代孕妈妈的匹配过程
         </h2>

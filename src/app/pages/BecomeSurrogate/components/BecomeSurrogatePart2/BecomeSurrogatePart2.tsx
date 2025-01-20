@@ -23,7 +23,7 @@ export default function BecomeSurrogatePart2({ isVisible = false }: BecomeSurrog
       <div id="become-surrogate-part2" className={styles.container}>
         <div className={styles.content}>
           <h2 
-            className={`h1-text text-white mb-16 md:mb-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : ''}`}
+            className={`h1-text text-white mb-16 md:mb-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
           >
             WHAT? <br/>我们怎么筛选申请者
           </h2>

@@ -46,7 +46,7 @@ export default function BecomeSurrogatePart1({ isVisible = false }: BecomeSurrog
     <div className={styles.becomeSurrogatePart1}>
       <div className={styles.content}>
         <h2 
-          className={`pt-page h1-text text-white mb-16 md:mb-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : ''}`}
+          className={`pt-page h1-text text-white mb-16 md:mb-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
         >
           欢迎来到 Sapling，<br/>
           成为代孕妈妈，最高可赚取 105,000 美元
@@ -81,7 +81,7 @@ export default function BecomeSurrogatePart1({ isVisible = false }: BecomeSurrog
 
       <div id="who-can-be-surrogate" className={styles.bottomContent}>
         <h2 
-          className={`h1-text text-white mb-16 md:mb-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : ''}`}
+          className={`h1-text text-white mb-16 md:mb-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
         >
           WHO?<br/> 谁可以成为我们的代孕妈妈：对代孕妈妈的要求
         </h2>

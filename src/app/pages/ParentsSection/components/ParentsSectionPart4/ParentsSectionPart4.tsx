@@ -42,7 +42,7 @@ export default function ParentsSectionPart4() {
         <div className="w-full flex flex-col items-center justify-center px-5">
           <h2 
             ref={titleRef}
-            className={`h1-text text-center text-white mb-12 md:mb-14 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : 'opacity-0'}`}
+            className={`h1-text text-center text-white mb-12 md:mb-14 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'}`}
           >
             单身父母和 LGBTQIA+ 群体<br/>
             卵子和精子捐赠者的帮助

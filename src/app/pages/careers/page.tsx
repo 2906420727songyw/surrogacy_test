@@ -30,7 +30,7 @@ export default function Careers() {
 
       {/* 内容部分 */}
       <div className="w-full pb-40 md:pb-60 px-4">
-        <p className="h1-text font-normal text-center text-white mb-16 md:mb-24 animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s">
+        <p className="h1-text font-normal text-center text-white mb-16 md:mb-24 animate__animated animate__fadeInDown animate__duration-1s  ">
           {mockData.title}
         </p>
         

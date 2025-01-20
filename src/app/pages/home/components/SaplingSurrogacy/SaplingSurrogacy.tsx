@@ -36,7 +36,7 @@ export default function SaplingSurrogacy() {
         <p 
           id="sapling-title"
           className={`text-4xl text-white mb-1.5 md:mb-3 md:text-6xl text-center ${
-            isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : 'opacity-0'
+            isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'
           }`}
         >
           欢迎单身父母和 LGBTQIA+ 群体

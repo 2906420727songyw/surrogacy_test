@@ -19,7 +19,7 @@ function LoginContent() {
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  
+
   // 为所有输入字段生成随机名称
   const [fieldNames] = useState({
     email: generateRandomName('email'),
@@ -32,7 +32,7 @@ function LoginContent() {
   const searchParams = useSearchParams();
   const isRegisterMode = searchParams?.get('mode')?.includes('register');
 
-  const type = searchParams?.get('type')?searchParams?.get('type')=== 'surrogacy' ? 'surrogacy' : 'parent':searchParams?.get('mode')?.includes('Mother') ? 'surrogacy' : 'parent' ;
+  const type = searchParams?.get('type') ? searchParams?.get('type') === 'surrogacy' ? 'surrogacy' : 'parent' : searchParams?.get('mode')?.includes('Mother') ? 'surrogacy' : 'parent';
   const { login } = useAuth();
 
   useEffect(() => {
@@ -80,28 +80,28 @@ function LoginContent() {
       <div className="min-h-screen w-full flex justify-center bg-[#A48472] px-4 md:px-10">
         {/* 隐藏的表单来阻止浏览器自动填充 */}
         <div style={{ display: 'none' }}>
-          <input 
-            type="text" 
-            name={fieldNames.hiddenUsername} 
-            autoComplete="username" 
+          <input
+            type="text"
+            name={fieldNames.hiddenUsername}
+            autoComplete="username"
             tabIndex={-1}
           />
-          <input 
-            type="password" 
-            name={fieldNames.hiddenPassword} 
-            autoComplete="current-password" 
+          <input
+            type="password"
+            name={fieldNames.hiddenPassword}
+            autoComplete="current-password"
             tabIndex={-1}
           />
         </div>
 
         <div className="w-full max-w-[70vw] pt-page">
-          <h1 className="text-white h1-text font-normal text-center mb-[20px] md:mb-[80px] transition-opacity duration-500 animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s">
-            {isRegisterMode 
+          <h1 className="text-white h1-text font-normal text-center mb-[20px] md:mb-[80px] transition-opacity duration-500 animate__animated animate__fadeInDown animate__duration-1s ">
+            {isRegisterMode
               ? '让Sapling更了解你，请先注册/登录'
               : '欢迎来到Sapling Surrogacy'
             }
           </h1>
-          
+
           <div className="flex flex-col md:flex-row gap-19 md:gap-20 relative">
             <div className="w-full md:flex-1 md:max-w-[30vw]">
               <h2 className="text-white text-xl md:text-2xl font-normal mb-6 md:mb-10">
@@ -127,13 +127,11 @@ function LoginContent() {
                     spellCheck="false"
                   />
                 </div>
-                
+
                 <div className="mb-6 md:mb-[30px] ">
                   <div className="flex justify-between items-center mb-2 md:mb-3">
                     <label className="text-white text-sm md:text-base">密码</label>
-                    <span className="text-white text-sm md:text-base opacity-80 cursor-pointer underline">
-                      忘记密码
-                    </span>
+
                   </div>
                   <input
                     type="password"
@@ -151,73 +149,62 @@ function LoginContent() {
                   />
                 </div>
 
-                
-                
-                <div className="mt-6 md:mt-10 ">
+
+
+                <div className="mt-6  ">
                   <div className=" items-center justify-between md:flex">
-                    <button 
-                      type="submit"
-                      disabled={isLoading}
-                      className=" hidden md:block text-white text-base md:text-[20px] underline bg-transparent border-none cursor-pointer p-0 flex items-center gap-2"
-                    >
-                      {isLoading ? (
-                        <>
-                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                          <span>正在登录...</span>
-                        </>
-                      ) : '登录'}
-                    </button>
 
+                    <div className='flex items-center justify-between w-full'>
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setRememberMe(!rememberMe);
+                          }}
+                          className="w-5 h-5 flex items-center justify-center rounded border border-white"
+                        >
+                          {rememberMe && (
+                            <div className="w-4 h-4 bg-white rounded flex items-center justify-center">
+                              <svg
+                                className="w-3 h-3"
+                                viewBox="0 0 12 12"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M10 3L4.5 8.5L2 6"
+                                  stroke="#000000"
+                                  strokeWidth="1.5"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                              </svg>
+                            </div>
+                          )}
+                        </button>
 
-
-           
-
-                    <div className="flex items-center gap-2">
-                      <button 
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setRememberMe(!rememberMe);
-                        }}
-                        className="w-5 h-5 flex items-center justify-center rounded border border-white"
-                      >
-                        {rememberMe && (
-                          <div className="w-4 h-4 bg-white rounded flex items-center justify-center">
-                            <svg 
-                              className="w-3 h-3" 
-                              viewBox="0 0 12 12" 
-                              fill="none" 
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path 
-                                d="M10 3L4.5 8.5L2 6" 
-                                stroke="#000000" 
-                                strokeWidth="1.5" 
-                                strokeLinecap="round" 
-                                strokeLinejoin="round"
-                              />
-                            </svg>
-                          </div>
-                        )}
-                      </button>
-                      
-                      <span className="text-white text-[14px]">记住账号</span>
+                        <span className="text-white text-[14px]">记住账号</span>
+                      </div>
+                      <span className="text-white text-sm md:text-base opacity-80 cursor-pointer underline">
+                        忘记密码
+                      </span>
                     </div>
-                    
-                    <button 
+                  </div>
+                </div>
+                    <button
                       type="submit"
                       disabled={isLoading}
-                      className="  md:hidden inline-flex items-center justify-center w-full md:w-[120px] h-10 md:h-12 bg-[#D9D9D9] 
+                      className=" inline-flex items-center justify-center w-full md:w-[120px] h-10 md:h-12 bg-[#D9D9D9] 
                   text-black text-sm md:text-base rounded-lg border-none transition-opacity hover:opacity-90 mt-[2vh]"
                     >
                       {isLoading ? (
                         <>
                           <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                          <span>正在登录...</span>
+                          <span>正在登录</span>
                         </>
                       ) : '登录'}
                     </button>
-                  </div>
-                </div>
+                            
               </form>
             </div>
 
@@ -229,28 +216,18 @@ function LoginContent() {
               <h2 className="text-white text-xl md:text-2xl font-normal mb-6 md:mb-10">
                 创建一个新账户
               </h2>
-              <p className="text-white text-sm md:text-base mb-6 md:mb-10 opacity-80" style={{lineHeight:2.4}}>
+              <p className="text-white text-sm md:text-base mb-6 md:mb-10 opacity-80" style={{ lineHeight: 2.4 }}>
                 如果这是您第一次请求更多信息或申请我们的计划，请创建一个账户以开始。
               </p>
-              <Link 
-                href={routes.auth.register}
+         
+
+              <span className="text-white text-base md:text-[20px] underline bg-transparent border-none cursor-pointer p-0 flex items-center gap-2 mb-[2vh] "
                 onClick={(e) => {
                   e.preventDefault();
                   router.push(`/pages/auth/register?type=${type}`);
                 }}
-                className=" md:flex hidden inline-flex items-center justify-center w-full md:w-[120px] h-10 md:h-12 bg-[#D9D9D9] 
-                  text-black text-sm md:text-base rounded-lg border-none transition-opacity hover:opacity-90 mb-[2vh]"
               >
-                注册
-              </Link>
-
-              <span className="text-white text-base md:text-[20px] underline bg-transparent border-none cursor-pointer p-0 flex items-center gap-2 mb-[2vh] md:hidden"
-              onClick={(e) => {
-                e.preventDefault();
-                router.push(`/pages/auth/register?type=${type}`);
-              }}
-              >
-                      创建账户
+                创建账户
               </span>
             </div>
           </div>

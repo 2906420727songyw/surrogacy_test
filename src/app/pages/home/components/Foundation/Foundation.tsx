@@ -32,7 +32,7 @@ export default function Foundation() {
         <h2 
           id="foundation-title"
           className={`text-2xl mb-8 text-white md:text-5xl ${
-            isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : 'opacity-0'
+            isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'
           }`}
         >
           0%利润投入基金会帮助更多家庭圆梦

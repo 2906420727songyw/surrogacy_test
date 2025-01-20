@@ -84,7 +84,7 @@ export default function News() {
         <h2 
           id="news-title"
           className={`text-4xl text-white mb-10 md:mb-16 md:text-6xl ${
-            isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : 'opacity-0'
+            isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'
           }`}
         >
           关于我们

@@ -45,7 +45,7 @@ export default function AboutPage() {
           <h1 
             ref={setRef('main-title')}
             data-animate-id="main-title"
-            className={`pt-page h1-text text-white mb-10 md:text-4xl md:mb-20 ${visibleElements.has('main-title') ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : ''}`}
+            className={`pt-page h1-text text-white mb-10 md:text-4xl md:mb-20 ${visibleElements.has('main-title') ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
           >
             关于我们
           </h1>
@@ -70,7 +70,7 @@ export default function AboutPage() {
               <h2 
                 ref={setRef(`title-${index}`)}
                 data-animate-id={`title-${index}`}
-                className={`h1-text text-white my-10 md:text-2xl md:my-14 ${visibleElements.has(`title-${index}`) ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : ''}`}
+                className={`h1-text text-white my-10 md:text-2xl md:my-14 ${visibleElements.has(`title-${index}`) ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
               >
                 {item.name}
               </h2>

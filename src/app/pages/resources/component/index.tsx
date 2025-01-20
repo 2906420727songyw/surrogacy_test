@@ -56,7 +56,7 @@ export default function ResourcesComponent() {
         <p 
           ref={setRef('title')}
           data-animate-id="title"
-          className={`pt-page h1-text text-white mb-10 md:mb-16 ${visibleElements.has('title') ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : ''}`}
+          className={`pt-page h1-text text-white mb-10 md:mb-16 ${visibleElements.has('title') ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
         >
           资讯
         </p>
@@ -93,14 +93,14 @@ export default function ResourcesComponent() {
             <h2 
               ref={setRef(`card-title-${card.id}`)}
               data-animate-id={`card-title-${card.id}`}
-              className={`h1-text text-white ${visibleElements.has(`card-title-${card.id}`) ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : ''}`}
+              className={`h1-text text-white ${visibleElements.has(`card-title-${card.id}`) ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
             >
               {card.title}
             </h2>
             <h3 
               ref={setRef(`card-price-${card.id}`)}
               data-animate-id={`card-price-${card.id}`}
-              className={`h1-text text-white mb-10 md:mb-16 ${visibleElements.has(`card-price-${card.id}`) ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : ''}`}
+              className={`h1-text text-white mb-10 md:mb-16 ${visibleElements.has(`card-price-${card.id}`) ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
             >
               {card.price}
             </h3>
