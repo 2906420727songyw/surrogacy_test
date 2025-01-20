@@ -89,7 +89,7 @@ export default function Header() {
 
     return (
         <div className={`flex justify-between text-white font-sans py-5 items-center p-5 fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-[#A48472]' : 'bg-transparent'}`}>
-            <div className='header-switch:flex header-switch:flex-row items-center gap-1 flex flex-col items-center' onClick={() => router.push('/')}>
+            <div className='header-switch:flex header-switch:flex-row items-center gap-1 flex flex-col items-center hover:cursor-pointer' onClick={() => router.push('/')}>
                 <img src='/images/logo.jpg' className='header-switch:w-12 header-switch:h-12 w-11 h-11' />
                 <div className='header-switch:text-[1.1rem] text-[0.6rem] flex flex-col items-center'>
                     Sapling Surrogacy<br />
