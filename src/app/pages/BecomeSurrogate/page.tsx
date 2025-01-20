@@ -34,7 +34,7 @@ export default function BecomeSurrogate() {
   }, []);
 
   return (
-    <main>
+    <main className="fade-in">
       <div data-section="part1">
         <BecomeSurrogatePart1 isVisible={visibleSections.has('part1')} />
       </div>

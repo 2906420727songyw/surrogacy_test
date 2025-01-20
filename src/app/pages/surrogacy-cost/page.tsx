@@ -38,7 +38,7 @@ const SurrogacyCost: React.FC = () => {
   }, []);
 
   return (
-    <div className={styles.content}>
+    <div className={`${styles.content} fade-in`}>
     <div className={styles.container}>
       <h1 className="text-white text-sm mb-20 text-center md:text-lg">
         我们提供两种套餐来满足您的需求：Sprout Package（萌芽套餐）和Thrive Package（茁壮套餐），<br/>

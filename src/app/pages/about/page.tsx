@@ -39,7 +39,7 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <main>
+    <main className="fade-in">
       <div className={styles.hero}>
         <div className="w-full">
           <h1 
@@ -74,10 +74,10 @@ export default function AboutPage() {
               >
                 {item.name}
               </h2>
-              <p className='text-white mb-10 h2-text'>{item.role}</p>
-              <p className="text-white h2-text max-w-[40rem]">
+              <p className='text-white mb-10 text-[1.25rem]'>{item.role}</p>
+              <p className="text-white h2-text max-w-[60vw]">
                 {item.content.map((content, contentIndex) => ( 
-                  <p key={contentIndex}>{content}</p>
+                  <span key={contentIndex}>{content}</span>
                 ))}
               </p>
             </article>

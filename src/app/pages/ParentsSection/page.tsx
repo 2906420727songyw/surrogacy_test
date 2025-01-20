@@ -8,7 +8,7 @@ import ParentsSectionPart4 from './components/ParentsSectionPart4/ParentsSection
 
 export default function ParentsSection() {
   return (
-    <section id="parents-section" className={styles.parentsSection}>
+    <section id="parents-section" className={`${styles.parentsSection} fade-in`}>
       <ParentsSectionPart1 />
       <ParentsSectionPart2 />
       <ParentsSectionPart3 />
