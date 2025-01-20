@@ -30,31 +30,31 @@ export default function Careers() {
   return (
     <div className="pt-page w-full bg-[#987b6b]">
       {/* 图片部分 */}
-      <div className="w-full h-[500px] md:h-[700px]">
+      {/*<div className="w-full h-[500px] md:h-[700px]">
         <img
           src={mockData.coverImage}
           alt={mockData.title}
           className="w-full h-full object-cover"
         />
-      </div>
+      </div>*/}
 
       {/* 内容部分 */}
-      <div className="w-full pt-20 md:pt-32 pb-40 md:pb-60 px-4">
-        <h1 className="h1-text font-normal text-center text-white mb-16 md:mb-24 animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s">
+      <div className="w-full pb-40 md:pb-60 px-4">
+        <p className="h1-text font-normal text-center text-white mb-16 md:mb-24 animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s">
           {mockData.title}
-        </h1>
+        </p>
         
         {/* 第一段文字内容 */}
         <div className="max-w-5xl mx-auto">
           <div 
-            className="h2-text text-white leading-[1.4] text-center md:whitespace-nowrap rich-text"
+            className="h3-text text-white text-center md:whitespace-nowrap rich-text"
             dangerouslySetInnerHTML={{ __html: mockData.firstParagraph }}
           />
         </div>
 
         {/* 分隔线 */}
         <div 
-          className="w-[4px] h-[150px] md:h-[200px] mx-auto my-[80px] md:my-[130px]"
+          className="w-[2px] h-[100px] md:w-[3px] md:h-[150px] mx-auto my-[80px] md:my-[130px]"
           style={{
             background: 'linear-gradient(0deg, rgba(226, 226, 226, 0) 0%, #FFFFFF 52.5%, rgba(226, 226, 226, 0) 100%)'
           }}
@@ -63,7 +63,7 @@ export default function Careers() {
         {/* 第二段文字内容 */}
         <div className="max-w-5xl mx-auto">
           <div 
-            className="h2-text text-white leading-[1.4] text-center md:whitespace-nowrap rich-text"
+            className="h3-text text-white text-center md:whitespace-nowrap rich-text"
             dangerouslySetInnerHTML={{ __html: mockData.secondParagraph }}
           />
         </div>
