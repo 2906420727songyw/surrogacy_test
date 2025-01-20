@@ -11,6 +11,8 @@ export default function ParentsSectionPart2() {
   const step5Ref = useRef<boolean>(false);
   const router = useRouter();
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
+  const [isVisible, setIsVisible] = useState(false);
+  const titleRef = useRef(null);
 
   const handleStep1MouseEnter = () => {
     step1Ref.current = true;
@@ -53,6 +55,24 @@ export default function ParentsSectionPart2() {
   };
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll('[data-section]');
       sections.forEach((section) => {
@@ -75,7 +95,10 @@ export default function ParentsSectionPart2() {
   return (
     <div id="surrogacy-matching-process" className={styles.part2}>
       <div className={styles.container}>
-        <h2 className="text-xl text-center text-white mb-12 leading-[2.5rem] md:leading-[4.5rem] md:text-4xl md:mb-12">
+        <h2 
+          ref={titleRef}
+          className={`h1-text text-center text-white mb-12 md:mb-12 ${isVisible ? 'animate__animated animate__fadeInUp animate__duration-1s animate__delay-1s' : 'opacity-0'}`}
+        >
           准父母和代孕妈妈的匹配过程
         </h2>
         <div className="w-full bg-transparent text-center md:w-full">
@@ -101,7 +124,7 @@ export default function ParentsSectionPart2() {
           </p>
           {isExpanded('step1') && (
             <div className={styles.details}>
-              <p className="text-sm text-white mb-6 mt-8 leading-5 md:leading-6 md:text-base md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s">
+              <p className="h3-text text-white mb-6 mt-8 md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s">
                 每位代孕妈妈都必须完成我们的申请表，一共有五个大类，涵盖了生育历史、家族病史、家庭生活、学历、<br/>
                 财政情况和工作情况以及代孕动机。根据美国代孕法案规定，代孕妈妈必须在 21-45 岁之间，生产并养育过至少一个孩子，<br/>
                 身体健康，无重大疾病，无药物滥用或烟酒问题，健康指数（BMI）在 30 以下。
@@ -124,7 +147,7 @@ export default function ParentsSectionPart2() {
           </p>
           {isExpanded('step2') && (
             <div className={styles.details}>
-              <p className="text-sm text-white mb-6 mt-8 leading-5 md:leading-6 md:text-base md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s">
+              <p className="h3-text text-white mb-6 mt-8 md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s">
                 在申请表审核通过之后，我们将会有专业的人员进行对接，有助于我们深入了解她们的代孕申请，并评估候选人完成代孕过程的能力。<br/>
                 同时，我们聘请了专业的第三方机构进行协助，他们会对申请者及其伴侣进行背景调查（包括家庭情况、收入情况、居住情况、犯罪历史背景等），<br/>
                 合作的第三方医院对其进行前期的身体检查（包括子宫情况、怀孕历史、吸烟酗酒毒品史等），<br/>
@@ -148,7 +171,7 @@ export default function ParentsSectionPart2() {
           </p>
           {isExpanded('step3') && (
             <div className={styles.details}>
-              <p className="text-sm text-white mb-6 mt-8 leading-5 md:leading-6 md:text-base md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s">
+              <p className="h3-text text-white mb-6 mt-8 md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s">
                 在背景审核和身体健康检查都通过后，我们将会有专业的工作人员和代孕妈妈对接，进行定期的科普教育，<br/>
                 让他们更了解代孕的所有过程。同时，紧密的联系也能让我们随时掌握代孕妈妈候选人的生活状态和健康状态，<br/>
                 保证她们健康的身体和心理状态。
@@ -178,7 +201,7 @@ export default function ParentsSectionPart2() {
           </p>
           {isExpanded('step4') && (
             <div className={styles.details}>
-              <p className="text-sm text-white mb-6 mt-8 leading-5 md:leading-6 md:text-base md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s">
+              <p className="h3-text text-white mb-6 mt-8 md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s">
                 在准父母从我们的代母库里选定好代孕妈妈后，我们将对其进行第二次的身体检查和心理筛查，<br/>
                 以确保其现在依旧具备成为代孕妈妈的资格。
               </p>
@@ -197,7 +220,7 @@ export default function ParentsSectionPart2() {
           </p>
           {isExpanded('step5') && (
             <div className={styles.details}>
-              <p className="text-sm text-white mb-6 mt-8 leading-5 md:leading-6 md:text-base md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s">
+              <p className="h3-text text-white mb-6 mt-8 md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s">
                 试管医院将会按照代孕妈妈的月经周期，在她月经前后几天安排体检，<br/>
                 体检结果大概需要三周时间，其目的是为了检查子宫情况，以确定其移植和备孕状态。
               </p>

@@ -28,9 +28,9 @@ const mockData: CareersContent = {
 
 export default function Careers() {
   return (
-    <div className="w-full bg-[#987b6b]">
+    <div className="pt-page w-full bg-[#987b6b]">
       {/* 图片部分 */}
-      <div className="w-full h-[500px] md:h-[700px] pt-20 md:pt-40">
+      <div className="w-full h-[500px] md:h-[700px]">
         <img
           src={mockData.coverImage}
           alt={mockData.title}
@@ -40,7 +40,7 @@ export default function Careers() {
 
       {/* 内容部分 */}
       <div className="w-full pt-20 md:pt-32 pb-40 md:pb-60 px-4">
-        <h1 className="h1-text font-normal text-center text-white mb-16 md:mb-24">
+        <h1 className="h1-text font-normal text-center text-white mb-16 md:mb-24 animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s">
           {mockData.title}
         </h1>
         

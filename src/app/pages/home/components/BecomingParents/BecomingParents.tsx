@@ -4,14 +4,42 @@ import Link from 'next/link';
 import styles from './BecomingParents.module.css';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function BecomingParents() {
   const router = useRouter();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect(); // 一旦显示就不再观察
+        }
+      },
+      {
+        threshold: 0.1 // 当10%的元素可见时触发
+      }
+    );
+
+    const element = document.querySelector('#becoming-parents-title');
+    if (element) {
+      observer.observe(element);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="becoming-parents" className={styles.becomingParents}>
       <div className="mx-auto flex flex-col items-center w-full h-auto md:w-full">
-        <h2 className="text-4xl text-white mb-3 md:mb-6 md:text-6xl animate__animated animate__fadeInDown animate__duration-2s animate__delay-1s">
+        <h2 
+          id="becoming-parents-title"
+          className={`text-4xl text-white mb-3 md:mb-6 md:text-6xl ${
+            isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : 'opacity-0'
+          }`}
+        >
           成为准父母
         </h2>
         <p className="text-xs md:text-base text-white mb-1.5 md:mb-3">

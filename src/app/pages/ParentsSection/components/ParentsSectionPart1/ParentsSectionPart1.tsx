@@ -1,10 +1,9 @@
 'use client'
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import styles from './ParentsSectionPart1.module.css';
 import Image from 'next/image';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
-import { text } from 'stream/consumers';
 
 export default function ParentsSectionPart1() {
   const router = useRouter();
@@ -52,6 +51,9 @@ export default function ParentsSectionPart1() {
   ];
 
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const titleRef = useRef(null);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -94,13 +96,36 @@ export default function ParentsSectionPart1() {
     }
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div id="parents-overview" className={styles.content}>
       <div className={styles.container}>
-        <h1 className="text-xl text-white mb-12 md:mb-20 md:text-4xl">
+        <h1 
+          ref={titleRef}
+          className={`h1-text text-white mb-12 md:mb-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s' : 'opacity-0'}`}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
           Sapling Surrogacy
         </h1>
-        <p className="text-sm text-white leading-6 mb-10 md:text-base md:leading-10 md:mb-12">
+        <p className="h2-text text-white mb-10 md:mb-12">
           欢迎来到 Sapling 辅助生殖代孕中心。<br/>
           帮助您一起建立幸福而美满的家庭是我们最大的愿望。<br/>
           代孕是一条漫长、充满挑战而又伟大的道路，若您感到迷茫和无助，<br/>
@@ -122,11 +147,11 @@ export default function ParentsSectionPart1() {
       blurDataURL="/images/ParentsSection/image1-zip.jpg"
       />
       <div className="w-full flex flex-col items-center text-center text-white px-5 pt-5 md:w-full md:px-36">
-        <h2 className="text-xl my-12 leading-[2.5rem] md:leading-[4.5rem] md:text-4xl md:my-24">
+        <h2 className="h1-text text-white my-12 md:my-24 animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s">
           为什么准父母会选择<br/>
           Sapling Surrogacy
         </h2>
-        <div className="text-sm mb-10 leading-8 md:text-base md:mb-14 md:leading-10">
+        <div className="h2-text text-white mb-10 md:mb-14">
           选择一家专业的代孕机构是最重要的，它会指导和陪伴您更轻松的走过整个成为准父母的旅程。<br/>
           选择 Sapling 可以让您享受全方位的代孕服务，我们有
         
@@ -135,14 +160,16 @@ export default function ParentsSectionPart1() {
         <div className={styles.horizontalList} ref={scrollContainerRef}>
           {listData.map((item, index) => (
             <div key={index} className={styles.listItem}>
-              <Image 
-                src={item.image}
-                alt={item.text}
-                width={500}
-                height={500}
-                className={styles.listItemImage}
-              />
-              <p className="text-xs leading-5 my-2 md:my-4 md:text-base md:leading-6">{item.text}</p>
+              <div className="w-[300px] h-[300px] overflow-hidden rounded-[10px]">
+                <Image 
+                  src={item.image}
+                  alt={item.text}
+                  width={500}
+                  height={500}
+                  className={styles.listItemImage}
+                />
+              </div>
+              <p className="h3-text text-white my-2 md:my-4">{item.text}</p>
             </div>
           ))}
         </div>

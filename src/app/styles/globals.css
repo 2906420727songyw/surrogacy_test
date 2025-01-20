@@ -46,14 +46,32 @@ body {
 .h1-text{
   font-size:1.875rem;
   line-height: 4.5rem;
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+    line-height: 2.5rem;
+  }
 }
 .h2-text{
   font-size:1rem;
   line-height: 2.5rem;
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+  }
 }
 .h3-text{
   font-size:0.875rem;
   line-height: 1.5rem;
+  @media (max-width: 768px) {
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+  }
+}
+.pt-page{
+  padding-top: 200px;
+  @media (max-width: 768px) {
+    padding-top: 150px;
+  }
 }
 @keyframes fadeIn {
   to {

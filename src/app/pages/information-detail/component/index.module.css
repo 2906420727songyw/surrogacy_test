@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
   background-color: #A48472;
-  padding: 150px 0 80px;
+  padding: 200px 0 80px;
 }
 
 .content {
@@ -23,34 +23,15 @@
   object-fit: cover;
 }
 
-.title {
-  color: #fff;
-  font-size: 32px;
-  font-weight: normal;
-  margin: 50px 0;
-}
-
 .percentage {
   color: #fff;
   font-size: 24px;
   margin-bottom: 40px;
 }
 
-.description {
-  text-align: center;
-  margin-bottom: 70px;
-}
-
-.description p {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 18px;
-  line-height: 40px;
-  margin-bottom: 15px;
-}
-
 @media (max-width: 768px) {
   .container {
-    padding: 100px 0 20px;
+    padding: 150px 0 20px;
   }
   .imageWrapper {
     width: 100%;
@@ -63,13 +44,5 @@
   }
   .content {
    padding:0 20px;
-  }
-  .title {
-    font-size: 28px;
-  }
-
-  .description p {
-    font-size: 16px;
-    line-height: 32px;
   }
 } 

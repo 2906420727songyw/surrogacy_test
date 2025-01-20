@@ -19,12 +19,19 @@ interface MobileMenuButtonProps {
 
 const MobileMenuButton = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MobileMenuButtonProps) => (
   <button 
-    className="md:hidden fixed top-[90px] right-3 z-100 bg-[transparent] p-2 rounded-lg"
+    className="md:hidden fixed top-[90px] right-3 z-9999 bg-[transparent] p-2 rounded-lg"
     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
   >
-    <span className="block w-5 h-0.5 bg-white mb-1"></span>
+    <div className='flex  items-center gap-1'>
+      <div className='flex flex-col '>
+      <span className="block w-5 h-0.5 bg-white mb-1"></span>
     <span className="block w-5 h-0.5 bg-white mb-1"></span>
     <span className="block w-5 h-0.5 bg-white"></span>
+      </div>
+      <p className="text-white text-sm">用户菜单</p>
+
+    </div>
+    
   </button>
 );
 
@@ -102,7 +109,7 @@ function ProfilePageContent() {
   }
 
   return (
-    <div className="min-h-screen w-full flex flex-col md:flex-row bg-[#A38471] pt-[150px]">
+    <div className="min-h-screen w-full flex flex-col md:flex-row bg-[#A38471] pt-page">
       <MobileMenuButton 
         isMobileMenuOpen={isMobileMenuOpen} 
         setIsMobileMenuOpen={setIsMobileMenuOpen}

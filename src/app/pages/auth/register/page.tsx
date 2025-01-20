@@ -113,7 +113,7 @@ function RegisterContent() {
   };
 
   return (
-    <div className="min-h-screen w-full flex justify-center items-center bg-[#A48472] py-20">
+    <div className="min-h-screen w-full flex justify-center items-center bg-[#A48472] pt-page">
       <ToastContainer />
       {/* 隐藏的表单来阻止浏览器自动填充 */}
       <div style={{ display: 'none' }}>
@@ -130,8 +130,8 @@ function RegisterContent() {
           tabIndex={-1}
         />
       </div>
-      <div className="w-full max-w-[70vw] pt-[calc(env(safe-area-inset-top)+4rem)] md:pt-[15vh]">
-        <h1 className="text-white text-[32px] md:text-[48px] font-normal text-center mb-[20px] md:mb-[80px] transition-opacity duration-500">
+      <div className="w-full max-w-[70vw] ">
+        <h1 className="text-white h1-text font-normal text-center mb-[20px] md:mb-[80px] transition-opacity duration-500 animate__animated animate__fadeInDown animate__duration-1s animate__delay-1s">
           使用电子邮件地址创建账户
         </h1>
         <form ref={formRef} onSubmit={handleSubmit} className="max-w-[90vw] mx-auto" autoComplete="off" spellCheck="false">
