@@ -135,7 +135,6 @@ export default function ProfileContent() {
           onSubmit={(e) => e.preventDefault()}
         >
           <InfoItem label="电子邮件地址登录 *" value={getDisplayValue(userData.email)} />
-          <InfoItem label="密码 *" value={getDisplayValue(userData.password)} />
           <InfoItem label="手机号码 *" value={getDisplayValue(userData.phoneNumber)} />
           <InfoItem label="出生日期 *" value={getDisplayValue(userData.dateOfBirth)} />
           <InfoItem label="姓名 *" value={getDisplayValue(userData.name)} />
