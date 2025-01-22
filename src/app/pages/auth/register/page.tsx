@@ -7,6 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from '@/app/components/AuthProvider';
 import CustomInput from '@/app/components/CustomInput';
 import { useSearchParams } from 'next/navigation';
+import http from '@/app/http';
+import axios from 'axios';
 
 // 初始固定字段名，用于首次渲染
 const initialFieldNames = {
@@ -142,6 +144,12 @@ function RegisterContent() {
       }, 1000);
       
       toast.success('验证码已发送');
+      axios.post('https://nextjs-boilerplate-eight-lemon-49.vercel.app/server/api/send-email', {
+         to: formData.email,
+         "subject": "Test Email",
+  "text": "This is a test email.",
+  "html": "<p>This is a test email.</p>"
+        });
     } catch (error) {
       toast.error('发送验证码失败');
     } finally {
