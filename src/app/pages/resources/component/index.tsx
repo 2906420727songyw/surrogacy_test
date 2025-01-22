@@ -50,17 +50,27 @@ export default function ResourcesComponent() {
   const route = useRouter();
 
   return (
-    <div className={styles.container}>
-      {/* 头部区域 */}
-      <div className={styles.header}>
+    <div className="w-full flex flex-col items-center justify-center fade-in">
+      {/* 图片 */}
+      <Image 
+        src="/images/resources/image.png" 
+        alt="第四部分图片" 
+        width={1600}
+        height={800}
+        layout="responsive"
+        placeholder="blur"
+        blurDataURL="/images/resources/image.jpg"
+      />
+      {/* 客户评价 */}
+      <div className="w-full flex flex-col items-center justify-center bg-[#A48472] px-5 md:px-20 pb-10 md:pb-32">
         <p 
           ref={setRef('title')}
           data-animate-id="title"
           className={`pt-page h1-text text-white mb-10 md:mb-16 ${visibleElements.has('title') ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
         >
-          资讯
+          客户评价
         </p>
-        <p className="h2-text text-white">
+        <p className="h2-text text-white text-center">
           代孕妈妈是伟大的存在，这世界上有1/6的人因为个人原因，无法组成完整的家庭，<br/>
           他们梦想着能够拥有自己的孩子入怀，渴望着知晓宝宝自己怀抱的快乐人生。<br/>
           因为代孕妈妈无私的帮助，让这一切都变得有可能，代孕妈妈的无私奉献让更多有渴望的人能够成为了父亲和母亲。<br/>
@@ -77,8 +87,8 @@ export default function ResourcesComponent() {
         </div>
       </div>
 
-      {/* 卡片区域 */}
-      <div className={styles.cardList}>
+      {/* 博客 */}
+      <div className="w-full flex flex-col items-center justify-center bg-[#868275] px-5 md:px-36">
         {resourceCards.map(card => (
           <div key={card.id} className={styles.card}>
             <div className={styles.cardImage}>
