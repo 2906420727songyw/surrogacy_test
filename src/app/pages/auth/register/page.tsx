@@ -40,12 +40,18 @@ function RegisterContent() {
     role: type
   });
 
-  const [fieldNames, setFieldNames] = useState(initialFieldNames);
+  const [fieldNames, setFieldNames] = useState({
+    ...initialFieldNames,
+    verificationCode: 'register_verification_code',
+  });
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [confirmPassword,setConfirmPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { register } = useAuth();
   const formRef = useRef<HTMLFormElement>(null);
+  const [verificationCode, setVerificationCode] = useState('');
+  const [isSendingCode, setIsSendingCode] = useState(false);
+  const [countdown, setCountdown] = useState(0);
 
   // 在组件挂载后生成随机字段名
   useEffect(() => {
@@ -64,6 +70,7 @@ function RegisterContent() {
       address: generateRandomName('addr'),
       hiddenUsername: generateRandomName('hidden_user'),
       hiddenPassword: generateRandomName('hidden_pwd'),
+      verificationCode: generateRandomName('verification_code'),
     });
 
     // 清除所有输入框的值
@@ -112,6 +119,36 @@ function RegisterContent() {
     }
   };
 
+  const handleSendVerificationCode = async () => {
+    if (!formData.email) {
+      toast.error('请先输入邮箱地址');
+      return;
+    }
+    try {
+      setIsSendingCode(true);
+      // TODO: 调用发送验证码的 API
+      // await sendVerificationCode(formData.email);
+      
+      // 开始倒计时
+      setCountdown(60);
+      const timer = setInterval(() => {
+        setCountdown((prev) => {
+          if (prev <= 1) {
+            clearInterval(timer);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+      
+      toast.success('验证码已发送');
+    } catch (error) {
+      toast.error('发送验证码失败');
+    } finally {
+      setIsSendingCode(false);
+    }
+  };
+
   return (
     <div className="min-h-screen w-full flex justify-center items-center bg-[#A48472] pt-page fade-in">
       <ToastContainer />
@@ -143,6 +180,42 @@ function RegisterContent() {
             required
             label="电子邮件地址登录"
           />
+          <div className="flex gap-4 mb-6 md:mb-[30px] items-center">
+            <div className="flex-1">
+              <CustomInput
+                type="text"
+                name={fieldNames.verificationCode}
+                value={verificationCode}
+                onChange={(e) => setVerificationCode(e.target.value)}
+                required
+                label="邮箱验证码"
+              />
+            </div>
+            <div className="flex items-end h-[50px] md:h-[40px]">
+
+            <span className="text-white text-base md:text-[20px] underline bg-transparent border-none cursor-pointer p-0 flex items-center gap-2  "
+                onClick={handleSendVerificationCode}
+              >
+                {isSendingCode ? '发送中...' : 
+               countdown > 0 ? `${countdown}秒后重试` : 
+               '发送验证码'}
+              </span>
+
+            </div>
+
+
+            {/* <button
+              type="button"
+              onClick={handleSendVerificationCode}
+              disabled={countdown > 0 || isSendingCode}
+              className="w-32 h-10 mt-6 bg-[#D9D9D9] text-black text-sm rounded-lg border-none 
+                transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSendingCode ? '发送中...' : 
+               countdown > 0 ? `${countdown}秒后重试` : 
+               '发送验证码'}
+            </button> */}
+          </div>
           <CustomInput
             type="password"
             name={fieldNames.password}
