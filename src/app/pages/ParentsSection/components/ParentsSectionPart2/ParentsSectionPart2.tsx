@@ -73,7 +73,24 @@ export default function ParentsSectionPart2() {
   }, []);
 
   useEffect(() => {
+    // 检查是否需要自动展开所有步骤
+    if (sessionStorage.getItem('autoExpandSteps')) {
+      // 获取所有步骤的ID
+      const allSteps = ['step1', 'step2', 'step3', 'step4', 'step5'];
+      // 展开所有步骤
+      setExpandedSections(new Set(allSteps));
+      // 清除标记
+      sessionStorage.removeItem('autoExpandSteps');
+    }
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
+      // 如果已经设置了自动展开标记，就不需要处理滚动事件
+      if (sessionStorage.getItem('autoExpandSteps')) {
+        return;
+      }
+
       const sections = document.querySelectorAll('[data-section]');
       sections.forEach((section) => {
         const sectionId = section.getAttribute('data-section');

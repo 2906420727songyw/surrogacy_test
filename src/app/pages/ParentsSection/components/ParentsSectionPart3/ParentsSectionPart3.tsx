@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './ParentsSectionPart3.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -7,7 +7,6 @@ import { useRouter } from 'next/navigation';
 export default function ParentsSectionPart3() {
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
   const [isVisible, setIsVisible] = useState(false);
-  const titleRef = useRef(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -21,8 +20,9 @@ export default function ParentsSectionPart3() {
       { threshold: 0.1 }
     );
 
-    if (titleRef.current) {
-      observer.observe(titleRef.current);
+    const titleElement = document.querySelector('#surrogacy-plan-process');
+    if (titleElement) {
+      observer.observe(titleElement);
     }
 
     return () => observer.disconnect();
@@ -30,6 +30,10 @@ export default function ParentsSectionPart3() {
 
   useEffect(() => {
     const handleScroll = () => {
+      // 如果已经设置了自动展开标记，就不需要处理滚动事件
+      if (sessionStorage.getItem('autoExpandSteps3')) {
+        return;
+      }
       const sections = document.querySelectorAll('[data-section]');
       sections.forEach((section) => {
         const sectionId = section.getAttribute('data-section');
@@ -38,15 +42,15 @@ export default function ParentsSectionPart3() {
 
         if (sectionTop < windowHeight * 0.8 && sectionId) {
           setExpandedSections((prev) => new Set([...prev, sectionId]));
-        } else if (sectionTop >= windowHeight * 0.8 && sectionId) {
-          setExpandedSections((prev) => {
-            const newSet = new Set(prev);
-            newSet.delete(sectionId);
-            return newSet;
-          });
         }
       });
     };
+
+    if (sessionStorage.getItem('autoExpandSteps3')) {
+      const allSections = ['step1', 'step2', 'step3', 'step4', 'step5'];
+      setExpandedSections(new Set(allSections));
+      sessionStorage.removeItem('autoExpandSteps3');
+    }
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -68,7 +72,6 @@ export default function ParentsSectionPart3() {
       <div id="surrogacy-plan-process" className={styles.content}>
         <div className="w-full flex flex-col items-center justify-center px-5">
           <h2 
-            ref={titleRef}
             className={`text-xl text-center text-white mb-12 leading-[2.5rem] md:leading-[4.5rem] md:text-4xl md:mb-12 ${isVisible ? 'animate__animated animate__fadeInUp animate__duration-1s animate__delay-1s' : 'opacity-0'}`}
           >
             准父母代孕流程

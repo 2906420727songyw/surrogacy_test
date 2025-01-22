@@ -27,7 +27,7 @@ const list = [{
         link: 'who-can-be-surrogate'
     }, {
         text: '怎么筛选申请者',
-        link: 'become-surrogate-part2'
+        link: 'become-surrogate-part2-content'
     }, {
         text: '如何成为代孕妈妈',
         link: 'become-surrogate-part3-content'
@@ -69,18 +69,35 @@ export default function Header() {
         if (link.includes('/pages/')) {
             router.push(link);
         } else {
-            if(link!=='who-can-be-surrogate'){
-                sessionStorage.setItem('expandAllSections', 'true');
+
+            switch(route){
+                case '/pages/ParentsSection':
+                    if(link !== 'surrogacy-matching-process' && link !== 'surrogacy-plan-process'){
+                        sessionStorage.setItem('autoExpandSteps', 'true');
+                        sessionStorage.setItem('autoExpandSteps3', 'true');
+                    } 
+                    if(link === 'surrogacy-plan-process'){
+                        sessionStorage.setItem('autoExpandSteps', 'true');
+                    }
+                    break;
+                case '/pages/BecomeSurrogate':
+                    if(link !== 'surrogacy-matching-process'){
+                        sessionStorage.setItem('expandAllSections', 'true');
+                    }
+                    break;
             }
+            console.log("route:",route);
+
+         
+
+           
             setTimeout(() => {
                 const element = document.getElementById(link);
                 if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
+                    element.scrollIntoView({ behavior: 'smooth'});
                 }
-            }, 500);
+            }, 1000);
         }
-
-       
     }
 
     const clickLogin = () => {
