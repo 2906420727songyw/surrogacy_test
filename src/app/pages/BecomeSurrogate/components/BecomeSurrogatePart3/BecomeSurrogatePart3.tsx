@@ -2,6 +2,7 @@
 import styles from './BecomeSurrogatePart3.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
 
 interface BecomeSurrogatePart3Props {
   isVisible?: boolean;
@@ -9,16 +10,55 @@ interface BecomeSurrogatePart3Props {
 
 export default function BecomeSurrogatePart3({ isVisible = false }: BecomeSurrogatePart3Props) {
   const router = useRouter();
+  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    // 检查是否需要自动展开所有部分
+    if (sessionStorage.getItem('expandSurrogatePart3')) {
+      // 获取所有部分的ID
+      const allSections = ['A', 'B', 'C'];
+      // 展开所有部分
+      setExpandedSections(new Set(allSections));
+      // 清除标记
+      sessionStorage.removeItem('expandSurrogatePart3');
+    }
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // 如果已经设置了自动展开标记，就不需要处理滚动事件
+      if (sessionStorage.getItem('expandSurrogatePart3')) {
+        return;
+      }
+
+      const sections = document.querySelectorAll('[data-section]');
+      sections.forEach((section) => {
+        const sectionId = section.getAttribute('data-section');
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (sectionTop < windowHeight * 0.8 && sectionId) {
+          setExpandedSections((prev) => new Set([...prev, sectionId]));
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const isExpanded = (sectionId: string) => expandedSections.has(sectionId);
+
   return (
     <div className={styles.becomeSurrogatePart3}>
       <Image 
-      src="/images/BecomeSurrogate/3.png" 
-      alt="第三部分图片" 
-      width={1600}
-      height={800}
-      layout="responsive" 
-      placeholder="blur"
-      blurDataURL="/images/BecomeSurrogate/3.jpg"
+        src="/images/BecomeSurrogate/3.png" 
+        alt="第三部分图片" 
+        width={1600}
+        height={800}
+        layout="responsive" 
+        placeholder="blur"
+        blurDataURL="/images/BecomeSurrogate/3.jpg"
       />
       <div id='become-surrogate-part3-content' className={styles.container}>
         <div className={styles.content}>
@@ -30,7 +70,10 @@ export default function BecomeSurrogatePart3({ isVisible = false }: BecomeSurrog
           
         </div>
         <div className={styles.itemContainer}>
-          <div className={styles.item}>
+          <div 
+            data-section="A"
+            className={`${styles.item} ${isExpanded('A') ? styles.expanded : ''}`}
+          >
             {/* 分割线 */}
             <div className={styles.divider}></div>
             <p className="h2-text text-white mb-4 mt-6 md:mt-8 md:mb-6">
@@ -41,7 +84,10 @@ export default function BecomeSurrogatePart3({ isVisible = false }: BecomeSurrog
             学历背景、代孕动机等。如果您符合我们对代孕妈妈的要求，我们会第一时间联系您，进行下一步。
             </p>
           </div>
-          <div className={styles.item}>
+          <div 
+            data-section="B"
+            className={`${styles.item} ${isExpanded('B') ? styles.expanded : ''}`}
+          >
             <div className={styles.divider}></div>
             <p className="h2-text text-white mb-4 mt-6 md:mt-8 md:mb-6">
               B.申请审查
@@ -52,7 +98,10 @@ export default function BecomeSurrogatePart3({ isVisible = false }: BecomeSurrog
             您的工资单、您的过往怀孕及分娩记录、您的医疗记录、您的医疗保险卡。
             </p>
           </div>
-          <div className={styles.item}>
+          <div 
+            data-section="C"
+            className={`${styles.item} ${isExpanded('C') ? styles.expanded : ''}`}
+          >
             <div className={styles.divider}></div>
             <p className="h2-text text-white mb-4 mt-6 md:mt-8 md:mb-6">
               C.线上见面
