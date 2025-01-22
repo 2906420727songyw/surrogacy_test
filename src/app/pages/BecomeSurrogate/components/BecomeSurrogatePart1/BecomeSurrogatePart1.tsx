@@ -15,28 +15,38 @@ export default function BecomeSurrogatePart1({ isVisible = false }: BecomeSurrog
   const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
 
   useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.1
-    };
+    // 检查是否需要展开所有部分
+    if (sessionStorage.getItem('expandAllSections')) {
+      // 获取所有可展开部分的ID
+      const allSections = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+      // 展开所有部分
+      setExpandedSections(new Set(allSections));
+      // 清除标记
+      sessionStorage.removeItem('expandAllSections');
+    }
+  }, []);
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const sectionId = entry.target.getAttribute('data-section');
-          if (sectionId) {
-            setExpandedSections(prev => new Set([...prev, sectionId]));
-          }
+  useEffect(() => {
+    const handleScroll = () => {
+      // 如果已经设置了展开所有部分的标记，就不需要处理滚动事件
+      if (sessionStorage.getItem('expandAllSections')) {
+        return;
+      }
+
+      const sections = document.querySelectorAll('[data-section]');
+      sections.forEach((section) => {
+        const sectionId = section.getAttribute('data-section');
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (sectionTop < windowHeight * 0.8 && sectionId) {
+          setExpandedSections((prev) => new Set([...prev, sectionId]));
         }
       });
-    }, options);
+    };
 
-    document.querySelectorAll('[data-section]').forEach(section => {
-      observer.observe(section);
-    });
-
-    return () => observer.disconnect();
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // 修改展开状态的判断

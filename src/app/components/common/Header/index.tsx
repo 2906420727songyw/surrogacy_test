@@ -63,17 +63,24 @@ export default function Header() {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
-    const routerToScroll = (route: string, link: string) => {
+    const routerToScroll = async (route: string, link: string) => {
         setIsMenuOpen(false);
         if (currentPath !== route) router.push(route);
         if (link.includes('/pages/')) {
             router.push(link);
         } else {
+            if(link!=='who-can-be-surrogate'){
+                sessionStorage.setItem('expandAllSections', 'true');
+            }
             setTimeout(() => {
-                document.getElementById(link)?.scrollIntoView({ behavior: 'smooth' });
-            }, 500)
+                const element = document.getElementById(link);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 500);
         }
 
+       
     }
 
     const clickLogin = () => {
