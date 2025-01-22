@@ -2,7 +2,6 @@
   width: 100%;
   height: auto;
   margin: 0 auto;
-  padding: 200px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,7 +13,7 @@
   width: 100%;
   height: auto;
   margin: 0 auto;
-  padding: 0 150px 100px;
+  padding: 0 150px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,7 +33,6 @@
   display: flex;
   justify-content: center;
   align-items: stretch;
-  margin-bottom: 100px;
 }
 
 .leftPackage {
@@ -47,39 +45,20 @@
   padding: 50px;
 }
 
-.packageTitle {
-  font-size: 26px;
-  line-height: 50px;
-  text-align: center;
-  color: #fff;
-  margin-bottom: 50px;
-}
-
-.packagePrice {
-  font-size: 18px;
-  line-height: 30px;
-  text-align: center;
-  color: #fff;
-  margin-bottom: 100px;
-}
-
-.packagePriceRight {
-  font-size: 18px;
-  line-height: 30px;
-  text-align: center;
-  color: #fff;
-  margin-bottom: 30px;
-}
-
 .rightPackage {
   width: 50%;
   background-color: #868275;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   padding: 50px;
 }
 
 .packageDetails {
   width: 100%;
   overflow: hidden;
+  padding: 0 50px;
 }
 
 .detailsDivider {
@@ -89,73 +68,27 @@
   margin: 20px 0;
 }
 
-.detailsTitle {
-  font-size: 18px;
-  line-height: 36px;
-  text-align: center;
-  color: #fff;
-  margin-bottom: 20px;
-}
-
-.detailsDescription {
-  max-height: 0;
-  font-size: 18px;
-  line-height: 27px;
-  text-align: center;
-  color: #fff;
-  transition: max-height 1s ease-in-out, transform 1s ease-in-out, opacity 1s ease-in-out;
-  transform: translateY(100%);
-  opacity: 0;
-}
-
-.packageDetails.open .detailsDescription {
-  max-height: 100px;
-  transform: translateY(0);
-  opacity: 1;
-  transition: max-height 1s ease-in-out, transform 1s ease-in-out, opacity 1s ease-in-out;
-}
-
 @media screen and (max-width: 768px) {
   .content {
-    padding: 100px 0;
+    padding: 100px 0 0;
   }
 
   .container {
-    padding: 0 20px 50px;
+    padding: 0 20px;
   }
 
   .packageContainer {
     flex-direction: column;
-    margin-bottom: 50px;
+  }
+  .packageDetails {
+    width: 100%;
+    overflow: hidden;
+    padding: 0 0px;
   }
 
   .leftPackage,
   .rightPackage {
     width: 100%;
-  }
-
-  .packageTitle {
-    font-size: 14px;
-    line-height: 30px;
-    margin-bottom: 30px;
-  }
-
-  .packagePrice,
-  .packagePriceRight {
-    font-size: 12px;
-    line-height: 24px;
-    margin-bottom: 50px;
-  }
-
-  .detailsTitle {
-    font-size: 12px;
-    line-height: 24px;
-    margin-bottom: 10px;
-  }
-
-  .detailsDescription {
-    font-size: 12px;
-    line-height: 24px;
   }
 
   .gradientBar {
