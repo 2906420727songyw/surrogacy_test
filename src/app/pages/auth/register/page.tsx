@@ -144,7 +144,7 @@ function RegisterContent() {
       }, 1000);
       
       toast.success('验证码已发送');
-      axios.post('https://nextjs-boilerplate-eight-lemon-49.vercel.app/api/send-email', {
+      axios.post('https://nextjs-boilerplate-eight-lemon-49.vercel.app/server/api/send-email', {
          to: formData.email,
          "subject": "Test Email",
   "text": "This is a test email.",
