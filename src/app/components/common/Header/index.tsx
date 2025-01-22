@@ -30,7 +30,7 @@ const list = [{
         link: 'become-surrogate-part2'
     }, {
         text: '如何成为代孕妈妈',
-        link: 'become-surrogate-part3'
+        link: 'become-surrogate-part3-content'
     }, {
         text: '为什么选择我们',
         link: 'become-surrogate-part4-1'

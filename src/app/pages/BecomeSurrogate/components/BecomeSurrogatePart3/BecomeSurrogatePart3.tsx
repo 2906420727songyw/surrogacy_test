@@ -20,7 +20,7 @@ export default function BecomeSurrogatePart3({ isVisible = false }: BecomeSurrog
       placeholder="blur"
       blurDataURL="/images/BecomeSurrogate/3.jpg"
       />
-      <div id='become-surrogate-part3' className={styles.container}>
+      <div id='become-surrogate-part3-content' className={styles.container}>
         <div className={styles.content}>
           <h2 
             className={`h1-text text-white mb-16 md:mb-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
