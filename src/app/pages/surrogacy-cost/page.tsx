@@ -75,11 +75,11 @@ export default function SurrogacyCost() {
         placeholder="blur"
         blurDataURL="/images/surrogacy-cost/image1.jpg"
       />
-      <div className="w-full flex flex-col items-center justify-center bg-[#A48472] px-5 md:px-20 py-10 md:py-20">
+      <div className="w-full flex flex-col items-center justify-center bg-[#A48472] px-5 md:px-20 pt-16 md:pt-32">
         <p 
           ref={setRef('title')}
           data-animate-id="title"
-          className={`h1-text text-white mb-10 md:mb-16 ${
+          className={`h1-text text-white mb-10 md:mb-12 ${
             visibleElements.has('title') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
           }`}
         >
@@ -100,10 +100,10 @@ export default function SurrogacyCost() {
             145,000 美元至 210,000 美元
         </p>
         <div className={styles.detailsDivider}></div>
-        <h4 className="h2-text text-white text-center mb-5 md:mb-10" data-section="0">中介服务费用：</h4>
+        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="0">中介服务费用：</h4>
         <div data-section="0" className={styles.packageDetails}>
           <p
-            className={`h3-text text-white text-center ${
+            className={`text-[0.7rem] md:text-[0.8rem] text-white text-center ${
               visibleSections.has('0') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
             }`}
           >
@@ -111,10 +111,10 @@ export default function SurrogacyCost() {
           </p>
         </div>
         <div className={styles.detailsDivider}></div>
-        <h4 className="h2-text text-white text-center mb-5 md:mb-10" data-section="1">医疗费用：</h4>
+        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="1">医疗费用：</h4>
         <div data-section="1" className={styles.packageDetails}>
           <p
-            className={`h3-text text-white text-center ${
+            className={`text-[0.7rem] md:text-[0.8rem] text-white text-center ${
               visibleSections.has('1') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
             }`}
           >
@@ -122,10 +122,10 @@ export default function SurrogacyCost() {
           </p>
         </div>
         <div className={styles.detailsDivider}></div>
-        <h4 className="h2-text text-white text-center mb-5 md:mb-10" data-section="2">法律费用：</h4>
+        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="2">法律费用：</h4>
         <div data-section="2" className={styles.packageDetails}>
           <p
-            className={`h3-text text-white text-center ${
+            className={`text-[0.7rem] md:text-[0.8rem] text-white text-center ${
               visibleSections.has('2') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
             }`}
           >
@@ -133,10 +133,10 @@ export default function SurrogacyCost() {
           </p>
         </div>
         <div className={styles.detailsDivider}></div>
-        <h4 className="h2-text text-white text-center mb-5 md:mb-10" data-section="3">信托账户管理费用：</h4>
+        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="3">信托账户管理费用：</h4>
         <div data-section="3" className={styles.packageDetails}>
           <p
-            className={`h3-text text-white text-center ${
+            className={`text-[0.7rem] md:text-[0.8rem] text-white text-center ${
               visibleSections.has('3') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
             }`}
           >
@@ -144,10 +144,10 @@ export default function SurrogacyCost() {
           </p>
         </div>
         <div className={styles.detailsDivider}></div>
-        <h4 className="h2-text text-white text-center mb-5 md:mb-10" data-section="4">代孕妈妈补偿：</h4>
+        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="4">代孕妈妈补偿：</h4>
         <div data-section="4" className={styles.packageDetails}>
           <p
-            className={`h3-text text-white text-center ${
+            className={`text-[0.7rem] md:text-[0.8rem] text-white text-center ${
               visibleSections.has('4') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
             }`}
           >
@@ -164,10 +164,10 @@ export default function SurrogacyCost() {
         260,000 美元至 295,000 美元
         </p>
       <div className={styles.detailsDivider}></div>
-      <h4 className="h2-text text-white text-center mb-5 md:mb-10" data-section="5">中介服务费用：</h4>
+      <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="5">中介服务费用：</h4>
         <div data-section="5" className={styles.packageDetails}>
           <p
-            className={`h3-text text-white text-center ${
+            className={`text-[0.7rem] md:text-[0.8rem] text-white text-center ${
               visibleSections.has('5') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
             }`}
           >
@@ -175,10 +175,10 @@ export default function SurrogacyCost() {
           </p>
         </div>
         <div className={styles.detailsDivider}></div>
-        <h4 className="h2-text text-white text-center mb-5 md:mb-10" data-section="6">医疗费用：</h4>
+        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="6">医疗费用：</h4>
         <div data-section="6" className={styles.packageDetails}>
           <p
-            className={`h3-text text-white text-center ${
+            className={`text-[0.7rem] md:text-[0.8rem] text-white text-center ${
               visibleSections.has('6') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
             }`}
           >
@@ -186,10 +186,10 @@ export default function SurrogacyCost() {
           </p>
         </div>
         <div className={styles.detailsDivider}></div>
-        <h4 className="h2-text text-white text-center mb-5 md:mb-10" data-section="7">法律费用：</h4>
+        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="7">法律费用：</h4>
         <div data-section="7" className={styles.packageDetails}>
           <p
-            className={`h3-text text-white text-center ${
+            className={`text-[0.7rem] md:text-[0.8rem] text-white text-center ${
               visibleSections.has('7') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
             }`}
           >
@@ -197,10 +197,10 @@ export default function SurrogacyCost() {
           </p>
         </div>
         <div className={styles.detailsDivider}></div>
-        <h4 className="h2-text text-white text-center mb-5 md:mb-10" data-section="8">信托账户管理费用：</h4>
+        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="8">信托账户管理费用：</h4>
         <div data-section="8" className={styles.packageDetails}>
           <p
-            className={`h3-text text-white text-center ${
+            className={`text-[0.7rem] md:text-[0.8rem] text-white text-center ${
               visibleSections.has('8') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
             }`}
           >
@@ -208,10 +208,10 @@ export default function SurrogacyCost() {
           </p>
         </div>
         <div className={styles.detailsDivider}></div>
-        <h4 className="h2-text text-white text-center mb-5 md:mb-10" data-section="9">代孕妈妈补偿：</h4>
+        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="9">代孕妈妈补偿：</h4>
         <div data-section="9" className={styles.packageDetails}>
           <p
-            className={`h3-text text-white text-center ${
+            className={`text-[0.7rem] md:text-[0.8rem] text-white text-center ${
               visibleSections.has('9') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
             }`}
           >
@@ -219,10 +219,10 @@ export default function SurrogacyCost() {
           </p>
         </div>
         <div className={styles.detailsDivider}></div>
-        <h4 className="h2-text text-white text-center mb-5 md:mb-10" data-section="10">旅行安排：</h4>
+        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="10">旅行安排：</h4>
         <div data-section="10" className={styles.packageDetails}>
           <p
-            className={`h3-text text-white text-center ${
+            className={`text-[0.7rem] md:text-[0.8rem] text-white text-center ${
               visibleSections.has('10') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
             }`}
           >
@@ -230,10 +230,10 @@ export default function SurrogacyCost() {
           </p>
         </div>
         <div className={styles.detailsDivider}></div>
-        <h4 className="h2-text text-white text-center mb-5 md:mb-10" data-section="11">管家式服务：</h4>
+        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="11">管家式服务：</h4>
         <div data-section="11" className={styles.packageDetails}>
           <p
-            className={`h3-text text-white text-center ${
+            className={`text-[0.7rem] md:text-[0.8rem] text-white text-center ${
               visibleSections.has('11') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
             }`}
           >
@@ -241,10 +241,10 @@ export default function SurrogacyCost() {
           </p>
         </div>
         <div className={styles.detailsDivider}></div>
-        <h4 className="h2-text text-white text-center mb-5 md:mb-10" data-section="12">全包保险：</h4>
+        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="12">全包保险：</h4>
         <div data-section="12" className={styles.packageDetails}>
           <p
-            className={`h3-text text-white text-center ${
+            className={`text-[0.7rem] md:text-[0.8rem] text-white text-center ${
               visibleSections.has('12') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
             }`}
           >
@@ -274,7 +274,9 @@ export default function SurrogacyCost() {
             茁壮套餐最大的不同在哪里?
           </p>
           <p className="h2-text text-white mb-10 md:mb-20 text-center">
-            全面性和无忧保障除了标准代孕服务外，该套餐还提供全包保险，酒盖从胚胎移植失败到意外流产等所有潜在风险确保客户在任何突发情况下无需额外支付费用。同时,茁壮套餐还包括升级的管家式服务，从医疗预约到旅行安排，甚至代孕过程中的实时支持，均由专属团队全程打理。它的核心优势在于为客户提供更高的安全性、更省心的流程管理，以及真正的一站式代孕解决方案。
+            全面性和无忧保障除了标准代孕服务外，该套餐还提供全包保险，酒盖从胚胎移植失败到意外流产等所有潜在风险确保客户在任何突发情况下无需额外支付费用。
+            同时，茁壮套餐还包括升级的管家式服务，从医疗预约到旅行安排，甚至代孕过程中的实时支持，均由专属团队全程打理。
+            它的核心优势在于为客户提供更高的安全性、更省心的流程管理，以及真正的一站式代孕解决方案。
           </p>
           <div className="w-full h-[1px] bg-white"></div>
         </div>
@@ -289,7 +291,7 @@ export default function SurrogacyCost() {
             如何支付代孕的费用?
           </p>
           <p className="h2-text text-white mb-10 md:mb-20 text-center">
-            每位客户将拥有专属信托账户，所有资金仅在符合合同条件时支付给代母、机构或其他第三方。信托公司会定期提供账务报告，确保资金管理透明、安全。支付流程通常分为两步:第一笔费用在确认代母或签署服务协议时支付至信托账户:第二笔费用酒盖代母的生活支出和医疗费用,按合同约定的时间或事件节点分期支付。通过这一方式，保障了资金使用的规范性和各方权益。
+            每位客户将拥有专属信托账户，所有资金仅在符合合同条件时支付给代母、机构或其他第三方。信托公司会定期提供账务报告，确保资金管理透明、安全。支付流程通常分为两步：第一笔费用在确认代母或签署服务协议时支付至信托账户：第二笔费用酒盖代母的生活支出和医疗费用，按合同约定的时间或事件节点分期支付。通过这一方式，保障了资金使用的规范性和各方权益。
           </p>
           <div className="w-full h-[1px] bg-white"></div>
         </div>
@@ -304,7 +306,7 @@ export default function SurrogacyCost() {
             如果您还没有胚胎
           </p>
           <p className="h2-text text-white mb-10 md:mb-20 text-center">
-            如果您还没有胚胎如果您尚未冷冻胚胎、还未决定选择哪家试管医院,或者需要卵子或精子捐赠者的帮助,我们可以为您提供经过 Sapling 严格筛选的医生和医院名单。您可以根据个人需求和常住地进行选择我们也可以为您直接安排合适的医院，帮助您顺利完成下一步的计划。
+            如果您还没有胚胎如果您尚未冷冻胚胎、还未决定选择哪家试管医院，或者需要卵子或精子捐赠者的帮助，我们可以为您提供经过 Sapling 严格筛选的医生和医院名单。您可以根据个人需求和常住地进行选择我们也可以为您直接安排合适的医院，帮助您顺利完成下一步的计划。
           </p>
         </div>
       </div>
