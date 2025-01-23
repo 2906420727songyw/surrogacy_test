@@ -4,6 +4,7 @@ import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
 import { AuthProvider } from "./components/AuthProvider";
+import { LanguageProvider } from "./language";
 
 const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
@@ -44,9 +45,12 @@ export default function RootLayout({
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <AuthProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <LanguageProvider>
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </LanguageProvider>
+          
         </AuthProvider>
       </body>
     </html>
