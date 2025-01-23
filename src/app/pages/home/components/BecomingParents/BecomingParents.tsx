@@ -5,11 +5,11 @@ import styles from './BecomingParents.module.css';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-
+import { useLanguage } from '@/app/language';
 export default function BecomingParents() {
   const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
-
+  const { translations } = useLanguage();
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -40,29 +40,17 @@ export default function BecomingParents() {
             isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'
           }`}
         >
-          成为准父母
+          {translations.home.BecomingParents.title}
         </h2>
         <p className="text-xs md:text-base text-white mb-1.5 md:mb-3">
-          套餐价格低至 145,000 美元
+        {translations.home.BecomingParents.desc}
         </p>
         
         
         <div className="flex justify-center mt-5 gap-4 md:gap-8 md:mt-10">
-          <Link href="../pages/ParentsSection">
-            <button className="w-20 h-6 md:w-28 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-white hover:bg-gray-100 transition duration-200">
-              了解更多
-            </button>
-          </Link>
-          <Link href="../pages/surrogacy-cost">
-            <button className="w-20 h-6 md:w-28 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-white hover:bg-gray-100 transition duration-200">
-              代孕费用
-            </button>
-          </Link>
-          <div onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=parent' ):router.push('/pages/auth/login?mode=register')}>
-            <button className="w-20 h-6 md:w-28 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-white hover:bg-gray-100 transition duration-200">
-              申请通道
-            </button>
-          </div>
+          {translations.home.BecomingParents.button.map((item:any,index:number)=>(
+            <button className="px-3 py-1 rounded-md font-medium text-black bg-white hover:bg-gray-100 transition duration-200" key={index} onClick={() => item.auth?Cookies.get('userData')?router.push(item.link[1]):router.push(item.link[0]):router.push(item.link[0])}>{item.text}</button>
+          ))}
         </div>
       </div>
     </section>

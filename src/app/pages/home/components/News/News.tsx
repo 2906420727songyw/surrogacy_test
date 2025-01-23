@@ -3,12 +3,12 @@ import styles from './News.module.css';
 import { useRouter } from 'next/navigation';
 import { useRef, useEffect, useState } from 'react';
 import list from './data';
-
+import { useLanguage } from '@/app/language';
 export default function News() {
   const router = useRouter();
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
-
+  const { translations } = useLanguage();
   const go_to_about = (index: number) => {
     router.push('/pages/about');
     setTimeout(() => {
@@ -87,13 +87,13 @@ export default function News() {
             isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'
           }`}
         >
-          关于我们
+          {translations.about_us_title.title}
         </h2>
         <div
           className="flex gap-[5rem] mx-5 overflow-hidden"
           ref={scrollContainerRef}
         >
-          {list.map((item, index) => (
+          {translations.about_us.map((item:any, index:number) => (
             <div
               key={index}
               className="cursor-pointer flex flex-col items-center gap-5"
@@ -107,11 +107,11 @@ export default function News() {
                 />
               </div>
               <div className={styles.articleHeader}>
-                <span className="flex flex-col gap-5 text-lg text-[#cdc6c0] mb-7.5">
+                <span className="flex flex-col gap-5 text-lg text-[#cdc6c0] mb-7.5 font-bold">
                   {item.name.slice(0, 32)}
                 </span>
                 <hr />
-                <p className="text-xs text-[#cdc6c0] md:text-base">
+                <p className="text-xs text-[#cdc6c0] md:text-base italic">
                   {item.role}
                 </p>
                 <p className="text-xs text-[#cdc6c0] md:text-base">
@@ -126,7 +126,7 @@ export default function News() {
           className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10"
           onClick={() => router.push('/pages/about')}
         >
-          了解更多
+          {translations.about_us_title.more}
         </button>
       </div>
     </section>
