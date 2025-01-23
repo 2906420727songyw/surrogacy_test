@@ -2,54 +2,15 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Cookies from 'js-cookie';
+import { useLanguage } from '@/app/language';
 
-const list = [{
-    text: '成为准父母',
-    link: '/pages/ParentsSection',
-    options: [ {
-        text: '代孕妈妈的匹配过程',
-        link: 'surrogacy-matching-process'
-    }, {
-        text: '单身父母和 LGBTQIA+ 群体',
-        link: 'egg-sperm-donation-help'
-    }, {
-        text: '代孕计划和流程',
-        link: 'surrogacy-plan-process'
-    }, {
-        text: '代孕套餐和费用',
-        link: '/pages/surrogacy-cost'
-    }]
-}, {
-    text: '成为代孕妈妈',
-    link: '/pages/BecomeSurrogate',
-    options: [{
-        text: '谁可以成为代孕妈妈',
-        link: 'who-can-be-surrogate'
-    }, {
-        text: '怎么筛选申请者',
-        link: 'become-surrogate-part2-content'
-    }, {
-        text: '如何成为代孕妈妈',
-        link: 'become-surrogate-part3-content'
-    }, {
-        text: '为什么选择我们',
-        link: 'become-surrogate-part4-1'
-    }, {
-        text: '薪酬和补偿',
-        link: 'become-surrogate-part4-2'
-    }]
-}, {
-    text: '关于我们',
-    link: '/pages/about',
-}, {
-    text: '资讯',
-    link: '/pages/resources',
-}, {
-    text: '职业生涯',
-    link: '/pages/careers',
-}]
 
 export default function Header() {
+    // const language = useLanguage();
+    const { language, setLanguage, translations } = useLanguage();
+    const toggleLanguage = () => {
+        setLanguage(language === 'en' ? 'zn' : 'en');
+  };
 
     const router = useRouter();
     const [isScrolled, setIsScrolled] = useState(false);
@@ -117,11 +78,11 @@ export default function Header() {
                 <img src='/images/logo.jpg' className='header-switch:w-12 header-switch:h-12 w-11 h-11' />
                 <div className='header-switch:text-[1.1rem] text-[0.6rem] flex flex-col items-center'>
                     Sapling Surrogacy<br />
-                    <span className='header-switch:text-[1rem] text-[0.55rem]'>小树苗代孕中心</span>
+                    <span className='header-switch:text-[1rem] text-[0.55rem]'>{translations.header.title}</span>
                 </div>
             </div>
             <div className='hidden header-switch:flex flex gap-5'>
-                {list.map((item, index) => {
+                {translations.header.options.map((item:{text:string,link:string,options:[any]}, index:number) => {
                     return <div className='group hover:cursor-pointer relative' key={index}>
                         <div className={`${item.link === currentPath ? 'underline' : 'text-white'} 'whitespace-nowrap'`} onClick={() => router.push(item.link)}>
                             {item.text}
@@ -142,22 +103,26 @@ export default function Header() {
             </div>
             <div className='hidden header-switch:flex flex gap-5 items-center justify-between'>
                 <div className='group relative'>
-                    <div className='hover:cursor-pointer' onClick={() => clickLogin()}>{Cookies.get('userData') ? JSON.parse(Cookies.get('userData') || '{}')?.name : '登录'}</div>
+                    <div className='hover:cursor-pointer' onClick={() => clickLogin()}>{Cookies.get('userData') ? JSON.parse(Cookies.get('userData') || '{}')?.name : translations.header.login}</div>
                     {
                         !Cookies.get('userData') && (
                             <div className='absolute left-0 hidden group-hover:block rounded bg-[rgba(164,132,114,0.7)] p-1 min-w-full'>
-                                <div className='p-2 hover:underline text-sm whitespace-nowrap' onClick={() => routerToCheckLogin('parent')}>成为准父母</div>
-                                <div className='p-2 hover:underline text-sm whitespace-nowrap' onClick={() => routerToCheckLogin('surrogacy')}>成为代孕妈妈</div>
+                                {
+                                    translations.header.login_option.map((item:{text:string,link:string}, index:number) => {
+                                        return <div key={index} className='p-2 hover:underline text-sm whitespace-nowrap' onClick={() => routerToCheckLogin(item.link)}>{item.text}</div>
+                                    })
+                                }
                             </div>
                         )
                     }
                 </div>
 
                 <div className='group relative'>
-                    <div className='hover:cursor-pointer' onClick={() => Cookies.get('userData') ? router.push('/pages/auth/profile?type=appointment') : router.push('/pages/auth/login?mode=register')}>预约</div>
+                    <div className='hover:cursor-pointer' onClick={() => Cookies.get('userData') ? router.push('/pages/auth/profile?type=appointment') : router.push('/pages/auth/login?mode=register')}>{translations.header.appointment}</div>
 
                 </div>
-                <div className='hover:cursor-pointer'>搜索</div>
+                <div className='hover:cursor-pointer'>{translations.header.search}</div>
+                <div className='hover:cursor-pointer' onClick={toggleLanguage}>{translations.language}</div>
             </div>
             <div className='header-switch:hidden flex items-center'>
                 {
@@ -181,20 +146,16 @@ export default function Header() {
                             </svg>
                         </div>
                         <div className='hover:cursor-pointer my-5' onClick={() => clickLogin()}>
-                            {Cookies.get('userData') ? JSON.parse(Cookies.get('userData') || '{}')?.name : '登录'}
+                            {Cookies.get('userData') ? JSON.parse(Cookies.get('userData') || '{}')?.name : translations.header.login}
                         </div>
                         <div className={Cookies.get('userData') ? 'hidden' : ''}>
 
                         <div className={'border-b border-gray-300 my-54'}></div>
-                        <div className='flex flex-col gap-5 mt-2 relative left-5' onClick={() => routerToCheckLogin('parent')}>
-                            成为准父母
+                        {translations.header.login_option.map((item:{text:string,link:string}, index:number) => {
+                            return <div key={index} className='hover:cursor-pointer my-5' onClick={() => routerToCheckLogin(item.link)}>{item.text}</div>
+                        })}
                         </div>
-
-                        <div className='flex flex-col gap-5 mt-2 relative left-5' onClick={() => routerToCheckLogin('surrogacy')}>
-                            成为代孕妈妈
-                        </div>
-                        </div>
-                        {list.map((item, index) => (
+                        {translations.header.options.map((item:{text:string,link:string,options:[any]}, index:number) => (
                             <div key={index}>
                                 <div className='font-bold hover:cursor-pointer my-5' onClick={() => {
                                     router.push(item.link)
@@ -211,8 +172,9 @@ export default function Header() {
                         <div className='flex gap-2 flex-col'>
                             {/* <div className='py-2 hover:cursor-pointer' onClick={() => routerToCheckLogin('/pages/auth/profile?type=parent')}>成为准父母</div>
                             <div className='py-2 hover:cursor-pointer' onClick={() => routerToCheckLogin('/pages/auth/profile?type=surrogacy')}>成为代孕妈妈</div> */}
-                            <div className='py-2 hover:cursor-pointer' onClick={() => Cookies.get('userData') ? router.push('/pages/auth/profile?type=appointment') : router.push('/pages/auth/login?mode=register')}>预约</div>
-                            <div className='py-2 hover:cursor-pointer'>搜索</div>
+                            <div className='py-2 hover:cursor-pointer' onClick={() => Cookies.get('userData') ? router.push('/pages/auth/profile?type=appointment') : router.push('/pages/auth/login?mode=register')}>{translations.header.appointment}</div>
+                            <div className='py-2 hover:cursor-pointer'>{translations.header.search}</div>
+                            <div className='hover:cursor-pointer' onClick={toggleLanguage}>{translations.language}</div>
                         </div>
                     </div>
                 )}
