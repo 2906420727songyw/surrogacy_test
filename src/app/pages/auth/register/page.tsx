@@ -42,6 +42,8 @@ function RegisterContent() {
     role: type
   });
 
+  const [code,setCode] = useState("");
+
   const [fieldNames, setFieldNames] = useState({
     ...initialFieldNames,
     verificationCode: 'register_verification_code',
@@ -100,36 +102,60 @@ function RegisterContent() {
     setConfirmPassword(e.target.value)
   }
 
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,        // 滚动到顶部
+    behavior: 'smooth', // 平滑滚动
+  });
+}
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       if (!agreeTerms) {
         toast.error('请同意服务条款');
+        scrollToTop()
+
         return;
       }
-      if(formData.password !== confirmPassword){
+      if(formData.password !== confirmPassword){        
         toast.error('密码不一致');
+        scrollToTop()
         return;
       }
+
+      if(code !== verificationCode){
+        toast.error('验证码不正确');
+        scrollToTop()
+        return;
+      }
+
       setIsLoading(true);
+      // return
       await register(formData); 
+    
       console.log(formData);
     } catch (error) {
       console.error('注册失败:', error);
     } finally {
+      scrollToTop()
       setIsLoading(false);
     }
   };
 
   const handleSendVerificationCode = async () => {
+    // 如果正在倒计时，直接返回不执行
+    if (countdown > 0) {
+      return;
+    }
+
     if (!formData.email) {
       toast.error('请先输入邮箱地址');
       return;
     }
+
     try {
       setIsSendingCode(true);
-      // TODO: 调用发送验证码的 API
-      // await sendVerificationCode(formData.email);
       
       // 开始倒计时
       setCountdown(60);
@@ -143,13 +169,21 @@ function RegisterContent() {
         });
       }, 1000);
       
-      toast.success('验证码已发送');
       axios.post('https://nextjs-boilerplate-eight-lemon-49.vercel.app/server/api/send-email', {
-         to: formData.email,
-         "subject": "Test Email",
-  "text": "This is a test email.",
-  "html": "<p>This is a test email.</p>"
-        });
+        to: formData.email,
+        "subject": "Test Email",
+        "text": "This is a test email.",
+        "html": "<p>This is a test email.</p>"
+      }).then(res=>{
+        console.log(res);
+        if(res.data.success){
+          toast.success('验证码已发送');
+          setCode(res.data.code);
+        }else{
+          toast.error('发送验证码失败');
+        }
+      })
+
     } catch (error) {
       toast.error('发送验证码失败');
     } finally {
@@ -230,7 +264,8 @@ function RegisterContent() {
             value={formData.password}
             onChange={handleChange}
             required
-            label="所需密码"
+            label="密码"
+            placeholder="请输入密码"
           />
           <CustomInput
             type="password"
@@ -239,6 +274,7 @@ function RegisterContent() {
             onChange={passwordMatch}
             required
             label="确认密码"
+            placeholder="请再次输入密码"
           />
           <CustomInput
             type="tel"

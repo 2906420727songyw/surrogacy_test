@@ -165,6 +165,11 @@ export default function ParentApplicationContent() {
       console.error('提交失败:', error);
       toast.error(error.message || '提交失败，请稍后重试');
     } finally {
+      window.scrollTo({
+        top: 0,        // 滚动到顶部
+        behavior: 'smooth', // 平滑滚动
+      });
+    
       setIsSubmitting(false);
     }
   };

@@ -112,6 +112,10 @@ export default function SurrogateApplicationContent() {
       console.error('提交申请失败:', apiError);
       toast.error(apiError?.response?.data?.message || '提交失败，请稍后重试');
     } finally {
+      window.scrollTo({
+        top: 0,        // 滚动到顶部
+        behavior: 'smooth', // 平滑滚动
+      });
       setIsSubmitting(false);
     }
   };
