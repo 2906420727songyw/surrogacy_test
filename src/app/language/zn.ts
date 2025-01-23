@@ -1,6 +1,6 @@
 export default {
     test:'测试',
-    language:'中文/EN',
+    language:'EN',
     header:{
         title: "小树苗代孕中心",
         options:[{
