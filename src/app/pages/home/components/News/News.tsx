@@ -8,6 +8,8 @@ export default function News() {
   const router = useRouter();
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   const go_to_about = (index: number) => {
     router.push('/pages/about');
@@ -16,46 +18,28 @@ export default function News() {
     }, 500);
   };
 
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (container) {
-      const handleWheel = (event: WheelEvent) => {
-        const maxScrollLeft = container.scrollWidth - container.clientWidth;
-
-        if (
-          (event.deltaY < 0 && container.scrollLeft > 0) ||
-          (event.deltaY > 0 && container.scrollLeft < maxScrollLeft)
-        ) {
-          event.preventDefault();
-          container.scrollLeft += event.deltaY;
-        }
-      };
-
-      let startX: number;
-      let scrollLeft: number;
-
-      const handleTouchStart = (event: TouchEvent) => {
-        startX = event.touches[0].pageX - container.offsetLeft;
-        scrollLeft = container.scrollLeft;
-      };
-
-      const handleTouchMove = (event: TouchEvent) => {
-        const x = event.touches[0].pageX - container.offsetLeft;
-        const walk = (x - startX) * 2; // 滑动速度
-        container.scrollLeft = scrollLeft - walk;
-      };
-
-      container.addEventListener('wheel', handleWheel);
-      container.addEventListener('touchstart', handleTouchStart);
-      container.addEventListener('touchmove', handleTouchMove);
-
-      return () => {
-        container.removeEventListener('wheel', handleWheel);
-        container.removeEventListener('touchstart', handleTouchStart);
-        container.removeEventListener('touchmove', handleTouchMove);
-      };
+  const scrollTo = (index: number) => {
+    if (scrollContainerRef.current) {
+      const scrollLeft = isMobile ? index * window.innerWidth : index * scrollContainerRef.current.offsetWidth;
+      scrollContainerRef.current.scrollTo({
+        left: scrollLeft, 
+        behavior: 'smooth'
+      });
+      setCurrentIndex(index);
     }
-  }, []);
+  };
+
+  const handlePrevClick = () => {
+    if (currentIndex > 0) {
+      scrollTo(currentIndex - 1);
+    }
+  };
+
+  const handleNextClick = () => {  
+    if (currentIndex < list.length - (isMobile ? 1 : 3)) {
+      scrollTo(currentIndex + 1);
+    }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -75,7 +59,18 @@ export default function News() {
       observer.observe(element);
     }
 
-    return () => observer.disconnect();
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize(); // 初始化时判断一次
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return (
@@ -89,38 +84,56 @@ export default function News() {
         >
           关于我们
         </h2>
-        <div
-          className="flex gap-[5rem] mx-5 overflow-hidden"
-          ref={scrollContainerRef}
-        >
-          {list.map((item, index) => (
-            <div
-              key={index}
-              className="cursor-pointer flex flex-col items-center gap-5"
-              onClick={() => go_to_about(index)}
-            >
-              <div className="w-[21rem] h-[28rem] overflow-hidden rounded-lg">
-                <img
-                  className={styles.articleImage}
-                  src={index >2 ? 'https://loyal-cn.oss-ap-southeast-1.aliyuncs.com/macOS%20Monterey%20Wallpaper.jpg' : `/images/about/img/${index}.png`}
-                  alt={item.name}
-                />
+        <div className="relative">
+          <button 
+            className={`${styles.controlButton} ${styles.prevButton}`}
+            onClick={handlePrevClick}
+            disabled={currentIndex === 0}
+          >
+            &lt;
+          </button>
+          <div
+            className={`w-full md:w-auto flex ${isMobile ? 'justify-center' : ''} gap-0 md:gap-[5rem] mx-0 md:mx-16 overflow-hidden`}
+            ref={scrollContainerRef}
+          >
+            {list.map((item, index) => (
+              <div
+                key={index}
+                className={`cursor-pointer flex flex-col items-center gap-5 w-screen md:w-auto ${
+                  isMobile && index !== currentIndex ? 'hidden' : ''
+                }`}
+                onClick={() => go_to_about(index)}
+              >
+                <div className="w-[18rem] h-[22rem] overflow-hidden rounded-lg">
+                  <img
+                    className={styles.articleImage}
+                    src={index >2 ? 'https://loyal-cn.oss-ap-southeast-1.aliyuncs.com/macOS%20Monterey%20Wallpaper.jpg' : `/images/about/img/${index}.png`}
+                    alt={item.name}
+                  />
+                </div>
+                <div className={styles.articleHeader}>
+                  <span className="flex flex-col gap-5 text-lg font-bold text-[#cdc6c0] mb-7.5">
+                    {item.name.slice(0, 32)}
+                  </span>
+                  <hr />
+                  <p className="text-xs italic text-[#cdc6c0] md:text-base">
+                    {item.role}
+                  </p>
+                  <p className="text-xs text-[#cdc6c0] md:text-base">
+                    {item.content.toString().slice(0, 50) + '...'}
+                  </p>
+                  <hr />
+                </div>
               </div>
-              <div className={styles.articleHeader}>
-                <span className="flex flex-col gap-5 text-lg text-[#cdc6c0] mb-7.5">
-                  {item.name.slice(0, 32)}
-                </span>
-                <hr />
-                <p className="text-xs text-[#cdc6c0] md:text-base">
-                  {item.role}
-                </p>
-                <p className="text-xs text-[#cdc6c0] md:text-base">
-                  {item.content.toString().slice(0, 50) + '...'}
-                </p>
-                <hr />
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          <button
+            className={`${styles.controlButton} ${styles.nextButton}`}  
+            onClick={handleNextClick}
+            disabled={currentIndex >= list.length - (isMobile ? 1 : 3)}
+          >
+            &gt;
+          </button>
         </div>
         <button
           className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10"
