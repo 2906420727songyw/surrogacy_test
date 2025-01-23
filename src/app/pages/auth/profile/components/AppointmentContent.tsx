@@ -99,6 +99,30 @@ export default function AppointmentContent() {
     });
   };
 
+  const convertToCaliforniaTime = (localDateStr: string, selectedTimeZone: string) => {
+    // 解析时区的UTC偏移量
+    const utcOffset = parseInt(selectedTimeZone.split('UTC')[1].split(' ')[0]);
+    
+    // 创建日期对象，注意：这里的日期字符串需要添加时区信息
+    const localDate = new Date(`${localDateStr}Z`); // 添加 'Z' 表示这是UTC时间
+    
+    // 调整到选中的时区时间
+    localDate.setHours(localDate.getHours() + utcOffset);
+    
+    // 再调整到加州时区（UTC-7）
+    localDate.setHours(localDate.getHours() - 7);
+    
+    // 格式化为 YYYY-MM-DD HH:mm:ss
+    const year = localDate.getFullYear();
+    const month = String(localDate.getMonth() + 1).padStart(2, '0');
+    const day = String(localDate.getDate()).padStart(2, '0');
+    const hours = String(localDate.getHours()).padStart(2, '0');
+    const minutes = String(localDate.getMinutes()).padStart(2, '0');
+    const seconds = String(localDate.getSeconds()).padStart(2, '0');
+    
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  };
+
   const handleAppointment = async () => {
     if (!selectedDate && !selectedTime) {
       toast.error('请选择预约日期和时间');
@@ -117,26 +141,30 @@ export default function AppointmentContent() {
       setIsLoading(true);
       const userDataStr = Cookies.get('userData');
       let userData = {
-        id:""
+        id: ""
       }
       if (userDataStr) {
         userData = JSON.parse(userDataStr);
       }
 
       const formattedTime = convertTimeFormat(selectedTime);
-      const date = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1<10 ? '0' : ''}${currentDate.getMonth() + 1}-${Number(selectedDate)<10?`0${selectedDate}`:selectedDate} ${formattedTime}`
+      const localDate = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1<10 ? '0' : ''}${currentDate.getMonth() + 1}-${Number(selectedDate)<10?`0${selectedDate}`:selectedDate} ${formattedTime}`;
+      console.log("本地时间",localDate);
+      // 转换为加州时间
+      const californiaDate = convertToCaliforniaTime(localDate, selectedTimeZone);
+      
       const appointmentData = {
         userId: userData.id,
-        appointmentTime: date,
+        appointmentTime: californiaDate,
         type: type
       };
+      
       await appointmentsApi.create(appointmentData).then(() => {
         setIsSuccess(true); 
       });
     } catch {
       toast.error('预约失败，请稍后重试');
-      
-    } finally{
+    } finally {
       setIsLoading(false);
     }
   };
