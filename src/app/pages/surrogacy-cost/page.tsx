@@ -1,11 +1,19 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './SurrogacyCost.module.css';
 import Image from 'next/image';
 
-const SurrogacyCost: React.FC = () => {
+export default function SurrogacyCost() {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
+  const [visibleElements, setVisibleElements] = useState(new Set<string>());
+  const elementsRef = useRef<{ [key: string]: HTMLElement | null }>({});
+
+  const setRef = (id: string) => (el: HTMLElement | null) => {
+    if (el) {
+      elementsRef.current[id] = el;
+    }
+  };
 
   useEffect(() => {
     const options = {
@@ -31,6 +39,31 @@ const SurrogacyCost: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('data-animate-id');
+            if (id) {
+              setVisibleElements(prev => new Set([...prev, id]));
+              observer.unobserve(entry.target);
+            }
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    Object.values(elementsRef.current).forEach(element => {
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className={`${styles.content} fade-in`}>
         <Image 
@@ -42,13 +75,21 @@ const SurrogacyCost: React.FC = () => {
         placeholder="blur"
         blurDataURL="/images/surrogacy-cost/image1.jpg"
       />
-      <p className="h1-text text-white mb-5 md:mb-10 text-center px-5 mt-10 md:mt-20">
-      Sapling 提供的套餐
-      </p>
-      <p className="h2-text text-white mb-20 md:mb-40 text-center px-5">
-      Sapling提供两种套餐来满足您的需求,您可以根据您的个人情况进行选择。<br/>
-      无论如何，我们都希望能够给您提供最舒心的服务，全程陪伴您走过这段特别的旅程。
-      </p>
+      <div className="w-full flex flex-col items-center justify-center bg-[#A48472] px-5 md:px-20 py-10 md:py-20">
+        <p 
+          ref={setRef('title')}
+          data-animate-id="title"
+          className={`h1-text text-white mb-10 md:mb-16 ${
+            visibleElements.has('title') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
+          }`}
+        >
+          Sapling 提供的套餐
+        </p>
+        <p className="h2-text text-white mb-20 md:mb-40 text-center px-5">
+        Sapling提供两种套餐来满足您的需求,您可以根据您的个人情况进行选择。<br/>
+        无论如何，我们都希望能够给您提供最舒心的服务，全程陪伴您走过这段特别的旅程。
+        </p>
+      </div>
     <div className={styles.packageContainer}>
       {/* 左侧 */}
       <div className={styles.leftPackage}>
@@ -223,34 +264,50 @@ const SurrogacyCost: React.FC = () => {
         blurDataURL="/images/surrogacy-cost/image2.jpg"
       />
         <div className="w-full flex flex-col items-center justify-center px-5 md:px-80 mt-16 md:mt-20">
-            <p className="h1-text text-white mb-8 md:mb-10 text-center">
-                茁壮套餐最大的不同在哪里?
-            </p>
-            <p className="h2-text text-white mb-10 md:mb-20 text-center">
+          <p 
+            ref={setRef('title1')}
+            data-animate-id="title1"
+            className={`h1-text text-white mb-8 md:mb-10 text-center ${
+              visibleElements.has('title1') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
+            }`}
+          >
+            茁壮套餐最大的不同在哪里?
+          </p>
+          <p className="h2-text text-white mb-10 md:mb-20 text-center">
             全面性和无忧保障除了标准代孕服务外，该套餐还提供全包保险，酒盖从胚胎移植失败到意外流产等所有潜在风险确保客户在任何突发情况下无需额外支付费用。同时,茁壮套餐还包括升级的管家式服务，从医疗预约到旅行安排，甚至代孕过程中的实时支持，均由专属团队全程打理。它的核心优势在于为客户提供更高的安全性、更省心的流程管理，以及真正的一站式代孕解决方案。
-            </p>
-            <div className="w-full h-[1px] bg-white"></div>
+          </p>
+          <div className="w-full h-[1px] bg-white"></div>
         </div>
         <div className="w-full flex flex-col items-center justify-center px-5 md:px-80 mt-10 md:mt-20">
-            <p className="h1-text text-white mb-8 md:mb-10 text-center">
-                如何支付代孕的费用?
-            </p>
-            <p className="h2-text text-white mb-10 md:mb-20 text-center">
+          <p 
+            ref={setRef('title2')}
+            data-animate-id="title2"
+            className={`h1-text text-white mb-8 md:mb-10 text-center ${
+              visibleElements.has('title2') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
+            }`}
+          >
+            如何支付代孕的费用?
+          </p>
+          <p className="h2-text text-white mb-10 md:mb-20 text-center">
             每位客户将拥有专属信托账户，所有资金仅在符合合同条件时支付给代母、机构或其他第三方。信托公司会定期提供账务报告，确保资金管理透明、安全。支付流程通常分为两步:第一笔费用在确认代母或签署服务协议时支付至信托账户:第二笔费用酒盖代母的生活支出和医疗费用,按合同约定的时间或事件节点分期支付。通过这一方式，保障了资金使用的规范性和各方权益。
-            </p>
-            <div className="w-full h-[1px] bg-white"></div>
+          </p>
+          <div className="w-full h-[1px] bg-white"></div>
         </div>
         <div className="w-full flex flex-col items-center justify-center px-5 md:px-80 mt-10 md:mt-20">
-            <p className="h1-text text-white mb-8 md:mb-10 text-center">
-                如果您还没有胚胎
-            </p>
-            <p className="h2-text text-white mb-10 md:mb-20 text-center">
+          <p 
+            ref={setRef('title3')}
+            data-animate-id="title3"
+            className={`h1-text text-white mb-8 md:mb-10 text-center ${
+              visibleElements.has('title3') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
+            }`}
+          >
+            如果您还没有胚胎
+          </p>
+          <p className="h2-text text-white mb-10 md:mb-20 text-center">
             如果您还没有胚胎如果您尚未冷冻胚胎、还未决定选择哪家试管医院,或者需要卵子或精子捐赠者的帮助,我们可以为您提供经过 Sapling 严格筛选的医生和医院名单。您可以根据个人需求和常住地进行选择我们也可以为您直接安排合适的医院，帮助您顺利完成下一步的计划。
-            </p>
+          </p>
         </div>
       </div>
     </div>
   );
-};
-
-export default SurrogacyCost; 
+} 
