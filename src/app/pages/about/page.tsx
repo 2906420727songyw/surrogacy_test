@@ -70,11 +70,11 @@ export default function AboutPage() {
               <h2 
                 ref={setRef(`title-${index}`)}
                 data-animate-id={`title-${index}`}
-                className={`h1-text text-white my-10 md:text-2xl md:my-14 ${visibleElements.has(`title-${index}`) ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
+                className={`h1-text text-white my-5 md:text-2xl md:my-7 ${visibleElements.has(`title-${index}`) ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
               >
                 {item.name}
               </h2>
-              <p className='text-white mb-10 text-[1.25rem]'>{item.role}</p>
+              <p className='text-white mb-5 text-[1.25rem]'>{item.role}</p>
               <p className="text-white h2-text max-w-[60vw]">
                 {item.content.map((content, contentIndex) => ( 
                   <span key={contentIndex}>{content}</span>
