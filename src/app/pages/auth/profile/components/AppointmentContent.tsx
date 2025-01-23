@@ -15,15 +15,19 @@ export default function AppointmentContent() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
+  const [selectedTimeZone, setSelectedTimeZone] = useState('UTC+8 (中国标准时间)');
   const [isTimeZoneOpen, setIsTimeZoneOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const timeZones = [
-    'GMT+8',
-    'GMT+9',
-    'GMT+10',
-    // ... 其他时区
+    'UTC+8 (中国标准时间)',
+    'UTC-4 (美东时间)',
+    'UTC-5 (美中时间)',
+    'UTC-6 (山地时间)',
+    'UTC-7 (太平洋时间)',
+    'UTC-8 (阿拉斯加时间)',
+    'UTC-10 (夏威夷时间)'
   ];
 
   const timeSlots = [
@@ -181,18 +185,19 @@ export default function AppointmentContent() {
                     onClick={() => setIsTimeZoneOpen(!isTimeZoneOpen)}
                   >
                     <span className="opacity-60">*</span>
-                    <span>选择所在时区</span>
+                    <span>{selectedTimeZone}</span>
                     <span className="text-[0.75rem] ml-1">▼</span>
                   </button>
                   
                   {/* 下拉菜单 */}
                   {isTimeZoneOpen && (
-                    <div className="absolute top-full right-0 mt-1 w-[7.5rem] bg-white rounded-md shadow-lg py-1 z-50">
+                    <div className="absolute top-full right-0 mt-1 w-[12rem] text-sm bg-white rounded-md shadow-lg py-1 z-50">
                       {timeZones.map((zone) => (
                         <button
                           key={zone}
                           className="w-full px-4 py-2 text-left text-[#8E7362] hover:bg-gray-100"
                           onClick={() => {
+                            setSelectedTimeZone(zone);
                             setIsTimeZoneOpen(false);
                           }}
                         >

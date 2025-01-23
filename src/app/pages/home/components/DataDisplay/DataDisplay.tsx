@@ -35,31 +35,35 @@ export default function DataDisplay() {
             isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'
           }`}
         >
-          Sapling Surrogacy
+          小树苗代孕中心
         </h2>
         <p className="text-xs leading-6 mb-2.5 text-white md:text-base">
-          成功和热情帮得您信赖，作为一家提供全方位服务的代孕机构，
+          专业铸就成功，热情赢得信赖。
         </p>
         <p className="text-xs leading-6 mb-2.5 text-white md:text-base">
-          Sapling Surrogacy 为父母和代孕妈妈提供专业知识，经验以及 30 年来帮助各种家庭成长所积累的热情
+          作为一家全方位服务的代孕机构，小树苗专注于为准父母和代孕者提供专业支持与丰富经验。凭
+        </p>
+        <p className="text-xs leading-6 mb-2.5 text-white md:text-base">
+          借 20 年来助力多元家庭成长的热忱，我们陪伴您实现家庭梦想的每一步。
         </p>
         <div className={styles.dataItemsContainer}>
           <div className={styles.dataItems}>
             <div className={`${styles.dataItem} ${styles.circle}`}>
-              <div className={styles.dataValue}>99.4%</div>
-              <div className={styles.dataDescription}>我们的父母带着孩子回家居住在全球 73 个国家</div>
+              <div className={styles.dataValue}>56</div>
+              <div className={styles.dataDescription}>
+                我们的客户遍布全球 56 个国家</div>
             </div>
             <div className={`${styles.dataItem} ${styles.circle}`}>
-              <div className={styles.dataValue}>3400+</div>
-              <div className={styles.dataDescription}>婴儿出生在我们的帮助</div>
+              <div className={styles.dataValue}>100+</div>
+              <div className={styles.dataDescription}>我们每年帮助超过 100 个家庭实现梦想</div>
             </div>
             <div className={`${styles.dataItem} ${styles.circle}`}>
-              <div className={styles.dataValue}>50%</div>
-              <div className={styles.dataDescription}>我们的代理人回头客或推荐人</div>
+              <div className={styles.dataValue}>67+</div>
+              <div className={styles.dataDescription}>我们与全美超过 67 家试管医院建立了合作关系</div>
             </div>
             <div className={`${styles.dataItem} ${styles.circle}`}>
-              <div className={styles.dataValue}>44%</div>
-              <div className={styles.dataDescription}>我们的代理人是回头客或推荐人</div>
+              <div className={styles.dataValue}>99.3%</div>
+              <div className={styles.dataDescription}>我们有行业领先的 99.3% 一次成功率，为您提供更高保障</div>
             </div>
           </div>
         </div>

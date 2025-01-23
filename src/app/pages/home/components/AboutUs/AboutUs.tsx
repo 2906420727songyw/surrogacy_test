@@ -82,13 +82,13 @@ export default function AboutUs() {
             isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'
           }`}
         >
-          Sapling Surrogacy
+          小树苗代孕中心
         </p>
         <p className="text-xs text-white mb-1.5 md:mb-3 md:text-base">
-          是一家提供全方位服务的代孕机构，
+          行业领先的全方位服务代孕机构，
         </p>
         <p className="text-xs text-white mb-1.5 md:mb-3 md:text-base">
-          拥有最高的成功率，由一支热衷于帮助人们建立家庭的团队领导
+          以卓越的成功率和贴心的专业支持，致力于为每一位客户打造安心、温暖的家庭梦想之旅
         </p>
       </div>
       <div className={styles.bottomGradientBar}/>
