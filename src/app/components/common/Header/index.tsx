@@ -124,7 +124,9 @@ export default function Header() {
                 <div className='hover:cursor-pointer'>{translations.header.search}</div>
                 <div className='hover:cursor-pointer' onClick={toggleLanguage}>{translations.language}</div>
             </div>
-            <div className='header-switch:hidden flex items-center'>
+           <div className='header-switch:hidden flex items-center gap-2'>
+            <div onClick={toggleLanguage}>{translations.language}</div>
+           <div >
                 {
                     !isMenuOpen ? (
                         <div onClick={() => setIsMenuOpen(!isMenuOpen)} className='focus:outline-none'>
@@ -179,6 +181,8 @@ export default function Header() {
                     </div>
                 )}
             </div>
+
+           </div>
         </div>
     )
 }
