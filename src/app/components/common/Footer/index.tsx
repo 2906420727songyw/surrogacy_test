@@ -10,11 +10,13 @@ import CustomerServiceChat from '../../customer';
 import { useRouter,usePathname } from 'next/navigation';
 import Cookies from 'js-cookie';
 import { CustomerServiceOutlined } from '@ant-design/icons';
+import { useLanguage } from '@/app/language';
 
 export default function Footer() {
     const router = useRouter();
     const currentPath = usePathname();
     const [isChatOpen, setIsChatOpen] = useState(false);
+    const { translations } = useLanguage();
     const routerToScroll = (route:string,link:string)=>{
         if(currentPath !== route)router.push(route);
         else router.push('/');
@@ -28,7 +30,7 @@ export default function Footer() {
         <div className='flex justify-between gap-20 px-8 py-16 bg-[#A36E65] flex-wrap md:px-40 md:py-20 text-white font-sans'>
             <div className='w-auto flex gap-10 md:gap-40 bg-[#A36E65] flex-wrap text-white '>
         {
-            list.slice(0, 2).map((item,index)=>(
+            translations.footer.slice(0, 2).map((item:{text:string,link:string,options:[any]},index:number)=>(
                 <div key={index}>
                     <p className='hover:cursor-pointer text-sm md:text-base' onClick={()=>router.push(item.link)}>{item.text}</p>
                     {
@@ -45,7 +47,7 @@ export default function Footer() {
         }
         </div>
         <div className={styles.verticalList}>
-            {list.slice(2).map((item, index) => (
+            {translations.footer.slice(2).map((item:{text:string,link:string}, index:number) => (
                 <p 
                     key={index}
                     className='hover:cursor-pointer text-sm md:text-base' 
@@ -67,15 +69,15 @@ export default function Footer() {
             )
         }
         <div className={styles.info}>
-            <h3>探索</h3>
+            <h3>{translations.footer_other.title}</h3>
             
             <div className={styles.socialIcons}>
                 <Link href={`${routes.auth.login}?type=parent`} className={styles.logIn}>
-                <span>登录：成为准父母</span>
+                <span>{translations.footer_other.span[0]}</span>
                 <Image src="/images/footer/右箭头.png" alt="Arrow Right" width={24} height={24} />
                 </Link>
                 <Link href={`${routes.auth.login}?type=surrogacy`} className={styles.logIn}>
-                <span>登录：成为代孕妈妈</span>
+                <span>{translations.footer_other.span[1]}</span>
                 <Image src="/images/footer/右箭头.png" alt="Arrow Right" width={24} height={24} />
                 </Link>
                 {/*<Link href='/pages/about'>

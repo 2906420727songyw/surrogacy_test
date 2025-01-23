@@ -11,7 +11,6 @@ export default function ResourcesComponent() {
   const [visibleElements, setVisibleElements] = useState(new Set<string>());
   const elementsRef = useRef<{ [key: string]: HTMLElement | null }>({});
   const [selectedTab, setSelectedTab] = useState<'intended_parent' | 'surrogate_mom'>('intended_parent');
-  const [expandedReviews, setExpandedReviews] = useState<number[]>([]);
   const [visibleReviews, setVisibleReviews] = useState<string[]>([]);
   const [intendedParentCount, setIntendedParentCount] = useState(4);
   const [surrogateMomCount, setSurrogateMomCount] = useState(4);
@@ -150,14 +149,6 @@ export default function ResourcesComponent() {
 
   const handleTabClick = (tab: 'intended_parent' | 'surrogate_mom') => {
     setSelectedTab(tab);
-  };
-
-  const toggleReview = (index: number) => {
-    if (expandedReviews.includes(index)) {
-      setExpandedReviews(expandedReviews.filter(i => i !== index));
-    } else {
-      setExpandedReviews([...expandedReviews, index]);
-    }
   };
 
   return (
@@ -324,20 +315,9 @@ export default function ResourcesComponent() {
                 />
                 <p className="text-base md:text-xl text-white ml-4 font-semibold">{review.name}</p>
               </div>
-              <div 
-                className="h2-text text-white mb-2 md:mb-0 overflow-hidden transition-all duration-300 ease-in-out"
-                style={{ height: expandedReviews.includes(index) ? 'auto' : '3em' }}  
-              >
+              <div className="h2-text text-white mb-2 md:mb-0">
                 {review.content}
               </div>
-              {review.content.length > 100 && (
-                <button 
-                  className="text-xs md:text-sm mt-2 text-white hover:underline"
-                  onClick={() => toggleReview(index)}
-                >
-                  {expandedReviews.includes(index) ? '收起' : '显示更多'}
-                </button>
-              )}
               <div className="w-full h-[1px] bg-white mt-5"></div>
             </div>
           ))}
