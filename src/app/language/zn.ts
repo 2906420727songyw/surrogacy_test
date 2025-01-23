@@ -147,8 +147,9 @@ export default {
         }
       ],
       about_us_title:{
-        title:'关于我们',
-        desc:'假文案,这世界上有1/6的人因为个人原因,无法组成完整的家庭,他们梦想着能够抱着自己的孩子入睡,渴望看到宝宝在自己的呵护下长大。因为代孕妈妈无私的帮助,让这一切都变得有可能,代孕妈妈的无私奉献让更多有需要的人能够成为了父亲和母亲。Sapling感谢每个愿意成为代孕母的人,并希望能够给与所有代孕母亲最好的帮助和关怀,照顾好代孕母亲的身体健康和信力建看的同时,我们会尽量去给所有的代孕母都争取更多的薪水',
+        title1:'小树苗代孕中心',
+        title2:'关于我们',
+        desc:'行业领先的全方位服务代孕机构，<br>以卓越的成功率和贴心的专业支持，致力于为每一位客户打造安心、温暖的家庭梦想之旅',
         more:'了解更多'
       },
       home:{
@@ -179,6 +180,47 @@ export default {
             },{
                 text:'申请通道',
                 link:['/pages/auth/profile?type=appointment','/pages/auth/login?mode=registerMother'],
+                auth:true
+            }]
+        },
+        saplingSurrogacy:{
+            title:'欢迎单身父母和 LGBTQIA+ 群体',
+            button:[{
+                text:'了解更多',
+                link:['/pages/ParentsSection'],
+                auth:false
+            },{
+                text:'申请通道',
+                link:['/pages/auth/profile?type=appointment','/pages/auth/login?mode=registerMother'],
+                auth:true
+            }]
+        },
+        DataDisplay:{
+            title:'小树苗代孕中心',
+            desc:'专业铸就成功，热情赢得信赖。<br>作为一家全方位服务的代孕机构，小树苗专注于为准父母和代孕者提供专业支持与丰富经验。凭<br>借20年来助力多元家庭成长的热忱，我们陪伴您实现家庭梦想的每一步。',
+            data:[{
+                number:'56',
+                desc:'我们的客户遍布全球56个国家'
+            },{
+                number:'100+',
+                desc:'我们每年帮助超过100个家庭实现梦想'
+            },{
+                number:'67+',
+                desc:'我们与全美超过67家试管医院建立了合作关系'
+            },{
+                number:'99.3%',
+                desc:'我们有行业领先的99.3%一次成功率，为您提供更高保障'
+            }]
+        },
+        Foundation:{
+            title:'用爱筑梦：基金会帮助更多不孕家庭拥有孩子',
+            button:[{
+                text:'了解更多',
+                link:[''],
+                auth:false
+            },{
+                text:'加入我们',
+                link:[''],
                 auth:true
             }]
         }

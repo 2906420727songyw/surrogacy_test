@@ -147,8 +147,9 @@ export default {
         }
       ],
       about_us_title:{
-        title:'About Us',
-        desc:'假文案,这世界上有1/6的人因为个人原因,无法组成完整的家庭,他们梦想着能够抱着自己的孩子入睡,渴望看到宝宝在自己的呵护下长大。因为代孕妈妈无私的帮助,让这一切都变得有可能,代孕妈妈的无私奉献让更多有需要的人能够成为了父亲和母亲。Sapling感谢每个愿意成为代孕母的人,并希望能够给与所有代孕母亲最好的帮助和关怀,照顾好代孕母亲的身体健康和信力建看的同时,我们会尽量去给所有的代孕母都争取更多的薪水',
+        title1:'Sapling Surrogacy',
+        title2:'About Us',
+        desc:'A premier full-service surrogacy agency renowned for its exceptional success rates and unwavering commitment to excellence. With a team of professionals, Sapling Surrogacy provides personalized guidance and comprehensive support, ensuring a seamless and compassionate experience as you embark on the life-changing journey of building your family.',
         more:'more'
       },
       home:{
@@ -179,6 +180,47 @@ export default {
             },{
                 text:'Apply Now',
                 link:['/pages/auth/profile?type=appointment','/pages/auth/login?mode=registerMother'],
+                auth:true
+            }]
+        },
+        saplingSurrogacy:{
+            title:'Welcome Single Parents and the LGBTQIA+ Community',
+            button:[{
+                text:'Learn More',
+                link:['/pages/ParentsSection'],
+                auth:false
+            },{
+                text:'Apply Now',
+                link:['/pages/auth/profile?type=parent','/pages/auth/login?mode=register'],
+                auth:true
+            }]
+        },
+        DataDisplay:{
+            title:'Sapling Surrogacy',
+            desc:'Trust, Expertise, and Heartfelt SupportWith 20 years of experience, Sapling Surrogacy is a full-service agency dedicated to helping intended parents and surrogates navigate their journeys with confidence and care. Combining professional expertise with a deep commitment to building families of all kinds, we provide personalized support every step of the way.',
+            data:[{
+                number:'56',
+                desc:'Our clients come from 56 countries worldwide.'
+            },{
+                number:'100+',
+                desc:'Each year, we help over 100 families achieve their dreams.'
+            },{
+                number:'67+',
+                desc:'We partner with more than 67 IVF clinics across the United States.'
+            },{
+                number:'99.3%',
+                desc:'We proudly offer an industry-leading first-time success rate of 99.3%, ensuring greater confidence for you.'
+            }]
+        },
+        Foundation:{
+            title:'Building Families with Love: <br>Supporting More Families on Their Path to Parenthood',
+            button:[{
+                text:'Learn More',
+                link:[''],
+                auth:false
+            },{
+                text:'Get Involved',
+                link:[''],
                 auth:true
             }]
         }

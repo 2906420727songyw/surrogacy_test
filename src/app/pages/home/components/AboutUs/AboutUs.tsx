@@ -6,11 +6,13 @@ import styles from './AboutUs.module.css';
 import Videos from './videos';
 // import VideosTest from './videos-test';
 import { useRouter } from 'next/navigation';
+import { useLanguage } from '@/app/language';
 
 export default function AboutUs() {
   const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const { translations } = useLanguage();
   let isDragging = false;
   let startX = 0;
   let scrollLeft = 0;
@@ -75,20 +77,16 @@ export default function AboutUs() {
   return (
     <section className={styles.aboutUs}>
       <div className={styles.gradientBar}></div>
-      <div className="mx-auto flex flex-col items-center w-full h-auto md:w-full px-5">
+      <div className="mx-auto flex flex-col items-center w-full h-auto md:w-full px-5 md:px-[150px]">
         <p 
           id="about-us-title"
           className={`text-4xl text-white mb-4 md:mb-8 md:text-6xl ${
             isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'
           }`}
         >
-          小树苗代孕中心
+          {translations.about_us_title.title1}
         </p>
-        <p className="text-xs text-white mb-1.5 md:mb-3 md:text-base">
-          行业领先的全方位服务代孕机构，
-        </p>
-        <p className="text-xs text-white mb-1.5 md:mb-3 md:text-base">
-          以卓越的成功率和贴心的专业支持，致力于为每一位客户打造安心、温暖的家庭梦想之旅
+        <p className="text-xs text-white mb-1.5 leading-6 md:leading-10 md:mb-3 md:text-base " dangerouslySetInnerHTML={{ __html: translations.about_us_title.desc }}>
         </p>
       </div>
       <div className={styles.bottomGradientBar}/>

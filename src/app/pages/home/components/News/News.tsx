@@ -82,7 +82,7 @@ export default function News() {
             isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'
           }`}
         >
-          {translations.about_us_title.title}
+          {translations.about_us_title.title2}
         </h2>
         <div className="relative">
           <button 
