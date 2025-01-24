@@ -1,3 +1,5 @@
+import { title } from "process";
+
 export default {
     test:'test',
     language:'中文',
@@ -225,6 +227,51 @@ export default {
                 link:[''],
                 auth:true
             }]
+        }
+    },
+    ParentsSection:{
+        ParentsSectionPart2:{
+            title:'Matching Process for Intended Parents and Surrogates',
+            step:[
+                {
+                    title:'Step 1: Screening Applicants',
+                    desc:'(Only 2% of applicants are accepted into Sapling’s surrogate database)'
+                },
+                {
+                    title:'Step 2: Ensuring Your Surrogate is Ready',
+                    desc:'(Over 90% of selected surrogates pass the second review)'
+                }
+            ],
+            firstStep:[
+                {
+                    title:'1. Application',
+                    text:'Every potential surrogate must complete a detailed application form to provide key information.',
+                    desc:'The application includes five major sections covering reproductive history, family medical history, family life, education, financial and employment status, and motivation for becoming a surrogate. According to U.S. surrogacy regulations, surrogates must meet the following criteria:<br>● Be between 21 and 45 years old<br>● Have given birth to and raised at least one child<br>● Be in good physical health with no major medical issues<br>● Have no history of substance abuse or problems with alcohol or tobacco<br>● Maintain a healthy Body Mass Index (BMI) under 30'
+                },
+                {
+                    title:'2. Initial Screening',
+                    text:'Ensuring Readiness for Surrogacy',
+                    desc:'Once the application is approved, we conduct in-depth interviews with candidates to understand their motivations and assess their ability to successfully complete the surrogacy journey. We partner with trusted third-party agencies to perform thorough background checks on both applicants and their partners. These checks include evaluations of family dynamics, financial stability, living conditions, and criminal history. Partner clinics carry out medical assessments, reviewing uterine health, pregnancy history, and any history of substance use. To ensure psychological readiness, candidates also undergo evaluations by licensed mental health professionals.'
+                },
+                {
+                    title:'3. Education and Support',
+                    text:'Equipping Surrogates for the Journey',
+                    desc:'After passing background and medical checks, candidates begin regular educational sessions with our team. These sessions provide surrogates with a clear understanding of each stage of the surrogacy process and set expectations for the journey. We maintain close communication with surrogates to monitor their physical and emotional well-being, ensuring they are fully supported and prepared every step of the way.'
+                }
+            ],
+            secondStep:[
+                {
+                    title:'1. Additional Medical and Psychological Evaluations',
+                    desc:'After intended parents choose a surrogate from our database, she undergoes a second round of evaluations to confirm she still meets all qualifications for surrogacy. These include updated medical and psychological screenings to ensure she’s fully prepared for the journey ahead.'
+                },
+                {
+                    title:'2. Clinic-Based Health Assessment',
+                    desc:'The IVF clinic coordinates a thorough health check based on the surrogate’s menstrual cycle, typically scheduled a few days before or after her period. The goal is to assess the condition of her uterus and confirm she’s ready for embryo transfer and pregnancy. Results usually take about three weeks.'
+                }
+            ],
+            button:{
+                text:'Start Your Consultation'
+            }
         }
     }
 }
