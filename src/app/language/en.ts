@@ -122,15 +122,16 @@ export default {
     },
     about_us:[
         {
-            name:'Diana E. Chavkin, MD, FACOG',    
-            role:'Medical Team',
-            content:['Dr. Diana Chavkin is a double board-certified expert in Reproductive Endocrinology and Infertility, currently serving as Medical Director. A recipient of multiple top doctor awards, she specializes in personalized fertility treatments.']
-          },
-        {
             name:'Judith Hoechst',    
             role:'Legal Team',
             content:['A reproductive law expert and former Chair of the American Society of Reproductive Medicine (ASRM) Legal Professional Group, Judith has played a pivotal role in drafting key legislation and is dedicated to legal protections and professional education.']
           },
+        {
+            name:'Diana E. Chavkin, MD, FACOG',    
+            role:'Medical Team',
+            content:['Dr. Diana Chavkin is a double board-certified expert in Reproductive Endocrinology and Infertility, currently serving as Medical Director. A recipient of multiple top doctor awards, she specializes in personalized fertility treatments.']
+          },
+  
         
         {
           name:'Kayla Luo',    
