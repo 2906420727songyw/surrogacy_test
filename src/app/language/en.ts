@@ -1,3 +1,5 @@
+import { title } from "process";
+
 export default {
     test:'test',
     language:'中文',
@@ -226,12 +228,12 @@ export default {
                 auth:true
             }]
         }
-    },
 
+    },
     parentsSection:{
         parentsSectionPart1:{
             title:'Sapling Surrogacy',
-            desc:"Welcome to Sapling Surrogacy, where we’re dedicated to helping you build the family you’ve always dreamed of. We know surrogacy can be a long and challenging journey, but you don’t have to go through it alone. Sapling is here to support you every step of the way with clear guidance, personalized care, and expert answers to your questions. Because every step you take toward growing your family is worth it. With Sapling by your side, your surrogacy journey will feel seamless, supported, and truly rewarding.",
+            desc:"Welcome to Sapling Surrogacy, where we're dedicated to helping you build the family you've always dreamed of. We know surrogacy can be a long and challenging journey, but you don't have to go through it alone. Sapling is here to support you every step of the way with clear guidance, personalized care, and expert answers to your questions. Because every step you take toward growing your family is worth it. With Sapling by your side, your surrogacy journey will feel seamless, supported, and truly rewarding.",
             btn:'Start Your Consultation',
             changeReason:"Why Choose Sapling Surrogacy?",
             reason:'Choosing the right surrogacy agency is key—it means having a trusted partner to guide and support you every step of the way. At Sapling Surrogacy, we offer complete, personalized services, including:',
@@ -279,9 +281,138 @@ export default {
               ]
 
         },
+        ParentsSectionPart2:{
+            title:'Matching Process for Intended Parents and Surrogates',
+            step:[
+                {
+                    title:'Step 1: Screening Applicants',
+                    desc:'(Only 2% of applicants are accepted into Sapling’s surrogate database)'
+                },
+                {
+                    title:'Step 2: Ensuring Your Surrogate is Ready',
+                    desc:'(Over 90% of selected surrogates pass the second review)'
+                }
+            ],
+            firstStep:[
+                {
+                    title:'1. Application',
+                    text:'Every potential surrogate must complete a detailed application form to provide key information.',
+                    desc:'The application includes five major sections covering reproductive history, family medical history, family life, education, financial and employment status, and motivation for becoming a surrogate. According to U.S. surrogacy regulations, surrogates must meet the following criteria:<br>● Be between 21 and 45 years old<br>● Have given birth to and raised at least one child<br>● Be in good physical health with no major medical issues<br>● Have no history of substance abuse or problems with alcohol or tobacco<br>● Maintain a healthy Body Mass Index (BMI) under 30'
+                },
+                {
+                    title:'2. Initial Screening',
+                    text:'Ensuring Readiness for Surrogacy',
+                    desc:'Once the application is approved, we conduct in-depth interviews with candidates to understand their motivations and assess their ability to successfully complete the surrogacy journey. We partner with trusted third-party agencies to perform thorough background checks on both applicants and their partners. These checks include evaluations of family dynamics, financial stability, living conditions, and criminal history. Partner clinics carry out medical assessments, reviewing uterine health, pregnancy history, and any history of substance use. To ensure psychological readiness, candidates also undergo evaluations by licensed mental health professionals.'
+                },
+                {
+                    title:'3. Education and Support',
+                    text:'Equipping Surrogates for the Journey',
+                    desc:'After passing background and medical checks, candidates begin regular educational sessions with our team. These sessions provide surrogates with a clear understanding of each stage of the surrogacy process and set expectations for the journey. We maintain close communication with surrogates to monitor their physical and emotional well-being, ensuring they are fully supported and prepared every step of the way.'
+                }
+            ],
+            secondStep:[
+                {
+                    title:'1. Additional Medical and Psychological Evaluations',
+                    desc:'After intended parents choose a surrogate from our database, she undergoes a second round of evaluations to confirm she still meets all qualifications for surrogacy. These include updated medical and psychological screenings to ensure she’s fully prepared for the journey ahead.'
+                },
+                {
+                    title:'2. Clinic-Based Health Assessment',
+                    desc:'The IVF clinic coordinates a thorough health check based on the surrogate’s menstrual cycle, typically scheduled a few days before or after her period. The goal is to assess the condition of her uterus and confirm she’s ready for embryo transfer and pregnancy. Results usually take about three weeks.'
+                }
+            ],
+            button:{
+                text:'Start Your Consultation'
+            }
+        },
+        ParentsSectionPart3:{
+            title:'Surrogacy Journey for Intended Parents',
+            context:[
+                'The surrogacy journey is a process filled with important milestones and steps. ',
+                'Each intended parent’s journey is unique, shaped by their individual circumstances, needs, and preferences.',
+                'Typically, after 12–24 months, you will be able to welcome your baby home.',
+                ' During this time, Sapling’s professional team will provide one-on-one guidance and support to ensure your surrogacy experience is smooth and stress-free.',
+                'To help you better understand the surrogacy process, the goals of each stage, ',
+                'and the approximate timeline, we have divided the journey into five main phases for your reference.'
+            ],
+            step:[
+                {
+                    title:'Step 1',
+                    desc:'Consultation and Signing (0–1 Month)',
+                    context:[
+                        'You can book a consultation through our website, contact our support team, or chat with us online to find a time that works for you.',
+                        'During your first consultation, we’ll walk you through our services and create a personalized plan based on your unique needs and goals.',
+                        'Once you choose Sapling Surrogacy and sign the agreement, ',
+                        'our team will take care of everything—from finding the perfect surrogate to helping you choose the right IVF clinic,',
+                        'and even connecting you with trusted egg and sperm banks if needed.'
+                    ]
+                },
+                {
+                    title:'Step 2',
+                    desc:'Matching with a Surrogate (Timeline Varies)',
+                    context:[
+                        'All of our surrogates go through a rigorous screening process. ',
+                        'Based on your preferences and needs, we’ll provide you with a selection of candidates from our surrogate database, allowing you to choose the best match.',
+                        'Once the match is confirmed, Sapling Surrogacy will guide you and your surrogate through the next steps, clearly outlining the key milestones in the process. ',
+                        'This includes everything from legal agreements and medical plans to fund management and insurance,',
+                        'ensuring your surrogacy journey is smooth, transparent, and stress-free.'
+                    ]
+                },
+                {
+                    title:'Step 3',
+                    desc:'IVF and Legal Agreements (3–4 Months)',
+                    context:[
+                        'If you don’t have frozen embryos or a preferred IVF clinic, ',
+                        'we’ll recommend one based on your location and needs and arrange a consultation. ',
+                        'Once confirmed, we’ll help plan your embryo development, including timelines, costs, and medications, and coordinate travel if needed.',
+                        ' After embryo screening, the surrogate undergoes medical checks to ensure readiness. ',
+                        'Then, lawyers will finalize and notarize the agreement.',
+                        'Finally, the clinic prepares the surrogate for embryo transfer with a seven-week medication protocol.'
+                    ]
+                },
+                {
+                    title:'Step 4',
+                    desc:'Surrogate Pregnancy (8–9 Months)',
+                    context:[
+                        'From embryo transfer to the 12th week, the surrogate undergoes regular HCG blood tests and ultrasounds, ',
+                        'with the heartbeat and gestational sac detected around weeks 5–7.',
+                        'Once stable, she transitions to her local OB-GYN for routine checkups—every 4 weeks until week 28, every 2 weeks until week 36, and weekly until delivery. ',
+                        'During this time, you can stay in touch with the surrogate, and we’ll provide regular updates. ',
+                        'We’ll also assist with parentage documents after week 18 to establish your legal parental rights and work with you and the surrogate to finalize the birth plan for a smooth delivery.',                 
+                    ]
+                },
+                {
+                    title:'Step 5',
+                    desc:'Welcoming Your Baby Home',
+                    context:[
+                        'When the doctor clears your baby for discharge, it’s time for the happiest moment—taking your baby home. ',
+                        'For U.S.-based parents, this usually means heading home within a few days. ',
+                        'For international parents, a stay of around four weeks may be needed to handle the baby’s passport and other required documents. ',
+                        'Sapling Surrogacy will be by your side throughout the process, ',
+                        'making sure everything goes smoothly so you can focus on starting this wonderful new chapter with your baby.',
+                    ]
+                }
+            ],
+
+            buttonText:'Start Your Consultation'
+
+        },
         parentsSectionPart4:{
-            title:'成为准父母',
+            title_first:'Single Parents and LGBTQIA+ Community',
+            title_second:'Egg and Sperm Donor Support',
+            text_desc:"If you’re a single parent, part of a same-sex couple, or unable to use your own eggs or sperm, choosing a qualified donor can help you build your family. Our rigorously screened donors aren’t just motivated by compensation—they’re passionate about helping others achieve parenthood. Through partnerships with top egg and sperm banks in the U.S., we offer a wide range of high-quality options.",
             desc:'套餐价格低至 145,000 美元',
+            process:"How to Choose Egg/Sperm Donors and Partner Banks",
+            part1:{
+                title:'If You’re Working with an Egg/Sperm Donor, Here’s What to Expect:',
+                first_need:"1.Selecting a DonorAfter signing the agreement, you can choose a donor based on your preferred characteristics like hair color, eye color, height, ethnicity, and location. Our team will help you find the right match. You can review the donor’s profile, including personal details, health, education, family history, and photos, and even schedule a virtual meeting for a closer understanding.",
+                second_need:"2.Starting the Donation Process Once selected, the donor will visit your chosen IVF clinic for medical screening and medication preparation before providing fresh eggs or sperm, allowing you to begin your family-building journey.",
+            },
+            part2:{
+                title:'If You’re Working with an Egg/Sperm Bank, Here’s What to Expect:',
+                first_need:"1.Choose a Donor After completing your registration, a representative from our partner egg/sperm bank will provide you with a list of donors. You’ll have the chance to review their profiles and select the donor that feels like the right fit for you.",
+                second_need:"2.Start the Process Once you’ve chosen your donor, we’ll work with the egg/sperm bank to help you purchase frozen eggs or sperm. From there, we’ll assist you in beginning the embryo development process, bringing you one step closer to growing your family.",
+            },
+            btn:'Start Your Consultation' 
         }
     }
 }
