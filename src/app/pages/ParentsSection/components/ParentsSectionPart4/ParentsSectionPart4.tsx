@@ -51,7 +51,7 @@ export default function ParentsSectionPart4() {
           </h2>
          {translations.language==='EN'?
          <div className="h2-text text-white text-center mb-12 md:mb-14 ">
-         {translations.parentsSection.parentsSectionPart4.text_list.map((item,index)=>{
+         {translations.parentsSection.parentsSectionPart4.text_list.map((item: string, index: number) => {
     return (
       <div key={index}>
         <p>{item}</p>

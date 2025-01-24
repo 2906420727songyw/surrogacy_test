@@ -6,56 +6,17 @@ import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import { useLanguage } from '@/app/language/';
 
+interface ListItem {
+  image: string;
+  text: string;
+}
+
 export default function ParentsSectionPart1() {
   const router = useRouter();
   const { translations } = useLanguage();
-  const listData = [
-    {
-      image: '/images/ParentsSection/icon1.png',
-      text: '最有经验的团队：团队都有多年行业经验,各个相关领域精英,都亲身经历过代孕',
-    },
-    {
-      image: '/images/ParentsSection/icon2.png', 
-      text: '最专业的法律团队：任何情况下,完善的法律团队都是保障您权益的后盾',
-    },
-    {
-      image: '/images/ParentsSection/icon3.png',
-      text: '最合适的医疗选择：根据您的自身情况,量身定制治疗方案,提高成功率', 
-    },
-    {
-      image: '/images/ParentsSection/icon4.png',
-      text: '最严格的筛选机制：我们只选择最好的代孕母亲和最适合您的医生',
-    },
-    {
-      image: '/images/ParentsSection/icon1.png',
-      text: '最大的资金信托公司：保障您财产的安全,任何使用都也有据可查',
-    },
-    {
-      image: '/images/ParentsSection/icon2.png',
-      text: '最完善的定制化套餐：您可以提出任何服务要求,我们都会满足',
-    },
-    {
-      image: '/images/ParentsSection/icon3.png', 
-      text: '最高效交流：一站式管家服务,只要您需要,我们任何时候都在',
-    },
-    {
-      image: '/images/ParentsSection/icon4.png',
-      text: '最能理解客户的团队：团队成员 80% 都亲身经历过代孕过程',
-    },
-    {
-      image: '/images/ParentsSection/icon1.png',
-      text: '最快速的匹配流程：匹配流程比普通代孕机构快 40% ',
-    },
-    {
-      image: '/images/ParentsSection/icon2.png',
-      text: '最透明的价格：所有的花销都是透明清晰的',
-    },
-  ];
-
-  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
-  const [isHovered, setIsHovered] = useState(false);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const titleRef = useRef(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -123,15 +84,13 @@ export default function ParentsSectionPart1() {
         <h1 
           ref={titleRef}
           className={`h1-text text-white mb-12 md:mb-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'}` }
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
         >
   {translations?.parentsSection?.parentsSectionPart1?.title}
   </h1>
         {
           translations.language==='EN'?
           <p className="h2-text text-white mb-10 md:mb-12">
-            {translations?.parentsSection?.parentsSectionPart1?.desc_list?.map((item,index)=>{
+            {translations?.parentsSection?.parentsSectionPart1?.desc_list?.map((item: string, index: number) => {
               return <div key={index}>{item} <br/></div>
             })}
         </p> 
@@ -171,7 +130,7 @@ export default function ParentsSectionPart1() {
         </div>
         
         <div className={styles.horizontalList} ref={scrollContainerRef}>
-          {translations?.parentsSection?.parentsSectionPart1?.listData.map((item, index) => (
+          {translations?.parentsSection?.parentsSectionPart1?.listData.map((item: ListItem, index: number) => (
             <div key={index} className={styles.listItem}>
               <div className="w-[150px] h-[150px] md:w-[300px] md:h-[300px] rounded-[10px] flex justify-center">
                 <Image 
