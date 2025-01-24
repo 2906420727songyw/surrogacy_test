@@ -40,10 +40,10 @@ export default function Foundation() {
         > 
         </h2>
         <div className="flex justify-center gap-8 md:gap-10">
-          <button className="w-28 h-6 md:w-44 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-white hover:bg-gray-100 transition duration-200">
+          <button className="w-28 h-6 md:w-44 md:h-8 rounded text-[10px] md:text-sm font-medium text-black bg-white hover:bg-gray-100 transition duration-200">
             {translations.home.Foundation.button[0].text}
           </button>
-          <button className="w-28 h-6 md:w-44 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-white hover:bg-gray-100 transition duration-200">
+          <button className="w-28 h-6 md:w-44 md:h-8 rounded text-[10px] md:text-sm font-medium text-black bg-white hover:bg-gray-100 transition duration-200">
             {translations.home.Foundation.button[1].text}
           </button>
         </div>

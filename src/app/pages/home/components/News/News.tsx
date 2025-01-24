@@ -112,11 +112,11 @@ export default function News() {
                   />
                 </div>
                 <div className={styles.articleHeader}>
-                  <span className="flex flex-col gap-5 text-lg font-bold text-[#cdc6c0] mb-7.5 font-bold">
+                  <span className="flex flex-col gap-5 text-lg text-[#cdc6c0] mb-7.5 font-bold">
                     {item.name.slice(0, 32)}
                   </span>
                   <hr />
-                  <p className="text-xs italic text-[#cdc6c0] md:text-base italic">
+                  <p className="text-xs text-[#cdc6c0] md:text-base italic">
                     {item.role}
                   </p>
                   <p className="text-xs text-[#cdc6c0] md:text-base">

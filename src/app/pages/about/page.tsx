@@ -50,8 +50,7 @@ export default function AboutPage() {
           >
             {translations.about_us_title.title}
           </h1>
-          <p className="h2-text text-white md:h2-text">
-            {translations.about_us_title.desc}
+          <p className="h2-text text-white md:h2-text"dangerouslySetInnerHTML={{ __html: translations.about_us_title.desc }}>
           </p>
         </div>
         
