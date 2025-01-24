@@ -59,6 +59,14 @@ body {
     line-height: 1.5rem;
   }
 }
+.h2-text-en{
+  font-size:1rem;
+  line-height: 1.15rem;
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+    line-height: 1.15rem;
+  }
+}
 .h3-text{
   font-size:0.875rem;
   line-height: 1.5rem;
@@ -67,11 +75,23 @@ body {
     line-height: 1.25rem;
   }
 }
+.h3-text-en{
+  font-size:0.875rem;
+  line-height: 1.15rem;
+  @media (max-width: 768px) {
+    font-size: 0.75rem;
+    line-height: 1.15rem;
+  }
+}
 .pt-page{
   padding-top: 200px;
   @media (max-width: 768px) {
     padding-top: 150px;
   }
+}
+
+.en-text{
+  font-family: 'Times New Roman';
 }
 @keyframes fadeIn {
   to {

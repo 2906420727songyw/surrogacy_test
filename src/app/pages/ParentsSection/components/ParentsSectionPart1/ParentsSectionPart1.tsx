@@ -4,9 +4,11 @@ import styles from './ParentsSectionPart1.module.css';
 import Image from 'next/image';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
+import { useLanguage } from '@/app/language/';
 
 export default function ParentsSectionPart1() {
   const router = useRouter();
+  const { translations } = useLanguage();
   const listData = [
     {
       image: '/images/ParentsSection/icon1.png',
@@ -115,27 +117,40 @@ export default function ParentsSectionPart1() {
   }, []);
 
   return (
-    <div id="parents-overview" className={styles.content}>
-      <div className={styles.container}>
+<div id="parents-overview" className={`${styles.content} ${translations.language==='EN'?'':'en-text'}`}>     
+  
+   <div className={`${styles.container} flex flex-col items-center`}>
         <h1 
           ref={titleRef}
-          className={`h1-text text-white mb-12 md:mb-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'}`}
+          className={`h1-text text-white mb-12 md:mb-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'}` }
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          Sapling Surrogacy
-        </h1>
-        <p className="h2-text text-white mb-10 md:mb-12">
-          欢迎来到 Sapling 辅助生殖代孕中心。<br/>
-          帮助您一起建立幸福而美满的家庭是我们最大的愿望。<br/>
-          代孕是一条漫长、充满挑战而又伟大的道路，若您感到迷茫和无助，<br/>
-          请不要担心， Sapling 将在这里全程陪伴您，为您答疑解惑并提供最大的助力。<br/>
-          我们坚信，所有的努力都是值得的。有 Sapling 在旁，您的代孕之旅将会格外安心且愉悦。<br/>
-        </p>
+  {translations?.parentsSection?.parentsSectionPart1?.title}
+  </h1>
+        {
+          translations.language==='EN'?
+          <p className="h2-text text-white mb-10 md:mb-12">
+            {translations?.parentsSection?.parentsSectionPart1?.desc_list?.map((item,index)=>{
+              return <div key={index}>{item} <br/></div>
+            })}
+        </p> 
+          :
+          <p className="h2-text-en text-white mb-10 md:mb-12  md:w-[30vw]">
+            {translations?.parentsSection?.parentsSectionPart1?.desc}
+        </p> 
+        }
         
+       {
+        translations.language==='EN'?
         <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=appointment' ):router.push('/pages/auth/login?mode=register')}>
-          开始咨询
+        {translations?.parentsSection?.parentsSectionPart1?.btn}
         </button>
+        :
+        <button className="px-5 h-6  md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=appointment' ):router.push('/pages/auth/login?mode=register')}>
+        {translations?.parentsSection?.parentsSectionPart1?.btn}
+        </button>
+       }
       </div>
       <Image 
       src="/images/ParentsSection/image1.png" 
@@ -148,19 +163,17 @@ export default function ParentsSectionPart1() {
       />
       <div className="w-full flex flex-col items-center text-center text-white px-5 pt-5 md:w-full md:px-36">
         <h2 className="h1-text text-white my-12 md:my-24 animate__animated animate__fadeInDown animate__duration-1s  ">
-          为什么准父母会选择<br/>
-          Sapling Surrogacy
+          {translations?.parentsSection?.parentsSectionPart1?.changeReason}
         </h2>
-        <div className="h2-text text-white mb-10 md:mb-14">
-          选择一家专业的代孕机构是最重要的，它会指导和陪伴您更轻松的走过整个成为准父母的旅程。<br/>
-          选择 Sapling 可以让您享受全方位的代孕服务，我们有
+        <div className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-10 md:mb-14`}>
+          {translations?.parentsSection?.parentsSectionPart1?.reason}
         
         </div>
         
         <div className={styles.horizontalList} ref={scrollContainerRef}>
-          {listData.map((item, index) => (
+          {translations?.parentsSection?.parentsSectionPart1?.listData.map((item, index) => (
             <div key={index} className={styles.listItem}>
-              <div className="w-[300px] h-[300px] overflow-hidden rounded-[10px]">
+              <div className="w-[150px] h-[150px] md:w-[300px] md:h-[300px] rounded-[10px] flex justify-center">
                 <Image 
                   src={item.image}
                   alt={item.text}
@@ -169,7 +182,8 @@ export default function ParentsSectionPart1() {
                   className={styles.listItemImage}
                 />
               </div>
-              <p className="h3-text text-white my-2 md:my-4">{item.text}</p>
+              <div className={`${translations.language=='EN'?'h3-text':'h3-text-en'} flex justify-center  text-white my-2 md:my-4  w-[125px] md:w-[250px]`}>
+                {item.text}</div>
             </div>
           ))}
         </div>

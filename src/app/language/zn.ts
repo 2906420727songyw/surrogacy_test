@@ -227,5 +227,68 @@ export default {
                 auth:true
             }]
         }
+    },
+    parentsSection:{
+        parentsSectionPart1:{
+            title:'小树苗代孕中心',
+            desc_list:[
+                "欢迎来到小树苗代孕中心",
+                "协助您实现幸福美满的家庭梦想是我们最大的心愿。",
+                "代孕是一段漫长、充满挑战但无比伟大的旅程。",
+                "若您在过程中感到迷茫或无助，请放心，",
+                "小树苗将始终陪伴在您身边，耐心解答您的疑问并提供全面支持。",
+                "我们坚信，每一份付出都值得。",
+                "有小树苗的陪伴，您的代孕之旅将更加安心、顺畅且充满喜悦。"
+            ],
+            btn:'开始咨询',
+            changeReason:"为什么准父母会选择小树苗代孕中心",
+            reason:'选择一家专业的代孕机构至关重要，它将引导并陪伴您顺利、轻松地完成成为准父母的整个旅程。选择小树苗代孕中心，您将享受全方位的代孕服务。我们拥有：',
+            listData: [
+                {
+                  image: '/images/ParentsSection/icon1.png',
+                  text: '最有经验的团队：团队成员拥有多年行业经验，80%亲历代孕旅程。',
+                },
+                {
+                  image: '/images/ParentsSection/icon2.png',
+                  text: '最专业的法律团队：完善的法律支持，全方位保障您的合法权益。',
+                },
+                {
+                  image: '/images/ParentsSection/icon3.png',
+                  text: '最合适的医疗选择：根据您的情况量身定制治疗方案，提升成功率。',
+                },
+                {
+                  image: '/images/ParentsSection/icon4.png',
+                  text: '最严格的筛选机制：甄选最优质的代孕母亲和最适合您的医生。',
+                },
+                {
+                  image: '/images/ParentsSection/icon1.png',
+                  text: '最大的资金信托公司：资金托管安全透明，所有使用清晰可查。',
+                },
+                {
+                  image: '/images/ParentsSection/icon2.png',
+                  text: '最完善的定制化套餐：根据需求灵活定制，满足您的所有服务要求。',
+                },
+                {
+                  image: '/images/ParentsSection/icon3.png',
+                  text: '最高效的交流：一站式服务，随时为您提供快速响应和支持。',
+                },
+                {
+                  image: '/images/ParentsSection/icon4.png',
+                  text: '最能理解客户的团队：80%的团队成员有亲身代孕经验，深刻理解您的感受。',
+                },
+                {
+                  image: '/images/ParentsSection/icon1.png',
+                  text: '最快速的匹配流程：匹配流程比普通机构快40%，让您更快开始代孕旅程。',
+                },
+                {
+                  image: '/images/ParentsSection/icon2.png',
+                  text: '最透明的价格：所有费用透明公开，无任何隐藏收费。',
+                },
+              ]
+        },
+        parentsSectionPart4:{
+            title:'成为准父母',
+            desc:'套餐价格低至 145,000 美元',
+        }
     }
 }

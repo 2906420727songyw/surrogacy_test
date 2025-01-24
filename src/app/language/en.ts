@@ -226,5 +226,62 @@ export default {
                 auth:true
             }]
         }
+    },
+
+    parentsSection:{
+        parentsSectionPart1:{
+            title:'Sapling Surrogacy',
+            desc:"Welcome to Sapling Surrogacy, where we’re dedicated to helping you build the family you’ve always dreamed of. We know surrogacy can be a long and challenging journey, but you don’t have to go through it alone. Sapling is here to support you every step of the way with clear guidance, personalized care, and expert answers to your questions. Because every step you take toward growing your family is worth it. With Sapling by your side, your surrogacy journey will feel seamless, supported, and truly rewarding.",
+            btn:'Start Your Consultation',
+            changeReason:"Why Choose Sapling Surrogacy?",
+            reason:'Choosing the right surrogacy agency is key—it means having a trusted partner to guide and support you every step of the way. At Sapling Surrogacy, we offer complete, personalized services, including:',
+            listData: [
+                {
+                  image: '/images/ParentsSection/icon1.png',
+                  text: 'Experienced Team: With years of expertise, 80% of our team has personal surrogacy experience.',
+                },
+                {
+                  image: '/images/ParentsSection/icon2.png',
+                  text: 'Expert Legal Support: Comprehensive legal services to ensure your rights are fully protected.',
+                },
+                {
+                  image: '/images/ParentsSection/icon3.png',
+                  text: 'Personalized Medical Plans: Tailored treatment options designed to maximize your success rate.',
+                },
+                {
+                  image: '/images/ParentsSection/icon4.png',
+                  text: 'Thorough Screening Process: We work with the best surrogates and match you with the most qualified doctors.',
+                },
+                {
+                  image: '/images/ParentsSection/icon1.png',
+                  text: 'Secure Fund Management: Your funds are safely held with full transparency and accountability.',
+                },
+                {
+                  image: '/images/ParentsSection/icon2.png',
+                  text: 'Customizable Packages: Flexible services designed to fit your unique needs and preferences.',
+                },
+                {
+                  image: '/images/ParentsSection/icon3.png',
+                  text: 'Seamless Communication: One-stop, responsive service whenever you need us.',
+                },
+                {
+                  image: '/images/ParentsSection/icon4.png',
+                  text: 'Empathetic Team: 80% of our team has been through the surrogacy journey themselves and understands your needs.',
+                },
+                {
+                  image: '/images/ParentsSection/icon1.png',
+                  text: 'Fast Matching Process: Our process is 40% faster than most agencies, getting you started sooner.',
+                },
+                {
+                  image: '/images/ParentsSection/icon2.png',
+                  text: 'Transparent Pricing: All costs are clear, upfront, and free of hidden fees.',
+                },
+              ]
+
+        },
+        parentsSectionPart4:{
+            title:'成为准父母',
+            desc:'套餐价格低至 145,000 美元',
+        }
     }
 }
