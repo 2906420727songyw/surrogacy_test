@@ -80,14 +80,16 @@ export default function AboutUs() {
       <div className="mx-auto flex flex-col items-center w-full h-auto md:w-full px-5 md:px-[150px]">
         <p 
           id="about-us-title"
-          className={`text-4xl text-white mb-4 md:mb-8 md:text-6xl ${
+          className={` text-white mb-4 md:mb-8 ${translations.language==='EN'?'h1-text':'h1-text-en'} ${
             isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'
           }`}
         >
           {translations.about_us_title.title1}
         </p>
-        <p className={` text-white mb-1.5  md:mb-3  ${translations.language==='EN'?'h2-text':'h2-text-en'}`} dangerouslySetInnerHTML={{ __html: translations.about_us_title.desc }}>
-        </p>
+       <div className='flex flex-col items-center'>
+       <p className={` text-white mb-1.5  md:mb-3  ${translations.language==='EN'?'h2-text':'h2-text-en en-width'}`} dangerouslySetInnerHTML={{ __html: translations.about_us_title.desc }}>
+       </p>
+       </div>
       </div>
       <div className={styles.bottomGradientBar}/>
       {/*<VideosTest />*/}

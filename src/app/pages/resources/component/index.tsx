@@ -105,13 +105,13 @@ export default function ResourcesComponent() {
         <p 
           ref={setRef('title')}
           data-animate-id="title"
-          className={`h1-text text-white mb-10 md:mb-16 ${visibleElements.has('title') ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
+          className={`${translations.language==='EN'?'h1-text':'h1-text-en'} text-white mb-10 md:mb-16 ${visibleElements.has('title') ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
         >
           {translations.resources.title1}
         </p>
 
         
-        <div className="w-full flex flex-col items-center justify-center px-5 md:px-20">
+        <div className={`w-full flex flex-col items-center justify-center px-5 md:px-20 ${translations.language==='EN'?'h2-text':'font-bold h2-text-en'}`}>
         {/* 菜单项 */}
         <div className="flex space-x-4 mb-8">
           <button
@@ -233,7 +233,7 @@ export default function ResourcesComponent() {
         <p 
           ref={setRef('customer-reviews-title')}
           data-animate-id="customer-reviews-title"
-          className={`h1-text text-white mb-10 md:mb-16 ${
+          className={`${translations.language==='EN'?'h1-text':'h1-text-en'} text-white mb-10 md:mb-16 ${
             visibleElements.has('customer-reviews-title') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
           }`}
         >
@@ -255,11 +255,11 @@ export default function ResourcesComponent() {
               }`}
             >
               
-              <div className="h2-text text-white mb-2 md:mb-0">
+              <div className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-2 md:mb-0`}>
                 {review.content}
               </div>
               <div className="flex items-center mb-4">
-                <p className="text-base md:text-xl text-white ml-4 font-semibold">
+                <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white`}>
                   {"—— "}{review.name}
                 </p>
               </div>

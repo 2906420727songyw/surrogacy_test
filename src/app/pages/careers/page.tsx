@@ -12,14 +12,14 @@ export default function Careers() {
 
       {/* 内容部分 */}
       <div className="w-full pb-40 md:pb-60 px-4">
-        <p className="h1-text font-normal text-center text-white mb-16 md:mb-24 animate__animated animate__fadeInDown animate__duration-1s  ">
+        <p className={`${translations.language==='EN'?'h1-text':'h1-text-en'}  text-center text-white mb-16 md:mb-24 animate__animated animate__fadeInDown animate__duration-1s  `}>
           {translations.careers.title}
         </p>
         
         {/* 第一段文字内容 */}
-        <div className="max-w-5xl mx-auto">
+        <div className="w-full flex justify-center">
           <div 
-            className="h3-text text-white text-center md:whitespace-nowrap rich-text"
+            className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white text-center md:whitespace-nowrap rich-text`}
             dangerouslySetInnerHTML={{ __html: translations.careers.firstDesc }}
           />
         </div>
@@ -33,9 +33,9 @@ export default function Careers() {
         />
 
         {/* 第二段文字内容 */}
-        <div className="max-w-5xl mx-auto">
+        <div className="w-full flex justify-center">
           <div 
-            className="h3-text text-white text-center md:whitespace-nowrap rich-text"
+            className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white text-center md:whitespace-nowrap rich-text`}
             dangerouslySetInnerHTML={{ __html: translations.careers.secondDesc }}
           />
         </div>

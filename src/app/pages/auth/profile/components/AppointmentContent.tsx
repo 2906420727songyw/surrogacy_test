@@ -5,47 +5,36 @@ import { useState } from 'react';
 import AppointmentSuccess from './AppointmentSuccess';
 import appointmentsApi from '@/app/service/appointments/api';
 import Cookies from 'js-cookie';
-import { useSearchParams } from 'next/navigation';
-import styles from '../page.module.css';
+import { useLanguage } from '@/app/language/';
 
 export default function AppointmentContent() {
   const userDataStr = Cookies.get('userData');
   const userData = userDataStr ? JSON.parse(userDataStr) : null;
   const type = userData?.role=== 'SURROGATE_MOTHER' ? '代孕母' : '准父母';
+  const { translations } = useLanguage();
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
-  const [selectedTimeZone, setSelectedTimeZone] = useState('UTC+8 (中国标准时间)');
+  const [selectedTimeZoneIndex, setSelectedTimeZoneIndex] = useState(() => {
+    // 从 localStorage 获取保存的时区索引，如果没有则使用默认值 0
+    const savedIndex = localStorage.getItem('selectedTimeZoneIndex');
+    return savedIndex ? parseInt(savedIndex) : 0;
+  });
   const [isTimeZoneOpen, setIsTimeZoneOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const timeZones = [
-    'UTC+8 (中国标准时间)',
-    'UTC-4 (美东时间)',
-    'UTC-5 (美中时间)',
-    'UTC-6 (山地时间)',
-    'UTC-7 (太平洋时间)',
-    'UTC-8 (阿拉斯加时间)',
-    'UTC-10 (夏威夷时间)'
-  ];
-
-  const timeSlots = [
-    '09:00am', '10:00am', '11:00am',
-    '12:00pm', '13:00pm', '14:00pm',
-    '15:00pm', '16:00pm', '17:00pm',
-    '18:00pm', '19:00pm', '20:00pm'
-  ];
+  // 根据索引获取当前时区
+  const selectedTimeZone = translations.profile.appointmentContent.time_zone[selectedTimeZoneIndex];
 
   const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).getDay();
   
   const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
 
-  const monthNames = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
 
   const formatDateTime = (date: string, time: string) => {
     if (!time) {
-      return `${monthNames[currentDate.getMonth()]}${date}号，${currentDate.getFullYear()}年`;
+      return `${translations.profile.appointmentContent.month_list[currentDate.getMonth()]}${translations.language==='EN'?date:' '+date}${translations.language==='EN'?'号':''},${currentDate.getFullYear()}${translations.language==='EN'?'年':''}`;
     }
 
     // 提取小时数和 am/pm
@@ -55,7 +44,9 @@ export default function AppointmentContent() {
     // 转换为中文格式
     const timeInChinese = isAM ? `上午${hour}点` : `下午${hour}点`;
 
-    return `${monthNames[currentDate.getMonth()]}${date}号，${currentDate.getFullYear()}年${timeInChinese}`;
+    const lastTime = translations.language==='EN'?timeInChinese:`${', '+time}`;
+
+    return `${translations.profile.appointmentContent.month_list[currentDate.getMonth()]}${translations.language==='EN'?date:' '+date}${translations.language==='EN'?'号':''}，${currentDate.getFullYear()}${translations.language==='EN'?'年':''}${lastTime}`;
   };
 
   const convertTimeFormat = (time: string): string => {
@@ -169,6 +160,12 @@ export default function AppointmentContent() {
     }
   };
 
+  // 当时区索引改变时，保存到 localStorage
+  const handleTimeZoneChange = (index: number) => {
+    setSelectedTimeZoneIndex(index);
+    localStorage.setItem('selectedTimeZoneIndex', index.toString());
+    setIsTimeZoneOpen(false);
+  };
 
   if (isSuccess) {
     return ( 
@@ -206,7 +203,7 @@ export default function AppointmentContent() {
             {/* 标题和分割线 */}
             <div className="mb-[1.875rem] xl:mb-[2.5rem]">
               <div className="flex justify-between items-center  h-[8vh]">
-                <h1 className="text-white text-[1.25rem] xl:text-[1.5rem]">选择日期</h1>
+                <h1 className={`text-white text-[1.25rem] xl:text-[1.5rem] ${translations.language==='EN'?'font-bold':'font-bold'}`}>{translations?.profile?.appointmentContent?.title}</h1>
                 <div className="relative">
                   <button 
                     className="flex items-center gap-2 text-white text-[0.875rem] xl:text-[1rem] px-4 py-2"
@@ -220,14 +217,11 @@ export default function AppointmentContent() {
                   {/* 下拉菜单 */}
                   {isTimeZoneOpen && (
                     <div className="absolute top-full right-0 mt-1 w-[12rem] text-sm bg-white rounded-md shadow-lg py-1 z-50">
-                      {timeZones.map((zone) => (
+                      {translations.profile.appointmentContent.time_zone.map((zone: string, index: number) => (
                         <button
                           key={zone}
                           className="w-full px-4 py-2 text-left text-[#8E7362] hover:bg-gray-100"
-                          onClick={() => {
-                            setSelectedTimeZone(zone);
-                            setIsTimeZoneOpen(false);
-                          }}
+                          onClick={() => handleTimeZoneChange(index)}
                         >
                           {zone}
                         </button>
@@ -251,7 +245,7 @@ export default function AppointmentContent() {
                     &lt;
                   </button>
                   <span className="text-white text-[0.875rem]">
-                    {`${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`}
+                    {`${translations.profile.appointmentContent.month_list[currentDate.getMonth()]} ${currentDate.getFullYear()}`}
                   </span>
                   <button 
                     className="text-white text-[1.5rem] xl:text-[2.25rem] leading-none"
@@ -308,7 +302,7 @@ export default function AppointmentContent() {
                   </p>
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 xl:gap-x-4 xl:gap-y-8">
-                  {timeSlots.map(time => (
+                  {translations.profile.appointmentContent.time_list.map((time:string) => (
                     <button
                       key={time}
                       className={`h-10 xl:h-14 flex items-center justify-center rounded-full border border-white
@@ -330,14 +324,14 @@ export default function AppointmentContent() {
             {/* 标题和分割线 */}
             <div className="mb-[1.875rem] xl:mb-[2.5rem]">
               <div className="flex justify-between items-center mb-4 h-[8vh]">
-                <h2 className="text-white text-[1rem]">预约详细信息</h2>
+                <h2 className={`text-white text-[1rem] ${translations.language==='EN'?'':'font-bold'}`}>{translations.profile.appointmentContent.detail_title}</h2>
               </div>
               <div className="h-[1px] bg-transparent"></div>
             </div>
 
             {/* 预约信息 */}
             <div className="flex flex-col">
-              <h3 className="text-white text-[0.875rem] xl:text-[1rem] mb-2">成为{type}</h3>
+              <h3 className="text-white text-[0.875rem] xl:text-[1rem] mb-2">{type==='代孕母'?translations.profile.appointmentContent.become_surrogate:translations.profile.appointmentContent.become_intended_parent}</h3>
               <p className="text-white text-[0.875rem] xl:text-[1rem]">
                 {selectedDate 
                   ? formatDateTime(selectedDate, selectedTime)
@@ -346,7 +340,7 @@ export default function AppointmentContent() {
               <div className="flex flex-col items-start mb-[env(safe-area-inset-bottom)] xl:mb-0">
                 <button 
                   className="mt-2 bg-[#CDC5C0] text-[#000] text-[0.875rem] xl:text-[1rem] 
-                    w-[6.25rem] xl:w-[7.5rem] h-[2.5rem] xl:h-[3rem] 
+                     h-[2.5rem] xl:h-[3rem] px-8
                     rounded-[8px] hover:opacity-90 transition-opacity
                     mb-[1.25rem] flex items-center justify-center gap-2"
                   onClick={handleAppointment}
@@ -355,9 +349,9 @@ export default function AppointmentContent() {
                   {isLoading ? (
                     <>
                       <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
-                      <span>预约中...</span>
+                      <span>{translations.profile.appointmentContent.appointment_loading}</span>
                     </>
-                  ) : '预约'}
+                  ) : translations.profile.appointmentContent.appointment_btn}
                 </button>
               </div>
             </div>

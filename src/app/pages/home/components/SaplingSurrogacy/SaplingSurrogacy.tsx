@@ -36,7 +36,7 @@ export default function SaplingSurrogacy() {
       <div className="mx-auto flex flex-col items-center w-full h-auto md:w-full z-10">
         <h2 
           id="sapling-title"
-          className={`text-4xl text-white mb-1.5 md:mb-3 md:text-6xl text-center ${
+          className={` text-white mb-1.5 md:mb-3 ${translations.language==='EN'?'h1-text':'h1-text-en'} text-center ${
             isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'
           }`}
         >

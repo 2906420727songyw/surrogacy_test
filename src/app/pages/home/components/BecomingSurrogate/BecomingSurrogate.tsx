@@ -37,11 +37,11 @@ export default function BecomingSurrogate() {
       <div className="mx-auto flex flex-col items-center w-full h-auto md:w-full z-10">
         <h2 
           id="becoming-surrogate-title"
-          className={`text-4xl text-white text-center mb-3 md:mb-6 md:text-6xl ${
+          className={` text-white text-center mb-3 md:mb-6 ${translations.language==='EN'?'h1-text':'h1-text-en'} ${
             isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'
           }`}
         >{translations.home.BecomingSurrogate.title}</h2>
-        <p className="text-xs md:text-base text-white mb-1.5 md:mb-3">{translations.home.BecomingSurrogate.desc}</p>
+        <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-1.5 md:mb-3`}>{translations.home.BecomingSurrogate.desc}</p>
         <div className="flex justify-center items-start gap-8 md:gap-10 mt-5 md:mt-10">
           {
             translations.home.BecomingSurrogate.button.map((item:any,index:number)=>(

@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
+import { useLanguage } from "@/app/language";
+
 interface BecomeSurrogatePart3Props {
   isVisible?: boolean;
 }
@@ -11,12 +13,12 @@ interface BecomeSurrogatePart3Props {
 export default function BecomeSurrogatePart3({ isVisible = false }: BecomeSurrogatePart3Props) {
   const router = useRouter();
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
-
+  const { translations } = useLanguage();
   useEffect(() => {
     // 检查是否需要自动展开所有部分
     if (sessionStorage.getItem('expandSurrogatePart3')) {
       // 获取所有部分的ID
-      const allSections = ['A', 'B', 'C'];
+      const allSections = ['1', '2', '3'];
       // 展开所有部分
       setExpandedSections(new Set(allSections));
       // 清除标记
@@ -63,18 +65,41 @@ export default function BecomeSurrogatePart3({ isVisible = false }: BecomeSurrog
       <div id='become-surrogate-part3-content' className={styles.container}>
         <div className={styles.content}>
           <h2 
-            className={`h1-text text-white mb-16 md:mb-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
+            className={`${translations.language==='EN'?'h1-text':'h1-text-en'} text-white mb-16 md:mb-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
           >
-            WHEN? <br/>如何成为我们的代孕妈妈：申请流程和时间线
+            {translations.becomeSurrogate.becomeSurrogatePart3.title}
           </h2>
-          
         </div>
+
         <div className={styles.itemContainer}>
-          <div 
+         
+         {/* 循环渲染方式 */}
+          {translations.becomeSurrogate.becomeSurrogatePart3.step.map((item:any, index:number) =>{
+            return   <div key={index}
+            data-section={item.id}
+            className={`${styles.item} ${isExpanded(item.id) ? styles.expanded : ''}`}
+          >
+            <div className={styles.divider}></div>
+            <p className={`${translations.language==='EN'?'h2-text':'h2-text-en font-bold'} text-white mb-4 mt-6 md:mt-8 md:mb-6`}>
+              {item.title}
+            </p>
+           <div className='w-full flex justify-center'>
+            <p className={`${translations.language==='EN'?'h3-text':'h3-text-en '} en-width text-white text-center mb-6 md:mb-8`}>
+              {item.content.map((contentItem:any, idx:number) => {
+                return <span key={idx}>{contentItem}<br/></span>
+              })
+              }
+            </p>
+           </div>
+          </div>
+          })}
+
+          
+          {/* 源代码 */}
+          {/* <div 
             data-section="A"
             className={`${styles.item} ${isExpanded('A') ? styles.expanded : ''}`}
           >
-            {/* 分割线 */}
             <div className={styles.divider}></div>
             <p className="h2-text text-white mb-4 mt-6 md:mt-8 md:mb-6">
               A.初步问卷
@@ -84,6 +109,7 @@ export default function BecomeSurrogatePart3({ isVisible = false }: BecomeSurrog
             学历背景、代孕动机等。如果您符合我们对代孕妈妈的要求，我们会第一时间联系您，进行下一步。
             </p>
           </div>
+
           <div 
             data-section="B"
             className={`${styles.item} ${isExpanded('B') ? styles.expanded : ''}`}
@@ -110,10 +136,10 @@ export default function BecomeSurrogatePart3({ isVisible = false }: BecomeSurrog
             在材料审核通过后，我们将会和您安排线上见面，<br/>
             我们的心理医生会和您进行交流，更深入的讨论您的代孕动机、您的兴趣爱好、您对代孕的看法等。
             </p>
-          </div>
+          </div> */}
           
           <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10 mb-10 md:mt-20 md:mb-20" onClick={()=>router.push('/pages/auth/profile?type=surrogacy')}>
-            立即申请
+            {translations.becomeSurrogate.becomeSurrogatePart3.buttonText}
           </button>
         </div>
       </div>

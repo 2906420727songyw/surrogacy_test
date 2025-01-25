@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
 import { useEffect, useState } from 'react';
+import { useLanguage } from '@/app/language';
 
 interface BecomeSurrogatePart1Props {
   isVisible?: boolean;
@@ -13,7 +14,7 @@ export default function BecomeSurrogatePart1({ isVisible = false }: BecomeSurrog
   const router = useRouter();
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
   const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
-
+  const { translations } = useLanguage();
   useEffect(() => {
     // 检查是否需要展开所有部分
     if (sessionStorage.getItem('expandAllSections')) {
@@ -56,24 +57,26 @@ export default function BecomeSurrogatePart1({ isVisible = false }: BecomeSurrog
     <div className={styles.becomeSurrogatePart1}>
       <div className={styles.content}>
         <h2 
-          className={`pt-page h1-text text-white mb-16 md:mb-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
+          className={`pt-page ${translations.language==='EN'?'h1-text':'h1-text-en'} text-white mb-16 md:mb-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
         >
-          欢迎来到 Sapling，<br/>
-          成为代孕妈妈，最高可赚取 105,000 美元
+          {translations.becomeSurrogate.becomeSurrogatePart1.guide?.title}<br/>
+          {translations.becomeSurrogate.becomeSurrogatePart1.guide?.subTitle}
         </h2>
-        
-        <p className="h2-text text-white mb-10 md:mb-11">
-          代孕妈妈是伟大的存在，这世界上有 1/6 的人因为个人原因，无法组成完整的家庭，<br/>
-          他们梦想着能够抱着自己的孩子入睡，渴望看到宝宝在自己的呵护下长大。<br/>
-          因为代孕妈妈无私的帮助，让这一切都变得有可能，代孕妈妈的无私奉献让更多有需要的人能够成为了父亲和母亲。<br/>
-          Sapling 感谢每个愿意成为代孕妈妈的人，并希望能够给与所有代孕妈妈最好的帮助和关怀，<br/>
-          照顾好代孕妈妈的身体健康和心理健康的同时，我们会尽量去给所有的代孕妈妈都争取更多的薪水<br/>
+        <div className='w-full flex justify-center'>
+        <p className={`${translations.language==='EN'?'h2-text':'h2-text-en '} en-width text-white mb-10 md:mb-11`}>
+          {
+            translations.becomeSurrogate.becomeSurrogatePart1.guide.content
+          }
         </p>
+        </div>
         <button 
           className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10 mb-20 md:mt-20 md:mb-20" 
           onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=appointment' ):router.push('/pages/auth/login?mode=registerMother')}
         >
-          立即申请
+
+          
+          {translations.becomeSurrogate.becomeSurrogatePart1.guide.buttonText}
+
         </button>
       </div>
 
@@ -91,215 +94,66 @@ export default function BecomeSurrogatePart1({ isVisible = false }: BecomeSurrog
 
       <div id="who-can-be-surrogate" className={styles.bottomContent}>
         <h2 
-          className={`h1-text text-white mb-16 md:mb-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
+          className={`${translations.language==='EN'?'h1-text':'h1-text-en'} text-white mb-16 md:mb-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
         >
-          WHO?<br/> 谁可以成为我们的代孕妈妈：对代孕妈妈的要求
+          {translations.becomeSurrogate.becomeSurrogatePart1.whoCanBecome?.title}<br/>
+
         </h2>
-        <p className="h2-text text-white mb-10 md:mb-11">
-          我们 Sapling 的代孕妈妈必须在生理上和心理上同时具备代孕的能力，<br/>
-          这样可以最大程度的降低风险，让代孕妈妈和准父母一起顺利度过代孕的旅程，迎接健康宝宝的来到
-        </p>
+        <div className='w-full flex justify-center'>
+        <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white mb-10 md:mb-11`}>
+
+{translations.becomeSurrogate.becomeSurrogatePart1.whoCanBecome?.content.map((item:any, index:number) =>{
+  return <span key={index}>{item}<br/></span>
+})}
+</p>
+
+        </div>
+
       </div>
 
+
+
       <div className={styles.gradientBar}></div>
+
       <div className={styles.transparentContainer}>
-        <div
-          data-section="A"
-          className={`${styles.expandableContainer} ${isExpanded('A') ? styles.expanded : ''}`}
-        >
-          <div className={styles.expandableHeader}>
-            <div className={styles.divider}></div>
-            <p className="text-sm text-white mb-4 mt-6 md:text-base md:mt-8 md:mb-6">
-              A. 身体健康
-            </p>
-          </div>
-          {isExpanded('A') && (
-            <div className={styles.expandedContent}>
-              <Image 
-                src="/images/BecomeSurrogate/A.png" 
-                alt="展开内容图片" 
-                width={100}
-                height={100}
-                className={`${styles.expandedImage} animate__animated animate__fadeInDown animate__duration-1s`}
-                placeholder="blur"
-                blurDataURL="/images/BecomeSurrogate/A.jpg"
-              />
-              <p className="h3-text text-white text-center mb-6 md:mb-8 animate__animated animate__fadeInDown animate__duration-1s">
-                21 至 40 岁之间；身体健康，没有严重的慢性疾病或妨碍怀孕的健康问题（如高血压、糖尿病、心脏病等）；<br/>
-                BMI（体重指数）在 18.5 至 31 之间
-              </p>
+          {/* 循环渲染方式 */}
+          {
+            translations.becomeSurrogate.becomeSurrogatePart1.whoCanBecome?.step.map((item:any, index:number) =>{
+              return <div  key={index}
+              data-section={item.id}
+              className={`${styles.expandableContainer} ${isExpanded(item.id) ? styles.expanded : ''}`}
+            >
+              <div className={styles.expandableHeader}>
+                <div className={styles.divider}></div>
+                <p className={`${translations.language==='EN'?'h2-text':'h2-text-en font-bold'} text-white mb-4 mt-6  md:mt-8 md:mb-6`}>
+                  {item.title}
+                </p>
+              </div>
+              {isExpanded(item.id) && (
+                <div className={styles.expandedContent} >
+                  <Image 
+                    src={`/images/BecomeSurrogate/${item.id}.png` }
+                    alt="展开内容图片" 
+                    width={100}
+                    height={100}
+                    className={`${styles.expandedImage} animate__animated animate__fadeInDown animate__duration-1s`}
+                    placeholder="blur"
+                    blurDataURL={`/images/BecomeSurrogate/${item.id}.jpg`}
+                  />
+                  <p className={`${translations.language==='EN'?'h3-text':'h3-text-en en-width'} text-white text-center mb-6 md:mb-8 animate__animated animate__fadeInDown animate__duration-1s`}>
+                  {
+                    item.content.map((itm:any, idx:number) =>{
+                      return <span key={idx}>{itm}<br/></span>
+                    })
+                  }
+                  </p>
+                </div>
+              )}
             </div>
-          )}
-        </div>
+            } )
+          }
 
-        <div
-          data-section="B"
-          className={`${styles.expandableContainer} ${isExpanded('B') ? styles.expanded : ''}`}
-        >
-          <div className={styles.expandableHeader}>
-            <div className={styles.divider}></div>
-            <p className="text-sm text-white mb-4 mt-6 md:text-base md:mt-8 md:mb-6">
-              B. 心理健康
-            </p>
-          </div>
-          {isExpanded('B') && (
-            <div className={styles.expandedContent}>
-              <Image 
-                src="/images/BecomeSurrogate/B.png" 
-                alt="展开内容图片" 
-                width={100}
-                height={100}
-                className={`${styles.expandedImage} animate__animated animate__fadeInDown animate__duration-1s`}
-                placeholder="blur"
-                blurDataURL="/images/BecomeSurrogate/B.jpg"
-              />
-              <p className="h3-text text-white text-center mb-6 md:mb-8 animate__animated animate__fadeInDown animate__duration-1s">
-                通过心理健康评估，确保在心理上能够承担代孕的责任和挑战；<br/>
-                有强大的情感支持系统，包括家人或朋友的支持
-              </p>
-            </div>
-          )}
-        </div>
 
-        <div
-          data-section="C"
-          className={`${styles.expandableContainer} ${isExpanded('C') ? styles.expanded : ''}`}
-        >
-          <div className={styles.expandableHeader}>
-            <div className={styles.divider}></div>
-            <p className="text-sm text-white mb-4 mt-6 md:text-base md:mt-8 md:mb-6">
-              C. 生育经验
-            </p>
-          </div>
-          {isExpanded('C') && (
-            <div className={styles.expandedContent}>
-              <Image 
-                src="/images/BecomeSurrogate/C.png" 
-                alt="展开内容图片" 
-                width={100}
-                height={100}
-                className={`${styles.expandedImage} animate__animated animate__fadeInDown animate__duration-1s`}
-                placeholder="blur"
-                blurDataURL="/images/BecomeSurrogate/C.jpg"
-              />
-              <p className="h3-text text-white text-center mb-6 md:mb-8 animate__animated animate__fadeInDown animate__duration-1s">
-                需要有至少一段顺利的怀孕和分娩经历；无严重孕产并发症（妊娠高血压、早产等）
-              </p>
-            </div>
-          )}
-        </div>
-
-        <div
-          data-section="D"
-          className={`${styles.expandableContainer} ${isExpanded('D') ? styles.expanded : ''}`}
-        >
-          <div className={styles.expandableHeader}>
-            <div className={styles.divider}></div>
-            <p className="text-sm text-white mb-4 mt-6 md:text-base md:mt-8 md:mb-6">
-              D. 生活方式
-            </p>
-          </div>
-          {isExpanded('D') && (
-            <div className={styles.expandedContent}>
-              <Image 
-                src="/images/BecomeSurrogate/D.png" 
-                alt="展开内容图片" 
-                width={100}
-                height={100}
-                className={`${styles.expandedImage} animate__animated animate__fadeInDown animate__duration-1s`}
-                placeholder="blur"
-                blurDataURL="/images/BecomeSurrogate/D.jpg"
-              />
-              <p className="h3-text text-white text-center mb-6 md:mb-8 animate__animated animate__fadeInDown animate__duration-1s">
-                不使用非法药物、不吸烟、不酗酒、无毒史
-              </p>
-            </div>
-          )}
-        </div>
-
-        <div
-          data-section="E"
-          className={`${styles.expandableContainer} ${isExpanded('E') ? styles.expanded : ''}`}
-        >
-          <div className={styles.expandableHeader}>
-            <div className={styles.divider}></div>
-            <p className="text-sm text-white mb-4 mt-6 md:text-base md:mt-8 md:mb-6">
-              E. 法律要求
-            </p>
-          </div>
-          {isExpanded('E') && (
-            <div className={styles.expandedContent}>
-              <Image 
-                src="/images/BecomeSurrogate/E.png" 
-                alt="展开内容图片" 
-                width={100}
-                height={100}
-                className={`${styles.expandedImage} animate__animated animate__fadeInDown animate__duration-1s`}
-                placeholder="blur"
-                blurDataURL="/images/BecomeSurrogate/E.jpg"
-              />
-              <p className="h3-text text-white text-center mb-6 md:mb-8 animate__animated animate__fadeInDown animate__duration-1s">
-                无犯罪记录；没有在部分政府援助计划内；居住在美国代孕友好州
-              </p>
-            </div>
-          )}
-        </div>
-
-        <div
-          data-section="F"
-          className={`${styles.expandableContainer} ${isExpanded('F') ? styles.expanded : ''}`}
-        >
-          <div className={styles.expandableHeader}>
-            <div className={styles.divider}></div>
-            <p className="text-sm text-white mb-4 mt-6 md:text-base md:mt-8 md:mb-6">
-              F. 身份要求
-            </p>
-          </div>
-          {isExpanded('F') && (
-            <div className={styles.expandedContent}>
-              <Image 
-                src="/images/BecomeSurrogate/F.png" 
-                alt="展开内容图片" 
-                width={100}
-                height={100}
-                className={`${styles.expandedImage} animate__animated animate__fadeInDown animate__duration-1s`}
-                placeholder="blur"
-                blurDataURL="/images/BecomeSurrogate/F.jpg"
-              />
-              <p className="h3-text text-white text-center mb-6 md:mb-8 animate__animated animate__fadeInDown animate__duration-1s">
-                美国公民、绿卡、有效期为三年以上的签证
-              </p>
-            </div>
-          )}
-        </div>
-
-        <div
-          data-section="G"
-          className={`${styles.expandableContainer} ${isExpanded('G') ? styles.expanded : ''}`}
-        >
-          <div className={styles.expandableHeader}>
-            <div className={styles.divider}></div>
-            <p className="text-sm text-white mb-4 mt-6 md:text-base md:mt-8 md:mb-6">
-              G. 经济情况
-            </p>
-          </div>
-          {isExpanded('G') && (
-            <div className={styles.expandedContent}>
-              <Image 
-                src="/images/BecomeSurrogate/G.png" 
-                alt="展开内容图片" 
-                width={100}
-                height={100}
-                className={`${styles.expandedImage} animate__animated animate__fadeInDown animate__duration-1s`}
-                placeholder="blur"
-                blurDataURL="/images/BecomeSurrogate/G.jpg"
-              />
-              <p className="h3-text text-white text-center mb-6 md:mb-8 animate__animated animate__fadeInDown animate__duration-1s">
-                财务状况稳定。过去一年内无破产记录
-              </p>
-            </div>
-          )}
-        </div>
       </div>
     </div>
   );

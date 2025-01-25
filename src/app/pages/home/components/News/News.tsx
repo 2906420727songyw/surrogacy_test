@@ -78,7 +78,7 @@ export default function News() {
       <div className={styles.content}>
         <h2 
           id="news-title"
-          className={`text-4xl text-white mb-10 md:mb-16 md:text-6xl ${
+          className={` text-white mb-10 md:mb-16 ${translations.language==='EN'?'h1-text':'h1-text-en'} ${
             isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'
           }`}
         >
@@ -116,10 +116,10 @@ export default function News() {
                     {item.name.slice(0, 32)}
                   </span>
                   <hr />
-                  <p className="text-xs text-[#cdc6c0] md:text-base italic">
+                  <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-[#cdc6c0]  italic`}>
                     {item.role}
                   </p>
-                  <p className="text-xs text-[#cdc6c0] md:text-base">
+                  <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-[#cdc6c0] `}>
                     {item.content.toString().slice(0, 50) + '...'}
                   </p>
                   <hr />

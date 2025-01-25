@@ -31,11 +31,11 @@
   align-items: center;
 }
 
-.newContainer img {
+/* .newContainer img {
   width: 342px;
   height: 500px;
   object-fit: cover;
-}
+} */
 
 .newContainerContent {
   width: 100%;
@@ -56,10 +56,10 @@
     margin: 50px auto;
   }
 
-  .newContainer img {
+  /* .newContainer img {
     width: 100%;
     height: auto;
     max-width: 400px;
-  }
+  } */
 
 } 

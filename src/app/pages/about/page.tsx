@@ -42,36 +42,39 @@ export default function AboutPage() {
   return (
     <main className="fade-in">
       <div className={styles.hero}>
-        <div className="w-full">
+        <div className="w-full ">
           <h1 
             ref={setRef('main-title')}
             data-animate-id="main-title"
-            className={`pt-page h1-text text-white mb-10 md:text-4xl md:mb-20 ${visibleElements.has('main-title') ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
+            className={`pt-page ${translations.language==='EN'?'h1-text':'h1-text-en'} text-white mb-10  md:mb-20 ${visibleElements.has('main-title') ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
           >
             {translations.about_us_title.title}
           </h1>
-          <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white `} dangerouslySetInnerHTML={{ __html: translations.about_us_title.desc }}>
-          </p>
+         <div className='flex justify-center w-full'>
+         <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white `} dangerouslySetInnerHTML={{ __html: translations.about_us_title.desc }}>
+         </p>
+         </div>
+
         </div>
         
-        {translations.about_us.map((item:any, index:number) => (
+        {translations.about_us_detail.map((item:any, index:number) => (
           <section key={index} className={styles.newContainer}>
             <article className={styles.newContainerContent}>
               <div className={styles.gradientBar} id={`about-item-${index}`}></div>
               <img
-                className='rounded-lg'
+                className='rounded-lg  object-cover md:w-[273px] md:h-[400px] h-[240px]'
                 src={index > 2 ? 'https://loyal-cn.oss-ap-southeast-1.aliyuncs.com/macOS%20Monterey%20Wallpaper.jpg' : `/images/about/img/${index}.png`}
                 alt={item.name}
               />
               <h2 
                 ref={setRef(`title-${index}`)}
                 data-animate-id={`title-${index}`}
-                className={`h1-text text-white my-5 md:text-2xl md:my-7 font-bold ${visibleElements.has(`title-${index}`) ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
+                className={`${translations.language==='EN'?'h1-text':'h1-text-en'} text-white my-5 md:text-2xl md:my-7 font-bold ${visibleElements.has(`title-${index}`) ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
               >
                 {item.name}
               </h2>
-              <p className='text-white mb-5 text-[1.25rem] italic'>{item.role}</p>
-              <p className="text-white h2-text max-w-[60vw]">
+              <p className={`text-white mb-5 ${translations.language==='EN'?'h2-text':'h2-text-en'} italic`}>{item.role}</p>
+              <p className={`${translations.language==='EN'?'h3-text w-[50vw]':'h3-text-en en-width'} text-white `}>
                 {item.content.map((content:any, contentIndex:number) => ( 
                   <span key={contentIndex}>{content}</span>
                 ))}

@@ -33,7 +33,7 @@ export default function Foundation() {
       <div className={styles.content}>
         <h2 
           id="foundation-title"
-          className={`text-2xl mb-8 text-white md:text-5xl ${
+          className={` mb-8 text-white ${translations.language==='EN'?'h1-text':'h1-text-en'} ${
             isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'
           }`}
           dangerouslySetInnerHTML={{ __html: translations.home.Foundation.title }}

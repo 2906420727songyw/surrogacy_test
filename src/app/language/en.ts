@@ -150,10 +150,40 @@ export default {
           content:['xxx']
         }
       ],
+      about_us_detail:[
+        {
+            name:'Judith Hoechst',    
+            role:'Legal Team',
+            content:['Judith is a highly accomplished leader in reproductive law, with extensive experience and a history of significant contributions to the field. She served as Chair of the Legal Professional Group of the American Society for Reproductive Medicine (ASRM) from 2022 to 2023 and is a former Chair of Colorado Fertility Advocates. She currently holds the position of Co-Vice Chair of the American Bar Association’s Assisted Reproductive Technology Committee and is on track to assume the role of Chair in the coming years. Additionally, she serves on the Board of Directors for RESOLVE: The National Infertility Association. In her legal practice, Judith authored Colorado’s surrogacy statute, providing robust legal protections for all parties involved in surrogacy arrangements. She has also played a pivotal role in drafting and advocating for the passage of 5–6 key pieces of legislation related to infertility and reproductive law. As an educator and advocate, Judith co-organizes four annual conferences, providing comprehensive training and resources to reproductive law attorneys both domestically and internationally.']
+          },
+        
+        {
+            name:'Diana E. Chavkin, MD, FACOG',    
+            role:'医生团队',
+            content:['Dr. Diana Chavkin, a double board-certified specialist in Reproductive Endocrinology and Infertility (REI), serves as Medical Director, providing exceptional and personalized fertility care. She earned her medical degree from NYU School of Medicine, completed her residency and subspecialty training at the University of Pennsylvania, and graduated with honors from Barnard College, Columbia University. Having personally faced infertility challenges, Dr. Chavkin brings deep empathy and expertise, helping thousands achieve their dream of parenthood. She specializes in third-party reproduction, low-stimulation IVF, fertility preservation, and recurrent pregnancy loss management, with extensive experience in advanced maternal age and PCOS. An active member of ACOG and ASRM, Dr. Chavkin has earned prestigious awards like the Los Angeles Top Doctor Award and Southern California Super Doctors Award and has contributed to the field through publications and textbook chapters.']
+        },
+        
+        
+        {
+          name:'Kayla Luo',    
+          role:'联合创始人',
+          content:['As Co-Founder and Case Manager of Sapling Surrogacy, Kayla oversees comprehensive support for clients and surrogates, actively involved in every stage of the surrogacy journey. She holds a bachelor’s degree from Nanjing University, studied at the University of Göttingen, and earned master’s degrees from Cornell and Columbia Universities. Fluent in Mandarin, English, and German, Kayla’s global perspective has been pivotal in shaping Sapling’s international operations. Kayla specializes in healthcare data and public administration investments, focusing on advancing innovation in reproductive healthcare. Her efforts at Sapling include streamlining services, enhancing client experiences, and driving the company’s growth, reflecting her deep commitment to the field.']
+        }, {
+          name:'XXX',    
+          role:'XXX',
+          content:['xxx']
+        },
+        {
+          name:'XXX',    
+          role:'XXX',
+          content:['xxx']
+        }
+      ],
+
       about_us_title:{
         title1:'Sapling Surrogacy',
         title2:'About Us',
-        desc:'A premier full-service surrogacy agency renowned for its exceptional success rates and unwavering commitment to excellence. With a team of professionals, Sapling Surrogacy provides personalized guidance and comprehensive support, ensuring a seamless and compassionate experience as you embark on the life-changing journey of building your family.',
+        desc:'Sapling Surrogacy is a premier full-service surrogacy agency dedicated to helping individuals and families achieve their dreams of parenthood. With industry-leading success rates and personalized support, we guide clients through every step of the surrogacy journey with care, expertise, and compassion.',
         more:'more'
       },
       home:{
@@ -608,7 +638,328 @@ export default {
 
         },
         intendedParentContent:{
+            title:'Initial Application Form for Intended Parents',
+            btn:'Submit Application',
+            reply_list: [
+                "Full Name *",
+                "Address *",
+                "City *",
+                "State/Province *",
+                "Postal Code *",
+                "Country *",
+                "Country Code (if outside the U.S.)",
+                "Phone Number *",
+                "Email Address *",
+                "Date of Birth *",
+                "Marital Status *",
+                "Partner's Full Name *",
+                "Partner's Date of Birth *"
+              ],
+              qa_list: [
+                {
+                    question: "Sexual Orientation *",
+                    options: ["Heterosexual", "Homosexual", "Bisexual", "Queer"]
+                },
+                {
+                    question: "What services do you need? *",
+                    options: ["Egg Retrieval/Embryo", "Surrogacy", "Egg/Sperm Donation"]
+                },
+                {
+                    question: "Have you or your partner ever been arrested? *",
+                    options: ["Yes", "No"]
+                },
+                {
+                    question: "Have you or your partner ever been convicted of a crime? *",
+                    options: ["Yes", "No"]
+                },
+                {
+                    question: "When do you expect to start your surrogacy journey?",
+                    options: ["0-3 months", "4-6 months", "7-12 months", "Over 12 months"]
+                },
+                {
+                    question: "Do you currently have a partnering IVF clinic? *",
+                    options: ["Yes", "No"]
+                },
+                {
+                    question: "Do you currently have frozen embryos? *",
+                    options: ["Yes", "No"]
+                }
+            ]
+            
+              
+        },
+        appointmentContent:{
+            title:"Select Date",
+            time_zone: [
+                'UTC+8 (China Standard Time)',
+                'UTC-4 (Eastern Time)',
+                'UTC-5 (Central Time)',
+                'UTC-6 (Mountain Time)',
+                'UTC-7 (Pacific Time)',
+                'UTC-8 (Alaska Time)',
+                'UTC-10 (Hawaii Time)'
+              ],                  
+            time_list: [
+                '09:00 am', '10:00 am', '11:00 am',
+                '12:00 pm', '1:00 pm', '2:00 pm',
+                '3:00 pm', '4:00 pm', '5:00 pm',
+                '6:00 pm', '7:00 pm', '8:00 pm'
+            ],
+            month_list:[
+                'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
+            ],
+            appointment_btn:'Book Appointment',
+            appointment_loading:'Booking Appointment...',
+            become_surrogate:'Become a Surrogate',
+            become_intended_parent:'Become an Intended Parent',
+            detail_title:'Appointment Details'
+        },
+        appointmentSuccess:{
 
         }
+    },
+     //成为代孕妈妈-CN
+  becomeSurrogate: {
+    becomeSurrogatePart1: {
+      guide: {
+        title: "Welcome to Sapling",
+        subTitle: "Earn Up to $105,000 as a Surrogate",
+        content: 'Surrogates are extraordinary individuals who make an incredible impact on the lives of others. With approximately 1 in 6 people unable to build a family due to personal circumstances, many dream of holding their own child and watching them grow with love and care. Through the selfless generosity of surrogates, these dreams become a reality, offering hope and joy to those who long to become parents. At Sapling, we deeply value and respect every woman who chooses to embark on this meaningful journey. We are dedicated to providing exceptional support, prioritizing both the physical and emotional well-being of our surrogates. Furthermore, we work diligently to ensure they receive the highest possible compensation for their invaluable contribution.',
+        buttonText: "Apply Now",
+      },
+
+      whoCanBecome: {
+        title: "Who Can Become a Surrogate with Us? Eligibility Requirements",
+        content: [
+          "At Sapling, we carefully select surrogates who meet both physical and psychological criteria to ensure they are fully prepared for the responsibilities of surrogacy.",
+          " This rigorous approach not only minimizes risks but also fosters a safe, smooth, and positive experience for both the surrogate and the intended parents, leading to the successful and healthy arrival of their baby.",
+        ],
+        step: [
+          {
+            id: "A",
+            title: "A. Physical Health Requirements",
+            content: [
+              "Must be between 21 and 40 years old; Maintain overall good health with no significant chronic conditions or medical issues that could interfere with pregnancy, such as hypertension, diabetes, or heart disease; Have a BMI (Body Mass Index) within the range of 18.5 to 31.",
+            ],
+          },
+          {
+            id: "B",
+            title: "B. Mental Health Requirements",
+            content: [
+              "Must successfully complete a psychological evaluation to confirm the ability to manage the responsibilities and challenges of surrogacy; Have a strong emotional support network, including family or friends, to provide ongoing encouragement and assistance.",
+            ],
+          },
+          {
+            id: "C",
+            title: "C. Reproductive Experience",
+            content: [
+              "Must have successfully carried and delivered at least one child; No history of significant pregnancy or delivery complications, such as preeclampsia or preterm labor.",
+            ],
+          },
+
+          {
+            id: "D",
+            title: "D. Lifestyle Requirements",
+            content: [
+              "Must maintain a healthy lifestyle, including abstaining from illegal drugs, smoking, and excessive alcohol consumption; No prior or current history of substance abuse.",
+            ],
+          },
+
+          {
+            id: "E",
+            title: "E. Legal Requirements",
+            content: [
+              "Must have a clean criminal record; Cannot be actively participating in certain government assistance programs; Must reside in a state within the United States that is surrogacy-friendly.",
+            ],
+          },
+
+          {
+            id: "F",
+            title: "F. Citizenship Requirements",
+            content: [
+              "Eligible candidates must be U.S. citizens, lawful permanent residents (green card holders), or hold a valid visa with a minimum of three years of remaining validity.",
+            ],
+          },
+
+          {
+            id: "G",
+            title: "G. Financial Stability",
+            content: [
+              "Candidates must exhibit financial stability and have no record of bankruptcy within the past year.",
+            ],
+          },
+        ],
+      },
+    },
+
+    becomeSurrogatePart2: {
+      title: "Our Applicant Screening Process",
+      content: [
+        "Following guidelines from the American Society for Reproductive Medicine (ASRM)",
+        "we work with medical, psychological, and legal experts to rigorously screen all applicants.",
+      ],
+      step: [
+        {
+          id: "A",
+          title: "A. Physical Health Evaluation",
+          content: [
+            "Comprehensive assessments include physical exams, reproductive health evaluations, and reviews of medical and pregnancy history to ensure candidates are fit for surrogacy.",
+          ],
+        },
+        {
+          id: "B",
+          title: "B. Psychological Health Evaluation",
+          content: [
+            "We evaluate emotional stability, stress management, surrogacy motivations, and support networks to ensure candidates are mentally prepared for the journey.",
+          ],
+        },
+
+        {
+          id: "C",
+          title: "C. Legal Background Check",
+          content: [
+            "A thorough background check and verification of a clean criminal record are conducted to ensure applicants meet all legal requirements for surrogacy.",
+          ],
+        },
+        {
+          id: "D",
+          title: "D. Health and Lifestyle Assessment",
+          content: [
+            "Applicants’ dietary and exercise habits are evaluated, along with confirmation of abstinence from drugs, alcohol, and tobacco, to ensure a healthy and responsible lifestyle.",
+          ],
+        },
+        {
+          id: "E",
+          title: "E. Physical Readiness Evaluation",
+          content: [
+            "Weight and BMI screenings are performed to confirm applicants are within a healthy range, along with an assessment of physical readiness for pregnancy",
+          ],
+        },
+      ],
+      buttonText: "Apply Now",
+    },
+    becomeSurrogatePart3: {
+      title: "How to Become a Surrogate: Application Process",
+      step: [
+        {
+          id: "1",
+          title: "Step 1: Initial Questionnaire",
+          content: [
+            "Complete a short online questionnaire about your pregnancy history, health, background, and surrogacy motivation. Eligible applicants will be contacted to proceed.",
+          ],
+        },
+        {
+          id: "2",
+          title: "Step 2: Application Review",
+          content: [
+            "Submit documents, including your driver’s license, Social Security card, pay stubs, pregnancy and medical records, and health insurance card. Third-party professionals will verify these details.",
+          ],
+        },
+        {
+          id: "3",
+          title: "Step 3: Online Interview",
+          content: [
+            "Participate in an online interview with a psychologist to discuss your surrogacy motivations, interests, and readiness for the journey.",
+          ],
+        },
+      ],
+      buttonText: "Apply Now",
+    },
+    becomeSurrogatePart4: {
+      where: {
+        title: "Where Do Our Surrogates Come From?",
+        content: [
+          "Our surrogates reside in U.S. states where surrogacy is legally permitted. Applicants from states where surrogacy is explicitly prohibited, such as Michigan, Louisiana, and Arkansas, are not eligible to participate in our program. Given the complexities of surrogacy—including legal, ethical, and medical considerations—we carefully select surrogates based on strict criteria. This includes thorough legal review, access to local medical resources, and rigorous financial screening, ensuring a safe, ethical, and smooth surrogacy journey for all parties involved.",
+        ],
+      },
+      why: {
+        title: "Why Become a Surrogate with Sapling?",
+        content: [
+          "At Sapling, we are committed to offering exceptional support and care to every surrogate throughout the entire journey. Surrogacy is a demanding process that requires physical, emotional, and mental resilience. To ensure the well-being of our surrogates, we have a dedicated team that maintains consistent communication and provides comprehensive assistance every step of the way.",
+        ],
+        stepText: "Here’s how we support our surrogates:",
+        step: [
+          {
+            id: "1",
+            title: "Comprehensive Support During Your Application",
+            content: [
+              "From the start of your application, Sapling is here to guide and support you. We assist with scheduling virtual meetings, tracking your progress, and addressing any concerns. Our professional team and medical experts also provide emotional support throughout the process.",
+            ],
+          },
+          {
+            id: "2",
+            title: "Join a Community of Surrogates",
+            content: [
+              "As a Sapling surrogate, you’ll join a welcoming community where you can connect with others to share experiences. We also host regular online events and workshops to provide resources and enhance your journey.",
+            ],
+          },
+          {
+            id: "3",
+            title: "Support for Your Family and Friends",
+            content: [
+              'In addition to our care, your family or friend serving as your "Primary Support Person" (often your emergency contact) will play a key role in your journey. We work closely with them and reimburse travel expenses and lost wages when they accompany you to medical appointments or transfers. They’ll support you with daily tasks during pregnancy and be by your side during delivery, ensuring you’re cared for every step of the way.',
+            ],
+          },
+        ],
+      },
+
+    
+
+
+      how:{
+        title: "Surrogate Compensation and Benefits",
+        content:"Compensation and benefits for surrogates are determined based on state regulations and individual surrogacy experience. At Sapling, we are dedicated to providing industry-leading compensation and comprehensive benefits to ensure surrogates are fully recognized and supported for their invaluable contributions.",
+        type:"Sapling offers surrogate compensation and benefits in three key categories:",
+        qa: [
+          {
+              title: "Base Compensation",
+              content: "Base compensation ranges from $45,000 to $75,000, depending on the surrogate’s state of residence and personal circumstances."
+          },
+          {
+              title: "Basic Reimbursements",
+              content: "Reimbursements cover travel expenses for medical appointments, embryo transfers, and related procedures, prescription medication costs (covered by insurance), monthly stipends starting at the medication preparation phase, wage loss compensation, and postpartum care expenses."
+          },
+          {
+              title: "Additional Benefits",
+              content: "Additional benefits include maternity clothing allowances, compensation for miscarriages, cesarean sections, and multiple births, ensuring surrogates receive comprehensive support and acknowledgment throughout the process."
+          }
+      ],
+      time:"Schedule for Surrogate Compensation and Benefits",
+      qa_time: [
+        {
+            title: "Base Compensation",
+            content: "Once the pregnancy is confirmed with a fetal heartbeat, surrogates will receive monthly base compensation over a nine-month period."
+        },
+        {
+            title: "Basic Reimbursements",
+            content: "Starting with the medication phase for embryo transfer preparation, surrogates will receive a monthly allowance. After the intended parents are confirmed and the contract is signed, surrogates and their accompanying support persons will be reimbursed for travel expenses, meal costs, wage loss, and childcare expenses."
+        },
+        {
+            title: "Additional Benefits and Payments",
+            content: "Upon confirmation of pregnancy, surrogates will receive a fixed maternity clothing allowance to cover pregnancy-related apparel. For those carrying multiples, additional compensation will be provided during the final five months of pregnancy, recognizing the increased effort and risks involved in multiple gestations."
         }
+    ],
+    qa_apply: [
+      {
+        title: "Comprehensive Support During Your Application",
+        content: "From the start of your application, Sapling is here to guide and support you. We assist with scheduling virtual meetings, tracking your progress, and addressing any concerns. Our professional team and medical experts also provide emotional support throughout the process."
+    },
+    {
+        title: "Join a Community of Surrogates",
+        content: "As a Sapling surrogate, you’ll join a welcoming community where you can connect with others to share experiences. We also host regular online events and workshops to provide resources and enhance your journey."
+    },
+    {
+        title: "Support for Your Family and Friends",
+        content: "In addition to our care, your family or friend serving as your \"Primary Support Person\" (often your emergency contact) will play a key role in your journey. We work closely with them and reimburse travel expenses and lost wages when they accompany you to medical appointments or transfers. They’ll support you with daily tasks during pregnancy and be by your side during delivery, ensuring you’re cared for every step of the way."
+    }
+    ]
+    
+      
+      },
+
+
+
+      applyButtonText: "Apply Now",
+    },
+  },
 }

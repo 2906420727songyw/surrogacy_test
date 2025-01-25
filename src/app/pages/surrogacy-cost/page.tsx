@@ -81,22 +81,22 @@ export default function SurrogacyCost() {
         <p 
           ref={setRef('title')}
           data-animate-id="title"
-          className={`h1-text text-white mb-10 md:mb-12 ${
+          className={`${translations.language==='EN'?'h1-text':'h1-text-en'} text-white mb-10 md:mb-12 ${
             visibleElements.has('title') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
           }`}
         >
           {translations.surrogacyCost.title}
         </p>
-        <p className="h2-text text-white mb-20 md:mb-40 text-center px-5" dangerouslySetInnerHTML={{ __html: translations.surrogacyCost.desc }}>
+        <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-20 md:mb-40 text-center px-5`} dangerouslySetInnerHTML={{ __html: translations.surrogacyCost.desc }}>
         </p>
       </div>
     <div className={styles.packageContainer}>
       {/* 左侧 */}
       <div className={styles.leftPackage}>
-        <h3 className="h1-text text-white mb-5 md:mb-10 text-center">
+        <h3 className={`${translations.language==='EN'?'h1-text':'h1-text-en'} text-white mb-5 md:mb-10 text-center`}>
             {translations.surrogacyCost.sproutPackage.title}
         </h3>
-        <p className="h2-text text-white text-center">
+        <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white text-center`}>
             {translations.surrogacyCost.sproutPackage.desc}
         </p>
         <div className={styles.detailsDivider}></div>
@@ -167,10 +167,10 @@ export default function SurrogacyCost() {
       </div>
       {/* 右侧 */}
       <div className={styles.rightPackage}>
-      <h3 className="h1-text text-white mb-5 md:mb-10 text-center">
+      <h3 className={`${translations.language==='EN'?'h1-text':'h1-text-en'} text-white mb-5 md:mb-10 text-center`}>
         {translations.surrogacyCost.thrivePackage.title}
       </h3>
-      <p className="h2-text text-white text-center">
+      <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white text-center`}>
         {translations.surrogacyCost.thrivePackage.desc}
         </p>
       <div className={styles.detailsDivider}></div>
@@ -293,13 +293,13 @@ export default function SurrogacyCost() {
           <p 
             ref={setRef('title1')}
             data-animate-id="title1"
-            className={`h1-text text-white mb-8 md:mb-10 text-center ${
+            className={`${translations.language==='EN'?'h1-text':'h1-text-en'} text-white mb-8 md:mb-10 text-center ${
               visibleElements.has('title1') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
             }`}
           >
             {translations.surrogacyCost.questionAndAnswer[0].title}
           </p>
-          <p className="h2-text text-white mb-10 md:mb-20 text-center">
+          <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white mb-10 md:mb-20 text-center`}>
             {translations.surrogacyCost.questionAndAnswer[0].desc}
           </p>
           <div className="w-full h-[1px] bg-white"></div>
@@ -308,13 +308,13 @@ export default function SurrogacyCost() {
           <p 
             ref={setRef('title2')}
             data-animate-id="title2"
-            className={`h1-text text-white mb-8 md:mb-10 text-center ${
+            className={`${translations.language==='EN'?'h1-text':'h1-text-en'} text-white mb-8 md:mb-10 text-center ${
               visibleElements.has('title2') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
             }`}
           >
             {translations.surrogacyCost.questionAndAnswer[1].title}
           </p>
-          <p className="h2-text text-white mb-10 md:mb-20 text-center">
+          <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white mb-10 md:mb-20 text-center`}>
             {translations.surrogacyCost.questionAndAnswer[1].desc}
           </p>
           <div className="w-full h-[1px] bg-white"></div>
@@ -323,13 +323,13 @@ export default function SurrogacyCost() {
           <p 
             ref={setRef('title3')}
             data-animate-id="title3"
-            className={`h1-text text-white mb-8 md:mb-10 text-center ${
+            className={`${translations.language==='EN'?'h1-text':'h1-text-en'} text-white mb-8 md:mb-10 text-center ${
               visibleElements.has('title3') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
             }`}
           >
             {translations.surrogacyCost.questionAndAnswer[2].title}
           </p>
-          <p className="h2-text text-white mb-10 md:mb-20 text-center">
+          <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white mb-10 md:mb-20 text-center`}>
             {translations.surrogacyCost.questionAndAnswer[2].desc}
           </p>
         </div>
