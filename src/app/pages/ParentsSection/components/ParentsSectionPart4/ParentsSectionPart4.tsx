@@ -44,7 +44,7 @@ export default function ParentsSectionPart4() {
         <div className="w-full flex flex-col items-center justify-center px-5">
           <h2 
             ref={titleRef}
-            className={`h1-text text-center text-white mb-12 md:mb-14 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'}`}
+            className={`${translations.language==='EN'?'h1-text':'h1-text-en'} text-center text-white mb-12 md:mb-14 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'}`}
           >
             {translations.parentsSection.parentsSectionPart4.title_first}<br/>
             {translations.parentsSection.parentsSectionPart4.title_second}
@@ -59,16 +59,16 @@ export default function ParentsSectionPart4() {
     )
   })}
          </div>:
-         <p className="h2-text-en md:w-[30vw] text-white text-center mb-12 md:mb-14">
+         <p className={`${translations.language==='EN'?'h2-text-en':'h2-text-en'} text-white text-center mb-12 md:mb-14`}>
           {translations.parentsSection.parentsSectionPart4.text_desc}</p>}
         </div>
-        <div className={styles.transparentContainer}>
-          <h2 className="text-sm text-center text-white mb-12 md:text-lg md:mb-0">
+        <div className={`${styles.transparentContainer} flex flex-col items-center justify-center`}>
+          <h2 className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-12 md:mb-0`}>
             {translations.parentsSection.parentsSectionPart4.process}
           </h2>
           <div className={styles.gradientBar}></div>
           <div className={styles.transparentContent}>
-            <h3 className="text-sm text-center text-white mb-4 md:text-lg md:mb-16">
+            <h3 className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-4 md:mb-16`}>
               {translations.parentsSection.parentsSectionPart4.part1.title}
             </h3>
             <div className={styles.itemsContainer}>
@@ -79,7 +79,7 @@ export default function ParentsSectionPart4() {
                 style={{ borderRadius: '40px' }}
                 layout="responsive"
                 />
-                <p className="h3-text text-white text-center md:text-left">
+                <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white text-center md:text-left`}>
 {translations.parentsSection.parentsSectionPart4.part1.first_need}
                 </p>
               </div>
@@ -90,7 +90,7 @@ export default function ParentsSectionPart4() {
                 style={{ borderRadius: '40px' }}
                 layout="responsive"
                 />
-                <p className="h3-text text-white text-center mb-10 md:text-left">
+                <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white text-center md:text-left`}>
 {translations.parentsSection.parentsSectionPart4.part1.second_need}
                 </p>
               </div>
@@ -98,7 +98,7 @@ export default function ParentsSectionPart4() {
           </div>
           <div className={styles.gradientBar}></div>
           <div className={styles.transparentContent}>
-            <h3 className="text-sm text-center text-white mb-4 md:text-lg md:mb-16">
+            <h3 className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-4 md:mb-16`}>
               {translations.parentsSection.parentsSectionPart4.part2.title}
             </h3>
             <div className={styles.itemsContainer}>
@@ -109,7 +109,7 @@ export default function ParentsSectionPart4() {
                 style={{ borderRadius: '40px' }}
                 layout="responsive"
                 />
-                <p className="h3-text text-white text-center md:mb-14 md:text-left">
+                <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white text-center md:text-left`}>
                 {translations.parentsSection.parentsSectionPart4.part2.first_need}
                 </p>
               </div>
@@ -119,7 +119,7 @@ export default function ParentsSectionPart4() {
                 height={800}
                 style={{ borderRadius: '40px'}}
                 layout="responsive"  />
-                <p className="h3-text text-white text-center md:mb-14 md:text-left">
+                <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white text-center md:text-left`}>
                 {translations.parentsSection.parentsSectionPart4.part2.second_need}     
                 </p>
               </div>
@@ -127,16 +127,17 @@ export default function ParentsSectionPart4() {
           </div>
           
         </div>
-        {
-          translations.language==='EN'?
-          <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10 mb-10 md:mt-20 md:mb-20" onClick={()=>router.push('/pages/auth/profile?type=parent')}>
-            {translations.parentsSection.parentsSectionPart4.btn}
+     
+{
+        translations.language==='EN'?
+        <button className="flex justify-center items-center w-16 h-6 md:w-24 md:h-8 rounded h2-text font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>router.push('/pages/auth/profile?type=parent')}>
+        {translations.parentsSection.parentsSectionPart4.btn}
         </button>
         :
-        <button className="px-5 h-6  md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10 mb-10 md:mt-20 md:mb-20" onClick={()=>router.push('/pages/auth/profile?type=parent')}>
-            {translations.parentsSection.parentsSectionPart4.btn}
+        <button className="flex justify-center items-center px-5 h-6  md:h-8 rounded h2-text-en font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>router.push('/pages/auth/profile?type=parent')}>
+        {translations.parentsSection.parentsSectionPart4.btn}
         </button>
-        }
+       }
       </div>
       
     </div>

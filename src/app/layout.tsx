@@ -5,6 +5,7 @@ import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
 import { AuthProvider } from "./components/AuthProvider";
 import { LanguageProvider } from "./language";
+import LanguageWrapper from "./components/LanguageWrapper";
 
 const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
@@ -43,16 +44,15 @@ export default function RootLayout({
           href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <AuthProvider>
-          <LanguageProvider>
+      <LanguageProvider>
+        <LanguageWrapper className={`${geistSans.variable} ${geistMono.variable}`}>
+          <AuthProvider>
             <Header />
             <main>{children}</main>
             <Footer />
-          </LanguageProvider>
-          
-        </AuthProvider>
-      </body>
+          </AuthProvider>
+        </LanguageWrapper>
+      </LanguageProvider>
     </html>
   );
 }

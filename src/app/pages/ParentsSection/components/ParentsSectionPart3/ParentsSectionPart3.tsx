@@ -74,18 +74,18 @@ export default function ParentsSectionPart3() {
       <div id="surrogacy-plan-process" className={styles.content}>
         <div className="w-full flex flex-col items-center justify-center px-5">
           <h2
-            className={`text-xl text-center text-white mb-12 leading-[2.5rem] md:leading-[4.5rem] md:text-4xl md:mb-12 ${isVisible ? 'animate__animated animate__fadeInUp animate__duration-1s animate__delay-1s' : 'opacity-0'}`}
+            className={`${translations.language==='EN'?'h1-text':'h1-text-en'} text-center text-white mb-12 leading-[2.5rem] md:leading-[4.5rem] md:text-4xl md:mb-12 ${isVisible ? 'animate__animated animate__fadeInUp animate__duration-1s animate__delay-1s' : 'opacity-0'}`}
           >
             {translations.parentsSection.ParentsSectionPart3.title}
             {/* 准父母代孕流程 */}
           </h2>
-          <p className="text-sm leading-6 text-white text-center mb-10 md:text-base md:leading-10 md:mb-11">
+          <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'}  text-center text-white mb-12  md:mb-12 ${isVisible ? 'animate__animated animate__fadeInUp animate__duration-1s animate__delay-1s' : 'opacity-0'}`}>
             {translations.parentsSection.ParentsSectionPart3.context?.[0]}<br />
             {translations.parentsSection.ParentsSectionPart3.context?.[1]}<br />
             {translations.parentsSection.ParentsSectionPart3.context?.[2]}<br />
             {translations.parentsSection.ParentsSectionPart3.context?.[3]}
           </p>
-          <p className="text-sm leading-6 text-white text-center mb-10 md:text-base md:leading-10 md:mb-11">
+          <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'}  text-white text-center mb-10 md:mb-11`}>
             {translations.parentsSection.ParentsSectionPart3.context?.[4]}<br />
             {translations.parentsSection.ParentsSectionPart3.context?.[5]}<br />
           </p>
@@ -93,7 +93,7 @@ export default function ParentsSectionPart3() {
         </div>
 
         {/* 流程 */}
-        <div className={styles.stepsContainer}>
+        <div className={`${styles.stepsContainer} `}>
 
         {/* 循环渲染 */}
           {
@@ -103,15 +103,16 @@ export default function ParentsSectionPart3() {
                 data-section={'step' + (index + 1)}
                 className={`${styles.clickableDiv} ${isExpanded('step' + (index + 1)) ? styles.expanded : ''}`}
               >
-                <div className={styles.divider}></div>
-                <p className="text-sm text-white mb-4 mt-6 md:text-xl md:mb-4 md:mt-8">
+                <div className={`${styles.divider} flex justify-center w-full`}></div>
+               <div className='flex flex-col items-center'>
+               <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-4 mt-6 md:mt-8 md:mb-6`}>
                   {item.title}
                 </p>
-                <p className="text-sm text-white mb-6 md:text-base md:mb-8">
+                <p className={`${translations.language==='EN'?'h3-text':'h3-text-en en-width'} text-white mb-6 md:text-base md:mb-8`}>
                  {item.desc}
                 </p>
                 {isExpanded('step' + (index + 1)) && (
-                  <p className="text-xs text-white leading-5 mb-6 mt-8 md:text-sm md:mb-8 md:mt-16 md:leading-6 animate__animated animate__fadeInDown animate__duration-1s">
+                  <p className={`${translations.language==='EN'?'h3-text':'h3-text-en en-width'} text-white mb-6 mt-8 md:text-sm md:mb-8 md:mt-16 md:leading-6 animate__animated animate__fadeInDown animate__duration-1s`}>
                     
                   {
                       item.context.map((itm: any,idx: number) =>{
@@ -122,6 +123,8 @@ export default function ParentsSectionPart3() {
             
                   </p>
                 )}
+
+               </div>
                 <div className={styles.divider}></div>
               </div>
             })
@@ -248,9 +251,17 @@ export default function ParentsSectionPart3() {
 
 
         </div>
-        <button className="px-3 h-6  md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10 mb-10 md:mt-20 md:mb-20" onClick={() => router.push('/pages/auth/profile?type=parent')}>
-          {translations.parentsSection.ParentsSectionPart3.buttonText}
+        {
+        translations.language==='EN'?
+        <button className="w-16 h-6 md:w-24 md:h-8 rounded h2-text font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10 flex justify-center items-center" onClick={() => router.push('/pages/auth/profile?type=parent')}>
+          {translations.parentsSection.ParentsSectionPart2.button.text}
         </button>
+        :
+        <button className="px-5 h-6  md:h-8 rounded h2-text-en font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10 flex justify-center items-center" onClick={() => router.push('/pages/auth/profile?type=parent')}>
+          {translations.parentsSection.ParentsSectionPart2.button.text}
+        </button>
+       }
+      
       </div>
     </div>
   );

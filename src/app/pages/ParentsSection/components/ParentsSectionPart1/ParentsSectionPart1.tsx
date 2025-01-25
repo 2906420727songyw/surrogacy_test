@@ -83,7 +83,7 @@ export default function ParentsSectionPart1() {
    <div className={`${styles.container} flex flex-col items-center`}>
         <h1 
           ref={titleRef}
-          className={`h1-text text-white mb-12 md:mb-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'}` }
+          className={`${translations.language==='EN'?'h1-text':'h1-text-en'} text-white mb-12 md:mb-20 ${isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'}` }
         >
   {translations?.parentsSection?.parentsSectionPart1?.title}
   </h1>
@@ -95,18 +95,18 @@ export default function ParentsSectionPart1() {
             })}
         </p> 
           :
-          <p className="h2-text-en text-white mb-10 md:mb-12  md:w-[30vw]">
+          <p className="h2-text-en text-white mb-10 md:mb-12  md:w-[45vw]">
             {translations?.parentsSection?.parentsSectionPart1?.desc}
         </p> 
         }
         
        {
         translations.language==='EN'?
-        <button className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=appointment' ):router.push('/pages/auth/login?mode=register')}>
+        <button className="flex justify-center items-center w-16 h-6 md:w-24 md:h-8 rounded h2-text font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=appointment' ):router.push('/pages/auth/login?mode=register')}>
         {translations?.parentsSection?.parentsSectionPart1?.btn}
         </button>
         :
-        <button className="px-5 h-6  md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=appointment' ):router.push('/pages/auth/login?mode=register')}>
+        <button className="flex justify-center items-center px-5 h-6  md:h-8 rounded h2-text-en font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=appointment' ):router.push('/pages/auth/login?mode=register')}>
         {translations?.parentsSection?.parentsSectionPart1?.btn}
         </button>
        }
@@ -121,10 +121,10 @@ export default function ParentsSectionPart1() {
       blurDataURL="/images/ParentsSection/image1-zip.jpg"
       />
       <div className="w-full flex flex-col items-center text-center text-white px-5 pt-5 md:w-full md:px-36">
-        <h2 className="h1-text text-white my-12 md:my-24 animate__animated animate__fadeInDown animate__duration-1s  ">
+        <h2 className={`${translations.language==='EN'?'h1-text':'h1-text-en'} text-white my-12 md:my-24 animate__animated animate__fadeInDown animate__duration-1s `}>
           {translations?.parentsSection?.parentsSectionPart1?.changeReason}
         </h2>
-        <div className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-10 md:mb-14`}>
+        <div className={`${translations.language==='EN'?'h2-text':'h2-text-en'} md:w-[45vw] text-white mb-10 md:mb-14`}>
           {translations?.parentsSection?.parentsSectionPart1?.reason}
         
         </div>
