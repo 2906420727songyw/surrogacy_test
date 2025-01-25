@@ -510,5 +510,20 @@ export default {
         ]
 
         
+    },
+
+    login:{
+        title_1:"欢迎来到小树苗代孕中心",
+        title_2:"让小树苗更了解你，请先注册/登录",
+        login_type:"使用您的电子邮件地址登录",
+        email:"电子邮件地址",
+        password:"密码",
+        remember:"记住帐号",
+        forgot_password:"忘记密码?",
+        login_btn:"登录",
+        login_loading:"正在登录",
+        register_title:"创建一个新账户",
+        register_desc:"如果这是您第一次请求更多信息或申请我们的计划，请创建一个账户以开始。",
+        register_btn:"创建账户"
     }
 }

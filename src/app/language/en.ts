@@ -498,5 +498,19 @@ export default {
         ]
 
         
+    },
+    login:{
+        title_1:"Welcome to Sapling Surrogacy",
+        title_2:"Welcome to Sapling Surrogacy",
+        login_type:"Please log in using your email address",
+        email:"Email Address",
+        password:"Password",
+        remember:"Remember Me",
+        forgot_password:"Forgot Password?",
+        login_btn:"Log In",
+        login_loading:"Logging In",
+        register_title:"Create a New Account",
+        register_desc:"If this is your first time requesting information or applying to our program, please create an account to begin your journey.",
+        register_btn:"Create Account"
     }
 }

@@ -265,7 +265,6 @@ const scrollToTop = () => {
             onChange={handleChange}
             required
             label="密码"
-            placeholder="请输入密码"
           />
           <CustomInput
             type="password"
@@ -274,7 +273,6 @@ const scrollToTop = () => {
             onChange={passwordMatch}
             required
             label="确认密码"
-            placeholder="请再次输入密码"
           />
           <CustomInput
             type="tel"
