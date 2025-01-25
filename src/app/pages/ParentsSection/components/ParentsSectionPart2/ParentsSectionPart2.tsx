@@ -116,15 +116,15 @@ export default function ParentsSectionPart2() {
       <div className={styles.container}>
         <h2 
           ref={titleRef}
-          className={`h1-text text-center text-white mb-12 md:mb-12 ${isVisible ? 'animate__animated animate__fadeInUp animate__duration-1s  ' : 'opacity-0'}`}
+          className={`${translations.language==='EN'?'h1-text':'h1-text-en'} text-center text-white mb-12 md:mb-12 ${isVisible ? 'animate__animated animate__fadeInUp animate__duration-1s  ' : 'opacity-0'}`}
         >
           {translations.parentsSection.ParentsSectionPart2?.title}
         </h2>
-        <div className="w-full bg-transparent text-center md:w-full">
-          <p className="text-sm text-white mb-5 md:text-lg md:mb-4">
+        <div className={`w-full bg-transparent text-center md:w-full ${translations.language==='EN'?'h2-text':'h2-text-en'}`}>
+          <p className=" text-white mb-5  md:mb-4">
             {translations.parentsSection.ParentsSectionPart2.step[0].title}
           </p>
-          <p className="text-sm text-white mb-10 md:text-base md:mb-12">
+          <p className=" text-white mb-10  md:mb-12">
             {translations.parentsSection.ParentsSectionPart2.step[0].desc}
           </p>
           <div className={styles.divider}></div>
@@ -135,15 +135,15 @@ export default function ParentsSectionPart2() {
           onMouseEnter={handleStep1MouseEnter}
           onMouseLeave={handleStep1MouseLeave}
         >
-          <p className="text-sm text-white mb-4 mt-6 md:text-base md:mt-8 md:mb-6">
+          <p className={`text-white mb-4 mt-6 md:mt-8 md:mb-6 ${translations.language==='EN'?'h3-text':'h3-text-en'}`}>
             {step1Ref.current ? translations.parentsSection.ParentsSectionPart2.firstStep[0].title : translations.parentsSection.ParentsSectionPart2.firstStep[0].title}
           </p>
-          <p className="text-sm text-white mb-6 md:text-base md:mb-8">
+          <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-6  md:mb-8`}>
             {step1Ref.current ? translations.parentsSection.ParentsSectionPart2.firstStep[0].text : translations.parentsSection.ParentsSectionPart2.firstStep[0].text}
           </p>
           {isExpanded('step1') && (
-            <div className={styles.details}>
-              <p className="h3-text text-white mb-6 mt-8 md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s" dangerouslySetInnerHTML={{ __html: translations.parentsSection.ParentsSectionPart2.firstStep[0].desc }}>
+            <div className={`${styles.details} flex justify-center`}>
+              <p className={`  ${translations.language==='EN'?'h3-text':'h3-text-en en-width'} text-white mb-6 mt-8 md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s`} dangerouslySetInnerHTML={{ __html: translations.parentsSection.ParentsSectionPart2.firstStep[0].desc }}>
               </p>
             </div>
           )}
@@ -155,15 +155,15 @@ export default function ParentsSectionPart2() {
           onMouseEnter={handleStep2MouseEnter}
           onMouseLeave={handleStep2MouseLeave}
         >
-          <p className="text-sm text-white mb-4 mt-6 md:text-base md:mt-8 md:mb-6">
+          <p className={`text-white mb-4 mt-6 md:mt-8 md:mb-6 ${translations.language==='EN'?'h3-text':'h3-text-en'}`}>
             {step2Ref.current ? translations.parentsSection.ParentsSectionPart2.firstStep[1].title : translations.parentsSection.ParentsSectionPart2.firstStep[1].title}
           </p>
-          <p className="text-sm text-white mb-6 md:text-base md:mb-8">
+          <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-6  md:mb-8`}>
             {step2Ref.current ? translations.parentsSection.ParentsSectionPart2.firstStep[1].text : translations.parentsSection.ParentsSectionPart2.firstStep[1].text}
           </p>
           {isExpanded('step2') && (
-            <div className={styles.details}>
-              <p className="h3-text text-white mb-6 mt-8 md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s" dangerouslySetInnerHTML={{ __html: translations.parentsSection.ParentsSectionPart2.firstStep[1].desc }}>
+            <div className={`${styles.details} flex justify-center`}>
+              <p className={` ${translations.language==='EN'?'h3-text':'h3-text-en en-width'} text-white mb-6 mt-8 md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s`} dangerouslySetInnerHTML={{ __html: translations.parentsSection.ParentsSectionPart2.firstStep[1].desc }}>
               </p>
             </div>
           )}
@@ -175,15 +175,15 @@ export default function ParentsSectionPart2() {
           onMouseEnter={handleStep3MouseEnter}
           onMouseLeave={handleStep3MouseLeave}
         >
-          <p className="text-sm text-white mb-4 mt-6 md:text-base md:mt-8 md:mb-6">
+          <p className={`text-white mb-4 mt-6 md:mt-8 md:mb-6 ${translations.language==='EN'?'h3-text':'h3-text-en'}`}>
             {step3Ref.current ? translations.parentsSection.ParentsSectionPart2.firstStep[2].title : translations.parentsSection.ParentsSectionPart2.firstStep[2].title}
           </p>
-          <p className="text-sm text-white mb-6 md:text-base md:mb-8">
+          <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-6  md:mb-8`}>
             {step3Ref.current ? translations.parentsSection.ParentsSectionPart2.firstStep[2].text : translations.parentsSection.ParentsSectionPart2.firstStep[2].text}
           </p>
           {isExpanded('step3') && (
-            <div className={styles.details}>
-              <p className="h3-text text-white mb-6 mt-8 md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s" dangerouslySetInnerHTML={{ __html: translations.parentsSection.ParentsSectionPart2.firstStep[2].desc }}>
+            <div className={`${styles.details} flex justify-center`}>
+              <p className={` ${translations.language==='EN'?'h3-text':'h3-text-en en-width'} text-white mb-6 mt-8 md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s`} dangerouslySetInnerHTML={{ __html: translations.parentsSection.ParentsSectionPart2.firstStep[2].desc }}>
               </p>
             </div>
           )}
@@ -191,10 +191,10 @@ export default function ParentsSectionPart2() {
       </div>
       <div className={styles.secondContainer}>
         <div className="w-full bg-transparent text-center md:w-full">
-          <p className="text-sm text-white mb-4 md:text-lg md:mb-4">
+          <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-5  md:mb-4`}>
             {translations.parentsSection.ParentsSectionPart2.step[1].title}
           </p>
-          <p className="text-sm text-white mb-10 md:text-base md:mb-12">
+          <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-10  md:mb-12`}>
             {translations.parentsSection.ParentsSectionPart2.step[1].desc}
           </p>
           <div className={styles.divider}></div>
@@ -205,12 +205,12 @@ export default function ParentsSectionPart2() {
           onMouseEnter={handleStep4MouseEnter}
           onMouseLeave={handleStep4MouseLeave}
         >
-          <p className="text-sm text-white mb-4 mt-6 md:text-base md:mt-8 md:mb-6">
+          <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-4 mt-6 md:mt-8 md:mb-6`}>
             {step4Ref.current ? translations.parentsSection.ParentsSectionPart2.secondStep[0].title : translations.parentsSection.ParentsSectionPart2.secondStep[0].title}
           </p>
           {isExpanded('step4') && (
-            <div className={styles.details}>
-              <p className="h3-text text-white mb-6 mt-8 md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s" dangerouslySetInnerHTML={{ __html: translations.parentsSection.ParentsSectionPart2.secondStep[0].desc }}>
+            <div className={`${styles.details} flex justify-center`}>
+              <p className={` ${translations.language==='EN'?'h3-text':'h3-text-en en-width'} text-white mb-6 mt-8 md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s`} dangerouslySetInnerHTML={{ __html: translations.parentsSection.ParentsSectionPart2.secondStep[0].desc }}>
               </p>
             </div>
           )}
@@ -222,19 +222,26 @@ export default function ParentsSectionPart2() {
           onMouseEnter={handleStep5MouseEnter}
           onMouseLeave={handleStep5MouseLeave}
         >
-          <p className="text-sm text-white mb-4 mt-6 md:text-base md:mt-8 md:mb-6">
+          <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-4 mt-6 md:mt-8 md:mb-6`}>
             {step5Ref.current ? translations.parentsSection.ParentsSectionPart2.secondStep[1].title : translations.parentsSection.ParentsSectionPart2.secondStep[1].title}
           </p>
           {isExpanded('step5') && (
-            <div className={styles.details}>
-              <p className="h3-text text-white mb-6 mt-8 md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s" dangerouslySetInnerHTML={{ __html: translations.parentsSection.ParentsSectionPart2.secondStep[1].desc }}>
+            <div className={`${styles.details} flex justify-center`}>
+              <p className={` ${translations.language==='EN'?'h3-text':'h3-text-en en-width'} text-white mb-6 mt-8 md:mb-8 md:mt-16 animate__animated animate__fadeInDown animate__duration-1s`} dangerouslySetInnerHTML={{ __html: translations.parentsSection.ParentsSectionPart2.secondStep[1].desc }}>
               </p>
             </div>
           )}
         </div>
-        <button className="px-3 py-[6px] rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10 md:mt-20 mb-10 md:mb-10" onClick={()=>router.push('/pages/auth/profile?type=parent')}>
+        {
+        translations.language==='EN'?
+        <button className="flex justify-center items-center w-16 h-6 md:w-24 md:h-8 rounded h2-text font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>router.push('/pages/auth/profile?type=parent')}>
           {translations.parentsSection.ParentsSectionPart2.button.text}
         </button>
+        :
+        <button className="flex justify-center items-center px-5 h-6  md:h-8 rounded h2-text-en font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>router.push('/pages/auth/profile?type=parent')}>
+          {translations.parentsSection.ParentsSectionPart2.button.text}
+        </button>
+       }
       </div>
     </div>
   );
