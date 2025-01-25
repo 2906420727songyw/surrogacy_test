@@ -414,5 +414,89 @@ export default {
             },
             btn:'Start Your Consultation' 
         }
+    },
+    surrogacyCost:{
+        title:'Sapling’s Package Options',
+        desc:'At Sapling, we offer two package options tailored to fit your unique needs, so you can choose what works<br>best for you. No matter which package you select, our goal is to provide you with a seamless and<br>supportive experience, guiding you every step of the way on this meaningful journey.',
+        sproutPackage:{
+            title:'Sprout Package',
+            desc:'$145,000 to $210,000',
+            list:[
+                {
+                    title:'Agency Service Fees',
+                    desc:'Sapling manages the entire surrogacy process, including matching surrogates, coordinating parties, and providing ongoing support. Services include surrogate screening, psychological evaluations, background checks, and consistent communication to ensure a smooth experience.'
+                },
+                {
+                    title:'Medical Expenses',
+                    desc:'Sapling partners with CDC-certified IVF clinics nationwide, offering top-tier doctors and advanced facilities. Medical costs cover IVF procedures, surrogate health screenings, prenatal care, delivery, hospitalization, and necessary medications, ensuring safety and professionalism throughout the process.'
+                },
+                {
+                    title:'Legal Fees',
+                    desc:'To ensure clarity and protection for all parties, Sapling works with the Vice President of the American Surrogacy Association and a team of experienced attorneys to draft, review, and execute surrogacy agreements. We also manage the legal processes for parentage confirmation and birth certificate updates, providing comprehensive legal support throughout the surrogacy journey.'
+                },
+                {
+                    title:'Trust Account Management Fees',
+                    desc:'Sapling partners with the largest trust companies in the U.S. to establish and manage secure trust accounts for each client. These accounts are used for all surrogacy-related payments, ensuring transparency and compliance with contractual terms. Management fees include account setup, maintenance, and regular financial reporting to guarantee safety and accountability.'
+                },
+                {
+                    title:'Surrogate Compensation',
+                    desc:'Sapling’s surrogates, many of whom are military spouses or church members, receive thoughtful and comprehensive compensation. This includes base compensation for the time, effort, and health risks involved, as well as living allowances for expenses like transportation, nutrition, and maternity clothing. Additional compensation is provided for specific situations, such as twin pregnancies or C-sections, ensuring surrogates are fully supported and their contributions are valued.'
+                }
+            ]
+        },
+        thrivePackage:{
+            title:'Thrive Package',
+            desc:'$260,000 to $295,000',
+            list:[
+                {
+                    title:'Agency Service Fees',
+                    desc:'Sapling manages the entire surrogacy process, including matching surrogates, coordinating parties, and providing ongoing support. Services include surrogate screening, psychological evaluations, background checks, and consistent communication to ensure a smooth experience.'
+                },
+                {
+                    title:'Medical Expenses',
+                    desc:'Sapling partners with CDC-certified IVF clinics nationwide, offering top-tier doctors and advanced facilities. Medical costs cover IVF procedures, surrogate health screenings, prenatal care, delivery, hospitalization, and necessary medications, ensuring safety and professionalism throughout the process.'
+                },
+                {
+                    title:'Legal Fees',
+                    desc:'To ensure clarity and protection for all parties, Sapling works with the Vice President of the American Surrogacy Association and a team of experienced attorneys to draft, review, and execute surrogacy agreements. We also manage the legal processes for parentage confirmation and birth certificate updates, providing comprehensive legal support throughout the surrogacy journey.'
+                },
+                {
+                    title:'Trust Account Management Fees',
+                    desc:'Sapling partners with the largest trust companies in the U.S. to establish and manage secure trust accounts for each client. These accounts are used for all surrogacy-related payments, ensuring transparency and compliance with contractual terms. Management fees include account setup, maintenance, and regular financial reporting to guarantee safety and accountability.'
+                },
+                {
+                    title:'Surrogate Compensation',
+                    desc:'Sapling’s surrogates, many of whom are military spouses or church members, receive thoughtful and comprehensive compensation. This includes base compensation for the time, effort, and health risks involved, as well as living allowances for expenses like transportation, nutrition, and maternity clothing. Additional compensation is provided for specific situations, such as twin pregnancies or C-sections, ensuring surrogates are fully supported and their contributions are valued.'
+                },
+                {
+                    title:'Travel Arrangements',
+                    desc:'Sapling offers full-service travel coordination to ensure a smooth and stress-free experience throughout your surrogacy journey. Our team assists with booking transportation and accommodations for visits to IVF clinics or surrogacy-related appointments, planning detailed itineraries, and arranging additional services such as airport transfers and car rentals. Whether you’re traveling for routine checkups or to welcome your baby, we manage every detail to provide a seamless and convenient travel experience.'
+                },
+                {
+                    title:'Concierge Services',
+                    desc:'Sapling’s concierge services deliver tailored, full-service support throughout the surrogacy journey. Our team takes care of every detail, including scheduling medical appointments, managing legal documentation, coordinating surrogacy-related tasks, overseeing fund management, and providing real-time communication and updates. From significant milestones to everyday logistics, we handle everything with efficiency and care, ensuring a seamless and stress-free experience for our clients.'
+                },
+                {
+                    title:'Comprehensive Insurance',
+                    desc:'Sapling offers comprehensive insurance designed to protect against potential risks during the surrogacy process. Whether it’s a failed embryo transfer, an unexpected miscarriage, or other unforeseen events, we cover all associated costs, relieving clients of additional financial burdens. This all-encompassing insurance is designed to eliminate uncertainty, providing clients with peace of mind and a secure, worry-free surrogacy experience.'
+                }
+            ]
+        },
+        questionAndAnswer:[
+            {
+                title:'What Sets the Thrive Package Apart?',
+                desc:'The Thrive Package offers unparalleled comprehensive coverage and peace of mind. Beyond standard surrogacy services, it includes all-encompassing insurance that covers a range of potential risks, from failed embryo transfers to unexpected miscarriages, ensuring clients face no additional costs for unforeseen circumstances. This package also features enhanced concierge services, providing seamless, end-to-end support for every aspect of the journey. From managing medical appointments to arranging travel and offering real-time assistance, every detail is handled by a dedicated team. The Thrive Package’s core benefits are its enhanced security, streamlined process management, and a fully integrated, one-stop solution, delivering a stress-free and worry-free surrogacy experience.'
+            },
+            {
+                title:'How Are Surrogacy Payments Made?',
+                desc:'Each client is assigned a dedicated trust account, ensuring secure and transparent fund management. Payments are disbursed only when specific contractual conditions are met, with regular financial reporting provided by the trust company. The payment process typically occurs in two stages: an initial deposit is made upon confirming the surrogate or signing the service agreement, followed by subsequent installments covering the surrogate’s living expenses and medical costs. These payments are released in alignment with the timeline or milestones specified in the contract. This structured approach safeguards proper fund usage and protects the interests of all parties involved.'
+            },
+            {
+                title:'If You Don’t Yet Have Embryos',
+                desc:'If you have not yet frozen embryos, selected an IVF clinic, or require assistance finding an egg or sperm donor, Sapling can provide you with a carefully vetted list of highly qualified doctors and clinics. Based on your specific needs and location, you can choose the most suitable option, or we can coordinate directly with a clinic on your behalf to ensure a smooth and efficient transition to the next stage of your journey.'
+            }
+        ]
+
+        
     }
 }
