@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import userApi from '@/app/service/user/api';
 import Cookies from 'js-cookie';
-
+import { useLanguage } from '@/app/language/';
 // 格式化日期的辅助函数
 const formatDate = (dateString: string) => {
   if (!dateString) return '';
@@ -41,11 +41,10 @@ interface UserData {
 }
 
 export default function ProfileContent() {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [userData, setUserData] = useState<UserData>(initialUserData);
   const [isClient, setIsClient] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-
+  const { translations } = useLanguage();
   useEffect(() => {
     setIsClient(true);
     const fetchUserData = async () => {
@@ -91,7 +90,7 @@ export default function ProfileContent() {
 
   const getDisplayValue = (value: string) => {
     if (!isClient) return '';
-    return value || '暂未填写';
+    return value || (translations.language === 'EN' ? 'Not yet provided' : '暂未填写');
   };
 
   if (isLoading) {
@@ -116,15 +115,10 @@ export default function ProfileContent() {
       <div className="md:max-w-[60vw] pt-[40px] md:pt-[80px] px-[20px] md:px-[60px]">
         {/* 标题部分 */}
         <div className="border-b border-white pb-2 mb-[30px] md:mb-[40px]">
-          <div 
-            className="flex items-center justify-between cursor-pointer"
-          >
-            <h1 className="text-white text-[18px] md:text-[20px] font-normal">
-              开始Sapling Surrogacy旅程
+          <div className="flex items-center justify-between">
+            <h1 className="text-white text-[18px] md:text-[20px] font-bold">
+              {translations.profile.profileContent.title}
             </h1>
-            <span className={`text-white text-[16px] transform transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}>
-              ⌄
-            </span>
           </div>
         </div>
 
@@ -134,11 +128,11 @@ export default function ProfileContent() {
           className="space-y-[16px] md:space-y-[24px]"
           onSubmit={(e) => e.preventDefault()}
         >
-          <InfoItem label="电子邮件地址登录 *" value={getDisplayValue(userData.email)} />
-          <InfoItem label="手机号码 *" value={getDisplayValue(userData.phoneNumber)} />
-          <InfoItem label="出生日期 *" value={getDisplayValue(userData.dateOfBirth)} />
-          <InfoItem label="姓名 *" value={getDisplayValue(userData.name)} />
-          <InfoItem label="家庭详细地址 *" value={getDisplayValue(userData.address)} />
+          <InfoItem label={translations.profile.profileContent.email + " *"} value={getDisplayValue(userData.email)} />
+          <InfoItem label={translations.profile.profileContent.phone + " *"} value={getDisplayValue(userData.phoneNumber)} />
+          <InfoItem label={translations.profile.profileContent.birthday + " *"} value={getDisplayValue(userData.dateOfBirth)} />
+          <InfoItem label={translations.profile.profileContent.userName + " *"} value={getDisplayValue(userData.name)} />
+          <InfoItem label={translations.profile.profileContent.address + " *"} value={getDisplayValue(userData.address)} />
         </form>
 
         {/* 编辑账户链接 */}
@@ -147,7 +141,7 @@ export default function ProfileContent() {
             href="#" 
             className="text-white text-[20px] md:text-[24px] hover:opacity-80 border-b border-white pb-[2px]"
           >
-            编辑账户
+            {translations.profile.profileContent.edit}
           </Link>
         </div>
       </div>
@@ -156,7 +150,7 @@ export default function ProfileContent() {
 }
 
 function InfoItem({ label, value }: { label: string; value: string }) {
-  const textColor = value === '暂未填写' ? '#C0C0C0' : 'white';
+  const textColor = value === '暂未填写' || value === 'Not filled yet' ? '#C0C0C0' : 'white';
   
   return (
     <div className="flex md:flex-row md:items-center gap-1 md:gap-4">

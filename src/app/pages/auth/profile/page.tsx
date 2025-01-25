@@ -10,28 +10,30 @@ import AppointmentContent from './components/AppointmentContent';
 import SurrogateApplicationContent from './components/SurrogateApplicationContent';
 import ProtectedRoute from '@/app/components/ProtectedRoute';
 import Cookies from 'js-cookie';
+import { useLanguage } from '@/app/language/';
+
+type LanguageReturn = ReturnType<typeof useLanguage>;
 
 // 移动端菜单按钮组件
 interface MobileMenuButtonProps {
   isMobileMenuOpen: boolean;
   setIsMobileMenuOpen: (open: boolean) => void;
+  translations: LanguageReturn['translations'];
 }
 
-const MobileMenuButton = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MobileMenuButtonProps) => (
+const MobileMenuButton = ({ isMobileMenuOpen, setIsMobileMenuOpen, translations }: MobileMenuButtonProps) => (
   <button 
     className="md:hidden fixed top-[90px] right-3 z-[9999] bg-[transparent] py-5 rounded-lg"
     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
   >
-    <div className='flex  items-center gap-1'>
-      <div className='flex flex-col '>
-      <span className="block w-5 h-0.5 bg-white mb-1"></span>
-    <span className="block w-5 h-0.5 bg-white mb-1"></span>
-    <span className="block w-5 h-0.5 bg-white"></span>
+    <div className='flex items-center gap-1'>
+      <div className='flex flex-col'>
+        <span className="block w-5 h-0.5 bg-white mb-1"></span>
+        <span className="block w-5 h-0.5 bg-white mb-1"></span>
+        <span className="block w-5 h-0.5 bg-white"></span>
       </div>
-      <p className="text-white text-sm">用户菜单</p>
-
+      <p className="text-white text-sm">{translations.profile.user_menu}</p>
     </div>
-    
   </button>
 );
 
@@ -55,6 +57,8 @@ const NavLink = ({ href, isActive, onClick, children }: NavLinkProps) => (
 );
 
 function ProfilePageContent() {
+  const { translations } = useLanguage();
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -70,14 +74,13 @@ function ProfilePageContent() {
   const getActiveNav = () => {
     switch (router_type) {
       case 'become':
-        return type==='surrogacy'?'成为代孕母':'成为准父母';
+        return type==='surrogacy'?translations.profile.left_nav_2:translations.profile.left_nav_3;
       case 'appointment':
-        return '线下预约';
+        return translations.profile.left_nav_4;
       default:
-        return '个人信息';
+        return translations.profile.left_nav_1;
     }
   };
-
   const [activeNav, setActiveNav] = useState(getActiveNav());
 
   useEffect(() => {
@@ -86,17 +89,17 @@ function ProfilePageContent() {
     
     // 当路由参数改变时，更新激活的导航项
     setActiveNav(getActiveNav());
-  }, [type]);
+  }, [type, translations]);
 
   const renderContent = () => {
     if (!mounted) return null;
 
     switch (activeNav) {
-      case '成为准父母':
+      case translations.profile.left_nav_3:
         return <ParentApplicationContent />;
-      case '成为代孕母':
+      case translations.profile.left_nav_2:
         return <SurrogateApplicationContent />;
-      case '线下预约':
+      case translations.profile.left_nav_4:
         return <AppointmentContent />;
         
       default:
@@ -113,6 +116,7 @@ function ProfilePageContent() {
       <MobileMenuButton 
         isMobileMenuOpen={isMobileMenuOpen} 
         setIsMobileMenuOpen={setIsMobileMenuOpen}
+        translations={translations}
       />
 
       {/* 左侧导航栏 */}
@@ -136,33 +140,33 @@ function ProfilePageContent() {
           <nav className="flex flex-col space-y-[24px] md:space-y-[32px]">
             <NavLink
               href={`/pages/auth/profile`}
-              isActive={activeNav === '个人信息'}
+              isActive={activeNav === `${translations.profile.left_nav_1}`}
               onClick={() => {
-                setActiveNav('个人信息');
+                setActiveNav(translations.profile.left_nav_1);
                 setIsMobileMenuOpen(false);
               }}
             >
-              个人信息
+              {translations.profile.left_nav_1}
             </NavLink>
             <NavLink
               href={`/pages/auth/profile?type=become`}
-              isActive={activeNav === (isSurrogacy ? '成为代孕母' : '成为准父母')}
+              isActive={activeNav === (isSurrogacy ? translations.profile.left_nav_2 : translations.profile.left_nav_3)}
               onClick={() => {
-                setActiveNav(isSurrogacy ? '成为代孕母' : '成为准父母');
+                setActiveNav(isSurrogacy ? translations.profile.left_nav_2 : translations.profile.left_nav_3);
                 setIsMobileMenuOpen(false);
               }}
             >
-              {isSurrogacy ? '成为代孕母' : '成为准父母'}
+              {isSurrogacy ? translations.profile.left_nav_2 : translations.profile.left_nav_3}
             </NavLink>
             <NavLink
               href={`/pages/auth/profile?type=appointment`}
-              isActive={activeNav === '线下预约'}
+              isActive={activeNav === translations.profile.left_nav_4}
               onClick={() => {
-                setActiveNav('线下预约');
+                setActiveNav(translations.profile.left_nav_4);
                 setIsMobileMenuOpen(false);
               }}
             >
-              线下预约
+              {translations.profile.left_nav_4}
             </NavLink>
           </nav>
         </div>

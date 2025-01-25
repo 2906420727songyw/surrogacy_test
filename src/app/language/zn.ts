@@ -601,5 +601,27 @@ export default {
         btn:'加载更多',
         btnText:'没有更多了',
         btnText2:'阅读更多'
+    },
+    profile:{
+        left_nav_1:'个人信息',
+        left_nav_2:'成为代孕母',
+        left_nav_3:'成为准父母',
+        left_nav_4:'线下预约',
+        user_menu:'用户菜单',
+        profileContent:{
+            title:'开始Sapling Surrogacy旅程',
+            email:'登录名',
+            phone:'手机号码',
+            birthday:'出生日期',
+            userName:'用户名',
+            address:'家庭详细地址',
+            edit:"编辑账户"
+        },
+        surrogateContent:{
+
+        },
+        intendedParentContent:{
+
+        }
     }
 }

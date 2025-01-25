@@ -587,5 +587,28 @@ export default {
         login_loading:"Logging In",
         register_title:"Create a New Account",
         register_desc:"If this is your first time requesting information or applying to our program, please create an account to begin your journey.",
-        register_btn:"Create Account"}
+        register_btn:"Create Account"},
+
+        profile:{
+        left_nav_1:'Personal Information',
+        left_nav_2:'Become a Surrogate',
+        left_nav_3:'Become an Intended Parent',
+        left_nav_4:'Book an Appointment',
+        user_menu:'User Menu',
+        profileContent:{
+            title:'Begin Your Sapling Surrogacy Journey',
+            email:'Email',
+            phone:'Phone',
+            birthday:'Date of Birth',
+            userName:'User Name',
+            address:'Home Address',
+            edit:"Edit Account"
+        },
+        surrogateContent:{
+
+        },
+        intendedParentContent:{
+
+        }
+        }
 }
