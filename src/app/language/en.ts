@@ -499,6 +499,82 @@ export default {
 
         
     },
+    careers:{
+        title:'Careers',
+        firstDesc:'Sapling Surrogacy is dedicated to partnering with top professionals to deliver exceptional services to our<br>clients. Join us, and you’ll become part of a highly successful and passionate team, upholding the trust<br>and outstanding reputation we’ve built in the industry.',
+        secondDesc:'<p>To explore available opportunities, please visit our LinkedIn page.</p>'
+    },
+    resources:{
+        title1:'Blog',
+        title2:'Testimonials',
+        blogMenu:[
+            {
+                text:'Intended Parents',
+            },
+            {
+                text:'Surrogates',
+            }
+        ],
+        intendedParentList:[
+            {
+                image:'/images/resources/list1.png',
+                title:'Considering becoming an egg donor? Here are 5 reasons why you should definitely do it',
+                desc:'As an egg donor, what you provide is essential—none of this could happen without you. But why should you consider becoming an egg donor? Here are 5 reasons why egg donation could be a good path for you.'
+            },
+            {
+                image:'/images/resources/list1.png',
+                title:'Considering becoming an egg donor? Here are 5 reasons why you should definitely do it',
+                desc:'As an egg donor, what you provide is essential—none of this could happen without you. But why should you consider becoming an egg donor? Here are 5 reasons why egg donation could be a good path for you.'
+            },
+            {
+                image:'/images/resources/list1.png',
+                title:'Considering becoming an egg donor? Here are 5 reasons why you should definitely do it',
+                desc:'As an egg donor, what you provide is essential—none of this could happen without you. But why should you consider becoming an egg donor? Here are 5 reasons why egg donation could be a good path for you.'
+            },
+            {
+                image:'/images/resources/list1.png',
+                title:'Considering becoming an egg donor? Here are 5 reasons why you should definitely do it',
+                desc:'As an egg donor, what you provide is essential—none of this could happen without you. But why should you consider becoming an egg donor? Here are 5 reasons why egg donation could be a good path for you.'
+            },
+            {
+                image:'/images/resources/list1.png',
+                title:'Considering becoming an egg donor? Here are 5 reasons why you should definitely do it',
+                desc:'As an egg donor, what you provide is essential—none of this could happen without you. But why should you consider becoming an egg donor? Here are 5 reasons why egg donation could be a good path for you.'
+            }
+        ],
+        surrogateMomList:[
+            {
+                image:'/images/resources/list3.png',
+                title:'Considering becoming an egg donor? Here are 5 reasons why you should definitely do it',
+                desc:'As an egg donor, what you provide is essential—none of this could happen without you. But why should you consider becoming an egg donor? Here are 5 reasons why egg donation could be a good path for you.'
+            }
+        ],
+        reviewList:[
+            {
+                name: 'Emily & Michael T.',
+                content: 'We are forever grateful to Sapling Surrogacy for making our dream of parenthood come true. From the very first consultation to the day we held our baby in our arms, their team was there every step of the way with care, professionalism, and unwavering support. The attention to detail and compassion shown throughout the process were unparalleled. Thank you, Sapling, for helping us complete our family!'
+            },
+            {
+                name: 'Sarah & Jonathan L.',
+                content: 'Choosing Sapling Surrogacy was the best decision we ever made. The team made an overwhelming process feel manageable and even joyful. They guided us through every step with empathy and expertise, and we felt truly cared for the entire time. Thanks to Sapling, we are now proud parents to a beautiful baby girl. We cannot thank them enough for their dedication and support.'
+            },
+            {
+                name: 'Jessica M.',
+                content: 'Being a surrogate with Sapling Surrogacy has been one of the most rewarding experiences of my life. From the very beginning, their team supported me every step of the way, ensuring I felt valued, cared for, and informed. They handled every detail with professionalism and kindness, and their dedication made the entire journey smooth and fulfilling. I am so proud to have been part of helping a family achieve their dream. Thank you, Sapling, for creating such a supportive and meaningful experience!'
+            },
+            {
+                name: 'XXXXXX',
+                content: 'XXXXXX'
+            },
+            {
+                name: 'XXX',
+                content: 'XXXX'
+            },
+        ],
+        btn:'Load More',
+        btnText:'No More',
+        btnText2:'Read More'
+    },
     login:{
         title_1:"Welcome to Sapling Surrogacy",
         title_2:"Welcome to Sapling Surrogacy",
@@ -511,6 +587,5 @@ export default {
         login_loading:"Logging In",
         register_title:"Create a New Account",
         register_desc:"If this is your first time requesting information or applying to our program, please create an account to begin your journey.",
-        register_btn:"Create Account"
-    }
+        register_btn:"Create Account"}
 }
