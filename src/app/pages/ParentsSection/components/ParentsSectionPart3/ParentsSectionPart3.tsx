@@ -79,13 +79,13 @@ export default function ParentsSectionPart3() {
             {translations.parentsSection.ParentsSectionPart3.title}
             {/* 准父母代孕流程 */}
           </h2>
-          <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'}  text-center text-white mb-12  md:mb-12 ${isVisible ? 'animate__animated animate__fadeInUp animate__duration-1s animate__delay-1s' : 'opacity-0'}`}>
+          <p className={`${translations.language==='EN'?'h3-text':'h3-text-en en-width'}  text-center text-white mb-12  md:mb-12 ${isVisible ? 'animate__animated animate__fadeInUp animate__duration-1s animate__delay-1s' : 'opacity-0'}`}>
             {translations.parentsSection.ParentsSectionPart3.context?.[0]}<br />
             {translations.parentsSection.ParentsSectionPart3.context?.[1]}<br />
             {translations.parentsSection.ParentsSectionPart3.context?.[2]}<br />
             {translations.parentsSection.ParentsSectionPart3.context?.[3]}
           </p>
-          <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'}  text-white text-center mb-10 md:mb-11`}>
+          <p className={`${translations.language==='EN'?'h3-text':'h3-text-en en-width'}  text-white text-center mb-10 md:mb-11`}>
             {translations.parentsSection.ParentsSectionPart3.context?.[4]}<br />
             {translations.parentsSection.ParentsSectionPart3.context?.[5]}<br />
           </p>
@@ -108,7 +108,7 @@ export default function ParentsSectionPart3() {
                <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-4 mt-6 md:mt-8 md:mb-6`}>
                   {item.title}
                 </p>
-                <p className={`${translations.language==='EN'?'h3-text':'h3-text-en en-width'} text-white mb-6 md:text-base md:mb-8`}>
+                <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white mb-6 md:text-base md:mb-8`}>
                  {item.desc}
                 </p>
                 {isExpanded('step' + (index + 1)) && (

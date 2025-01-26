@@ -184,7 +184,7 @@ export default {
         title1:'Sapling Surrogacy',
         title2:'About Us',
         desc:'Sapling Surrogacy is a premier full-service surrogacy agency dedicated to helping individuals and families achieve their dreams of parenthood. With industry-leading success rates and personalized support, we guide clients through every step of the surrogacy journey with care, expertise, and compassion.',
-        more:'more'
+        more:'More'
       },
       home:{
         BecomingParents:{
