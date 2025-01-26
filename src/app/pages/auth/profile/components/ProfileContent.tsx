@@ -119,6 +119,7 @@ export default function ProfileContent() {
             <h1 className="text-white text-[18px] md:text-[20px] font-bold">
               {translations.profile.profileContent.title}
             </h1>
+            <h1 className="text-white text-[18px] md:text-[20px] font-bold"> ˬ</h1>
           </div>
         </div>
 

@@ -116,45 +116,42 @@ export default function AppointmentContent() {
 
   const handleAppointment = async () => {
     if (!selectedDate && !selectedTime) {
-      toast.error('请选择预约日期和时间');
+      toast.error(translations.language === 'EN' ? '请选择预约日期和时间' : 'Please select appointment date and time');
       return;
     }
     if (!selectedDate) {
-      toast.error('请选择预约日期');
+      toast.error(translations.language === 'EN' ? '请选择预约日期' : 'Please select appointment date');
       return;
     }
     if (!selectedTime) {
-      toast.error('请选择预约时间');
+      toast.error(translations.language === 'EN' ? '请选择预约时间' : 'Please select appointment time');
+      return;
+    }
+    if (!selectedTimeZone) {
+      toast.error(translations.language === 'EN' ? '请选择完整的预约时间' : 'Please select complete appointment time');
       return;
     }
 
     try {
       setIsLoading(true);
       const userDataStr = Cookies.get('userData');
-      let userData = {
-        id: ""
-      }
-      if (userDataStr) {
-        userData = JSON.parse(userDataStr);
-      }
-
-      const formattedTime = convertTimeFormat(selectedTime);
-      const localDate = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1<10 ? '0' : ''}${currentDate.getMonth() + 1}-${Number(selectedDate)<10?`0${selectedDate}`:selectedDate} ${formattedTime}`;
-      console.log("本地时间",localDate);
-      // 转换为加州时间
-      const californiaDate = convertToCaliforniaTime(localDate, selectedTimeZone);
+      const userData = userDataStr ? JSON.parse(userDataStr) : {};
       
-      const appointmentData = {
+      const response = await appointmentsApi.createAppointment({
         userId: userData.id,
-        appointmentTime: californiaDate,
-        type: type
-      };
-      
-      await appointmentsApi.create(appointmentData).then(() => {
-        setIsSuccess(true); 
+        appointmentDate: formatDateTime(selectedDate, selectedTime),
+        timeZone: selectedTimeZone
       });
-    } catch {
-      toast.error('预约失败，请稍后重试');
+
+      if (response.code === 200) {
+        toast.success(translations.language === 'EN' ? '预约成功！' : 'Appointment scheduled successfully!');
+        setIsSuccess(true);
+      } else {
+        toast.error(translations.language === 'EN' ? '预约失败，请重试' : 'Failed to schedule appointment, please try again');
+      }
+    } catch (error) {
+      console.error('预约失败:', error);
+      toast.error(translations.language === 'EN' ? '预约失败，请稍后重试' : 'Failed to schedule appointment, please try again later');
     } finally {
       setIsLoading(false);
     }

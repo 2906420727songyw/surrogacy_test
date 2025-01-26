@@ -23,7 +23,7 @@ interface MobileMenuButtonProps {
 
 const MobileMenuButton = ({ isMobileMenuOpen, setIsMobileMenuOpen, translations }: MobileMenuButtonProps) => (
   <button 
-    className="md:hidden fixed top-[90px] right-3 z-[9999] bg-[transparent] py-5 rounded-lg"
+    className="md:hidden fixed top-[82px] right-3 z-[9999] bg-[transparent] py-10 rounded-lg"
     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
   >
     <div className='flex items-center gap-1'>

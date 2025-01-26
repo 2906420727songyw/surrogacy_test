@@ -85,6 +85,69 @@ export default function ParentApplicationContent() {
     e.preventDefault();
     if (isSubmitting) return;
 
+    // 验证必填字段
+    const validateForm = () => {
+      // 验证基本信息字段
+      const requiredFields = translations.profile.intendedParentContent.reply_list
+        .filter((label: string) => label.includes('*'))
+        .map((label: string) => {
+          const fieldMap: { [key: string]: string } = {
+            'Full Name *': 'name',
+            'Address *': 'address',
+            'City *': 'city',
+            'State/Province *': 'province',
+            'Postal Code *': 'zipCode',
+            'Country *': 'country',
+            'Phone Number *': 'phone',
+            'Email Address *': 'email',
+            'Date of Birth *': 'birthDate',
+            'Marital Status *': 'maritalStatus',
+            "Partner's Full Name *": 'spouseName',
+            "Partner's Date of Birth *": 'spouseBirthDate'
+          };
+          return fieldMap[label];
+        });
+
+      for (const field of requiredFields) {
+        if (!formData[field]) {
+          toast.error(translations.language === 'EN' ? 
+            '请填写所有带*号的必填项' : 
+            'Please fill in all required fields marked with *'
+          );
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+          return false;
+        }
+      }
+
+      // 验证单选框组必填项
+      const requiredQuestions = translations.profile.intendedParentContent.qa_list
+        .filter((item: QAItem) => item.question.includes('*'))
+        .map((item: QAItem) => item.question);
+
+      for (const question of requiredQuestions) {
+        if (!formData[question]) {
+          toast.error(translations.language === 'EN' ? 
+            '请回答所有带*号的必填问题' : 
+            'Please answer all required questions marked with *'
+          );
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+          return false;
+        }
+      }
+
+      return true;
+    };
+
+    if (!validateForm()) {
+      return;
+    }
+
     try {
       setIsSubmitting(true);
       
@@ -122,7 +185,7 @@ export default function ParentApplicationContent() {
 
       
       if (response.code===200) {
-        toast.success( '申请提交成功！');
+        toast.success(translations.language === 'EN' ? '申请提交成功！' : 'Application submitted successfully!');
         // 重置表单数据
         setFormData({
           name: '',
@@ -142,11 +205,13 @@ export default function ParentApplicationContent() {
           embryoLocation: ''
         });
       } else {
-        toast.error('申请提交失败！');
+        toast.error(translations.language === 'EN' ? '申请提交失败！' : 'Failed to submit application!');
       }
     } catch (error: unknown) {
       console.error('提交失败:', error);
-      const errorMessage = error instanceof Error ? error.message : '提交失败，请稍后重试';
+      const errorMessage = error instanceof Error ? error.message : (
+        translations.language === 'EN' ? '提交失败，请稍后重试' : 'Submission failed, please try again later'
+      );
       toast.error(errorMessage);
     } finally {
       window.scrollTo({
@@ -178,6 +243,9 @@ export default function ParentApplicationContent() {
           <div className="flex items-center justify-between">
             <h1 className="text-white text-[18px] md:text-[20px] font-bold">
               {translations.profile.intendedParentContent.title}
+            </h1>
+            <h1 className="text-white text-[18px] md:text-[20px] font-bold">
+            ˬ
             </h1>
           </div>
         </div>
@@ -262,42 +330,44 @@ export default function ParentApplicationContent() {
                   </label>
                 ))}
               </div>
+              
+              {/* 诊所名称 - 条件渲染 */}
+              {(item.question === 'Do you currently have a partnering IVF clinic? *' || 
+                item.question === '您目前是否有合作的试管婴儿诊所？ *') && 
+               (formData[item.question] === 'Yes' || formData[item.question] === '是') && (
+                <div className="flex flex-col space-y-2 mt-4">
+                  <label className="text-white/80 text-[12px] md:text-[14px]">
+                    {translations.language === 'EN' ? '如果有的话，请列出诊所名字':'If yes, please list the clinic name' }
+                  </label>
+                  <input
+                    type="text"
+                    name="clinicName"
+                    value={formData.clinicName}
+                    onChange={handleInputChange}
+                    className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
+                  />
+                </div>
+              )}
+
+              {/* 胚胎位置 - 条件渲染 */}
+              {(item.question === 'Do you currently have frozen embryos? *' || 
+                item.question === '您目前是否有冷冻胚胎？ *') && 
+               (formData[item.question] === 'Yes' || formData[item.question] === '是') && (
+                <div className="flex flex-col space-y-2 mt-4">
+                  <label className="text-white/80 text-[12px] md:text-[14px]">
+                    {translations.language === 'EN' ? '如果有的话，请告诉我们在哪里':'If yes, please tell us where'}
+                  </label>
+                  <input
+                    type="text"
+                    name="embryoLocation"
+                    value={formData.embryoLocation}
+                    onChange={handleInputChange}
+                    className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
+                  />
+                </div>
+              )}
             </div>
           ))}
-
-          {/* 诊所名称 - 条件渲染 */}
-          {(formData['Do you currently have a partnering IVF clinic? *'] === 'Yes' || 
-            formData['您目前有一起合作的试管婴儿诊所吗？ *'] === '是') && (
-            <div className="flex flex-col space-y-2">
-              <label className="text-white/80 text-[12px] md:text-[14px]">
-                {translations.language === 'EN' ? '如果有的话，请列出诊所名字' : 'If yes, please list the clinic name'}
-              </label>
-              <input
-                type="text"
-                name="clinicName"
-                value={formData.clinicName}
-                onChange={handleInputChange}
-                className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
-              />
-            </div>
-          )}
-
-          {/* 胚胎位置 - 条件渲染 */}
-          {(formData['Do you currently have frozen embryos? *'] === 'Yes' || 
-            formData['您目前有冷冻胚胎吗？ *'] === '是') && (
-            <div className="flex flex-col space-y-2">
-              <label className="text-white/80 text-[12px] md:text-[14px]">
-                {translations.language === 'EN' ? '如果有的话，请告诉我们在哪里' : 'If yes, please tell us where'}
-              </label>
-              <input
-                type="text"
-                name="embryoLocation"
-                value={formData.embryoLocation}
-                onChange={handleInputChange}
-                className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
-              />
-            </div>
-          )}
 
           {/* 提交按钮 */}
           <div className="mt-[32px] md:mt-[40px]">

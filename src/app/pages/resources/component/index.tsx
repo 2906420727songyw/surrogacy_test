@@ -260,9 +260,9 @@ export default function ResourcesComponent() {
             )}
           </>
         )}
+        </div>
       </div>
-      </div>
-      
+
 
       {/* 客户评价 */}
       <div className="w-full flex flex-col items-center justify-center bg-[#868275] px-5 md:px-36 py-10 md:py-20">
@@ -316,7 +316,7 @@ export default function ResourcesComponent() {
               {translations.resources.btnText}
             </p>
           )}
-        </div>
+          </div>
       </div>
     </div>
   );
