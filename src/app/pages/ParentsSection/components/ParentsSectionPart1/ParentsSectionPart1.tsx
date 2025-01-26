@@ -95,7 +95,7 @@ export default function ParentsSectionPart1() {
             })}
         </p> 
           :
-          <p className="h2-text-en text-white mb-10 md:mb-12  md:w-[45vw]">
+          <p className="h2-text-en text-white font-light mb-10 md:mb-12  md:w-[45vw]">
             {translations?.parentsSection?.parentsSectionPart1?.desc}
         </p> 
         }

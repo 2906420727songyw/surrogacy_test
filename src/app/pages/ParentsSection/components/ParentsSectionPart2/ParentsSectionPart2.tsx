@@ -135,7 +135,7 @@ export default function ParentsSectionPart2() {
           onMouseEnter={handleStep1MouseEnter}
           onMouseLeave={handleStep1MouseLeave}
         >
-          <p className={`text-white mb-4 mt-6 md:mt-8 md:mb-6 ${translations.language==='EN'?'h2-text':'h2-text-en'} font-bold`}>
+          <p className={`text-white mb-4 mt-6 md:mt-8 md:mb-6 ${translations.language==='EN'?'h2-text':'h2-text-en'}`}>
             {step1Ref.current ? translations.parentsSection.ParentsSectionPart2.firstStep[0].title : translations.parentsSection.ParentsSectionPart2.firstStep[0].title}
           </p>
           <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-6  md:mb-8`}>
@@ -155,7 +155,7 @@ export default function ParentsSectionPart2() {
           onMouseEnter={handleStep2MouseEnter}
           onMouseLeave={handleStep2MouseLeave}
         >
-          <p className={`text-white mb-4 mt-6 md:mt-8 md:mb-6 ${translations.language==='EN'?'h3-text':'h3-text-en'}`}>
+          <p className={`text-white mb-4 mt-6 md:mt-8 md:mb-6 ${translations.language==='EN'?'h2-text':'h2-text-en'}`}>
             {step2Ref.current ? translations.parentsSection.ParentsSectionPart2.firstStep[1].title : translations.parentsSection.ParentsSectionPart2.firstStep[1].title}
           </p>
           <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-6  md:mb-8`}>
@@ -175,7 +175,7 @@ export default function ParentsSectionPart2() {
           onMouseEnter={handleStep3MouseEnter}
           onMouseLeave={handleStep3MouseLeave}
         >
-          <p className={`text-white mb-4 mt-6 md:mt-8 md:mb-6 ${translations.language==='EN'?'h2-text':'h2-text-en'} font-bold`}>
+          <p className={`text-white mb-4 mt-6 md:mt-8 md:mb-6 ${translations.language==='EN'?'h2-text':'h2-text-en'}`}>
             {step3Ref.current ? translations.parentsSection.ParentsSectionPart2.firstStep[2].title : translations.parentsSection.ParentsSectionPart2.firstStep[2].title}
           </p>
           <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-6  md:mb-8`}>
@@ -205,7 +205,7 @@ export default function ParentsSectionPart2() {
           onMouseEnter={handleStep4MouseEnter}
           onMouseLeave={handleStep4MouseLeave}
         >
-          <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-4 mt-6 md:mt-8 md:mb-6`}>
+          <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-4 mt-6 md:mt-8 md:mb-6`}>
             {step4Ref.current ? translations.parentsSection.ParentsSectionPart2.secondStep[0].title : translations.parentsSection.ParentsSectionPart2.secondStep[0].title}
           </p>
           {isExpanded('step4') && (
@@ -222,7 +222,7 @@ export default function ParentsSectionPart2() {
           onMouseEnter={handleStep5MouseEnter}
           onMouseLeave={handleStep5MouseLeave}
         >
-          <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-4 mt-6 md:mt-8 md:mb-6`}>
+          <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-4 mt-6 md:mt-8 md:mb-6`}>
             {step5Ref.current ? translations.parentsSection.ParentsSectionPart2.secondStep[1].title : translations.parentsSection.ParentsSectionPart2.secondStep[1].title}
           </p>
           {isExpanded('step5') && (

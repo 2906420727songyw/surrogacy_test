@@ -105,7 +105,7 @@ export default function ParentsSectionPart3() {
               >
                 <div className={`${styles.divider} flex justify-center w-full`}></div>
                <div className='flex flex-col items-center'>
-               <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-4 mt-6 md:mt-8 md:mb-6`}>
+               <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-4 mt-6 md:mt-8 md:mb-6`}>
                   {item.title}
                 </p>
                 <p className={`${translations.language==='EN'?'h3-text':'h3-text-en en-width'} text-white mb-6 md:text-base md:mb-8`}>

@@ -60,8 +60,9 @@
   .dataItem:nth-child(4) {
     width: 160px;
     height: 160px;
-    padding: 0 20px;
+    padding: 0 10px;
     gap: 0px;
+    overflow: hidden;
   }
   
   .dataItem .dataValue {

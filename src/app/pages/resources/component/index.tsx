@@ -147,12 +147,28 @@ export default function ResourcesComponent() {
                       layout="responsive"
                       style={{ width: '100%', height: 'auto' }}
                     />
-                    <p className="h3-text text-white mt-5 mb-3">{item.title}</p>
-                    <p className="h3-text text-white mb-5">{item.desc}</p>
+                    {
+                      translations.language==='EN'?
+                      <p className="h2-text text-white mt-5 mb-3">
+                        {item.title}
+                      </p>
+                      :
+                      <p className="h2-text-en text-white mt-5 mb-3">
+                        {item.title}
+                      </p>
+                    }
+                    {
+                      translations.language==='EN'?
+                    <p className="h3-text text-white mb-5">
+                      {item.desc}</p>
+                      :
+                      <p className="h3-text-en text-white mb-5">
+                      {item.desc}</p>
+                    }
                   </div>
                   {/* 阅读更多 */}
                   <button 
-                    className="w-[86px] h-[28px] bg-[#F1E6C3] text-black text-xs rounded-full"
+                    className="w-[86px] h-[28px] bg-[#F1E6C3] text-black text-xs rounded-full font-normal"
                     onClick={() => handleReadMore(item)}
                   >
                     {translations.resources.btnText2}
@@ -175,12 +191,28 @@ export default function ResourcesComponent() {
                       layout="responsive"
                       style={{ width: '100%', height: 'auto' }}
                     />
-                    <p className="h3-text text-white mt-5 mb-3">{item.title}</p>
+                    {
+                      translations.language==='EN'?
+                    <p className="h2-text text-white mt-5 mb-3">
+                      {item.title}
+                    </p>
+                    :
+                    <p className="h2-text-en text-white mt-5 mb-3">
+                      {item.title}
+                    </p>
+                    }
+                    {
+                      translations.language==='EN'?
                     <p className="h3-text text-white mb-5">{item.desc}</p>
+                    :
+                    <p className="h3-text-en text-white mb-5">
+                      {item.desc}
+                    </p>
+                    }
                   </div>
                   {/* 阅读更多 */}
                   <button 
-                    className="w-[86px] h-[28px] bg-[#F1E6C3] text-black text-xs rounded-full"
+                    className="w-[86px] h-[28px] bg-[#F1E6C3] text-black text-xs rounded-full font-normal"
                     onClick={() => handleReadMore(item)}
                   >
                     {translations.resources.btnText2}
@@ -194,14 +226,16 @@ export default function ResourcesComponent() {
         {selectedTab === 'intended_parent' && (
           <>
             {intendedParentCount < translations.resources.intendedParentList.length ? (
+              //加载更多
               <button 
-                className="text-xs md:text-sm mt-8 px-4 py-2 bg-[#F1E6C3] text-black rounded-full self-center"
+                className="text-xs md:text-sm mt-8 px-4 py-2 bg-[#F1E6C3] text-black rounded-full self-center font-normal"
                 onClick={() => setIntendedParentCount(prev => prev + 4)}
               >
                 {translations.resources.btn}
               </button>
             ) : (
-              <p className="text-xs md:text-sm mt-8 text-white text-center self-center">
+              //没有更多
+              <p className="text-xs md:text-sm mt-8 text-white text-center self-center font-normal">
                 {translations.resources.btnText}
               </p>
             )}
@@ -211,14 +245,16 @@ export default function ResourcesComponent() {
         {selectedTab === 'surrogate_mom' && (
           <>
             {surrogateMomCount < translations.resources.surrogateMomList.length ? (
+              //加载更多
               <button 
-                className="text-xs md:text-sm mt-8 px-4 py-2 bg-[#F1E6C3] text-black rounded-full self-center"
+                className="text-xs md:text-sm mt-8 px-4 py-2 bg-[#F1E6C3] text-black rounded-full self-center font-normal"
                 onClick={() => setSurrogateMomCount(prev => prev + 4)}
               >
                 {translations.resources.btn}
               </button>
             ) : (
-              <p className="text-xs md:text-sm mt-8 text-white text-center self-center">
+              //没有更多
+              <p className="text-xs md:text-sm mt-8 text-white text-center self-center font-normal">
                 {translations.resources.btnText}
               </p>
             )}
@@ -255,7 +291,7 @@ export default function ResourcesComponent() {
               }`}
             >
               
-              <div className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-2 md:mb-0`}>
+              <div className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-2 md:mb-5`}>
                 {review.content}
               </div>
               <div className="flex items-center mb-4">
@@ -267,14 +303,16 @@ export default function ResourcesComponent() {
             </div>
           ))}
           {parentReviewCount < translations.resources.reviewList.length ? (
+            //加载更多
             <button 
-              className="text-xs md:text-sm mt-8 px-4 py-2 bg-[#F1E6C3] text-black rounded-full self-center"
+              className="text-xs md:text-sm mt-8 px-4 py-2 bg-[#F1E6C3] text-black rounded-full self-center font-normal"
               onClick={() => setParentReviewCount(prev => prev + 4)}
             >
               {translations.resources.btn}
             </button>
           ) : (
-            <p className="text-xs md:text-sm mt-8 text-white self-center">
+            //没有更多
+            <p className="text-xs md:text-sm mt-8 text-white self-center font-normal">
               {translations.resources.btnText}
             </p>
           )}

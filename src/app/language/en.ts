@@ -159,14 +159,14 @@ export default {
         
         {
             name:'Diana E. Chavkin, MD, FACOG',    
-            role:'医生团队',
+            role:'Medical Team',
             content:['Dr. Diana Chavkin, a double board-certified specialist in Reproductive Endocrinology and Infertility (REI), serves as Medical Director, providing exceptional and personalized fertility care. She earned her medical degree from NYU School of Medicine, completed her residency and subspecialty training at the University of Pennsylvania, and graduated with honors from Barnard College, Columbia University. Having personally faced infertility challenges, Dr. Chavkin brings deep empathy and expertise, helping thousands achieve their dream of parenthood. She specializes in third-party reproduction, low-stimulation IVF, fertility preservation, and recurrent pregnancy loss management, with extensive experience in advanced maternal age and PCOS. An active member of ACOG and ASRM, Dr. Chavkin has earned prestigious awards like the Los Angeles Top Doctor Award and Southern California Super Doctors Award and has contributed to the field through publications and textbook chapters.']
         },
         
         
         {
           name:'Kayla Luo',    
-          role:'联合创始人',
+          role:'Co-Founder',
           content:['As Co-Founder and Case Manager of Sapling Surrogacy, Kayla oversees comprehensive support for clients and surrogates, actively involved in every stage of the surrogacy journey. She holds a bachelor’s degree from Nanjing University, studied at the University of Göttingen, and earned master’s degrees from Cornell and Columbia Universities. Fluent in Mandarin, English, and German, Kayla’s global perspective has been pivotal in shaping Sapling’s international operations. Kayla specializes in healthcare data and public administration investments, focusing on advancing innovation in reproductive healthcare. Her efforts at Sapling include streamlining services, enhancing client experiences, and driving the company’s growth, reflecting her deep commitment to the field.']
         }, {
           name:'XXX',    
@@ -260,6 +260,7 @@ export default {
         }
 
     },
+    //成为准父母
     parentsSection:{
         parentsSectionPart1:{
             title:'Sapling Surrogacy',
@@ -357,68 +358,42 @@ export default {
         ParentsSectionPart3:{
             title:'Surrogacy Journey for Intended Parents',
             context:[
-                'The surrogacy journey is a process filled with important milestones and steps. ',
-                'Each intended parent’s journey is unique, shaped by their individual circumstances, needs, and preferences.',
-                'Typically, after 12–24 months, you will be able to welcome your baby home.',
-                ' During this time, Sapling’s professional team will provide one-on-one guidance and support to ensure your surrogacy experience is smooth and stress-free.',
-                'To help you better understand the surrogacy process, the goals of each stage, ',
-                'and the approximate timeline, we have divided the journey into five main phases for your reference.'
+                'The surrogacy journey is a process filled with important milestones and steps.Each intended parent’s journey is unique, shaped by their individual circumstances, needs, and preferences.Typically, after 12–24 months, you will be able to welcome your baby home.During this time, Sapling’s professional team will provide one-on-one guidance and support to ensure your surrogacy experience is smooth and stress-free.To help you better understand the surrogacy process, the goals of each stage, and the approximate timeline, we have divided the journey into five main phases for your reference.'
             ],
             step:[
                 {
                     title:'Step 1',
                     desc:'Consultation and Signing (0–1 Month)',
                     context:[
-                        'You can book a consultation through our website, contact our support team, or chat with us online to find a time that works for you.',
-                        'During your first consultation, we’ll walk you through our services and create a personalized plan based on your unique needs and goals.',
-                        'Once you choose Sapling Surrogacy and sign the agreement, ',
-                        'our team will take care of everything—from finding the perfect surrogate to helping you choose the right IVF clinic,',
-                        'and even connecting you with trusted egg and sperm banks if needed.'
+                        'You can book a consultation through our website, contact our support team, or chat with us online to find a time that works for you. During your first consultation, we’ll walk you through our services and create a personalized plan based on your unique needs and goals. Once you choose Sapling Surrogacy and sign the agreement, our team will take care of everything—from finding the perfect surrogate to helping you choose the right IVF clinic, and even connecting you with trusted egg and sperm banks if needed.'
                     ]
                 },
                 {
                     title:'Step 2',
                     desc:'Matching with a Surrogate (Timeline Varies)',
                     context:[
-                        'All of our surrogates go through a rigorous screening process. ',
-                        'Based on your preferences and needs, we’ll provide you with a selection of candidates from our surrogate database, allowing you to choose the best match.',
-                        'Once the match is confirmed, Sapling Surrogacy will guide you and your surrogate through the next steps, clearly outlining the key milestones in the process. ',
-                        'This includes everything from legal agreements and medical plans to fund management and insurance,',
-                        'ensuring your surrogacy journey is smooth, transparent, and stress-free.'
+                        'All of our surrogates go through a rigorous screening process. Based on your preferences and needs, we’ll provide you with a selection of candidates from our surrogate database, allowing you to choose the best match. Once the match is confirmed, Sapling Surrogacy will guide you and your surrogate through the next steps, clearly outlining the key milestones in the process. This includes everything from legal agreements and medical plans to fund management and insurance, ensuring your surrogacy journey is smooth, transparent, and stress-free.'
                     ]
                 },
                 {
                     title:'Step 3',
                     desc:'IVF and Legal Agreements (3–4 Months)',
                     context:[
-                        'If you don’t have frozen embryos or a preferred IVF clinic, ',
-                        'we’ll recommend one based on your location and needs and arrange a consultation. ',
-                        'Once confirmed, we’ll help plan your embryo development, including timelines, costs, and medications, and coordinate travel if needed.',
-                        ' After embryo screening, the surrogate undergoes medical checks to ensure readiness. ',
-                        'Then, lawyers will finalize and notarize the agreement.',
-                        'Finally, the clinic prepares the surrogate for embryo transfer with a seven-week medication protocol.'
+                        'If you don’t have frozen embryos or a preferred IVF clinic, we’ll recommend one based on your location and needs and arrange a consultation. Once confirmed, we’ll help plan your embryo development, including timelines, costs, and medications, and coordinate travel if needed. After embryo screening, the surrogate undergoes medical checks to ensure readiness. Then, lawyers will finalize and notarize the agreement. Finally, the clinic prepares the surrogate for embryo transfer with a seven-week medication protocol.'
                     ]
                 },
                 {
                     title:'Step 4',
                     desc:'Surrogate Pregnancy (8–9 Months)',
                     context:[
-                        'From embryo transfer to the 12th week, the surrogate undergoes regular HCG blood tests and ultrasounds, ',
-                        'with the heartbeat and gestational sac detected around weeks 5–7.',
-                        'Once stable, she transitions to her local OB-GYN for routine checkups—every 4 weeks until week 28, every 2 weeks until week 36, and weekly until delivery. ',
-                        'During this time, you can stay in touch with the surrogate, and we’ll provide regular updates. ',
-                        'We’ll also assist with parentage documents after week 18 to establish your legal parental rights and work with you and the surrogate to finalize the birth plan for a smooth delivery.',                 
+                        'From embryo transfer to the 12th week, the surrogate undergoes regular HCG blood tests and ultrasounds, with the heartbeat and gestational sac detected around weeks 5–7. Once stable, she transitions to her local OB-GYN for routine checkups—every 4 weeks until week 28, every 2 weeks until week 36, and weekly until delivery. During this time, you can stay in touch with the surrogate, and we’ll provide regular updates. We’ll also assist with parentage documents after week 18 to establish your legal parental rights and work with you and the surrogate to finalize the birth plan for a smooth delivery.',                 
                     ]
                 },
                 {
                     title:'Step 5',
                     desc:'Welcoming Your Baby Home',
                     context:[
-                        'When the doctor clears your baby for discharge, it’s time for the happiest moment—taking your baby home. ',
-                        'For U.S.-based parents, this usually means heading home within a few days. ',
-                        'For international parents, a stay of around four weeks may be needed to handle the baby’s passport and other required documents. ',
-                        'Sapling Surrogacy will be by your side throughout the process, ',
-                        'making sure everything goes smoothly so you can focus on starting this wonderful new chapter with your baby.',
+                        'When the doctor clears your baby for discharge, it’s time for the happiest moment—taking your baby home. For U.S.-based parents, this usually means heading home within a few days. For international parents, a stay of around four weeks may be needed to handle the baby’s passport and other required documents. Sapling Surrogacy will be by your side throughout the process, making sure everything goes smoothly so you can focus on starting this wonderful new chapter with your baby.',
                     ]
                 }
             ],
@@ -434,17 +409,18 @@ export default {
             process:"How to Choose Egg/Sperm Donors and Partner Banks",
             part1:{
                 title:'If You’re Working with an Egg/Sperm Donor, Here’s What to Expect:',
-                first_need:"1.Selecting a DonorAfter signing the agreement, you can choose a donor based on your preferred characteristics like hair color, eye color, height, ethnicity, and location. Our team will help you find the right match. You can review the donor’s profile, including personal details, health, education, family history, and photos, and even schedule a virtual meeting for a closer understanding.",
-                second_need:"2.Starting the Donation Process Once selected, the donor will visit your chosen IVF clinic for medical screening and medication preparation before providing fresh eggs or sperm, allowing you to begin your family-building journey.",
+                first_need:"1. Selecting a DonorAfter signing the agreement, you can choose a donor based on your preferred characteristics like hair color, eye color, height, ethnicity, and location. Our team will help you find the right match. You can review the donor’s profile, including personal details, health, education, family history, and photos, and even schedule a virtual meeting for a closer understanding.",
+                second_need:"2. Starting the Donation Process Once selected, the donor will visit your chosen IVF clinic for medical screening and medication preparation before providing fresh eggs or sperm, allowing you to begin your family-building journey.",
             },
             part2:{
                 title:'If You’re Working with an Egg/Sperm Bank, Here’s What to Expect:',
-                first_need:"1.Choose a Donor After completing your registration, a representative from our partner egg/sperm bank will provide you with a list of donors. You’ll have the chance to review their profiles and select the donor that feels like the right fit for you.",
-                second_need:"2.Start the Process Once you’ve chosen your donor, we’ll work with the egg/sperm bank to help you purchase frozen eggs or sperm. From there, we’ll assist you in beginning the embryo development process, bringing you one step closer to growing your family.",
+                first_need:"1. Choose a Donor After completing your registration, a representative from our partner egg/sperm bank will provide you with a list of donors. You’ll have the chance to review their profiles and select the donor that feels like the right fit for you.",
+                second_need:"2. Start the Process Once you’ve chosen your donor, we’ll work with the egg/sperm bank to help you purchase frozen eggs or sperm. From there, we’ll assist you in beginning the embryo development process, bringing you one step closer to growing your family.",
             },
             btn:'Start Your Consultation' 
         }
     },
+    //代孕套餐费用
     surrogacyCost:{
         title:'Sapling’s Package Options',
         desc:'At Sapling, we offer two package options tailored to fit your unique needs, so you can choose what works<br>best for you. No matter which package you select, our goal is to provide you with a seamless and<br>supportive experience, guiding you every step of the way on this meaningful journey.',
@@ -529,11 +505,13 @@ export default {
 
         
     },
+    //职业生涯
     careers:{
         title:'Careers',
         firstDesc:'Sapling Surrogacy is dedicated to partnering with top professionals to deliver exceptional services to our<br>clients. Join us, and you’ll become part of a highly successful and passionate team, upholding the trust<br>and outstanding reputation we’ve built in the industry.',
         secondDesc:'<p>To explore available opportunities, please visit our LinkedIn page.</p>'
     },
+    //资讯
     resources:{
         title1:'Blog',
         title2:'Testimonials',
