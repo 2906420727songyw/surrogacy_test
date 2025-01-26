@@ -88,12 +88,16 @@ export default function AppointmentContent() {
       const userDataStr = Cookies.get('userData');
       const userData = userDataStr ? JSON.parse(userDataStr) : {};
       
-      const response = await appointmentsApi.create({
+      const formattedTime = convertTimeFormat(selectedTime);
+      const date = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1<10 ? '0' : ''}${currentDate.getMonth() + 1}-${Number(selectedDate)<10?`0${selectedDate}`:selectedDate} ${formattedTime}`
+      const appointmentData = {
         userId: userData.id,
-        appointmentTime: formatDateTime(selectedDate, selectedTime)
-      });
-
-      if (response.data?.code === 200) {
+        appointmentTime: date,
+        type: type
+      };
+      const response = await appointmentsApi.create(appointmentData);
+       // @ts-ignore      
+      if (response.id) {
         toast.success(translations.language === 'EN' ? '预约成功！' : 'Appointment scheduled successfully!');
         setIsSuccess(true);
       } else {
@@ -105,6 +109,30 @@ export default function AppointmentContent() {
     } finally {
       setIsLoading(false);
     }
+  };
+  const convertTimeFormat = (time: string): string => {
+    if (!time) return '';
+    
+    // 移除pm/am前的多余数字
+    const cleanTime = time.replace(/(\d+):00/, '$1');
+    const [hourStr, period] = cleanTime.split(/(?=[ap]m)/);
+    let hourNum = parseInt(hourStr);
+    
+    // 如果是下午，且不是12点，则加12
+    if (period === 'pm' && hourNum !== 12) {
+      hourNum += 12;
+    }
+    // 如果是上午12点，转为00点
+    if (period === 'am' && hourNum === 12) {
+      hourNum = 0;
+    }
+    
+    // 确保小时数在有效范围内
+    if (hourNum > 23) {
+      hourNum = hourNum - 12;
+    }
+    
+    return `${hourNum.toString().padStart(2, '0')}:00:00`;
   };
 
   // 当时区索引改变时，保存到 localStorage
