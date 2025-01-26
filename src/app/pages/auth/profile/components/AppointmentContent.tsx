@@ -49,31 +49,6 @@ export default function AppointmentContent() {
     return `${translations.profile.appointmentContent.month_list[currentDate.getMonth()]}${translations.language==='EN'?date:' '+date}${translations.language==='EN'?'号':''}，${currentDate.getFullYear()}${translations.language==='EN'?'年':''}${lastTime}`;
   };
 
-  const convertTimeFormat = (time: string): string => {
-    if (!time) return '';
-    
-    // 移除pm/am前的多余数字
-    const cleanTime = time.replace(/(\d+):00/, '$1');
-    const [hourStr, period] = cleanTime.split(/(?=[ap]m)/);
-    let hourNum = parseInt(hourStr);
-    
-    // 如果是下午，且不是12点，则加12
-    if (period === 'pm' && hourNum !== 12) {
-      hourNum += 12;
-    }
-    // 如果是上午12点，转为00点
-    if (period === 'am' && hourNum === 12) {
-      hourNum = 0;
-    }
-    
-    // 确保小时数在有效范围内
-    if (hourNum > 23) {
-      hourNum = hourNum - 12;
-    }
-    
-    return `${hourNum.toString().padStart(2, '0')}:00:00`;
-  };
-
   const handleMonthChange = (increment: number) => {
     setCurrentDate(prevDate => {
       const newDate = new Date(prevDate);
@@ -88,30 +63,6 @@ export default function AppointmentContent() {
       
       return newDate;
     });
-  };
-
-  const convertToCaliforniaTime = (localDateStr: string, selectedTimeZone: string) => {
-    // 解析时区的UTC偏移量
-    const utcOffset = parseInt(selectedTimeZone.split('UTC')[1].split(' ')[0]);
-    
-    // 创建日期对象，注意：这里的日期字符串需要添加时区信息
-    const localDate = new Date(`${localDateStr}Z`); // 添加 'Z' 表示这是UTC时间
-    
-    // 调整到选中的时区时间
-    localDate.setHours(localDate.getHours() + utcOffset);
-    
-    // 再调整到加州时区（UTC-7）
-    localDate.setHours(localDate.getHours() - 7);
-    
-    // 格式化为 YYYY-MM-DD HH:mm:ss
-    const year = localDate.getFullYear();
-    const month = String(localDate.getMonth() + 1).padStart(2, '0');
-    const day = String(localDate.getDate()).padStart(2, '0');
-    const hours = String(localDate.getHours()).padStart(2, '0');
-    const minutes = String(localDate.getMinutes()).padStart(2, '0');
-    const seconds = String(localDate.getSeconds()).padStart(2, '0');
-    
-    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
   };
 
   const handleAppointment = async () => {
@@ -137,13 +88,12 @@ export default function AppointmentContent() {
       const userDataStr = Cookies.get('userData');
       const userData = userDataStr ? JSON.parse(userDataStr) : {};
       
-      const response = await appointmentsApi.createAppointment({
+      const response = await appointmentsApi.create({
         userId: userData.id,
-        appointmentDate: formatDateTime(selectedDate, selectedTime),
-        timeZone: selectedTimeZone
+        appointmentTime: formatDateTime(selectedDate, selectedTime)
       });
 
-      if (response.code === 200) {
+      if (response.data?.code === 200) {
         toast.success(translations.language === 'EN' ? '预约成功！' : 'Appointment scheduled successfully!');
         setIsSuccess(true);
       } else {
