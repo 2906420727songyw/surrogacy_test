@@ -39,7 +39,7 @@ export default function DataDisplay() {
           {translations.home.DataDisplay.title}
         </h2>
        <div className='flex justify-center w-full'>
-       <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} mb-2.5 text-white `} dangerouslySetInnerHTML={{ __html: translations.home.DataDisplay.desc }}>
+       <p className={`${translations.language==='EN'?'h2-text':'h3-text-en en-width'} mb-2.5 text-white `} dangerouslySetInnerHTML={{ __html: translations.home.DataDisplay.desc }}>
           
           </p>
        </div>
@@ -48,25 +48,25 @@ export default function DataDisplay() {
           <div className={styles.dataItems}>
             <div className={`${styles.dataItem} ${styles.circle}`}>
               <div className={`${translations.language==='EN'?styles.dataValue:'h1-text-en'} text-white`}>56</div>
-              <div className={`${translations.language==='EN'?styles.dataDescription:'h2-text-en'} text-white`}>
+              <div className={`${translations.language==='EN'?styles.dataDescription:'h3-text-en'} text-white`}>
                 {translations.home.DataDisplay.data[0].desc}
               </div>
             </div>
             <div className={`${styles.dataItem} ${styles.circle}`}>
               <div className={`${translations.language==='EN'?styles.dataValue:'h1-text-en'} text-white`}>100+</div>
-                <div className={`${translations.language==='EN'?styles.dataDescription:'h2-text-en'} text-white` }>
+                <div className={`${translations.language==='EN'?styles.dataDescription:'h3-text-en'} text-white` }>
                 {translations.home.DataDisplay.data[1].desc}
               </div>
             </div>
             <div className={`${styles.dataItem} ${styles.circle}`}>
               <div className={`${translations.language==='EN'?styles.dataValue:'h1-text-en'} text-white`}>67+</div>
-              <div className={`${translations.language==='EN'?styles.dataDescription:'h2-text-en'} text-white`     }>
+              <div className={`${translations.language==='EN'?styles.dataDescription:'h3-text-en'} text-white`     }>
                 {translations.home.DataDisplay.data[2].desc}
               </div>
             </div>
             <div className={`${styles.dataItem} ${styles.circle}`}>
               <div className={`${translations.language==='EN'?styles.dataValue:'h1-text-en'} text-white`}>99.3%</div>
-                <div className={`${translations.language==='EN'?styles.dataDescription:'h2-text-en'} text-white`       }>
+                <div className={`${translations.language==='EN'?styles.dataDescription:'h3-text-en'} text-white`       }>
                 {translations.home.DataDisplay.data[3].desc}
               </div>
             </div>

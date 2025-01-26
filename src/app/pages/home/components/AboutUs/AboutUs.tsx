@@ -87,7 +87,7 @@ export default function AboutUs() {
           {translations.about_us_title.title1}
         </p>
        <div className='flex flex-col items-center'>
-       <p className={` text-white mb-1.5  md:mb-3  ${translations.language==='EN'?'h2-text':'h2-text-en en-width'}`} dangerouslySetInnerHTML={{ __html: translations.about_us_title.desc }}>
+       <p className={` text-white mb-1.5  md:mb-3  ${translations.language==='EN'?'h2-text':'h3-text-en en-width'}`} dangerouslySetInnerHTML={{ __html: translations.about_us_title.desc }}>
        </p>
        </div>
       </div>

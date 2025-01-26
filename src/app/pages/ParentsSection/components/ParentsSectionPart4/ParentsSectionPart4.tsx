@@ -50,7 +50,7 @@ export default function ParentsSectionPart4() {
             {translations.parentsSection.parentsSectionPart4.title_second}
           </h2>
          {translations.language==='EN'?
-         <div className="h2-text text-white text-center mb-12 md:mb-14 ">
+         <div className="h3-text text-white text-center mb-12 md:mb-14 ">
          {translations.parentsSection.parentsSectionPart4.text_list.map((item: string, index: number) => {
     return (
       <div key={index}>
@@ -59,7 +59,7 @@ export default function ParentsSectionPart4() {
     )
   })}
          </div>:
-         <p className={`${translations.language==='EN'?'h2-text-en':'h2-text-en'} text-white text-center mb-12 md:mb-14`}>
+         <p className={`${translations.language==='EN'?'h3-text-en':'h3-text-en'} text-white text-center mb-12 md:mb-14`}>
           {translations.parentsSection.parentsSectionPart4.text_desc}</p>}
         </div>
         <div className={`${styles.transparentContainer} flex flex-col items-center justify-center`}>
