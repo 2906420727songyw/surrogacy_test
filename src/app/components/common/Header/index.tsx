@@ -225,8 +225,7 @@ export default function Header() {
                             </div>
                         ))}
                         <div className='flex gap-2 flex-col'>
-                            {/* <div className='py-2 hover:cursor-pointer' onClick={() => routerToCheckLogin('/pages/auth/profile?type=parent')}>成为准父母</div>
-                            <div className='py-2 hover:cursor-pointer' onClick={() => routerToCheckLogin('/pages/auth/profile?type=surrogacy')}>成为代孕妈妈</div> */}
+                         
                             <div className='py-2 hover:cursor-pointer' onClick={() => Cookies.get('userData') ? router.push('/pages/auth/profile?type=appointment') : router.push('/pages/auth/login?mode=register')}>{translations.header.appointment}</div>
                             <div className='py-2 hover:cursor-pointer'>{translations.header.search}</div>
                             <div className='hover:cursor-pointer' onClick={toggleLanguage}>{translations.language}</div>

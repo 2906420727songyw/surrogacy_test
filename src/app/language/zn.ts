@@ -202,7 +202,7 @@ export default {
                 auth:false
             },{
                 text:'申请通道',
-                link:['/pages/auth/profile?type=parent','/pages/auth/login?mode=register'],
+                link:['/pages/auth/profile?type=become','/pages/auth/login?mode=register'],
                 auth:true
             }]
         },
@@ -215,7 +215,7 @@ export default {
                 auth:false
             },{
                 text:'申请通道',
-                link:['/pages/auth/profile?type=appointment','/pages/auth/login?mode=registerMother'],
+                link:['/pages/auth/profile?type=become','/pages/auth/login?mode=registerMother'],
                 auth:true
             }]
         },
@@ -227,7 +227,7 @@ export default {
                 auth:false
             },{
                 text:'申请通道',
-                link:['/pages/auth/profile?type=appointment','/pages/auth/login?mode=registerMother'],
+                link:['/pages/auth/profile?type=become','/pages/auth/login?mode=register'],
                 auth:true
             }]
         },

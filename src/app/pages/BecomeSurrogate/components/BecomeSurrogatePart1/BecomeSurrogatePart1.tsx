@@ -71,7 +71,7 @@ export default function BecomeSurrogatePart1({ isVisible = false }: BecomeSurrog
         </div>
         <button 
           className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-10 mb-20 md:mt-20 md:mb-20" 
-          onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=appointment' ):router.push('/pages/auth/login?mode=registerMother')}
+          onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=become' ):router.push('/pages/auth/login?mode=registerMother')}
         >
 
           

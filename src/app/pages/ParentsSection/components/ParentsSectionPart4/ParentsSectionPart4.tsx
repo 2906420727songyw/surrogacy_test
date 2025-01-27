@@ -4,6 +4,7 @@ import styles from './ParentsSectionPart4.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useLanguage } from '@/app/language/';
+import Cookies from 'js-cookie';
 
 export default function ParentsSectionPart4() {
   const router = useRouter();
@@ -130,11 +131,11 @@ export default function ParentsSectionPart4() {
      
 {
         translations.language==='EN'?
-        <button className="flex justify-center items-center w-16 h-6 md:w-24 md:h-8 rounded h2-text text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-[6rem]" onClick={()=>router.push('/pages/auth/profile?type=parent')}>
+        <button className="flex justify-center items-center w-16 h-6 md:w-24 md:h-8 rounded h2-text text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-[6rem]" onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=become' ):router.push('/pages/auth/login?mode=register')}>
         {translations.parentsSection.parentsSectionPart4.btn}
         </button>
         :
-        <button className="flex justify-center items-center px-5 h-6  md:h-8 rounded font-normal text-xs md:text-sm text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-[6rem]" onClick={()=>router.push('/pages/auth/profile?type=parent')}>
+        <button className="flex justify-center items-center px-5 h-6  md:h-8 rounded font-normal text-xs md:text-sm text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-[6rem]" onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=become' ):router.push('/pages/auth/login?mode=register')}>
         {translations.parentsSection.parentsSectionPart4.btn}
         </button>
        }

@@ -3,6 +3,7 @@ import styles from "./BecomeSurrogatePart2.module.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useLanguage } from "@/app/language";
+import Cookies from 'js-cookie';
 
 interface BecomeSurrogatePart2Props {
   isVisible?: boolean;
@@ -81,7 +82,7 @@ export default function BecomeSurrogatePart2({
           )}
           <button
             className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-20 mb-10 md:mt-20 md:mb-20"
-            onClick={() => router.push("/pages/auth/profile?type=surrogacy")}
+            onClick={() => Cookies.get('userData')?router.push('/pages/auth/profile?type=become' ):router.push('/pages/auth/login?mode=registerMother')}
           >
             {translations.becomeSurrogate.becomeSurrogatePart2.buttonText}
           </button>
