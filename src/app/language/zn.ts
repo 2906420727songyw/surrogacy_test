@@ -77,7 +77,7 @@ export default {
             },
             {
                 text:'代孕套餐和费用',
-                link:'/pages/BecomeSurrogate'
+                link:'/pages/surrogacy-cost'
             }
         ]
     },{
@@ -124,7 +124,7 @@ export default {
         {
             name:'Judith Hoechst',    
             role:'律师团队',
-            content:['作为生殖法律专家，曾任美国生殖医学学会（ASRM）法律专业组主席，起草多项立法，致力于法律保护与专业教育。']
+            content:['作为生殖法律专家，曾任美国生殖医学学会（ASRM）法律专业组主席，起草多项立法，致力于法律保护与教育。']
           },
         
         {
@@ -137,7 +137,7 @@ export default {
         {
           name:'Kayla Luo',    
           role:'联合创始人',
-          content:['Sapling Surrogacy 联合创始人兼案例经理，拥有康奈尔与哥大学位，精通三语，专注全球化运营与生殖医疗创新']
+          content:['Sapling Surrogacy 联合创始人兼案例经理，拥有康奈尔与哥大学位，精通三语，专注全球化运营与生殖医疗创新。']
         }, {
           name:'XXX1',    
           role:'XXX1',
@@ -194,7 +194,7 @@ export default {
                 auth:false
             },{
                 text:'代孕费用',
-                link:['/pages/ParentsSection'],
+                link:['/pages/surrogacy-cost'],
                 auth:false
             },{
                 text:'申请通道',

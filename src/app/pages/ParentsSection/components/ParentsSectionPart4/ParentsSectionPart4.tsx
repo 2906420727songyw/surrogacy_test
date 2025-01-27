@@ -50,7 +50,7 @@ export default function ParentsSectionPart4() {
             {translations.parentsSection.parentsSectionPart4.title_second}
           </h2>
          {translations.language==='EN'?
-         <div className="h3-text text-white text-center mb-12 md:mb-14 en-width">
+         <div className="h2-text text-white text-center mb-12 md:mb-14 en-width">
          {translations.parentsSection.parentsSectionPart4.text_list.map((item: string, index: number) => {
     return (
       <div key={index}>
@@ -59,7 +59,7 @@ export default function ParentsSectionPart4() {
     )
   })}
          </div>:
-         <p className={`${translations.language==='EN'?'h3-text-en':'h3-text-en'} text-white text-center mb-12 md:mb-14`}>
+         <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white text-center mb-12 md:mb-14 en-width`}>
           {translations.parentsSection.parentsSectionPart4.text_desc}</p>}
         </div>
         <div className={`${styles.transparentContainer} flex flex-col items-center justify-center`}>
@@ -130,11 +130,11 @@ export default function ParentsSectionPart4() {
      
 {
         translations.language==='EN'?
-        <button className="flex justify-center items-center w-16 h-6 md:w-24 md:h-8 rounded h2-text text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>router.push('/pages/auth/profile?type=parent')}>
+        <button className="flex justify-center items-center w-16 h-6 md:w-24 md:h-8 rounded h2-text text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-[6rem]" onClick={()=>router.push('/pages/auth/profile?type=parent')}>
         {translations.parentsSection.parentsSectionPart4.btn}
         </button>
         :
-        <button className="flex justify-center items-center px-5 h-6  md:h-8 rounded font-normal text-xs md:text-sm text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>router.push('/pages/auth/profile?type=parent')}>
+        <button className="flex justify-center items-center px-5 h-6  md:h-8 rounded font-normal text-xs md:text-sm text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-[6rem]" onClick={()=>router.push('/pages/auth/profile?type=parent')}>
         {translations.parentsSection.parentsSectionPart4.btn}
         </button>
        }

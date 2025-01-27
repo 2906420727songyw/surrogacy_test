@@ -139,7 +139,7 @@ export default function ParentsSectionPart2() {
           <p className={`text-white mb-4 mt-6 md:mt-8 md:mb-6 font-bold ${translations.language==='EN'?'h2-text':'h2-text-en'}`}>
             {step1Ref.current ? translations.parentsSection.ParentsSectionPart2.firstStep[0].title : translations.parentsSection.ParentsSectionPart2.firstStep[0].title}
           </p>
-          <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-6 md:mb-8 font-bold`}>
+          <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-6 md:mb-8`}>
             {step1Ref.current ? translations.parentsSection.ParentsSectionPart2.firstStep[0].text : translations.parentsSection.ParentsSectionPart2.firstStep[0].text}
           </p>
           {isExpanded('step1') && (
@@ -160,7 +160,7 @@ export default function ParentsSectionPart2() {
           <p className={`text-white mb-4 mt-6 md:mt-8 md:mb-6 font-bold ${translations.language==='EN'?'h2-text':'h2-text-en'}`}>
             {step2Ref.current ? translations.parentsSection.ParentsSectionPart2.firstStep[1].title : translations.parentsSection.ParentsSectionPart2.firstStep[1].title}
           </p>
-          <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-6  md:mb-8 font-bold`}>
+          <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-6  md:mb-8`}>
             {step2Ref.current ? translations.parentsSection.ParentsSectionPart2.firstStep[1].text : translations.parentsSection.ParentsSectionPart2.firstStep[1].text}
           </p>
           {isExpanded('step2') && (
@@ -181,7 +181,7 @@ export default function ParentsSectionPart2() {
           <p className={`text-white mb-4 mt-6 md:mt-8 md:mb-6 font-bold ${translations.language==='EN'?'h2-text':'h2-text-en'}`}>
             {step3Ref.current ? translations.parentsSection.ParentsSectionPart2.firstStep[2].title : translations.parentsSection.ParentsSectionPart2.firstStep[2].title}
           </p>
-          <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-6 md:mb-8 font-bold`}>
+          <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-6 md:mb-8`}>
             {step3Ref.current ? translations.parentsSection.ParentsSectionPart2.firstStep[2].text : translations.parentsSection.ParentsSectionPart2.firstStep[2].text}
           </p>
           {isExpanded('step3') && (
@@ -197,7 +197,7 @@ export default function ParentsSectionPart2() {
           <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-5 md:mb-4 font-bold`}>
             {translations.parentsSection.ParentsSectionPart2.step[1].title}
           </p>
-          <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-10 md:mb-12 font-bold`}>
+          <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-10 md:mb-12 font-bold`}>
             {translations.parentsSection.ParentsSectionPart2.step[1].desc}
           </p>
           <div className={styles.divider}></div>

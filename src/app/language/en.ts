@@ -126,7 +126,7 @@ export default {
         {
             name:'Judith Hoechst',    
             role:'Legal Team',
-            content:['A reproductive law expert and former Chair of the American Society of Reproductive Medicine (ASRM) Legal Professional Group, Judith has played a pivotal role in drafting key legislation and is dedicated to legal protections and professional education.']
+            content:['A reproductive law expert and former Chair of the American Society of Reproductive Medicine (ASRM) Legal Professional Group, Judith has played a pivotal role in drafting key legislation and is dedicated to legal protections and education.']
           },
         {
             name:'Diana E. Chavkin, MD, FACOG',    
