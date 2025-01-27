@@ -90,7 +90,7 @@ export default function ProfileContent() {
 
   const getDisplayValue = (value: string) => {
     if (!isClient) return '';
-    return value || (translations.language === 'EN' ? 'Not yet provided' : '暂未填写');
+    return value || (translations.language === 'EN' ?  '暂未填写' : 'Not yet provided');
   };
 
   if (isLoading) {
