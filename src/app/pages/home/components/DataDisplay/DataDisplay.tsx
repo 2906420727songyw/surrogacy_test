@@ -32,14 +32,14 @@ export default function DataDisplay() {
       <div className={styles.content}>
         <h2 
           id="data-display-title"
-          className={` ${translations.language==='EN'?'h1-text':'h1-text-en'} mb-5 text-white md:mb-8 ${
+          className={` ${translations.language==='EN'?'h1-text':'h1-text-en'} mb-[2.5rem] text-white md:mb-[5rem] ${
             isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'
           }`}
         >
           {translations.home.DataDisplay.title}
         </h2>
        <div className='flex justify-center w-full md:px-[180px]'>
-       <p className={`${translations.language==='EN'?'h2-text':'h3-text-en en-width'} mb-2.5 text-white `} dangerouslySetInnerHTML={{ __html: translations.home.DataDisplay.desc }}>
+       <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} mb-2.5 text-white `} dangerouslySetInnerHTML={{ __html: translations.home.DataDisplay.desc }}>
           
           </p>
        </div>

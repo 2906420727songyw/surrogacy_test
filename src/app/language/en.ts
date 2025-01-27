@@ -184,7 +184,7 @@ export default {
         title1:'Sapling Surrogacy',
         title2:'About Us',
         desc:'Sapling Surrogacy is a premier full-service surrogacy agency dedicated to helping individuals and families achieve their dreams of parenthood. With industry-leading success rates and personalized support, we guide clients through every step of the surrogacy journey with care, expertise, and compassion.',
-        more:'More'
+        more:'Load More'
       },
       home:{
         BecomingParents:{
@@ -231,7 +231,7 @@ export default {
         },
         DataDisplay:{
             title:'Sapling Surrogacy',
-            desc:'Trust, Expertise, and Heartfelt SupportWith 20 years of experience, Sapling Surrogacy is a full-service agency dedicated to helping intended parents and surrogates navigate their journeys with confidence and care. Combining professional expertise with a deep commitment to building families of all kinds, we provide personalized support every step of the way.',
+            desc:'Trust, Expertise, and Heartfelt Support<br>With 20 years of experience, Sapling Surrogacy is a full-service agency dedicated to helping intended parents and surrogates navigate their journeys with confidence and care. Combining professional expertise with a deep commitment to building families of all kinds, we provide personalized support every step of the way.',
             data:[{
                 number:'56',
                 desc:'Our clients come from 56 countries worldwide.'
@@ -243,11 +243,11 @@ export default {
                 desc:'We partner with more than 67 IVF clinics across the United States.'
             },{
                 number:'99.3%',
-                desc:'We proudly offer an industry-leading first-time success rate of 99.3%, ensuring greater confidence for you.'
+                desc:'We proudly offer an industry-leading first-time success rate of 99.3%.'
             }]
         },
         Foundation:{
-            title:'Building Families with Love: <br>Supporting More Families on Their Path to Parenthood',
+            title:'Building Families with Love: Supporting More Families on Their Path to Parenthood',
             button:[{
                 text:'Learn More',
                 link:[''],

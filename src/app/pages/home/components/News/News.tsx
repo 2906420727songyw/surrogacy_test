@@ -120,7 +120,7 @@ export default function News() {
                     {item.role}
                   </p>
                   <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-[#cdc6c0] `}>
-                    {item.content.toString().slice(0, 50) + '...'}
+                    {item.content}
                   </p>
                   <hr />
                 </div>

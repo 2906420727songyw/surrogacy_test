@@ -37,7 +37,7 @@ export default function Footer() {
                         item.options && (
                             <div className='flex flex-col gap-5 mt-5'>
                                 {item.options.map((option,idx)=>(
-                                    <span onClick={()=>routerToScroll(item.link,option.link)} className='text-xs md:text-sm hover:underline hover:cursor-pointer' key={idx}>{option.text}</span>
+                                    <span onClick={()=>routerToScroll(item.link,option.link)} className='text-sm md:text-base hover:underline hover:cursor-pointer' key={idx}>{option.text}</span>
                                 ))}
                             </div>
                         )
@@ -72,7 +72,7 @@ export default function Footer() {
             <h3>{translations.footer_other.title}</h3>
             
             <div className={styles.socialIcons}>
-                <Link href={`${routes.auth.login}?type=parent`} className={styles.logIn}>
+                <Link href={`${routes.auth.login}?type=parent`} className={`${styles.logIn}`}>
                 <span>{translations.footer_other.span[0]}</span>
                 <Image src="/images/footer/右箭头.png" alt="Arrow Right" width={24} height={24} />
                 </Link>
