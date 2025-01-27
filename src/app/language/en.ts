@@ -614,7 +614,8 @@ export default {
             birthday:'Date of Birth',
             userName:'User Name',
             address:'Home Address',
-            edit:"Edit Account"
+            edit:"Edit Account",
+            save:"Save"
         },
         surrogateContent:{
 

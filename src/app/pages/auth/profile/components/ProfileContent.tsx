@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import userApi from '@/app/service/user/api';
 import Cookies from 'js-cookie';
 import { useLanguage } from '@/app/language/';
@@ -44,7 +43,12 @@ export default function ProfileContent() {
   const [userData, setUserData] = useState<UserData>(initialUserData);
   const [isClient, setIsClient] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
   const { translations } = useLanguage();
+
+  // 添加一个临时状态来存储编辑中的数据
+  const [editingData, setEditingData] = useState<UserData>(initialUserData);
+
   useEffect(() => {
     setIsClient(true);
     const fetchUserData = async () => {
@@ -63,7 +67,7 @@ export default function ProfileContent() {
 
         const response = await userApi.getUserInfo(parsedUserData.id);
         const res = response as unknown as UserData;
-        setUserData({
+        const newUserData = {
           id: res.id || '',
           name: res.name || '',
           email: res.email || '',
@@ -73,7 +77,9 @@ export default function ProfileContent() {
           address: res.address || '',
           country: res.country || '',
           city: res.city || ''
-        });
+        };
+        setUserData(newUserData);
+        setEditingData(newUserData);
       } catch (error) {
         console.error('获取用户信息失败:', error);
       } finally {
@@ -84,9 +90,24 @@ export default function ProfileContent() {
     fetchUserData();
   }, []);
 
-  // const handleDropdownClick = () => {
-  //   setIsDropdownOpen(!isDropdownOpen);
-  // };
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setEditingData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSave = async () => {
+    try {
+      // 这里添加保存到后端的逻辑
+      // await userApi.updateUserInfo(editingData);
+      setUserData(editingData);
+      setIsEditing(false);
+    } catch (error) {
+      console.error('保存用户信息失败:', error);
+    }
+  };
 
   const getDisplayValue = (value: string) => {
     if (!isClient) return '';
@@ -129,42 +150,83 @@ export default function ProfileContent() {
           className="space-y-[16px] md:space-y-[24px]"
           onSubmit={(e) => e.preventDefault()}
         >
-          <InfoItem label={translations.profile.profileContent.email + " *"} value={getDisplayValue(userData.email)} />
-          <InfoItem label={translations.profile.profileContent.phone + " *"} value={getDisplayValue(userData.phoneNumber)} />
-          <InfoItem label={translations.profile.profileContent.birthday + " *"} value={getDisplayValue(userData.dateOfBirth)} />
-          <InfoItem label={translations.profile.profileContent.userName + " *"} value={getDisplayValue(userData.name)} />
-          <InfoItem label={translations.profile.profileContent.address + " *"} value={getDisplayValue(userData.address)} />
+          <InfoItem 
+            label={translations.profile.profileContent.email + " *"} 
+            value={getDisplayValue(isEditing ? editingData.email : userData.email)} 
+            name="email"
+            isEditing={isEditing}
+            onChange={handleInputChange}
+          />
+          <InfoItem 
+            label={translations.profile.profileContent.phone + " *"} 
+            value={getDisplayValue(isEditing ? editingData.phoneNumber : userData.phoneNumber)} 
+            name="phoneNumber"
+            isEditing={isEditing}
+            onChange={handleInputChange}
+          />
+          <InfoItem 
+            label={translations.profile.profileContent.birthday + " *"} 
+            value={getDisplayValue(isEditing ? editingData.dateOfBirth : userData.dateOfBirth)} 
+            name="dateOfBirth"
+            isEditing={isEditing}
+            onChange={handleInputChange}
+          />
+          <InfoItem 
+            label={translations.profile.profileContent.userName + " *"} 
+            value={getDisplayValue(isEditing ? editingData.name : userData.name)} 
+            name="name"
+            isEditing={isEditing}
+            onChange={handleInputChange}
+          />
+          <InfoItem 
+            label={translations.profile.profileContent.address + " *"} 
+            value={getDisplayValue(isEditing ? editingData.address : userData.address)} 
+            name="address"
+            isEditing={isEditing}
+            onChange={handleInputChange}
+          />
         </form>
 
         {/* 编辑账户链接 */}
         <div className="mt-[30px] md:mt-[40px]">
-          <Link 
-            href="#" 
+          <button 
+            onClick={isEditing ? handleSave : () => setIsEditing(true)}
             className="text-white text-[20px] md:text-[24px] hover:opacity-80 border-b border-white pb-[2px]"
           >
-            {translations.profile.profileContent.edit}
-          </Link>
+            {isEditing ? translations.profile.profileContent.save : translations.profile.profileContent.edit}
+          </button>
         </div>
       </div>
     </div>
   );
 }
 
-function InfoItem({ label, value }: { label: string; value: string }) {
+interface InfoItemProps {
+  label: string;
+  value: string;
+  name: string;
+  isEditing: boolean;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+function InfoItem({ label, value, name, isEditing, onChange }: InfoItemProps) {
   const textColor = value === '暂未填写' || value === 'Not filled yet' ? '#C0C0C0' : 'white';
+  const isDateField = name === 'dateOfBirth';
   
   return (
     <div className="flex md:flex-row md:items-center gap-1 md:gap-4">
-      <label className="text-white/80 text-[12px] md:text-[14px] ">
+      <label className="text-white/80 text-[12px] md:text-[14px] md:w-[5vw] w-[24vw]">
         {label}
       </label>
       <input 
-        type="text" 
-        readOnly
+        type={isDateField && isEditing ? "date" : "text"}
+        name={name}
         value={value}
+        onChange={isEditing ? onChange : undefined}
+        readOnly={!isEditing}
         autoComplete="new-password"
-        className="text-[12px] md:text-[14px] bg-transparent border-none outline-none w-[50vw] md:w-[25vw]"
-        style={{ color: textColor }}
+        className={`text-[12px] md:text-[14px] ${isEditing ? 'bg-white text-black px-2' : 'bg-transparent border-none'} outline-none w-[50vw] md:w-[25vw] ${isEditing ? 'rounded' : ''}`}
+        style={{ color: isEditing ? undefined : textColor }}
       />
     </div>
   );

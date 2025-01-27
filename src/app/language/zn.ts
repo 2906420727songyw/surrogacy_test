@@ -610,7 +610,8 @@ export default {
             birthday:'出生日期',
             userName:'用户名',
             address:'家庭详细地址',
-            edit:"编辑账户"
+            edit:"编辑账户",
+            save:"保存"
         },
         surrogateContent:{
 
