@@ -16,13 +16,13 @@ export default function BecomeSurrogatePart4({ isVisible = false }: BecomeSurrog
   return (
     <div className={styles.becomeSurrogatePart4}>
       <Image 
-      src="/images/BecomeSurrogate/4.png" 
+      src="/images/BecomeSurrogate/4.jpg" 
       alt="第四部分图片" 
       width={1600}
       height={800}
       layout="responsive" 
       placeholder="blur"
-      blurDataURL="/images/BecomeSurrogate/4.jpg"
+      blurDataURL="/images/BecomeSurrogate/4-zip.jpg"
       />
       <div className={styles.container}>
         <div className={styles.whereContainer}>
@@ -47,7 +47,7 @@ export default function BecomeSurrogatePart4({ isVisible = false }: BecomeSurrog
           translations.becomeSurrogate.becomeSurrogatePart4.why.content.map((item:any,index:number)=>{
             return (
               <React.Fragment key={index}>
-                <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white `}>
+                <p className={`${translations.language==='EN'?'h2-text':'h2-text-en '} text-white en-width`}>
                   {item} 
                 </p>
               </React.Fragment>
@@ -85,7 +85,7 @@ export default function BecomeSurrogatePart4({ isVisible = false }: BecomeSurrog
                   <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} font-bold text-white mb-4 mt-6 md:mt-8 md:mb-6`}>
                     {item.title}
                   </p>
-                  <p className={`${translations.language==='EN'?'h3-text':'h3-text-en '} en-width text-center text-white mb-10 mt-10 md:mb-11 md:mt-10`}>
+                  <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'}  text-center text-white mb-10 mt-10 md:mb-11 md:mt-10 en-width`}>
                     {item.content}
                   </p>
                 </React.Fragment>
@@ -109,15 +109,15 @@ export default function BecomeSurrogatePart4({ isVisible = false }: BecomeSurrog
           translations.becomeSurrogate.becomeSurrogatePart4.how.content.map((item:any,index:number)=>{
             return (
               <React.Fragment key={index}>
-                <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white `}>
+                <p className={`${translations.language==='EN'?'h2-text':'h2-text-en  en-width'} text-white en-width text-center`}>
                   {item} 
                 </p>
               </React.Fragment>
             )
           }) 
           :
-          <div className='w-full flex justify-center'>
-            <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white mb-10 mt-10 md:mb-11 md:mt-10`}>
+          <div className='w-full flex justify-center en-width'>
+            <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-10 mt-10 md:mb-11 md:mt-10 en-width`}>
             {translations.becomeSurrogate.becomeSurrogatePart4.how.content}
           </p>
           </div>
@@ -142,7 +142,7 @@ export default function BecomeSurrogatePart4({ isVisible = false }: BecomeSurrog
                 <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} font-bold text-white mb-4 mt-6 md:mt-8 md:mb-6`}>
                   {item.title}
                 </p>
-                <p className={`${translations.language==='EN'?'h3-text':'h3-text-en en-width'} text-center text-white mb-10 mt-10 md:mb-11 md:mt-10`}>
+                <p className={`${translations.language==='EN'?'h3-text':'h3-text-en '} text-center text-white mb-10 mt-10 md:mb-11 md:mt-10 en-width`}>
                   {item.content}
                 </p>
               </React.Fragment>

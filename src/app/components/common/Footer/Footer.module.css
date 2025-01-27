@@ -61,11 +61,14 @@
 
 
 .info h3 {
-  font-family: Playfair Display;
-  font-size: 20px;
+  font-size: 1rem;
   font-weight: 700;
-  line-height: 30px;
+  line-height: 1.5rem;
   margin-bottom: 32px;
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
 }
 
 .infoItem {
@@ -75,11 +78,14 @@
 }
 
 .infoItem p {
-  font-family: Montserrat;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5rem;
   margin-bottom: 0;
   white-space: wrap;
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
 }
 
 .icon {
@@ -113,7 +119,6 @@
 
 
 .column h4 {
-  font-family: PingFang SC;
   font-size: 16px;
   font-weight: 600;
   line-height: 22.4px;
@@ -126,7 +131,6 @@
 }
 
 .column li {
-  font-family: PingFang SC;
   font-size: 14px;
   font-weight: 400;
   line-height: 34px;
@@ -205,8 +209,12 @@
 }
 
 .logIn span {
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
 }
 .verticalList {
   display: flex;

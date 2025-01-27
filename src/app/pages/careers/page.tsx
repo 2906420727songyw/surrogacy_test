@@ -17,9 +17,9 @@ export default function Careers() {
         </p>
         
         {/* 第一段文字内容 */}
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center items-center">
           <div 
-            className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white text-center md:whitespace-nowrap rich-text`}
+            className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white text-center rich-text en-width`}
             dangerouslySetInnerHTML={{ __html: translations.careers.firstDesc }}
           />
         </div>

@@ -54,13 +54,13 @@ export default function BecomeSurrogatePart3({ isVisible = false }: BecomeSurrog
   return (
     <div className={styles.becomeSurrogatePart3}>
       <Image 
-        src="/images/BecomeSurrogate/3.png" 
+        src="/images/BecomeSurrogate/3.jpg" 
         alt="第三部分图片" 
         width={1600}
         height={800}
         layout="responsive" 
         placeholder="blur"
-        blurDataURL="/images/BecomeSurrogate/3.jpg"
+        blurDataURL="/images/BecomeSurrogate/3-zip.jpg"
       />
       <div id='become-surrogate-part3-content' className={styles.container}>
         <div className={styles.content}>

@@ -87,7 +87,7 @@ export default function SurrogacyCost() {
         >
           {translations.surrogacyCost.title}
         </p>
-        <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-20 md:mb-40 text-center px-5`} dangerouslySetInnerHTML={{ __html: translations.surrogacyCost.desc }}>
+        <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-20 md:mb-40 text-center en-width`} dangerouslySetInnerHTML={{ __html: translations.surrogacyCost.desc }}>
         </p>
       </div>
     <div className={styles.packageContainer}>
@@ -100,7 +100,7 @@ export default function SurrogacyCost() {
             {translations.surrogacyCost.sproutPackage.desc}
         </p>
         <div className={styles.detailsDivider}></div>
-        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="0">
+        <h4 className="text-[0.7rem] md:text-[0.8rem] text-white text-center mb-5 md:mb-10 font-bold" data-section="0">
             {translations.surrogacyCost.sproutPackage.list[0].title}
         </h4>
         <div data-section="0" className={styles.packageDetails}>
@@ -113,7 +113,7 @@ export default function SurrogacyCost() {
           </p>
         </div>
         <div className={styles.detailsDivider}></div>
-        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="1">
+        <h4 className="text-[0.7rem] md:text-[0.8rem] text-white text-center mb-5 md:mb-10 font-bold" data-section="1">
             {translations.surrogacyCost.sproutPackage.list[1].title}
         </h4>
         <div data-section="1" className={styles.packageDetails}>
@@ -122,11 +122,11 @@ export default function SurrogacyCost() {
               visibleSections.has('1') ? 'animate__animated animate__fadeInDown animate__duration-1s' : ''
             }`}
           >
-                {translations.surrogacyCost.sproutPackage.list[1].desc}
+              {translations.surrogacyCost.sproutPackage.list[1].desc}
           </p>
         </div>
         <div className={styles.detailsDivider}></div>
-        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="2">
+        <h4 className="text-[0.7rem] md:text-[0.8rem] text-white text-center mb-5 md:mb-10 font-bold" data-section="2">
             {translations.surrogacyCost.sproutPackage.list[2].title}
         </h4>
         <div data-section="2" className={styles.packageDetails}>
@@ -139,7 +139,7 @@ export default function SurrogacyCost() {
           </p>
         </div>
         <div className={styles.detailsDivider}></div>
-        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="3">
+        <h4 className="text-[0.7rem] md:text-[0.8rem] text-white text-center mb-5 md:mb-10 font-bold" data-section="3">
             {translations.surrogacyCost.sproutPackage.list[3].title}
         </h4>
         <div data-section="3" className={styles.packageDetails}>
@@ -152,7 +152,7 @@ export default function SurrogacyCost() {
           </p>
         </div>
         <div className={styles.detailsDivider}></div>
-        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="4">
+        <h4 className="text-[0.7rem] md:text-[0.8rem] text-white text-center mb-5 md:mb-10 font-bold" data-section="4">
             {translations.surrogacyCost.sproutPackage.list[4].title}
         </h4>
         <div data-section="4" className={styles.packageDetails}>
@@ -174,7 +174,7 @@ export default function SurrogacyCost() {
         {translations.surrogacyCost.thrivePackage.desc}
         </p>
       <div className={styles.detailsDivider}></div>
-      <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="5">
+      <h4 className="text-[0.7rem] md:text-[0.8rem] text-white text-center mb-5 md:mb-10 font-bold" data-section="5">
         {translations.surrogacyCost.thrivePackage.list[0].title}
       </h4>
         <div data-section="5" className={styles.packageDetails}>
@@ -187,7 +187,7 @@ export default function SurrogacyCost() {
           </p>
         </div>
         <div className={styles.detailsDivider}></div>
-        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="6">
+        <h4 className="text-[0.7rem] md:text-[0.8rem] text-white text-center mb-5 md:mb-10 font-bold" data-section="6">
             {translations.surrogacyCost.thrivePackage.list[1].title}
         </h4>
         <div data-section="6" className={styles.packageDetails}>
@@ -200,7 +200,7 @@ export default function SurrogacyCost() {
           </p>
         </div>
         <div className={styles.detailsDivider}></div>
-        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="7">
+        <h4 className="text-[0.7rem] md:text-[0.8rem] text-white text-center mb-5 md:mb-10 font-bold" data-section="7">
           {translations.surrogacyCost.thrivePackage.list[2].title}
         </h4>
         <div data-section="7" className={styles.packageDetails}>
@@ -213,7 +213,7 @@ export default function SurrogacyCost() {
           </p>
         </div>
         <div className={styles.detailsDivider}></div>
-        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="8">
+        <h4 className="text-[0.7rem] md:text-[0.8rem] text-white text-center mb-5 md:mb-10 font-bold" data-section="8">
           {translations.surrogacyCost.thrivePackage.list[3].title}
         </h4>
         <div data-section="8" className={styles.packageDetails}>
@@ -226,7 +226,7 @@ export default function SurrogacyCost() {
           </p>
         </div>
         <div className={styles.detailsDivider}></div>
-        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="9">
+        <h4 className="text-[0.7rem] md:text-[0.8rem] text-white text-center mb-5 md:mb-10 font-bold" data-section="9">
           {translations.surrogacyCost.thrivePackage.list[4].title}
         </h4>
         <div data-section="9" className={styles.packageDetails}>
@@ -239,7 +239,7 @@ export default function SurrogacyCost() {
           </p>
         </div>
         <div className={styles.detailsDivider}></div>
-        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="10">
+        <h4 className="text-[0.7rem] md:text-[0.8rem] text-white text-center mb-5 md:mb-10 font-bold" data-section="10">
           {translations.surrogacyCost.thrivePackage.list[5].title}
         </h4>
         <div data-section="10" className={styles.packageDetails}>
@@ -252,7 +252,7 @@ export default function SurrogacyCost() {
           </p>
         </div>
         <div className={styles.detailsDivider}></div>
-        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="11">
+        <h4 className="text-[0.7rem] md:text-[0.8rem] text-white text-center mb-5 md:mb-10 font-bold" data-section="11">
           {translations.surrogacyCost.thrivePackage.list[6].title}
         </h4>
         <div data-section="11" className={styles.packageDetails}>
@@ -265,7 +265,7 @@ export default function SurrogacyCost() {
           </p>
         </div>
         <div className={styles.detailsDivider}></div>
-        <h4 className="text-[1rem] md:text-[1.2rem] text-white text-center mb-5 md:mb-10" data-section="12">
+        <h4 className="text-[0.7rem] md:text-[0.8rem] text-white text-center mb-5 md:mb-10 font-bold" data-section="12">
           {translations.surrogacyCost.thrivePackage.list[7].title}
         </h4>
         <div data-section="12" className={styles.packageDetails}>
@@ -299,7 +299,7 @@ export default function SurrogacyCost() {
           >
             {translations.surrogacyCost.questionAndAnswer[0].title}
           </p>
-          <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white mb-10 md:mb-20 text-center`}>
+          <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white mb-10 md:mb-20 text-center font-light`}>
             {translations.surrogacyCost.questionAndAnswer[0].desc}
           </p>
           <div className="w-full h-[1px] bg-white"></div>
@@ -314,7 +314,7 @@ export default function SurrogacyCost() {
           >
             {translations.surrogacyCost.questionAndAnswer[1].title}
           </p>
-          <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white mb-10 md:mb-20 text-center`}>
+          <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white mb-10 md:mb-20 text-center font-light`}>
             {translations.surrogacyCost.questionAndAnswer[1].desc}
           </p>
           <div className="w-full h-[1px] bg-white"></div>
@@ -329,7 +329,7 @@ export default function SurrogacyCost() {
           >
             {translations.surrogacyCost.questionAndAnswer[2].title}
           </p>
-          <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white mb-10 md:mb-20 text-center`}>
+          <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white mb-10 md:mb-20 text-center font-light`}>
             {translations.surrogacyCost.questionAndAnswer[2].desc}
           </p>
         </div>

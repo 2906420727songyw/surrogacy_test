@@ -89,7 +89,7 @@ export default function ParentsSectionPart1() {
   </h1>
         {
           translations.language==='EN'?
-          <p className="h2-text text-white mb-10 md:mb-12">
+          <p className="h2-text text-white mb-10 md:mb-12 en-width">
             {translations?.parentsSection?.parentsSectionPart1?.desc_list?.map((item: string, index: number) => {
               return <div key={index}>{item} <br/></div>
             })}
@@ -102,17 +102,17 @@ export default function ParentsSectionPart1() {
         
        {
         translations.language==='EN'?
-        <button className="flex justify-center items-center w-16 h-6 md:w-24 md:h-8 rounded h2-text font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=appointment' ):router.push('/pages/auth/login?mode=register')}>
+        <button className="flex justify-center items-center w-16 h-6 md:w-24 md:h-8 rounded h2-text text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=appointment' ):router.push('/pages/auth/login?mode=register')}>
         {translations?.parentsSection?.parentsSectionPart1?.btn}
         </button>
         :
-        <button className="flex justify-center items-center px-5 h-6  md:h-8 rounded h2-text-en font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=appointment' ):router.push('/pages/auth/login?mode=register')}>
+        <button className="flex justify-center items-center px-5 h-6  md:h-8 rounded  font-normal text-xs md:text-sm text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=appointment' ):router.push('/pages/auth/login?mode=register')}>
         {translations?.parentsSection?.parentsSectionPart1?.btn}
         </button>
        }
       </div>
       <Image 
-      src="/images/ParentsSection/image1.png" 
+      src="/images/ParentsSection/image1.jpg" 
       alt="Parents Section Image" 
       width={1600}
       height={800}

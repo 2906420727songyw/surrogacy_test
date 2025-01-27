@@ -2,7 +2,6 @@
 import styles from './News.module.css';
 import { useRouter } from 'next/navigation';
 import { useRef, useEffect, useState } from 'react';
-import list from './data';
 import { useLanguage } from '@/app/language';
 export default function News() {
   const router = useRouter();
@@ -22,7 +21,7 @@ export default function News() {
     if (scrollContainerRef.current) {
       const scrollLeft = isMobile ? index * window.innerWidth : index * scrollContainerRef.current.offsetWidth;
       scrollContainerRef.current.scrollTo({
-        left: scrollLeft, 
+        left: scrollLeft,
         behavior: 'smooth'
       });
       setCurrentIndex(index);
@@ -35,8 +34,9 @@ export default function News() {
     }
   };
 
-  const handleNextClick = () => {  
-    if (currentIndex < list.length - (isMobile ? 1 : 3)) {
+  const handleNextClick = () => {
+    const itemsPerPage = isMobile ? 1 : 3;
+    if (currentIndex < translations.about_us.length - itemsPerPage) {
       scrollTo(currentIndex + 1);
     }
   };
@@ -112,15 +112,15 @@ export default function News() {
                   />
                 </div>
                 <div className={styles.articleHeader}>
-                  <span className="flex flex-col gap-5 text-lg text-[#cdc6c0] mb-7.5 font-bold">
+                  <span className={`${translations.language==='EN'?'h2-text':'h2-text-en'} flex flex-col gap-5 text-lg text-[#cdc6c0] mb-7.5 font-bold`}>
                     {item.name.slice(0, 32)}
                   </span>
                   <hr />
                   <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-[#cdc6c0]  italic`}>
                     {item.role}
                   </p>
-                  <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-[#cdc6c0] `}>
-                    {item.content.toString().slice(0, 50) + '...'}
+                  <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-[#cdc6c0] `}>
+                    {item.content}
                   </p>
                   <hr />
                 </div>
@@ -130,7 +130,7 @@ export default function News() {
           <button
             className={`${styles.controlButton} ${styles.nextButton}`}  
             onClick={handleNextClick}
-            disabled={currentIndex >= list.length - (isMobile ? 1 : 3)}
+            disabled={currentIndex >= translations.about_us.length - (isMobile ? 1 : 3)}
           >
             &gt;
           </button>

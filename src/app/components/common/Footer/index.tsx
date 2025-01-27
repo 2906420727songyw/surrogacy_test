@@ -27,7 +27,7 @@ export default function Footer() {
     }
 
     return (
-        <div className='flex justify-between gap-20 px-8 py-16 bg-[#A36E65] flex-wrap md:px-40 md:py-20 text-white font-sans'>
+        <div className={`${translations.language==='EN'?'':'en-text'} flex justify-between gap-20 px-8 py-16 bg-[#A36E65] flex-wrap md:px-40 md:py-20 text-white`}>
             <div className='w-auto flex gap-10 md:gap-40 bg-[#A36E65] flex-wrap text-white '>
         {
             translations.footer.slice(0, 2).map((item:{text:string,link:string,options:[any]},index:number)=>(
@@ -37,7 +37,7 @@ export default function Footer() {
                         item.options && (
                             <div className='flex flex-col gap-5 mt-5'>
                                 {item.options.map((option,idx)=>(
-                                    <span onClick={()=>routerToScroll(item.link,option.link)} className='text-xs md:text-sm hover:underline hover:cursor-pointer' key={idx}>{option.text}</span>
+                                    <span onClick={()=>routerToScroll(item.link,option.link)} className='text-sm md:text-base hover:underline hover:cursor-pointer' key={idx}>{option.text}</span>
                                 ))}
                             </div>
                         )
@@ -72,7 +72,7 @@ export default function Footer() {
             <h3>{translations.footer_other.title}</h3>
             
             <div className={styles.socialIcons}>
-                <Link href={`${routes.auth.login}?type=parent`} className={styles.logIn}>
+                <Link href={`${routes.auth.login}?type=parent`} className={`${styles.logIn}`}>
                 <span>{translations.footer_other.span[0]}</span>
                 <Image src="/images/footer/右箭头.png" alt="Arrow Right" width={24} height={24} />
                 </Link>
@@ -95,7 +95,7 @@ export default function Footer() {
             </div>*/}
             <div className={styles.infoItem}>
                 <Image src="/images/footer/phone-icon.png" alt="Phone Icon" className={styles.icon} width={24} height={24} />
-                <p>+1 323-574-2572</p>
+                <p>(323) 573-1944</p>
             </div>
             <div className={styles.infoItem}>
                 <Image src="/images/footer/email-icon.png" alt="Email Icon" className={styles.icon} width={24} height={24} />

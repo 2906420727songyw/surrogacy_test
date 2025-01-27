@@ -46,17 +46,20 @@ body {
 .h1-text{
   font-size:1.875rem;
   line-height: 4.5rem;
+  font-weight: 600;
   @media (max-width: 768px) {
-    font-size: 1.25rem;
+    /*font-size: 1.25rem;*/
+    font-size: 1.5rem;
     line-height: 2.5rem;
+    font-weight: 600;
   }
 }
 .h1-text-en{
-  font-size:1.875rem;
+  font-size:2.5rem;
   line-height: 4.5rem;
   font-weight: 600;
   @media (max-width: 768px) {
-    font-size: 1.25rem;
+    font-size: 1.75rem;
     line-height: 2.5rem;
     font-weight: 600;
   }
@@ -65,18 +68,18 @@ body {
   font-size:1rem;
   line-height: 2.5rem;
   @media (max-width: 768px) {
-    font-size: 0.875rem;
+    /*font-size: 0.875rem;*/
+    font-size: 0.8rem;
     line-height: 1.5rem;
   }
 }
 .h2-text-en{
-  font-size:1rem;
-  line-height: 1.15rem;
+  font-size:1.15rem;
+  line-height: 1.4rem;
   /* font-weight: 500; */
   @media (max-width: 768px) {
     font-size: 0.8rem;
     line-height: 1.15rem;
-    font-weight: 600;
   }
 }
 .h3-text{
@@ -90,11 +93,9 @@ body {
 .h3-text-en{
   font-size:0.875rem;
   line-height: 1.15rem;
-  font-weight: 400;
   @media (max-width: 768px) {
     font-size: 0.75rem;
     line-height: 1.15rem;
-    font-weight: 400;
   }
 }
 .pt-page{

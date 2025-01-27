@@ -16,13 +16,13 @@ export default function BecomeSurrogatePart2({
   return (
     <div className={styles.becomeSurrogatePart2}>
       <Image
-        src="/images/BecomeSurrogate/2.png"
+        src="/images/BecomeSurrogate/2.jpg"
         alt="第二部分图片"
         width={1600}
         height={800}
         layout="responsive"
         placeholder="blur"
-        blurDataURL="/images/BecomeSurrogate/2.jpg"
+        blurDataURL="/images/BecomeSurrogate/2-zip.jpg"
       />
       <div className={styles.container}>
         <div id="become-surrogate-part2-content" className={styles.content}>
@@ -36,7 +36,7 @@ export default function BecomeSurrogatePart2({
             {translations.becomeSurrogate.becomeSurrogatePart2.title}
           </h2>
        <div className='w-full flex justify-center'>
-       <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white mb-10 md:mb-11`}>
+       <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-10 md:mb-11 en-width`}>
             {translations.becomeSurrogate.becomeSurrogatePart2.content.map(
               (item: any, index: number) => {
                 return (
@@ -63,7 +63,7 @@ export default function BecomeSurrogatePart2({
                     {item.title}
                   </p>
                   <div className='w-full flex justify-center'>
-                  <p className={`${translations.language==='EN'?'h3-text':'h3-text-en en-width'} text-white text-center mb-6 md:mb-8`}>
+                  <p className={`${translations.language==='EN'?'h3-text':'h3-text-en '} text-white text-center mb-6 md:mb-8 en-width`}>
                     {item.content.map((item: any, index: number) => {
                       return (
                         <span key={index}>
