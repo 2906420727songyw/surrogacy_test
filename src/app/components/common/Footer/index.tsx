@@ -27,7 +27,7 @@ export default function Footer() {
     }
 
     return (
-        <div className='flex justify-between gap-20 px-8 py-16 bg-[#A36E65] flex-wrap md:px-40 md:py-20 text-white font-sans'>
+        <div className={`${translations.language==='EN'?'':'en-text'} flex justify-between gap-20 px-8 py-16 bg-[#A36E65] flex-wrap md:px-40 md:py-20 text-white`}>
             <div className='w-auto flex gap-10 md:gap-40 bg-[#A36E65] flex-wrap text-white '>
         {
             translations.footer.slice(0, 2).map((item:{text:string,link:string,options:[any]},index:number)=>(
@@ -95,7 +95,7 @@ export default function Footer() {
             </div>*/}
             <div className={styles.infoItem}>
                 <Image src="/images/footer/phone-icon.png" alt="Phone Icon" className={styles.icon} width={24} height={24} />
-                <p>+1 323-574-2572</p>
+                <p>(323) 573-1944</p>
             </div>
             <div className={styles.infoItem}>
                 <Image src="/images/footer/email-icon.png" alt="Email Icon" className={styles.icon} width={24} height={24} />

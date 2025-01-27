@@ -36,13 +36,13 @@ export default function BecomingParents() {
       <div className="mx-auto flex flex-col items-center w-full h-auto md:w-full">
         <h2 
           id="becoming-parents-title"
-          className={`${translations.language==='EN'?'h1-text':'h1-text-en'} text-white text-center mb-3 md:mb-6  ${
+          className={`text-[1.5rem] md:text-[3rem] text-white text-center mb-3 md:mb-6  ${
             isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'
           }`}
         >
           {translations.home.BecomingParents.title}
         </h2>
-        <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-1.5 md:mb-3`}>
+        <p className={`text-[1.5rem] text-white mb-1.5 md:mb-3`}>
         {translations.home.BecomingParents.desc}
         </p>
         

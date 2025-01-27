@@ -82,13 +82,13 @@ export default function BecomeSurrogatePart1({ isVisible = false }: BecomeSurrog
 
       <div className={styles.imageContainer}>
         <Image 
-          src="/images/BecomeSurrogate/becoming-parents-bg.png"
+          src="/images/BecomeSurrogate/1.jpg"
           alt="展示图片"
           width={1600}
           height={800} 
           layout="responsive"
           placeholder="blur"
-          blurDataURL="/images/BecomeSurrogate/becoming-parents-bg.jpg"
+          blurDataURL="/images/BecomeSurrogate/1-zip.jpg"
         />
       </div>
 
@@ -100,7 +100,7 @@ export default function BecomeSurrogatePart1({ isVisible = false }: BecomeSurrog
 
         </h2>
         <div className='w-full flex justify-center'>
-        <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white mb-10 md:mb-11`}>
+        <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-10 md:mb-11 en-width`}>
 
 {translations.becomeSurrogate.becomeSurrogatePart1.whoCanBecome?.content.map((item:any, index:number) =>{
   return <span key={index}>{item}<br/></span>
@@ -140,7 +140,7 @@ export default function BecomeSurrogatePart1({ isVisible = false }: BecomeSurrog
                     placeholder="blur"
                     blurDataURL={`/images/BecomeSurrogate/${item.id}.jpg`}
                   />
-                  <p className={`${translations.language==='EN'?'h3-text':'h3-text-en en-width'} text-white text-center mb-6 md:mb-8 animate__animated animate__fadeInDown animate__duration-1s`}>
+                  <p className={`${translations.language==='EN'?'h3-text':'h3-text-en '} text-white text-center mb-6 md:mb-8 en-width animate__animated animate__fadeInDown animate__duration-1s`}>
                   {
                     item.content.map((itm:any, idx:number) =>{
                       return <span key={idx}>{itm}<br/></span>

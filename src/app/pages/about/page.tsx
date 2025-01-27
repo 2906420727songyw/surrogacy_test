@@ -48,10 +48,10 @@ export default function AboutPage() {
             data-animate-id="main-title"
             className={`pt-page ${translations.language==='EN'?'h1-text':'h1-text-en'} text-white mb-10  md:mb-20 ${visibleElements.has('main-title') ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : ''}`}
           >
-            {translations.about_us_title.title}
+            {translations.about_us_title.title1}
           </h1>
          <div className='flex justify-center w-full'>
-         <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white `} dangerouslySetInnerHTML={{ __html: translations.about_us_title.desc }}>
+         <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white  en-width `} dangerouslySetInnerHTML={{ __html: translations.about_us_title.desc }}>
          </p>
          </div>
 

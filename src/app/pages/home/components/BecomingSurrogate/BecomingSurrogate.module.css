@@ -5,7 +5,7 @@
   align-items: center;
   padding: 258px 0;
   min-height: 100vh;
-  background-image: url('/images/home/becoming-surrogate-bg.jpg');
+  background-image: url('/images/home/becoming-surrogate-bg.jpg'),url('/images/home/becoming-surrogate-bg-zip.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

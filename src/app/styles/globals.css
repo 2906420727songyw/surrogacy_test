@@ -46,9 +46,11 @@ body {
 .h1-text{
   font-size:1.875rem;
   line-height: 4.5rem;
+  font-weight: 600;
   @media (max-width: 768px) {
     font-size: 1.25rem;
     line-height: 2.5rem;
+    font-weight: 600;
   }
 }
 .h1-text-en{
@@ -76,7 +78,6 @@ body {
   @media (max-width: 768px) {
     font-size: 0.8rem;
     line-height: 1.15rem;
-    font-weight: 600;
   }
 }
 .h3-text{
@@ -90,11 +91,9 @@ body {
 .h3-text-en{
   font-size:0.875rem;
   line-height: 1.15rem;
-  font-weight: 400;
   @media (max-width: 768px) {
     font-size: 0.75rem;
     line-height: 1.15rem;
-    font-weight: 400;
   }
 }
 .pt-page{

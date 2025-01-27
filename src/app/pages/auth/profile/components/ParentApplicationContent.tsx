@@ -281,7 +281,7 @@ export default function ParentApplicationContent() {
               return (
                 <DateField 
                   key={fieldName}
-                  label={translations.language === 'EN' ? label : label.replace('Date of Birth', '出生日期')}
+                  label={translations.language === 'EN' ? label : label.replace('出生日期', 'Date of Birth')}
                   name={fieldName}
                   value={formData[fieldName as keyof ApplicationForm]}
                   onChange={handleInputChange}

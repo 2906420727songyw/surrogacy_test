@@ -140,14 +140,14 @@ export default {
           role:'Co-Founder',
           content:['Co-Founder and Case Manager at Sapling Surrogacy, Kayla holds degrees from Cornell and Columbia University. Fluent in three languages, she focuses on global operations and innovation in reproductive healthcare.']
         }, {
-          name:'XXX',    
-          role:'XXX',
-          content:['xxx']
+          name:'XXX1',    
+          role:'XXX1',
+          content:['xxx1']
         },
         {
-          name:'XXX',    
-          role:'XXX',
-          content:['xxx']
+          name:'XXX2',    
+          role:'XXX2',
+          content:['xxx2']
         }
       ],
       about_us_detail:[
@@ -169,14 +169,14 @@ export default {
           role:'Co-Founder',
           content:['As Co-Founder and Case Manager of Sapling Surrogacy, Kayla oversees comprehensive support for clients and surrogates, actively involved in every stage of the surrogacy journey. She holds a bachelor’s degree from Nanjing University, studied at the University of Göttingen, and earned master’s degrees from Cornell and Columbia Universities. Fluent in Mandarin, English, and German, Kayla’s global perspective has been pivotal in shaping Sapling’s international operations. Kayla specializes in healthcare data and public administration investments, focusing on advancing innovation in reproductive healthcare. Her efforts at Sapling include streamlining services, enhancing client experiences, and driving the company’s growth, reflecting her deep commitment to the field.']
         }, {
-          name:'XXX',    
-          role:'XXX',
-          content:['xxx']
+          name:'XXX1',    
+          role:'XXX1',
+          content:['xxx1']
         },
         {
-          name:'XXX',    
-          role:'XXX',
-          content:['xxx']
+          name:'XXX2',    
+          role:'XXX2',
+          content:['xxx2']
         }
       ],
 
@@ -423,7 +423,7 @@ export default {
     //代孕套餐费用
     surrogacyCost:{
         title:'Sapling’s Package Options',
-        desc:'At Sapling, we offer two package options tailored to fit your unique needs, so you can choose what works<br>best for you. No matter which package you select, our goal is to provide you with a seamless and<br>supportive experience, guiding you every step of the way on this meaningful journey.',
+        desc:'At Sapling, we offer two package options tailored to fit your unique needs, so you can choose what works best for you. No matter which package you select, our goal is to provide you with a seamless and supportive experience, guiding you every step of the way on this meaningful journey.',
         sproutPackage:{
             title:'Sprout Package',
             desc:'$145,000 to $210,000',
@@ -508,8 +508,8 @@ export default {
     //职业生涯
     careers:{
         title:'Careers',
-        firstDesc:'Sapling Surrogacy is dedicated to partnering with top professionals to deliver exceptional services to our<br>clients. Join us, and you’ll become part of a highly successful and passionate team, upholding the trust<br>and outstanding reputation we’ve built in the industry.',
-        secondDesc:'<p>To explore available opportunities, please visit our LinkedIn page.</p>'
+        firstDesc:'Sapling Surrogacy is dedicated to partnering with top professionals to deliver exceptional services to our clients. Join us, and you’ll become part of a highly successful and passionate team, upholding the trust and outstanding reputation we’ve built in the industry.',
+        secondDesc:'To explore available opportunities, please visit our LinkedIn page.'
     },
     //资讯
     resources:{
@@ -709,8 +709,7 @@ export default {
       whoCanBecome: {
         title: "Who Can Become a Surrogate with Us? Eligibility Requirements",
         content: [
-          "At Sapling, we carefully select surrogates who meet both physical and psychological criteria to ensure they are fully prepared for the responsibilities of surrogacy.",
-          " This rigorous approach not only minimizes risks but also fosters a safe, smooth, and positive experience for both the surrogate and the intended parents, leading to the successful and healthy arrival of their baby.",
+          "At Sapling, we carefully select surrogates who meet both physical and psychological criteria to ensure they are fully prepared for the responsibilities of surrogacy. This rigorous approach not only minimizes risks but also fosters a safe, smooth, and positive experience for both the surrogate and the intended parents, leading to the successful and healthy arrival of their baby.",
         ],
         step: [
           {
@@ -773,8 +772,7 @@ export default {
     becomeSurrogatePart2: {
       title: "Our Applicant Screening Process",
       content: [
-        "Following guidelines from the American Society for Reproductive Medicine (ASRM)",
-        "we work with medical, psychological, and legal experts to rigorously screen all applicants.",
+        "Following guidelines from the American Society for Reproductive Medicine (ASRM) we work with medical, psychological, and legal experts to rigorously screen all applicants.",
       ],
       step: [
         {

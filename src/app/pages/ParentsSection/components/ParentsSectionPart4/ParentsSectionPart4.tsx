@@ -32,13 +32,13 @@ export default function ParentsSectionPart4() {
   return (
     <div className={`${styles.part4} ${translations.language==='EN'?'':'en-text'}`}>
       <Image 
-      src="/images/ParentsSection/image3.png" 
+      src="/images/ParentsSection/image3.jpg" 
       alt="第四部分图片" 
       width={1600}
       height={800}
       layout="responsive"
       placeholder="blur"
-      blurDataURL="/images/ParentsSection/image3.jpg"
+      blurDataURL="/images/ParentsSection/image3-zip.jpg"
       />
       <div id="egg-sperm-donation-help" className={styles.content}>
         <div className="w-full flex flex-col items-center justify-center px-5">
@@ -50,7 +50,7 @@ export default function ParentsSectionPart4() {
             {translations.parentsSection.parentsSectionPart4.title_second}
           </h2>
          {translations.language==='EN'?
-         <div className="h3-text text-white text-center mb-12 md:mb-14 ">
+         <div className="h3-text text-white text-center mb-12 md:mb-14 en-width">
          {translations.parentsSection.parentsSectionPart4.text_list.map((item: string, index: number) => {
     return (
       <div key={index}>
@@ -130,11 +130,11 @@ export default function ParentsSectionPart4() {
      
 {
         translations.language==='EN'?
-        <button className="flex justify-center items-center w-16 h-6 md:w-24 md:h-8 rounded h2-text font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>router.push('/pages/auth/profile?type=parent')}>
+        <button className="flex justify-center items-center w-16 h-6 md:w-24 md:h-8 rounded h2-text text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>router.push('/pages/auth/profile?type=parent')}>
         {translations.parentsSection.parentsSectionPart4.btn}
         </button>
         :
-        <button className="flex justify-center items-center px-5 h-6  md:h-8 rounded h2-text-en font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>router.push('/pages/auth/profile?type=parent')}>
+        <button className="flex justify-center items-center px-5 h-6  md:h-8 rounded font-normal text-xs md:text-sm text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>router.push('/pages/auth/profile?type=parent')}>
         {translations.parentsSection.parentsSectionPart4.btn}
         </button>
        }

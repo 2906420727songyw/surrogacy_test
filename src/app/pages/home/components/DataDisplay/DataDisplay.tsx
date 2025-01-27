@@ -38,7 +38,7 @@ export default function DataDisplay() {
         >
           {translations.home.DataDisplay.title}
         </h2>
-       <div className='flex justify-center w-full'>
+       <div className='flex justify-center w-full md:px-[180px]'>
        <p className={`${translations.language==='EN'?'h2-text':'h3-text-en en-width'} mb-2.5 text-white `} dangerouslySetInnerHTML={{ __html: translations.home.DataDisplay.desc }}>
           
           </p>
