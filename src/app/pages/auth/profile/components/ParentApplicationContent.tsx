@@ -226,6 +226,7 @@ export default function ParentApplicationContent() {
   return (
     <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px]">
       <ToastContainer
+        style={{zIndex:9999}}
         position="top-right"
         autoClose={2000}
         hideProgressBar={false}
@@ -291,18 +292,18 @@ export default function ParentApplicationContent() {
 
             return (
               <div key={fieldName} className="flex flex-col gap-2">
-                <label className="text-white/80 text-[12px] md:text-[14px]">
-                  {label}
-                </label>
-                <input
+              <label className="text-white/80 text-[12px] md:text-[14px]">
+                {label}
+              </label>
+              <input
                   type={fieldName === 'email' ? 'email' : fieldName === 'phone' ? 'tel' : 'text'}
                   name={fieldName}
                   value={formData[fieldName as keyof ApplicationForm]}
-                  onChange={handleInputChange}
+                onChange={handleInputChange}
                   className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px] text-black"
-                  autoComplete="off"
-                />
-              </div>
+                autoComplete="off"
+              />
+            </div>
             );
           })}
 
@@ -312,60 +313,60 @@ export default function ParentApplicationContent() {
               <label className="text-white/80 text-[12px] md:text-[14px]">{item.question}</label>
               <div className={`${item.options.length > 2 ? 'grid grid-cols-2 md:flex md:flex-wrap gap-4 md:gap-8' : 'flex gap-8'}`}>
                 {item.options.map((option: string) => (
-                  <label key={option} className="flex items-center space-x-2 cursor-pointer">
-                    <div className="relative flex items-center">
-                      <input
-                        type="radio"
+                <label key={option} className="flex items-center space-x-2 cursor-pointer">
+                  <div className="relative flex items-center">
+                    <input
+                      type="radio"
                         name={item.question}
-                        value={option}
+                      value={option}
                         checked={formData[item.question] === option}
-                        onChange={handleInputChange}
-                        className="appearance-none w-[18px] h-[18px] border border-white rounded-[2px] bg-transparent checked:bg-white"
-                      />
+                      onChange={handleInputChange}
+                      className="appearance-none w-[18px] h-[18px] border border-white rounded-[2px] bg-transparent checked:bg-white"
+                    />
                       {formData[item.question] === option && (
-                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black text-sm">✓</div>
-                      )}
-                    </div>
-                    <span className="text-white text-[12px] md:text-[14px]">{option}</span>
-                  </label>
-                ))}
-              </div>
-              
-              {/* 诊所名称 - 条件渲染 */}
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black text-sm">✓</div>
+                    )}
+                  </div>
+                  <span className="text-white text-[12px] md:text-[14px]">{option}</span>
+                </label>
+              ))}
+          </div>
+
+          {/* 诊所名称 - 条件渲染 */}
               {(item.question === 'Do you currently have a partnering IVF clinic? *' || 
                 item.question === '您目前是否有合作的试管婴儿诊所？ *') && 
                (formData[item.question] === 'Yes' || formData[item.question] === '是') && (
                 <div className="flex flex-col space-y-2 mt-4">
-                  <label className="text-white/80 text-[12px] md:text-[14px]">
+              <label className="text-white/80 text-[12px] md:text-[14px]">
                     {translations.language === 'EN' ? '如果有的话，请列出诊所名字':'If yes, please list the clinic name' }
-                  </label>
-                  <input
-                    type="text"
-                    name="clinicName"
-                    value={formData.clinicName}
-                    onChange={handleInputChange}
-                    className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
-                  />
-                </div>
-              )}
+              </label>
+              <input
+                type="text"
+                name="clinicName"
+                value={formData.clinicName}
+                onChange={handleInputChange}
+                className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
+              />
+            </div>
+          )}
 
-              {/* 胚胎位置 - 条件渲染 */}
+          {/* 胚胎位置 - 条件渲染 */}
               {(item.question === 'Do you currently have frozen embryos? *' || 
                 item.question === '您目前是否有冷冻胚胎？ *') && 
                (formData[item.question] === 'Yes' || formData[item.question] === '是') && (
                 <div className="flex flex-col space-y-2 mt-4">
-                  <label className="text-white/80 text-[12px] md:text-[14px]">
+              <label className="text-white/80 text-[12px] md:text-[14px]">
                     {translations.language === 'EN' ? '如果有的话，请告诉我们在哪里':'If yes, please tell us where'}
-                  </label>
-                  <input
-                    type="text"
-                    name="embryoLocation"
-                    value={formData.embryoLocation}
-                    onChange={handleInputChange}
-                    className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
-                  />
-                </div>
-              )}
+              </label>
+              <input
+                type="text"
+                name="embryoLocation"
+                value={formData.embryoLocation}
+                onChange={handleInputChange}
+                className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
+              />
+            </div>
+          )}
             </div>
           ))}
 

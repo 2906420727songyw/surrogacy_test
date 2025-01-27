@@ -53,10 +53,14 @@ export default {
         appointment:'预约',
         login_option:[{
             text:'成为准父母',
-            link:'parent'
+            link:'/pages/auth/login?type=parent'
         },{
             text:'成为代孕妈妈',
-            link:'surrogacy'
+            link:'/pages/auth/login?type=surrogacy'
+        }],
+        login_out:[{
+            text:'登出',
+            link:''
         }]
     },
     footer:[{

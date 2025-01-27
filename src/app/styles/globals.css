@@ -110,6 +110,11 @@ body {
     width: 100%;
   }
 }
+
+.Toastify__toast-container--top-right {
+  top: 50px !important; /* 调整距离顶部的偏移量 */
+}
+
  
 .en-text{
   font-family: 'Times New Roman';

@@ -55,10 +55,14 @@ export default {
         appointment:'Reserve',
         login_option:[{
             text:'Intended Parents',
-            link:'parent'
+            link:'/pages/auth/login?type=parent'
         },{
             text:'Surrogates',
-            link:'surrogacy'
+            link:'/pages/auth/login?type=surrogacy'
+        }],
+        login_out:[{
+            text:'Log Out',
+            link:''
         }]
     },
     footer:[{

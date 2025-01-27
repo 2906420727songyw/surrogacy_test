@@ -4,6 +4,19 @@ import { useRouter, usePathname } from 'next/navigation';
 import Cookies from 'js-cookie';
 import { useLanguage } from '@/app/language';
 
+interface LoginOutItem {
+  text: string;
+  link: string;
+}
+
+interface HeaderOption {
+  text: string;
+  link: string;
+  options?: Array<{
+    text: string;
+    link: string;
+  }>;
+}
 
 export default function Header() {
     // const language = useLanguage();
@@ -67,10 +80,14 @@ export default function Header() {
         Cookies.get('userData') ? router.push('/pages/auth/profile') : router.push('/pages/auth/login');
     }
 
-    const routerToCheckLogin = (route: string) => {
+    const routerToCheckLogin = (path: string) => {
         setIsMenuOpen(false);
-        router.push(`/pages/auth/login?type=${route}`);
+        router.push(path);
     }
+
+    const handleMenuClick = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
 
     return (
         <div className={`${translations.language==='EN'?'':'en-text'} flex justify-between text-white font-sans py-5 items-center p-5 fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-[#A48472]' : 'bg-transparent'}`}>
@@ -82,7 +99,7 @@ export default function Header() {
                 </div>
             </div>
             <div className='hidden header-switch:flex flex gap-5'>
-                {translations.header.options.map((item:{text:string,link:string,options:[any]}, index:number) => {
+                {translations.header.options.map((item: HeaderOption, index: number) => {
                     return <div className='group hover:cursor-pointer relative' key={index}>
                         <div className={`${item.link === currentPath ? 'underline' : 'text-white'} 'whitespace-nowrap'`} onClick={() => router.push(item.link)}>
                             {item.text}
@@ -103,18 +120,37 @@ export default function Header() {
             </div>
             <div className='hidden header-switch:flex flex gap-5 items-center justify-between'>
                 <div className='group relative'>
-                    <div className='hover:cursor-pointer' onClick={() => clickLogin()}>{Cookies.get('userData') ? JSON.parse(Cookies.get('userData') || '{}')?.name : translations.header.login}</div>
-                    {
-                        !Cookies.get('userData') && (
+                    {Cookies.get('userData') ? (
+                        <div className='hover:cursor-pointer' onClick={() => router.push('/pages/auth/profile')}>
+                            {JSON.parse(Cookies.get('userData') || '{}')?.name}
                             <div className='absolute left-0 hidden group-hover:block rounded bg-[rgba(164,132,114,0.7)] p-1 min-w-full'>
-                                {
-                                    translations.header.login_option.map((item:{text:string,link:string}, index:number) => {
-                                        return <div key={index} className='p-2 hover:underline text-sm whitespace-nowrap' onClick={() => routerToCheckLogin(item.link)}>{item.text}</div>
-                                    })
-                                }
+                                {/* PC端登出 */}
+                                {translations.header.login_out.map((item: LoginOutItem, index: number) => (
+                                    <div key={index} className='p-2 hover:underline text-sm whitespace-nowrap' onClick={async () => {
+                                        try {
+                                            window.location.href = '/';
+                                            Cookies.remove('userData');
+                                        } catch (error) {
+                                            console.error('Logout failed:', error);
+                                        }
+                                    }}>
+                                        {item.text}
+                                    </div>
+                                ))}
                             </div>
-                        )
-                    }
+                        </div>
+                    ) : (
+                        <div className='hover:cursor-pointer'>
+                            {translations.header.login}
+                            <div className='absolute left-0 hidden group-hover:block rounded bg-[rgba(164,132,114,0.7)] p-1 min-w-full'>
+                                {translations.header.login_option.map((item: LoginOutItem, index: number) => (
+                                    <div key={index} className='p-2 hover:underline text-sm whitespace-nowrap' onClick={() => routerToCheckLogin(item.link)}>
+                                        {item.text}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </div>
 
                 <div className='group relative'>
@@ -150,14 +186,31 @@ export default function Header() {
                         <div className='hover:cursor-pointer my-5' onClick={() => clickLogin()}>
                             {Cookies.get('userData') ? JSON.parse(Cookies.get('userData') || '{}')?.name : translations.header.login}
                         </div>
-                        <div className={Cookies.get('userData') ? 'hidden' : ''}>
-
-                        <div className={'border-b border-gray-300 my-54'}></div>
-                        {translations.header.login_option.map((item:{text:string,link:string}, index:number) => {
-                            return <div key={index} className='hover:cursor-pointer my-5' onClick={() => routerToCheckLogin(item.link)}>{item.text}</div>
-                        })}
-                        </div>
-                        {translations.header.options.map((item:{text:string,link:string,options:[any]}, index:number) => (
+                        {Cookies.get('userData') ? (
+                            <>
+                                <div className='border-b border-white/30 my-3'></div>
+                                {translations.header.login_out.map((item:{text:string,link:string}, index:number) => (
+                                    <div key={index} className='text-[0.9rem] mb-3' onClick={async () => {
+                                        try {
+                                            window.location.href = '/';
+                                            Cookies.remove('userData');
+                                        } catch (error) {
+                                            console.error('Logout failed:', error);
+                                        }
+                                    }}>
+                                        {item.text}
+                                    </div>
+                                ))}
+                            </>
+                        ) : (
+                            <div className={Cookies.get('userData') ? 'hidden' : ''}>
+                                <div className={'border-b border-gray-300 my-54'}></div>
+                                {translations.header.login_option.map((item:{text:string,link:string}, index:number) => {
+                                    return <div key={index} className='hover:cursor-pointer my-5' onClick={() => routerToCheckLogin(item.link)}>{item.text}</div>
+                                })}
+                            </div>
+                        )}
+                        {translations.header.options.map((item: HeaderOption, index: number) => (
                             <div key={index}>
                                 <div className='font-bold hover:cursor-pointer my-5' onClick={() => {
                                     router.push(item.link)

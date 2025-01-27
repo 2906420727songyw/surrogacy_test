@@ -193,7 +193,18 @@ const scrollToTop = () => {
 
   return (
     <div className="min-h-screen w-full flex justify-center items-center bg-[#A48472] pt-page fade-in">
-      <ToastContainer />
+      <ToastContainer 
+  style={{zIndex:9999}}
+  position="top-right"
+  autoClose={2000}
+  hideProgressBar={false}
+  newestOnTop={false}
+  closeOnClick
+  rtl={false}
+  pauseOnFocusLoss
+  draggable
+  pauseOnHover
+  theme="light"      />
       {/* 隐藏的表单来阻止浏览器自动填充 */}
       <div style={{ display: 'none' }}>
         <input 
