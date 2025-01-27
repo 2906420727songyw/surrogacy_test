@@ -43,6 +43,7 @@
   justify-content: flex-start;
   align-items: center;
   padding: 50px;
+  position: relative;
 }
 
 .rightPackage {
@@ -53,12 +54,22 @@
   justify-content: flex-start;
   align-items: center;
   padding: 50px;
+  position: relative;
 }
 
 .packageDetails {
   width: 100%;
   overflow: hidden;
   padding: 0 50px;
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.packageDetails.show {
+  max-height: 500px;
+  opacity: 1;
+  padding: 20px 20px;
 }
 
 .detailsDivider {
@@ -66,6 +77,34 @@
   height: 1px;
   background-color: #fff;
   margin: 20px 0;
+}
+
+/* 标题点击区域样式 */
+.titleButton {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  width: 100%;
+  position: relative;
+}
+
+.titleButton::after {
+  content: "▸";
+  font-size: 20px;
+  transition: transform 0.3s ease;
+  position: absolute;
+  right: 0;
+}
+
+.titleButton.expanded::after {
+  content: '▴';
+  transform: rotate(180deg);
+}
+
+.titleButton:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 768px) {
@@ -81,9 +120,15 @@
     flex-direction: column;
   }
   .packageDetails {
-    width: 100%;
-    overflow: hidden;
-    padding: 0 0px;
+    padding: 0;
+    max-height: 0;
+    opacity: 0;
+  }
+
+  .packageDetails.show {
+    max-height: 500px;
+    opacity: 1;
+    padding: 20px 0;
   }
 
   .leftPackage,
@@ -99,4 +144,94 @@
   }
 }
 
-/* 添加其他样式... */ 
+/* 添加其他样式... */
+
+.accordionList {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.accordionItem {
+  margin: 10px 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.accordionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.accordionHeader:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.accordionHeader.expanded {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.plusMinus {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.expanded .plusMinus {
+  transform: rotate(180deg);
+}
+
+.accordionContent {
+  max-height: 0;
+  opacity: 0;
+  padding: 0 20px;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.accordionContent.show {
+  max-height: 500px;
+  opacity: 1;
+  padding: 20px;
+}
+
+.accordionContent p {
+  color: white;
+  margin: 0;
+}
+
+.packageSection {
+  margin-bottom: 40px;
+  padding: 20px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.stickyHeader {
+  @media screen and (min-width: 768px) {
+    position: sticky;
+    top: 0;
+    background-color: inherit;
+    width: 100%;
+    padding: 10vh 0 5vh 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+} 
