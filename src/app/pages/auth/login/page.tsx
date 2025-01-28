@@ -186,9 +186,10 @@ function LoginContent() {
 
                         <span className="text-white text-[14px]">{translations.login.remember}</span>
                       </div>
-                      <span className={`text-white text-sm md:text-base opacity-80 cursor-pointer underline ${translations.language==='EN'?'font-normal':'font-bold'}`}>
+                      {/* 忘记密码 */}
+                      {/*<span className={`text-white text-sm md:text-base opacity-80 cursor-pointer underline ${translations.language==='EN'?'font-normal':'font-bold'}`}>
                         {translations.login.forgot_password}
-                      </span>
+                      </span>*/}
                     </div>
                   </div>
                 </div>
