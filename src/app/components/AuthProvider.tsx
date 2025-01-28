@@ -5,6 +5,7 @@ import authApi from '@/app/service/auth/api';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation';
+import { MD5 } from 'crypto-js';
 import Cookies from 'js-cookie';
 import userApi from '@/app/service/user/api';
 interface AuthResponse {
@@ -86,7 +87,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // 实现注册逻辑
     await authApi.register({
       email: formData.email,
-      password: formData.password,
+      password: MD5(formData.password).toString(),
       name: formData.name,
       phoneNumber: formData.phoneNumber,
       dateOfBirth: formData.dateOfBirth,
