@@ -48,7 +48,7 @@ export default function RootLayout({
         <LanguageWrapper className={`${geistSans.variable} ${geistMono.variable}`}>
           <AuthProvider>
             <Header />
-            <main>{children}</main>
+            <main >{children}</main>
             <Footer />
           </AuthProvider>
         </LanguageWrapper>

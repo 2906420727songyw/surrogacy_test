@@ -124,3 +124,21 @@ body {
     opacity: 1;
   } 
 }
+
+/* 毛玻璃效果 */
+.backdrop-blur {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  transition: all 0.3s ease-in-out;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background-color: rgba(22, 22, 23, 0.8);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.backdrop-blur.active {
+  opacity: 1;
+  pointer-events: auto;
+}

@@ -2,10 +2,36 @@
 
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import styles from './index.module.css';
-import { resourceCards } from './data';
+import informationApi from '@/app/service/information/api';
 import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '@/app/language/';
+
+interface ComponentData {
+  id: string;
+  content: translationsData;
+  createdAt: string;
+  updatedAt: string;
+  type: string;
+  title: string;
+  url: string[];
+}
+
+interface InformationData {
+  id: string;
+  content: translationsData;
+  name: string;
+  type: string;
+  url: string[];
+}
+
+interface translationsData {
+  en: string;
+  zn: string;
+}
+
+interface ApiResponse {
+  data: InformationData[];
+}
 
 export default function ResourcesComponent() {
   const router = useRouter();
@@ -17,6 +43,8 @@ export default function ResourcesComponent() {
   const [intendedParentCount, setIntendedParentCount] = useState(4);
   const [surrogateMomCount, setSurrogateMomCount] = useState(4);
   const [parentReviewCount, setParentReviewCount] = useState(4);
+  const [componentData, setComponentData] = useState<ComponentData[]>([]);
+  const [informationData, setInformationData] = useState<InformationData[]>([]);
 
   const setRef = (id: string) => (el: HTMLElement | null) => {
     if (el) {
@@ -25,6 +53,8 @@ export default function ResourcesComponent() {
   };
 
   useEffect(() => {
+    getInformationData();
+    getComponentData();
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -40,7 +70,6 @@ export default function ResourcesComponent() {
       { threshold: 0.1 }
     );
 
-    // 观察所有需要动画的元素
     Object.values(elementsRef.current).forEach(element => {
       if (element) {
         observer.observe(element);
@@ -50,7 +79,6 @@ export default function ResourcesComponent() {
     return () => observer.disconnect();
   }, []);
 
-  // 客户评价列表动效
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -74,18 +102,30 @@ export default function ResourcesComponent() {
     };
   }, []);
 
-  const routerToCheckLogin = (route:string)=> {
-    router.push(route)
+  const getComponentData = async () => {
+    const res = await informationApi.getComponent();
+    const ret_data = res as unknown as ComponentData[];
+    for(let i=0;i<ret_data.length;i++){
+      ret_data[i].content = JSON.parse(ret_data[i].content as unknown as string) as translationsData;
+    }
+    setComponentData(ret_data);
   }
 
-  const route = useRouter();
+  const getInformationData = async () => {
+    const res = await informationApi.getInformation();
+    const ret_data = (res as unknown as ApiResponse).data;
+    for(let i=0;i<ret_data.length;i++){
+      ret_data[i].content = JSON.parse(ret_data[i].content as unknown as string) as translationsData;
+    }
+    setInformationData(ret_data);
+  }
 
   const handleTabClick = (tab: 'intended_parent' | 'surrogate_mom') => {
     setSelectedTab(tab);
   };
 
-  const handleReadMore = (item: any) => {
-    router.push(`/pages/blog-detail?title=${encodeURIComponent(item.title)}&desc=${encodeURIComponent(item.desc)}&image=${encodeURIComponent(item.image)}`);
+  const handleReadMore = (item: InformationData) => {
+    router.push(`/pages/blog-detail?title=${encodeURIComponent(translations.language === 'EN' ? item.content.en : item.content.zn)}&desc=${encodeURIComponent(translations.language === 'EN' ? item.content.en : item.content.zn)}&image=${encodeURIComponent(item.url?.[0] || '')}`);
   };
 
   return (
@@ -136,37 +176,28 @@ export default function ResourcesComponent() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-10">
           {selectedTab === 'intended_parent' && (
             <>
-              {translations.resources.intendedParentList.slice(0, intendedParentCount).map((item:any, index:number) => (
+              {informationData.filter(item => item.type === 'INTENDED_PARENT').slice(0, intendedParentCount).map((item, index) => (
                 <div key={index} className="w-full md:w-[367px] h-auto rounded flex flex-col justify-between overflow-hidden">
                   <div>
                     <Image 
-                      src={item.image} 
-                      alt={item.title} 
+                      src={item.url?.[0] || '/images/resources/default.png'} 
+                      alt={translations.language === 'EN' ? item.content.en : item.content.zn} 
                       width={367} 
                       height={250} 
                       layout="responsive"
                       style={{ width: '100%', height: 'auto' }}
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = '/images/resources/default.png';
+                      }}
                     />
-                    {
-                      translations.language==='EN'?
-                      <p className="h2-text text-white mt-5 mb-3">
-                        {item.title}
-                      </p>
-                      :
-                      <p className="h2-text-en text-white mt-5 mb-3">
-                        {item.title}
-                      </p>
-                    }
-                    {
-                      translations.language==='EN'?
-                    <p className="h3-text text-white mb-5">
-                      {item.desc}</p>
-                      :
-                      <p className="h3-text-en text-white mb-5">
-                      {item.desc}</p>
-                    }
+                    <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mt-5 mb-3`}>
+                      {translations.language === 'EN' ? item.content.en : item.content.zn}
+                    </p>
+                    <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-5`}>
+                      {translations.language === 'EN' ? item.content.en : item.content.zn}
+                    </p>
                   </div>
-                  {/* 阅读更多 */}
                   <button 
                     className="w-[86px] h-[28px] bg-[#F1E6C3] text-black text-xs rounded-full font-normal"
                     onClick={() => handleReadMore(item)}
@@ -180,37 +211,28 @@ export default function ResourcesComponent() {
 
           {selectedTab === 'surrogate_mom' && (
             <>
-              {translations.resources.surrogateMomList.slice(0, surrogateMomCount).map((item:any, index:number) => (
+              {informationData.filter(item => item.type !== 'INTENDED_PARENT').slice(0, surrogateMomCount).map((item, index) => (
                 <div key={index} className="w-full md:w-[367px] h-auto rounded flex flex-col justify-between overflow-hidden">
                   <div>
                     <Image 
-                      src={item.image} 
-                      alt={item.title} 
+                      src={item.url?.[0] || '/images/resources/default.png'} 
+                      alt={translations.language === 'EN' ? item.content.en : item.content.zn} 
                       width={367} 
                       height={250}
                       layout="responsive"
                       style={{ width: '100%', height: 'auto' }}
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = '/images/resources/default.png';
+                      }}
                     />
-                    {
-                      translations.language==='EN'?
-                    <p className="h2-text text-white mt-5 mb-3">
-                      {item.title}
+                    <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mt-5 mb-3`}>
+                      {translations.language === 'EN' ? item.content.en : item.content.zn}
                     </p>
-                    :
-                    <p className="h2-text-en text-white mt-5 mb-3">
-                      {item.title}
+                    <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-5`}>
+                      {translations.language === 'EN' ? item.content.en : item.content.zn}
                     </p>
-                    }
-                    {
-                      translations.language==='EN'?
-                    <p className="h3-text text-white mb-5">{item.desc}</p>
-                    :
-                    <p className="h3-text-en text-white mb-5">
-                      {item.desc}
-                    </p>
-                    }
                   </div>
-                  {/* 阅读更多 */}
                   <button 
                     className="w-[86px] h-[28px] bg-[#F1E6C3] text-black text-xs rounded-full font-normal"
                     onClick={() => handleReadMore(item)}
@@ -225,8 +247,7 @@ export default function ResourcesComponent() {
 
         {selectedTab === 'intended_parent' && (
           <>
-            {intendedParentCount < translations.resources.intendedParentList.length ? (
-              //加载更多
+            {intendedParentCount < informationData.filter(item => item.type === 'INTENDED_PARENT').length ? (
               <button 
                 className="text-xs md:text-sm mt-8 px-4 py-2 bg-[#F1E6C3] text-black rounded-full self-center font-normal"
                 onClick={() => setIntendedParentCount(prev => prev + 4)}
@@ -234,7 +255,6 @@ export default function ResourcesComponent() {
                 {translations.resources.btn}
               </button>
             ) : (
-              //没有更多
               <p className="text-xs md:text-sm mt-8 text-white text-center self-center font-normal">
                 {translations.resources.btnText}
               </p>
@@ -244,16 +264,14 @@ export default function ResourcesComponent() {
 
         {selectedTab === 'surrogate_mom' && (
           <>
-            {surrogateMomCount < translations.resources.surrogateMomList.length ? (
-              //加载更多
+            {surrogateMomCount < informationData.filter(item => item.type !== 'INTENDED_PARENT').length ? (
               <button 
                 className="text-xs md:text-sm mt-8 px-4 py-2 bg-[#F1E6C3] text-black rounded-full self-center font-normal"
                 onClick={() => setSurrogateMomCount(prev => prev + 4)}
               >
                 {translations.resources.btn}
-              </button>
+                </button>
             ) : (
-              //没有更多
               <p className="text-xs md:text-sm mt-8 text-white text-center self-center font-normal">
                 {translations.resources.btnText}
               </p>
@@ -278,7 +296,7 @@ export default function ResourcesComponent() {
 
         {/* 家长感言列表 */}
         <div className="flex flex-col space-y-8 w-full md:w-2/3">
-          {translations.resources.reviewList.slice(0, parentReviewCount).map((review:any, index:number) => (
+          {componentData.slice(0, parentReviewCount).map((review, index) => (
             <div 
               key={index} 
               data-review-id={`review-${index}`}
@@ -290,20 +308,18 @@ export default function ResourcesComponent() {
                   : ''
               }`}
             >
-              
               <div className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-2 md:mb-5`}>
-                {review.content}
+                {translations.language === 'EN' ? review.content.en : review.content.zn}
               </div>
               <div className="flex items-center mb-4">
                 <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white`}>
-                  {"—— "}{review.name}
+                  {"—— "}{review.title}
                 </p>
               </div>
               <div className="w-full h-[1px] bg-white mt-5"></div>
             </div>
           ))}
-          {parentReviewCount < translations.resources.reviewList.length ? (
-            //加载更多
+          {parentReviewCount < componentData.length ? (
             <button 
               className="text-xs md:text-sm mt-8 px-4 py-2 bg-[#F1E6C3] text-black rounded-full self-center font-normal"
               onClick={() => setParentReviewCount(prev => prev + 4)}
@@ -311,7 +327,6 @@ export default function ResourcesComponent() {
               {translations.resources.btn}
             </button>
           ) : (
-            //没有更多
             <p className="text-xs md:text-sm mt-8 text-white self-center font-normal">
               {translations.resources.btnText}
             </p>

@@ -210,12 +210,12 @@ interface InfoItemProps {
 }
 
 function InfoItem({ label, value, name, isEditing, onChange }: InfoItemProps) {
-  const textColor = value === '暂未填写' || value === 'Not filled yet' ? '#C0C0C0' : 'white';
+  const textColor = value === '暂未填写' || value === 'Not yet provided' ? '#C0C0C0' : 'white';
   const isDateField = name === 'dateOfBirth';
   
   return (
     <div className="flex md:flex-row md:items-center gap-1 md:gap-4">
-      <label className="text-white/80 text-[12px] md:text-[14px] md:w-[5vw] w-[24vw]">
+      <label className="text-white/80 text-[12px] md:text-[14px] ">
         {label}
       </label>
       <input 
