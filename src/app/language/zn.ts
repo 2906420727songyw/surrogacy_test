@@ -64,7 +64,7 @@ export default {
         }]
     },
     footer:[{
-        text:'如何成为准父母',
+        text:'成为准父母',
         link:'/pages/ParentsSection',
         options:[
             {
@@ -85,7 +85,7 @@ export default {
             }
         ]
     },{
-        text:'如何成为代孕妈妈',
+        text:'成为代孕妈妈',
         link:'/pages/BecomeSurrogate',
         options:[
             {

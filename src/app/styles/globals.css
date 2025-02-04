@@ -76,8 +76,7 @@ body {
 .h2-text-en{
   font-size:1.35rem;
   line-height: 1.5rem;
-  /* font-weight: 500; */
-  @media (max-width: 768px) {
+    @media (max-width: 768px) {
     font-size: 0.8rem;
     line-height: 1.15rem;
   }
@@ -96,6 +95,14 @@ body {
   @media (max-width: 768px) {
     font-size: 0.75rem;
     line-height: 1.15rem;
+  }
+}
+
+.index-h2{
+  font-size:1.5rem;
+  @mddia (max-width: 768px){
+    font-size:0.8rem;
+  
   }
 }
 .pt-page{

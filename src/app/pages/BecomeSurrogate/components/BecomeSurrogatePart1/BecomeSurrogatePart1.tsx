@@ -122,22 +122,22 @@ export default function BecomeSurrogatePart1({ isVisible = false }: BecomeSurrog
               return <div  key={index}
               data-section={item.id}
               className={`${styles.expandableContainer} ${isExpanded(item.id) ? styles.expanded : ''}`}
-            >
-              <div className={styles.expandableHeader}>
-                <div className={styles.divider}></div>
+        >
+          <div className={styles.expandableHeader}>
+            <div className={styles.divider}></div>
                 <p className={`${translations.language==='EN'?'h2-text':'h2-text-en font-bold'} text-white mb-4 mt-6  md:mt-8 md:mb-6`}>
                   {item.title}
-                </p>
-              </div>
+            </p>
+          </div>
               {isExpanded(item.id) && (
                 <div className={styles.expandedContent} >
-                  <Image 
+              <Image 
                     src={`/images/BecomeSurrogate/${item.id}.png` }
-                    alt="展开内容图片" 
-                    width={100}
-                    height={100}
+              alt="展开内容图片" 
+              width={100}
+              height={100}
                     className={`${styles.expandedImage} animate__animated animate__fadeInDown animate__duration-1s`}
-                    placeholder="blur"
+              placeholder="blur"
                     blurDataURL={`/images/BecomeSurrogate/${item.id}.jpg`}
                   />
                   <p className={`${translations.language==='EN'?'h3-text':'h3-text-en '} text-white text-center mb-6 md:mb-8 en-width animate__animated animate__fadeInDown animate__duration-1s`}>
@@ -146,10 +146,10 @@ export default function BecomeSurrogatePart1({ isVisible = false }: BecomeSurrog
                       return <span key={idx}>{itm}<br/></span>
                     })
                   }
-                  </p>
-                </div>
-              )}
+              </p>
             </div>
+          )}
+        </div>
             } )
           }
 

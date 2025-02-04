@@ -232,7 +232,6 @@ const Header = () => {
                             onMouseEnter={(e) => {
                                 e.stopPropagation();
                                 clearTimeouts();
-                                // 检查当前是否有其他激活的菜单
                                 if (activeMenu !== null) {
                                     setIsAnimating(false);
                                     setActiveMenu(-1);
@@ -243,6 +242,7 @@ const Header = () => {
                                     }, 100);
                                 }
                             }}
+                            onClick={() => Cookies.get('userData') && router.push('/pages/auth/profile')}
                         >
                             {Cookies.get('userData') ? JSON.parse(Cookies.get('userData') || '{}')?.username : translations.header.login}
                             <div className={`absolute left-2 w-screen -translate-x-[8px] top-[32px] z-50 ${
@@ -409,10 +409,10 @@ const Header = () => {
                                     <div className='py-2 hover:cursor-pointer' onClick={() => Cookies.get('userData') ? router.push('/pages/auth/profile?type=appointment') : router.push('/pages/auth/login?mode=register')}>{translations.header.appointment}</div>
                                     <div className='py-2 hover:cursor-pointer'>{translations.header.search}</div>
                                     <div className='hover:cursor-pointer' onClick={toggleLanguage}>{translations.language}</div>
-                                </div>
-                            </div>
-                        )}
+                        </div>
                     </div>
+                )}
+            </div>
 
                 </div>
             </div>

@@ -42,7 +42,7 @@ export default function BecomingParents() {
         >
           {translations.home.BecomingParents.title}
         </h2>
-        <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-1.5 md:mb-3`}>
+        <p className={`index-h2 text-white mb-1.5 md:mb-3`}>
         {translations.home.BecomingParents.desc}
         </p>
         
