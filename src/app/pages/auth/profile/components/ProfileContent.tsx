@@ -210,6 +210,7 @@ interface InfoItemProps {
 }
 
 function InfoItem({ label, value, name, isEditing, onChange }: InfoItemProps) {
+  const { translations } = useLanguage();
   const textColor = value === '暂未填写' || value === 'Not yet provided' ? '#C0C0C0' : 'white';
   const isDateField = name === 'dateOfBirth';
   
@@ -219,13 +220,16 @@ function InfoItem({ label, value, name, isEditing, onChange }: InfoItemProps) {
         {label}
       </label>
       <input 
-        type={isDateField && isEditing ? "date" : "text"}
+        type="text"
         name={name}
-        value={value}
+        value={isDateField && isEditing ?value === '暂未填写' || value === 'Not yet provided' ? '' : value : value}
         onChange={isEditing ? onChange : undefined}
         readOnly={!isEditing}
         autoComplete="new-password"
-        className={`text-[12px] md:text-[14px] ${isEditing ? 'bg-white text-black px-2' : 'bg-transparent border-none'} outline-none w-[50vw] md:w-[25vw] ${isEditing ? 'rounded' : ''}`}
+        placeholder={isDateField ? (translations.language === '中文' ? 'yyyy/mm/dd' : '年/月/日') : ''}
+        onFocus={isDateField && isEditing ? (e) => e.currentTarget.type = 'date' : undefined}
+        onBlur={isDateField && isEditing ? (e) => e.currentTarget.type = 'text' : undefined}
+        className={`text-[12px] md:text-[14px] ${isEditing ? 'bg-white text-black px-2' : 'bg-transparent border-none'} outline-none placeholder-black w-[50vw] md:w-[25vw] ${isEditing ? 'rounded' : ''}`}
         style={{ color: isEditing ? undefined : textColor }}
       />
     </div>

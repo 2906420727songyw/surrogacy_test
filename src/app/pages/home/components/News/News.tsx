@@ -107,7 +107,7 @@ export default function News() {
                 <div className="w-[18rem] h-[22rem] overflow-hidden rounded-lg">
                   <img
                     className={styles.articleImage}
-                    src={index >2 ? 'https://loyal-cn.oss-ap-southeast-1.aliyuncs.com/macOS%20Monterey%20Wallpaper.jpg' : `/images/about/img/${index}.png`}
+                    src={index >2 || index==1 ? 'https://loyal-cn.oss-ap-southeast-1.aliyuncs.com/macOS%20Monterey%20Wallpaper.jpg' : `/images/about/img/${index}.png`}
                     alt={item.name}
                   />
                 </div>
