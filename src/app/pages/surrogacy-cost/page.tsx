@@ -64,7 +64,7 @@ export default function SurrogacyCost() {
             <React.Fragment key={`sprout-${index}`}>
               <div className={styles.detailsDivider}></div>
               <h4 
-                className={`${styles.titleButton} text-[0.7rem] md:text-[0.8rem] text-white text-center  font-bold ${expandedSections.has(`sprout-${index}`) ? styles.expanded : ''}`} 
+                className={`${styles.titleButton} text-[0.7rem] md:text-[0.9rem] text-white text-center  font-bold ${expandedSections.has(`sprout-${index}`) ? styles.expanded : ''}`} 
                 onClick={() => toggleSection(`sprout-${index}`)}
               >
                 {item.title}
@@ -91,7 +91,7 @@ export default function SurrogacyCost() {
             <React.Fragment key={`thrive-${index}`}>
               <div className={styles.detailsDivider}></div>
               <h4 
-                className={`${styles.titleButton} text-[0.7rem] md:text-[0.8rem] text-white text-center font-bold ${expandedSections.has(`thrive-${index}`) ? styles.expanded : ''}`}
+                className={`${styles.titleButton} text-[0.7rem] md:text-[0.9rem] text-white text-center font-bold ${expandedSections.has(`thrive-${index}`) ? styles.expanded : ''}`}
                 onClick={() => toggleSection(`thrive-${index}`)}
               >
                 {item.title}
@@ -122,7 +122,7 @@ export default function SurrogacyCost() {
                 {qa.title}
               </p>
               <div className="w-full flex flex-col items-center justify-center">
-              <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white mb-10 md:mb-20 text-center font-light`}>
+              <p className={`${translations.language==='EN'?'h3-text':'h3-text-en en-width'} text-white mb-10 md:mb-20 text-center font-light`}>
                 {qa.desc}
               </p>
               </div>

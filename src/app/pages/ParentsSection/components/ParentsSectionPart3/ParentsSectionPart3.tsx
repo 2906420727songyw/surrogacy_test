@@ -63,25 +63,17 @@ export default function ParentsSectionPart3() {
 
   return (
     <div className={`${styles.part3} ${translations.language==='EN'?'':'en-text'}`}>
-      <Image
-        src="/images/ParentsSection/image2.jpg"
-        alt="第三部分图片"
-        width={1600}
-        height={800}
-        layout="responsive"
-        placeholder="blur"
-        blurDataURL="/images/ParentsSection/image2-zip.jpg"
-      />
+      <div className={styles.image2}></div>
       <div id="surrogacy-plan-process" className={styles.content}>
         <div className="w-full flex flex-col items-center justify-center px-5">
           <h2
-            className={`${translations.language==='EN'?'h1-text':'h1-text-en'} text-center text-white mb-12 leading-[2.5rem] md:leading-[4.5rem] md:text-4xl md:mb-12 ${isVisible ? 'animate__animated animate__fadeInUp animate__duration-1s animate__delay-1s' : 'opacity-0'}`}
+            className={`${translations.language==='EN'?'h1-text':'h1-text-en'} text-center text-white mb-12 md:mb-12 ${isVisible ? 'animate__animated animate__fadeInUp animate__duration-1s animate__delay-1s' : 'opacity-0'}`}
           >
             {translations.parentsSection.ParentsSectionPart3.title}
             {/* 准父母代孕流程 */}
           </h2>
           
-          <p className={`${translations.language==='EN'?'h2-text':'h3-text-en'}  text-white text-center mb-10 md:mb-12 en-width`}>
+          <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'}  text-white text-center mb-10 md:mb-12 en-width`}>
             {translations.parentsSection.ParentsSectionPart3.context}
           </p>
 
@@ -103,11 +95,11 @@ export default function ParentsSectionPart3() {
                <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-4 mt-6 md:mt-8 md:mb-6 font-bold`}>
                   {item.title}
                 </p>
-                <p className={`${translations.language==='EN'?'h2-text':'h2-text-en en-width'} text-white mb-6 md:text-base md:mb-8 font-bold`}>
+                <p className={`${translations.language==='EN'?'h2-text':'h2-text-en '} text-white mb-6 md:mb-8 en-width`}>
                  {item.desc}
                 </p>
                 {isExpanded('step' + (index + 1)) && (
-                  <p className={`${translations.language==='EN'?'h3-text':'h3-text-en '} text-white mb-6 mt-8 md:text-sm md:mb-8 md:mt-16 md:leading-6 en-width animate__animated animate__fadeInDown animate__duration-1s`}>
+                  <p className={`${translations.language==='EN'?'h3-text':'h3-text-en '} text-white mb-6 mt-8 md:mb-8 md:mt-16 en-width animate__animated animate__fadeInDown animate__duration-1s`}>
                     
                   {
                       item.context.map((itm: any,idx: number) =>{

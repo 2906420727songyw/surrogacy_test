@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import list from './render'
+//import list from './render'
 import styles from "./Footer.module.css";
 import Link from 'next/link';
 import Image from 'next/image';

@@ -11,7 +11,7 @@ export default {
                 link: 'surrogacy-matching-process'
             }, {
                 text: '单身父母和 LGBTQIA+ 群体',
-                link: 'egg-sperm-donation-help'
+                link: '/pages/LGBTQIA'
             }, {
                 text: '代孕计划和流程',
                 link: 'surrogacy-plan-process'
@@ -73,7 +73,7 @@ export default {
             },
             {
                 text:'单身父母和 LGBTQIA+ 群体',
-                link:'egg-sperm-donation-help'
+                link:'/pages/LGBTQIA'
             },
             {
                 text:'代孕计划和流程',
@@ -132,9 +132,9 @@ export default {
           },
         
         {
-            name:'Diana E. Chavkin, MD, FACOG',    
-            role:'医生团队',
-            content:['Dr. Diana Chavkin 是双重认证的生殖内分泌与不孕症专家，现任医疗总监，荣获多项顶级医生奖，专注个性化生育治疗。']
+            name:'xx',    
+            role:'xx',
+            content:['xxx']
         },
         
         
@@ -161,9 +161,9 @@ export default {
           },
         
         {
-            name:'Diana E. Chavkin, MD, FACOG',    
-            role:'医生团队',
-            content:['Dr. Diana Chavkin 是一位双重认证的生殖内分泌学与不孕症（REI）专家，现任医疗总监，专注于提供个性化且卓越的生育治疗服务。她毕业于纽约大学医学院，并在宾夕法尼亚大学完成妇产科住院医师及生殖内分泌与不孕症学的专科培训。以优异成绩（Magna Cum Laude）从哥伦比亚大学巴纳德学院获得心理学与历史学学位，并荣获Phi Beta Kappa荣誉。她曾亲身经历不孕挑战，深刻理解患者需求，帮助数千人实现家庭梦想。Dr. Chavkin 擅长第三方辅助生殖（卵子捐赠与代孕）、低刺激 IVF、肿瘤生育学、生育保存以及复发性流产管理，并在卵巢功能低下、高龄不孕、多囊卵巢综合症等领域拥有丰富经验。此外，她是多家权威机构的活跃成员，包括美国妇产科医师学会（ACOG）、美国生殖医学学会（ASRM）等，并多次荣获洛杉矶顶级医生奖及南加州超级医生奖等荣誉。她还在知名医学期刊发表多篇论文，并参与撰写专业书籍章节。']
+            name:'xxx',    
+            role:'xxx',
+            content:['xxx']
         },
         
         
@@ -223,7 +223,7 @@ export default {
             title:'欢迎单身父母和 LGBTQIA+ 群体',
             button:[{
                 text:'了解更多',
-                link:['/pages/ParentsSection'],
+                link:['/pages/LGBTQIA'],
                 auth:false
             },{
                 text:'申请通道',
@@ -423,7 +423,7 @@ export default {
         }
     },
     surrogacyCost:{
-        title:'Sapling 提供的套餐',
+        title:'小树苗提供的套餐',
         desc:'Sapling提供两种套餐来满足您的需求,您可以根据您的个人情况进行选择。无论如何，我们都希望能够给您提供最舒心的服务，全程陪伴您走过这段特别的旅程。',
         sproutPackage:{
             title:'萌芽套餐',
@@ -604,12 +604,12 @@ export default {
         left_nav_4:'线下预约',
         user_menu:'用户菜单',
         profileContent:{
-            title:'开始Sapling Surrogacy旅程',
+            title:'开始小树苗旅程',
             email:'登录名',
             phone:'手机号码',
             birthday:'出生日期',
             userName:'用户名',
-            address:'家庭详细地址',
+            address:'详细地址',
             edit:"编辑账户",
             save:"保存"
         },

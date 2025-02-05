@@ -80,7 +80,7 @@ export default function BecomeSurrogatePart1({ isVisible = false }: BecomeSurrog
         </button>
       </div>
 
-      <div className={styles.imageContainer}>
+      {/*<div className={styles.imageContainer}>
         <Image 
           src="/images/BecomeSurrogate/1.jpg"
           alt="展示图片"
@@ -90,7 +90,8 @@ export default function BecomeSurrogatePart1({ isVisible = false }: BecomeSurrog
           placeholder="blur"
           blurDataURL="/images/BecomeSurrogate/1-zip.jpg"
         />
-      </div>
+      </div>*/}
+      <div className={styles.image1}></div>
 
       <div id="who-can-be-surrogate" className={styles.bottomContent}>
         <h2 

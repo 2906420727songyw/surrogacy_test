@@ -151,35 +151,35 @@ export default function ProfileContent() {
           onSubmit={(e) => e.preventDefault()}
         >
           <InfoItem 
-            label={translations.profile.profileContent.email + " *"} 
+            label={translations.profile.profileContent.email } 
             value={getDisplayValue(isEditing ? editingData.email : userData.email)} 
             name="email"
             isEditing={isEditing}
             onChange={handleInputChange}
           />
           <InfoItem 
-            label={translations.profile.profileContent.phone + " *"} 
+            label={translations.profile.profileContent.phone } 
             value={getDisplayValue(isEditing ? editingData.phoneNumber : userData.phoneNumber)} 
             name="phoneNumber"
             isEditing={isEditing}
             onChange={handleInputChange}
           />
           <InfoItem 
-            label={translations.profile.profileContent.birthday + " *"} 
+            label={translations.profile.profileContent.birthday } 
             value={getDisplayValue(isEditing ? editingData.dateOfBirth : userData.dateOfBirth)} 
             name="dateOfBirth"
             isEditing={isEditing}
             onChange={handleInputChange}
           />
           <InfoItem 
-            label={translations.profile.profileContent.userName + " *"} 
+            label={translations.profile.profileContent.userName } 
             value={getDisplayValue(isEditing ? editingData.name : userData.name)} 
             name="name"
             isEditing={isEditing}
             onChange={handleInputChange}
           />
           <InfoItem 
-            label={translations.profile.profileContent.address + " *"} 
+            label={translations.profile.profileContent.address } 
             value={getDisplayValue(isEditing ? editingData.address : userData.address)} 
             name="address"
             isEditing={isEditing}
@@ -191,7 +191,7 @@ export default function ProfileContent() {
         <div className="mt-[30px] md:mt-[40px]">
           <button 
             onClick={isEditing ? handleSave : () => setIsEditing(true)}
-            className="text-white text-[20px] md:text-[24px] hover:opacity-80 border-b border-white pb-[2px]"
+            className="text-white text-[12px] md:text-[14px] hover:opacity-80 border-b border-white pb-[2px]"
           >
             {isEditing ? translations.profile.profileContent.save : translations.profile.profileContent.edit}
           </button>

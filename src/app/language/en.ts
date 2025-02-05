@@ -13,7 +13,7 @@ export default {
                 link: 'surrogacy-matching-process'
             }, {
                 text: 'Single Parents & LGBTQIA+',
-                link: 'egg-sperm-donation-help'
+                link: '/pages/LGBTQIA'
             }, {
                 text: 'Surrogacy Process',
                 link: 'surrogacy-plan-process'
@@ -75,7 +75,7 @@ export default {
             },
             {
                 text:'Single Parents & LGBTQIA+',
-                link:'egg-sperm-donation-help'
+                link:'/pages/LGBTQIA'
             },
             {
                 text:'Surrogacy Process',
@@ -133,9 +133,9 @@ export default {
             content:['A reproductive law expert and former Chair of the American Society of Reproductive Medicine (ASRM) Legal Professional Group, Judith has played a pivotal role in drafting key legislation and is dedicated to legal protections and education.']
           },
         {
-            name:'Diana E. Chavkin, MD, FACOG',    
-            role:'Medical Team',
-            content:['Dr. Diana Chavkin is a double board-certified expert in Reproductive Endocrinology and Infertility, currently serving as Medical Director. A recipient of multiple top doctor awards, she specializes in personalized fertility treatments.']
+            name:'xx',    
+            role:'xx',
+            content:['xxx']
           },
   
         
@@ -162,9 +162,9 @@ export default {
           },
         
         {
-            name:'Diana E. Chavkin, MD, FACOG',    
-            role:'Medical Team',
-            content:['Dr. Diana Chavkin, a double board-certified specialist in Reproductive Endocrinology and Infertility (REI), serves as Medical Director, providing exceptional and personalized fertility care. She earned her medical degree from NYU School of Medicine, completed her residency and subspecialty training at the University of Pennsylvania, and graduated with honors from Barnard College, Columbia University. Having personally faced infertility challenges, Dr. Chavkin brings deep empathy and expertise, helping thousands achieve their dream of parenthood. She specializes in third-party reproduction, low-stimulation IVF, fertility preservation, and recurrent pregnancy loss management, with extensive experience in advanced maternal age and PCOS. An active member of ACOG and ASRM, Dr. Chavkin has earned prestigious awards like the Los Angeles Top Doctor Award and Southern California Super Doctors Award and has contributed to the field through publications and textbook chapters.']
+            name:'xxx',    
+            role:'xxx',
+            content:['xxx']
         },
         
         
@@ -225,7 +225,7 @@ export default {
             title:'Welcome Single Parents and the LGBTQIA+ Community',
             button:[{
                 text:'Learn More',
-                link:['/pages/ParentsSection'],
+                link:['/pages/LGBTQIA'],
                 auth:false
             },{
                 text:'Apply Now',

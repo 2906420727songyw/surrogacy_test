@@ -28,7 +28,7 @@
   }
 }
 
-.imageContainer {
+/*.imageContainer {
   width: 100%;
   height: 800px;
   overflow: hidden;
@@ -36,7 +36,7 @@
   @media (max-width: 768px) {
     height: auto;
   }
-}
+}*/
 
 .bottomContent {
   width: 100%;
@@ -124,11 +124,27 @@
   margin-bottom: 20px;
 }
 
+.image1{
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  background-image: url('/images/BecomeSurrogate/1.jpg'),url('/images/BecomeSurrogate/1-zip.jpg');
+  background-size: cover;
+  background-position: 0 50%;
+  background-repeat: no-repeat;
+}
+
 @media (max-width: 768px) {
   .expandedImage {
     width: 70px;
     height: 70px;
     margin-bottom: 10px;
     
+  }
+  .image1{
+    width: 100%;
+    height: 200px;
+    background-image: url('/images/BecomeSurrogate/1.jpg'),url('/images/BecomeSurrogate/1-zip.jpg');
+    background-size: cover;
   }
 }

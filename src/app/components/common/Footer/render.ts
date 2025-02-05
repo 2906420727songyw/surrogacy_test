@@ -1,4 +1,4 @@
-const list = [{
+/*const list = [{
     text:'如何成为准父母',
     link:'/pages/ParentsSection',
     options:[
@@ -8,7 +8,7 @@ const list = [{
         },
         {
             text:'单身父母和 LGBTQIA+ 群体',
-            link:'egg-sperm-donation-help'
+            link:'/pages/LGBTQIA'
         },
         {
             text:'代孕计划和流程',
@@ -56,4 +56,4 @@ const list = [{
 },
 ]
 
-export default list
+export default list*/

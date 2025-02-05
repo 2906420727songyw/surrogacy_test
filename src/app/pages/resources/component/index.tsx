@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import styles from './index.module.css';
 import Image from 'next/image';
 import informationApi from '@/app/service/information/api';
 import { useEffect, useRef, useState } from 'react';
@@ -131,7 +132,7 @@ export default function ResourcesComponent() {
   return (
     <div className={`w-full flex flex-col items-center justify-center fade-in ${translations.language==='EN'?'':'en-text'}`}>
       {/* 图片 */}
-      <Image 
+      {/*<Image 
         src="/images/resources/image.png" 
         alt="第四部分图片" 
         width={1600}
@@ -139,7 +140,8 @@ export default function ResourcesComponent() {
         layout="responsive"
         placeholder="blur"
         blurDataURL="/images/resources/image.jpg"
-      />
+      />*/}
+      <div className={styles.image}></div>
       {/* 博客 */}
       <div className="w-full flex flex-col items-center justify-center bg-[#A48472] px-5 md:px-20 py-10 md:py-20">
         <p 

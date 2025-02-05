@@ -16,7 +16,7 @@ export default function BecomeSurrogatePart4({ isVisible = false }: BecomeSurrog
   const router = useRouter();
   return (
     <div className={styles.becomeSurrogatePart4}>
-      <Image 
+      {/*<Image 
       src="/images/BecomeSurrogate/4.jpg" 
       alt="第四部分图片" 
       width={1600}
@@ -24,7 +24,8 @@ export default function BecomeSurrogatePart4({ isVisible = false }: BecomeSurrog
       layout="responsive" 
       placeholder="blur"
       blurDataURL="/images/BecomeSurrogate/4-zip.jpg"
-      />
+      />*/}
+      <div className={styles.image4}></div>
       <div className={styles.container}>
         <div className={styles.whereContainer}>
           <h2 className={`${translations.language==='EN'?'h1-text':'h1-text-en'} text-white mb-16 md:mb-20 animate__animated animate__fadeInDown animate__duration-1s    `}>
@@ -66,27 +67,28 @@ export default function BecomeSurrogatePart4({ isVisible = false }: BecomeSurrog
             <h2 className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mb-10 md:mb-20`}>
               {translations.becomeSurrogate.becomeSurrogatePart4.why.stepText}
             </h2>  
-            <Image 
-            src="/images/BecomeSurrogate/meeting.png" 
+            {/*<Image 
+            src="/images/BecomeSurrogate/meeting.jpg" 
             alt="会议图片" 
             width={1600}
             height={800}
             style={{ borderRadius: '20px' }}
-            layout="responsive" 
+            layout="fixed" 
             placeholder="blur"
-            blurDataURL="/images/BecomeSurrogate/meeting.jpg"
-            />
-            <div className='w-full flex flex-col items-center'>
+            blurDataURL="/images/BecomeSurrogate/meeting-zip.jpg"
+            />*/}
+            <div className={styles.image5}></div>
+            <div className='w-full flex flex-col items-center pt-[30px] md:pt-[50px]'>
 
             {
             translations.becomeSurrogate.becomeSurrogatePart4.how.qa_apply.map((item:any,index:number)=>{
               return (
                 <React.Fragment key={index}>
                   <div className={styles.divider}></div>
-                  <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} font-bold text-white mb-4 mt-6 md:mt-8 md:mb-6`}>
+                  <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} font-bold text-white my-10 md:my-16`}>
                     {item.title}
                   </p>
-                  <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'}  text-center text-white mb-10 mt-10 md:mb-11 md:mt-10 en-width`}>
+                  <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'}  text-center text-white mb-8 md:mb-12 en-width`}>
                     {item.content}
                   </p>
                 </React.Fragment>
@@ -140,10 +142,10 @@ export default function BecomeSurrogatePart4({ isVisible = false }: BecomeSurrog
             return (
               <React.Fragment key={index}>
                 <div className={styles.divider}></div>
-                <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} font-bold text-white mb-4 mt-6 md:mt-8 md:mb-6`}>
+                <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} font-bold text-white my-10 md:my-16`}>
                   {item.title}
                 </p>
-                <p className={`${translations.language==='EN'?'h3-text':'h3-text-en '} text-center text-white mb-10 mt-10 md:mb-11 md:mt-10 en-width`}>
+                <p className={`${translations.language==='EN'?'h3-text':'h3-text-en '} text-center text-white mb-8 md:mb-12 en-width`}>
                   {item.content}
                 </p>
               </React.Fragment>
@@ -169,10 +171,10 @@ export default function BecomeSurrogatePart4({ isVisible = false }: BecomeSurrog
               return (
                 <React.Fragment key={index}>
                   <div className={styles.divider}></div>
-                  <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} font-bold text-white mb-4 mt-6 md:mt-8 md:mb-6`}>
+                  <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} font-bold text-white my-10 md:my-16`}>
                     {item.title}
                   </p>
-                  <p className={`${translations.language==='EN'?'h3-text':'h3-text-en '} en-width text-center text-white mb-10 mt-10 md:mb-11 md:mt-10`}>
+                  <p className={`${translations.language==='EN'?'h3-text':'h3-text-en '} en-width text-center text-white mb-8 md:mb-12`}>
                     {item.content}
                   </p>
                 </React.Fragment>

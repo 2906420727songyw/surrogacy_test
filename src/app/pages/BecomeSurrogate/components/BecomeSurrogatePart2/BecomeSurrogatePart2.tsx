@@ -16,7 +16,7 @@ export default function BecomeSurrogatePart2({
   const { translations } = useLanguage();
   return (
     <div className={styles.becomeSurrogatePart2}>
-      <Image
+      {/*<Image
         src="/images/BecomeSurrogate/2.jpg"
         alt="第二部分图片"
         width={1600}
@@ -24,7 +24,8 @@ export default function BecomeSurrogatePart2({
         layout="responsive"
         placeholder="blur"
         blurDataURL="/images/BecomeSurrogate/2-zip.jpg"
-      />
+      />*/}
+      <div className={styles.image2}></div>
       <div className={styles.container}>
         <div id="become-surrogate-part2-content" className={styles.content}>
           <h2
@@ -60,11 +61,11 @@ export default function BecomeSurrogatePart2({
               return (
                 <div key={index} className={styles.item}>
                   <div className={styles.divider}></div>
-                  <p className={`${translations.language==='EN'?'h2-text':'h2-text-en font-bold'} text-white mb-4 mt-6 md:mt-8 md:mb-6`}>
+                  <p className={`${translations.language==='EN'?'h2-text':'h2-text-en font-bold'} text-white my-10 md:my-16`}>
                     {item.title}
                   </p>
                   <div className='w-full flex justify-center'>
-                  <p className={`${translations.language==='EN'?'h3-text':'h3-text-en '} text-white text-center mb-6 md:mb-8 en-width`}>
+                  <p className={`${translations.language==='EN'?'h3-text':'h3-text-en '} text-white text-center mb-8 md:mb-12 en-width`}>
                     {item.content.map((item: any, index: number) => {
                       return (
                         <span key={index}>

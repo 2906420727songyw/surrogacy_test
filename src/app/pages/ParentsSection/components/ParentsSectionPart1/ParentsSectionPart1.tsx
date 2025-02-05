@@ -111,15 +111,20 @@ export default function ParentsSectionPart1() {
         </button>
        }
       </div>
+      {/*<div className='w-full h-auto md:h-[550px] overflow-hidden relative'>
       <Image 
       src="/images/ParentsSection/image1.jpg" 
       alt="Parents Section Image" 
       width={1600}
       height={800}
-      layout="responsive"
+      layout="intrinsic"
+      objectPosition="bottom"
       placeholder="blur"
       blurDataURL="/images/ParentsSection/image1-zip.jpg"
-      />
+      /></div>*/}
+      
+      {/*第一张图片*/}
+      <div className={styles.image1}></div>
       <div className="w-full flex flex-col items-center text-center text-white px-5 pt-5 md:w-full md:px-36">
         <h2 className={`${translations.language==='EN'?'h1-text':'h1-text-en'} text-white my-12 md:my-24 animate__animated animate__fadeInDown animate__duration-1s `}>
           {translations?.parentsSection?.parentsSectionPart1?.changeReason}
@@ -132,7 +137,7 @@ export default function ParentsSectionPart1() {
         <div className={styles.horizontalList} ref={scrollContainerRef}>
           {translations?.parentsSection?.parentsSectionPart1?.listData.map((item: ListItem, index: number) => (
             <div key={index} className={styles.listItem}>
-              <div className="w-[150px] h-[150px] md:w-[300px] md:h-[300px] rounded-[10px] flex justify-center">
+              <div className="w-[150px] h-[150px] md:w-[300px] md:h-[300px] rounded-[10px] flex justify-center overflow-hidden">
                 <Image 
                   src={item.image}
                   alt={item.text}

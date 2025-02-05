@@ -32,7 +32,7 @@ export default function DataDisplay() {
       <div className={styles.content}>
         <h2 
           id="data-display-title"
-          className={` ${translations.language==='EN'?'h1-text':'h1-text-en'} mb-4 text-white md:mb-8 ${
+          className={` ${translations.language==='EN'?'h1-text':'h1-text-en'} mb-[2.5rem] text-white md:mb-[5rem] ${
             isVisible ? 'animate__animated animate__fadeInDown animate__duration-1s  ' : 'opacity-0'
           }`}
         >

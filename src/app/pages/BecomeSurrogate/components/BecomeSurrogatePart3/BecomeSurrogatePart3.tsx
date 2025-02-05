@@ -54,7 +54,7 @@ export default function BecomeSurrogatePart3({ isVisible = false }: BecomeSurrog
 
   return (
     <div className={styles.becomeSurrogatePart3}>
-      <Image 
+      {/*<Image 
         src="/images/BecomeSurrogate/3.jpg" 
         alt="第三部分图片" 
         width={1600}
@@ -62,7 +62,8 @@ export default function BecomeSurrogatePart3({ isVisible = false }: BecomeSurrog
         layout="responsive" 
         placeholder="blur"
         blurDataURL="/images/BecomeSurrogate/3-zip.jpg"
-      />
+      />*/}
+      <div className={styles.image3}></div>
       <div id='become-surrogate-part3-content' className={styles.container}>
         <div className={styles.content}>
           <h2 
@@ -81,11 +82,11 @@ export default function BecomeSurrogatePart3({ isVisible = false }: BecomeSurrog
             className={`${styles.item} ${isExpanded(item.id) ? styles.expanded : ''}`}
           >
             <div className={styles.divider}></div>
-            <p className={`${translations.language==='EN'?'h2-text':'h2-text-en font-bold'} text-white mb-4 mt-6 md:mt-8 md:mb-6`}>
+            <p className={`${translations.language==='EN'?'h2-text':'h2-text-en font-bold'} text-white my-10 md:my-16`}>
               {item.title}
             </p>
            <div className='w-full flex justify-center'>
-            <p className={`${translations.language==='EN'?'h3-text':'h3-text-en '} en-width text-white text-center mb-6 md:mb-8`}>
+            <p className={`${translations.language==='EN'?'h3-text':'h3-text-en '} en-width text-white text-center mb-8 md:mb-12`}>
               {item.content.map((contentItem:any, idx:number) => {
                 return <span key={idx}>{contentItem}<br/></span>
               })
