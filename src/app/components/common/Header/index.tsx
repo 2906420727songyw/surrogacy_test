@@ -28,6 +28,8 @@ const Header = () => {
     const currentPath = usePathname();
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     const debounceRef = useRef<NodeJS.Timeout | null>(null);
+    const [timeoutIds, setTimeoutIds] = useState<NodeJS.Timeout[]>([]);
+    const [isLoginMenuOpen, setIsLoginMenuOpen] = useState(false);
 
     const toggleLanguage = () => {
         setLanguage(language === 'en' ? 'zn' : 'en');
@@ -36,10 +38,26 @@ const Header = () => {
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 0);
+            if (activeMenu !== null) {
+                setIsAnimating(true);
+                const timeoutId = setTimeout(() => {
+                    setActiveMenu(null);
+                }, 300);
+                setTimeoutIds(prev => [...prev, timeoutId]);
+            }
+            if (isLoginMenuOpen) {
+                setIsLoginMenuOpen(false);
+            }
         };
         window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+        window.addEventListener('wheel', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('wheel', handleScroll);
+            // 清除所有的 timeoutIds
+            timeoutIds.forEach(id => clearTimeout(id));
+        };
+    }, [activeMenu, isLoginMenuOpen, timeoutIds]);
 
     const clearTimeouts = () => {
         if (timeoutRef.current) {
