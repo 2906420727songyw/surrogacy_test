@@ -143,10 +143,8 @@ const Header = () => {
         } else {
             // 从无菜单状态进入
             if (hasSubMenu) {
-                debounceRef.current = setTimeout(() => {
-                    setIsAnimating(false);
-                    setActiveMenu(index);
-                }, 100);
+                setIsAnimating(false);
+                setActiveMenu(index);
             }
         }
     };
@@ -155,10 +153,26 @@ const Header = () => {
         e.stopPropagation();
         clearTimeouts();
         
+        // 先设置动画状态
         setIsAnimating(true);
-        timeoutRef.current = setTimeout(() => {
+        
+        // 使用单个 timeout 来管理菜单关闭
+        const timeoutId = setTimeout(() => {
             setActiveMenu(null);
+            setIsAnimating(false);
         }, 300);
+        
+        // 保存到 timeoutIds 中以便清理
+        setTimeoutIds(prev => [...prev, timeoutId]);
+    };
+
+    // 修改背景区域的鼠标事件处理
+    const handleBackgroundMouseEnter = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        clearTimeouts();
+        if (activeMenu !== null) {
+            setIsAnimating(false);
+        }
     };
 
     useEffect(() => {
@@ -463,22 +477,33 @@ const Header = () => {
                 </div>
             </div>
 
-            {/* 背景区域 - 修改条件判断,支持登录菜单 */}
+            {/* 背景区域 */}
             {activeMenu !== null && (activeMenu === -1 || translations.header.options[activeMenu]?.options?.length > 0) && (
                 <div 
-                    className={`hidden header-switch:block fixed top-0 left-0 right-0 z-30 h-[${headerHeight+35}vh]`}
-                    onMouseEnter={(e) => {
-                        e.stopPropagation();
-                        clearTimeouts();
-                        setIsAnimating(false);
-                    }}
+                    className={`hidden header-switch:block fixed top-0 left-0 right-0 z-30 h-[${headerHeight+38}vh]`}
+                    onMouseEnter={handleBackgroundMouseEnter}
                     onMouseLeave={handleMouseLeave}
                 >
-                    <div className={`h-[${headerHeight}vh]`} />
-                    <div className={`bg-[#A48472] h-[35vh] ${
-                        !isAnimating ? 'animate__animated animate__fadeInDown animate__fast' : 
-                        'animate__animated animate__fadeOutUp animate__fast'
-                    }`}>
+                    <div 
+                        className={`h-[${headerHeight}vh]`} 
+                        onMouseEnter={(e) => {
+                            e.stopPropagation();
+                            if (activeMenu !== null) {
+                                setIsAnimating(true);
+                                const timeoutId = setTimeout(() => {
+                                    setActiveMenu(null);
+                                    setIsAnimating(false);
+                                }, 300);
+                                setTimeoutIds(prev => [...prev, timeoutId]);
+                            }
+                        }}
+                    />
+                    <div 
+                        className={`bg-[#A48472] h-[38vh] ${
+                            !isAnimating ? 'animate__animated animate__fadeInDown animate__fast' : 
+                            'animate__animated animate__fadeOutUp animate__fast'
+                        }`}
+                    >
                     </div>
                 </div>
             )}
