@@ -30,6 +30,8 @@ const Header = () => {
     const debounceRef = useRef<NodeJS.Timeout | null>(null);
     const [timeoutIds, setTimeoutIds] = useState<NodeJS.Timeout[]>([]);
     const [isLoginMenuOpen, setIsLoginMenuOpen] = useState(false);
+    const [headerHeight, setHeaderHeight] = useState(0);
+    const headerRef = useRef<HTMLDivElement>(null);
 
     const toggleLanguage = () => {
         setLanguage(language === 'en' ? 'zn' : 'en');
@@ -165,6 +167,29 @@ const Header = () => {
         };
     }, []);
 
+    // 计算导航栏高度的函数
+    const calculateHeaderHeight = () => {
+        if (headerRef.current) {
+            const height = headerRef.current.offsetHeight;
+            // 将 px 转换为 vh
+            const heightInVh = Math.ceil((height / window.innerHeight) * 100);
+            console.log("高度为:", heightInVh, "vh");
+            
+            setHeaderHeight(heightInVh);
+            
+            // 设置一个 CSS 变量以便其他组件使用
+            // document.documentElement.style.setProperty('--header-height', `${heightInVh}vh`);
+        }
+    };
+
+    useEffect(() => {
+        calculateHeaderHeight();
+        window.addEventListener('resize', calculateHeaderHeight);
+        return () => {
+            window.removeEventListener('resize', calculateHeaderHeight);
+        };
+    }, []);
+
     return (
         <div className="relative">
             {/* 全屏毛玻璃效果 */}
@@ -178,7 +203,10 @@ const Header = () => {
             />
 
             {/* 导航栏 */}
-            <div className={`${translations.language === 'EN' ? '' : 'en-text'} flex justify-between text-white font-sans py-5 items-center px-8 fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-[#A48472]' : 'bg-transparent'}`}>
+            <div 
+                ref={headerRef}
+                className={`${translations.language === 'EN' ? '' : 'en-text'} flex justify-between text-white font-sans py-5 items-center px-8 fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-[#A48472]' : 'bg-transparent'}`}
+            >
                 <div className='header-switch:flex header-switch:flex-row items-center gap-1 flex flex-col hover:cursor-pointer' onClick={() => router.push('/')}>
                 <img src='/images/logo.jpg' className='header-switch:w-auto header-switch:h-12 w-auto h-11' />
                 <div className='header-switch:text-[1.1rem] text-[0.6rem] flex flex-col items-center'>
@@ -438,7 +466,7 @@ const Header = () => {
             {/* 背景区域 - 修改条件判断,支持登录菜单 */}
             {activeMenu !== null && (activeMenu === -1 || translations.header.options[activeMenu]?.options?.length > 0) && (
                 <div 
-                    className="hidden header-switch:block fixed top-0 left-0 right-0 z-30 h-[28vh]"
+                    className={`hidden header-switch:block fixed top-0 left-0 right-0 z-30 h-[${headerHeight+35}vh]`}
                     onMouseEnter={(e) => {
                         e.stopPropagation();
                         clearTimeouts();
@@ -446,8 +474,8 @@ const Header = () => {
                     }}
                     onMouseLeave={handleMouseLeave}
                 >
-                    <div className="h-[8vh]" />
-                    <div className={`bg-[#A48472] h-[20vh] ${
+                    <div className={`h-[${headerHeight}vh]`} />
+                    <div className={`bg-[#A48472] h-[35vh] ${
                         !isAnimating ? 'animate__animated animate__fadeInDown animate__fast' : 
                         'animate__animated animate__fadeOutUp animate__fast'
                     }`}>
