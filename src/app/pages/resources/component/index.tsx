@@ -12,15 +12,14 @@ interface ComponentData {
   content: translationsData;
   createdAt: string;
   updatedAt: string;
-  type: string;
-  title: string;
+  name: string;
   url: string[];
 }
 
 interface InformationData {
   id: string;
+  title: string;
   content: translationsData;
-  name: string;
   type: string;
   url: string[];
 }
@@ -153,7 +152,7 @@ export default function ResourcesComponent() {
         </p>
 
         
-        <div className={`w-full flex flex-col items-center justify-center px-5 md:px-20 ${translations.language==='EN'?'h2-text':'font-bold h2-text-en'}`}>
+        <div className={`w-full flex flex-col items-center justify-center px-5 md:px-20 ${translations.language==='EN'?'h2-text':'h2-text-en'}`}>
         {/* 菜单项 */}
         <div className="flex space-x-4 mb-8">
           <button
@@ -183,7 +182,7 @@ export default function ResourcesComponent() {
                   <div>
                     <Image 
                       src={item.url?.[0] || '/images/resources/default.png'} 
-                      alt={translations.language === 'EN' ? item.content.en : item.content.zn} 
+                      alt={translations.language === 'EN' ? item.content.zn : item.content.en} 
                       width={367} 
                       height={250} 
                       layout="responsive"
@@ -194,10 +193,10 @@ export default function ResourcesComponent() {
                       }}
                     />
                     <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mt-5 mb-3`}>
-                      {translations.language === 'EN' ? item.content.en : item.content.zn}
+                      {translations.language === 'EN' ? item.title : item.title}
                     </p>
                     <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-5`}>
-                      {translations.language === 'EN' ? item.content.en : item.content.zn}
+                      {translations.language === 'EN' ? item.content.zn : item.content.en}
                     </p>
                   </div>
                   <button 
@@ -213,12 +212,12 @@ export default function ResourcesComponent() {
 
           {selectedTab === 'surrogate_mom' && (
             <>
-              {informationData.filter(item => item.type !== 'INTENDED_PARENT').slice(0, surrogateMomCount).map((item, index) => (
+              {informationData.filter(item => item.type !== 'INTENDED_surrogateMom').slice(0, surrogateMomCount).map((item, index) => (
                 <div key={index} className="w-full md:w-[367px] h-auto rounded flex flex-col justify-between overflow-hidden">
                   <div>
                     <Image 
                       src={item.url?.[0] || '/images/resources/default.png'} 
-                      alt={translations.language === 'EN' ? item.content.en : item.content.zn} 
+                      alt={translations.language === 'EN' ? item.content.zn : item.content.en} 
                       width={367} 
                       height={250}
                       layout="responsive"
@@ -229,10 +228,10 @@ export default function ResourcesComponent() {
                       }}
                     />
                     <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mt-5 mb-3`}>
-                      {translations.language === 'EN' ? item.content.en : item.content.zn}
+                      {translations.language === 'EN' ? item.title : item.title}
                     </p>
                     <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-5`}>
-                      {translations.language === 'EN' ? item.content.en : item.content.zn}
+                      {translations.language === 'EN' ? item.content.zn : item.content.en}
                     </p>
                   </div>
                   <button 
@@ -266,7 +265,7 @@ export default function ResourcesComponent() {
 
         {selectedTab === 'surrogate_mom' && (
           <>
-            {surrogateMomCount < informationData.filter(item => item.type !== 'INTENDED_PARENT').length ? (
+            {surrogateMomCount < informationData.filter(item => item.type !== 'INTENDED_surrogateMom').length ? (
               <button 
                 className="text-xs md:text-sm mt-8 px-4 py-2 bg-[#F1E6C3] text-black rounded-full self-center font-normal"
                 onClick={() => setSurrogateMomCount(prev => prev + 4)}
@@ -311,11 +310,11 @@ export default function ResourcesComponent() {
               }`}
             >
               <div className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-2 md:mb-5`}>
-                {translations.language === 'EN' ? review.content.en : review.content.zn}
+                {translations.language === 'EN' ? review.content.zn : review.content.en}
               </div>
               <div className="flex items-center mb-4">
                 <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white`}>
-                  {"—— "}{review.title}
+                  {"—— "}{review.name}
                 </p>
               </div>
               <div className="w-full h-[1px] bg-white mt-5"></div>
