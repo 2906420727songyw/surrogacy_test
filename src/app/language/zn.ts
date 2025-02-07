@@ -900,5 +900,15 @@ export default {
             applyButtonText:'立即申请',
         },
         
+    },
+    appointment:{
+        title:'请选择您的预约身份',
+        parent:'准父母',
+        surrogate:'代孕妈妈',
+        appointment_parent:'预约-成为准父母',
+        appointment_surrogate:'预约-成为代孕妈妈',
+        appointment_btn:'预约',
+        appointment_loading:'预约中...',
+        desc:"通过预约此项目，您即同意向小树苗提供您的姓名和联系方式。"
     }
 }

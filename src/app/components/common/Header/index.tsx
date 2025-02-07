@@ -212,7 +212,7 @@ const Header = () => {
             const height = submenuRef.current.offsetHeight;
             // 将 px 转换为 vh
             const heightInVh = Math.ceil((height / window.innerHeight) * 100);
-            console.log("二级菜单高度为:", heightInVh, "vh");
+            // console.log("二级菜单高度为:", heightInVh, "vh");
             setSubmenuHeight(heightInVh);
         }
     };
@@ -232,6 +232,16 @@ const Header = () => {
             window.removeEventListener('resize', calculateSubmenuHeight);
         };
     }, []);
+
+    useEffect(() => {
+        if (activeMenu !== null && submenuRef.current) {
+            setTimeout(() => {
+                const height = submenuRef.current?.getBoundingClientRect()?.height || 0;
+                const heightInVh = (height / window.innerHeight) * 100;
+                console.log(`二级菜单选中的高度为:${heightInVh.toFixed(2)}vh`);
+            }, 100);
+        }
+    }, [activeMenu]);
 
     return (
         <div className="relative">
@@ -284,7 +294,7 @@ const Header = () => {
                                             'animate__animated animate__fadeOutUp animate__fast'
                                         }`}
                                     >
-                                        <div className="bg-transparent w-full px-2 py-2">
+                                        <div className="bg-transparent w-full px-2 py-2" ref={submenuRef}>
                                             {item.options.map((option, idx) => (
                                                 <div
                                                     key={idx}
@@ -295,7 +305,7 @@ const Header = () => {
                                                         routerToScroll(item.link, option.link);
                                                     }}
                                                 >
-                                            {option.text}
+                                                    {option.text}
                                                 </div>
                                             ))}
                                         </div>
@@ -386,7 +396,7 @@ const Header = () => {
                 <div className='group relative'>
                         <div 
                             className='hover:cursor-pointer' 
-                            onClick={() => Cookies.get('userData') ? router.push('/pages/auth/profile?type=appointment') : router.push('/pages/auth/login?mode=register')}
+                            onClick={() =>  router.push('/pages/auth/appointment')}
                             onMouseEnter={(e) => {
                                 e.stopPropagation();
                                 clearTimeouts();
@@ -495,7 +505,11 @@ const Header = () => {
                         ))}
                         <div className='flex gap-2 flex-col'>
 
-                                    <div className='py-2 hover:cursor-pointer' onClick={() => Cookies.get('userData') ? router.push('/pages/auth/profile?type=appointment') : router.push('/pages/auth/login?mode=register')}>{translations.header.appointment}</div>
+                                    <div className='py-2 hover:cursor-pointer' 
+                                                               onClick={() =>  router.push('/pages/auth/appointment')}
+ 
+>
+                                        {translations.header.appointment}</div>
                                     <div className='py-2 hover:cursor-pointer'>{translations.header.search}</div>
                                     <div className='hover:cursor-pointer' onClick={toggleLanguage}>{translations.language}</div>
                         </div>

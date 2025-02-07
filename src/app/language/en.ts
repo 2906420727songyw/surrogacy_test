@@ -943,4 +943,19 @@ export default {
       applyButtonText: "Apply Now",
     },
   },
+
+
+
+  appointment: {
+    title: 'Please select your appointment identity',
+    parent: 'Prospective Parents',
+    surrogate: 'Surrogate Mother',
+    appointment_parent: 'Appointment-Become a Prospective Parent',
+    appointment_surrogate: 'Appointment-Become a Surrogate Mother',
+    appointment_btn: 'Make Appointment',
+    appointment_loading: 'Processing Appointment...',
+    desc: 'By reserving this appointment, you agree to share your name and contact information with Sapling Surrogacy.'
+}
+
+  
 }
