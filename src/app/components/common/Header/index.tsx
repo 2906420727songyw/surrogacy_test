@@ -32,6 +32,8 @@ const Header = () => {
     const [isLoginMenuOpen, setIsLoginMenuOpen] = useState(false);
     const [headerHeight, setHeaderHeight] = useState(0);
     const headerRef = useRef<HTMLDivElement>(null);
+    const [submenuHeight, setSubmenuHeight] = useState(0);
+    const submenuRef = useRef<HTMLDivElement>(null);
 
     const toggleLanguage = () => {
         setLanguage(language === 'en' ? 'zn' : 'en');
@@ -204,6 +206,33 @@ const Header = () => {
         };
     }, []);
 
+    // 计算二级菜单高度的函数
+    const calculateSubmenuHeight = () => {
+        if (submenuRef.current) {
+            const height = submenuRef.current.offsetHeight;
+            // 将 px 转换为 vh
+            const heightInVh = Math.ceil((height / window.innerHeight) * 100);
+            console.log("二级菜单高度为:", heightInVh, "vh");
+            setSubmenuHeight(heightInVh);
+        }
+    };
+
+    // 在菜单状态改变时计算高度
+    useEffect(() => {
+        if (activeMenu !== null) {
+            // 给DOM一点时间来渲染
+            setTimeout(calculateSubmenuHeight, 0);
+        }
+    }, [activeMenu]);
+
+    // 监听窗口大小变化
+    useEffect(() => {
+        window.addEventListener('resize', calculateSubmenuHeight);
+        return () => {
+            window.removeEventListener('resize', calculateSubmenuHeight);
+        };
+    }, []);
+
     return (
         <div className="relative">
             {/* 全屏毛玻璃效果 */}
@@ -219,7 +248,7 @@ const Header = () => {
             {/* 导航栏 */}
             <div 
                 ref={headerRef}
-                className={`${translations.language === 'EN' ? '' : 'en-text'} flex justify-between text-white font-sans py-5 items-center px-8 fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-[#A48472]' : 'bg-transparent'}`}
+                className={`${translations.language === 'EN' ? '' : 'en-text'} flex justify-between text-white  py-5 items-center px-8 fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-[#A48472]' : 'bg-transparent'}`}
             >
                 <div className='header-switch:flex header-switch:flex-row items-center gap-1 flex flex-col hover:cursor-pointer' onClick={() => router.push('/')}>
                 <img src='/images/logo.jpg' className='header-switch:w-auto header-switch:h-12 w-auto h-11' />
@@ -259,7 +288,7 @@ const Header = () => {
                                             {item.options.map((option, idx) => (
                                                 <div
                                                     key={idx}
-                                                    className="text-[#ffffff] text-base transition-colors duration-200 cursor-pointer whitespace-nowrap py-1"
+                                                    className="text-[#ffffff] text-sm transition-colors duration-200 cursor-pointer whitespace-nowrap py-1"
                                                     onClick={() => {
                                                         setIsAnimating(true);
                                                         setActiveMenu(null);
@@ -318,7 +347,7 @@ const Header = () => {
                                             translations.header.login_out.map((item: LoginOutItem, index: number) => (
                                                 <div
                                                     key={index}
-                                                    className='text-[#ffffff] text-base transition-colors duration-200 cursor-pointer whitespace-nowrap py-1'
+                                                    className='text-[#ffffff] text-sm transition-colors duration-200 cursor-pointer whitespace-nowrap py-1'
                                                     onClick={async () => {
                                                         try {
                                                             setIsAnimating(true);
@@ -337,7 +366,7 @@ const Header = () => {
                                             translations.header.login_option.map((item: LoginOutItem, index: number) => (
                                                 <div
                                                     key={index}
-                                                    className='text-[#ffffff] text-base transition-colors duration-200 cursor-pointer whitespace-nowrap py-1'
+                                                    className='text-[#ffffff] text-sm transition-colors duration-200 cursor-pointer whitespace-nowrap py-1'
                                                     onClick={() => {
                                                         setIsAnimating(true);
                                                         setActiveMenu(null);
@@ -411,7 +440,7 @@ const Header = () => {
                     ) : null
                 }
                 {isMenuOpen && (
-                    <div className='fixed top-0 left-0 h-full w-full bg-[rgba(164,132,114,0.9)] shadow-lg flex flex-col p-4 text-sm z-40 overflow-y-auto font-sans'>
+                    <div className='fixed top-0 left-0 h-full w-full bg-[rgba(164,132,114,0.9)] shadow-lg flex flex-col p-4 text-sm z-40 overflow-y-auto'>
                         <div className='hover:cursor-pointer flex justify-end sticky top-0' onClick={() => setIsMenuOpen(false)}>
                             <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
                                 <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M6 18L18 6M6 6l12 12' />
@@ -424,7 +453,7 @@ const Header = () => {
                                     <>
                                         <div className='border-b border-white/30 my-3'></div>
                                         {translations.header.login_out.map((item: { text: string, link: string }, index: number) => (
-                                            <div key={index} className='text-[0.9rem] mb-3' onClick={async () => {
+                                            <div key={index} className='text-sm mb-3' onClick={async () => {
                                                 try {
                                                     setIsAnimating(true);
                                                     setActiveMenu(null);
@@ -499,6 +528,7 @@ const Header = () => {
                         }}
                     />
                     <div 
+                        ref={submenuRef}
                         className={`bg-[#A48472] h-[38vh] ${
                             !isAnimating ? 'animate__animated animate__fadeInDown animate__fast' : 
                             'animate__animated animate__fadeOutUp animate__fast'
