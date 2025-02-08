@@ -290,27 +290,27 @@ export default {
                   text: 'Thorough Screening Process: We work with the best surrogates and match you with the most qualified doctors.',
                 },
                 {
-                  image: '/images/ParentsSection/icon1.png',
+                  image: '/images/ParentsSection/icon5.png',
                   text: 'Secure Fund Management: Your funds are safely held with full transparency and accountability.',
                 },
                 {
-                  image: '/images/ParentsSection/icon2.png',
+                  image: '/images/ParentsSection/icon6.png',
                   text: 'Customizable Packages: Flexible services designed to fit your unique needs and preferences.',
                 },
                 {
-                  image: '/images/ParentsSection/icon3.png',
+                  image: '/images/ParentsSection/icon7.png',
                   text: 'Seamless Communication: One-stop, responsive service whenever you need us.',
                 },
                 {
-                  image: '/images/ParentsSection/icon4.png',
+                  image: '/images/ParentsSection/icon8.png',
                   text: 'Empathetic Team: 80% of our team has been through the surrogacy journey themselves and understands your needs.',
                 },
                 {
-                  image: '/images/ParentsSection/icon1.png',
+                  image: '/images/ParentsSection/icon9.png',
                   text: 'Fast Matching Process: Our process is 40% faster than most agencies, getting you started sooner.',
                 },
                 {
-                  image: '/images/ParentsSection/icon2.png',
+                  image: '/images/ParentsSection/icon10.png',
                   text: 'Transparent Pricing: All costs are clear, upfront, and free of hidden fees.',
                 },
               ]

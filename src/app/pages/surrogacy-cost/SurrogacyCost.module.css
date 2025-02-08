@@ -107,7 +107,41 @@
   opacity: 0.8;
 }
 
+.image1{
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  background-image: url('/images/surrogacy-cost/image1.jpg'),url('/images/surrogacy-cost/image1-zip.jpg');
+  background-size: cover;
+  background-position: 0 70%;
+  background-repeat: no-repeat;
+
+}
+
+.image2{
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  background-image: url('/images/surrogacy-cost/image2.jpg'),url('/images/surrogacy-cost/image2-zip.jpg');
+  background-size: cover;
+  background-position: 0 40%;
+  background-repeat: no-repeat;
+
+}
+
 @media screen and (max-width: 768px) {
+  .image1{
+    width: 100%;
+    height: 200px;
+    background-image: url('/images/surrogacy-cost/image1.jpg'),url('/images/surrogacy-cost/image1-zip.jpg');
+    background-size: cover;
+  }
+  .image2{
+    width: 100%;
+    height: 200px;
+    background-image: url('/images/surrogacy-cost/image2.jpg'),url('/images/surrogacy-cost/image2-zip.jpg');
+    background-size: cover;
+  }
   .content {
     padding: 100px 0 0;
   }

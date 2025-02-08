@@ -128,4 +128,14 @@
         background-image: url('/images/BecomeSurrogate/4.jpg'),url('/images/BecomeSurrogate/4-zip.jpg');
         background-size: cover;
       }
+      .image5{
+        width: 100%;
+        height: 200px;
+        border-radius: 16px;
+        display: flex;
+        flex: auto;
+        justify-self: center;
+        background-image: url('/images/BecomeSurrogate/meeting.jpg'),url('/images/BecomeSurrogate/meeting-zip.jpg');
+        background-size: cover;
+      }
 }

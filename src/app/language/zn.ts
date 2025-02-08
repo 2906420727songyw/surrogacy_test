@@ -289,27 +289,27 @@ export default {
                   text: '最严格的筛选机制：甄选最优质的代孕母亲和最适合您的医生。',
                 },
                 {
-                  image: '/images/ParentsSection/icon1.png',
+                  image: '/images/ParentsSection/icon5.png',
                   text: '最大的资金信托公司：资金托管安全透明，所有使用清晰可查。',
                 },
                 {
-                  image: '/images/ParentsSection/icon2.png',
+                  image: '/images/ParentsSection/icon6.png',
                   text: '最完善的定制化套餐：根据需求灵活定制，满足您的所有服务要求。',
                 },
                 {
-                  image: '/images/ParentsSection/icon3.png',
+                  image: '/images/ParentsSection/icon7.png',
                   text: '最高效的交流：一站式服务，随时为您提供快速响应和支持。',
                 },
                 {
-                  image: '/images/ParentsSection/icon4.png',
+                  image: '/images/ParentsSection/icon8.png',
                   text: '最能理解客户的团队：80%的团队成员有亲身代孕经验，深刻理解您的感受。',
                 },
                 {
-                  image: '/images/ParentsSection/icon1.png',
+                  image: '/images/ParentsSection/icon9.png',
                   text: '最快速的匹配流程：匹配流程比普通机构快40%，让您更快开始代孕旅程。',
                 },
                 {
-                  image: '/images/ParentsSection/icon2.png',
+                  image: '/images/ParentsSection/icon10.png',
                   text: '最透明的价格：所有费用透明公开，无任何隐藏收费。',
                 },
               ]

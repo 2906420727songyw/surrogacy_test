@@ -33,7 +33,7 @@ export default function SurrogacyCost() {
 
   return (
     <div className={`${styles.content} fade-in ${translations.language==='EN'?'':'en-text'}`}>
-      <Image 
+      {/*<Image 
         src="/images/surrogacy-cost/image1.png" 
         alt="代孕费用图片" 
         width={1600}
@@ -41,7 +41,8 @@ export default function SurrogacyCost() {
         layout="responsive"
         placeholder="blur"
         blurDataURL="/images/surrogacy-cost/image1.jpg"
-      />
+      />*/}
+      <div className={styles.image1}></div>
       <div className="w-full flex flex-col items-center justify-center bg-[#A48472] px-5 md:px-20 pt-16 md:pt-32">
         <p className={`${translations.language==='EN'?'h1-text':'h1-text-en'} text-white mb-10 md:mb-12 `}>
           {translations.surrogacyCost.title}
@@ -106,7 +107,7 @@ export default function SurrogacyCost() {
         </div>
       </div>
       <div className="w-full flex flex-col items-center justify-center bg-[#868275] pb-20 md:pb-40">
-        <Image 
+        {/*<Image 
           src="/images/surrogacy-cost/image2.png" 
           alt="代孕费用图片" 
           width={1600}
@@ -114,7 +115,8 @@ export default function SurrogacyCost() {
           layout="responsive"
           placeholder="blur"
           blurDataURL="/images/surrogacy-cost/image2.jpg"
-        />
+        />*/}
+        <div className={styles.image2}></div>
         <div className="w-full flex flex-col items-center justify-center px-5 md:px-80 mt-16 md:mt-20">
           {translations.surrogacyCost.questionAndAnswer.map((qa: QAItem, index: number) => (
             <div key={index} className="w-full mb-10 md:mb-20">
