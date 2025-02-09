@@ -17,18 +17,10 @@ interface QAItem {
 
 export default function SurrogacyCost() {
   const { translations } = useLanguage();
-  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
   const toggleSection = (sectionId: string) => {
-    setExpandedSections(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(sectionId)) {
-        newSet.delete(sectionId);
-      } else {
-        newSet.add(sectionId);
-      }
-      return newSet;
-    });
+    setExpandedSection(prev => prev === sectionId ? null : sectionId);
   };
 
   return (
@@ -65,12 +57,12 @@ export default function SurrogacyCost() {
             <React.Fragment key={`sprout-${index}`}>
               <div className={styles.detailsDivider}></div>
               <h4 
-                className={`${styles.titleButton} text-[0.7rem] md:text-[0.9rem] text-white text-center  font-bold ${expandedSections.has(`sprout-${index}`) ? styles.expanded : ''}`} 
+                className={`${styles.titleButton} text-[0.7rem] md:text-[0.9rem] text-white text-center font-bold ${expandedSection === `sprout-${index}` ? styles.expanded : ''}`} 
                 onClick={() => toggleSection(`sprout-${index}`)}
               >
                 {item.title}
               </h4>
-              <div className={`${styles.packageDetails} ${expandedSections.has(`sprout-${index}`) ? styles.show : ''}`}>
+              <div className={`${styles.packageDetails} ${expandedSection === `sprout-${index}` ? styles.show : ''}`}>
                 <p className="text-[0.7rem] md:text-[0.8rem] text-white ">
                   {item.desc}
                 </p>
@@ -92,12 +84,12 @@ export default function SurrogacyCost() {
             <React.Fragment key={`thrive-${index}`}>
               <div className={styles.detailsDivider}></div>
               <h4 
-                className={`${styles.titleButton} text-[0.7rem] md:text-[0.9rem] text-white text-center font-bold ${expandedSections.has(`thrive-${index}`) ? styles.expanded : ''}`}
+                className={`${styles.titleButton} text-[0.7rem] md:text-[0.9rem] text-white text-center font-bold ${expandedSection === `thrive-${index}` ? styles.expanded : ''}`}
                 onClick={() => toggleSection(`thrive-${index}`)}
               >
                 {item.title}
               </h4>
-              <div className={`${styles.packageDetails} ${expandedSections.has(`thrive-${index}`) ? styles.show : ''}`}>
+              <div className={`${styles.packageDetails} ${expandedSection === `thrive-${index}` ? styles.show : ''}`}>
                 <p className="text-[0.7rem] md:text-[0.8rem] text-white ">
                   {item.desc}
                 </p>

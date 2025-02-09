@@ -118,6 +118,7 @@ const Header = () => {
         } else {
             router.push('/pages/auth/login');
         }
+        setIsMenuOpen(false);
     };
 
     const routerToCheckLogin = (path: string) => {
@@ -224,6 +225,33 @@ const Header = () => {
             return () => observer.disconnect();
         }
     }, [activeMenu]);
+
+    // 添加控制 body 滚动的函数
+    const toggleBodyScroll = (disable: boolean) => {
+        if (disable) {
+            // 只禁用背景滚动
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+        } else {
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
+        }
+    };
+
+    // 修改菜单开关函数
+    const handleMenuToggle = (open: boolean) => {
+        setIsMenuOpen(open);
+        toggleBodyScroll(open);
+    };
+
+    // 在组件卸载时确保恢复滚动
+    useEffect(() => {
+        return () => {
+            toggleBodyScroll(false);
+        };
+    }, []);
 
     return (
         <div className="relative">
@@ -346,79 +374,90 @@ const Header = () => {
             </div>
             <div className='header-switch:hidden flex items-center gap-2'>
                 <div onClick={toggleLanguage}>{translations.language}</div>
-                <div >
-            {
-                !isMenuOpen ? (
-                            <div onClick={() => setIsMenuOpen(true)} className='focus:outline-none'>
-                                <svg className='w-6 h-6 hover:cursor-pointer' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-                                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M4 6h16M4 12h16M4 18h16' />
-                                </svg>
-                            </div>
-                        ) : null
-                    }
+                <div>
+                    {!isMenuOpen ? (
+                        <div 
+                            onClick={() => handleMenuToggle(true)} 
+                            className='focus:outline-none'
+                        >
+                            <svg className='w-6 h-6 hover:cursor-pointer' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+                                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M4 6h16M4 12h16M4 18h16' />
+                            </svg>
+                        </div>
+                    ) : null}
                     {isMenuOpen && (
-                        <div className='fixed top-0 left-0 h-full w-full bg-[rgba(164,132,114,0.9)] shadow-lg flex flex-col p-4 text-sm z-40 overflow-y-auto'>
-                            <div className='hover:cursor-pointer flex justify-end sticky top-0' onClick={() => setIsMenuOpen(false)}>
-                                <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-                                    <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M6 18L18 6M6 6l12 12' />
-                                </svg>
+                        <div className='fixed top-0 left-0 h-full w-full bg-[rgba(164,132,114,0.9)] shadow-lg flex flex-col z-40'>
+                            {/* 头部固定 */}
+                            <div 
+                                className='sticky top-0 p-4 bg-[rgba(164,132,114,0.9)] z-50' 
+                                onClick={() => handleMenuToggle(false)}
+                            >
+                                <div className='hover:cursor-pointer flex justify-end'>
+                                    <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+                                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M6 18L18 6M6 6l12 12' />
+                                    </svg>
+                                </div>
                             </div>
-                            <div className='hover:cursor-pointer my-5' onClick={() => clickLogin()}>
-                                        {Cookies.get('userData') ? JSON.parse(Cookies.get('userData') || '{}')?.username : translations.header.login}
-                                    </div>
-                                    {Cookies.get('userData') ? (
-                                        <>
-                                            <div className='border-b border-white/30 my-3'></div>
-                                            {translations.header.login_out.map((item: { text: string, link: string }, index: number) => (
-                                                <div key={index} className='text-sm mb-3' onClick={async () => {
-                                                    try {
-                                                        setIsAnimating(true);
-                                                        setActiveMenu(null);
-                                                        window.location.href = '/';
-                                                        Cookies.remove('userData');
-                                                    } catch (error) {
-                                                        console.error('Logout failed:', error);
-                                                    }
-                                                }}>
-                                                    {item.text}
-                                        </div>
-                                            ))}
-                                        </>
-                                    ) : (
-                            <div className={Cookies.get('userData') ? 'hidden' : ''}>
-                            <div className={'border-b border-gray-300 my-54'}></div>
-                                            {translations.header.login_option.map((item: { text: string, link: string }, index: number) => {
-                                                return <div key={index} className='hover:cursor-pointer my-5' onClick={() => {
+                            {/* 内容区域可滚动 */}
+                            <div className='flex-1 overflow-y-auto p-4 pb-20'>
+                                <div className='hover:cursor-pointer mb-5' onClick={() => clickLogin()}>
+                                    {Cookies.get('userData') ? JSON.parse(Cookies.get('userData') || '{}')?.username : translations.header.login}
+                                </div>
+                                {Cookies.get('userData') ? (
+                                    <>
+                                        <div className='border-b border-gray-300 my-3'></div>
+                                        {translations.header.login_out.map((item: { text: string, link: string }, index: number) => (
+                                            <div key={index} className='text-sm mb-3' onClick={async () => {
+                                                try {
                                                     setIsAnimating(true);
                                                     setActiveMenu(null);
-                                                    routerToCheckLogin(item.link);
-                                                }}>{item.text}</div>
-                                            })}
-                            </div>
-                                    )}
-                                    {translations.header.options.map((item: HeaderOption, index: number) => (
-                                <div key={index}>
-                                    <div className='font-bold hover:cursor-pointer my-5' onClick={() => {
-                                        router.push(item.link)
-                                        setIsMenuOpen(false)
-                                    }}>{item.text}</div>
-                                    <div className={item.options ? 'border-b border-gray-300 my-54' : ''}></div>
-                                    <div className='flex flex-col gap-5 mt-2 relative left-5'>
-                                        {item.options?.map((option, i) => (
-                                            <div key={i} className='hover:underline hover:cursor-pointer' onClick={() => routerToScroll(item.link, option.link)}>{option.text}</div>
+                                                    window.location.href = '/';
+                                                    Cookies.remove('userData');
+                                                } catch (error) {
+                                                    console.error('Logout failed:', error);
+                                                } finally {
+                                                    setIsMenuOpen(false);
+                                                }
+                                            }}>
+                                                {item.text}
+                                            </div>
                                         ))}
-                                    </div>
+                                    </>
+                                ) : (
+                                <div className={Cookies.get('userData') ? 'hidden' : ''}>
+                                <div className={'border-b border-gray-300 my-54'}></div>
+                                        {translations.header.login_option.map((item: { text: string, link: string }, index: number) => {
+                                            return <div key={index} className='hover:cursor-pointer my-5' onClick={() => {
+                                                setIsAnimating(true);
+                                                setActiveMenu(null);
+                                                routerToCheckLogin(item.link);
+                                            }}>{item.text}</div>
+                                        })}
                                 </div>
-                            ))}
-                            <div className='flex gap-2 flex-col'>
+                                )}
+                                {translations.header.options.map((item: HeaderOption, index: number) => (
+                                    <div key={index}>
+                                        <div className='font-bold hover:cursor-pointer my-5' onClick={() => {
+                                            router.push(item.link)
+                                            setIsMenuOpen(false)
+                                        }}>{item.text}</div>
+                                        <div className={item.options ? 'border-b border-gray-300 my-54' : ''}></div>
+                                        <div className='flex flex-col gap-5 mt-2 relative left-5'>
+                                            {item.options?.map((option, i) => (
+                                                <div key={i} className='hover:underline hover:cursor-pointer' onClick={() => routerToScroll(item.link, option.link)}>{option.text}</div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                                <div className='flex gap-2 flex-col'>
 
-                                        <div className='py-2 hover:cursor-pointer' 
-                                                                   onClick={() =>  router.push('/pages/auth/appointment')}
+                                            <div className='py-2 hover:cursor-pointer' 
+                                                                       onClick={() =>  router.push('/pages/auth/appointment')}
 
 >
-                                            {translations.header.appointment}</div>
-                                        <div className='py-2 hover:cursor-pointer'>{translations.header.search}</div>
-                                        <div className='hover:cursor-pointer' onClick={toggleLanguage}>{translations.language}</div>
+                                                {translations.header.appointment}</div>
+                                            <div className='py-2 hover:cursor-pointer'>{translations.header.search}</div>
+                                </div>
                             </div>
                         </div>
                     )}
