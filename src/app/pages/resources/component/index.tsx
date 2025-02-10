@@ -18,10 +18,11 @@ interface ComponentData {
 
 interface InformationData {
   id: string;
-  title: string;
+  title:translationsData;
   content: translationsData;
   type: string;
   url: string[];
+
 }
 
 interface translationsData {
@@ -125,7 +126,7 @@ export default function ResourcesComponent() {
   };
 
   const handleReadMore = (item: InformationData) => {
-    router.push(`/pages/blog-detail?title=${encodeURIComponent(translations.language === 'EN' ? item.content.en : item.content.zn)}&desc=${encodeURIComponent(translations.language === 'EN' ? item.content.en : item.content.zn)}&image=${encodeURIComponent(item.url?.[0] || '')}`);
+    router.push(`/pages/blog-detail?id=${item.id}`);
   };
 
   return (
@@ -180,21 +181,23 @@ export default function ResourcesComponent() {
               {informationData.filter(item => item.type === 'INTENDED_PARENT').slice(0, intendedParentCount).map((item, index) => (
                 <div key={index} className="w-full md:w-[367px] h-auto rounded flex flex-col justify-between overflow-hidden">
                   <div>
-                    <Image 
-                      src={item.url?.[0] || '/images/resources/default.png'} 
-                      alt={translations.language === 'EN' ? item.content.zn : item.content.en} 
-                      width={367} 
-                      height={250} 
-                      layout="responsive"
-                      style={{ width: '100%', height: 'auto' }}
+                    <div className="relative w-full h-[200px] md:w-full md:h-[250px] overflow-hidden">
+                      <Image 
+                        src={item.url?.[0] || '/images/resources/default.png'} 
+                        alt={translations.language === 'EN' ? item.content.zn : item.content.en} 
+                        layout="fill"
+                        objectFit="cover"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.src = '/images/resources/default.png';
                       }}
+
                     />
+                    </div>
                     <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mt-5 mb-3`}>
-                      {translations.language === 'EN' ? item.title : item.title}
+                      {translations.language === 'EN' ? item.title.zn : item.title.en}
                     </p>
+
                     <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-5`}>
                       {translations.language === 'EN' ? item.content.zn : item.content.en}
                     </p>
@@ -212,23 +215,21 @@ export default function ResourcesComponent() {
 
           {selectedTab === 'surrogate_mom' && (
             <>
-              {informationData.filter(item => item.type !== 'INTENDED_surrogateMom').slice(0, surrogateMomCount).map((item, index) => (
+              {informationData.filter(item => item.type === 'SURROGATE_MOTHER').slice(0, surrogateMomCount).map((item, index) => (
                 <div key={index} className="w-full md:w-[367px] h-auto rounded flex flex-col justify-between overflow-hidden">
                   <div>
+                    <div className="relative w-full h-[200px] md:w-full md:h-[250px] overflow-hidden">
                     <Image 
                       src={item.url?.[0] || '/images/resources/default.png'} 
                       alt={translations.language === 'EN' ? item.content.zn : item.content.en} 
-                      width={367} 
-                      height={250}
-                      layout="responsive"
-                      style={{ width: '100%', height: 'auto' }}
+                      layout="fill"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.src = '/images/resources/default.png';
                       }}
-                    />
+                    /></div>
                     <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white mt-5 mb-3`}>
-                      {translations.language === 'EN' ? item.title : item.title}
+                      {translations.language === 'EN' ? item.title.zn : item.title.en}
                     </p>
                     <p className={`${translations.language==='EN'?'h3-text':'h3-text-en'} text-white mb-5`}>
                       {translations.language === 'EN' ? item.content.zn : item.content.en}
@@ -265,7 +266,7 @@ export default function ResourcesComponent() {
 
         {selectedTab === 'surrogate_mom' && (
           <>
-            {surrogateMomCount < informationData.filter(item => item.type !== 'INTENDED_surrogateMom').length ? (
+            {surrogateMomCount < informationData.filter(item => item.type === 'SURROGATE_MOTHER').length ? (
               <button 
                 className="text-xs md:text-sm mt-8 px-4 py-2 bg-[#F1E6C3] text-black rounded-full self-center font-normal"
                 onClick={() => setSurrogateMomCount(prev => prev + 4)}

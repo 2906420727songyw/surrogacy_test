@@ -42,14 +42,53 @@ export default function BecomingSurrogate() {
           }`}
         >{translations.home.BecomingSurrogate.title}</h2>
         <p className={`text-[0.8rem] md:text-[1.5rem] text-white text-center mb-1.5 md:mb-3`}>{translations.home.BecomingSurrogate.desc}</p>
-        <div className="flex justify-center items-start gap-8 md:gap-10 mt-5 md:mt-10">
+        {/*<div className="flex justify-center items-start gap-8 md:gap-10 mt-5 md:mt-10">
           {
             translations.home.BecomingSurrogate.button.map((item:any,index:number)=>(
               <button className="w-28 h-6 md:w-44 md:h-8 rounded text-[10px] md:text-sm font-medium text-black bg-white hover:bg-gray-100 transition duration-200" key={index} onClick={() => item.auth?Cookies.get('userData')?router.push(item.link[0]):router.push(item.link[1]):router.push(item.link[0])}>{item.text}</button>
             ))
           }
-        </div>
+        </div>*/}
+        <div className="flex justify-center items-start gap-8 md:gap-10 mt-5 md:mt-10">
+  {
+    translations.home.BecomingSurrogate.button.map((item:any,index:number)=>(
+      <button 
+        className="w-28 h-6 md:w-44 md:h-8 rounded text-[10px] md:text-sm font-medium text-black bg-white hover:bg-gray-100 transition duration-200" 
+        key={index} 
+        onClick={() => {
+          if (item.auth) {
+            const userData = Cookies.get('userData');
+            if (userData) {
+              const user = JSON.parse(userData);
+              if (item.text === '申请通道') {
+                if (user.role === 'SURROGATE_MOTHER') {
+                  router.push(item.link[0]); // 跳转到 /pages/auth/profile?type=become
+                } else if (user.role === 'INTENDED_PARENT') {
+                  router.push(item.link[1]); // 跳转到 /pages/auth/login?type=parent
+                }
+              } else {
+                router.push(item.link[0]);
+              }
+            } else {
+              if (item.text === '申请通道') {
+                router.push(item.link[1]); // 跳转到 /pages/auth/login?mode=register
+              } else {
+                router.push(item.link[1]); // 跳转到 /pages/auth/login?mode=registerMother
+              }
+            }
+          } else {
+            router.push(item.link[0]);
+          }
+        }}
+      >
+        {item.text}
+      </button>
+    ))
+  }
+</div>
+
       </div>
     </section>
   );
+
 } 

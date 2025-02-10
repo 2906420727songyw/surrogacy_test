@@ -3,10 +3,25 @@ import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import { Suspense } from 'react';
 import { useLanguage } from '@/app/language/';
+import informationApi from '@/app/service/information/api';
+import { useEffect, useState } from 'react';
 
+interface InformationData {
+  id: string;
+  title: translationsData;
+  content: translationsData;
+  type: string;
+  url: string[];
+}
+
+interface translationsData {
+  en: string;
+  zn: string;
+}
 
 export default function BlogDetail() {
   const { translations } = useLanguage();
+
 
   return (
     <div className={`py-[150px] w-full h-auto flex flex-col justify-center items-center bg-[#868275] ${translations.language==='EN'?'':'en-text'}`}>
@@ -16,25 +31,50 @@ export default function BlogDetail() {
     </div>
   );
 }
-
 function BlogDetailContent() {
+  const { translations } = useLanguage();
   const searchParams = useSearchParams();
-  const title = searchParams.get('title') || '';
-  const desc = searchParams.get('desc') || '';
-  const image = searchParams.get('image') || '';
+  const id = searchParams.get('id') || '';
+  const [blogData, setBlogData] = useState<InformationData | null>(null);
+
+  useEffect(() => {
+    const fetchBlogData = async () => {
+      if (id) {
+        const data = await informationApi.getInformationById(id);
+        setBlogData(data as unknown as InformationData);
+      }
+    };
+
+    fetchBlogData();
+  }, [id]);
+
+  if (!blogData) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
-      <div className="w-full h-auto flex flex-col justify-center items-center md:px-[500px] px-5">
-        <p className="h2-text-en text-white text-center mt-5 mb-10 md:mt-10 md:mb-20">{title}</p>
+      <div className="w-full h-auto flex flex-col justify-center items-center px-5">
+        <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white text-center mt-5 mb-10 md:mt-10 md:mb-20 en-width`}>
+          {translations.language === 'EN' ? blogData.title.zn : blogData.title.en}
+        </p>
+
       </div>
+
+
       <Image 
-        src={image} 
-        alt={title} 
+        src={blogData.url[0] || '/images/resources/default.png'}
+        alt={translations.language === 'EN' ? blogData.title.zn : blogData.title.en}
         width={500} 
         height={300}
       />
-      <p className="h2-text text-white text-center mb-5 md:mb-10 mt-10 md:mt-20 md:mx-[500px]">{desc}</p>
+
+
+      <p className={`${translations.language==='EN'?'h2-text':'h2-text-en'} text-white text-center mb-5 md:mb-10 mt-10 md:mt-20 en-width`}>
+        {translations.language === 'EN' ? blogData.content.zn : blogData.content.en}
+      </p>
+
+
     </>
   );
 }
