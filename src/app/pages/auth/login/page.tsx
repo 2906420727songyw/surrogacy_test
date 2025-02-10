@@ -48,9 +48,12 @@ function LoginContent() {
     e.preventDefault();
     setIsLoading(true);
     try {
+
+      const userType = searchParams?.get('type') ? searchParams?.get('type') === 'surrogacy' ? 'surrogacy' : 'parent' : searchParams?.get('mode')?.includes('Mother') ? 'surrogacy' : 'parent';
       await login({
         email,
-        password: MD5(password).toString()
+        password: MD5(password).toString(),
+        type:userType
       });
     } catch (error) {
       console.error('登录失败:', error);

@@ -73,7 +73,7 @@ export default function BecomingSurrogate() {
               if (item.text === '申请通道') {
                 router.push(item.link[1]); // 跳转到 /pages/auth/login?mode=register
               } else {
-                router.push(item.link[1]); // 跳转到 /pages/auth/login?mode=registerMother
+                router.push(item.link[1]); // 跳转到 /pages/auth/login?type=surrogacy
               }
             }
           } else {

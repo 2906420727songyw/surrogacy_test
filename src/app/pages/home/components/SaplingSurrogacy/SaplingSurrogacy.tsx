@@ -31,6 +31,24 @@ export default function SaplingSurrogacy() {
     return () => observer.disconnect();
   }, []);
 
+  const gotoPage = (item:any) => {
+    if(item.auth){
+      const userDataStr = Cookies.get('userData');
+      if(userDataStr) {
+        const userData = JSON.parse(userDataStr);
+        if(userData && userData.role === "INTENDED_PARENT"){
+          router.push(item.link[0]);
+        } else {
+          router.push(item.link[1]);
+        }
+      } else {
+        router.push(item.link[1]);
+      }
+    } else {
+      router.push(item.link[0]);
+    }
+  }
+
   return (
     <section className={`${styles.saplingSurrogacy} relative before:content-[''] before:absolute before:inset-0 before:bg-black before:opacity-20 before:z-0`}>
       <div className="mx-auto flex flex-col items-center w-full h-auto md:w-full z-10">
@@ -44,7 +62,13 @@ export default function SaplingSurrogacy() {
         </h2>
         <div className="flex justify-center items-start gap-8 mt-3 md:gap-10 md:mt-6">
           {translations.home.saplingSurrogacy.button.map((item:any,index:number)=>(
-            <button className="w-28 h-6 md:w-44 md:h-8 rounded text-[10px] md:text-sm font-medium text-black bg-white hover:bg-gray-100 transition duration-200" key={index} onClick={() => item.auth?Cookies.get('userData')?router.push(item.link[0]):router.push(item.link[1]):router.push(item.link[0])}>{item.text}</button>
+            <button 
+              className="w-28 h-6 md:w-44 md:h-8 rounded text-[10px] md:text-sm font-medium text-black bg-white hover:bg-gray-100 transition duration-200" 
+              key={index} 
+              onClick={() => gotoPage(item)}
+            >
+              {item.text}
+            </button>
           ))}
         </div>
       </div>

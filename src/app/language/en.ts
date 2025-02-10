@@ -614,8 +614,11 @@ export default {
             birthday:'Date of Birth',
             userName:'User Name',
             address:'Home Address',
+            country:'Country',
+            city:'City',
             edit:"Edit Account",
-            save:"Save"
+            save:"Save",
+            cancel:"Cancel"
         },
         surrogateContent:{
 
@@ -955,7 +958,19 @@ export default {
     appointment_btn: 'Make Appointment',
     appointment_loading: 'Processing Appointment...',
     desc: 'By reserving this appointment, you agree to share your name and contact information with Sapling Surrogacy.'
+},
+auth:{
+  loginSuccess: "Login Success",
+  loginFailed: "Login Failed",
+  registerSuccess: "Register Success",
+  invalidCredentials: "Invalid Credentials",
+  userNotFound: "User Not Found",
+  emailExists: "Email Already Exists",
+  registerFailed: "Register Failed",
+  serverError: "Server Error",
+  unknownError: "Unknown Error",
+  roleError: "You do not have permission to login",
+  getUserInfoFailed: "Get User Info Failed"
 }
-
   
 }

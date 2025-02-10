@@ -8,6 +8,8 @@ import { useRouter } from 'next/navigation';
 import { MD5 } from 'crypto-js';
 import Cookies from 'js-cookie';
 import userApi from '@/app/service/user/api';
+import { useLanguage } from '@/app/language/';
+
 interface AuthResponse {
   code: number;
   message?: string;
@@ -24,6 +26,7 @@ interface AuthContextType {
 interface loginParams {
   email: string;
   password: string;
+  type: 'parent' | 'surrogacy';
 }
 
 interface registerParams {
@@ -49,19 +52,31 @@ export const AuthContext = createContext<AuthContextType>({
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const router = useRouter();
+  const { translations } = useLanguage();
 
   const login = async (params: loginParams) => {
+    const dist: { [key in 'parent' | 'surrogacy']: string } = {
+      parent: "INTENDED_PARENT",
+      surrogacy: "SURROGATE_MOTHER"
+    }
     try {
       await authApi.login(params).then((res:any) => {
         switch(res.code){
           case 200:
+            
+            if(res.data.role === dist[params.type]){
             Cookies.set('userData', JSON.stringify(res.data), { expires: 30 });
-            toast.success('登录成功');
+            toast.success(translations.auth.loginSuccess);
             router.push('/pages/auth/profile?type=appointment');
             setIsAuthenticated(true);
             break;
+            }else{
+              toast.error(translations.auth.roleError);
+              setIsAuthenticated(false);
+              break;
+            }
           case 401:
-            toast.error(res.message);
+            toast.error(translations.auth.invalidCredentials);
             setIsAuthenticated(false);
             break;
           case 404:
@@ -73,7 +88,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
       });
     } catch (error) {
-      return { code: 500, message: '服务器错误' };
+      toast.error(translations.auth.serverError);
     }
   };
 
@@ -104,15 +119,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           userApi.getUserInfo(res.data.id).then((ret:any)=>{
             Cookies.set('userData', JSON.stringify(ret), { expires: 30 });
 
-          toast.success('注册成功');
-          router.push('/pages/auth/profile?type=appointment');
-          setIsAuthenticated(true);
+            toast.success(translations.auth.registerSuccess);
+            router.push('/pages/auth/profile?type=appointment');
+            setIsAuthenticated(true);
           })
 
           break;
         case 409:
-        console.log("注册失败");
-        toast.error(res.message);
+        toast.error(translations.auth.registerFailed);
         setIsAuthenticated(false);
           break;
         default:

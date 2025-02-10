@@ -14,6 +14,16 @@ export default function BecomeSurrogatePart2({
 }: BecomeSurrogatePart2Props) {
   const router = useRouter();
   const { translations } = useLanguage();
+
+  const gotoPage = () => {
+    const userData = Cookies.get('userData');
+    if(userData && JSON.parse(userData).role === "SURROGATE_MOTHER"){
+      router.push('/pages/auth/profile?type=become');
+    }else{
+      router.push('/pages/auth/login?type=surrogacy');
+    }
+  }
+
   return (
     <div className={styles.becomeSurrogatePart2}>
       {/*<Image
@@ -83,7 +93,7 @@ export default function BecomeSurrogatePart2({
           )}
           <button
             className="w-16 h-6 md:w-24 md:h-8 rounded text-xs md:text-sm font-medium text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mt-20 mb-10 md:mt-20 md:mb-20"
-            onClick={() => Cookies.get('userData')?router.push('/pages/auth/profile?type=become' ):router.push('/pages/auth/login?mode=registerMother')}
+            onClick={gotoPage}
           >
             {translations.becomeSurrogate.becomeSurrogatePart2.buttonText}
           </button>

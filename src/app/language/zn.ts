@@ -610,8 +610,11 @@ export default {
             birthday:'出生日期',
             userName:'用户名',
             address:'详细地址',
+            country:'国家',
+            city:'城市',
             edit:"编辑账户",
-            save:"保存"
+            save:"保存",
+            cancel:"取消"
         },
         surrogateContent:{
 
@@ -910,5 +913,18 @@ export default {
         appointment_btn:'预约',
         appointment_loading:'预约中...',
         desc:"通过预约此项目，您即同意向小树苗提供您的姓名和联系方式。"
+    },
+    auth:{
+        loginSuccess: "登录成功",
+        loginFailed: "登录失败",
+        registerSuccess: "注册成功",
+        invalidCredentials: "用户名或密码错误",
+        userNotFound: "用户不存在",
+        emailExists: "邮箱已被注册",
+        registerFailed: "注册失败",
+        serverError: "服务器错误",
+        unknownError: "未知错误",
+        roleError: "您没有权限登录",
+        getUserInfoFailed: "获取用户信息失败"
     }
 }

@@ -15,18 +15,6 @@ const formatDate = (dateString: string) => {
   }
 };
 
-const initialUserData = {
-  id: '',
-  name: '',
-  email: '',
-  password: '',
-  phoneNumber: '',
-  dateOfBirth: '',
-  address: '',
-  country: '',
-  city: ''
-};
-
 interface UserData {
   id: string;
   name: string;
@@ -37,7 +25,21 @@ interface UserData {
   address: string;
   country: string;
   city: string;
+  username?: string;  // 将 username 设为可选属性
 }
+
+const initialUserData: UserData = {
+  id: '',
+  name: '',
+  email: '',
+  password: '',
+  phoneNumber: '',
+  dateOfBirth: '',
+  address: '',
+  country: '',
+  city: '',
+  // username 是可选的，所以不需要在初始值中设置
+};
 
 export default function ProfileContent() {
   const [userData, setUserData] = useState<UserData>(initialUserData);
@@ -67,6 +69,8 @@ export default function ProfileContent() {
 
         const response = await userApi.getUserInfo(parsedUserData.id);
         const res = response as unknown as UserData;
+        console.log(res);
+        
         const newUserData = {
           id: res.id || '',
           name: res.name || '',
@@ -76,12 +80,13 @@ export default function ProfileContent() {
           dateOfBirth: res.dateOfBirth ? formatDate(res.dateOfBirth) : '',
           address: res.address || '',
           country: res.country || '',
-          city: res.city || ''
+          city: res.city || '',
+          username: res.username || ''
         };
         setUserData(newUserData);
         setEditingData(newUserData);
-      } catch (error) {
-        console.error('获取用户信息失败:', error);
+      } catch  {
+        console.error(translations.auth.getUserInfoFailed);
       } finally {
         setIsLoading(false);
       }
@@ -109,7 +114,7 @@ export default function ProfileContent() {
     }
   };
 
-  const getDisplayValue = (value: string) => {
+  const getDisplayValue = (value: string | undefined): string => {
     if (!isClient) return '';
     return value || (translations.language === 'EN' ? '暂未填写' : 'Not yet provided');
   };
@@ -173,12 +178,27 @@ export default function ProfileContent() {
           />
           <InfoItem 
             label={translations.profile.profileContent.userName } 
-            value={getDisplayValue(isEditing ? editingData.name : userData.name)} 
-            name="name"
+            value={getDisplayValue(isEditing ? editingData.username : userData.username)} 
+            name="username"
+            isEditing={isEditing}
+            onChange={handleInputChange}
+          />
+        
+          <InfoItem 
+            label={translations.profile.profileContent.country } 
+            value={getDisplayValue(isEditing ? editingData.country : userData.country)} 
+            name="country"
             isEditing={isEditing}
             onChange={handleInputChange}
           />
           <InfoItem 
+            label={translations.profile.profileContent.city } 
+            value={getDisplayValue(isEditing ? editingData.city : userData.city)} 
+            name="city"
+            isEditing={isEditing}
+            onChange={handleInputChange}
+          />
+            <InfoItem 
             label={translations.profile.profileContent.address } 
             value={getDisplayValue(isEditing ? editingData.address : userData.address)} 
             name="address"
@@ -194,6 +214,15 @@ export default function ProfileContent() {
             className="text-white text-[12px] md:text-[14px] hover:opacity-80 border-b border-white pb-[2px]"
           >
             {isEditing ? translations.profile.profileContent.save : translations.profile.profileContent.edit}
+          </button>
+         
+        </div>
+        <div className="mt-[20px] md:mt-[20px]">
+        <button 
+            onClick={() => setIsEditing(false)}
+            className=" text-white text-[12px] md:text-[14px] hover:opacity-80 border-b border-white "
+          >
+            {translations.profile.profileContent.cancel}
           </button>
         </div>
       </div>
