@@ -659,7 +659,7 @@ export default {
                     options: ["Yes", "No"]
                 },
                 {
-                    question: "When do you expect to start your surrogacy journey?",
+                    question: "When do you expect to start your surrogacy journey? *",
                     options: ["0-3 months", "4-6 months", "7-12 months", "Over 12 months"]
                 },
                 {
@@ -959,6 +959,43 @@ export default {
     appointment_loading: 'Processing Appointment...',
     desc: 'By reserving this appointment, you agree to share your name and contact information with Sapling Surrogacy.'
 },
+"appointment_parent": {
+  back:"Back",
+  title:"Prospective Parents Initial Information Form",
+        "name": "Name",
+        "birthday": "Date of Birth (DD/MM/YYYY)",
+        "phone": "Phone Number",
+        "email": "Email Address",
+        "address": "Residential Address",
+        "marital": {
+            "label": "Marital Status",
+            "options": ["Single", "Married", "Partnered", "Other"]
+        },
+        "hasEmbryo": {
+            "label": "Do you already have embryos?",
+            "options": ["Yes", "No"],
+            "embryoAddress": "Embryo Storage Location",
+            "embryoNumber": "Number of Embryos",
+            "embryoFrom": {
+                "label": "Embryo Source",
+                "options": ["Own Eggs", "Donor Eggs", "Own Sperm", "Donor Sperm"]
+            }
+        },
+        "needTechincal": {
+            "label": "Do you require assisted reproductive technology, such as IVF?",
+            "options": ["Yes", "No"]
+        },
+        "needEmbryo": {
+            "label": "Do you need egg or sperm donation?",
+            "options": ["Egg Donation", "Sperm Donation", "Not Needed"]
+        },
+        "usualLanguage": {
+            "label": "Preferred Language(s)",
+            "options": ["Chinese", "English", "Other"]
+        },
+        agreement:"By scheduling this consultation, you authorize Sapling Surrogacy to collect your name and contact information."
+    },
+
 auth:{
   loginSuccess: "Login Success",
   loginFailed: "Login Failed",

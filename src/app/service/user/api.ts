@@ -44,6 +44,11 @@ function getUserInfo(id: string) {
   return http.get(`users/${id}`);    
 }
 
+
+function updateUserInfo(data: any):Promise<any> {
+  return http.put(`users/${data?.id}`, data);
+}
+
 function applySurrogateMother(data: SurrogateMother):Promise<any> {
   return http.post(`surrogate-mother-applications`, data);
 }
@@ -55,7 +60,8 @@ function applyParent(data: Parent):Promise<any> {
 export default {
   getUserInfo,
   applySurrogateMother,
-  applyParent
+  applyParent,
+  updateUserInfo
 } as const;
 
 // 导出接口供其他文件使用

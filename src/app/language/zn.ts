@@ -914,6 +914,44 @@ export default {
         appointment_loading:'预约中...',
         desc:"通过预约此项目，您即同意向小树苗提供您的姓名和联系方式。"
     },
+
+    appointment_parent:{ 
+        back:"返回",
+        title:"准父母初次申请的信息表",
+        name:"姓名",
+        birthday:"出生日期（DD/MM/YYYY）",
+        phone:"联系电话",
+        email:"电子邮件",
+        address:"居住地址",
+        marital:{
+            label:"婚姻状况",
+            options:["单身","已婚" , "伴侣", "其他"]
+        },
+        hasEmbryo:{
+            label:"是否有已有胚胎",
+            options:["是", "否"],
+            embryoAddress:"胚胎所在地",
+            embryoNumber:"胚胎数量",
+            embryoFrom:{
+                label:"胚胎来源",
+                options:["自卵", "供卵", "自精", "供精"]
+            },
+        },
+        needTechincal:{
+            label:"是否需要辅助生殖技术，如试管婴儿",
+            options:["是", "否"]
+        },
+        needEmbryo:{
+            label:"是否需要捐卵或捐精",
+            options:["需要捐卵","需要捐精","不需要"]
+        },
+        usualLanguage:{
+            label:"常用语言",
+            options:["中文", "英文", "其他"]
+        },
+        agreement:"当您预约此咨询时，即表示您授权小树苗代孕中心获取您的姓名和联系方式。"
+    },
+
     auth:{
         loginSuccess: "登录成功",
         loginFailed: "登录失败",

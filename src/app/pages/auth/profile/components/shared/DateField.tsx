@@ -1,10 +1,27 @@
 'use client';
 
-export default function DateField({ label, name, value, onChange }: DateFieldProps) {
+import React from 'react';
+import { useLanguage } from '@/app/language/';
+
+interface DateFieldProps {
+  label: string;
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const DateField: React.FC<DateFieldProps> = ({
+  label,
+  name,
+  value,
+  onChange
+}) => {
+  const cleanLabel = label.replace(/\s*\*\s*$/, '');
+
   return (
-    <div className="flex flex-col space-y-2">
-      <label className="text-white text-[12px] md:text-[14px]">
-        {label}
+    <div className="relative">
+      <label className="block text-white/60 text-[14px] mb-2">
+        {cleanLabel}*
       </label>
       <div className="relative">
         <input
@@ -12,34 +29,17 @@ export default function DateField({ label, name, value, onChange }: DateFieldPro
           name={name}
           value={value}
           onChange={onChange}
-          className={`
-            w-full h-[50px] px-4 bg-white border-none text-base rounded-lg
-             text-transparent
-            [&::-webkit-calendar-picker-indicator]:opacity-0 
-            [&::-webkit-calendar-picker-indicator]:absolute
-            [&::-webkit-calendar-picker-indicator]:w-full
-            [&::-webkit-calendar-picker-indicator]:h-full
-            [&::-webkit-calendar-picker-indicator]:cursor-pointer
-            [&::-webkit-datetime-edit-text]:hidden
-            [&::-webkit-datetime-edit-year-field]:hidden
-            [&::-webkit-datetime-edit-month-field]:hidden
-            [&::-webkit-datetime-edit-day-field]:hidden
-            relative
-          `}
-          placeholder=""
+          className={`w-full h-[48px] bg-transparent border-b border-white/60 px-0 text-[14px] md:text-[16px] text-white focus:outline-none
+            [&::-webkit-datetime-edit-fields-wrapper]:opacity-0
+            [&::-webkit-datetime-edit]:opacity-0
+            [&::-webkit-calendar-picker-indicator]:filter 
+            [&::-webkit-calendar-picker-indicator]:invert 
+            [&::-webkit-calendar-picker-indicator]:opacity-50
+            ${value ? '[&::-webkit-datetime-edit]:opacity-100 [&::-webkit-datetime-edit-fields-wrapper]:opacity-100' : ''}`}
         />
-        <div className="absolute inset-0 pointer-events-none flex items-center px-4 text-black">
-          {value ? value : ''}
-        </div>
       </div>
     </div>
   );
-}
+};
 
-interface DateFieldProps {
-  label: string;
-  name: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  type?: string;
-} 
+export default DateField; 

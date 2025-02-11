@@ -7,6 +7,7 @@ import DateField from './shared/DateField';
 import userApi from '@/app/service/user/api';
 import Cookies from 'js-cookie';
 import { useLanguage } from '@/app/language/';
+import CustomInput from '@/app/components/CustomInput';
 
 interface QAItem {
   question: string;
@@ -73,6 +74,55 @@ export default function ParentApplicationContent() {
     embryoLocation: ''
   });
 
+  // 修改 getFieldKey 函数中的映射
+  const getFieldKey = (label: string): string => {
+    const fieldMap: { [key: string]: string } = {
+      'Full Name *': 'name',
+      '姓名 *': 'name',
+      'Address *': 'address',
+      '地址 *': 'address',
+      'City *': 'city',
+      '城市 *': 'city',
+      'State/Province *': 'province',
+      '州/省 *': 'province',
+      'Postal Code *': 'zipCode',
+      '邮政编码 *': 'zipCode',
+      'Country *': 'country',
+      '国家 *': 'country',
+      'Phone Number *': 'phone',
+      '电话号码 *': 'phone',
+      'Email Address *': 'email',
+      '电子邮件 *': 'email',
+      'Date of Birth *': 'birthDate',
+      '出生日期 *': 'birthDate',
+      'Marital Status *': 'maritalStatus',
+      '婚姻状况 *': 'maritalStatus',
+      "Partner's Full Name *": 'spouseName',
+      '配偶姓名 *': 'spouseName',
+      "Partner's Date of Birth *": 'spouseBirthDate',
+      '配偶出生日期 *': 'spouseBirthDate',
+      'Sexual Orientation *': 'orientation',
+      '性取向 *': 'orientation',
+      'What services do you need? *': 'serviceType',
+      '您需要哪些服务 *': 'serviceType',
+      'Have you or your partner ever been arrested? *': 'hasBeenArrested',
+      '您或您的伴侣曾被逮捕过吗？ *': 'hasBeenArrested',
+      'Have you or your partner ever been convicted of a crime? *': 'hasBeenConvicted',
+      '您或您的伴侣是否曾被判定有罪？ *': 'hasBeenConvicted',
+      'When do you expect to start your surrogacy journey? *': 'serviceDuration',
+      '您预计何时开始您的代孕旅程？ *': 'serviceDuration',
+      'Do you currently have a partnering IVF clinic? *': 'hasClinic',
+      '您目前是否有合作的试管婴儿诊所？ *': 'hasClinic',
+      'Do you currently have frozen embryos? *': 'hasFrozenEmbryo',
+      '您是否有冷冻胚胎？ *': 'hasFrozenEmbryo'
+    };
+
+    // 添加调试日志
+  
+
+    return fieldMap[label] || label;
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -83,65 +133,72 @@ export default function ParentApplicationContent() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isSubmitting) return;
+    console.log("Submit button clicked");
+
+    if (isSubmitting) {
+      console.log("Already submitting, return");
+      return;
+    }
 
     // 验证必填字段
     const validateForm = () => {
+     
+
+      let isValid = true;
+      let firstErrorField: HTMLElement | null = null;
+      let missingFields: string[] = [];
+
       // 验证基本信息字段
       const requiredFields = translations.profile.intendedParentContent.reply_list
         .filter((label: string) => label.includes('*'))
-        .map((label: string) => {
-          const fieldMap: { [key: string]: string } = {
-            'Full Name *': 'name',
-            'Address *': 'address',
-            'City *': 'city',
-            'State/Province *': 'province',
-            'Postal Code *': 'zipCode',
-            'Country *': 'country',
-            'Phone Number *': 'phone',
-            'Email Address *': 'email',
-            'Date of Birth *': 'birthDate',
-            'Marital Status *': 'maritalStatus',
-            "Partner's Full Name *": 'spouseName',
-            "Partner's Date of Birth *": 'spouseBirthDate'
-          };
-          return fieldMap[label];
-        });
+        .map((label: string) => ({ key: getFieldKey(label), label }));
+
 
       for (const field of requiredFields) {
-        if (!formData[field]) {
-          toast.error(translations.language === 'EN' ? 
-            '请填写所有带*号的必填项' : 
-            'Please fill in all required fields marked with *'
-          );
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-          return false;
+        if (!formData[field.key]) {
+          const element = document.querySelector(`[name="${field.key}"]`);
+          if (element && !firstErrorField) {
+            firstErrorField = element as HTMLElement;
+          }
+          missingFields.push(field.label);
+          isValid = false;
         }
       }
 
       // 验证单选框组必填项
       const requiredQuestions = translations.profile.intendedParentContent.qa_list
         .filter((item: QAItem) => item.question.includes('*'))
-        .map((item: QAItem) => item.question);
+        .map((item: QAItem) => ({ key: getFieldKey(item.question), question: item.question }));
+
 
       for (const question of requiredQuestions) {
-        if (!formData[question]) {
-          toast.error(translations.language === 'EN' ? 
-            '请回答所有带*号的必填问题' : 
-            'Please answer all required questions marked with *'
-          );
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-          return false;
+        if (!formData[question.key]) {
+          const element = document.querySelector(`[name="${question.question}"]`);
+          if (element && !firstErrorField) {
+            firstErrorField = element as HTMLElement;
+          }
+          missingFields.push(question.question);
+          isValid = false;
         }
       }
 
-      return true;
+      if (!isValid) {
+        // 显示具体缺少哪些字段
+        const errorMessage = translations.language !== 'EN' 
+          ? `Please fill in the following required fields:\n${missingFields.join('\n')}` 
+          : `请填写以下必填项：\n${missingFields.join('\n')}`;
+        
+        toast.error(errorMessage, {
+          autoClose: 5000, // 延长显示时间
+          style: { whiteSpace: 'pre-line' } // 允许显示换行
+        });
+        
+        if (firstErrorField) {
+          firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+
+      return isValid;
     };
 
     if (!validateForm()) {
@@ -151,11 +208,9 @@ export default function ParentApplicationContent() {
     try {
       setIsSubmitting(true);
       
-      // 从 cookies 获取 userId
       const userDataStr = Cookies.get('userData');
       const userData = userDataStr ? JSON.parse(userDataStr) : {};
       
-      // 构建提交数据
       const submitData: SubmitData = {
         userId: userData.id || '',
         name: formData.name,
@@ -170,22 +225,62 @@ export default function ParentApplicationContent() {
         partnerName: formData.spouseName,
         partnerDateOfBirth: formData.spouseBirthDate,
         answers: [
-          { id: '性取向', value: formData.orientation },
-          { id: '您需要什么服务', value: formData.serviceType },
-          { id: '您或您的伴侣曾被逮捕过吗？', value: formData.hasBeenArrested },
-          { id: '您或您的伴侣是否曾被判定有罪？', value: formData.hasBeenConvicted },
-          { id: '您预计何时开始您的代孕旅程？', value: formData.serviceDuration },
-          { id: '您目前有一起合作的试管婴儿诊所吗？', value: formData.hasClinic },
-          { id: '如果有的话，请列出诊所名字', value: formData.clinicName },
-          { id: '您目前有冷冻胚胎吗？', value: formData.hasFrozenEmbryo },
-          { id: '如果有的话，请告诉我们在哪里', value: formData.embryoLocation }
-        ].filter(answer => answer.value !== '') // 过滤掉空值
+          { 
+            id: translations.language === 'EN' 
+              ? '性取向 *' 
+              : 'Sexual Orientation *',
+            value: formData.orientation || ''
+          },
+          { 
+            id: translations.language === 'EN' 
+              ? '您需要哪些服务 *' 
+              : 'What services do you need? *',
+            value: formData.serviceType || ''
+          },
+          { 
+            id: translations.language === 'EN' 
+              ? '您或您的伴侣曾被逮捕过吗？ *' 
+              : 'Have you or your partner ever been arrested? *',
+            value: formData.hasBeenArrested || ''
+          },
+          { 
+            id: translations.language === 'EN' 
+              ? '您或您的伴侣是否曾被判定有罪？ *' 
+              : 'Have you or your partner ever been convicted of a crime? *',
+            value: formData.hasBeenConvicted || ''
+          },
+          { 
+            id: translations.language === 'EN' 
+              ? '您预计何时开始您的代孕旅程？ *' 
+              : 'When do you expect to start your surrogacy journey? *',
+            value: formData.serviceDuration || ''
+          },
+          { 
+            id: translations.language === 'EN' 
+              ? '您目前是否有合作的试管婴儿诊所？ *' 
+              : 'Do you currently have a partnering IVF clinic? *',
+            value: formData.hasClinic === '否' || formData.hasClinic === 'No' ? 
+              formData.hasClinic : 
+              formData.clinicName || ''
+          },
+          { 
+            id: translations.language === 'EN' 
+              ? '您是否有冷冻胚胎？ *' 
+              : 'Do you currently have frozen embryos? *',
+            value: formData.hasFrozenEmbryo === '否' || formData.hasFrozenEmbryo === 'No' ? 
+              formData.hasFrozenEmbryo : 
+              formData.embryoLocation || ''
+          }
+        ].filter(answer => answer.value !== '')
       };
+
+
       const response = await userApi.applyParent(submitData);
 
-      
-      if (response.code===200) {
-        toast.success(translations.language === 'EN' ? '申请提交成功！' : 'Application submitted successfully!');
+      if (response.code === 200) {
+        toast.success(translations.language !== 'EN' 
+          ? 'Application submitted successfully!' 
+          : '提交成功!');
         // 重置表单数据
         setFormData({
           name: '',
@@ -205,20 +300,16 @@ export default function ParentApplicationContent() {
           embryoLocation: ''
         });
       } else {
-        toast.error(translations.language === 'EN' ? '申请提交失败！' : 'Failed to submit application!');
+        toast.error(translations.language === 'EN' 
+          ? '提交失败!' 
+          : 'Failed to submit application!');
       }
-    } catch (error: unknown) {
-      console.error('提交失败:', error);
-      const errorMessage = error instanceof Error ? error.message : (
-        translations.language === 'EN' ? '提交失败，请稍后重试' : 'Submission failed, please try again later'
-      );
-      toast.error(errorMessage);
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast.error(translations.language === 'EN' 
+        ? '提交遇到问题!' 
+        : 'An error occurred during submission');
     } finally {
-      window.scrollTo({
-        top: 0,        // 滚动到顶部
-        behavior: 'smooth', // 平滑滚动
-      });
-    
       setIsSubmitting(false);
     }
   };
@@ -252,58 +343,38 @@ export default function ParentApplicationContent() {
         </div>
 
         {/* 申请表单 */}
-        <form className="space-y-[16px] md:space-y-[24px] pb-[6vh]" onSubmit={handleSubmit}>
+        <form 
+          className="space-y-[16px] md:space-y-[24px] pb-[6vh]" 
+          onSubmit={handleSubmit}
+          noValidate // 添加这个属性来禁用浏览器默认验证
+        >
           {/* 基本信息字段 */}
           {translations.profile.intendedParentContent.reply_list.map((label: string) => {
-            // 根据标签获取对应的字段名
-            const getFieldName = (label: string): string => {
-              const fieldMap: { [key: string]: string } = {
-                'Full Name *': 'name',
-                'Address *': 'address',
-                'City *': 'city',
-                'State/Province *': 'province',
-                'Postal Code *': 'zipCode',
-                'Country *': 'country',
-                'Country Code (if outside the U.S.)': 'areaCode',
-                'Phone Number *': 'phone',
-                'Email Address *': 'email',
-                'Date of Birth *': 'birthDate',
-                'Marital Status *': 'maritalStatus',
-                "Partner's Full Name *": 'spouseName',
-                "Partner's Date of Birth *": 'spouseBirthDate'
-              };
-              return fieldMap[label] || '';
-            };
-
-            const fieldName = getFieldName(label);
+            const fieldName = getFieldKey(label);
             
-            // 如果是日期字段，使用 DateField 组件
-            if (label.includes('Date of Birth')) {
+            // 修改判断条件，同时处理中英文的日期字段
+            if (label.includes('Date of Birth') || label.includes('出生日期')) {
               return (
                 <DateField 
                   key={fieldName}
-                  label={translations.language === 'EN' ? label : label.replace('出生日期', 'Date of Birth')}
+                  label={label}
                   name={fieldName}
-                  value={formData[fieldName as keyof ApplicationForm]}
+                  value={formData[fieldName] || ''}
                   onChange={handleInputChange}
                 />
               );
             }
 
             return (
-              <div key={fieldName} className="flex flex-col gap-2">
-              <label className="text-white/80 text-[12px] md:text-[14px]">
-                {label}
-              </label>
-              <input
-                  type={fieldName === 'email' ? 'email' : fieldName === 'phone' ? 'tel' : 'text'}
-                  name={fieldName}
-                  value={formData[fieldName as keyof ApplicationForm]}
+              <CustomInput
+                key={fieldName}
+                label={label}
+                name={fieldName}
+                value={formData[fieldName] || ''}
                 onChange={handleInputChange}
-                  className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px] text-black"
-                autoComplete="off"
+                type={fieldName === 'email' ? 'email' : fieldName === 'phone' ? 'tel' : 'text'}
+                required={label.includes('*')}
               />
-            </div>
             );
           })}
 
@@ -313,60 +384,74 @@ export default function ParentApplicationContent() {
               <label className="text-white/80 text-[12px] md:text-[14px]">{item.question}</label>
               <div className={`${item.options.length > 2 ? 'grid grid-cols-2 md:flex md:flex-wrap gap-4 md:gap-8' : 'flex gap-8'}`}>
                 {item.options.map((option: string) => (
-                <label key={option} className="flex items-center space-x-2 cursor-pointer">
-                  <div className="relative flex items-center">
+                  <label key={option} className="flex items-center space-x-2 cursor-pointer">
+                    <div className="relative flex items-center">
+                      <input
+                        type="radio"
+                        name={getFieldKey(item.question)}
+                        value={option}
+                        checked={formData[getFieldKey(item.question)] === option}
+                        onChange={handleInputChange}
+                        className="appearance-none w-[18px] h-[18px] border border-white rounded-[2px] bg-transparent checked:bg-white"
+                      />
+                      {formData[getFieldKey(item.question)] === option && (
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black text-sm">✓</div>
+                      )}
+                    </div>
+                    <span className="text-white text-[12px] md:text-[14px]">{option}</span>
+                  </label>
+                ))}
+              </div>
+
+              {/* 诊所名称 - 条件渲染 */}
+              {(getFieldKey(item.question) === 'hasClinic') && 
+                (formData[getFieldKey(item.question)] === 'Yes' || formData[getFieldKey(item.question)] === '是') && (
+                  <div className="flex flex-col space-y-2 mt-4">
+                    <label className="block text-white/60 text-[14px] mb-2">
+                      {translations.language !== 'EN' 
+                        ? 'If yes, please list the clinic name' 
+                        : '如果有的话，请列出诊所名字'}
+                    </label>
                     <input
-                      type="radio"
-                        name={item.question}
-                      value={option}
-                        checked={formData[item.question] === option}
+                      type="text"
+                      name="clinicName"
+                      value={formData.clinicName}
                       onChange={handleInputChange}
-                      className="appearance-none w-[18px] h-[18px] border border-white rounded-[2px] bg-transparent checked:bg-white"
+                      className="w-full h-[48px] bg-transparent border-b border-white/60 px-0 text-[14px] md:text-[16px] text-white focus:outline-none"
+                      autoComplete="off"
+                      autoCapitalize="off"
+                      autoCorrect="off"
+                      spellCheck="false"
+                      data-form-type="other"
+                      aria-autocomplete="none"
                     />
-                      {formData[item.question] === option && (
-                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black text-sm">✓</div>
-                    )}
                   </div>
-                  <span className="text-white text-[12px] md:text-[14px]">{option}</span>
-                </label>
-              ))}
-          </div>
+                )}
 
-          {/* 诊所名称 - 条件渲染 */}
-              {(item.question === 'Do you currently have a partnering IVF clinic? *' || 
-                item.question === '您目前是否有合作的试管婴儿诊所？ *') && 
-               (formData[item.question] === 'Yes' || formData[item.question] === '是') && (
-                <div className="flex flex-col space-y-2 mt-4">
-              <label className="text-white/80 text-[12px] md:text-[14px]">
-                    {translations.language === 'EN' ? '如果有的话，请列出诊所名字':'If yes, please list the clinic name' }
-              </label>
-              <input
-                type="text"
-                name="clinicName"
-                value={formData.clinicName}
-                onChange={handleInputChange}
-                className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
-              />
-            </div>
-          )}
-
-          {/* 胚胎位置 - 条件渲染 */}
-              {(item.question === 'Do you currently have frozen embryos? *' || 
-                item.question === '您目前是否有冷冻胚胎？ *') && 
-               (formData[item.question] === 'Yes' || formData[item.question] === '是') && (
-                <div className="flex flex-col space-y-2 mt-4">
-              <label className="text-white/80 text-[12px] md:text-[14px]">
-                    {translations.language === 'EN' ? '如果有的话，请告诉我们在哪里':'If yes, please tell us where'}
-              </label>
-              <input
-                type="text"
-                name="embryoLocation"
-                value={formData.embryoLocation}
-                onChange={handleInputChange}
-                className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px]"
-              />
-            </div>
-          )}
+              {/* 胚胎位置 - 条件渲染 */}
+              {(getFieldKey(item.question) === 'hasFrozenEmbryo') && 
+                (formData[getFieldKey(item.question)] === 'Yes' || formData[getFieldKey(item.question)] === '是') && (
+                  <div className="flex flex-col space-y-2 mt-4">
+                    <label className="block text-white/60 text-[14px] mb-2">
+                      {translations.language !== 'EN' 
+                        ? 'If yes, please tell us where' 
+                        : '如果有的话，请告诉我们在哪里'}
+                    </label>
+                    <input
+                      type="text"
+                      name="embryoLocation"
+                      value={formData.embryoLocation}
+                      onChange={handleInputChange}
+                      className="w-full h-[48px] bg-transparent border-b border-white/60 px-0 text-[14px] md:text-[16px] text-white focus:outline-none"
+                      autoComplete="off"
+                      autoCapitalize="off"
+                      autoCorrect="off"
+                      spellCheck="false"
+                      data-form-type="other"
+                      aria-autocomplete="none"
+                    />
+                  </div>
+                )}
             </div>
           ))}
 
@@ -381,7 +466,9 @@ export default function ParentApplicationContent() {
               {isSubmitting ? (
                 <>
                   <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
-                  <span>{translations.language === 'EN' ? 'Submitting' : '提交中'}</span>
+                  <span>{translations.language === 'EN' 
+                    ? '提交中' 
+                    : 'Submitting'}</span>
                 </>
               ) : translations.profile.intendedParentContent.btn}
             </button>

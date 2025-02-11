@@ -16,21 +16,21 @@ const formatDate = (dateString: string) => {
 };
 
 interface UserData {
-  id: string;
-  name: string;
-  email: string;
-  password: string;
-  phoneNumber: string;
-  dateOfBirth: string;
-  address: string;
-  country: string;
-  city: string;
-  username?: string;  // 将 username 设为可选属性
+  id?: string;
+  name?: string;
+  email?: string;
+  password?: string;
+  phoneNumber?: string;
+  dateOfBirth?: string;
+  address?: string;
+  country?: string;
+  city?: string;
+  username?: string;
+  [key: string]: string | number | boolean | undefined;
 }
 
 const initialUserData: UserData = {
   id: '',
-  name: '',
   email: '',
   password: '',
   phoneNumber: '',
@@ -38,7 +38,7 @@ const initialUserData: UserData = {
   address: '',
   country: '',
   city: '',
-  // username 是可选的，所以不需要在初始值中设置
+  username: ''
 };
 
 export default function ProfileContent() {
@@ -105,13 +105,23 @@ export default function ProfileContent() {
 
   const handleSave = async () => {
     try {
+
+      console.log(editingData);
+      for (const key in editingData) {
+        if (Object.prototype.hasOwnProperty.call(editingData, key)) {
+          if (editingData[key] === '') {
+            delete editingData[key];
+          }
+        }
+      }
+      console.log(editingData);
       // 这里添加保存到后端的逻辑
-      // await userApi.updateUserInfo(editingData);
+      await userApi.updateUserInfo(editingData);
       setUserData(editingData);
       setIsEditing(false);
     } catch (error) {
       console.error('保存用户信息失败:', error);
-    }
+    } 
   };
 
   const getDisplayValue = (value: string | undefined): string => {
@@ -124,7 +134,7 @@ export default function ProfileContent() {
       <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px] flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <div className="w-8 h-8 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-white text-sm">加载中...</p>
+          <p className="text-white text-sm">{translations.language === 'EN' ? '加载中...' : 'Loading...'}</p>
         </div>
       </div>
     );
