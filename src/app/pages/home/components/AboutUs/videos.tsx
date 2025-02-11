@@ -1,4 +1,69 @@
+
 'use client';
+
+{/*'use client';
+
+import React, { useEffect, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay } from 'swiper/modules';
+import aboutApi from '@/app/service/video/api';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+interface Video {
+  id: string;
+  url: string;
+  // 其他视频属性...
+}
+
+export default function Test() {
+  const [videos, setVideos] = useState<Video[]>([]);
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const response = await aboutApi.getAboutUsVideos();
+        setVideos(response.data);
+      } catch (error) {
+        console.error('Failed to fetch videos:', error);
+      }
+    };
+
+    fetchVideos();
+  }, []);
+
+  return (
+    <div>
+      <Swiper
+        modules={[Pagination, Autoplay]}
+        spaceBetween={30}
+        slidesPerView="auto"
+        centeredSlides={true}
+        pagination={{
+          clickable: true,
+          renderBullet: (index, className) => {
+            return `<span class="${className}" style="width: 12px; height: 12px; background-color: #ccc; margin: 0 5px; border-radius: 50%; display: inline-block;"></span>`;
+          },
+        }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
+      >
+        {videos.map((video) => (
+          <SwiperSlide key={video.id} style={{ width: '80%', maxWidth: '1000px' }}>
+            <video
+              className='rounded-lg my-10'
+              src={video.url}
+              controls
+            ></video>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  );
+}*/}
+
+
 
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
