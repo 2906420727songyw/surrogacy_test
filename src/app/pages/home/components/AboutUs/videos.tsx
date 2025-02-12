@@ -1,9 +1,7 @@
 
 'use client';
 
-{/*'use client';
-
-import React, { useEffect, useState } from 'react';
+{/*import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import aboutApi from '@/app/service/video/api';
@@ -24,7 +22,7 @@ export default function Test() {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await aboutApi.getAboutUsVideos();
+        const response = await aboutApi.aboutVideo();
         setVideos(response.data);
       } catch (error) {
         console.error('Failed to fetch videos:', error);
@@ -62,7 +60,6 @@ export default function Test() {
     </div>
   );
 }*/}
-
 
 
 import React from 'react';
