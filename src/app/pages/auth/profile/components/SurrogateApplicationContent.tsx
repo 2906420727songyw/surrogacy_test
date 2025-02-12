@@ -148,31 +148,26 @@ export default function SurrogateApplicationContent() {
       <div className="md:max-w-[60vw] pt-[40px] md:pt-[80px] px-[20px] md:px-[60px]">
         {/* 标题部分 */}
         <div className="border-b border-white pb-2 mb-[30px] md:mb-[40px]">
-          <div 
-            className="flex items-center justify-between cursor-pointer"
-          >
-            <h1 className="text-white text-[18px] md:text-[20px] font-normal">
+          <div className="flex items-center justify-between">
+            <h1 className="text-white text-[18px] md:text-[20px] font-bold">
               代孕母初次申请表
             </h1>
-            <span className={`text-white text-[16px] transform transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}>
-              ⌄
-            </span>
           </div>
         </div>
 
-        {/* 个人基本信息 */}
-        <h2 className="text-white text-[14px] md:text-[18px] mb-[16px] md:mb-[24px] underline underline-offset-4">个人基本信息</h2>
-        <form onSubmit={handleSubmit} className="space-y-[16px] md:space-y-[24px] pb-[6vh]">
+        {/* 表单内容 */}
+        <form onSubmit={handleSubmit} className="space-y-[24px] pb-[6vh]">
+          {/* 姓名和年龄 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[40px] gap-y-[24px]">
             <FormField 
-              label="名和姓 *" 
+              label="姓名 *" 
               name="name"
               value={formData.name}
               onChange={handleInputChange}
               type="text"
             />
             <FormField 
-              label="您的年龄 *" 
+              label="年龄 *" 
               name="age"
               value={formData.age}
               onChange={handleInputChange}
@@ -180,23 +175,25 @@ export default function SurrogateApplicationContent() {
             />
           </div>
 
+          {/* 出生日期 */}
           <DateField 
-            label="您的出生日期 *" 
+            label="出生日期 *" 
             name="birthDate"
             value={formData.birthDate}
             onChange={handleInputChange}
           />
 
+          {/* 身高和体重 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[40px] gap-y-[24px]">
             <FormField 
-              label="您的身高（ft）*" 
+              label="身高（ft）*" 
               name="height"
               value={formData.height}
               onChange={handleInputChange}
               type="number"
             />
             <FormField 
-              label="您的体重（lbs）*" 
+              label="体重（lbs）*" 
               name="weight"
               value={formData.weight}
               onChange={handleInputChange}
@@ -283,12 +280,12 @@ export default function SurrogateApplicationContent() {
           </div>
 
           {/* 提交按钮 */}
-          <div className="mt-[32px] md:mt-[40px] ">
+          <div className="mt-[40px]">
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-[120px] h-[48px] bg-[#CDC5C0] rounded-[8px] text-[#000000] text-[16px]  mt-[4vh]
-                flex items-center justify-center gap-2 hover:opacity-90 transition-opacity "
+              className="w-[120px] h-[48px] bg-[#CDC5C0] text-black rounded-lg 
+                hover:opacity-90 transition-opacity text-[16px] flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <>
@@ -310,8 +307,8 @@ function FormField({ label, name, value, onChange, type }: FormFieldProps) {
                       value.toString();
   
   return (
-    <div className="flex flex-col gap-2">
-      <label className="text-white text-[12px] md:text-[14px] opacity-80">
+    <div className="flex flex-col space-y-2">
+      <label className="block text-[#ffffff] text-sm opacity-80">
         {label}
       </label>
       <input
@@ -320,7 +317,8 @@ function FormField({ label, name, value, onChange, type }: FormFieldProps) {
         value={displayValue}
         onChange={onChange}
         placeholder={type === 'date' ? 'YYYY/MM/DD' : ''}
-        className="w-full h-[48px] rounded-[4px] bg-white px-4 text-[14px] md:text-[16px] text-black"
+        className="w-full h-12 bg-transparent border-b border-white/60 px-0 
+          text-white focus:outline-none focus:border-white"
         autoComplete="off"
         required
       />

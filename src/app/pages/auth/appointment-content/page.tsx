@@ -132,8 +132,8 @@ function AppointmentForm({ onBack, appointmentData }: {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full">
-      <div className="flex justify-center w-full pt-[100px] xl:pt-[15vh] bg-[#B8886F] min-h-screen">
+    <div className="flex flex-col items-center justify-center w-full ">
+      <div className="flex justify-center w-full pt-[100px] xl:pt-[15vh] bg-[#B8886F] ">
         {/* 隐藏表单部分保持不变 */}
         <div style={{ display: 'none' }}>
           <input type="text" name="hidden_username" autoComplete="username" />
@@ -404,7 +404,7 @@ function AppointmentForm({ onBack, appointmentData }: {
           </div>
 
           {/* 右侧预约详情部分 - 使用与预约部分相同的 padding 和样式 */}
-          <div className="w-full xl:max-w-[20vw] pt-[2.5rem] xl:pt-[5rem] px-[1.25rem] xl:px-[3.75rem]  xl:border-t-0 border-white/20 mt-6 xl:mt-0">
+          <div className="w-full xl:max-w-[20vw] pt-[2.5rem] xl:pt-[5rem] px-[1.25rem] xl:px-[3.75rem] xl:border-t-0 xl:border-white/20 mt-6 xl:mt-0">
             <div className="sticky top-[120px] pb-10">
               {/* 预约详情标题和展开按钮 */}
               <div className="mb-[1.875rem] xl:mb-[2.5rem]">
