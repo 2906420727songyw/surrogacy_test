@@ -1,9 +1,7 @@
 import http from '@/app/http';
 
-function getAboutUsVideos() {
-  return http.get('about/videos');
-}
+const aboutVideo = () => http.get('about/video');
 
 export default {
-  getAboutUsVideos,
+  aboutVideo,
 } as const;
