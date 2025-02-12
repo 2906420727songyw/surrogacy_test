@@ -993,8 +993,39 @@ export default {
             "label": "Preferred Language(s)",
             "options": ["Chinese", "English", "Other"]
         },
-        agreement:"By scheduling this consultation, you authorize Sapling Surrogacy to collect your name and contact information."
     },
+
+    appointment_surrogate: {
+      title: "Surrogate Mother Initial Application Form",
+      name: "Name",
+      birthday: "Date of Birth (DD/MM/YYYY)",
+      phone: "Phone Number",
+      email: "Email Address",
+      address: "Residential Address",
+      nationality_status: {
+          label: "Nationality/Residency Status",
+          options: ["Green Card Holder", "Citizen", "Other"]
+      },
+      marital: {
+          label: "Marital Status",
+          options: ["Single", "Married", "Partnered", "Other"]
+      },
+      hasChildren: {
+          label: "Do you have children?",
+          options: ["Yes", "No"],
+          childrenNumber: "If yes, please provide the number of children and their ages"
+      },
+      hasSurgery: {
+          label: "Have you ever had a C-section?",
+          options: ["Yes", "No"]
+      }
+  },
+  
+    appointment_agreement:{
+      agreement:"By scheduling this consultation, you authorize Sapling Surrogacy to collect your name and contact information.",
+      button_agreement:"By completing your booking, you agree to receive related EMAIL notifications.",
+      content_agreement:"We reply via email and text message within 12 to 24 hours. If you do not hear back from us, please check your spam folder.",
+  },
 
 auth:{
   loginSuccess: "Login Success",

@@ -921,7 +921,7 @@ export default {
         name:"姓名",
         birthday:"出生日期（DD/MM/YYYY）",
         phone:"联系电话",
-        email:"电子邮件",
+        email:"电子邮箱",
         address:"居住地址",
         marital:{
             label:"婚姻状况",
@@ -949,7 +949,38 @@ export default {
             label:"常用语言",
             options:["中文", "英文", "其他"]
         },
-        agreement:"当您预约此咨询时，即表示您授权小树苗代孕中心获取您的姓名和联系方式。"
+    },
+
+    appointment_surrogate:{
+        title:"代孕母初次申请的信息表",
+        name:"姓名",
+        birthday:"出生日期（DD/MM/YYYY）",
+        phone:"联系电话",
+        email:"电子邮箱",
+        address:"居住地址",
+        nationality_status:{
+            label:"国籍身份",
+            options:[ "绿卡", "公民", "其他"]
+        },
+        marital:{
+            label:"婚姻状况",
+            options:["单身","已婚" , "伴侣", "其他"]
+        },
+        hasChildren:{
+            label:"是否有孩子",
+            options:["是", "否"],
+            childrenNumber:"如有，请填写子女数量及年龄",
+        },
+        hasSurgery:{
+            label:"是否有已有剖腹产经历",
+            options:["是", "否"]
+        },
+    },
+
+    appointment_agreement:{
+        agreement:"当您预约此咨询时，即表示您授权小树苗代孕中心获取您的姓名和联系方式。",
+        button_agreement:"完成预约，即表示您同意接收相关的电子邮件通知。",
+        content_agreement:"我们通过电子邮件和短信回复，通常在12至24小时内。如果您没有收到我们的回复，请检查您的垃圾邮件文件夹。"
     },
 
     auth:{
