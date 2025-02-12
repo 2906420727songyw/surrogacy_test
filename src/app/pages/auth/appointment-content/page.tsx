@@ -90,8 +90,8 @@ const RadioField = ({
   </div>
 );
 
-// 修改 ParentInfoForm 组件，接收 setShowParentForm 作为 props
-function ParentInfoForm({ onBack, appointmentData }: { 
+// 修改组件名为更通用的名称
+function AppointmentForm({ onBack, appointmentData }: { 
   onBack: () => void;
   appointmentData: {
     date: string;
@@ -105,6 +105,8 @@ function ParentInfoForm({ onBack, appointmentData }: {
     email: '',
     phone: '',
     address: '',
+    birthday: '',
+    // 准父母特有字段
     marital: '',
     hasEmbryo: '',
     embryoAddress: '',
@@ -113,13 +115,11 @@ function ParentInfoForm({ onBack, appointmentData }: {
     needTechincal: '',
     needEmbryo: '',
     usualLanguage: '',
-    country: '',
-    sexualOrientation: '',
-    neededServices: '',
-    hasBeenArrested: '',
-    hasBeenConvicted: '',
-    expectedStartTime: '',
-    birthday: ''
+    // 代孕母特有字段
+    nationality_status: '',
+    hasChildren: '',
+    childrenNumber: '',
+    hasSurgery: ''
   });
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
 
@@ -132,282 +132,356 @@ function ParentInfoForm({ onBack, appointmentData }: {
   };
 
   return (
-    <div className="flex justify-center w-full pt-[100px] xl:pt-[15vh] bg-[#B8886F] min-h-screen">
-      <div className="flex flex-col xl:flex-row w-[90%] xl:w-[85%] xl:mt-10">
-        {/* 左侧表单部分 - 使用与预约部分相同的 padding */}
-        <div className="w-full xl:flex-1 xl:max-w-[75vw] xl:pt-[40px] px-[1.25rem] xl:px-[3.75rem]">
-          <div className="flex flex-col space-y-6">
-            {/* 返回按钮 */}
-            <button 
-              className="flex items-center text-white gap-2 hover:opacity-80" 
-              onClick={onBack}
-            >
-              <span>ᐸ</span>
-              <span>{translations.appointment_parent.back}</span>
-            </button>
+    <div className="flex flex-col items-center justify-center w-full">
+      <div className="flex justify-center w-full pt-[100px] xl:pt-[15vh] bg-[#B8886F] min-h-screen">
+        {/* 隐藏表单部分保持不变 */}
+        <div style={{ display: 'none' }}>
+          <input type="text" name="hidden_username" autoComplete="username" />
+          <input type="password" name="hidden_password" autoComplete="current-password" />
+        </div>
 
-            {/* 标题和分割线 */}
-            <div className="mb-[1.875rem] xl:mb-[2.5rem]">
-              <div className="flex justify-between items-center h-[8vh]">
-                <h1 className="text-white text-[1.25rem] xl:text-[1.5rem] font-bold">
-                  {translations.appointment_parent.title}
-                </h1>
-              </div>
-              <div className="h-[1px] bg-white"></div>
-            </div>
+        <div className="flex flex-col xl:flex-row w-[90%] xl:w-[85%] xl:mt-10">
+          <div className="w-full xl:flex-1 xl:max-w-[75vw] xl:pt-[40px] px-[1.25rem] xl:px-[3.75rem]">
+            {/* 返回按钮和标题部分保持不变 */}
+            <div className="flex flex-col space-y-6">
+              <button 
+                className="flex items-center text-white gap-2 hover:opacity-80" 
+                onClick={onBack}
+              >
+                <span>ᐸ</span>
+                <span>{translations.appointment_parent.back}</span>
+              </button>
 
-            {/* 表单内容 */}
-            <form className="flex flex-col space-y-6 pb-10">
-              {/* Name 和 出生日期 在同一行 */}
-              <div className="flex flex-col xl:flex-row gap-6">
-                {/* 姓名 */}
-                <div className="flex-1">
-                  <label className="block text-[#ffffff] text-sm mb-2">
-                    {translations.appointment_parent.name} <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="w-full h-12 bg-transparent border-b border-white/60 px-0 
-                      text-white focus:outline-none focus:border-white"
-                    autoComplete="off"
-                  />
+              <div className="mb-[1.875rem] xl:mb-[2.5rem]">
+                <div className="flex justify-between items-center h-[8vh]">
+                  <h1 className="text-white text-[1.25rem] xl:text-[1.5rem] font-bold">
+                    {appointmentData.type === '代孕母' 
+                      ? translations.appointment_surrogate.title 
+                      : translations.appointment_parent.title}
+                  </h1>
                 </div>
-
-                {/* 出生日期 - 使用 DateField 组件 */}
-                <div className="flex-1">
-                  <DateField
-                    name="birthday"
-                    value={formData.birthday}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                      setFormData(prev => ({
-                        ...prev,
-                        birthday: e.target.value
-                      }));
-                    }}
-                    label={translations.appointment_parent.birthday}
-                  />
-                </div>
+                <div className="h-[1px] bg-white"></div>
               </div>
 
-              {/* 电话和邮箱在同一行 */}
-              <div className="flex flex-col xl:flex-row gap-6">
-                {/* 电话 */}
-                <div className="flex-1">
-                  <label className="block text-[#ffffff] text-sm mb-2">
-                    {translations.appointment_parent.phone} <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full h-12 bg-transparent border-b border-white/60 px-0 
-                      text-white focus:outline-none focus:border-white"
-                    autoComplete="off"
-                  />
-                </div>
-
-                {/* 邮箱 */}
-                <div className="flex-1">
-                  <label className="block text-[#ffffff] text-sm mb-2">
-                    {translations.appointment_parent.email} <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full h-12 bg-transparent border-b border-white/60 px-0 
-                      text-white focus:outline-none focus:border-white"
-                    autoComplete="off"
-                  />
-                </div>
-              </div>
-
-              {/* 地址 */}
-              <div className="flex flex-col space-y-2">
-                <label className="block text-[#ffffff] text-sm">
-                  {translations.appointment_parent.address} <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  name="address"
-                  value={formData.address}
-                  onChange={handleInputChange}
-                  className="w-full h-12 bg-transparent border-b border-white/60 px-0 
-                    text-white focus:outline-none focus:border-white"
-                  autoComplete="off"
-                />
-              </div>
-
-              {/* 婚姻状况 */}
-              <RadioField
-                label={translations.appointment_parent.marital.label}
-                options={translations.appointment_parent.marital.options}
-                value={formData.marital}
-                onChange={handleInputChange}
-                name="marital"
-              />
-
-              {/* 是否有胚胎 */}
-              <RadioField
-                label={translations.appointment_parent.hasEmbryo.label}
-                options={translations.appointment_parent.hasEmbryo.options}
-                value={formData.hasEmbryo}
-                onChange={handleInputChange}
-                name="hasEmbryo"
-              />
-
-              {/* 当选择有胚胎时显示的额外字段 */}
-              {formData.hasEmbryo === translations.appointment_parent.hasEmbryo.options[0] && (
-                <>
-                  {/* 胚胎所在地 */}
-                  <div className="flex flex-col space-y-2">
-                    <label className="block text-[#ffffff] text-sm">
-                      {translations.appointment_parent.hasEmbryo.embryoAddress} <span className="text-red-500">*</span>
+              {/* 表单内容 */}
+              <form 
+                className="flex flex-col space-y-6 pb-10" 
+                autoComplete="off"
+                onSubmit={(e) => e.preventDefault()}
+              >
+                {/* 基本信息部分 - 两种表单都有的字段 */}
+                <div className="flex flex-col xl:flex-row gap-6">
+                  {/* 姓名 */}
+                  <div className="flex-1">
+                    <label className="block text-[#ffffff] text-sm mb-2">
+                      {translations.appointment_parent.name} <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
-                      name="embryoAddress"
-                      value={formData.embryoAddress}
+                      name="name"
+                      value={formData.name}
                       onChange={handleInputChange}
                       className="w-full h-12 bg-transparent border-b border-white/60 px-0 
                         text-white focus:outline-none focus:border-white"
-                      autoComplete="off"
                     />
                   </div>
 
-                  {/* 胚胎数量 */}
-                  <div className="flex flex-col space-y-2">
-                    <label className="block text-[#ffffff] text-sm">
-                      {translations.appointment_parent.hasEmbryo.embryoNumber} <span className="text-red-500">*</span>
+                  {/* 出生日期 */}
+                  <div className="flex-1">
+                    <DateField
+                      name="birthday"
+                      value={formData.birthday}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        setFormData(prev => ({
+                          ...prev,
+                          birthday: e.target.value
+                        }));
+                      }}
+                      label={translations.appointment_parent.birthday}
+                    />
+                  </div>
+                </div>
+
+                {/* 电话和邮箱部分保持不变 */}
+                <div className="flex flex-col xl:flex-row gap-6">
+                  {/* 电话 */}
+                  <div className="flex-1">
+                    <label className="block text-[#ffffff] text-sm mb-2">
+                      {translations.appointment_parent.phone} <span className="text-red-500">*</span>
                     </label>
                     <input
-                      type="number"
-                      name="embryoNumber"
-                      value={formData.embryoNumber}
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
                       onChange={handleInputChange}
                       className="w-full h-12 bg-transparent border-b border-white/60 px-0 
                         text-white focus:outline-none focus:border-white"
-                      autoComplete="off"
                     />
                   </div>
 
-                  {/* 胚胎来源 */}
-                  <RadioField
-                    label={translations.appointment_parent.hasEmbryo.embryoFrom.label}
-                    options={translations.appointment_parent.hasEmbryo.embryoFrom.options}
-                    value={formData.embryoFrom}
+                  {/* 邮箱 */}
+                  <div className="flex-1">
+                    <label className="block text-[#ffffff] text-sm mb-2">
+                      {translations.appointment_parent.email} <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="w-full h-12 bg-transparent border-b border-white/60 px-0 
+                        text-white focus:outline-none focus:border-white"
+                    />
+                  </div>
+                </div>
+
+                {/* 地址部分保持不变 */}
+                <div className="flex flex-col space-y-2">
+                  <label className="block text-[#ffffff] text-sm">
+                    {translations.appointment_parent.address} <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="address"
+                    value={formData.address}
                     onChange={handleInputChange}
-                    name="embryoFrom"
+                    className="w-full h-12 bg-transparent border-b border-white/60 px-0 
+                      text-white focus:outline-none focus:border-white"
                   />
-                </>
-              )}
+                </div>
 
-              {/* 是否需要辅助生殖技术 */}
-              <RadioField
-                label={translations.appointment_parent.needTechincal.label}
-                options={translations.appointment_parent.needTechincal.options}
-                value={formData.needTechincal}
-                onChange={handleInputChange}
-                name="needTechincal"
-              />
+                {appointmentData.type === '代孕母' ? (
+                  // 代孕母特有字段
+                  <>
+                    {/* 国籍身份 */}
+                    <RadioField
+                      label={translations.appointment_surrogate.nationality_status.label}
+                      options={translations.appointment_surrogate.nationality_status.options}
+                      value={formData.nationality_status}
+                      onChange={handleInputChange}
+                      name="nationality_status"
+                    />
 
-              {/* 是否需要捐卵或捐精 */}
-              <RadioField
-                label={translations.appointment_parent.needEmbryo.label}
-                options={translations.appointment_parent.needEmbryo.options}
-                value={formData.needEmbryo}
-                onChange={handleInputChange}
-                name="needEmbryo"
-              />
+                    {/* 婚姻状况 */}
+                    <RadioField
+                      label={translations.appointment_surrogate.marital.label}
+                      options={translations.appointment_surrogate.marital.options}
+                      value={formData.marital}
+                      onChange={handleInputChange}
+                      name="marital"
+                    />
 
-              {/* 常用语言 */}
-              <RadioField
-                label={translations.appointment_parent.usualLanguage.label}
-                options={translations.appointment_parent.usualLanguage.options}
-                value={formData.usualLanguage}
-                onChange={handleInputChange}
-                name="usualLanguage"
-              />
+                    {/* 是否有孩子 */}
+                    <RadioField
+                      label={translations.appointment_surrogate.hasChildren.label}
+                      options={translations.appointment_surrogate.hasChildren.options}
+                      value={formData.hasChildren}
+                      onChange={handleInputChange}
+                      name="hasChildren"
+                    />
 
-            </form>
-          </div>
-        </div>
+                    {/* 如果有孩子，显示子女数量输入框 */}
+                    {formData.hasChildren === translations.appointment_surrogate.hasChildren.options[0] && (
+                      <div className="flex flex-col space-y-2">
+                        <label className="block text-[#ffffff] text-sm">
+                          {translations.appointment_surrogate.hasChildren.childrenNumber}
+                        </label>
+                        <input
+                          type="text"
+                          name="childrenNumber"
+                          value={formData.childrenNumber}
+                          onChange={handleInputChange}
+                          className="w-full h-12 bg-transparent border-b border-white/60 px-0 
+                            text-white focus:outline-none focus:border-white"
+                        />
+                      </div>
+                    )}
 
-        {/* 右侧预约详情部分 - 使用与预约部分相同的 padding 和样式 */}
-        <div className="w-full xl:max-w-[20vw] pt-[2.5rem] xl:pt-[5rem] px-[1.25rem] xl:px-[3.75rem] border-t xl:border-t-0 border-white/20 mt-6 xl:mt-0">
-          <div className="sticky top-[120px] pb-10">
-            {/* 预约详情标题和展开按钮 */}
-            <div className="mb-[1.875rem] xl:mb-[2.5rem]">
-              <button 
-                className="w-full flex justify-between items-center text-white"
-                onClick={() => setIsDetailsOpen(!isDetailsOpen)}
-              >
-                <h2 className="text-white text-[1.125rem] xl:text-[1.25rem] font-bold">
-                  {translations.language !== 'EN' ? 'Booking Details' : '预约详情'}
-                </h2>
-                <span className={`transition-transform duration-300 ${isDetailsOpen ? 'rotate-180' : ''}`}>
-                  ˅
-                </span>
-              </button>
-              <div className="h-[1px] bg-white/20 mt-4"></div>
+                    {/* 是否有剖腹产经历 */}
+                    <RadioField
+                      label={translations.appointment_surrogate.hasSurgery.label}
+                      options={translations.appointment_surrogate.hasSurgery.options}
+                      value={formData.hasSurgery}
+                      onChange={handleInputChange}
+                      name="hasSurgery"
+                    />
+                  </>
+                ) : (
+                  // 准父母特有字段
+                  <>
+                    {/* 婚姻状况 */}
+                    <RadioField
+                      label={translations.appointment_parent.marital.label}
+                      options={translations.appointment_parent.marital.options}
+                      value={formData.marital}
+                      onChange={handleInputChange}
+                      name="marital"
+                    />
+
+                    {/* 是否有胚胎 */}
+                    <RadioField
+                      label={translations.appointment_parent.hasEmbryo.label}
+                      options={translations.appointment_parent.hasEmbryo.options}
+                      value={formData.hasEmbryo}
+                      onChange={handleInputChange}
+                      name="hasEmbryo"
+                    />
+
+                    {/* 当选择有胚胎时显示的额外字段 */}
+                    {formData.hasEmbryo === translations.appointment_parent.hasEmbryo.options[0] && (
+                      <>
+                        {/* 胚胎所在地 */}
+                        <div className="flex flex-col space-y-2">
+                          <label className="block text-[#ffffff] text-sm">
+                            {translations.appointment_parent.hasEmbryo.embryoAddress} <span className="text-red-500">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            name="embryoAddress"
+                            value={formData.embryoAddress}
+                            onChange={handleInputChange}
+                            className="w-full h-12 bg-transparent border-b border-white/60 px-0 
+                              text-white focus:outline-none focus:border-white"
+                          />
+                        </div>
+
+                        {/* 胚胎数量 */}
+                        <div className="flex flex-col space-y-2">
+                          <label className="block text-[#ffffff] text-sm">
+                            {translations.appointment_parent.hasEmbryo.embryoNumber} <span className="text-red-500">*</span>
+                          </label>
+                          <input
+                            type="number"
+                            name="embryoNumber"
+                            value={formData.embryoNumber}
+                            onChange={handleInputChange}
+                            className="w-full h-12 bg-transparent border-b border-white/60 px-0 
+                              text-white focus:outline-none focus:border-white"
+                          />
+                        </div>
+
+                        {/* 胚胎来源 */}
+                        <RadioField
+                          label={translations.appointment_parent.hasEmbryo.embryoFrom.label}
+                          options={translations.appointment_parent.hasEmbryo.embryoFrom.options}
+                          value={formData.embryoFrom}
+                          onChange={handleInputChange}
+                          name="embryoFrom"
+                        />
+                      </>
+                    )}
+
+                    {/* 是否需要辅助生殖技术 */}
+                    <RadioField
+                      label={translations.appointment_parent.needTechincal.label}
+                      options={translations.appointment_parent.needTechincal.options}
+                      value={formData.needTechincal}
+                      onChange={handleInputChange}
+                      name="needTechincal"
+                    />
+
+                    {/* 是否需要捐卵或捐精 */}
+                    <RadioField
+                      label={translations.appointment_parent.needEmbryo.label}
+                      options={translations.appointment_parent.needEmbryo.options}
+                      value={formData.needEmbryo}
+                      onChange={handleInputChange}
+                      name="needEmbryo"
+                    />
+
+                    {/* 常用语言 */}
+                    <RadioField
+                      label={translations.appointment_parent.usualLanguage.label}
+                      options={translations.appointment_parent.usualLanguage.options}
+                      value={formData.usualLanguage}
+                      onChange={handleInputChange}
+                      name="usualLanguage"
+                    />
+                  </>
+                )}
+              </form>
             </div>
+          </div>
 
-            {/* 预约详情内容 */}
-            <div className={`overflow-hidden transition-all duration-300 ${
-              isDetailsOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-            }`}>
-              <div className="space-y-4 mb-6">
-                {/* 客户类型 */}
-                <div className="text-white">
-                  <div className="text-white/60 text-sm">
-                    {translations.language !== 'EN' ? 'Clients' : '客户类型'}
-                  </div>
-                  <div className="text-sm mt-1">
-                    {appointmentData.type}
-                  </div>
-                </div>
+          {/* 右侧预约详情部分 - 使用与预约部分相同的 padding 和样式 */}
+          <div className="w-full xl:max-w-[20vw] pt-[2.5rem] xl:pt-[5rem] px-[1.25rem] xl:px-[3.75rem]  xl:border-t-0 border-white/20 mt-6 xl:mt-0">
+            <div className="sticky top-[120px] pb-10">
+              {/* 预约详情标题和展开按钮 */}
+              <div className="mb-[1.875rem] xl:mb-[2.5rem]">
+                <button 
+                  className="w-full flex justify-between items-center text-white"
+                  onClick={() => setIsDetailsOpen(!isDetailsOpen)}
+                >
+                  <h2 className="text-white text-[1.125rem] xl:text-[1.25rem] font-bold">
+                    {translations.language !== 'EN' ? 'Booking Details' : '预约详情'}
+                  </h2>
+                  <span className={`transition-transform duration-300 ${isDetailsOpen ? 'rotate-180' : ''}`}>
+                    ˅
+                  </span>
+                </button>
+                <div className="h-[1px] bg-white/20 mt-4"></div>
+              </div>
 
-                {/* 预约时间 */}
-                <div className="text-white">
-                  <div className="text-white/60 text-sm">
-                    {translations.language !== 'EN' ? 'Date & Time' : '预约时间'}
+              {/* 预约详情内容 */}
+              <div className={`overflow-hidden transition-all duration-300 ${
+                isDetailsOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+              }`}>
+                <div className="space-y-4 mb-6">
+                  {/* 客户类型 */}
+                  <div className="text-white">
+                    <div className="text-white/60 text-sm">
+                      {translations.language !== 'EN' ? 'Clients' : '客户类型'}
+                    </div>
+                    <div className="text-sm mt-1">
+                      {appointmentData.type}
+                    </div>
                   </div>
-                  <div className="text-sm mt-1">
-                    {appointmentData.date} {translations.language !== 'EN' ? 'at' : ''} {appointmentData.time}
-                  </div>
-                </div>
 
-            
-
-                {/* 机构名称 */}
-                <div className="text-white">
-                  <div className="text-white/60 text-sm">
-                    {translations.language !== 'EN' ? 'Organization' : '机构名称'}
+                  {/* 预约时间 */}
+                  <div className="text-white">
+                    <div className="text-white/60 text-sm">
+                      {translations.language !== 'EN' ? 'Date & Time' : '预约时间'}
+                    </div>
+                    <div className="text-sm mt-1">
+                      {appointmentData.date} {translations.language !== 'EN' ? 'at' : ''} {appointmentData.time}
+                    </div>
                   </div>
-                  <div className="text-sm mt-1">
-                    {translations.language !== 'EN' ? 'Sapling Surrogacy' : '小树苗'}
+
+                  {/* 机构名称 */}
+                  <div className="text-white">
+                    <div className="text-white/60 text-sm">
+                      {translations.language !== 'EN' ? 'Organization' : '机构名称'}
+                    </div>
+                    <div className="text-sm mt-1">
+                      {translations.language !== 'EN' ? 'Sapling Surrogacy' : '小树苗'}
+                    </div>
                   </div>
                 </div>
               </div>
+
+              {/* 预约说明文本 */}
+              <p className="text-white/60 text-sm mb-6">
+                {translations.appointment_agreement.button_agreement}
+              </p>
+
+              {/* 预约按钮 */}
+              <button className="w-full h-12 bg-[#CDC5C0] text-black rounded-lg 
+                hover:opacity-90 transition-opacity text-[0.875rem] xl:text-[1rem]">
+                {translations.language !== 'EN' ? 'Book Now' : '立即预约'}
+              </button>
             </div>
-
-            {/* 预约说明文本 */}
-            <p className="text-white/60 text-sm mb-6">
-              {translations.appointment_parent.agreement}
-            </p>
-
-            {/* 预约按钮 */}
-            <button className="w-full h-12 bg-[#CDC5C0] text-black rounded-lg 
-              hover:opacity-90 transition-opacity text-[0.875rem] xl:text-[1rem]">
-              {translations.language !== 'EN' ? 'Book Now' : '立即预约'}
-            </button>
           </div>
         </div>
+      </div>
+      
+      {/* 底部协议文本部分 */}
+      <div className="flex flex-col items-center justify-center w-full bg-[#B8886F] pb-20">
+        <p className="text-white text-[0.875rem] xl:text-[1rem] w-[85%] xl:w-[75%] text-center">
+          {translations.appointment_agreement.agreement}
+        </p>
+        <p className="text-white text-[0.875rem] xl:text-[1rem] w-[85%] xl:w-[75%] text-center py-5">
+          {translations.appointment_agreement.content_agreement}
+        </p>
       </div>
     </div>
   );
@@ -468,10 +542,6 @@ function AppointmentContentInner() {
   };
 
   const handleAppointment = async () => {
-    if (type === '准父母') {
-      setShowParentForm(true);
-      return;
-    }
     if (!selectedDate && !selectedTime) {
       toast.error(translations.language === 'EN' ? '请选择预约日期和时间' : 'Please select appointment date and time');
       return;
@@ -489,44 +559,9 @@ function AppointmentContentInner() {
       return;
     }
 
-    try {
-      setIsLoading(true);
-      const formattedTime = convertTimeFormat(selectedTime);
-      console.log(formattedTime);
-      
-      toast.success(translations.language === 'EN' ? '预约成功！' : 'Appointment scheduled successfully!');
-      setAppointment(selectedDate, selectedTime, currentDate);
-      setIsSuccess(true);
-    } catch (error) {
-      console.error('预约失败:', error);
-      toast.error(translations.language === 'EN' ? '预约失败，请稍后重试' : 'Failed to schedule appointment, please try again later');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-  const convertTimeFormat = (time: string): string => {
-    if (!time) return '';
-    
-    // 移除pm/am前的多余数字
-    const cleanTime = time.replace(/(\d+):00/, '$1');
-    const [hourStr, period] = cleanTime.split(/(?=[ap]m)/);
-    let hourNum = parseInt(hourStr);
-    
-    // 如果是下午，且不是12点，则加12
-    if (period === 'pm' && hourNum !== 12) {
-      hourNum += 12;
-    }
-    // 如果是上午12点，转为00点
-    if (period === 'am' && hourNum === 12) {
-      hourNum = 0;
-    }
-    
-    // 确保小时数在有效范围内
-    if (hourNum > 23) {
-      hourNum = hourNum - 12;
-    }
-    
-    return `${hourNum.toString().padStart(2, '0')}:00:00`;
+    // 无论是准父母还是代孕母都显示表单
+    setShowParentForm(true);
+    return;
   };
 
   // 当时区索引改变时，保存到 localStorage
@@ -545,14 +580,14 @@ function AppointmentContentInner() {
     setShowParentForm(false);
   };
 
-  // 如果是准父母且点击了预约按钮，显示表单
-  if (type === '准父母' && showParentForm) {
+  // 修改条件渲染部分
+  if (showParentForm) {
     const appointmentData = {
       date: formatDateTime(selectedDate, ''),
       time: selectedTime,
-      type: translations.language !== 'EN' ? 'Prospective Parents' : '准父母'
+      type: type // 直接使用当前的 type
     };
-    return <ParentInfoForm onBack={handleBack} appointmentData={appointmentData} />;
+    return <AppointmentForm onBack={handleBack} appointmentData={appointmentData} />;
   }
 
   return (
@@ -603,7 +638,7 @@ function AppointmentContentInner() {
                     </div>
                   )}
                 </div>
-              </div>
+              </div> 
               <div className="h-[1px] bg-white"></div>
             </div>
 
@@ -732,7 +767,8 @@ function AppointmentContentInner() {
           </div>
         </div>
       </div>
-    </>
+      
+    </> 
   );
 }
 
