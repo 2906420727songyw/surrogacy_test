@@ -50,10 +50,10 @@ const CustomerServiceChat: React.FC<{ onClose: () => void }> = ({ onClose }) => 
             axios.get(`${url}chat/${Cookies.get('chatId') || ''}/messages`).then(res => {
                 setMessages(res.data);
                 flag = true
-                setTimeout(() => task(), 5000)
+                setTimeout(() => task(), 2000)
             }).catch(() => {
                 flag = true
-                setTimeout(() => task(), 5000)
+                setTimeout(() => task(), 2000)
             });
         }
     }
@@ -112,7 +112,7 @@ const CustomerServiceChat: React.FC<{ onClose: () => void }> = ({ onClose }) => 
               messages.map((message, index) => (
                 <div key={index} className={`flex flex-col gap-1 ${message.role === 'USER' ? 'items-end' : 'items-start'}`}>
                   <div className="text-xs text-black mb-1">
-                    {message.role === 'USER' ? (Cookies.get('userData') ? JSON.parse(Cookies.get('userData')!).name : '匿名用户') : '客服'} · {new Date(message.createdAt).toLocaleTimeString()}
+                    {message.role === 'USER' ? (Cookies.get('userData') ? (JSON.parse(Cookies.get('userData')!).username || JSON.parse(Cookies.get('userData')!).name) : '匿名用户') : '客服'} · {new Date(message.createdAt).toLocaleTimeString()}
                   </div>
                   <div
                     className={`p-3 mb-2 rounded-lg shadow-md max-w-xs ${
