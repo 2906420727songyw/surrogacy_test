@@ -9,6 +9,8 @@ import { useLanguage } from '@/app/language/';
 import { useAppointmentStore } from '@/app/store/appointmentStore';
 import SuccessContent from '../appointment-success/components/SuccessContent';
 import DateField from '../profile/components/shared/DateField';
+import appointmentsApi from '@/app/service/appointments/api';
+import Cookies from 'js-cookie';
 
 // 添加一个渲染选择框的组件
 const SelectField = ({ 
@@ -103,10 +105,13 @@ function AppointmentForm({ onBack, appointmentData }: {
     date: string;
     time: string;
     type: string;
+    chooseDate: string;
+    zone?: string;
   }
 }) {
   const { translations } = useLanguage();
   const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -196,17 +201,51 @@ function AppointmentForm({ onBack, appointmentData }: {
   
 
   const handleSubmitFrom = async () => {
-    console.log("submit");  
+    console.log("submit",formData,appointmentData);  
+
     if (isLoading) return;
     
     if (!validateForm()) return;
 
-    secondVail();
+    if(!secondVail()){
+      return;
+    }
 
+    const userDataStr = Cookies.get('userData');
+    const userData = userDataStr ? JSON.parse(userDataStr) : {};
+
+ 
+    
+
+    let submitData = {
+      userId: userDataStr?userData.id:"cm73ear760001jx1e333ipw0z",
+      appointmentTime: appointmentData.chooseDate,
+      type: appointmentData.type === "代孕母" ? "SURROGATE_MOTHER" : "INTENDED_PARENT",
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      address: formData.address,
+      dateOfBirth: formData.birthday,
+      answers: setAnswer(formData)
+    }
+
+    console.log("submitData",submitData);
+  
     try {
-      setIsLoading(true);
+      setIsLoading(true); 
+      //@ts-ignore
+      const res:any = await appointmentsApi.create(submitData);
+      //@ts-ignore 
+      if(res.id){
+        //把数据存到localstorage里
+        localStorage.setItem('appointmentData', JSON.stringify(appointmentData));
+        toast.success(translations.language !== 'EN' ? 'Submission successful!' : '提交成功！');
+        window.scrollTo(0, 0);
+        setIsSuccess(true);
+      }
+
+      
       // 这里添加表单提交逻辑
-      console.log("提交表单数据:", formData);
     } catch (error) {
       console.error(error);
       toast.error(translations.language !== 'EN' ? 'Submission failed!' : '提交失败！');
@@ -216,14 +255,153 @@ function AppointmentForm({ onBack, appointmentData }: {
   };
 
 
+  const setAnswer = (formData:any)=>{
+    let list = []
+    let suggestList = [
+      "nationality_status",
+      "marital",
+      "hasChildren",
+      "hasSurgery"
+    ]
+    let parentList = [
+      "marital",
+      "hasEmbryo",
+      "needTechincal",
+      "needEmbryo",
+      "usualLanguage"
+    ]
+    console.log(formData);
+    
+    if(appointmentData.type==="代孕母"){
+      for(let i in suggestList){
+        list.push({
+          id:translations.appointment_surrogate[suggestList[i]].label,
+          value:formData[suggestList[i]]
+        })
+      }
+
+      if(formData.hasChildren==="是" || formData.hasChildren==="Yes"){
+        list.push({
+          id:translations.appointment_surrogate.hasChildren.childrenNumber,
+          value:formData.childrenNumber
+        })
+      }
+
+
+    }else{
+      for(let i in parentList){
+        list.push({
+          id:translations.appointment_parent[parentList[i]].label,
+          value:formData[parentList[i]]
+        })
+      }
+
+      if(formData.hasEmbryo==="是" || formData.hasEmbryo==="Yes"){
+        list.push({
+          id:translations.appointment_parent.hasEmbryo.embryoAddress,
+          value:formData.embryoAddress
+        })
+        list.push({
+          id:translations.appointment_parent.hasEmbryo.embryoNumber,
+          value:formData.embryoNumber
+        })
+        list.push({
+          id:translations.appointment_parent.hasEmbryo.embryoFrom.label,
+          value:formData.embryoFrom
+        })
+      }
+
+
+
+    }
+
+
+    
+
+    return list;
+  }
+
+
   const secondVail = ()=>{
     const type = appointmentData.type==="代孕母"
+
+    console.log("type",type);
+    
     if(type){
-      if(formData.hasChildren==="是"){
-        console.log("测试");
-        
+      if((formData.hasChildren==="是" || formData.hasChildren==="Yes") && formData.childrenNumber===""){
+              const errorMessage = translations.language !== 'EN'
+                ? `Please fill in the following required fields:\n${translations.appointment_surrogate.hasChildren.childrenNumber}`
+                : `请填写以下必填项：\n${translations.appointment_surrogate.hasChildren.childrenNumber}`;
+                toast.error(errorMessage, {
+                  autoClose: 5000,
+                  style: { whiteSpace: 'pre-line' }
+                });
+
+                
+                return false;
       }
     }
+    else{
+      console.log("formData",formData);
+      
+      if(formData.hasEmbryo==="是" || formData.hasEmbryo==="Yes"){
+
+        console.log("缺失数据");
+        
+        let missingFields:string[] = [];
+        if(formData.embryoAddress===""){
+          missingFields.push(translations.appointment_parent.hasEmbryo.embryoAddress);
+        }
+        if(formData.embryoNumber===""){
+          missingFields.push(translations.appointment_parent.hasEmbryo.embryoNumber);
+        }
+        if(formData.embryoFrom===""){
+          missingFields.push(translations.appointment_parent.hasEmbryo.embryoFrom.label);
+        }
+        if(missingFields.length>0){
+          const errorMessage = translations.language !== 'EN'
+            ? `Please fill in the following required fields:\n${missingFields.join('\n')}`
+            : `请填写以下必填项：\n${missingFields.join('\n')}`;
+          toast.error(errorMessage, { 
+            autoClose: 5000,
+            style: { whiteSpace: 'pre-line' }
+          });
+          return false;
+        }
+
+      }
+    }
+
+
+    return true;
+  }
+
+  if (isSuccess) {
+    return <SuccessContent />;
+  }
+
+  // 处理返回按钮点击
+  const handleBack = () => {
+    setIsSuccess(false);
+  };
+  
+  
+    // 修改条件渲染部分
+  if (isSuccess) {
+    // const formattedTime = convertTimeFormat(selectedTime);
+    // const date = convertToCaliforniaTime(selectedDate, selectedTime, selectedTimeZone);
+    // const appointmentData = {
+    //   date: formatDateTime(selectedDate, ''),
+    //   zone: selectedTimeZone,
+    //   time: selectedTime,
+    //   type: type,
+    //   chooseDate: date
+    // };
+ 
+
+    // console.log("current", date);
+    
+    return <AppointmentForm onBack={handleBack} appointmentData={appointmentData} />;
   }
 
   return (
@@ -466,17 +644,19 @@ function AppointmentForm({ onBack, appointmentData }: {
                             onChange={handleInputChange}
                             className="w-full h-12 bg-transparent border-b border-white/60 px-0 
                               text-white focus:outline-none focus:border-white"
-                          />
+                            />
+            {/* 胚胎来源 */}
+            <RadioField
+                            label={translations.appointment_parent.hasEmbryo.embryoFrom.label}
+                            options={translations.appointment_parent.hasEmbryo.embryoFrom.options}
+                            value={formData.embryoFrom}
+                            onChange={handleInputChange}
+                            name="embryoFrom"
+                        />
+
                         </div>
 
-                        {/* 胚胎来源 */}
-                        <RadioField
-                          label={translations.appointment_parent.hasEmbryo.embryoFrom.label}
-                          options={translations.appointment_parent.hasEmbryo.embryoFrom.options}
-                          value={formData.embryoFrom}
-                          onChange={handleInputChange}
-                          name="embryoFrom"
-                        />
+                        
                       </>
                     )}
 
@@ -608,8 +788,9 @@ function AppointmentForm({ onBack, appointmentData }: {
 }
 
 function AppointmentContentInner() {
-  const type = useSearchParams().get('type')=== 'surrogate' ? '代孕母' : '准父母';
   const { translations } = useLanguage();
+  const searchParams = useSearchParams();
+  const type = searchParams.get('type') === 'surrogate' ? '代孕母' : '准父母';
   const { setAppointment } = useAppointmentStore();
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState('');
@@ -678,7 +859,7 @@ function AppointmentContentInner() {
       toast.error(translations.language === 'EN' ? '请选择完整的预约时间' : 'Please select complete appointment time');
       return;
     }
-    console.log(selectedDate,selectedTime,selectedTimeZone);
+    // console.log(selectedDate,selectedTime,selectedTimeZone);
     
     // 无论是准父母还是代孕母都显示表单
     setShowParentForm(true);
@@ -692,6 +873,80 @@ function AppointmentContentInner() {
     setIsTimeZoneOpen(false);
   };
 
+
+  const convertTimeFormat = (time: string): string => {
+    if (!time) return '';
+    
+    // 移除pm/am前的多余数字
+    const cleanTime = time.replace(/(\d+):00/, '$1');
+    const [hourStr, period] = cleanTime.split(/(?=[ap]m)/);
+    let hourNum = parseInt(hourStr);
+    
+    // 如果是下午，且不是12点，则加12
+    if (period === 'pm' && hourNum !== 12) {
+      hourNum += 12;
+    }
+    // 如果是上午12点，转为00点
+    if (period === 'am' && hourNum === 12) {
+      hourNum = 0;
+    }
+    
+    // 确保小时数在有效范围内
+    if (hourNum > 23) {
+      hourNum = hourNum - 12;
+    }
+    
+    return `${hourNum.toString().padStart(2, '0')}:00:00`;
+  };
+
+  // 移动到这里，确保可以访问到所需的所有变量
+  const convertToCaliforniaTime = (date: string, time: string, selectedTimeZone: string): string => {
+    const timeZones = translations.profile.appointmentContent.time_zone;
+    const zoneIndex = timeZones.indexOf(selectedTimeZone);
+    
+    const formattedTime = convertTimeFormat(time);
+    const [hours] = formattedTime.split(':').map(Number);
+    
+    let hourDiff = 0;
+    switch(zoneIndex) {
+      case 0: // 中国标准时间 (UTC+8)
+        hourDiff = -16;
+        break;
+      case 1: // 美东时间 (UTC-4)
+        hourDiff = -4;   // 比加州时间快4小时
+        break;
+      case 2: // 美中时间 (UTC-5)
+        hourDiff = -3;   // 比加州时间快3小时
+        break;
+      case 3: // 山地时间 (UTC-6)
+        hourDiff = -2;   // 比加州时间快2小时
+        break;
+      case 4: // 太平洋时间 (UTC-7)
+        hourDiff = 0;   // 与加州时间相同
+        break;
+      case 5: // 阿拉斯加时间 (UTC-8)
+        hourDiff = 1;  // 比加州时间晚1小时
+        break;
+      case 6: // 夏威夷时间 (UTC-10)
+        hourDiff = 2;  // 比加州时间晚2小时
+        break;
+      default:
+        hourDiff = 0;   // 默认值
+    }
+
+    const dateObj = new Date(`${currentDate.getFullYear()}-${
+      (currentDate.getMonth() + 1).toString().padStart(2, '0')}-${
+      Number(date).toString().padStart(2, '0')}T${
+      hours.toString().padStart(2, '0')}:00:00`);
+    
+    dateObj.setHours(dateObj.getHours() + hourDiff);
+
+    return `${dateObj.getFullYear()}-${
+      (dateObj.getMonth() + 1).toString().padStart(2, '0')}-${
+      dateObj.getDate().toString().padStart(2, '0')} ${
+      dateObj.getHours().toString().padStart(2, '0')}:00:00`;
+  };
+
   if (isSuccess) {
     return <SuccessContent />;
   }
@@ -700,15 +955,23 @@ function AppointmentContentInner() {
   const handleBack = () => {
     setShowParentForm(false);
   };
-
-  // 修改条件渲染部分
+  
+  
+    // 修改条件渲染部分
   if (showParentForm) {
+    // const formattedTime = convertTimeFormat(selectedTime);
+    const date = convertToCaliforniaTime(selectedDate, selectedTime, selectedTimeZone);
     const appointmentData = {
       date: formatDateTime(selectedDate, ''),
       zone: selectedTimeZone,
       time: selectedTime,
-      type: type // 直接使用当前的 type
+      type: type,
+      chooseDate: date
     };
+ 
+
+    console.log("current", date);
+    
     return <AppointmentForm onBack={handleBack} appointmentData={appointmentData} />;
   }
 

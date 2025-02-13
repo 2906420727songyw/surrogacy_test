@@ -6,7 +6,8 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import ProfileContent from './components/ProfileContent';
 import ParentApplicationContent from './components/ParentApplicationContent';
-import AppointmentContent from './components/AppointmentContent';
+// import AppointmentContent from './components/AppointmentContent';
+import AppointmentSuccess from './components/AppointmentSuccess';
 import SurrogateApplicationContent from './components/SurrogateApplicationContent';
 import ProtectedRoute from '@/app/components/ProtectedRoute';
 import Cookies from 'js-cookie';
@@ -100,7 +101,7 @@ function ProfilePageContent() {
       case translations.profile.left_nav_2:
         return <SurrogateApplicationContent />;
       case translations.profile.left_nav_4:
-        return <AppointmentContent />;
+        return <AppointmentSuccess />;
         
       default:
         return <ProfileContent />;

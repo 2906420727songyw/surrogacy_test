@@ -8,7 +8,10 @@ export default function SuccessContent() {
   const searchParams = useSearchParams();
   const { translations } = useLanguage();
   const { selectedDate, selectedTime, currentDate } = useAppointmentStore();
-  const type = searchParams.get('type') === 'surrogate' ? '代孕母' : '准父母';
+  const appointmentData = JSON.parse(localStorage.getItem('appointmentData') || '{}');
+  console.log("appointmentData",appointmentData);
+  
+  const type = appointmentData.type === 'surrogate' ? '代孕母' : '准父母';
 
   const formatDateTime = (date: string, time: string) => {
     if (!time) {
@@ -41,7 +44,7 @@ export default function SuccessContent() {
         <h2 className="text-[16px] mb-4">预约详细信息</h2>
         <div className="space-y-4">
           <p className="text-[14px]">成为{type}</p>
-          <p className="text-[14px]">{formatDateTime(selectedDate, selectedTime)}</p>
+          <p className="text-[14px]">{appointmentData.time+" "+ appointmentData.date }</p>
         </div>
         
         {/* 重新预约按钮 */}
@@ -70,7 +73,7 @@ export default function SuccessContent() {
         <h2 className="text-[14px] mb-3">预约详细信息</h2>
         <div className="space-y-3">
           <p className="text-[12px]">成为准父母</p>
-          <p className="text-[12px]">{formatDateTime(selectedDate, selectedTime)}</p>
+          <p className="text-[14px]">{appointmentData.time+" "+ appointmentData.date }</p>
         </div>
         
         {/* 重新预约按钮 */}

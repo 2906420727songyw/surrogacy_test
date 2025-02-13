@@ -381,7 +381,7 @@ export default function ParentApplicationContent() {
               <CustomInput
                 key={fieldName}
                 label={label}
-                name={fieldName}
+                  name={fieldName}
                 value={formData[fieldName] || ''}
                 onChange={handleInputChange}
                 type={fieldName === 'email' ? 'email' : fieldName === 'phone' ? 'tel' : 'text'}
@@ -396,39 +396,39 @@ export default function ParentApplicationContent() {
               <label className="text-white/80 text-[12px] md:text-[14px]">{item.question}</label>
               <div className={`${item.options.length > 2 ? 'grid grid-cols-2 md:flex md:flex-wrap gap-4 md:gap-8' : 'flex gap-8'}`}>
                 {item.options.map((option: string) => (
-                  <label key={option} className="flex items-center space-x-2 cursor-pointer">
-                    <div className="relative flex items-center">
-                      <input
-                        type="radio"
+                <label key={option} className="flex items-center space-x-2 cursor-pointer">
+                  <div className="relative flex items-center">
+                    <input
+                      type="radio"
                         name={getFieldKey(item.question)}
-                        value={option}
+                      value={option}
                         checked={formData[getFieldKey(item.question)] === option}
-                        onChange={handleInputChange}
-                        className="appearance-none w-[18px] h-[18px] border border-white rounded-[2px] bg-transparent checked:bg-white"
-                      />
+                      onChange={handleInputChange}
+                      className="appearance-none w-[18px] h-[18px] border border-white rounded-[2px] bg-transparent checked:bg-white"
+                    />
                       {formData[getFieldKey(item.question)] === option && (
-                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black text-sm">✓</div>
-                      )}
-                    </div>
-                    <span className="text-white text-[12px] md:text-[14px]">{option}</span>
-                  </label>
-                ))}
-              </div>
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black text-sm">✓</div>
+                    )}
+                  </div>
+                  <span className="text-white text-[12px] md:text-[14px]">{option}</span>
+                </label>
+              ))}
+          </div>
 
-              {/* 诊所名称 - 条件渲染 */}
+          {/* 诊所名称 - 条件渲染 */}
               {(getFieldKey(item.question) === 'hasClinic') && 
                 (formData[getFieldKey(item.question)] === 'Yes' || formData[getFieldKey(item.question)] === '是') && (
-                  <div className="flex flex-col space-y-2 mt-4">
+                <div className="flex flex-col space-y-2 mt-4">
                     <label className="block text-white/60 text-[14px] mb-2">
                       {translations.language !== 'EN' 
                         ? 'If yes, please list the clinic name' 
                         : '如果有的话，请列出诊所名字'}
-                    </label>
-                    <input
-                      type="text"
-                      name="clinicName"
-                      value={formData.clinicName}
-                      onChange={handleInputChange}
+              </label>
+              <input
+                type="text"
+                name="clinicName"
+                value={formData.clinicName}
+                onChange={handleInputChange}
                       className="w-full h-[48px] bg-transparent border-b border-white/60 px-0 text-[14px] md:text-[16px] text-white focus:outline-none"
                       autoComplete="off"
                       autoCapitalize="off"
@@ -436,24 +436,24 @@ export default function ParentApplicationContent() {
                       spellCheck="false"
                       data-form-type="other"
                       aria-autocomplete="none"
-                    />
-                  </div>
-                )}
+              />
+            </div>
+          )}
 
-              {/* 胚胎位置 - 条件渲染 */}
+          {/* 胚胎位置 - 条件渲染 */}
               {(getFieldKey(item.question) === 'hasFrozenEmbryo') && 
                 (formData[getFieldKey(item.question)] === 'Yes' || formData[getFieldKey(item.question)] === '是') && (
-                  <div className="flex flex-col space-y-2 mt-4">
+                <div className="flex flex-col space-y-2 mt-4">
                     <label className="block text-white/60 text-[14px] mb-2">
                       {translations.language !== 'EN' 
                         ? 'If yes, please tell us where' 
                         : '如果有的话，请告诉我们在哪里'}
-                    </label>
-                    <input
-                      type="text"
-                      name="embryoLocation"
-                      value={formData.embryoLocation}
-                      onChange={handleInputChange}
+              </label>
+              <input
+                type="text"
+                name="embryoLocation"
+                value={formData.embryoLocation}
+                onChange={handleInputChange}
                       className="w-full h-[48px] bg-transparent border-b border-white/60 px-0 text-[14px] md:text-[16px] text-white focus:outline-none"
                       autoComplete="off"
                       autoCapitalize="off"
@@ -461,9 +461,9 @@ export default function ParentApplicationContent() {
                       spellCheck="false"
                       data-form-type="other"
                       aria-autocomplete="none"
-                    />
-                  </div>
-                )}
+              />
+            </div>
+          )}
             </div>
           ))}
 

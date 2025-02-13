@@ -22,8 +22,24 @@ interface Appointment {
   appointmentTime: string;
 }
 
+interface qa {
+  id: string;
+  value: string;
+}
+interface AppointmentData {
+  userId?: string;
+  appointmentTime: string;
+  type: string;
+  name: string;
+  phone: string;
+  email: string;
+  address: string;
+  dateOfBirth: string;
+  answers: qa[];
+}
+
 // 创建预约
-function create(data: Appointment) {
+function create(data: AppointmentData) {
   return http.post('appointments', data);
 }
 

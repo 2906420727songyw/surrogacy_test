@@ -89,20 +89,24 @@ export default function AppointmentContent() {
       const userData = userDataStr ? JSON.parse(userDataStr) : {};
       
       const formattedTime = convertTimeFormat(selectedTime);
+
+      console.log(selectedTimeZone,selectedDate,formattedTime);
+      
       const date = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1<10 ? '0' : ''}${currentDate.getMonth() + 1}-${Number(selectedDate)<10?`0${selectedDate}`:selectedDate} ${formattedTime}`
       const appointmentData = {
         userId: userData.id,
         appointmentTime: date,
         type: type
       };
-      const response = await appointmentsApi.create(appointmentData);
-       // @ts-ignore      
-      if (response.id) {
-        toast.success(translations.language === 'EN' ? '预约成功！' : 'Appointment scheduled successfully!');
-        setIsSuccess(true);
-      } else {
-        toast.error(translations.language === 'EN' ? '预约失败，请重试' : 'Failed to schedule appointment, please try again');
-      }
+      console.log(appointmentData); 
+      
+      // const response:any= await appointmentsApi.create(appointmentData);
+      // if (response.id) {
+      //   toast.success(translations.language === 'EN' ? '预约成功！' : 'Appointment scheduled successfully!');
+      //   setIsSuccess(true);
+      // } else {
+      //   toast.error(translations.language === 'EN' ? '预约失败，请重试' : 'Failed to schedule appointment, please try again');
+      // }
     } catch (error) {
       console.error('预约失败:', error);
       toast.error(translations.language === 'EN' ? '预约失败，请稍后重试' : 'Failed to schedule appointment, please try again later');
@@ -143,18 +147,18 @@ export default function AppointmentContent() {
   };
 
   if (isSuccess) {
-    return ( 
-      <AppointmentSuccess 
-        selectedDate={selectedDate}
-        selectedTime={selectedTime}
-        currentDate={currentDate}
-        onRestart={() => {
-          setIsSuccess(false);
-          setSelectedDate('');
-          setSelectedTime('');
-        }}
-      />
-    );
+    // return ( 
+    //   <AppointmentSuccess 
+    //     // selectedDate={selectedDate}
+    //     // selectedTime={selectedTime}
+    //     // currentDate={currentDate}
+    //     onRestart={() => {
+    //       setIsSuccess(false);
+    //       setSelectedDate('');
+    //       setSelectedTime('');
+    //     }}
+    //   />
+    // );
   }
 
   return (
