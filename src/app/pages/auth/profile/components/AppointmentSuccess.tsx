@@ -4,9 +4,28 @@ import { useEffect, useState } from 'react';
 import api from '@/app/service/appointments/api';
 import Cookies from 'js-cookie';
 import { useLanguage } from '@/app/language/';
+import type { AxiosResponse } from 'axios';
+
+// 定义预约数据的接口
+type AppointmentType = 'INTENDED_PARENT' | 'SURROGATE_MOTHER';
+
+interface AppointmentData {
+  id: string;
+  userId: string;
+  appointmentTime: string;
+  type: AppointmentType;
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  dateOfBirth: string;
+  answers: any[];
+  createdAt: string;
+  updatedAt: string;
+}
 
 export default function AppointmentSuccess() {
-  const [appointmentData, setAppointmentData] = useState<any>(null);
+  const [appointmentData, setAppointmentData] = useState<AppointmentData | null>(null);
   const [hasAppointment, setHasAppointment] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const { translations } = useLanguage();
@@ -16,23 +35,45 @@ export default function AppointmentSuccess() {
     const fetchAppointment = async () => {
       try {
         const userData = JSON.parse(Cookies.get('userData') || '{}');
-        if(userData.id){
-          const res = await api.getDetail(userData.id);
-          if(res.data?.id){
-            setAppointmentData(res.data);
-            setHasAppointment(true);
-            let time = res.data.appointmentTime
-            let year = time.split("T")[0].split("-")[0]
-            let month = time.split("T")[0].split("-")[1]
-            let day = time.split("T")[0].split("-")[2]
-            let hour = time.split("T")[1].split(":")[0]
-            let minute = time.split("T")[1].split(":")[1]
-            setSelectTime(`${month}月${day}日,${year}年${hour}点`)
+        if (!userData.id) {
+          setIsLoading(false);
+          return;
+        }
 
-          }
+        const response = await api.getDetail(userData.id);
+        const appointmentResponse = response.data as any;  // 使用 any 类型
+
+        if (!appointmentResponse?.id) {
+          setIsLoading(false);
+          return;
+        }
+
+        const formattedAppointment: AppointmentData = {
+          id: appointmentResponse.id,
+          userId: appointmentResponse.userId,
+          appointmentTime: appointmentResponse.appointmentTime,
+          type: appointmentResponse.type as AppointmentType,
+          name: appointmentResponse.name,
+          email: appointmentResponse.email,
+          phone: appointmentResponse.phone,
+          address: appointmentResponse.address,
+          dateOfBirth: appointmentResponse.dateOfBirth,
+          answers: appointmentResponse.answers || [],
+          createdAt: appointmentResponse.createdAt,
+          updatedAt: appointmentResponse.updatedAt
+        };
+
+        setAppointmentData(formattedAppointment);
+        setHasAppointment(true);
+
+        if (formattedAppointment.appointmentTime) {
+          const [datePart, timePart] = formattedAppointment.appointmentTime.split("T");
+          const [year, month, day] = datePart.split("-");
+          const [hour] = timePart.split(":");
+          setSelectTime(`${month}月${day}日,${year}年${hour}点`);
         }
       } catch (error) {
-        console.error(error);
+        console.error('Failed to fetch appointment:', error);
       } finally {
         setIsLoading(false);
       }
@@ -78,11 +119,13 @@ export default function AppointmentSuccess() {
 
         {/* 预约信息或暂无预约提示 */}
         <div className="text-white">
-          {hasAppointment ? (
+          {hasAppointment && appointmentData ? (
             <>
               <h2 className="text-[16px] mb-4">预约详细信息</h2>
               <div className="space-y-4">
-                <p className="text-[14px]">{appointmentData.type==="INTENDED_PARENT" ? "成为准父母" : "成为代孕母"}</p>
+                <p className="text-[14px]">
+                  {appointmentData.type === "INTENDED_PARENT" ? "成为准父母" : "成为代孕母"}
+                </p>
                 <p className="text-[14px]">{selectTime}</p>
               </div>
             </>
@@ -118,11 +161,13 @@ export default function AppointmentSuccess() {
 
         {/* 预约信息或暂无预约提示 */}
         <div className="text-white">
-          {hasAppointment ? (
+          {hasAppointment && appointmentData ? (
             <>
               <h2 className="text-[14px] mb-3">预约详细信息</h2>
               <div className="space-y-3">
-                <p className="text-[12px]">{appointmentData.type==="INTENDED_PARENT" ? "成为准父母" : "成为代孕母"}</p>
+                <p className="text-[12px]">
+                  {appointmentData.type === "INTENDED_PARENT" ? "成为准父母" : "成为代孕母"}
+                </p>
                 <p className="text-[14px]">{selectTime}</p>
               </div>
             </>
