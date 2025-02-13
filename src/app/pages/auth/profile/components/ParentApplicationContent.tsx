@@ -8,6 +8,8 @@ import userApi from '@/app/service/user/api';
 import Cookies from 'js-cookie';
 import { useLanguage } from '@/app/language/';
 import CustomInput from '@/app/components/CustomInput';
+import SurrogateSuccess from './SurrogateSuccess';
+
 
 interface QAItem {
   question: string;
@@ -55,6 +57,7 @@ interface SubmitData {
 export default function ParentApplicationContent() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { translations } = useLanguage();
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const [formData, setFormData] = useState<ApplicationForm>({
     name: '',
@@ -299,6 +302,7 @@ export default function ParentApplicationContent() {
           clinicName: '',
           embryoLocation: ''
         });
+        setIsSuccess(true);
       } else {
         toast.error(translations.language === 'EN' 
           ? '提交失败!' 
@@ -310,9 +314,17 @@ export default function ParentApplicationContent() {
         ? '提交遇到问题!' 
         : 'An error occurred during submission');
     } finally {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
       setIsSubmitting(false);
     }
   };
+
+  if (isSuccess) {
+    return <SurrogateSuccess />;
+  }
 
   return (
     <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px]">

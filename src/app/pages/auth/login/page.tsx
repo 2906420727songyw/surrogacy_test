@@ -56,7 +56,7 @@ function LoginContent() {
         type:userType
       });
     } catch (error) {
-      console.error('登录失败:', error);
+      console.error(error);
     } finally {
       setIsLoading(false);
     }

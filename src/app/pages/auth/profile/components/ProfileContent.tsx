@@ -25,6 +25,7 @@ interface UserData {
   address?: string;
   country?: string;
   city?: string;
+  role?: string;
   username?: string;
   [key: string]: string | number | boolean | undefined;
 }
@@ -38,7 +39,8 @@ const initialUserData: UserData = {
   address: '',
   country: '',
   city: '',
-  username: ''
+  username: '',
+  role: ''
 };
 
 export default function ProfileContent() {
@@ -50,6 +52,9 @@ export default function ProfileContent() {
 
   // 添加一个临时状态来存储编辑中的数据
   const [editingData, setEditingData] = useState<UserData>(initialUserData);
+
+  // 添加保存状态
+  const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -81,7 +86,8 @@ export default function ProfileContent() {
           address: res.address || '',
           country: res.country || '',
           city: res.city || '',
-          username: res.username || ''
+          username: res.username || '',
+          role: res.role || ''
         };
         setUserData(newUserData);
         setEditingData(newUserData);
@@ -104,8 +110,10 @@ export default function ProfileContent() {
   };
 
   const handleSave = async () => {
+    if (isSaving) return;
+    
     try {
-
+      setIsSaving(true);
       console.log(editingData);
       for (const key in editingData) {
         if (Object.prototype.hasOwnProperty.call(editingData, key)) {
@@ -115,13 +123,16 @@ export default function ProfileContent() {
         }
       }
       console.log(editingData);
-      // 这里添加保存到后端的逻辑
-      await userApi.updateUserInfo(editingData);
+      const data = JSON.parse(JSON.stringify(editingData));
+      await userApi.updateUserInfo(data);
       setUserData(editingData);
-      setIsEditing(false);
+      Cookies.set('userData', JSON.stringify(editingData));
+      setIsEditing(false); 
     } catch (error) {
-      console.error('保存用户信息失败:', error);
-    } 
+      console.error(error);
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   const getDisplayValue = (value: string | undefined): string => {
@@ -221,20 +232,25 @@ export default function ProfileContent() {
         <div className="mt-[30px] md:mt-[40px]">
           <button 
             onClick={isEditing ? handleSave : () => setIsEditing(true)}
-            className="text-white text-[12px] md:text-[14px] hover:opacity-80 border-b border-white pb-[2px]"
+            className="text-white text-[12px] md:text-[14px] hover:opacity-80 border-b border-white pb-[2px] flex items-center gap-2"
+            disabled={isSaving}
           >
+            {isEditing && isSaving && (
+              <div className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" />
+            )}
             {isEditing ? translations.profile.profileContent.save : translations.profile.profileContent.edit}
           </button>
-         
         </div>
-        <div className="mt-[20px] md:mt-[20px]">
-        <button 
-            onClick={() => setIsEditing(false)}
-            className=" text-white text-[12px] md:text-[14px] hover:opacity-80 border-b border-white "
-          >
-            {translations.profile.profileContent.cancel}
-          </button>
-        </div>
+        {isEditing && (
+          <div className="mt-[20px] md:mt-[20px]">
+            <button 
+              onClick={() => setIsEditing(false)}
+              className="text-white text-[12px] md:text-[14px] hover:opacity-80 border-b border-white"
+            >
+              {translations.profile.profileContent.cancel}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -618,7 +618,8 @@ export default {
             city:'City',
             edit:"Edit Account",
             save:"Save",
-            cancel:"Cancel"
+            cancel:"Cancel",
+            saving:"Saving..."
         },
         surrogateContent:{
 
@@ -1027,6 +1028,15 @@ export default {
       content_agreement:"We reply via email and text message within 12 to 24 hours. If you do not hear back from us, please check your spam folder.",
   },
 
+  apply_success: {
+    "title": "Your Appointment is Confirmed – Thank You!",
+    "content": "We've received your request, and your consultation is now scheduled! Our Sapling Surrogacy team will reach out via email or text within 12 to 24 hours to provide support and next steps.",
+    "next_step": "What to Do Next:",
+    "next_step_first": "Check your email for a confirmation message. If you don’t see it, check your spam folder.",
+    "next_step_second": "Jot down any questions you have—our team is here to help.",
+    "next_step_third": "Need immediate assistance? Contact us anytime.",
+    "next_step_end": "We appreciate your trust and look forward to guiding you through this journey!"
+        },
 auth:{
   loginSuccess: "Login Success",
   loginFailed: "Login Failed",

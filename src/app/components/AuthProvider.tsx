@@ -67,7 +67,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             if(res.data.role === dist[params.type]){
             Cookies.set('userData', JSON.stringify(res.data), { expires: 30 });
             toast.success(translations.auth.loginSuccess);
-            router.push('/pages/auth/profile?type=appointment');
+            router.push('/pages/auth/profile');
             setIsAuthenticated(true);
             break;
             }else{
@@ -120,7 +120,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             Cookies.set('userData', JSON.stringify(ret), { expires: 30 });
 
             toast.success(translations.auth.registerSuccess);
-            router.push('/pages/auth/profile?type=appointment');
+            router.push('/pages/auth/profile');
             setIsAuthenticated(true);
           })
 

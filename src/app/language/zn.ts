@@ -614,6 +614,7 @@ export default {
             city:'城市',
             edit:"编辑账户",
             save:"保存",
+            saving:"保存中...",
             cancel:"取消"
         },
         surrogateContent:{
@@ -981,6 +982,17 @@ export default {
         agreement:"当您预约此咨询时，即表示您授权小树苗代孕中心获取您的姓名和联系方式。",
         button_agreement:"完成预约，即表示您同意接收相关的电子邮件通知。",
         content_agreement:"我们通过电子邮件和短信回复，通常在12至24小时内。如果您没有收到我们的回复，请检查您的垃圾邮件文件夹。"
+    },
+
+
+    apply_success:{
+        title:"预约成功，感谢您的信任！",
+        content:"您的咨询预约已成功提交！小树苗代孕中心团队已收到您的请求，并将在 12 至 24 小时内通过电子邮件或短信与您联系，为您提供专业支持。",
+        next_step:"下一步怎么做？",
+        next_step_first:"请检查您的邮箱，确保收到确认邮件。如未见回复，请查看垃圾邮件文件夹，以免错过消息。",
+        next_step_second:"提前准备好您的问题，我们的团队将为您提供个性化建议。",
+        next_step_third:"如需帮助，欢迎随时联系我们。",
+        next_step_end:"感谢您的信赖，我们期待与您携手同行，开启这段特别的旅程。"
     },
 
     auth:{

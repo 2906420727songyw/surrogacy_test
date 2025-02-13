@@ -6,6 +6,7 @@ import userApi from '@/app/service/user/api';
 import Cookies from 'js-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import SurrogateSuccess from './SurrogateSuccess';
 
 interface ApplicationForm {
   userId: string;
@@ -46,6 +47,7 @@ interface ApiError {
 export default function SurrogateApplicationContent() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState<ApplicationForm>(() => {
     const userDataStr = Cookies.get('userData');
     const userData = userDataStr ? JSON.parse(userDataStr) : {};
@@ -80,7 +82,7 @@ export default function SurrogateApplicationContent() {
 
     try {
       setIsSubmitting(true);
-    await userApi.applySurrogateMother(formData).then(res => {
+      await userApi.applySurrogateMother(formData).then(res => {
         if(res.id){
           toast.success('申请提交成功！');
           setFormData(prev => ({
@@ -102,10 +104,11 @@ export default function SurrogateApplicationContent() {
             phoneNumber: '',
             email: '',
           }));
-        }else{
+          setIsSuccess(true);
+        } else {
           toast.error('申请提交失败！');
         }
-      })
+      });
       
     } catch (error: unknown) {
       const apiError = error as ApiError;
@@ -113,8 +116,8 @@ export default function SurrogateApplicationContent() {
       toast.error(apiError?.response?.data?.message || '提交失败，请稍后重试');
     } finally {
       window.scrollTo({
-        top: 0,        // 滚动到顶部
-        behavior: 'smooth', // 平滑滚动
+        top: 0,
+        behavior: 'smooth'
       });
       setIsSubmitting(false);
     }
@@ -129,6 +132,10 @@ export default function SurrogateApplicationContent() {
               value
     }));
   };
+
+  if (isSuccess) {
+    return <SurrogateSuccess />;
+  }
 
   return (
     <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px]">
@@ -145,6 +152,13 @@ export default function SurrogateApplicationContent() {
         pauseOnHover
         theme="light"
       />
+
+      {/* 添加隐藏的表单来阻止浏览器自动填充 */}
+      <div style={{ display: 'none' }}>
+        <input type="text" name="hidden_username" autoComplete="username" />
+        <input type="password" name="hidden_password" autoComplete="current-password" />
+      </div>
+
       <div className="md:max-w-[60vw] pt-[40px] md:pt-[80px] px-[20px] md:px-[60px]">
         {/* 标题部分 */}
         <div className="border-b border-white pb-2 mb-[30px] md:mb-[40px]">
@@ -156,7 +170,11 @@ export default function SurrogateApplicationContent() {
         </div>
 
         {/* 表单内容 */}
-        <form onSubmit={handleSubmit} className="space-y-[24px] pb-[6vh]">
+        <form 
+          onSubmit={handleSubmit} 
+          className="space-y-[24px] pb-[6vh]"
+          autoComplete="off"
+        >
           {/* 姓名和年龄 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[40px] gap-y-[24px]">
             <FormField 

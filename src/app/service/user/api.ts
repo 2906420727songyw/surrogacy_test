@@ -46,6 +46,7 @@ function getUserInfo(id: string) {
 
 
 function updateUserInfo(data: any):Promise<any> {
+  data.dateOfBirth = data.dateOfBirth +'T00:00:00.000Z';
   return http.put(`users/${data?.id}`, data);
 }
 

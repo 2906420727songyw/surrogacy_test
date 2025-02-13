@@ -100,6 +100,8 @@ function AppointmentForm({ onBack, appointmentData }: {
   }
 }) {
   const { translations } = useLanguage();
+  const [isLoading, setIsLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -131,7 +133,109 @@ function AppointmentForm({ onBack, appointmentData }: {
     }));
   };
 
+  const validateForm = () => {
+    let isValid = true;
+    let missingFields: string[] = [];
+    const type = appointmentData.type==="代孕母"
+
+    // 基本必填字段（两种类型都需要的）
+    const baseFields = [
+      { name: 'name', label: translations.appointment_parent.name },
+      { name: 'birthday', label: translations.appointment_parent.birthday },
+      { name: 'phone', label: translations.appointment_parent.phone },
+      { name: 'email', label: translations.appointment_parent.email },
+      { name: 'address', label: translations.appointment_parent.address }
+    ];
+
+    // 根据类型添加特定的必填字段
+    const specificFields = type ? [
+      // 代孕母特有字段
+      { name: 'nationality_status', label: translations.appointment_surrogate.nationality_status.label },
+      { name: 'marital', label: translations.appointment_surrogate.marital.label },
+      { name: 'hasChildren', label: translations.appointment_surrogate.hasChildren.label },
+      { name: 'hasSurgery', label: translations.appointment_surrogate.hasSurgery.label }
+    ] : [
+      // 准父母特有字段
+      { name: 'marital', label: translations.appointment_parent.marital.label },
+      { name: 'hasEmbryo', label: translations.appointment_parent.hasEmbryo.label },
+      { name: 'needTechincal', label: translations.appointment_parent.needTechincal.label },
+      { name: 'needEmbryo', label: translations.appointment_parent.needEmbryo.label },
+      { name: 'usualLanguage', label: translations.appointment_parent.usualLanguage.label }
+    ];
+
+    // 合并所有需要验证的字段
+    const requiredFields = [...baseFields, ...specificFields];
+
+    requiredFields.forEach(field => {
+      if (!formData[field.name]) {
+        isValid = false;
+        missingFields.push(field.label);
+      }
+    });
+
+
+    if (!isValid) {
+      const errorMessage = translations.language !== 'EN'
+        ? `Please fill in the following required fields:\n${missingFields.join('\n')}`
+        : `请填写以下必填项：\n${missingFields.join('\n')}`;
+      
+      toast.error(errorMessage, {
+        autoClose: 5000,
+        style: { whiteSpace: 'pre-line' }
+      });
+    }
+
+    return isValid;
+  };
+  
+
+  const handleSubmitFrom = async () => {
+    console.log("submit");  
+    if (isLoading) return;
+    
+    if (!validateForm()) return;
+
+    secondValid()
+
+
+    try {
+      setIsLoading(true);
+      // 这里添加表单提交逻辑
+      console.log("提交表单数据:", formData);
+    } catch (error) {
+      console.error(error);
+      toast.error(translations.language !== 'EN' ? 'Submission failed!' : '提交失败！');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+
+  const secondVail = ()=>{
+    const type = appointmentData.type==="代孕母"
+    if(type){
+      if(formData.hasChildren==="是"){
+        console.log("测试");
+        
+      }
+    }
+  }
+
   return (
+    <>
+    <ToastContainer
+        style={{zIndex:9999}}
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     <div className="flex flex-col items-center justify-center w-full ">
       <div className="flex justify-center w-full pt-[100px] xl:pt-[15vh] bg-[#B8886F] ">
         {/* 隐藏表单部分保持不变 */}
@@ -465,9 +569,19 @@ function AppointmentForm({ onBack, appointmentData }: {
               </p>
 
               {/* 预约按钮 */}
-              <button className="w-full h-12 bg-[#CDC5C0] text-black rounded-lg 
-                hover:opacity-90 transition-opacity text-[0.875rem] xl:text-[1rem]">
-                {translations.language !== 'EN' ? 'Book Now' : '立即预约'}
+              <button 
+                className="w-full h-12 bg-[#CDC5C0] text-black rounded-lg 
+                  hover:opacity-90 transition-opacity text-[0.875rem] xl:text-[1rem]
+                  flex items-center justify-center gap-2"
+                onClick={handleSubmitFrom}
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+                    <span>{translations.language !== 'EN' ? 'Booking...' : '预约中...'}</span>
+                  </>
+                ) : (translations.language !== 'EN' ? 'Book Now' : '立即预约')}
               </button>
             </div>
           </div>
@@ -484,6 +598,7 @@ function AppointmentForm({ onBack, appointmentData }: {
         </p>
       </div>
     </div>
+    </>
   );
 }
 
@@ -558,7 +673,8 @@ function AppointmentContentInner() {
       toast.error(translations.language === 'EN' ? '请选择完整的预约时间' : 'Please select complete appointment time');
       return;
     }
-
+    console.log(selectedDate,selectedTime,selectedTimeZone);
+    
     // 无论是准父母还是代孕母都显示表单
     setShowParentForm(true);
     return;
@@ -584,6 +700,7 @@ function AppointmentContentInner() {
   if (showParentForm) {
     const appointmentData = {
       date: formatDateTime(selectedDate, ''),
+      zone: selectedTimeZone,
       time: selectedTime,
       type: type // 直接使用当前的 type
     };
