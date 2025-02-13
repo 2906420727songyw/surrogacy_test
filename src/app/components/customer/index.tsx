@@ -60,7 +60,7 @@ const CustomerServiceChat: React.FC<{ onClose: () => void }> = ({ onClose }) => 
 
     const handleSendMessage = () => {
         const chatId = Cookies.get('chatId') || '';
-        const userName = Cookies.get('userData') ? JSON.parse(Cookies.get('userData')!).name : '匿名用户';
+        const userName = Cookies.get('userData') ? JSON.parse(Cookies.get('userData')!).username : '匿名用户';
 
         if (inputValue.trim()) {
             setMessages([...messages, { content: inputValue, role: 'USER', id: '', chatId: '', createdAt: new Date().toISOString() }]);
