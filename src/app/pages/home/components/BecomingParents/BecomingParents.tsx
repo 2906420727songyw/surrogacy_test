@@ -52,7 +52,7 @@ export default function BecomingParents() {
             <button className="w-24 h-6 md:w-44 md:h-8 rounded-md font-medium text-black bg-white hover:bg-gray-100 transition text-[10px] md:text-sm duration-200" key={index} onClick={() => item.auth?Cookies.get('userData')?router.push(item.link[0]):router.push(item.link[1]):router.push(item.link[0])}>{item.text}</button>
           ))}
         </div>*/}
-        <div className="flex justify-center items-start gap-8 md:gap-10 mt-5 md:mt-10">
+        <div className="flex justify-center items-start gap-4 md:gap-10 mt-5 md:mt-10">
   {
     translations.home.BecomingParents.button.map((item:any,index:number)=>(
       <button 

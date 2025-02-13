@@ -601,7 +601,7 @@ export default {
         left_nav_1:'个人信息',
         left_nav_2:'成为代孕母',
         left_nav_3:'成为准父母',
-        left_nav_4:'线下预约',
+        left_nav_4:'预约信息',
         user_menu:'用户菜单',
         profileContent:{
             title:'开始小树苗旅程',

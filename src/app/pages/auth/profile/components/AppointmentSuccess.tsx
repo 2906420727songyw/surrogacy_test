@@ -1,16 +1,65 @@
 'use client';
 // import { useSearchParams } from 'next/navigation';
-
-
+import { useEffect, useState } from 'react';
+import api from '@/app/service/appointments/api';
+import Cookies from 'js-cookie';
+import { useLanguage } from '@/app/language/';
 
 export default function AppointmentSuccess() {
-  const appointmentData = JSON.parse(localStorage.getItem('appointmentData') || '{}');
+  const [appointmentData, setAppointmentData] = useState<any>(null);
+  const [hasAppointment, setHasAppointment] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const { translations } = useLanguage();
+  const [selectTime, setSelectTime] = useState("");
+
+  useEffect(() => {
+    const fetchAppointment = async () => {
+      try {
+        const userData = JSON.parse(Cookies.get('userData') || '{}');
+        if(userData.id){
+          const res = await api.getDetail(userData.id);
+          if(res.data?.id){
+            setAppointmentData(res.data);
+            setHasAppointment(true);
+            let time = res.data.appointmentTime
+            let year = time.split("T")[0].split("-")[0]
+            let month = time.split("T")[0].split("-")[1]
+            let day = time.split("T")[0].split("-")[2]
+            let hour = time.split("T")[1].split(":")[0]
+            let minute = time.split("T")[1].split(":")[1]
+            setSelectTime(`${month}月${day}日,${year}年${hour}点`)
+
+          }
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchAppointment();
+  }, []);
+
+  // 加载状态显示加载动画
+  if (isLoading) {
+    return (
+      <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px] flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-8 h-8 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-white text-sm">
+            {translations.language === 'EN' ? '加载中...' : 'Loading...'}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   const onRestart = () => {
     window.location.href = '/pages/auth/appointment';
   }
 
   // 检查是否有预约数据
-  const hasAppointment = Object.keys(appointmentData).length > 0;
 
   return (
     <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px]">
@@ -33,8 +82,8 @@ export default function AppointmentSuccess() {
             <>
               <h2 className="text-[16px] mb-4">预约详细信息</h2>
               <div className="space-y-4">
-                <p className="text-[14px]">{appointmentData.type}</p>
-                <p className="text-[14px]">{appointmentData.time + " " + appointmentData.date}</p>
+                <p className="text-[14px]">{appointmentData.type==="INTENDED_PARENT" ? "成为准父母" : "成为代孕母"}</p>
+                <p className="text-[14px]">{selectTime}</p>
               </div>
             </>
           ) : (
@@ -73,8 +122,8 @@ export default function AppointmentSuccess() {
             <>
               <h2 className="text-[14px] mb-3">预约详细信息</h2>
               <div className="space-y-3">
-                <p className="text-[12px]">{appointmentData.type}</p>
-                <p className="text-[14px]">{appointmentData.time + " " + appointmentData.date}</p>
+                <p className="text-[12px]">{appointmentData.type==="INTENDED_PARENT" ? "成为准父母" : "成为代孕母"}</p>
+                <p className="text-[14px]">{selectTime}</p>
               </div>
             </>
           ) : (

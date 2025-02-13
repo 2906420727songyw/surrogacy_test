@@ -52,7 +52,7 @@ function getList() {
 
 // 获取预约详情
 function getDetail(id: string) {
-  return http.get<AppointmentResponse>(`appointments/${id}`);
+  return http.get<AppointmentResponse>(`appointments?userId=${id}`);
 }
 
 // 更新预约

@@ -605,7 +605,7 @@ export default {
         left_nav_1:'Personal Information',
         left_nav_2:'Become a Surrogate',
         left_nav_3:'Become an Intended Parent',
-        left_nav_4:'Book an Appointment',
+        left_nav_4:'Appointment Information',
         user_menu:'User Menu',
         profileContent:{
             title:'Begin Your Sapling Surrogacy Journey',

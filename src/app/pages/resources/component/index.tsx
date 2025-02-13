@@ -176,11 +176,11 @@ export default function ResourcesComponent() {
         </div>
 
         {/* 列表区域 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-10 ">
           {selectedTab === 'intended_parent' && (
             <>
               {informationData.filter(item => item.type === 'INTENDED_PARENT').slice(0, intendedParentCount).map((item, index) => (
-                <div key={index} className="w-full md:w-[367px] h-auto rounded flex flex-col justify-between overflow-hidden">
+                <div key={index} className="w-[80vw] md:w-[367px] h-auto rounded flex flex-col justify-between overflow-hidden">
                   <div>
                     <div className="relative w-full h-[200px] md:w-full md:h-[250px] overflow-hidden">
                       <Image 
@@ -217,7 +217,7 @@ export default function ResourcesComponent() {
           {selectedTab === 'surrogate_mom' && (
             <>
               {informationData.filter(item => item.type === 'SURROGATE_MOTHER').slice(0, surrogateMomCount).map((item, index) => (
-                <div key={index} className="w-full md:w-[367px] h-auto rounded flex flex-col justify-between overflow-hidden">
+                <div key={index} className="w-[80vw] md:w-[367px] h-auto rounded flex flex-col justify-between overflow-hidden">
                   <div>
                     <div className="relative w-full h-[200px] md:w-full md:h-[250px] overflow-hidden">
                     <Image 
