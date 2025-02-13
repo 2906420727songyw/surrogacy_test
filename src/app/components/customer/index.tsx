@@ -27,16 +27,21 @@ const CustomerServiceChat: React.FC<{ onClose: () => void }> = ({ onClose }) => 
     
     useEffect(() => {
         const _info = Cookies.get('userData');
-        const _chatId = Cookies.get('chatId');
+        
+        
         try {
+          if (_info) {
+            const parsedInfo = JSON.parse(_info);
+            console.log(parsedInfo.name);
+        }else{
+          Cookies.remove('chatId')
+        }
+        const _chatId = Cookies.get('chatId');
             if (_chatId) {
                 handleRefresh(_chatId);
-                task()
+                
             }
-            if (_info) {
-                const parsedInfo = JSON.parse(_info);
-                console.log(parsedInfo.name);
-            }
+            task()
         } catch (err) {
             console.log(err);
         }
