@@ -90,6 +90,12 @@ const RadioField = ({
   </div>
 );
 
+// 首先定义一个类型来表示表单字段名称
+type FormField = 'name' | 'email' | 'phone' | 'address' | 'birthday' | 
+  'marital' | 'hasEmbryo' | 'embryoAddress' | 'embryoNumber' | 'embryoFrom' | 
+  'needTechincal' | 'needEmbryo' | 'usualLanguage' | 'nationality_status' | 
+  'hasChildren' | 'childrenNumber' | 'hasSurgery';
+
 // 修改组件名为更通用的名称
 function AppointmentForm({ onBack, appointmentData }: { 
   onBack: () => void;
@@ -139,7 +145,7 @@ function AppointmentForm({ onBack, appointmentData }: {
     const type = appointmentData.type==="代孕母"
 
     // 基本必填字段（两种类型都需要的）
-    const baseFields = [
+    const baseFields: Array<{name: FormField, label: string}> = [
       { name: 'name', label: translations.appointment_parent.name },
       { name: 'birthday', label: translations.appointment_parent.birthday },
       { name: 'phone', label: translations.appointment_parent.phone },
@@ -148,7 +154,7 @@ function AppointmentForm({ onBack, appointmentData }: {
     ];
 
     // 根据类型添加特定的必填字段
-    const specificFields = type ? [
+    const specificFields: Array<{name: FormField, label: string}> = type ? [
       // 代孕母特有字段
       { name: 'nationality_status', label: translations.appointment_surrogate.nationality_status.label },
       { name: 'marital', label: translations.appointment_surrogate.marital.label },
@@ -195,8 +201,7 @@ function AppointmentForm({ onBack, appointmentData }: {
     
     if (!validateForm()) return;
 
-    secondValid()
-
+    secondVail();
 
     try {
       setIsLoading(true);
