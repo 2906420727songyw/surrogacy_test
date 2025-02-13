@@ -3,15 +3,24 @@
 import { useSearchParams } from 'next/navigation';
 import { useLanguage } from '@/app/language';
 import { useAppointmentStore } from '@/app/store/appointmentStore';
+import { useState, useEffect } from 'react';
 
 export default function SuccessContent() {
   const searchParams = useSearchParams();
   const { translations } = useLanguage();
+  const [selectTime, setSelectTime] = useState("");
   const { selectedDate, selectedTime, currentDate } = useAppointmentStore();
-  const appointmentData = JSON.parse(localStorage.getItem('appointmentData') || '{}');
-  console.log("appointmentData",appointmentData);
-  
+  const appointmentData = JSON.parse(localStorage.getItem('appointmentData') || '{}');  
   const type = appointmentData.type === 'surrogate' ? '代孕母' : '准父母';
+
+  useEffect(() => {
+    if (appointmentData.chooseDate) {
+      const [datePart, timePart] = appointmentData.chooseDate.split(" ");
+      const [year, month, day] = datePart.split("-");
+      const [hour] = timePart.split(":");
+      setSelectTime(`${month}月${day}日,${year}年${hour}点`);
+    }
+  }, [appointmentData.chooseDate]);
 
   const formatDateTime = (date: string, time: string) => {
     if (!time) {
@@ -22,6 +31,7 @@ export default function SuccessContent() {
     const isAM = time.includes('am');
     const timeInChinese = isAM ? `上午${hour}点` : `下午${hour}点`;
     const lastTime = translations.language==='EN'?timeInChinese:`${', '+time}`;
+   
 
     return `${translations.profile.appointmentContent.month_list[currentDate.getMonth()]}${translations.language==='EN'?date:' '+date}${translations.language==='EN'?'号':''}，${currentDate.getFullYear()}${translations.language==='EN'?'年':''}${lastTime}`;
   };
@@ -44,7 +54,7 @@ export default function SuccessContent() {
         <h2 className="text-[16px] mb-4">预约详细信息</h2>
         <div className="space-y-4">
           <p className="text-[14px]">成为{type}</p>
-          <p className="text-[14px]">{appointmentData.time+" "+ appointmentData.date }</p>
+          <p className="text-[14px]">{selectTime}</p>
         </div>
         
         {/* 重新预约按钮 */}
@@ -73,7 +83,7 @@ export default function SuccessContent() {
         <h2 className="text-[14px] mb-3">预约详细信息</h2>
         <div className="space-y-3">
           <p className="text-[12px]">成为准父母</p>
-          <p className="text-[14px]">{appointmentData.time+" "+ appointmentData.date }</p>
+          <p className="text-[14px]">{selectTime}</p>
         </div>
         
         {/* 重新预约按钮 */}
