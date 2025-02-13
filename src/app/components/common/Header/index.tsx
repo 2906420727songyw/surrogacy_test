@@ -76,6 +76,7 @@ const Header = () => {
 
     const routerToScroll = async (route: string, link: string) => {
         setIsMenuOpen(false);
+        toggleBodyScroll(false)
         if (currentPath !== route) router.push(route);
         if (link.includes('/pages/')) {
             router.push(link);
@@ -119,10 +120,12 @@ const Header = () => {
             router.push('/pages/auth/login');
         }
         setIsMenuOpen(false);
+        toggleBodyScroll(false)
     };
 
     const routerToCheckLogin = (path: string) => {
         setIsMenuOpen(false);
+        toggleBodyScroll(false)
         router.push(path);
     }
 
@@ -417,6 +420,7 @@ const Header = () => {
                                                     console.error('Logout failed:', error);
                                                 } finally {
                                                     setIsMenuOpen(false);
+                                                    toggleBodyScroll(false)
                                                 }
                                             }}>
                                                 {item.text}
@@ -440,6 +444,7 @@ const Header = () => {
                                         <div className='font-bold hover:cursor-pointer my-5' onClick={() => {
                                             router.push(item.link)
                                             setIsMenuOpen(false)
+                                            toggleBodyScroll(false)
                                         }}>{item.text}</div>
                                         <div className={item.options ? 'border-b border-gray-300 my-54' : ''}></div>
                                         <div className='flex flex-col gap-5 mt-2 relative left-5'>
@@ -452,7 +457,13 @@ const Header = () => {
                                 <div className='flex gap-2 flex-col'>
 
                                             <div className='py-2 hover:cursor-pointer' 
-                                                                       onClick={() =>  router.push('/pages/auth/appointment')}
+                                                                       onClick={() =>  {
+
+                                                                        router.push('/pages/auth/appointment')
+                                                                        setIsMenuOpen(false);
+                                                                        toggleBodyScroll(false)
+
+                                                                       }}
 
 >
                                                 {translations.header.appointment}</div>
