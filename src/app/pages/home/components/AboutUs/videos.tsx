@@ -1,7 +1,7 @@
 
 'use client';
 
-{/*import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import aboutApi from '@/app/service/video/api';
@@ -18,19 +18,30 @@ interface Video {
 
 export default function Test() {
   const [videos, setVideos] = useState<Video[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchVideos = async () => {
       try {
         const response = await aboutApi.aboutVideo();
-        setVideos(response.data);
+        if (Array.isArray(response.data)) {
+          setVideos(response.data);
+        } else {
+          console.error('Invalid video data format');
+        }
       } catch (error) {
         console.error('Failed to fetch videos:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchVideos();
   }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
@@ -47,7 +58,7 @@ export default function Test() {
         }}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
       >
-        {videos.map((video) => (
+        {videos && videos.map((video) => (
           <SwiperSlide key={video.id} style={{ width: '80%', maxWidth: '1000px' }}>
             <video
               className='rounded-lg my-10'
@@ -59,10 +70,10 @@ export default function Test() {
       </Swiper>
     </div>
   );
-}*/}
+}
 
 
-import React from 'react';
+{/*import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 
@@ -100,4 +111,4 @@ export default function Test() {
       </Swiper>
     </div>
   );
-}
+}*/}

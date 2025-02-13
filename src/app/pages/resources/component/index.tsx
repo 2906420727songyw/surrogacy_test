@@ -117,6 +117,7 @@ export default function ResourcesComponent() {
     const ret_data = (res as unknown as ApiResponse).data;
     for(let i=0;i<ret_data.length;i++){
       ret_data[i].content = JSON.parse(ret_data[i].content as unknown as string) as translationsData;
+      ret_data[i].title = JSON.parse(ret_data[i].title as unknown as string) as translationsData;
     }
     setInformationData(ret_data);
   }

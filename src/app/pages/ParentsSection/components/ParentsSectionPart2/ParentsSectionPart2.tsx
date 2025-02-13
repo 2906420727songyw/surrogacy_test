@@ -110,6 +110,14 @@ export default function ParentsSectionPart2() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const gotoPage = () => {
+    const userData = Cookies.get('userData');
+    if(userData && JSON.parse(userData).role === "INTENDED_PARENT"){
+      router.push('/pages/auth/profile?type=become');
+    }else{
+      router.push('/pages/auth/login?type=parent');
+    }
+  }
   const isExpanded = (sectionId: string) => expandedSections.has(sectionId);
 
   return (
@@ -240,11 +248,11 @@ export default function ParentsSectionPart2() {
         </div>
         {
         translations.language==='EN'?
-        <button className="flex justify-center items-center w-16 h-6 md:w-24 md:h-8 rounded h2-text text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=become' ):router.push('/pages/auth/login?mode=register')}>
+        <button className="flex justify-center items-center w-16 h-6 md:w-24 md:h-8 rounded h2-text text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={gotoPage}>
           {translations.parentsSection.ParentsSectionPart2.button.text}
         </button>
         :
-        <button className="flex justify-center items-center px-5 h-6  md:h-8 rounded font-normal text-xs md:text-sm text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={()=>Cookies.get('userData')?router.push('/pages/auth/profile?type=become' ):router.push('/pages/auth/login?mode=register')}>
+        <button className="flex justify-center items-center px-5 h-6  md:h-8 rounded font-normal text-xs md:text-sm text-black bg-[#cdc6c0] hover:bg-gray-100 transition duration-200 mb-10 md:mb-24 mt-10 md:mt-10" onClick={gotoPage}>
           {translations.parentsSection.ParentsSectionPart2.button.text}
         </button>
        }
