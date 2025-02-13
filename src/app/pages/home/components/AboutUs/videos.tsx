@@ -24,8 +24,8 @@ export default function Test() {
     const fetchVideos = async () => {
       try {
         const response = await aboutApi.aboutVideo();
-        if (Array.isArray(response.data)) {
-          setVideos(response.data);
+        if (Array.isArray(response)) {
+          setVideos(response);
         } else {
           console.error('Invalid video data format');
         }
@@ -64,6 +64,7 @@ export default function Test() {
               className='rounded-lg my-10'
               src={video.url}
               controls
+              style={{ objectFit: 'cover' }}
             ></video>
           </SwiperSlide>
         ))}
