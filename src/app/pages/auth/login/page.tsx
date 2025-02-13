@@ -8,7 +8,7 @@ import { MD5 } from 'crypto-js';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useLanguage } from '@/app/language/';
-
+import Cookies from 'js-cookie';
 // 生成随机字段名称的函数
 const generateRandomName = (prefix: string) => `${prefix}_${Math.random().toString(36).slice(2)}_${Date.now()}`;
 
@@ -55,6 +55,7 @@ function LoginContent() {
         password: MD5(password).toString(),
         type:userType
       });
+      Cookies.remove('chatId')
     } catch (error) {
       console.error(error);
     } finally {

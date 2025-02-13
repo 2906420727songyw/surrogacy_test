@@ -416,6 +416,7 @@ const Header = () => {
                                                     setActiveMenu(null);
                                                     window.location.href = '/';
                                                     Cookies.remove('userData');
+                                                    Cookies.remove('chatId')
                                                 } catch (error) {
                                                     console.error('Logout failed:', error);
                                                 } finally {
