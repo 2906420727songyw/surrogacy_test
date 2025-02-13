@@ -136,6 +136,9 @@ export default function ProfileContent() {
   };
 
   const getDisplayValue = (value: string | undefined): string => {
+    if(isEditing){
+      return value || '';
+    }
     if (!isClient) return '';
     return value || (translations.language === 'EN' ? '暂未填写' : 'Not yet provided');
   };
