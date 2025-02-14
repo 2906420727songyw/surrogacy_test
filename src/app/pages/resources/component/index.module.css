@@ -7,6 +7,19 @@
   background-position: 0 70%;
   background-repeat: no-repeat;
 }
+.loader {
+  border: 4px solid #e5e3e3;
+  border-top: 4px solid #595a5a;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 @media (max-width: 768px) {
   .image{

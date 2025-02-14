@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import aboutApi from '@/app/service/video/api';
-
+import styles from './AboutUs.module.css';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -22,6 +22,7 @@ export default function Test() {
 
   useEffect(() => {
     const fetchVideos = async () => {
+      setLoading(true);
       try {
         const response = await aboutApi.aboutVideo();
         if (Array.isArray(response)) {
@@ -40,7 +41,9 @@ export default function Test() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="w-full flex justify-center items-center">
+      <div className={styles.loader}></div>
+    </div>;
   }
 
   return (

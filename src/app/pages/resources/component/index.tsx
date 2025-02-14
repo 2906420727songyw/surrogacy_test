@@ -103,16 +103,22 @@ export default function ResourcesComponent() {
     };
   }, []);
 
+  const [loading1, setLoading1] = useState(true);
+  const [loading2, setLoading2] = useState(true);
+
   const getComponentData = async () => {
+    setLoading2(true);
     const res = await informationApi.getComponent();
     const ret_data = res as unknown as ComponentData[];
     for(let i=0;i<ret_data.length;i++){
       ret_data[i].content = JSON.parse(ret_data[i].content as unknown as string) as translationsData;
     }
     setComponentData(ret_data);
+    setLoading2(false);
   }
 
   const getInformationData = async () => {
+    setLoading1(true);
     const res = await informationApi.getInformation();
     const ret_data = (res as unknown as ApiResponse).data;
     for(let i=0;i<ret_data.length;i++){
@@ -120,11 +126,17 @@ export default function ResourcesComponent() {
       ret_data[i].title = JSON.parse(ret_data[i].title as unknown as string) as translationsData;
     }
     setInformationData(ret_data);
+    setLoading1(false);
   }
 
   const handleTabClick = (tab: 'intended_parent' | 'surrogate_mom') => {
+    setLoading1(true);
+
+    setTimeout(() => {
     setSelectedTab(tab);
-  };
+    setLoading1(false);
+  }, 500);
+};
 
   const handleReadMore = (item: InformationData) => {
     router.push(`/pages/blog-detail?id=${item.id}`);
@@ -144,6 +156,7 @@ export default function ResourcesComponent() {
       />*/}
       <div className={styles.image}></div>
       {/* 博客 */}
+      
       <div className="w-full flex flex-col items-center justify-center bg-[#A48472] px-5 md:px-20 py-10 md:py-20">
         <p 
           ref={setRef('title')}
@@ -176,6 +189,12 @@ export default function ResourcesComponent() {
         </div>
 
         {/* 列表区域 */}
+        {loading1 ? (
+          <div className="w-full flex justify-center items-center">
+            <div className={styles.loader}></div>
+          </div>
+        ) : (
+          <>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-10 ">
           {selectedTab === 'intended_parent' && (
             <>
@@ -281,8 +300,11 @@ export default function ResourcesComponent() {
             )}
           </>
         )}
-        </div>
-      </div>
+        </>
+      )}
+    </div>
+  </div>
+      
 
 
       {/* 客户评价 */}
@@ -298,6 +320,11 @@ export default function ResourcesComponent() {
         </p>
 
         {/* 家长感言列表 */}
+        {loading2 ? (
+          <div className="w-full flex justify-center items-center">
+            <div className={styles.loader}></div>
+          </div>
+        ) : (
         <div className="flex flex-col space-y-8 w-full md:w-2/3">
           {componentData.slice(0, parentReviewCount).map((review, index) => (
             <div 
@@ -335,6 +362,7 @@ export default function ResourcesComponent() {
             </p>
           )}
           </div>
+        )}
       </div>
     </div>
   );
