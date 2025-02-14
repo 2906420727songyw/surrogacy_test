@@ -1,4 +1,5 @@
 'use client';
+import { ToastContainer, toast } from 'react-toastify';
 
 import { useState, useEffect } from 'react';
 import userApi from '@/app/service/user/api';
@@ -93,6 +94,9 @@ export default function ProfileContent() {
         setEditingData(newUserData);
       } catch  {
         console.error(translations.auth.getUserInfoFailed);
+        toast.error(translations.language !== 'EN' 
+        ? 'Get user info failed' 
+        : '获取用户信息失败');
       } finally {
         setIsLoading(false);
       }
@@ -124,10 +128,17 @@ export default function ProfileContent() {
       }
       console.log(editingData);
       const data = JSON.parse(JSON.stringify(editingData));
-      await userApi.updateUserInfo(data);
-      setUserData(editingData);
-      Cookies.set('userData', JSON.stringify(editingData));
-      setIsEditing(false); 
+      try{
+        await userApi.updateUserInfo(data);
+        setUserData(editingData);
+        Cookies.set('userData', JSON.stringify(editingData));
+        setIsEditing(false); 
+      }catch{
+        toast.error(translations.language === 'EN' 
+        ? '保存用户信息失败，登录名或用户名不可重复' 
+        : 'Save user info failed, login name or username cannot be repeated');
+      }
+     
     } catch (error) {
       console.error(error);
     } finally {
@@ -156,6 +167,19 @@ export default function ProfileContent() {
 
   return (
     <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px]">
+
+<ToastContainer 
+  style={{zIndex:9999}}
+  position="top-right"
+  autoClose={2000}
+  hideProgressBar={false}
+  newestOnTop={false}
+  closeOnClick
+  rtl={false}
+  pauseOnFocusLoss
+  draggable
+  pauseOnHover
+  theme="light"      />
       {/* 隐藏的表单来阻止浏览器自动填充 */}
       <div style={{ display: 'none' }}>
         <input type="text" name="hidden_username" autoComplete="username" />

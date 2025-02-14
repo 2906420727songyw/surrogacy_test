@@ -14,6 +14,8 @@ interface AppointmentData {
   userId: string;
   appointmentTime: string;
   type: AppointmentType;
+  zone: string;
+  beforeTime: string;
   name: string;
   email: string;
   phone: string;
@@ -52,6 +54,8 @@ export default function AppointmentSuccess() {
           id: appointmentResponse.id,
           userId: appointmentResponse.userId,
           appointmentTime: appointmentResponse.appointmentTime,
+          zone: appointmentResponse.zone,
+          beforeTime: appointmentResponse.beforeTime,
           type: appointmentResponse.type as AppointmentType,
           name: appointmentResponse.name,
           email: appointmentResponse.email,
@@ -66,8 +70,8 @@ export default function AppointmentSuccess() {
         setAppointmentData(formattedAppointment);
         setHasAppointment(true);
 
-        if (formattedAppointment.appointmentTime) {
-          const [datePart, timePart] = formattedAppointment.appointmentTime.split("T");
+        if (formattedAppointment.beforeTime) {
+          const [datePart, timePart] = formattedAppointment.beforeTime.split("T");
           const [year, month, day] = datePart.split("-");
           const [hour] = timePart.split(":");
           setSelectTime(`${month}月${day}日,${year}年${hour}点`);

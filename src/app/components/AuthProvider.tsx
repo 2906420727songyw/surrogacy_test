@@ -117,17 +117,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         case 200:
           res.data.role = formData.role;
           userApi.getUserInfo(res.data.id).then((ret:any)=>{
+            toast.success(translations.language === 'EN' 
+              ? '注册成功' 
+              : 'Register success');
             Cookies.set('userData', JSON.stringify(ret), { expires: 30 });
-
-            toast.success(translations.auth.registerSuccess);
+          
             router.push('/pages/auth/profile');
             setIsAuthenticated(true);
           })
-
           break;
+         
         case 409:
         toast.error(translations.auth.registerFailed);
         setIsAuthenticated(false);
+          break;
+        case 500:
+          toast.error(translations.language === 'EN' 
+          ? '该邮箱或用户名已被注册' 
+          : 'The email or username has been registered');
+          setIsAuthenticated(false);
           break;
         default:
           break;

@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { useLanguage } from '@/app/language/';
 import { useAppointmentStore } from '@/app/store/appointmentStore';
 import SuccessContent from '../appointment-success/components/SuccessContent';
@@ -100,18 +100,25 @@ type FormField = 'name' | 'email' | 'phone' | 'address' | 'birthday' |
 
 // 修改组件名为更通用的名称
 function AppointmentForm({ onBack, appointmentData }: { 
+  
   onBack: () => void;
   appointmentData: {
     date: string;
     time: string;
     type: string;
-    chooseDate: string;
+    updateDate: string;
     zone?: string;
+    currentDate: string;
   }
 }) {
   const { translations } = useLanguage();
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    console.log("appointmentData",appointmentData);
+  }, []);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -218,8 +225,10 @@ function AppointmentForm({ onBack, appointmentData }: {
     
 
     let submitData = {
-      userId: userDataStr?userData.id:"cm73ear760001jx1e333ipw0z",
-      appointmentTime: appointmentData.chooseDate,
+      userId: userDataStr?userData.id:"cm7585mdq0002jx1ei8e471zf",
+      appointmentTime: appointmentData.updateDate,
+      zone: appointmentData.zone,
+      beforeTime: appointmentData.currentDate,
       type: appointmentData.type === "代孕母" ? "SURROGATE_MOTHER" : "INTENDED_PARENT",
       name: formData.name,
       phone: formData.phone,
@@ -388,6 +397,8 @@ function AppointmentForm({ onBack, appointmentData }: {
   
     // 修改条件渲染部分
   if (isSuccess) {
+
+    
     // const formattedTime = convertTimeFormat(selectedTime);
     // const date = convertToCaliforniaTime(selectedDate, selectedTime, selectedTimeZone);
     // const appointmentData = {
@@ -395,7 +406,7 @@ function AppointmentForm({ onBack, appointmentData }: {
     //   zone: selectedTimeZone,
     //   time: selectedTime,
     //   type: type,
-    //   chooseDate: date
+    //   updateDate: date
     // };
  
 
@@ -938,6 +949,8 @@ function AppointmentContentInner() {
       (currentDate.getMonth() + 1).toString().padStart(2, '0')}-${
       Number(date).toString().padStart(2, '0')}T${
       hours.toString().padStart(2, '0')}:00:00`);
+
+    console.log("dateObj",dateObj);
     
     dateObj.setHours(dateObj.getHours() + hourDiff);
 
@@ -946,6 +959,32 @@ function AppointmentContentInner() {
       dateObj.getDate().toString().padStart(2, '0')} ${
       dateObj.getHours().toString().padStart(2, '0')}:00:00`;
   };
+
+
+
+    // 移动到这里，确保可以访问到所需的所有变量
+    const convertToCurrentTime = (date: string, time: string): string => {
+ 
+      
+      const formattedTime = convertTimeFormat(time);
+      const [hours] = formattedTime.split(':').map(Number);
+      
+   
+  
+      const dateObj = new Date(`${currentDate.getFullYear()}-${
+        (currentDate.getMonth() + 1).toString().padStart(2, '0')}-${
+        Number(date).toString().padStart(2, '0')}T${
+        hours.toString().padStart(2, '0')}:00:00`);
+  
+      console.log("dateObj",dateObj);
+      
+  
+      return `${dateObj.getFullYear()}-${
+        (dateObj.getMonth() + 1).toString().padStart(2, '0')}-${
+        dateObj.getDate().toString().padStart(2, '0')} ${
+        dateObj.getHours().toString().padStart(2, '0')}:00:00`;
+    };
+  
 
   if (isSuccess) {
     return <SuccessContent />;
@@ -961,16 +1000,18 @@ function AppointmentContentInner() {
   if (showParentForm) {
     // const formattedTime = convertTimeFormat(selectedTime);
     const date = convertToCaliforniaTime(selectedDate, selectedTime, selectedTimeZone);
+    const currentDate = convertToCurrentTime(selectedDate, selectedTime);
+    console.log("date",selectedDate,selectedTime);
     const appointmentData = {
       date: formatDateTime(selectedDate, ''),
       zone: selectedTimeZone,
       time: selectedTime,
       type: type,
-      chooseDate: date
+      currentDate: currentDate,
+      updateDate: date
     };
  
 
-    console.log("current", date);
     
     return <AppointmentForm onBack={handleBack} appointmentData={appointmentData} />;
   }

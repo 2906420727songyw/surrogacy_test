@@ -46,6 +46,8 @@ interface SubmitData {
   phone: string;
   email: string;
   dateOfBirth: string;
+  maritalStatus: string;
+  areaCode: string;
   partnerName: string;
   partnerDateOfBirth: string;
   answers: Array<{
@@ -83,15 +85,17 @@ export default function ParentApplicationContent() {
       'Full Name *': 'name',
       '姓名 *': 'name',
       'Address *': 'address',
-      '地址 *': 'address',
+      '详细地址 *': 'address',
       'City *': 'city',
       '城市 *': 'city',
       'State/Province *': 'province',
-      '州/省 *': 'province',
+      '所在州/省 *': 'province',
       'Postal Code *': 'zipCode',
-      '邮政编码 *': 'zipCode',
+      '邮编 *': 'zipCode',
       'Country *': 'country',
       '国家 *': 'country',
+      'Country Code (if outside the U.S.)': 'areaCode',
+      '国家区号（如在美国境外）': 'areaCode',
       'Phone Number *': 'phone',
       '电话号码 *': 'phone',
       'Email Address *': 'email',
@@ -99,11 +103,11 @@ export default function ParentApplicationContent() {
       'Date of Birth *': 'birthDate',
       '出生日期 *': 'birthDate',
       'Marital Status *': 'maritalStatus',
-      '婚姻状况 *': 'maritalStatus',
+      '婚姻状态 *': 'maritalStatus',
       "Partner's Full Name *": 'spouseName',
-      '配偶姓名 *': 'spouseName',
+      '伴侣的姓名 *': 'spouseName',
       "Partner's Date of Birth *": 'spouseBirthDate',
-      '配偶出生日期 *': 'spouseBirthDate',
+      '伴侣的出生日期 *': 'spouseBirthDate',
       'Sexual Orientation *': 'orientation',
       '性取向 *': 'orientation',
       'What services do you need? *': 'serviceType',
@@ -225,6 +229,8 @@ export default function ParentApplicationContent() {
         phone: formData.phone,
         email: formData.email,
         dateOfBirth: formData.birthDate,
+        areaCode: formData.areaCode || '',
+        maritalStatus: formData.maritalStatus,
         partnerName: formData.spouseName,
         partnerDateOfBirth: formData.spouseBirthDate,
         answers: [
@@ -276,6 +282,24 @@ export default function ParentApplicationContent() {
           }
         ].filter(answer => answer.value !== '')
       };
+
+      if(formData.hasFrozenEmbryo==="是" || formData.hasFrozenEmbryo==="Yes"){
+        if(formData.embryoLocation===""){
+          toast.error(translations.language !== 'EN' 
+          ? 'Please fill in the embryo location' 
+          : '请填写胚胎位置');
+          return;
+        }
+      }
+
+      if(formData.hasClinic==="是" || formData.hasClinic==="Yes"){
+        if(formData.clinicName===""){
+          toast.error(translations.language !== 'EN' 
+          ? 'Please fill in the clinic name' 
+          : '请填写诊所名字');
+          return;
+        }
+      }
 
 
       const response = await userApi.applyParent(submitData);

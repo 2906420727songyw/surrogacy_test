@@ -1,9 +1,13 @@
 'use client';
 
 import { useLanguage } from '@/app/language/';
+import { useEffect } from 'react';
 
 export default function SurrogateSuccess() {
   const { translations } = useLanguage();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
   return (
     <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px]">

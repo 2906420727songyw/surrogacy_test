@@ -29,6 +29,8 @@ interface qa {
 interface AppointmentData {
   userId?: string;
   appointmentTime: string;
+  zone?: string;
+  beforeTime?: string;
   type: string;
   name: string;
   phone: string;

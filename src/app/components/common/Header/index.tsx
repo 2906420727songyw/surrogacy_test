@@ -37,6 +37,7 @@ const Header = () => {
 
     const toggleLanguage = () => {
         setLanguage(language === 'en' ? 'zn' : 'en');
+        Cookies.set("language",language !== 'en' ? 'zn' : 'en')
     };
 
     useEffect(() => {
@@ -77,39 +78,43 @@ const Header = () => {
     const routerToScroll = async (route: string, link: string) => {
         setIsMenuOpen(false);
         toggleBodyScroll(false)
+        console.log("route",route,link);
         if (currentPath !== route) router.push(route);
-        if (link.includes('/pages/')) {
-            router.push(link);
-        } else {
-
-            switch(route){
-                case '/pages/ParentsSection':
-                    if(link !== 'surrogacy-matching-process' && link !== 'surrogacy-plan-process'){
-                        sessionStorage.setItem('autoExpandSteps', 'true');
-                        sessionStorage.setItem('autoExpandSteps3', 'true');
-                    } 
-                    if(link === 'surrogacy-plan-process'){
-                        sessionStorage.setItem('autoExpandSteps', 'true');
-                    }
-                    break;
-                case '/pages/BecomeSurrogate':
-                    if(link !== 'surrogacy-matching-process'){
-                        sessionStorage.setItem('expandAllSections', 'true');
-                    }
-                    break;
-            }
-            console.log("route:",route);
-
-         
-
-           
-            setTimeout(() => {
-            const element = document.getElementById(link);
-            if (element) {
-                    element.scrollIntoView({ behavior: 'smooth'});
+        setTimeout(() => {
+            if (link.includes('/pages/')) {
+                router.push(link);
+            } else {
+    
+                switch(route){
+                    case '/pages/ParentsSection':
+                        if(link !== 'surrogacy-matching-process' && link !== 'surrogacy-plan-process'){
+                            sessionStorage.setItem('autoExpandSteps', 'true');
+                            sessionStorage.setItem('autoExpandSteps3', 'true');
+                        } 
+                        if(link === 'surrogacy-plan-process'){
+                            sessionStorage.setItem('autoExpandSteps', 'true');
+                        }
+                        break;
+                    case '/pages/BecomeSurrogate':
+                        if(link !== 'surrogacy-matching-process'){
+                            sessionStorage.setItem('expandAllSections', 'true');
+                        }
+                        break;
                 }
-            }, 1000);
-        }
+                console.log("route:",route);
+    
+             
+    
+               
+                setTimeout(() => {
+                const element = document.getElementById(link);
+                if (element) {
+                        element.scrollIntoView({ behavior: 'smooth'});
+                    }
+                }, 1000);
+            }
+
+            }, 300);
     }
 
     const clickLogin = () => {

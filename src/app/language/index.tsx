@@ -2,6 +2,7 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import en from './en';
 import zn from './zn';
+import Cookies from 'js-cookie';
 
 // 使用索引签名来定义不确定的翻译字段
 interface Translations {
@@ -19,7 +20,7 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>(Cookies.get('language') !== 'zn' ? 'zn' : 'en');
   const translations: Translations = language === 'en' ? en : zn;
 
   return (

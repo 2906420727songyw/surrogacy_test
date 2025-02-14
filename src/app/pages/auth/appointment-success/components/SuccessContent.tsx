@@ -1,40 +1,24 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
-import { useLanguage } from '@/app/language';
-import { useAppointmentStore } from '@/app/store/appointmentStore';
+
 import { useState, useEffect } from 'react';
 
 export default function SuccessContent() {
-  const searchParams = useSearchParams();
-  const { translations } = useLanguage();
+
   const [selectTime, setSelectTime] = useState("");
-  const { selectedDate, selectedTime, currentDate } = useAppointmentStore();
   const appointmentData = JSON.parse(localStorage.getItem('appointmentData') || '{}');  
   const type = appointmentData.type === 'surrogate' ? '代孕母' : '准父母';
 
   useEffect(() => {
-    if (appointmentData.chooseDate) {
-      const [datePart, timePart] = appointmentData.chooseDate.split(" ");
+    if (appointmentData.currentDate) {
+      const [datePart, timePart] = appointmentData.currentDate.split(" ");
       const [year, month, day] = datePart.split("-");
       const [hour] = timePart.split(":");
       setSelectTime(`${month}月${day}日,${year}年${hour}点`);
     }
-  }, [appointmentData.chooseDate]);
+  }, [appointmentData.currentDate]); 
 
-  const formatDateTime = (date: string, time: string) => {
-    if (!time) {
-      return `${translations.profile.appointmentContent.month_list[currentDate.getMonth()]}${translations.language==='EN'?date:' '+date}${translations.language==='EN'?'号':''},${currentDate.getFullYear()}${translations.language==='EN'?'年':''}`;
-    }
-
-    const hour = time.split(':')[0];
-    const isAM = time.includes('am');
-    const timeInChinese = isAM ? `上午${hour}点` : `下午${hour}点`;
-    const lastTime = translations.language==='EN'?timeInChinese:`${', '+time}`;
-   
-
-    return `${translations.profile.appointmentContent.month_list[currentDate.getMonth()]}${translations.language==='EN'?date:' '+date}${translations.language==='EN'?'号':''}，${currentDate.getFullYear()}${translations.language==='EN'?'年':''}${lastTime}`;
-  };
+ 
 
   return (
     <div className="flex justify-center pt-[100px] xl:pt-[15vh] bg-[#B8886F] min-h-screen ">
