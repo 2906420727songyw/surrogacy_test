@@ -10,7 +10,6 @@ interface InformationData {
   id: string;
   title: translationsData;
   content: translationsData;
-  type: string;
   url: string[];
 }
 
@@ -18,6 +17,8 @@ interface translationsData {
   en: string;
   zn: string;
 }
+
+
 
 export default function BlogDetail() {
   const { translations } = useLanguage();
@@ -32,25 +33,15 @@ export default function BlogDetail() {
   );
 }
 function BlogDetailContent() {
-  const { translations } = useLanguage();
   const searchParams = useSearchParams();
-  const id = searchParams.get('id') || '';
-  const [blogData, setBlogData] = useState<InformationData | null>(null);
-
-  useEffect(() => {
-    const fetchBlogData = async () => {
-      if (id) {
-        const data = await informationApi.getInformationById(id);
-        setBlogData(data as unknown as InformationData);
-      }
-    };
-
-    fetchBlogData();
-  }, [id]);
-
-  if (!blogData) {
+  const blogDataString = searchParams.get('blogData');
+  
+  if (!blogDataString) {
     return <div>Loading...</div>;
   }
+  
+  const blogData: InformationData = JSON.parse(blogDataString);
+  const { translations } = useLanguage();
 
   return (
     <>

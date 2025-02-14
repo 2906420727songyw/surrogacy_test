@@ -6,6 +6,7 @@ import Image from 'next/image';
 import informationApi from '@/app/service/information/api';
 import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '@/app/language/';
+import path from 'path';
 
 interface ComponentData {
   id: string;
@@ -138,9 +139,9 @@ export default function ResourcesComponent() {
   }, 500);
 };
 
-  const handleReadMore = (item: InformationData) => {
-    router.push(`/pages/blog-detail?id=${item.id}`);
-  };
+const handleReadMore = (item: InformationData) => {
+  router.push(`/pages/blog-detail?blogData=${encodeURIComponent(JSON.stringify(item))}`);
+};
 
   return (
     <div className={`w-full flex flex-col items-center justify-center fade-in ${translations.language==='EN'?'':'en-text'}`}>
