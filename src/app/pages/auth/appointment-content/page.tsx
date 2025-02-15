@@ -1110,15 +1110,31 @@ function AppointmentContentInner() {
                   {Array.from({ length: daysInMonth }, (_, i) => {
                     const day = i + 1;
                     const dateString = `${day}`;
+                    
+                    // 创建当前选择的日期对象和今天的日期对象
+                    const selectedFullDate = new Date(
+                      currentDate.getFullYear(),
+                      currentDate.getMonth(),
+                      day
+                    );
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0); // 设置时间为当天的开始
+
+                    // 判断是否是过去的日期
+                    const isPastDate = selectedFullDate < today;
 
                     return (
                       <button
                         key={day}
                         className={`w-6 h-6 xl:w-8 xl:h-8 flex items-center justify-center rounded-full
-                          ${selectedDate === dateString 
-                            ? 'bg-[#8E7362] text-[#ffffff]' 
-                            : 'text-white hover:bg-white/10'}`}
-                        onClick={() => setSelectedDate(dateString)}
+                          ${isPastDate 
+                            ? 'text-white/30 cursor-not-allowed' // 过去的日期显示为灰色且不可点击
+                            : selectedDate === dateString 
+                              ? 'bg-[#8E7362] text-[#ffffff]' 
+                              : 'text-white hover:bg-white/10'
+                          }`}
+                        onClick={() => !isPastDate && setSelectedDate(dateString)}
+                        disabled={isPastDate}
                       >
                         <span className="text-[0.75rem] xl:text-[0.875rem]">{day}</span>
                       </button>

@@ -126,6 +126,9 @@ body {
 .en-text{
   font-family: 'Times New Roman';
 }
+.en-text-important{
+  font-family: 'Times New Roman' !important;
+}
 @keyframes fadeIn {
   to {
     opacity: 1;

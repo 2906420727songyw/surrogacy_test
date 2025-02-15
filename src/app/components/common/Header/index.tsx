@@ -280,7 +280,7 @@ const Header = () => {
             >
                 <div className='header-switch:flex header-switch:flex-row items-center gap-1 flex flex-col hover:cursor-pointer' onClick={() => router.push('/')}>
                 <img src='/images/logo.jpg' className='header-switch:w-auto header-switch:h-12 w-auto h-11' />
-                <div className='header-switch:text-[1.1rem] text-[0.6rem] flex flex-col items-center'>
+                <div className='header-switch:text-[1.1rem] text-[0.6rem] flex flex-col items-center en-text-important'>
                     Sapling Surrogacy<br /> 
                         <span className='header-switch:text-[1rem] text-[0.55rem]'>{translations.header.title}</span>
                     </div>

@@ -44,9 +44,9 @@ export default function SuccessContent() {
         {/* 重新预约按钮 */}
         <button 
           className="mt-8 bg-[#D9D9D9] text-[#000] text-[16px] px-6 py-2 rounded-[4px]"
-          onClick={() => window.location.href = '/pages/auth/appointment'}
+          onClick={() => window.location.href = '/'}
         >
-          重新预约
+          返回
         </button>
       </div>
     </div>
@@ -73,9 +73,9 @@ export default function SuccessContent() {
         {/* 重新预约按钮 */}
         <button 
           className="mt-6 bg-[#D9D9D9] text-[#000] text-[14px] w-[100px] h-[40px] rounded-[4px]"
-          onClick={() => window.location.href = '/pages/auth/appointment'}
+          onClick={() => window.location.href = '/'}
         >
-          重新预约
+          返回
         </button>
       </div>
     </div>
