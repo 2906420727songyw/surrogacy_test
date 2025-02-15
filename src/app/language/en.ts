@@ -1049,6 +1049,99 @@ auth:{
   unknownError: "Unknown Error",
   roleError: "You do not have permission to login",
   getUserInfoFailed: "Get User Info Failed"
-}
-  
+},
+LGBTQIA:{
+  title1:'Building Your Family as a Single Parent or LGBTQIA+ Parent',
+  firstDesc:'At Sapling Surrogacy, we believe that everyone deserves the chance to become a parent, no matter their gender identity, sexual orientation, or family structure. We’re here to provide safe, legal, and personalized surrogacy services for single parents and LGBTQIA+ families, guiding you every step of the way toward making your dream of parenthood a reality.',
+  btn:'Start Your Consultation',
+  title2:'Who Is Surrogacy For?',
+  content1:'Surrogacy can be a great option if you’re:',
+  content2:'This guide will walk you through everything you need to know.',
+  secondDesc:'While the overall surrogacy process is similar, single parents and LGBTQIA+ families often have additional considerations when it comes to fertility treatments, legal steps, and securing parental rights.',
+  list1:[
+      {
+          content:'A single man or woman ready to start a family on your own.',
+          image:'/images/LGBTQIA/icon1.png'
+      },
+      {
+          content:'A gay couple using an egg donor and IVF, with one or both partners providing sperm.',
+          image:'/images/LGBTQIA/icon2.png'
+      },
+      {
+          content:'A lesbian couple using IVF or IUI, with one or both partners providing eggs and a sperm donor.',
+          image:'/images/LGBTQIA/icon3.png'
+      },
+      {
+          content:'A non-binary or transgender individual looking to grow your family through surrogacy or other fertility options.',
+          image:'/images/LGBTQIA/icon4.png'
+      },
+      {
+          content:'An LGBTQIA+ family that needs a personalized fertility plan and legal guidance.',
+          image:'/images/LGBTQIA/icon5.png'
+      }
+      
+  ],
+  title3:'What to Keep in Mind',
+  list2:[
+      {
+          title:'1. Surrogacy Laws',
+          content:'Surrogacy laws in the U.S. vary by state. Some states are LGBTQIA+ and single-parent friendly, while others have restrictions or extra legal steps for non-heterosexual couples. It’s important to understand the laws in the state where your surrogacy will take place.',
+      },
+      {
+          title:'2. Parental Rights',
+          content:'Not all states automatically recognize LGBTQIA+ parents or single parents as legal guardians. Securing your parental rights early and making sure all legal paperwork is in place is key to avoiding complications down the road.',
+      },
+      {
+          title:'3. Choosing an Egg or Sperm Donor',
+          content:'Single men or gay couples will need an egg donor, either through an anonymous or open donation, and may choose PGT-A screening to select the healthiest embryos.Single women or lesbian couples may need a sperm donor and can use IVF or IUI with their own or their partner’s eggs.Non-binary or transgender parents should decide whether to use their own eggs or sperm or explore donor options based on their fertility goals.',
+      },
+      {
+          title:'4. Finding the Right Surrogate',
+          content:'For LGBTQIA+ parents and single parents, it’s important to work with a surrogate who is fully supportive of diverse families and is comfortable with the legal agreements in place. Open and clear communication is key to a positive experience.',
+      }
+  ],
+  thirdDesc:'A surrogacy journey involves a lot of moving parts, and working with an experienced agency that understands the legal landscape makes all the difference. A strong agency will handle the legal process, ensure a smooth parental rights transition, and carefully match you with the right surrogate—helping you feel confident and supported every step of the way.',
+  title4:'Surrogacy Process for Single Parents & LGBTQIA+ Families',
+  fourthDesc:'At Sapling Surrogacy, we’re committed to helping single parents and LGBTQIA+ families navigate the surrogacy journey with confidence. Our process is designed to be safe, transparent, and legally secure, ensuring a smooth experience from start to finish. Here’s what to expect.',
+  step:[
+      {
+          title:'Step 1',
+          desc:'Consultation & Personalized Surrogacy Plan',
+          context:[
+              'Your journey starts with a one-on-one consultation with our team. We’ll take the time to understand your unique situation, answer any questions, and outline what to expect. Our experienced legal team will then create a surrogacy plan tailored to your needs, ensuring everything aligns with U.S. laws and the legal requirements of your home country or state. If needed, we’ll also help connect you with fertility clinics, doctors, and any additional resources required to move forward.']
+          
+      },
+      {
+          title:'Step 2',
+          desc:'Embryo Creation & Donor Matching',
+          context:[
+              'For single parents and same-sex couples, donor assistance is often part of the process. If you need an egg or sperm donor, we’ll help coordinate and find the right match based on your preferences. Single men and gay couples will select an egg donor and create embryos through IVF, while lesbian couples can use their own or their partner’s eggs, combined with a sperm donor, to conceive through IVF or IUI. If desired, genetic screening (PGT) can also be done to optimize embryo selection and improve pregnancy success rates.'
+          ]
+      },
+      {
+          title:'Step 3',
+          desc:'Matching with a Surrogate',
+          context:[
+              'Once your embryos are ready, we’ll match you with a carefully screened and qualified surrogate. Every surrogate in our program undergoes extensive medical and psychological evaluations to ensure she’s the right fit. Our legal team will draft a surrogacy agreement to protect everyone involved. Before the pregnancy begins, we’ll help establish a communication plan so you and your surrogate feel connected and supported throughout the process.'
+          ]
+          
+      },
+      {
+          title:'Step 4',
+          desc:'Embryo Transfer & Pregnancy Management',
+          context:[
+              'The embryo transfer takes place at a fertility clinic, with ongoing medical monitoring to ensure a healthy pregnancy. Throughout the journey, you’ll receive regular updates and have access to our platform to track progress. We encourage open communication with your surrogate to make sure she feels supported, and we’re here to guide you through every stage of the pregnancy.'
+          ]
+          
+      },
+      {
+          title:'Step 5',
+          desc:'Legal Parentage & Baby’s Arrival',
+          context:[
+              'As the due date approaches, we’ll work with legal professionals to ensure your parental rights are fully established. This process varies by state, but we’ll handle all the details so you can focus on preparing for your baby. Once your child is born, you’ll be ready to bring them home and start this exciting new chapter as a family. At Sapling Surrogacy, we’re with you every step of the way, ensuring a smooth, legally sound, and emotionally fulfilling surrogacy experience.'
+          ]
+          
+      }
+  ],
+},
 }
