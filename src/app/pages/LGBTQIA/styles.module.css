@@ -51,15 +51,73 @@
     align-items: center;
     gap: 30px;
   }
+  .image1{
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    background-image: url('/images/LGBTQIA/1.jpg'),url('/images/LGBTQIA/1-zip.jpg');
+    background-size: cover;
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+  }
+  .image2{
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    background-image: url('/images/LGBTQIA/2.jpg'),url('/images/LGBTQIA/2-zip.jpg');
+    background-size: cover;
+    background-position: 0 50%;
+    background-repeat: no-repeat;
+  }
 
   .image3{
     width: 100%;
     height: 500px;
     overflow: hidden;
-    background-image: url('/images/ParentsSection/image3.jpg'),url('/images/ParentsSection/image3-zip.jpg');
+    background-image: url('/images/LGBTQIA/3.jpg'),url('/images/LGBTQIA/3-zip.jpg');
     background-size: cover;
-    background-position: 0 50%;
+    background-position: 0 70%;
     background-repeat: no-repeat;
+  }
+
+  .horizontalList {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    width: 100%;
+  }
+  .listItem {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-right: 20px;
+  } 
+
+  .listItemImage {
+    transition: transform 0.3s ease;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .listItemImage:hover {
+    transform: scale(1.1);
+  }
+  .divider {
+    width: 100%;
+    height: 1px;
+    background-color: #D9D9D9;
+  }
+  .clickableDiv {
+    width: 100%;
+    background-color: transparent;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
   
   @media (max-width: 768px) {
@@ -89,11 +147,38 @@
       max-width: 100%;
       padding: 30px 20px 0;
     }
+    .image1{
+      width: 100%;
+      height: 200px;
+      background-image: url('/images/LGBTQIA/1.jpg'),url('/images/LGBTQIA/1-zip.jpg');
+      background-size: cover;
+    }
+    .image2{
+      width: 100%;
+      height: 200px;
+      background-image: url('/images/LGBTQIA/2.jpg'),url('/images/LGBTQIA/2-zip.jpg');
+      background-size: cover;
+    }
     .image3{
       width: 100%;
       height: 200px;
-      background-image: url('/images/ParentsSection/image3.jpg'),url('/images/ParentsSection/image3-zip.jpg');
+      background-image: url('/images/LGBTQIA/3.jpg'),url('/images/LGBTQIA/3-zip.jpg');
       background-size: cover;
+    }
+    .listItem {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 150px;
+      text-align: center;
+      margin-right: 20px;
+    } 
+    .listItemImage {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
     }
   
   } 

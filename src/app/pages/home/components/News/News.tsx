@@ -7,7 +7,8 @@ export default function News() {
   const router = useRouter();
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const { translations } = useLanguage();  const [currentIndex, setCurrentIndex] = useState(0);
+  const { translations } = useLanguage();  
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
   const go_to_about = (index: number) => {
