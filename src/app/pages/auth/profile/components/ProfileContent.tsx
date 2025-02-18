@@ -207,7 +207,7 @@ export default function ProfileContent() {
             label={translations.profile.profileContent.email } 
             value={getDisplayValue(isEditing ? editingData.email : userData.email)} 
             name="email"
-            isEditing={isEditing}
+            isEditing={false}
             onChange={handleInputChange}
           />
           <InfoItem 
