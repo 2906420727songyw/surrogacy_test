@@ -8,6 +8,8 @@ import { useAuth } from '@/app/components/AuthProvider';
 import CustomInput from '@/app/components/CustomInput';
 import { useSearchParams } from 'next/navigation';
 import http from '@/app/http';
+import { useLanguage } from '@/app/language/';
+
 import axios from 'axios';
 
 // 初始固定字段名，用于首次渲染
@@ -28,6 +30,7 @@ const initialFieldNames = {
 
 function RegisterContent() {
   const searchParams = useSearchParams();
+  const { translations } = useLanguage();
   const type = searchParams?.get('type')=== 'surrogacy' ? 'SURROGATE_MOTHER' : 'INTENDED_PARENT';
   const [formData, setFormData] = useState({
     email: '',
@@ -113,19 +116,19 @@ const scrollToTop = () => {
     e.preventDefault();
     try {
       if (!agreeTerms) {
-        toast.error('请同意服务条款');
+        toast.error(`${translations.language!=='EN' ? 'Please agree to the terms of service' : '请同意服务条款'}`);
         scrollToTop()
 
         return;
       }
       if(formData.password !== confirmPassword){        
-        toast.error('密码不一致');
+        toast.error(`${translations.language!=='EN' ? 'Password does not match' : '密码不一致'}`);
         scrollToTop()
         return;
       }
 
       if(code !== verificationCode){
-        toast.error('验证码不正确');
+        toast.error(`${translations.language!=='EN' ? 'Verification code is incorrect' : '验证码不正确'}`);
         scrollToTop()
         return;
       }
@@ -150,7 +153,7 @@ const scrollToTop = () => {
     }
 
     if (!formData.email) {
-      toast.error('请先输入邮箱地址');
+      toast.error(`${translations.language!=='EN' ? 'Please enter your email address' : '请先输入邮箱地址'}`);
       return;
     }
 
@@ -177,15 +180,15 @@ const scrollToTop = () => {
       }).then(res=>{
         console.log(res);
         if(res.data.success){
-          toast.success('验证码已发送');
+          toast.success(`${translations.language!=='EN' ? 'Verification code has been sent' : '验证码已发送'}`);
           setCode(res.data.code);
         }else{
-          toast.error('发送验证码失败');
+          toast.error(`${translations.language!=='EN' ? 'Failed to send verification code' : '发送验证码失败'}`);
         }
       })
 
     } catch (error) {
-      toast.error('发送验证码失败');
+      toast.error(`${translations.language!=='EN' ? 'Failed to send verification code' : '发送验证码失败'}`);
     } finally {
       setIsSendingCode(false);
     }
@@ -221,8 +224,8 @@ const scrollToTop = () => {
         />
       </div>
       <div className="w-full max-w-[70vw] ">
-        <h1 className="text-white h1-text font-normal text-center mb-[20px] md:mb-[80px] transition-opacity duration-500 animate__animated animate__fadeInDown animate__duration-1s  ">
-          使用电子邮件地址创建账户
+        <h1 className={`text-white h1-text font-normal text-center mb-[20px] md:mb-[80px] transition-opacity duration-500 animate__animated animate__fadeInDown animate__duration-1s`}>
+        {translations.register.title}
         </h1>
         <form ref={formRef} onSubmit={handleSubmit} className="max-w-[90vw] mx-auto" autoComplete="off" spellCheck="false">
           <CustomInput
@@ -231,7 +234,7 @@ const scrollToTop = () => {
             value={formData.email}
             onChange={handleChange}
             required
-            label="电子邮件地址登录"
+            label={translations.register.emial}
           />
           <div className="flex gap-4 mb-6 md:mb-[30px] items-center">
             <div className="flex-1">
@@ -241,7 +244,7 @@ const scrollToTop = () => {
                 value={verificationCode}
                 onChange={(e) => setVerificationCode(e.target.value)}
                 required
-                label="邮箱验证码"
+                label={translations.register.code}
               />
             </div>
             <div className="flex items-end h-[50px] md:h-[40px]">
@@ -250,8 +253,8 @@ const scrollToTop = () => {
                 onClick={handleSendVerificationCode}
               >
                 {isSendingCode ? '发送中...' : 
-               countdown > 0 ? `${countdown}秒后重试` : 
-               '发送验证码'}
+               countdown > 0 ? `${countdown}` : 
+               `${translations.register.sendCode}`}
               </span>
 
             </div>
@@ -275,7 +278,7 @@ const scrollToTop = () => {
             value={formData.password}
             onChange={handleChange}
             required
-            label="密码"
+            label={translations.register.password}
           />
           <CustomInput
             type="password"
@@ -283,7 +286,7 @@ const scrollToTop = () => {
             value={confirmPassword}
             onChange={passwordMatch}
             required
-            label="确认密码"
+            label={translations.register.confirmPassword}
           />
           <CustomInput
             type="tel"
@@ -291,11 +294,11 @@ const scrollToTop = () => {
             value={formData.phoneNumber}
             onChange={handleChange}
             required
-            label="手机号码"
+            label={translations.register.phone}
           />
           <div className="mb-6 md:mb-[30px]">
             <DateField 
-              label="出生日期 *"
+              label={translations.register.date}
               name={fieldNames.dateOfBirth}
               value={formData.dateOfBirth}
               onChange={handleChange}
@@ -307,7 +310,7 @@ const scrollToTop = () => {
             value={formData.name}
             onChange={handleChange}
             required
-            label="姓名"
+            label={translations.register.name}
           />
           <CustomInput
             type="text"
@@ -315,7 +318,7 @@ const scrollToTop = () => {
             value={formData.address}
             onChange={handleChange}
             required
-            label="家庭详细地址"
+            label={translations.register.address}
           />
           <CustomInput
             type="text"
@@ -323,7 +326,7 @@ const scrollToTop = () => {
             value={formData.city}
             onChange={handleChange}
             required
-            label="城市"
+            label={translations.register.city}
           />
           <CustomInput
             type="text"
@@ -331,7 +334,7 @@ const scrollToTop = () => {
             value={formData.country}
             onChange={handleChange}
             required
-            label="国家"
+            label={translations.register.country}
           />
           <CustomInput
             type="text"
@@ -339,7 +342,7 @@ const scrollToTop = () => {
             value={formData.postalCode}
             onChange={handleChange}
             required
-            label="邮政编码"
+            label={translations.register.postalCode}
           />
           <div className="mt-6 mb-10">
             <div className="flex items-start gap-3">
@@ -374,8 +377,7 @@ const scrollToTop = () => {
                 )}
               </div>
               <label className="text-white text-base leading-normal max-w-[90%] select-none">
-                选中此框，则表示您同意在遵守我们的隐私政策的情况下，收到有关我们计划的未来更新。Spling Surrogacy的最新信息
-                可以通过电子方式发送，也可以通过邮件，短信，电子邮件或者电话发送。
+                {translations.register.agreement}
               </label>
             </div>
           </div>
@@ -388,9 +390,9 @@ const scrollToTop = () => {
             {isLoading ? (
               <>
                 <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
-                <span>创建中...</span>
+                <span>{translations.register.loading}</span>
               </>
-            ) : '创建账户'}
+            ) : translations.register.register}
           </button>
         </form>
       </div>

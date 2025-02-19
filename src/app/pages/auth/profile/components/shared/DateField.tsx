@@ -20,7 +20,7 @@ const DateField: React.FC<DateFieldProps> = ({
 
   return (
     <div className="relative">
-      <label className="block text-white/60 text-[14px] mb-2">
+      <label className="block text-white text-[14px] mb-2">
         {cleanLabel}*
       </label>
       <div className="relative">

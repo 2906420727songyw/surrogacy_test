@@ -704,7 +704,7 @@ function AppointmentForm({ onBack, appointmentData }: {
           </div>
 
           {/* 右侧预约详情部分 - 使用与预约部分相同的 padding 和样式 */}
-          <div className="w-full xl:max-w-[20vw] pt-[2.5rem] xl:pt-[5rem] px-[1.25rem] xl:px-[3.75rem] xl:border-t-0 xl:border-white/20 mt-6 xl:mt-0">
+          <div className="w-full xl:max-w-[25vw] pt-[2.5rem] xl:pt-[5rem] px-[1.25rem] xl:px-[3.75rem] xl:border-t-0 xl:border-white/20 mt-6 xl:mt-0">
             <div className="sticky top-[120px] pb-10">
               {/* 预约详情标题和展开按钮 */}
               <div className="mb-[1.875rem] xl:mb-[2.5rem]">
@@ -733,7 +733,7 @@ function AppointmentForm({ onBack, appointmentData }: {
                       {translations.language !== 'EN' ? 'Clients' : '客户类型'}
                     </div>
                     <div className="text-sm mt-1">
-                      {appointmentData.type}
+                      {translations.language !== 'EN' ? appointmentData.type === '代孕母' ? 'Surrogate Mother' : 'Parent' : appointmentData.type}
                     </div>
                   </div>
 
@@ -832,9 +832,9 @@ function AppointmentContentInner() {
     // 转换为中文格式
     const timeInChinese = isAM ? `上午${hour}点` : `下午${hour}点`;
 
-    const lastTime = translations.language==='EN'?timeInChinese:`${', '+time}`;
+    const lastTime = translations.language==='EN'?timeInChinese:`${','+time}`;
 
-    return `${translations.profile.appointmentContent.month_list[currentDate.getMonth()]}${translations.language==='EN'?date:' '+date}${translations.language==='EN'?'号':''}，${currentDate.getFullYear()}${translations.language==='EN'?'年':''}${lastTime}`;
+    return `${translations.profile.appointmentContent.month_list[currentDate.getMonth()]}${translations.language==='EN'?date:' '+date}${translations.language==='EN'?'号':''}${translations.language!=='EN'?',':'，'}${currentDate.getFullYear()}${translations.language==='EN'?'年':''}${lastTime}`;
   };
 
   const handleMonthChange = (increment: number) => {
@@ -1171,8 +1171,8 @@ function AppointmentContentInner() {
           </div>
 
           {/* 右侧内容 */}
-          <div className="w-full xl:max-w-[20vw] pt-[2.5rem] xl:pt-[5rem] px-[1.25rem] xl:px-[3.75rem] border-t xl:border-t-0 border-white/20 mt-6 xl:mt-0">
-            {/* 标题和分割线 */}
+          <div className="w-full xl:max-w-[25vw] pt-[2.5rem] xl:pt-[5rem] pl-[1.25rem] xl:pl-[3.75rem] border-t xl:border-t-0 border-white/20 mt-6 xl:mt-0">
+            {/* 标题和分割线 */} 
             <div className="mb-[1.875rem] xl:mb-[2.5rem]">
               <div className="flex justify-between items-center mb-4 h-[8vh]">
                 <h2 className={`text-white text-[1rem] ${translations.language==='EN'?'':'font-bold'}`}>{translations.profile.appointmentContent.detail_title}</h2>

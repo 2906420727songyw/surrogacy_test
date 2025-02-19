@@ -6,6 +6,7 @@ import userApi from '@/app/service/user/api';
 import Cookies from 'js-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useLanguage } from '@/app/language/';
 import SurrogateSuccess from './SurrogateSuccess';
 
 interface ApplicationForm {
@@ -45,6 +46,7 @@ interface ApiError {
 }
 
 export default function SurrogateApplicationContent() {
+  const { translations } = useLanguage();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -84,7 +86,7 @@ export default function SurrogateApplicationContent() {
       setIsSubmitting(true);
       await userApi.applySurrogateMother(formData).then(res => {
         if(res.id){
-          toast.success('申请提交成功！');
+          toast.success(`${translations.language!=='EN'?'Application submitted successfully!':'申請提交成功！'}`);
           setFormData(prev => ({
             userId: prev.userId,
             name: '',
@@ -106,14 +108,14 @@ export default function SurrogateApplicationContent() {
           }));
           setIsSuccess(true);
         } else {
-          toast.error('申请提交失败！');
+          toast.error(`${translations.language!=='EN'?'Application submission failed!':'申請提交失敗！'}`);
         }
       });
       
     } catch (error: unknown) {
       const apiError = error as ApiError;
       console.error('提交申请失败:', apiError);
-      toast.error(apiError?.response?.data?.message || '提交失败，请稍后重试');
+      toast.error(apiError?.response?.data?.message || `${translations.language!=='EN'?'Submission failed, please try again later':'提交失败，请稍后重试'}`);
     } finally {
       window.scrollTo({
         top: 0,
@@ -164,7 +166,7 @@ export default function SurrogateApplicationContent() {
         <div className="border-b border-white pb-2 mb-[30px] md:mb-[40px]">
           <div className="flex items-center justify-between">
             <h1 className="text-white text-[18px] md:text-[20px] font-bold">
-              代孕母初次申请表
+              {translations.surrogateApplication.title}
             </h1>
           </div>
         </div>
@@ -178,14 +180,14 @@ export default function SurrogateApplicationContent() {
           {/* 姓名和年龄 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[40px] gap-y-[24px]">
             <FormField 
-              label="姓名 *" 
+              label={translations.surrogateApplication.name} 
               name="name"
               value={formData.name}
               onChange={handleInputChange}
               type="text"
             />
             <FormField 
-              label="年龄 *" 
+              label={translations.surrogateApplication.age} 
               name="age"
               value={formData.age}
               onChange={handleInputChange}
@@ -195,7 +197,7 @@ export default function SurrogateApplicationContent() {
 
           {/* 出生日期 */}
           <DateField 
-            label="出生日期 *" 
+            label={translations.surrogateApplication.birthDate} 
             name="birthDate"
             value={formData.birthDate}
             onChange={handleInputChange}
@@ -204,14 +206,14 @@ export default function SurrogateApplicationContent() {
           {/* 身高和体重 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[40px] gap-y-[24px]">
             <FormField 
-              label="身高（ft）*" 
+              label={translations.surrogateApplication.height} 
               name="height"
               value={formData.height}
               onChange={handleInputChange}
               type="number"
             />
             <FormField 
-              label="体重（lbs）*" 
+              label={translations.surrogateApplication.weight} 
               name="weight"
               value={formData.weight}
               onChange={handleInputChange}
@@ -221,14 +223,14 @@ export default function SurrogateApplicationContent() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[40px] gap-y-[24px]">
             <FormField 
-              label="您的种族 *" 
+              label={translations.surrogateApplication.ethnicity} 
               name="ethnicity"
               value={formData.ethnicity}
               onChange={handleInputChange}
               type="text"
             />
             <FormField 
-              label="您的教育程度 *" 
+              label={translations.surrogateApplication.education} 
               name="education"
               value={formData.education}
               onChange={handleInputChange}
@@ -238,14 +240,14 @@ export default function SurrogateApplicationContent() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[40px] gap-y-[24px]">
             <FormField 
-              label="您的婚姻状况 *" 
+              label={translations.surrogateApplication.maritalStatus} 
               name="maritalStatus"
               value={formData.maritalStatus}
               onChange={handleInputChange}
               type="text"
             />
             <FormField 
-              label="您是否有孩子 *" 
+              label={translations.surrogateApplication.hasChildren} 
               name="hasChildren"
               value={formData.hasChildren}
               onChange={handleInputChange}
@@ -254,9 +256,11 @@ export default function SurrogateApplicationContent() {
           </div>
 
           {/* 地址信息 */}
-          <h2 className="text-white text-[16px] md:text-[18px] mt-[32px] mb-[24px] underline underline-offset-4">地址信息</h2>
+          <h2 className="text-white text-[16px] md:text-[18px] mt-[32px] mb-[24px] underline underline-offset-4">
+            {translations.surrogateApplication.addressInformation}
+          </h2>
           <FormField 
-            label="目前居住地址 *" 
+            label={translations.surrogateApplication.address} 
             name="address"
             value={formData.address}
             onChange={handleInputChange}
@@ -265,14 +269,14 @@ export default function SurrogateApplicationContent() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[40px] gap-y-[24px]">
             <FormField 
-              label="居住城市和州 *" 
+              label={translations.surrogateApplication.city} 
               name="city"
               value={formData.city}
               onChange={handleInputChange}
               type="text"
             />
             <FormField 
-              label="邮政编码 *" 
+              label={translations.surrogateApplication.code} 
               name="postalCode"
               value={formData.postalCode}
               onChange={handleInputChange}
@@ -282,14 +286,14 @@ export default function SurrogateApplicationContent() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[40px] gap-y-[24px]">
             <FormField 
-              label="电话号码 *" 
+              label={translations.surrogateApplication.phone} 
               name="phoneNumber"
               value={formData.phoneNumber}
               onChange={handleInputChange}
               type="text"
             />
             <FormField 
-              label="电子邮箱 *" 
+              label={translations.surrogateApplication.email} 
               name="email"
               value={formData.email}
               onChange={handleInputChange}
@@ -302,15 +306,15 @@ export default function SurrogateApplicationContent() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-[120px] h-[48px] bg-[#CDC5C0] text-black rounded-lg 
+              className="px-[20px] h-[48px] bg-[#CDC5C0] text-black rounded-lg 
                 hover:opacity-90 transition-opacity text-[16px] flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <>
                   <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
-                  <span>提交中</span>
+                  <span>{translations.surrogateApplication.loading}</span>
                 </>
-              ) : '提交申请'}
+              ) : translations.surrogateApplication.submit}
             </button>
           </div>
         </form>

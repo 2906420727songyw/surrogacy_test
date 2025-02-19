@@ -5,6 +5,7 @@ import api from '@/app/service/appointments/api';
 import Cookies from 'js-cookie';
 import { useLanguage } from '@/app/language/';
 import type { AxiosResponse } from 'axios';
+import { translations } from '@/app/language/';
 
 // 定义预约数据的接口
 type AppointmentType = 'INTENDED_PARENT' | 'SURROGATE_MOTHER';
@@ -35,6 +36,10 @@ export default function AppointmentSuccess() {
 
   useEffect(() => {
     const fetchAppointment = async () => {
+      const months: string[] = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
       try {
         const userData = JSON.parse(Cookies.get('userData') || '{}');
         if (!userData.id) {
@@ -74,7 +79,11 @@ export default function AppointmentSuccess() {
           const [datePart, timePart] = formattedAppointment.beforeTime.split("T");
           const [year, month, day] = datePart.split("-");
           const [hour] = timePart.split(":");
-          setSelectTime(`${month}月${day}日,${year}年${hour}点`);
+          if(translations.language === 'EN'){
+            setSelectTime(`${month}月${day}日,${year}年${hour}点`);
+          }else{
+            setSelectTime(`Date & Time:${months[parseInt(month) - 1]} ${day},${year},at ${hour}:00 ${parseInt(hour) < 12 ? "AM" : "PM"}`);
+          }
         }
       } catch (error) {
         console.error('Failed to fetch appointment:', error);
@@ -114,7 +123,7 @@ export default function AppointmentSuccess() {
         <div className="mb-[40px]">
           <div className="flex justify-between items-center mb-4">
             <h1 className="text-white text-[24px]">
-              {hasAppointment ? '您已成功预约线下面谈' : '暂未预约面谈'}
+              {hasAppointment ? translations.agreementDetails.haveAgreement : translations.agreementDetails.noAgreement}
             </h1>
             <span className="text-white text-[24px]">⌄</span>
           </div>
@@ -125,18 +134,18 @@ export default function AppointmentSuccess() {
         <div className="text-white">
           {hasAppointment && appointmentData ? (
             <>
-              <h2 className="text-[16px] mb-4">预约详细信息</h2>
+              <h2 className="text-[16px] mb-4">{translations.agreementDetails.agreementDetail}</h2>
               <div className="space-y-4">
                 <p className="text-[14px]">
-                  {appointmentData.type === "INTENDED_PARENT" ? "成为准父母" : "成为代孕母"}
+                  {translations.language !== 'EN' ? appointmentData.type === "INTENDED_PARENT" ? "For:Becoming Intended Parents" : "For:Becoming a Surrogate" : appointmentData.type === "INTENDED_PARENT" ? "成为准父母" : "成为代孕母"}
                 </p>
                 <p className="text-[14px]">{selectTime}</p>
               </div>
             </>
           ) : (
             <div className="space-y-4">
-              <p className="text-[16px]">您还没有预约面谈时间</p>
-              <p className="text-[14px] opacity-60">点击下方按钮立即预约</p>
+              <p className="text-[16px]">{translations.agreementDetails.noAgreementContent}</p>
+              <p className="text-[14px] opacity-60">{translations.agreementDetails.agreementNow}</p>
             </div>
           )}
           
@@ -145,7 +154,7 @@ export default function AppointmentSuccess() {
             className="mt-8 bg-[#D9D9D9] text-[#000] text-[16px] px-6 py-2 rounded-[4px]"
             onClick={onRestart}
           >
-            {hasAppointment ? '重新预约' : '立即预约'}
+            {hasAppointment ? translations.agreementDetails.restart : translations.agreementDetails.agreementBtn}
           </button>
         </div>
       </div>
@@ -156,7 +165,7 @@ export default function AppointmentSuccess() {
         <div className="mb-[30px]">
           <div className="flex justify-between items-center">
             <h1 className="text-white text-[20px]">
-              {hasAppointment ? '您已成功预约线下面谈' : '暂未预约面谈'}
+              {hasAppointment ? translations.agreementDetails.haveAgreement : translations.agreementDetails.noAgreement}
             </h1>
             <span className="text-white text-[20px]">⌄</span>
           </div>
@@ -167,18 +176,18 @@ export default function AppointmentSuccess() {
         <div className="text-white">
           {hasAppointment && appointmentData ? (
             <>
-              <h2 className="text-[14px] mb-3">预约详细信息</h2>
+              <h2 className="text-[14px] mb-3">{translations.agreementDetails.agreementDetail}</h2>
               <div className="space-y-3">
                 <p className="text-[12px]">
-                  {appointmentData.type === "INTENDED_PARENT" ? "成为准父母" : "成为代孕母"}
+                {translations.language !== 'EN' ? appointmentData.type === "INTENDED_PARENT" ? "For:Becoming Intended Parents" : "For:Becoming a Surrogate" : appointmentData.type === "INTENDED_PARENT" ? "成为准父母" : "成为代孕母"}
                 </p>
                 <p className="text-[14px]">{selectTime}</p>
               </div>
             </>
           ) : (
             <div className="space-y-3">
-              <p className="text-[14px]">您还没有预约面谈时间</p>
-              <p className="text-[12px] opacity-60">点击下方按钮立即预约</p>
+              <p className="text-[14px]">{translations.agreementDetails.noAgreementContent}</p>
+              <p className="text-[12px] opacity-60">{translations.agreementDetails.agreementNow}</p>
             </div>
           )}
           
@@ -187,7 +196,7 @@ export default function AppointmentSuccess() {
             className="mt-6 bg-[#D9D9D9] text-[#000] text-[14px] w-[100px] h-[40px] rounded-[4px]"
             onClick={onRestart}
           >
-            {hasAppointment ? '重新预约' : '立即预约'}
+            {hasAppointment ? translations.agreementDetails.restart : translations.agreementDetails.agreementBtn}
           </button>
         </div>
       </div>

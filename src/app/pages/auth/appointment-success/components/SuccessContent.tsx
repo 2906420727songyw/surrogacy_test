@@ -2,21 +2,29 @@
 
 
 import { useState, useEffect } from 'react';
-
+import { useLanguage } from '@/app/language/';
 export default function SuccessContent() {
-
+  const { translations } = useLanguage();
   const [selectTime, setSelectTime] = useState("");
   const appointmentData = JSON.parse(localStorage.getItem('appointmentData') || '{}');  
-  const type = appointmentData.type === 'surrogate' ? '代孕母' : '准父母';
+  const type = appointmentData.type === 'surrogate' ? translations.language === 'EN' ? '代孕母' : 'Surrogate' : translations.language === 'EN' ? '准父母' : 'Intended Parents';
 
   useEffect(() => {
     if (appointmentData.currentDate) {
+      const months: string[] = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
       const [datePart, timePart] = appointmentData.currentDate.split(" ");
       const [year, month, day] = datePart.split("-");
       const [hour] = timePart.split(":");
-      setSelectTime(`${month}月${day}日,${year}年${hour}点`);
+      if(translations.language === 'EN'){
+        setSelectTime(`${month}月${day}日,${year}年${hour}点`);
+      }else{
+        setSelectTime(`Date & Time:${months[parseInt(month) - 1]} ${day},${year},at ${hour}:00 ${parseInt(hour) < 12 ? "AM" : "PM"}`);
+      }
     }
-  }, [appointmentData.currentDate]); 
+  }, [appointmentData.currentDate, translations.language]);
 
  
 
@@ -27,7 +35,7 @@ export default function SuccessContent() {
       {/* 标题和分割线 */}
       <div className="mb-[40px]">
         <div className="flex justify-between items-center mb-4">
-          <h1 className="text-white text-[24px]">您已成功预约线下面谈</h1>
+          <h1 className="text-white text-[24px]">{translations.agreementDetails.haveAgreement}</h1>
           <span className="text-white text-[24px]">⌄</span>
         </div>
         <div className="h-[1px] bg-white"></div>
@@ -35,9 +43,9 @@ export default function SuccessContent() {
 
       {/* 预约成功信息 */}
       <div className="text-white">
-        <h2 className="text-[16px] mb-4">预约详细信息</h2>
+        <h2 className="text-[16px] mb-4">{translations.agreementDetails.agreementDetail}</h2>
         <div className="space-y-4">
-          <p className="text-[14px]">成为{type}</p>
+          <p className="text-[14px]">{translations.language === 'EN' ? `成为${type}` : `For:Becoming ${type}`}</p>
           <p className="text-[14px]">{selectTime}</p>
         </div>
         
@@ -46,7 +54,7 @@ export default function SuccessContent() {
           className="mt-8 bg-[#D9D9D9] text-[#000] text-[16px] px-6 py-2 rounded-[4px]"
           onClick={() => window.location.href = '/'}
         >
-          返回
+          {translations.agreementDetails.return}
         </button>
       </div>
     </div>
@@ -56,7 +64,7 @@ export default function SuccessContent() {
       {/* 标题和分割线 */}
       <div className="mb-[30px]">
         <div className="flex justify-between items-center ">
-          <h1 className="text-white text-[20px]">您已成功预约线下面谈</h1>
+          <h1 className="text-white text-[20px]">{translations.agreementDetails.haveAgreement}</h1>
           <span className="text-white text-[20px]">⌄</span>
         </div>
         <div className="h-[1px] bg-white"></div>
@@ -64,9 +72,9 @@ export default function SuccessContent() {
 
       {/* 预约成功信息 */}
       <div className="text-white">
-        <h2 className="text-[14px] mb-3">预约详细信息</h2>
+        <h2 className="text-[14px] mb-3">{translations.agreementDetails.agreementDetail}</h2>
         <div className="space-y-3">
-          <p className="text-[12px]">成为准父母</p>
+          <p className="text-[12px]">{translations.language === 'EN' ? `成为${type}` : `For:Becoming ${type}`}</p>
           <p className="text-[14px]">{selectTime}</p>
         </div>
         
@@ -75,7 +83,7 @@ export default function SuccessContent() {
           className="mt-6 bg-[#D9D9D9] text-[#000] text-[14px] w-[100px] h-[40px] rounded-[4px]"
           onClick={() => window.location.href = '/'}
         >
-          返回
+          {translations.agreementDetails.return}
         </button>
       </div>
     </div>
