@@ -5,7 +5,6 @@ import api from '@/app/service/appointments/api';
 import Cookies from 'js-cookie';
 import { useLanguage } from '@/app/language/';
 import type { AxiosResponse } from 'axios';
-import { translations } from '@/app/language/';
 
 // 定义预约数据的接口
 type AppointmentType = 'INTENDED_PARENT' | 'SURROGATE_MOTHER';
@@ -28,10 +27,10 @@ interface AppointmentData {
 }
 
 export default function AppointmentSuccess() {
+  const { translations } = useLanguage();
   const [appointmentData, setAppointmentData] = useState<AppointmentData | null>(null);
   const [hasAppointment, setHasAppointment] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const { translations } = useLanguage();
   const [selectTime, setSelectTime] = useState("");
 
   useEffect(() => {
