@@ -17,6 +17,10 @@ interface RegisterData {
   address?: string;  // 详细地址（可选），
   role?: string;  // 角色（可选）
 }
+interface WelcomeData {
+  email: string;
+  name: string;
+}
 
 // 登录
 function login(data: LoginData) {
@@ -28,7 +32,11 @@ function register(data: RegisterData) {
   return http.post('auth/register', data);
 }
 
+function welcome(data: WelcomeData) {
+  return http.post('welcom-email', data);
+}
 export default {
   login,
   register,
+  welcome,
 } as const;

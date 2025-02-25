@@ -117,6 +117,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         case 200:
           res.data.role = formData.role;
           userApi.getUserInfo(res.data.id).then((ret:any)=>{
+            authApi.welcome({
+              email: formData.email,
+              name: formData.name
+            })
+            
             toast.success(translations.language === 'EN' 
               ? '注册成功' 
               : 'Register success');
