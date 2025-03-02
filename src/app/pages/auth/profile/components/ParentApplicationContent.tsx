@@ -353,7 +353,6 @@ export default function ParentApplicationContent() {
   return (
     <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px]">
       <ToastContainer
-        style={{zIndex:9999}}
         position="top-right"
         autoClose={2000}
         hideProgressBar={false}
@@ -364,6 +363,11 @@ export default function ParentApplicationContent() {
         draggable
         pauseOnHover
         theme="light"
+        className="!mt-[40px]"
+        toastStyle={{
+          backgroundColor: "white",
+          zIndex: 99999,
+        }}
       />
       <div className="md:max-w-[60vw] pt-[40px] md:pt-[80px] px-[20px] md:px-[60px]">
         {/* 标题部分 */}

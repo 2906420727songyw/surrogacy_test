@@ -140,9 +140,8 @@ export default function SurrogateApplicationContent() {
   }
 
   return (
-    <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px]">
-      <ToastContainer
-        style={{zIndex:9999}}
+    <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px] relative">
+      <ToastContainer 
         position="top-right"
         autoClose={2000}
         hideProgressBar={false}
@@ -153,6 +152,11 @@ export default function SurrogateApplicationContent() {
         draggable
         pauseOnHover
         theme="light"
+        className="!mt-[40px]"
+        toastStyle={{
+          backgroundColor: "white",
+          zIndex: 99999,
+        }}
       />
 
       {/* 添加隐藏的表单来阻止浏览器自动填充 */}

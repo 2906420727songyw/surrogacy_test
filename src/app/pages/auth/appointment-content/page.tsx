@@ -418,7 +418,6 @@ function AppointmentForm({ onBack, appointmentData }: {
   return (
     <>
     <ToastContainer
-        style={{zIndex:9999}}
         position="top-right"
         autoClose={2000}
         hideProgressBar={false}
@@ -429,6 +428,11 @@ function AppointmentForm({ onBack, appointmentData }: {
         draggable
         pauseOnHover
         theme="light"
+        className="!mt-[40px]"
+        toastStyle={{
+          backgroundColor: "white",
+          zIndex: 99999,
+        }}
       />
     <div className="flex flex-col items-center justify-center w-full ">
       <div className="flex justify-center w-full pt-[100px] xl:pt-[15vh] bg-[#B8886F] ">
@@ -854,6 +858,7 @@ function AppointmentContentInner() {
   };
 
   const handleAppointment = async () => {
+    window.scrollTo(0, 0);
     if (!selectedDate && !selectedTime) {
       toast.error(translations.language === 'EN' ? '请选择预约日期和时间' : 'Please select appointment date and time');
       return;
@@ -1018,198 +1023,203 @@ function AppointmentContentInner() {
 
   return (
     <>
-      <ToastContainer
-        style={{zIndex:9999}}
-        position="top-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-      <div className="flex  justify-center w-full pt-[100px] xl:pt-[15vh] bg-[#B8886F] min-h-screen ">
-        <div className="flex flex-col xl:flex-row w-[90%] xl:w-[85%] xl:mt-10"> 
-          {/* 左侧内容 */}
-          <div className="w-full xl:flex-1 xl:max-w-[75vw] xl:pt-[40px] px-[1.25rem] xl:px-[3.75rem]">
-            {/* 标题和分割线 */}
-            <div className="mb-[1.875rem] xl:mb-[2.5rem]">
-              <div className="flex justify-between items-center  h-[8vh]">
-                <h1 className={`text-white text-[1.25rem] xl:text-[1.5rem] ${translations.language==='EN'?'font-bold':'font-bold'}`}>{translations?.profile?.appointmentContent?.title}</h1>
-                <div className="relative">
-                  <button 
-                    className="flex items-center gap-2 text-white text-[0.875rem] xl:text-[1rem] px-4 py-2"
-                    onClick={() => setIsTimeZoneOpen(!isTimeZoneOpen)}
-                  >
-                    <span className="opacity-60">*</span>
-                    <span>{selectedTimeZone}</span>
-                    <span className="text-[0.75rem] ml-1">▼</span>
-                  </button>
-                  
-                  {/* 下拉菜单 */}
-                  {isTimeZoneOpen && (
-                    <div className="absolute top-full right-0 mt-1 w-[12rem] text-sm bg-white rounded-md shadow-lg py-1 z-50">
-                      {translations.profile.appointmentContent.time_zone.map((zone: string, index: number) => (
-                        <button
-                          key={zone}
-                          className="w-full px-4 py-2 text-left text-[#8E7362] hover:bg-gray-100"
-                          onClick={() => handleTimeZoneChange(index)}
-                        >
-                          {zone}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div> 
-              <div className="h-[1px] bg-white"></div>
-            </div>
-
-            <div className="flex flex-col xl:flex-row xl:gap-[3rem] styles.appointment-content">
-              {/* 日历部分 */}
-              <div className="w-full xl:w-[60%]    mb-8 xl:mb-0">
-                {/* 日历导航 */}
-                <div className="flex items-center justify-center gap-4 xl:gap-8 mb-6">
-                  <button 
-                    className="text-white text-[1.5rem] xl:text-[2.25rem] leading-none"
-                    onClick={() => handleMonthChange(-1)}
-                  >
-                    &lt;
-                  </button>
-                  <span className="text-white text-[0.875rem]">
-                    {`${translations.profile.appointmentContent.month_list[currentDate.getMonth()]} ${currentDate.getFullYear()}`}
-                  </span>
-                  <button 
-                    className="text-white text-[1.5rem] xl:text-[2.25rem] leading-none"
-                    onClick={() => handleMonthChange(1)}
-                  >
-                    &gt;
-                  </button>
-                </div>
-
-                {/* 日历表格 */}
-                <div className="grid grid-cols-7 gap-3 xl:gap-6">
-                  {/* 星期标题 */}
-                  {['日', '一', '二', '三', '四', '五', '六'].map(day => (
-                    <div key={day} className="w-6 h-6 xl:w-8 xl:h-8 flex items-center justify-center">
-                      <span className="text-white text-[0.75rem] xl:text-[0.875rem] opacity-60">
-                        {day}
-                      </span>
-                    </div>
-                  ))}
-                  
-                  {/* 空白格子 - 月初前的空格 */}
-                  {Array.from({ length: firstDayOfMonth }, (_, i) => (
-                    <div key={`empty-${i}`} className="w-6 h-6 xl:w-8 xl:h-8" />
-                  ))}
-                  
-                  {/* 日期格子 */}
-                  {Array.from({ length: daysInMonth }, (_, i) => {
-                    const day = i + 1;
-                    const dateString = `${day}`;
-                    
-                    // 创建当前选择的日期对象和今天的日期对象
-                    const selectedFullDate = new Date(
-                      currentDate.getFullYear(),
-                      currentDate.getMonth(),
-                      day
-                    );
-                    const today = new Date();
-                    today.setHours(0, 0, 0, 0); // 设置时间为当天的开始
-
-                    // 判断是否是过去的日期
-                    const isPastDate = selectedFullDate < today;
-
-                    return (
-                      <button
-                        key={day}
-                        className={`w-6 h-6 xl:w-8 xl:h-8 flex items-center justify-center rounded-full
-                          ${isPastDate 
-                            ? 'text-white/30 cursor-not-allowed' // 过去的日期显示为灰色且不可点击
-                            : selectedDate === dateString 
-                              ? 'bg-[#8E7362] text-[#ffffff]' 
-                              : 'text-white hover:bg-white/10'
-                          }`}
-                        onClick={() => !isPastDate && setSelectedDate(dateString)}
-                        disabled={isPastDate}
-                      >
-                        <span className="text-[0.75rem] xl:text-[0.875rem]">{day}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* 时间选择部分 */}
-              <div className="w-full xl:w-[40%]">
-                <div className="mb-4 xl:mb-6">
-                  <p className="text-white text-[0.875rem] xl:text-[0.875rem] opacity-60">
-                    {selectedDate 
-                      ? formatDateTime(selectedDate, selectedTime)
-                      : formatDateTime(new Date().getDate().toString(), selectedTime)}
-                  </p>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 xl:gap-x-4 xl:gap-y-8">
-                  {translations.profile.appointmentContent.time_list.map((time:string) => (
-                    <button
-                      key={time}
-                      className={`h-10 xl:h-14 flex items-center justify-center rounded-full border border-white
-                        ${selectedTime === time 
-                          ? 'bg-[#CAA794] text-[#ffffff] border-none' 
-                          : 'text-white hover:border-white/40'}`}
-                      onClick={() => setSelectedTime(time)}
+      <div className="min-h-screen w-full flex justify-center items-center bg-[#A48472] pt-page fade-in relative">
+        <ToastContainer 
+          position="top-right"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          className="!mt-[40px]"
+          toastStyle={{
+            backgroundColor: "white",
+            zIndex: 99999,
+          }}
+        />
+        <div className="flex justify-center w-full pt-[100px] xl:pt-[15vh] bg-[#B8886F] min-h-screen">
+          <div className="flex flex-col xl:flex-row w-[90%] xl:w-[85%] xl:mt-10"> 
+            {/* 左侧内容 */}
+            <div className="w-full xl:flex-1 xl:max-w-[75vw] xl:pt-[40px] px-[1.25rem] xl:px-[3.75rem]">
+              {/* 标题和分割线 */}
+              <div className="mb-[1.875rem] xl:mb-[2.5rem]">
+                <div className="flex justify-between items-center  h-[8vh]">
+                  <h1 className={`text-white text-[1.25rem] xl:text-[1.5rem] ${translations.language==='EN'?'font-bold':'font-bold'}`}>{translations?.profile?.appointmentContent?.title}</h1>
+                  <div className="relative">
+                    <button 
+                      className="flex items-center gap-2 text-white text-[0.875rem] xl:text-[1rem] px-4 py-2"
+                      onClick={() => setIsTimeZoneOpen(!isTimeZoneOpen)}
                     >
-                      <span className="text-[0.75rem] xl:text-[0.875rem]">{time}</span>
+                      <span className="opacity-60">*</span>
+                      <span>{selectedTimeZone}</span>
+                      <span className="text-[0.75rem] ml-1">▼</span>
                     </button>
-                  ))}
+                    
+                    {/* 下拉菜单 */}
+                    {isTimeZoneOpen && (
+                      <div className="absolute top-full right-0 mt-1 w-[12rem] text-sm bg-white rounded-md shadow-lg py-1 z-50">
+                        {translations.profile.appointmentContent.time_zone.map((zone: string, index: number) => (
+                          <button
+                            key={zone}
+                            className="w-full px-4 py-2 text-left text-[#8E7362] hover:bg-gray-100"
+                            onClick={() => handleTimeZoneChange(index)}
+                          >
+                            {zone}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div> 
+                <div className="h-[1px] bg-white"></div>
+              </div>
+
+              <div className="flex flex-col xl:flex-row xl:gap-[3rem] styles.appointment-content">
+                {/* 日历部分 */}
+                <div className="w-full xl:w-[60%]    mb-8 xl:mb-0">
+                  {/* 日历导航 */}
+                  <div className="flex items-center justify-center gap-4 xl:gap-8 mb-6">
+                    <button 
+                      className="text-white text-[1.5rem] xl:text-[2.25rem] leading-none"
+                      onClick={() => handleMonthChange(-1)}
+                    >
+                      &lt;
+                    </button>
+                    <span className="text-white text-[0.875rem]">
+                      {`${translations.profile.appointmentContent.month_list[currentDate.getMonth()]} ${currentDate.getFullYear()}`}
+                    </span>
+                    <button 
+                      className="text-white text-[1.5rem] xl:text-[2.25rem] leading-none"
+                      onClick={() => handleMonthChange(1)}
+                    >
+                      &gt;
+                    </button>
+                  </div>
+
+                  {/* 日历表格 */}
+                  <div className="grid grid-cols-7 gap-3 xl:gap-6">
+                    {/* 星期标题 */}
+                    {['日', '一', '二', '三', '四', '五', '六'].map(day => (
+                      <div key={day} className="w-6 h-6 xl:w-8 xl:h-8 flex items-center justify-center">
+                        <span className="text-white text-[0.75rem] xl:text-[0.875rem] opacity-60">
+                          {day}
+                        </span>
+                      </div>
+                    ))}
+                    
+                    {/* 空白格子 - 月初前的空格 */}
+                    {Array.from({ length: firstDayOfMonth }, (_, i) => (
+                      <div key={`empty-${i}`} className="w-6 h-6 xl:w-8 xl:h-8" />
+                    ))}
+                    
+                    {/* 日期格子 */}
+                    {Array.from({ length: daysInMonth }, (_, i) => {
+                      const day = i + 1;
+                      const dateString = `${day}`;
+                      
+                      // 创建当前选择的日期对象和今天的日期对象
+                      const selectedFullDate = new Date(
+                        currentDate.getFullYear(),
+                        currentDate.getMonth(),
+                        day
+                      );
+                      const today = new Date();
+                      today.setHours(0, 0, 0, 0); // 设置时间为当天的开始
+
+                      // 判断是否是过去的日期
+                      const isPastDate = selectedFullDate < today;
+
+                      return (
+                        <button
+                          key={day}
+                          className={`w-6 h-6 xl:w-8 xl:h-8 flex items-center justify-center rounded-full
+                            ${isPastDate 
+                              ? 'text-white/30 cursor-not-allowed' // 过去的日期显示为灰色且不可点击
+                              : selectedDate === dateString 
+                                ? 'bg-[#8E7362] text-[#ffffff]' 
+                                : 'text-white hover:bg-white/10'
+                            }`}
+                          onClick={() => !isPastDate && setSelectedDate(dateString)}
+                          disabled={isPastDate}
+                        >
+                          <span className="text-[0.75rem] xl:text-[0.875rem]">{day}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* 时间选择部分 */}
+                <div className="w-full xl:w-[40%]">
+                  <div className="mb-4 xl:mb-6">
+                    <p className="text-white text-[0.875rem] xl:text-[0.875rem] opacity-60">
+                      {selectedDate 
+                        ? formatDateTime(selectedDate, selectedTime)
+                        : formatDateTime(new Date().getDate().toString(), selectedTime)}
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 xl:gap-x-4 xl:gap-y-8">
+                    {translations.profile.appointmentContent.time_list.map((time:string) => (
+                      <button
+                        key={time}
+                        className={`h-10 xl:h-14 flex items-center justify-center rounded-full border border-white
+                          ${selectedTime === time 
+                            ? 'bg-[#CAA794] text-[#ffffff] border-none' 
+                            : 'text-white hover:border-white/40'}`}
+                        onClick={() => setSelectedTime(time)}
+                      >
+                        <span className="text-[0.75rem] xl:text-[0.875rem]">{time}</span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* 右侧内容 */}
-          <div className="w-full xl:max-w-[25vw] pt-[2.5rem] xl:pt-[5rem] pl-[1.25rem] xl:pl-[3.75rem] border-t xl:border-t-0 border-white/20 mt-6 xl:mt-0">
-            {/* 标题和分割线 */} 
-            <div className="mb-[1.875rem] xl:mb-[2.5rem]">
-              <div className="flex justify-between items-center mb-4 h-[8vh]">
-                <h2 className={`text-white text-[1rem] ${translations.language==='EN'?'':'font-bold'}`}>{translations.profile.appointmentContent.detail_title}</h2>
+            {/* 右侧内容 */}
+            <div className="w-full xl:max-w-[25vw] pt-[2.5rem] xl:pt-[5rem] pl-[1.25rem] xl:pl-[3.75rem] border-t xl:border-t-0 border-white/20 mt-6 xl:mt-0">
+              {/* 标题和分割线 */} 
+              <div className="mb-[1.875rem] xl:mb-[2.5rem]">
+                <div className="flex justify-between items-center mb-4 h-[8vh]">
+                  <h2 className={`text-white text-[1rem] ${translations.language==='EN'?'':'font-bold'}`}>{translations.profile.appointmentContent.detail_title}</h2>
+                </div>
+                <div className="h-[1px] bg-transparent"></div>
               </div>
-              <div className="h-[1px] bg-transparent"></div>
-            </div>
 
-            {/* 预约信息 */}
-            <div className="flex flex-col">
-              <h3 className="text-white text-[0.875rem] xl:text-[1rem] mb-2">{type==='代孕母'?translations.profile.appointmentContent.become_surrogate:translations.profile.appointmentContent.become_intended_parent}</h3>
-              <p className="text-white text-[0.875rem] xl:text-[1rem]">
-                {selectedDate 
-                  ? formatDateTime(selectedDate, selectedTime)
-                  : formatDateTime(new Date().getDate().toString(), selectedTime)}
-              </p>
-              <div className="flex flex-col items-start mb-[env(safe-area-inset-bottom)] xl:mb-0">
-                <button 
-                  className="mt-2 bg-[#CDC5C0] text-[#000] text-[0.875rem] xl:text-[1rem] 
-                     h-[2.5rem] xl:h-[3rem] px-8
-                    rounded-[8px] hover:opacity-90 transition-opacity
-                    mb-[1.25rem] flex items-center justify-center gap-2"
-                  onClick={handleAppointment}
-                  disabled={isLoading}
-                >
-                  {isLoading ? (
-                    <>
-                      <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
-                      <span>{translations.profile.appointmentContent.appointment_loading}</span>
-                    </>
-                  ) : translations.profile.appointmentContent.appointment_btn}
-                </button>
+              {/* 预约信息 */}
+              <div className="flex flex-col">
+                <h3 className="text-white text-[0.875rem] xl:text-[1rem] mb-2">{type==='代孕母'?translations.profile.appointmentContent.become_surrogate:translations.profile.appointmentContent.become_intended_parent}</h3>
+                <p className="text-white text-[0.875rem] xl:text-[1rem]">
+                  {selectedDate 
+                    ? formatDateTime(selectedDate, selectedTime)
+                    : formatDateTime(new Date().getDate().toString(), selectedTime)}
+                </p>
+                <div className="flex flex-col items-start mb-[env(safe-area-inset-bottom)] xl:mb-0">
+                  <button 
+                    className="mt-2 bg-[#CDC5C0] text-[#000] text-[0.875rem] xl:text-[1rem] 
+                       h-[2.5rem] xl:h-[3rem] px-8
+                      rounded-[8px] hover:opacity-90 transition-opacity
+                      mb-[1.25rem] flex items-center justify-center gap-2"
+                    onClick={handleAppointment}
+                    disabled={isLoading}
+                  >
+                    {isLoading ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+                        <span>{translations.profile.appointmentContent.appointment_loading}</span>
+                      </>
+                    ) : translations.profile.appointmentContent.appointment_btn}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
     </> 
   );
 }

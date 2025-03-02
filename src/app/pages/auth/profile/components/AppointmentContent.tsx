@@ -164,7 +164,6 @@ export default function AppointmentContent() {
   return (
     <>
       <ToastContainer
-        style={{zIndex:9999}}
         position="top-right"
         autoClose={2000}
         hideProgressBar={false}
@@ -175,6 +174,11 @@ export default function AppointmentContent() {
         draggable
         pauseOnHover
         theme="light"
+        className="!mt-[40px]"
+        toastStyle={{
+          backgroundColor: "white",
+          zIndex: 99999,
+        }}
       />
       <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px]">
         <div className="flex flex-col xl:flex-row">

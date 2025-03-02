@@ -126,20 +126,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
               ? '注册成功' 
               : 'Register success');
             Cookies.set('userData', JSON.stringify(ret), { expires: 30 });
-          
+           
             router.push('/pages/auth/profile');
             setIsAuthenticated(true);
           })
           break;
          
         case 409:
-        toast.error(translations.auth.registerFailed);
+          if(res.message==="邮箱已存在"){
+            toast.error(translations.language === 'EN' 
+              ? '该邮箱已被注册' 
+              : 'The email has been registered');
+          }
         setIsAuthenticated(false);
           break;
         case 500:
           toast.error(translations.language === 'EN' 
-          ? '该邮箱或用户名已被注册' 
-          : 'The email or username has been registered');
+            ? '该用户名已被注册' 
+            : 'The username has been registered');
           setIsAuthenticated(false);
           break;
         default:

@@ -169,7 +169,6 @@ export default function ProfileContent() {
     <div className="flex-1 bg-[#B8886F] min-h-screen rounded-tr-[20px]">
 
 <ToastContainer 
-  style={{zIndex:9999}}
   position="top-right"
   autoClose={2000}
   hideProgressBar={false}
@@ -179,7 +178,13 @@ export default function ProfileContent() {
   pauseOnFocusLoss
   draggable
   pauseOnHover
-  theme="light"      />
+  theme="light"
+  className="!mt-[40px]"
+  toastStyle={{
+    backgroundColor: "white",
+    zIndex: 99999,
+  }}
+/>
       {/* 隐藏的表单来阻止浏览器自动填充 */}
       <div style={{ display: 'none' }}>
         <input type="text" name="hidden_username" autoComplete="username" />

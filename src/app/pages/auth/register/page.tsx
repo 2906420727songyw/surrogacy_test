@@ -180,8 +180,8 @@ const scrollToTop = () => {
       }).then(res=>{
         console.log(res);
         if(res.data.success){
-          toast.success(`${translations.language!=='EN' ? 'Verification code has been sent' : '验证码已发送'}`);
-          setCode(res.data.code);
+          // toast.success(`${translations.language!=='EN' ? 'Verification code has been sent' : '验证码已发送'}`);
+          setCode(res.data.code); 
         }else{
           toast.error(`${translations.language!=='EN' ? 'Failed to send verification code' : '发送验证码失败'}`);
         }
@@ -195,19 +195,24 @@ const scrollToTop = () => {
   };
 
   return (
-    <div className="min-h-screen w-full flex justify-center items-center bg-[#A48472] pt-page fade-in">
+    <div className="min-h-screen w-full flex justify-center items-center bg-[#A48472] pt-page fade-in relative">
       <ToastContainer 
-  style={{zIndex:9999}}
-  position="top-right"
-  autoClose={2000}
-  hideProgressBar={false}
-  newestOnTop={false}
-  closeOnClick
-  rtl={false}
-  pauseOnFocusLoss
-  draggable
-  pauseOnHover
-  theme="light"      />
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        className="!mt-[40px]"
+        toastStyle={{
+          backgroundColor: "white",
+          zIndex: 99999,
+        }}
+      />
       {/* 隐藏的表单来阻止浏览器自动填充 */}
       <div style={{ display: 'none' }}>
         <input 
