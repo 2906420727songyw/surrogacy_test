@@ -94,10 +94,10 @@ export default {
             },
             {
                 text:'怎么筛选申请者',
-                link:'become-surrogate-part2'
+                link:'become-surrogate-part2-content'
             },{
                 text:'如何成为代孕妈妈',
-                link:'become-surrogate-part3'
+                link:'become-surrogate-part3-content'
             },{
                 text:'为什么选择我们',
                 link:'become-surrogate-part4-1'
@@ -202,7 +202,7 @@ export default {
                 auth:false
             },{
                 text:'申请通道',
-                link:['/pages/auth/profile?type=become','/pages/auth/login?type=parent'],
+                link:['/pages/auth/appointment','/pages/auth/appointment'],
                 auth:true
             }]
         },
@@ -215,7 +215,7 @@ export default {
                 auth:false
             },{
                 text:'申请通道',
-                link:['/pages/auth/profile?type=become','/pages/auth/login?type=surrogacy'],
+                link:['/pages/auth/appointment','/pages/auth/appointment'],
                 auth:true
             }]
         },
@@ -227,7 +227,7 @@ export default {
                 auth:false
             },{
                 text:'申请通道',
-                link:['/pages/auth/profile?type=become','/pages/auth/login?mode=register'],
+                link:['/pages/auth/appointment','/pages/auth/appointment'],
                 auth:true
             }]
         },

@@ -160,9 +160,11 @@ export default function LGBTQIA() {
   const gotoPage = () => {
     const userData = Cookies.get('userData');
     if(userData && JSON.parse(userData).role === "INTENDED_PARENT"){
-      router.push('/pages/auth/profile?type=become');
+      //router.push('/pages/auth/profile?type=become');
+      router.push('/pages/auth/appointment');
     }else{
-      router.push('/pages/auth/login?type=parent');
+      //router.push('/pages/auth/login?type=parent');
+      router.push('/pages/auth/appointment');
     }
   }
   

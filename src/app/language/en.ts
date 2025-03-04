@@ -96,10 +96,10 @@ export default {
                 },
                 {
                     text:'Screening Process',
-                    link:'become-surrogate-part2'
+                    link:'become-surrogate-part2-content'
                 },{
                     text:'How to Apply',
-                    link:'become-surrogate-part3'
+                    link:'become-surrogate-part3-content'
                 },{
                     text:'Why Us',
                     link:'become-surrogate-part4-1'
@@ -204,7 +204,7 @@ export default {
                 auth:false
             },{
                 text:'Apply Now',
-                link:['/pages/auth/profile?type=become','/pages/auth/login?type=parent'],
+                link:['/pages/auth/appointment','/pages/auth/appointment'],
                 auth:true
             }]
         },
@@ -217,7 +217,7 @@ export default {
                 auth:false
             },{
                 text:'Apply Now',
-                link:['/pages/auth/profile?type=become','/pages/auth/login?type=surrogacy'],
+                link:['/pages/auth/appointment','/pages/auth/appointment'],
                 auth:true
             }]
         },
@@ -229,7 +229,7 @@ export default {
                 auth:false
             },{
                 text:'Apply Now',
-                link:['/pages/auth/profile?type=become','/pages/auth/login?mode=register'],
+                link:['/pages/auth/appointment','/pages/auth/appointment'],
                 auth:true
             }]
         },

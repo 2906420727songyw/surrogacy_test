@@ -28,6 +28,7 @@
     "react-transition-group": "^4.4.5",
     "swiper": "^11.2.1",
     "tailwind-scrollbar": "^3.1.0",
+    "video.js": "^8.21.0",
     "yourproject": ".",
     "zustand": "^5.0.3"
   },
@@ -38,6 +39,7 @@
     "@types/react": "^19",
     "@types/react-calendar": "^4.1.0",
     "@types/react-dom": "^19",
+    "@types/video.js": "^7.3.58",
     "autoprefixer": "^10.4.20",
     "eslint": "^9",
     "eslint-config-next": "15.1.2",
