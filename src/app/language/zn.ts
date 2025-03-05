@@ -215,7 +215,7 @@ export default {
                 auth:false
             },{
                 text:'申请通道',
-                link:['/pages/auth/appointment','/pages/auth/appointment'],
+                link:['/pages/auth/profile?type=become','/pages/auth/login?type=surrogacy'],
                 auth:true
             }]
         },

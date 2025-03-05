@@ -217,7 +217,7 @@ export default {
                 auth:false
             },{
                 text:'Apply Now',
-                link:['/pages/auth/appointment','/pages/auth/appointment'],
+                link:['/pages/auth/profile?type=become','/pages/auth/login?type=surrogacy'],
                 auth:true
             }]
         },
