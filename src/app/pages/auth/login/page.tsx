@@ -30,7 +30,7 @@ function LoginContent() {
 
   const router = useRouter();
   const searchParams = useSearchParams();
-  const isRegisterMode = searchParams?.get('mode')?.includes('register');
+  const isRegisterMode = searchParams?.get('type')?.includes('surrogacy');
 
   const type = searchParams?.get('type') ? searchParams?.get('type') === 'surrogacy' ? 'surrogacy' : 'parent' : searchParams?.get('mode')?.includes('Mother') ? 'surrogacy' : 'parent';
   const { login } = useAuth();
@@ -69,7 +69,7 @@ function LoginContent() {
 
   return (
     <main className="fade-in">
-      <div className="min-h-screen w-full flex justify-center items-center bg-[#A48472] pt-page fade-in relative">
+      <div className="min-h-screen w-full flex justify-center items-center bg-[#A48472]  fade-in relative">
         <ToastContainer 
           position="top-right"
           autoClose={2000}
@@ -87,7 +87,7 @@ function LoginContent() {
             zIndex: 99999,
           }}
         />
-        <div className="min-h-screen w-full flex justify-center bg-[#A48472] px-4 md:px-10">
+        <div className="min-h-screen w-full flex justify-center bg-[#A48472] px-4 md:px-10 items-center">
           {/* 隐藏的表单来阻止浏览器自动填充 */}
           <div style={{ display: 'none' }}>
             <input
@@ -104,13 +104,19 @@ function LoginContent() {
             />
           </div>
 
-          <div className="w-full max-w-[70vw] pt-page">
+          <div className="w-full max-w-[70vw] ">
+            <h1 className={`text-white ${translations.language==='EN'?'h1-text':'h1-text-en'} font-normal text-center  transition-opacity duration-500 animate__animated animate__fadeInDown animate__duration-1s `}>
+              {
+               translations.login.title_1
+              }
+            </h1>
             <h1 className={`text-white ${translations.language==='EN'?'h1-text':'h1-text-en'} font-normal text-center mb-[20px] md:mb-[80px] transition-opacity duration-500 animate__animated animate__fadeInDown animate__duration-1s `}>
               {isRegisterMode
                 ? translations.login.title_2
-                : translations.login.title_1
+                : ""
               }
             </h1>
+            
 
             <div className="flex flex-col md:flex-row gap-19 md:gap-20 relative">
               <div className="w-full md:flex-1 md:max-w-[30vw]">

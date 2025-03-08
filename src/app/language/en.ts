@@ -589,7 +589,7 @@ export default {
     },
     login:{
         title_1:"Welcome to Sapling Surrogacy",
-        title_2:"Welcome to Sapling Surrogacy",
+        title_2:"Please Sign up / Log in to complete the application",
         login_type:"Please log in using your email address",
         email:"Email Address",
         password:"Password",
@@ -952,9 +952,9 @@ export default {
 
   appointment: {
     title: 'Please select your appointment identity',
-    parent: 'Prospective Parents',
+    parent: 'Intended Parents',
     surrogate: 'Surrogate Mother',
-    appointment_parent: 'Appointment-Become a Prospective Parent',
+    appointment_parent: 'Appointment-Become a Intended Parent',
     appointment_surrogate: 'Appointment-Become a Surrogate Mother',
     appointment_btn: 'Make Appointment',
     appointment_loading: 'Processing Appointment...',
@@ -962,7 +962,7 @@ export default {
 },
 "appointment_parent": {
   back:"Back",
-  title:"Prospective Parents Initial Information Form",
+  title:"Intended Parents Initial Information Form",
         "name": "Name",
         "birthday": "Date of Birth (DD/MM/YYYY)",
         "phone": "Phone Number",

@@ -509,7 +509,7 @@ export default {
 
     login:{
         title_1:"欢迎来到小树苗代孕中心",
-        title_2:"让小树苗更了解你，请先注册/登录",
+        title_2:"请注册/登录，填写表格完成申请",
         login_type:"使用您的电子邮件地址登录",
         email:"电子邮件地址",
         password:"密码",

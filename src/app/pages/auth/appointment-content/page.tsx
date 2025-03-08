@@ -1023,7 +1023,7 @@ function AppointmentContentInner() {
 
   return (
     <>
-      <div className="min-h-screen w-full flex justify-center items-center bg-[#A48472] pt-page fade-in relative">
+      <div className="min-h-screen w-full flex justify-center items-center bg-[#A48472]  fade-in relative">
         <ToastContainer 
           position="top-right"
           autoClose={2000}

@@ -488,7 +488,7 @@ const Header = () => {
                 <div 
                     className="fixed left-0 right-0 z-40 transition-all duration-500 ease-in-out"
                     style={{ 
-                        paddingTop: `${headerHeight-1}vh`,
+                        paddingTop: `${headerHeight-3}vh`,
                         opacity: !isAnimating ? 1 : 0,
                         transform: !isAnimating ? 'translateY(0)' : 'translateY(-10px)'
                     }}
@@ -505,7 +505,7 @@ const Header = () => {
                             'animate__animated animate__fadeOutUp animate__fast'
                         }`}
                         style={{
-                            left: `${menuPosition-10}px`
+                            left: `${menuPosition-15}px`
                         }}
                     >
                         {Cookies.get('userData') ? 
@@ -555,7 +555,7 @@ const Header = () => {
                 <div 
                     className="fixed left-0 right-0 z-40 transition-all duration-500 ease-in-out"
                     style={{ 
-                        paddingTop: `${headerHeight-1}vh`,
+                        paddingTop: `${headerHeight-3}vh`,
                         opacity: !isAnimating ? 1 : 0,
                         transform: !isAnimating ? 'translateY(0)' : 'translateY(-10px)'
                     }}
@@ -573,7 +573,7 @@ const Header = () => {
                             'animate__animated animate__fadeOutUp animate__fast'
                         }`}
                         style={{
-                            left: `${menuPosition-10}px`
+                            left: `${menuPosition-15}px`
                         }}
                     >
                         {translations.header.options[activeMenu]?.options?.map((option: { text: string, link: string }, idx: number) => (
